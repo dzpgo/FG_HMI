@@ -1,0 +1,97 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Baosight.iSuperframe.Forms;
+using UACS;
+namespace UACSDAL
+{
+    public partial class HandAutoModeMessage : FormBase
+    {
+        //private DataBaseHelper m_dbHelper;
+        private bool isFalse = false;
+
+        public HandAutoModeMessage()
+        {
+            InitializeComponent();
+        }
+      
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+
+            string craneNo = cmbCraneNo.Text.Trim();
+
+            if (craneNo == "")
+                return;
+            // 获取指定的时间
+            // string recTime1 = this.dateTimePicker1.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            //string recTime2 = this.dateTimePicker2.Value.ToString("yyyy-MM-dd HH:mm:ss");
+
+            DateTime dt = dateTimePicker1.Value; ;
+            DateTime dt2 = dateTimePicker2.Value;
+            string timespan2 = ViewHelper.GenTimeSpanSQL(dt, dt2, "ALARM_TIME");
+
+            string sql = @"select a.CRANE_NO,a.ALARM_TIME,
+                          CASE
+                          WHEN a.CONTROL_MODE  = 1 THEN '遥控'
+                          WHEN a.CONTROL_MODE  = 2 THEN '手动'
+                          WHEN a.CONTROL_MODE  = 4 THEN '自动'
+                          WHEN a.CONTROL_MODE  = 5 THEN '等待'
+                          ELSE '其他'
+                          END,b.ALARM_INFO from ";
+            sql += " UACS_CRANE_ALARM_" + craneNo + " a left join ";
+            sql += " UACS_CRANE_ALARM_CODE_DEFINE b on a.ALARM_CODE = b.ALARM_CODE ";
+            sql += " where " + timespan2 + " and a.ALARM_CODE >=1021 and a.ALARM_CODE <= 1033";
+            sql += " order by a.ALARM_TIME ";
+
+            ViewHelper.GenDataGridViewData(DB2Connect.DBHelper, dataGridView1, sql, isFalse);
+
+            if (dataGridView1.RowCount <= 0)
+                MessageBox.Show("该时间段没有" + craneNo + "行车操作纪录");
+
+        }
+
+        //根据跨号绑定行车号
+        private void Bind_cbbCraneNo(ComboBox comBox)
+        {          
+            DataTable dt = new DataTable();
+            dt.Columns.Add("TypeValue");
+            dt.Columns.Add("TypeName");
+            try
+            {
+                string strSql = @"SELECT ID as TypeValue,NAME as TypeName FROM UACS_YARDMAP_CRANE ORDER BY ID ASC ";
+                using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(strSql))
+                {
+                    while (rdr.Read())
+                    {
+                        DataRow dr = dt.NewRow();
+                        if (rdr["TypeName"].ToString().Trim() != "")
+                        {
+                            dr["TypeValue"] = rdr["TypeValue"];
+                            dr["TypeName"] = rdr["TypeName"];
+                            dt.Rows.Add(dr);
+                        }
+                    }
+                }
+                //绑定列表下拉框数据
+                comBox.DataSource = dt;
+                comBox.DisplayMember = "TypeName";
+                comBox.ValueMember = "TypeValue";
+                comBox.SelectedItem = 0;
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void HandAutoModeMessage_Load(object sender, EventArgs e)
+        {
+            Bind_cbbCraneNo(cmbCraneNo);
+        }
+    }
+}

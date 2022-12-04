@@ -1,0 +1,411 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using UACSDAL;
+using UACSPopupForm;
+
+namespace UACSControls
+{
+    public partial class conStockSaddle : UserControl
+    {
+        public conStockSaddle()
+        {
+            InitializeComponent();
+            this.SetStyle(
+               ControlStyles.OptimizedDoubleBuffer |
+               ControlStyles.ResizeRedraw |
+               ControlStyles.AllPaintingInWmPaint, true);
+        }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var parms = base.CreateParams;
+                parms.Style &= ~0x02000000; // Turn off WS_CLIPCHILDREN 
+                return parms;
+            }
+        }
+        private SaddleBase mySaddleInfo = new SaddleBase();
+        private Label lblRowNo = new Label();
+        private Label lblColNo = new Label();
+        private Graphics gr;
+        public delegate void EventHandler_Saddle_Selected(SaddleBase theSaddleInfo);
+        public event EventHandler_Saddle_Selected Saddle_Selected;
+        public void conInit()
+        {
+            try
+            {
+                this.MouseDown += new MouseEventHandler(conSaddle_visual_MouseUp);
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        void conSaddle_visual_MouseUp(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    if (Saddle_Selected != null)
+                    {
+                        Saddle_Selected(mySaddleInfo.Clone());
+                    }
+                }
+                else
+                {
+                    FrmSaddleMetail FrmSaddleDetail = new FrmSaddleMetail();
+                    FrmSaddleDetail.SaddleInfo = this.mySaddleInfo;
+                    FrmSaddleDetail.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        public delegate void saddlesRefreshInvoke(SaddleBase theSaddle, double X_Width, double Y_Height, AreaBase theArea, int panelWidth, int panelHeight, bool xAxisRight, bool yAxisDown, Panel panel, List<int> list = null);
+        private AreaBase myArea;
+        private Panel MyPanel;
+        private bool isCreateRowLbl = false;
+        private bool isCreateColLbl = false;
+        private double location_x;
+        private double location_y;
+        private double xMax_7_1;
+
+        private bool Coil_PlasticFlag = false;
+        private bool Coil_PackFlag = false;
+        private void Get_Coil_PlasticFlag(string COIL_NO)
+        {
+            string sql = @"SELECT COIL_NO FROM UACS_YARDMAP_COIL_PLASTIC WHERE PLASTIC_FLAG = 1";
+            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
+            {
+                while (rdr.Read())
+                {
+                    if (COIL_NO == rdr["COIL_NO"].ToString().Trim())
+                    {
+                        Coil_PlasticFlag = true;
+                    }
+                }
+            }
+        }
+
+        private void Get_Coil_PackFlag(string COIL_NO)
+        {
+            string sql = @"SELECT PACK_FLAG,FORBIDEN_FLAG,NEXT_UNIT_NO,L3_COIL_STATUS FROM UACS_YARDMAP_COIL WHERE COIL_NO = '" + COIL_NO + "'";
+            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
+            {
+                while (rdr.Read())
+                {
+                    if(rdr["PACK_FLAG"] != DBNull.Value && rdr["FORBIDEN_FLAG"] != DBNull.Value)
+                    {
+                        if (Convert.ToInt32(rdr["PACK_FLAG"]) == 0 && Convert.ToInt32(rdr["FORBIDEN_FLAG"]) != 1 && (rdr["NEXT_UNIT_NO"].ToString() == "D000" || rdr["NEXT_UNIT_NO"].ToString().Contains("PA")))
+                        {
+                            Coil_PackFlag = true;
+                        }
+                    }
+                }
+            }
+        }
+        public void refreshControl(SaddleBase theSaddle, double X_Width, double Y_Height, AreaBase theArea, int panelWidth, int panelHeight, bool xAxisRight, bool yAxisDown, Panel panel, List<int> list = null)
+        {
+            try
+            {
+                //附对象
+                mySaddleInfo = theSaddle;
+                myArea = theArea;
+                MyPanel = panel;
+
+                //钢卷是否套袋
+                Coil_PlasticFlag = false;
+
+                //待包卷标记
+                Coil_PackFlag = false;
+
+                //计算X方向上的比例关系
+                double xScale = Convert.ToDouble(panelWidth - 40) / Convert.ToDouble(X_Width);
+                double location_X = 0;
+                if (xAxisRight == true)
+                {
+                    location_X = Convert.ToDouble((theSaddle.X_Center - theSaddle.SaddleWidth / 2) - theArea.X_Start) * xScale;
+                }
+
+                //计算Y方向的比例关系
+                double yScale = Convert.ToDouble(panelHeight - 40) / Convert.ToDouble(Y_Height);
+                double location_Y = 0;
+                if (yAxisDown == true)
+                {
+                    location_Y = ((theSaddle.Y_Center - theSaddle.SaddleLength / 2) - theArea.Y_Start) * yScale;
+                }
+                else
+                {
+                    location_Y = (Y_Height - ((theSaddle.Y_Center + theSaddle.SaddleLength / 2) - theArea.Y_Start)) * yScale;
+                }
+             
+
+
+                if (theSaddle.Stock_Status == 0 && theSaddle.Lock_Flag == 0) //无卷可用
+                    this.BackColor = Color.White;
+                else if (theSaddle.Stock_Status == 2 && theSaddle.Lock_Flag == 0) //有卷可用
+                {
+                    ////区分机组
+                    //if (theSaddle.Next_Unit_No == "D108")
+                    //    this.BackColor = Color.Blue;
+                    //else if (theSaddle.Next_Unit_No == "D208")
+                    //    this.BackColor = Color.Purple;
+                    //else if (theSaddle.Next_Unit_No == "D112")
+                    //    this.BackColor = Color.Green;
+                    //else
+                    //    this.BackColor = Color.Black;
+
+                    //套袋颜色显示
+                    //Get_Coil_PlasticFlag(theSaddle.Mat_No);
+                    //if (Coil_PlasticFlag)
+                    //{
+                    //    this.BackColor = Color.Blue;
+                    //}
+
+                    //if (Coil_PlasticFlag)
+                    //{
+                    //    label1.Text = "套";
+                    //}
+                    //else
+                    //{
+                    //    label1.Text = "";
+                    //}
+                    Get_Coil_PackFlag(theSaddle.Mat_No);
+                    if(Coil_PackFlag && (theArea.AreaNo == "Z07-A" || theArea.AreaNo == "Z07-B" || theArea.AreaNo == "Z08-A" || theArea.AreaNo == "Z08-B"))
+                    {
+                        this.BackColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        this.BackColor = Color.Black;
+                    }
+                }
+
+                else 
+                    this.BackColor = Color.Red;
+
+
+                
+                //List<string> repeatStock = new List<string>();
+                //string sql = string.Format("select stock_no from UACS_YARDMAP_STOCK_DEFINE where MAT_NO in (select MAT_NO from UACS_YARDMAP_STOCK_DEFINE group by UACS_YARDMAP_STOCK_DEFINE.MAT_NO having count(UACS_YARDMAP_STOCK_DEFINE.MAT_NO) > 1)");
+                //using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
+                //{
+                //    while (rdr.Read())
+                //    {
+                //        if (rdr["stock_no"] != DBNull.Value)
+                //        {
+                //            string rs = rdr["stock_no"].ToString();
+                //            repeatStock.Add(rs);
+                //        }
+                //    }
+                //}
+                //foreach(string s in repeatStock)  //一卷多库位
+                //{
+                //    if(theSaddle.SaddleNo == s)
+                //    {
+                //        this.BackColor = Color.Purple;
+                //    }
+                //}
+
+                //修改鞍座控件的宽度和高度
+                this.Width = Convert.ToInt32((theSaddle.SaddleWidth - 150) * xScale);
+                //this.Width = Convert.ToInt32((theSaddle.SaddleWidth - 40) * xScale);
+                this.Height = Convert.ToInt32(theSaddle.SaddleLength * yScale);
+
+                //定位库位鞍座的坐标
+                this.Location = new Point(Convert.ToInt32(location_X), Convert.ToInt32(location_Y + 10));
+
+                this.BringToFront();
+
+                //if (theSaddle.SaddleNo.Substring( Convert.ToInt32( theSaddle.SaddleNo.Length.ToString()) - 1,1) == "2")
+                //    this.BorderStyle = BorderStyle.Fixed3D;
+                //else
+                this.BorderStyle = BorderStyle.None;
+
+                // panel.Paint += panel_Paint;
+
+                toolTip1.IsBalloon = true;
+                toolTip1.ReshowDelay = 0;
+                toolTip1.SetToolTip(this, "材料号：" + theSaddle.Mat_No + "\r"
+                                    + "库位：    " + theSaddle.SaddleNo.ToString()
+                                    + "\r" + theSaddle.Row_No.ToString() + "行" + "-" + theSaddle.Col_No.ToString() + "列，" + "\r"
+                                    + "坐标：" + "\r"
+                                    + "X = " + theSaddle.X_Center + "\r"
+                                    + "Y = " + theSaddle.Y_Center + "\r"
+                                    + "Z = " + theSaddle.Z_Center + "\r"
+                                    + "下道机组： " + theSaddle.Next_Unit_No + "\r"
+                                   );
+
+                //双层卷文字突出显示
+                //if (theSaddle.SaddleName.Substring(theSaddle.SaddleName.Length - 1, 1) == "2")
+                //{
+                //    Label lb = new Label();
+                //    lb.Location = new Point(this.Size.Width / 4, this.Size.Height / 4);
+                //    lb.Size = new Size(this.Size.Width, this.Size.Height);
+                //    lb.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+                //    lb.ForeColor = theSaddle.Lock_Flag == 0 ? theSaddle.Stock_Status == 2 ? Color.White : Color.Black : Color.White;
+                //    lb.Text = "双";
+                //    this.Controls.Add(lb);
+                //}
+
+                if (list != null)
+                {                 
+                    //给每行添加行展示
+                       if (theSaddle.SaddleNo.Count() == 8)
+                       {
+                           bool isIndex = false;
+                           bool isSpecialArea = false;
+                           string index = theSaddle.SaddleNo.Substring(theSaddle.SaddleNo.Count() - 3, 2);
+                           if (index == "01" || (theArea.AreaNo == "Z07-B" && (index == "19" || index == "07")) || (theArea.AreaNo == "Z08-B" && index == "10") || (theArea.AreaNo == "Z21-H" && index == "13") || (theArea.AreaNo == "Z21-F" && index == "02") || (theArea.AreaNo == "Z21-E" && index == "02") || (theArea.AreaNo == "Z21-B" && index == "03") || (theArea.AreaNo == "Z21-A" && index == "03") || (theArea.AreaNo == "Z23-K" && index == "37") || (theArea.AreaNo == "Z23-J" && index == "25") || (theArea.AreaNo == "Z23-E" && index == "05") || (theArea.AreaNo == "Z06-B" && index == "08") || (theArea.AreaNo == "Z23-J" && index == "22") || (theArea.AreaNo == "Z23-F" && index == "10") || (theArea.AreaNo == "Z22-A" && index == "06"))
+                           {
+                               isIndex = true;
+                           }
+
+                           //if (theSaddle.SaddleNo.Substring(0, 3) == "Z53")
+                           //{
+                           //    if (Convert.ToInt32(theSaddle.SaddleNo.Substring(3, 3)) > 9 && Convert.ToInt32(theSaddle.SaddleNo.Substring(3, 3)) < 19)
+                           //    {
+                           //        isSpecialArea = true;
+                           //    }
+
+                           //}
+
+                           if (isIndex || isSpecialArea)
+                           {
+
+                               if (!isCreateRowLbl)
+                               {
+                                   lblRowNo.Name = theSaddle.SaddleNo + "Row";
+                                   lblRowNo.Text = theSaddle.Row_No.ToString();
+                                   lblRowNo.ForeColor = Color.Blue;
+                                   lblRowNo.Font = new System.Drawing.Font("微软雅黑", 7F);
+                                   panel.Controls.Add(lblRowNo);
+                                   isCreateRowLbl = true;
+                               }
+                               //lblColNo.BringToFront();
+                               lblRowNo.Location = new Point(Convert.ToInt32(location_X + this.Width ), Convert.ToInt32(location_Y + 12));
+                           }
+                               //lblRowNo.Location = new Point(Convert.ToInt32(location_X - 25), Convert.ToInt32(location_Y + 1));
+                               //lblRowNo.Location = new Point(Convert.ToInt32(location_X - 18), Convert.ToInt32(location_Y));
+                              // lblColNo.Location = new Point(Convert.ToInt32(location_X), Convert.ToInt32(location_Y + this.Height -1));
+                           //foreach (var item in list)
+                           //{
+
+                           //    if (isIndex)
+                           //    {
+                           //        if (!isCreateColLbl)
+                           //        {
+                           //            //lblColNo.AutoSize = true;
+                           //            //lblColNo.BackColor = SystemColors.Control;
+                           //            //lblColNo.SendToBack();
+                           //            lblRowNo.Size = new System.Drawing.Size(20, 13);
+                           //            lblRowNo.Name = theSaddle.SaddleNo + "Row";
+                           //            lblRowNo.Text = theSaddle.Row_No.ToString();
+                           //            lblRowNo.ForeColor = Color.Red;
+                           //            lblRowNo.Font = new System.Drawing.Font("微软雅黑", 8F);
+                           //            panel.Controls.Add(lblRowNo);
+                           //            isCreateColLbl = true;
+                           //        }
+                           //        //lblColNo.Location = new Point(Convert.ToInt32(location_X), Convert.ToInt32(location_Y + this.Height - 1));
+                           //        //lblRowNo.Location = new Point(Convert.ToInt32(location_X - 20), Convert.ToInt32(location_Y + 25));
+                                   
+                           //    }
+                           //} 
+                       
+                    }
+                    
+
+                    if (list[0] == 999)
+                    {
+                        //给每行添加列展示
+                        foreach (var item in list)
+                        {
+                            
+                           //if (item == theSaddle.Row_No)
+                           //{
+                            if (!isCreateColLbl)
+                            {
+                                //lblColNo.AutoSize = true;
+                                //lblColNo.BackColor = SystemColors.Control;
+                                //lblColNo.SendToBack();
+                                lblColNo.Size = new System.Drawing.Size(20,13);
+                                lblColNo.Name = theSaddle.SaddleNo + "Col";
+                                lblColNo.Text = theSaddle.Col_No.ToString();
+                                lblColNo.ForeColor = Color.Blue;
+                                lblColNo.Font = new System.Drawing.Font("微软雅黑", 8F);
+                                panel.Controls.Add(lblColNo);
+                                isCreateColLbl = true;
+                            }                         
+                          //lblColNo.Location = new Point(Convert.ToInt32(location_X), Convert.ToInt32(location_Y - 5));
+                          //lblColNo.Location = new Point(Convert.ToInt32(location_X), Convert.ToInt32(location_Y + this.Height - 1)); 
+                            lblColNo.Location = new Point(Convert.ToInt32(location_X), Convert.ToInt32(location_Y + this.Height + 7));
+                            
+                            
+                            
+                           //}
+                        }
+                    }
+                    else if (list[0] == 999)
+                    {
+                        gr = panel.CreateGraphics();
+                        location_x = location_X;
+                        location_y = location_Y;
+                        //xMax_7_1 = XMax_7_1;
+                        panel.Paint += panel_Paint;
+                    }
+                    else
+                    { }
+                }
+                lblColNo.BringToFront();
+                this.BringToFront();
+            }
+            catch (Exception er)
+            {
+                throw;
+            }
+        }
+
+        void panel_Paint(object sender, PaintEventArgs e)
+        {
+            //if (Convert.ToInt32(location_y) > 50)
+            //{
+            //    if (mySaddleInfo.SaddleNo.Substring( Convert.ToInt32( mySaddleInfo.SaddleNo.Length.ToString()) - 1,1) == "2")
+            //    {
+            //        gr.DrawString(mySaddleInfo.Col_No.ToString()+ "-2", new Font("微软雅黑", 7, FontStyle.Bold), Brushes.Blue,
+            //        new Point(Convert.ToInt32(location_x), Convert.ToInt32(location_y) - 15));
+            //    }
+            //    else
+            //    {
+            //        gr.DrawString(mySaddleInfo.Col_No.ToString(), new Font("微软雅黑", 7, FontStyle.Bold), Brushes.Blue,
+            //        new Point(Convert.ToInt32(location_x), Convert.ToInt32(location_y) - 15));
+            //    }
+
+            //}     
+        }
+
+        private void conStockSaddle_Paint(object sender, PaintEventArgs e)
+        {
+            try
+            {
+                Graphics gr = e.Graphics;
+                Pen p = new Pen(Color.White, 2);
+                Rectangle rec = new Rectangle(new Point(0, 0), new Size(this.Width, this.Height));
+                gr.DrawRectangle(p, rec);
+            }
+            catch (Exception er)
+            {
+
+            }
+        }
+    }
+}

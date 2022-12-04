@@ -1,0 +1,371 @@
+﻿namespace UACSView.View_CraneMonitor
+{
+    partial class WMSCraneEVADE
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbbBayNo = new System.Windows.Forms.ComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnDeleteOrder = new System.Windows.Forms.Button();
+            this.btnModifyPriority = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dgvWMSCraneOrder = new System.Windows.Forms.DataGridView();
+            this.CHECK_COLUMN = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ORDER_NUMBER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BAY_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORDER_SOURCE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ALTERN_CRANE_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CRANE_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SOUR_CRANE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TASK_PRIORITY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.START_POINT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.END_POINT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvWMSCraneOrder)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.cbbBayNo);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1130, 76);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "选择指定跨号";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(22, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 22);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "跨别：";
+            // 
+            // cbbBayNo
+            // 
+            this.cbbBayNo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cbbBayNo.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbbBayNo.FormattingEnabled = true;
+            this.cbbBayNo.Items.AddRange(new object[] {
+            "Z62",
+            "Z63"});
+            this.cbbBayNo.Location = new System.Drawing.Point(83, 33);
+            this.cbbBayNo.Name = "cbbBayNo";
+            this.cbbBayNo.Size = new System.Drawing.Size(137, 29);
+            this.cbbBayNo.TabIndex = 4;
+            this.cbbBayNo.Text = "Z22";
+            this.cbbBayNo.SelectedIndexChanged += new System.EventHandler(this.cbbBayNo_SelectedIndexChanged);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.tableLayoutPanel1);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox2.Location = new System.Drawing.Point(0, 76);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1130, 567);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "任务指令";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 22);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1124, 542);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnRefresh);
+            this.panel1.Controls.Add(this.btnDeleteOrder);
+            this.panel1.Controls.Add(this.btnModifyPriority);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(107, 536);
+            this.panel1.TabIndex = 0;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.Gray;
+            this.btnRefresh.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.btnRefresh.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.btnRefresh.Location = new System.Drawing.Point(3, 95);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(100, 40);
+            this.btnRefresh.TabIndex = 2;
+            this.btnRefresh.Text = "刷新";
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // btnDeleteOrder
+            // 
+            this.btnDeleteOrder.BackColor = System.Drawing.Color.Gray;
+            this.btnDeleteOrder.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.btnDeleteOrder.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.btnDeleteOrder.Location = new System.Drawing.Point(3, 49);
+            this.btnDeleteOrder.Name = "btnDeleteOrder";
+            this.btnDeleteOrder.Size = new System.Drawing.Size(100, 40);
+            this.btnDeleteOrder.TabIndex = 1;
+            this.btnDeleteOrder.Text = "删除指令";
+            this.btnDeleteOrder.UseVisualStyleBackColor = false;
+            this.btnDeleteOrder.Click += new System.EventHandler(this.btnDeleteOrder_Click);
+            // 
+            // btnModifyPriority
+            // 
+            this.btnModifyPriority.BackColor = System.Drawing.Color.Gray;
+            this.btnModifyPriority.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.btnModifyPriority.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.btnModifyPriority.Location = new System.Drawing.Point(3, 3);
+            this.btnModifyPriority.Name = "btnModifyPriority";
+            this.btnModifyPriority.Size = new System.Drawing.Size(100, 40);
+            this.btnModifyPriority.TabIndex = 0;
+            this.btnModifyPriority.Text = "修改优先级";
+            this.btnModifyPriority.UseVisualStyleBackColor = false;
+            this.btnModifyPriority.Click += new System.EventHandler(this.btnModifyPriority_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dgvWMSCraneOrder);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(116, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1005, 536);
+            this.panel2.TabIndex = 1;
+            // 
+            // dgvWMSCraneOrder
+            // 
+            this.dgvWMSCraneOrder.AllowUserToAddRows = false;
+            this.dgvWMSCraneOrder.AllowUserToDeleteRows = false;
+            this.dgvWMSCraneOrder.AllowUserToResizeRows = false;
+            this.dgvWMSCraneOrder.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvWMSCraneOrder.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvWMSCraneOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvWMSCraneOrder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CHECK_COLUMN,
+            this.ORDER_NUMBER,
+            this.BAY_NO,
+            this.ORDER_SOURCE,
+            this.ALTERN_CRANE_NO,
+            this.CRANE_NO,
+            this.SOUR_CRANE,
+            this.TASK_PRIORITY,
+            this.START_POINT,
+            this.END_POINT});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvWMSCraneOrder.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvWMSCraneOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvWMSCraneOrder.EnableHeadersVisualStyles = false;
+            this.dgvWMSCraneOrder.Location = new System.Drawing.Point(0, 0);
+            this.dgvWMSCraneOrder.Name = "dgvWMSCraneOrder";
+            this.dgvWMSCraneOrder.RowHeadersVisible = false;
+            this.dgvWMSCraneOrder.RowTemplate.Height = 23;
+            this.dgvWMSCraneOrder.Size = new System.Drawing.Size(1005, 536);
+            this.dgvWMSCraneOrder.TabIndex = 3;
+            this.dgvWMSCraneOrder.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWMSCraneOrder_CellContentClick);
+            // 
+            // CHECK_COLUMN
+            // 
+            this.CHECK_COLUMN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CHECK_COLUMN.DataPropertyName = "CHECK_COLUMN";
+            this.CHECK_COLUMN.FalseValue = "0";
+            this.CHECK_COLUMN.HeaderText = "选择";
+            this.CHECK_COLUMN.Name = "CHECK_COLUMN";
+            this.CHECK_COLUMN.TrueValue = "1";
+            this.CHECK_COLUMN.Width = 43;
+            // 
+            // ORDER_NUMBER
+            // 
+            this.ORDER_NUMBER.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ORDER_NUMBER.DataPropertyName = "ORDER_NUMBER";
+            this.ORDER_NUMBER.HeaderText = "指令号";
+            this.ORDER_NUMBER.Name = "ORDER_NUMBER";
+            this.ORDER_NUMBER.ReadOnly = true;
+            this.ORDER_NUMBER.Width = 76;
+            // 
+            // BAY_NO
+            // 
+            this.BAY_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BAY_NO.DataPropertyName = "BAY_NO";
+            this.BAY_NO.HeaderText = "跨号";
+            this.BAY_NO.Name = "BAY_NO";
+            this.BAY_NO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.BAY_NO.Width = 62;
+            // 
+            // ORDER_SOURCE
+            // 
+            this.ORDER_SOURCE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ORDER_SOURCE.DataPropertyName = "ORDER_SOURCE";
+            this.ORDER_SOURCE.HeaderText = "指令资源";
+            this.ORDER_SOURCE.Name = "ORDER_SOURCE";
+            this.ORDER_SOURCE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ALTERN_CRANE_NO
+            // 
+            this.ALTERN_CRANE_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ALTERN_CRANE_NO.DataPropertyName = "ALTERN_CRANE_NO";
+            this.ALTERN_CRANE_NO.HeaderText = "预定行车";
+            this.ALTERN_CRANE_NO.Name = "ALTERN_CRANE_NO";
+            this.ALTERN_CRANE_NO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ALTERN_CRANE_NO.Width = 90;
+            // 
+            // CRANE_NO
+            // 
+            this.CRANE_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CRANE_NO.DataPropertyName = "CRANE_NO";
+            this.CRANE_NO.HeaderText = "执行行车";
+            this.CRANE_NO.Name = "CRANE_NO";
+            this.CRANE_NO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CRANE_NO.Width = 90;
+            // 
+            // SOUR_CRANE
+            // 
+            this.SOUR_CRANE.DataPropertyName = "SOUR_CRANE";
+            this.SOUR_CRANE.HeaderText = "行车资源";
+            this.SOUR_CRANE.Name = "SOUR_CRANE";
+            this.SOUR_CRANE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SOUR_CRANE.Width = 120;
+            // 
+            // TASK_PRIORITY
+            // 
+            this.TASK_PRIORITY.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TASK_PRIORITY.DataPropertyName = "TASK_PRIORITY";
+            this.TASK_PRIORITY.HeaderText = "优先级";
+            this.TASK_PRIORITY.Name = "TASK_PRIORITY";
+            this.TASK_PRIORITY.Width = 76;
+            // 
+            // START_POINT
+            // 
+            this.START_POINT.DataPropertyName = "START_POINT";
+            this.START_POINT.HeaderText = "起卷坐标";
+            this.START_POINT.Name = "START_POINT";
+            this.START_POINT.Width = 120;
+            // 
+            // END_POINT
+            // 
+            this.END_POINT.DataPropertyName = "END_POINT";
+            this.END_POINT.HeaderText = "落卷坐标";
+            this.END_POINT.Name = "END_POINT";
+            this.END_POINT.Width = 120;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 10000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // WMSCraneEVADE
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.ClientSize = new System.Drawing.Size(1130, 643);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Name = "WMSCraneEVADE";
+            this.Text = "WMSCraneOrderConfig";
+            this.TabActivated += new System.EventHandler(this.WMSCraneOrderConfig_TabActivated);
+            this.TabDeactivated += new System.EventHandler(this.WMSCraneOrderConfig_TabDeactivated);
+            this.Load += new System.EventHandler(this.WMSCraneOrderConfig_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvWMSCraneOrder)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbbBayNo;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView dgvWMSCraneOrder;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnDeleteOrder;
+        private System.Windows.Forms.Button btnModifyPriority;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CHECK_COLUMN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ORDER_NUMBER;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BAY_NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ORDER_SOURCE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ALTERN_CRANE_NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CRANE_NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SOUR_CRANE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TASK_PRIORITY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn START_POINT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn END_POINT;
+    }
+}

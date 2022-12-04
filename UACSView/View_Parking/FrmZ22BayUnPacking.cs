@@ -1,0 +1,433 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Baosight.iSuperframe.Forms;
+using UACSControls;
+using UACSDAL;
+using UACS;
+
+namespace UACSView
+{
+    public partial class FrmZ22BayUnPacking : FormBase
+    {
+        public FrmZ22BayUnPacking()
+        {
+            InitializeComponent();
+            SetStyle(ControlStyles.AllPaintingInWmPaint
+                | ControlStyles.OptimizedDoubleBuffer
+                | ControlStyles.UserPaint, true);
+            this.Load += FrmZ22BayUnPacking_Load;
+        }
+        #region  -----------------------------连接数据库--------------------------------
+        private static Baosight.iSuperframe.Common.IDBHelper dbHelper = null;
+        //连接数据库
+        private static Baosight.iSuperframe.Common.IDBHelper DBHelper
+        {
+            get
+            {
+                if (dbHelper == null)
+                {
+                    try
+                    {
+                        dbHelper = Baosight.iSuperframe.Common.DataBase.DBFactory.GetHelper("ZJDB0");//平台连接数据库的Text
+                    }
+                    catch (System.Exception e)
+                    {
+                        //throw e;
+                    }
+                }
+                return dbHelper;
+            }
+        }
+        #endregion
+
+        #region ------------------------------TAG配置----------------------------------
+        private Baosight.iSuperframe.TagService.Controls.TagDataProvider tagDataProvider = new Baosight.iSuperframe.TagService.Controls.TagDataProvider();
+        public void InitTagDataProvide(string tagServiceName)
+        {
+            try
+            {
+                tagDataProvider.ServiceName = tagServiceName;
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        private Baosight.iSuperframe.TagService.DataCollection<object> inDatas = new Baosight.iSuperframe.TagService.DataCollection<object>();
+        private string[] arrTagAdress;
+        private void readTags()
+        {
+            try
+            {
+                inDatas.Clear();
+                tagDataProvider.GetData(arrTagAdress, out inDatas);
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        /// <summary>
+        /// 取tag值
+        /// </summary>
+        /// <param name="tagName"></param>
+        /// <returns></returns>
+        private long get_value_x(string tagName)
+        {
+            long theValue = 0;
+            object valueObject = null;
+            try
+            {
+                valueObject = inDatas[tagName];
+                theValue = Convert.ToInt32(valueObject);
+            }
+            catch
+            {
+                valueObject = null;
+            }
+            return theValue; ;
+        }
+        #endregion
+
+        #region  -----------------------------方法字段--------------------------------
+        private const string BayNo = "Z22";
+        private const string AreaNo_A = "Z02-P1";
+        private const string AreaNo_B = "Z02-P2";
+        private const string SubAreaNo_A = "21";
+        private const string SubAreaNo_B = "22";
+        private const string D171UnitNo = "D171";
+        private const string D172UnitNo = "D172";
+        bool pressed = true;
+        bool press = true;
+        bool press1 = true;
+        private UnitEntrySaddleInfo entrySaddleInfo = new UnitEntrySaddleInfo();
+        //private const string D212UnitNo = "D212";
+        /// <summary>
+        /// 鞍座控件
+        /// </summary>
+        private Dictionary<string, CoilPicture> dicSaddleControls = new Dictionary<string, CoilPicture>();
+        private Dictionary<CoilPicture, conOffLinePackingSaddleInfo>
+            dicControl = new Dictionary<CoilPicture, conOffLinePackingSaddleInfo>();
+        private OffinePackingSaddleInBay offineSaddle = new OffinePackingSaddleInBay();
+        private List<string> listUnit = new List<string>();
+        private OffinePackingUrgentStop craneStop;
+
+        #endregion
+
+        #region -----------------------------初始加载--------------------------------
+        private void FrmZ22BayUnPacking_Load(object sender, EventArgs e)
+        {
+            dicSaddleControls["D172PC0001"] = Z22BayUnParkingArea_1;
+            Z22BayUnParkingArea_1.PosName = dicSaddleControls.FirstOrDefault(p => p.Value == Z22BayUnParkingArea_1).Key;
+            dicSaddleControls["D172PC0002"] = Z22BayUnParkingArea_2;
+            Z22BayUnParkingArea_2.PosName = dicSaddleControls.FirstOrDefault(p => p.Value == Z22BayUnParkingArea_2).Key;
+            dicSaddleControls["D172PC0003"] = Z22BayUnParkingArea_3;
+            Z22BayUnParkingArea_3.PosName = dicSaddleControls.FirstOrDefault(p => p.Value == Z22BayUnParkingArea_3).Key;
+            dicSaddleControls["D172PC0004"] = Z22BayUnParkingArea_4;
+            Z22BayUnParkingArea_4.PosName = dicSaddleControls.FirstOrDefault(p => p.Value == Z22BayUnParkingArea_4).Key;
+            dicSaddleControls["D172PC0005"] = Z22BayUnParkingArea_5;
+            Z22BayUnParkingArea_5.PosName = dicSaddleControls.FirstOrDefault(p => p.Value == Z22BayUnParkingArea_5).Key;
+            dicSaddleControls["D172PC0006"] = Z22BayUnParkingArea_6;
+            Z22BayUnParkingArea_6.PosName = dicSaddleControls.FirstOrDefault(p => p.Value == Z22BayUnParkingArea_6).Key;
+            dicSaddleControls["D172PC0007"] = Z22BayUnParkingArea_7;
+            Z22BayUnParkingArea_7.PosName = dicSaddleControls.FirstOrDefault(p => p.Value == Z22BayUnParkingArea_7).Key;
+            dicSaddleControls["D172PC0008"] = Z22BayUnParkingArea_8;
+            Z22BayUnParkingArea_8.PosName = dicSaddleControls.FirstOrDefault(p => p.Value == Z22BayUnParkingArea_8).Key;
+            dicSaddleControls["D172PC0009"] = Z22BayUnParkingArea_9;
+            Z22BayUnParkingArea_9.PosName = dicSaddleControls.FirstOrDefault(p => p.Value == Z22BayUnParkingArea_9).Key;
+
+            dicControl[Z22BayUnParkingArea_1] = conOffLinePackingSaddleInfo1;
+            dicControl[Z22BayUnParkingArea_2] = conOffLinePackingSaddleInfo2;
+            dicControl[Z22BayUnParkingArea_3] = conOffLinePackingSaddleInfo3;
+            dicControl[Z22BayUnParkingArea_4] = conOffLinePackingSaddleInfo4;
+            dicControl[Z22BayUnParkingArea_5] = conOffLinePackingSaddleInfo5;
+            dicControl[Z22BayUnParkingArea_6] = conOffLinePackingSaddleInfo6;
+            dicControl[Z22BayUnParkingArea_7] = conOffLinePackingSaddleInfo7;
+            dicControl[Z22BayUnParkingArea_8] = conOffLinePackingSaddleInfo8;
+            dicControl[Z22BayUnParkingArea_9] = conOffLinePackingSaddleInfo9;
+
+            tagDataProvider.ServiceName = "iplature";
+            SetReady();
+
+            timer1.Enabled = true;
+            timer1.Interval = 2500;
+        }
+        #endregion
+
+        #region  -----------------------------画面刷新--------------------------------
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (tabActived == false)
+            {
+                return; 
+            }
+            try
+            {
+                //string tmp = "Z02-P";                
+                //for (int i = 0; i < 2; i++)
+                //{
+                    //string s = string.Format("{0}{1}",tmp,i == 0? "1":"2");    
+                    
+                    offineSaddle.ReadDefintion("Z22-PC");
+                    foreach (string theSaddleName in dicSaddleControls.Keys)
+                    {
+                        if (offineSaddle.DicSaddles.ContainsKey(theSaddleName))
+                        {
+                            CoilPicture conSaddle = dicSaddleControls[theSaddleName];
+                            // 获取钢卷号
+                            OffinePackingSaddle theSaddleInfo = offineSaddle.DicSaddles[theSaddleName];
+
+                            conOffLinePackingSaddleInfo coil = dicControl[conSaddle];
+
+                            conOffLinePackingSaddleInfo.DelegatePackingSaddleInfo info = new
+                                conOffLinePackingSaddleInfo.DelegatePackingSaddleInfo(coil.UpPackingSaddleInfo);
+                            info(dicSaddleControls.FirstOrDefault(p => p.Value == conSaddle).Key);
+                            if (theSaddleInfo.CONFIRM_FLAG == 10)
+                            {
+                                conSaddle.PosName = dicSaddleControls.FirstOrDefault(p => p.Value == conSaddle).Key + "(吊入)";
+                                conSaddle.CoilBackColor = Color.Cyan;
+                                //coil.BackColor = Color.Cyan;
+                                //conSaddle.CoilId = theSaddleInfo.Coil;
+                            }
+                            else if (theSaddleInfo.CONFIRM_FLAG == 20)
+                            {
+                                conSaddle.PosName = dicSaddleControls.FirstOrDefault(p => p.Value == conSaddle).Key + "(拆包中)";
+                                conSaddle.CoilBackColor = Color.Pink;
+                               // coil.BackColor = Color.Pink;
+                            }
+                            else if (theSaddleInfo.CONFIRM_FLAG == 30)
+                            {
+                                conSaddle.PosName = dicSaddleControls.FirstOrDefault(p => p.Value == conSaddle).Key + "(吊离)";
+                                conSaddle.CoilBackColor = Color.Yellow;
+                                //coil.BackColor = Color.Yellow;
+                            }
+                            else if (theSaddleInfo.CONFIRM_FLAG == 40)
+                            {
+                                conSaddle.PosName = dicSaddleControls.FirstOrDefault(p => p.Value == conSaddle).Key + "(待包卷吊入)";
+                                conSaddle.CoilBackColor = Color.PaleGreen;
+                                //coil.BackColor = Color.PaleGreen;
+                            }
+                            else
+                            {
+                                conSaddle.PosName = dicSaddleControls.FirstOrDefault(p => p.Value == conSaddle).Key;
+                                conSaddle.CoilBackColor = Color.SkyBlue;
+                               // coil.BackColor = Color.SkyBlue;
+                            }
+
+                            //if (checkBox_Show.Checked)
+                            //{
+                            if (theSaddleInfo.SaddleStatus == 2 && theSaddleInfo.LockFlag == 0)                        //有卷可用
+                            {
+                                if (theSaddleInfo.CoilWeight > 15000)
+                                    conSaddle.CoilStatus = -2;
+                                else
+                                    conSaddle.CoilStatus = 2;
+                                conSaddle.CoilId = theSaddleInfo.Coil;
+                            }
+                            else if (theSaddleInfo.SaddleStatus == 0 && theSaddleInfo.LockFlag == 0)                   //无卷可用
+                            {
+                                //conSaddle.CoilId = "";
+                                conSaddle.CoilId = theSaddleInfo.Coil;
+                                conSaddle.CoilStatus = -10;
+                            }
+                            else                                                                                       //库位状态不明
+                            {
+                                conSaddle.CoilStatus = 5;
+                                conSaddle.CoilId = theSaddleInfo.Coil;
+                            }
+                        
+                        //else
+                        //{
+                        //    if (theSaddleInfo.SaddleStatus == 2 && theSaddleInfo.LockFlag == 0)                        //有卷可用
+                        //    {
+                        //        if (theSaddleInfo.CoilWeight > 15000)
+                        //            conSaddle.CoilStatus = -2;
+                        //        else
+                        //            conSaddle.CoilStatus = 2;
+                        //        conSaddle.CoilId = theSaddleInfo.Coil;
+                        //    }
+                        //    else                                                                                       //库位状态不明
+                        //    {
+                        //        conSaddle.CoilId = "";
+                        //        conSaddle.CoilStatus = -10;
+                        //    }
+                            //}
+                        }
+                    }
+                                                                         
+                if (pressed)
+                {
+                    entrySaddleInfo.getPlanByUnitNo(dataGridView1, constData.UnitNo_3);
+                    //offineSaddle.GetUnPackingByUnitSaddleInfo(D171UnitNo, BayNo, dataGridView1);
+                    //ChangeDGVColorByPackCode(dataGridView1);
+                    
+                    //offineSaddle.GetUnPackingByUnitSaddleInfo(D172UnitNo, BayNo, dataGridView2);
+                    //ChangeDGVColorByPackCode(dataGridView2);
+                }
+                if(press1)
+                {
+                    entrySaddleInfo.getPlanByUnitNo(dataGridView2, constData.UnitNo_5);
+                }
+                if(press)
+                {
+                    offineSaddle.GetOffLinePackingByZ34034Info(dgvOffLineSaddleInfo, "D172PC");
+                    //ChangeDGVColorByPackCode(dgvOffLineSaddleInfo);
+                }
+                          
+                GC.Collect();
+            }
+            catch (Exception er)
+            {
+
+                throw;
+            }
+        }
+
+        private void ChangeDGVColorByPackCode(params DataGridView[] _dgv)
+        {
+            for (int i = 0; i < _dgv.Length; i++)
+            {
+                for (int j = 0; j < _dgv[i].RowCount; j++)
+                {
+                    if (_dgv[i].Rows[j].Cells[8].Value != DBNull.Value)
+                    {
+                        string packCode = _dgv[i].Rows[j].Cells[8].Value.ToString();
+                        if (!packCode.Contains("1"))
+                        {
+                            _dgv[i].Rows[j].DefaultCellStyle.BackColor = Color.LightSalmon;
+                        }
+                    }
+                }
+            }
+
+        }
+        #endregion
+
+        #region -----------------------------画面切换--------------------------------
+        private bool tabActived = true;
+        void MyTabActivated(object sender, EventArgs e)
+        {
+            tabActived = true;
+        }
+        void MyTabDeactivated(object sender, EventArgs e)
+        {
+            tabActived = false;
+        }
+        #endregion
+      
+        private void btnCraneStop_Click(object sender, EventArgs e)
+        {
+            MessageBoxButtons btn = MessageBoxButtons.OKCancel;
+            DialogResult dr = MessageBox.Show("确定要紧停离线包装上方的自动行车吗？", "操作提示", btn);
+            if (dr == DialogResult.OK)
+            {
+                craneStop.isUrgentStop();
+            }
+        }
+
+          
+        private void dgvD401UnitSaddleInfo_MouseLeave(object sender, EventArgs e)
+        {
+            pressed = true;
+        }
+                
+        private void dgvOffLineSaddleInfo_Scroll(object sender, ScrollEventArgs e)
+        {
+            press = false;
+        }
+
+        private void dgvOffLineSaddleInfo_MouseLeave(object sender, EventArgs e)
+        {
+            press = true;
+        }
+
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0)
+                {                  
+                    contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
+                }
+            }
+        }
+
+        private void 复制ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetDataObject(dataGridView1.GetClipboardContent());
+        }
+
+        private void dataGridView2_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0)
+                {
+                    contextMenuStrip2.Show(MousePosition.X, MousePosition.Y);
+                }
+            }
+        }
+
+        private void 复制ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetDataObject(dataGridView2.GetClipboardContent());
+        }
+
+        private void dataGridView2_MouseLeave(object sender, EventArgs e)
+        {
+            press1 = true;
+        }
+
+
+        private void dataGridView1_MouseEnter(object sender, EventArgs e)
+        {
+            pressed = false;
+        }
+
+        private void dataGridView2_MouseEnter(object sender, EventArgs e)
+        {
+            press1 = false;
+        }
+
+        private void btnResetLight_Click(object sender, EventArgs e)
+        {
+            readTags();
+            MessageBoxButtons btn = MessageBoxButtons.OKCancel;
+            DialogResult dr = MessageBox.Show("确定要光幕复位吗？", "操作提示", btn);
+            if (dr == DialogResult.OK)
+            {
+                inDatas["D172PC_LIGHT_CURTAIN_RESET"] = 1;
+                tagDataProvider.Write2Level1(inDatas, 1);
+                ParkClassLibrary.HMILogger.WriteLog(btnResetLight.Text, "Z22拆包" + btnResetLight.Text, ParkClassLibrary.LogLevel.Info, "Z23跨拆包画面");
+            }
+            timer2.Enabled = true;
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            inDatas["D172PC_LIGHT_CURTAIN_RESET"] = 0;
+            tagDataProvider.Write2Level1(inDatas, 1);
+            timer1.Enabled = false;
+        }
+
+        public void SetReady()
+        {
+            try
+            {
+                List<string> lstAdress = new List<string>();
+                lstAdress.Add("D172PC_LIGHT_CURTAIN_RESET");
+                arrTagAdress = lstAdress.ToArray<string>();
+            }
+            catch (Exception er)
+            {
+
+            }
+        }
+
+    }
+}
