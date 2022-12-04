@@ -489,10 +489,53 @@ namespace UACSControls
                         label2.Visible = false;
                     }
 
+
+                    //if (Coil_PlasticFlag)
+                    //{
+                    //    label1.Text = "套";
+                    //}
+                    //else
+                    //{
+                    //    label1.Text = "";
+                    //}
+                    //Get_Coil_PackFlag(theSaddle.Mat_No);
+                    //if (Coil_PackFlag && (theArea.AreaNo == "Z07-A" || theArea.AreaNo == "Z07-B" || theArea.AreaNo == "Z08-A" || theArea.AreaNo == "Z08-B"))
+                    //{
+                    //    this.BackColor = Color.Yellow;
+                    //}
+                    //else
+                    //{
+                    //    this.BackColor = Color.Black;
+                    //}
+
                 }
 
                 else
                     this.BackColor = Color.Red;
+
+
+
+                //List<string> repeatStock = new List<string>();
+                //string sql = string.Format("select stock_no from UACS_YARDMAP_STOCK_DEFINE where MAT_NO in (select MAT_NO from UACS_YARDMAP_STOCK_DEFINE group by UACS_YARDMAP_STOCK_DEFINE.MAT_NO having count(UACS_YARDMAP_STOCK_DEFINE.MAT_NO) > 1)");
+                //using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
+                //{
+                //    while (rdr.Read())
+                //    {
+                //        if (rdr["stock_no"] != DBNull.Value)
+                //        {
+                //            string rs = rdr["stock_no"].ToString();
+                //            repeatStock.Add(rs);
+                //        }
+                //    }
+                //}
+                //foreach(string s in repeatStock)  //一卷多库位
+                //{
+                //    if(theSaddle.SaddleNo == s)
+                //    {
+                //        this.BackColor = Color.Purple;
+                //    }
+                //}
+
 
                 //修改鞍座控件的宽度和高度
                 this.Width = Convert.ToInt32((theSaddle.SaddleWidth - 700) * xScale);
@@ -554,6 +597,22 @@ namespace UACSControls
 
                 toolTip1.IsBalloon = true;
                 toolTip1.ReshowDelay = 0;
+                string a1 = theSaddle.GRID_NO;
+                string a2 = theSaddle.GRID_NAME.ToString();
+                string a3 = theSaddle.Row_No.ToString();
+                string a4 = theSaddle.Col_No.ToString();
+                string a5 = theSaddle.X_CENTER.ToString();
+                string a6 = theSaddle.Y_CENTER.ToString();
+                //string a7 = theSaddle.Z_Center.ToString();
+                //toolTip1.SetToolTip(this.panel1, "材料号：" + theSaddle.Mat_No + "\r"
+                //                    + "库位：    " + theSaddle.SaddleNo.ToString()
+                //                    + "\r" + theSaddle.Row_No.ToString() + "行" + "-" + theSaddle.Col_No.ToString() + "列，" + "\r"
+                //                    + "坐标：" + "\r"
+                //                    + "X = " + theSaddle.X_Center.ToString() + "\r"
+                //                    + "Y = " + theSaddle.Y_Center.ToString() + "\r"
+                //+ "Z = " + theSaddle.Z_Center.ToString() + "\r"
+                //+ "下道机组： " + theSaddle.Next_Unit_No + "\r"
+                //);
 
                 toolTip1.SetToolTip(this.panel1, "材料号：" + theSaddle.GRID_NO + "\r"
                                     + "库位：    " + theSaddle.GRID_NAME.ToString()
@@ -564,6 +623,102 @@ namespace UACSControls
                                    //+ "Z = " + theSaddle.Z_Center.ToString() + "\r"
                                    //+ "下道机组： " + theSaddle.Next_Unit_No + "\r"
                                    );
+
+
+
+                //if (list != null)
+                //{                 
+                //    //给每行添加行展示
+                //       if (theSaddle.SaddleNo.Count() == 10)
+                //       {
+                //           bool isIndex = false;
+                //           bool isSpecialArea = false;
+                //           string index = theSaddle.SaddleNo.Substring(theSaddle.SaddleNo.Count() - 4, 4);
+                //           if (index == "0011")
+                //           {
+                //               isIndex = true;
+                //           }
+
+                //           if (isIndex || isSpecialArea)
+                //           {
+                //                if (theSaddle.Layer_Num == 1)
+                //                {
+                //                    if (!isCreateRowLbl)
+                //                    {
+                //                        lblRowNo.Name = theSaddle.SaddleNo + "Row";
+                //                        lblRowNo.Text = theSaddle.Row_No.ToString();
+                //                        lblRowNo.ForeColor = Color.Red;
+                //                        lblRowNo.Font = new System.Drawing.Font("微软雅黑", 8F);
+                //                        panel.Controls.Add(lblRowNo);
+                //                        isCreateRowLbl = true;
+                //                    }
+                //                    //lblColNo.BringToFront();
+                //                    //lblRowNo.Location = new Point(Convert.ToInt32(location_X + this.Width), Convert.ToInt32(location_Y));
+                //                    lblRowNo.Location = new Point(Convert.ToInt32(location_X - 20), Convert.ToInt32(location_Y + 10));                                   
+                //                }
+                //                else
+                //                {
+
+                //                }
+                //            }                              
+
+                //    }
+
+
+                //if (list[0] == 999)
+                //{
+                //    //给每行添加列展示
+                //    foreach (var item in list)
+                //    {
+
+                //        //if (item == theSaddle.Row_No)
+                //        //{
+                //        if (theSaddle.Layer_Num == 1)
+                //        {
+                //            if (!isCreateColLbl)
+                //            {
+                //                //lblColNo.AutoSize = true;
+                //                //lblColNo.BackColor = SystemColors.Control;
+                //                //lblColNo.SendToBack();
+                //                lblColNo.Size = new System.Drawing.Size(20, 13);
+                //                lblColNo.Name = theSaddle.SaddleNo + "Col";
+                //                lblColNo.Text = theSaddle.Col_No.ToString();
+                //                lblColNo.ForeColor = Color.Blue;
+                //                lblColNo.Font = new System.Drawing.Font("微软雅黑", 7F);
+                //                panel.Controls.Add(lblColNo);
+                //                isCreateColLbl = true;
+                //            }
+                //            lblColNo.Location = new Point(Convert.ToInt32(location_X) + this.Width / 3, Convert.ToInt32(location_Y)-5);
+                //        }
+                //        else if (theSaddle.Layer_Num == 2)
+                //        {
+                //            if (!isCreateColLbl)
+                //            {
+                //                //lblColNo.AutoSize = true;
+                //                //lblColNo.BackColor = SystemColors.Control;
+                //                //lblColNo.SendToBack();
+                //                lblColNo.Size = new System.Drawing.Size(20, 13);
+                //                lblColNo.Name = theSaddle.SaddleNo + "Col";
+                //                lblColNo.Text = theSaddle.Col_No.ToString();
+                //                lblColNo.ForeColor = Color.Blue;
+                //                lblColNo.Font = new System.Drawing.Font("微软雅黑", 7F);
+                //                panel.Controls.Add(lblColNo);
+                //                isCreateColLbl = true;
+                //            }
+                //            lblColNo.Location = new Point(Convert.ToInt32(location_X) + this.Width / 3, Convert.ToInt32(location_Y)-20);
+                //        }
+                //    }
+                //}
+                //    else if (list[0] == 999)
+                //    {
+                //        gr = panel.CreateGraphics();
+                //        panel.Paint += panel_Paint;
+                //    }
+                //    else
+                //    { }
+                //}
+                //lblColNo.BringToFront();
+                //this.BringToFront();/
 
                 location_x = location_X;
                 location_y = location_Y;
@@ -762,6 +917,7 @@ namespace UACSControls
                 //{
                 //    col = mySaddleInfo.SaddleNo.Substring(5, 2);
                 //}
+
 
                 StringFormat str = new StringFormat();
                 str.Alignment = StringAlignment.Center; //居中
