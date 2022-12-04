@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D3F6FF21-68B2-40E4-9D1C-603EB926C87C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UACSDAL</RootNamespace>
+    <AssemblyName>UACSDAL</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Baosight.iSuperframe.Authorization">
+      <HintPath>D:\vsts\ZJ1550\Source\UACS_HMI\HMI_OF_REPOSITORIES\MODEL_OF_REPOSITORIES\bin\Debug\Baosight.iSuperframe.Authorization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.Authorization.Interface">
+      <HintPath>D:\vsts\ZJ1550\Source\UACS_HMI\HMI_OF_REPOSITORIES\MODEL_OF_REPOSITORIES\bin\Debug\Baosight.iSuperframe.Authorization.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.Common">
+      <HintPath>D:\vsts\ZJ1550\Source\UACS_HMI\HMI_OF_REPOSITORIES\MODEL_OF_REPOSITORIES\bin\Debug\Baosight.iSuperframe.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.DBServer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\iPlature\SF_HOME\app\form\Baosight.iSuperframe.DBServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.TagService.Controls">
+      <HintPath>D:\vsts\ZJ1550\Source\UACS_HMI\HMI_OF_REPOSITORIES\MODEL_OF_REPOSITORIES\bin\Debug\Baosight.iSuperframe.TagService.Controls.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.TagService.Interface">
+      <HintPath>D:\vsts\ZJ1550\Source\UACS_HMI\HMI_OF_REPOSITORIES\MODEL_OF_REPOSITORIES\bin\Debug\Baosight.iSuperframe.TagService.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="IBM.Data.DB2, Version=9.0.0.2, Culture=neutral, PublicKeyToken=7c307b91aa13d208, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\WW\Desktop\UACS_HMI\lib\IBM.Data.DB2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\constData.cs" />
+    <Compile Include="Common\ControlResizer.cs" />
+    <Compile Include="Common\LogManager.cs" />
+    <Compile Include="Connect\DB2Connect.cs" />
+    <Compile Include="CraneMonitor\AreaBase.cs" />
+    <Compile Include="CraneMonitor\AreaInfo.cs" />
+    <Compile Include="CraneMonitor\AreaRowInfo.cs" />
+    <Compile Include="CraneMonitor\AreaRowBese.cs" />
+    <Compile Include="CraneMonitor\AuthorityManagement.cs" />
+    <Compile Include="CraneMonitor\CoilMessage.cs" />
+    <Compile Include="CraneMonitor\ColorSln.cs" />
+    <Compile Include="CraneMonitor\CraneOrderConfig.cs" />
+    <Compile Include="CraneMonitor\CraneOrderImpl.cs" />
+    <Compile Include="CraneMonitor\CreateManuOrder.cs" />
+    <Compile Include="CraneMonitor\DataBaseHelper.cs" />
+    <Compile Include="CraneMonitor\LimitUltrahighTagValue.cs" />
+    <Compile Include="CraneMonitor\OffinePackingSaddle.cs" />
+    <Compile Include="CraneMonitor\OffinePackingSaddleInBay.cs" />
+    <Compile Include="CraneMonitor\OffinePackingUrgentStop.cs" />
+    <Compile Include="CraneMonitor\ParkingBase.cs" />
+    <Compile Include="CraneMonitor\ParkingInfo.cs" />
+    <Compile Include="CraneMonitor\CraneStatusBase.cs" />
+    <Compile Include="CraneMonitor\CraneStatusInBay.cs" />
+    <Compile Include="CraneMonitor\RulesAssign.cs" />
+    <Compile Include="CraneMonitor\SaddleBase.cs" />
+    <Compile Include="CraneMonitor\SaddleInBay.cs" />
+    <Compile Include="CraneMonitor\TruckStowage.cs" />
+    <Compile Include="CraneMonitor\ViewHelper.cs" />
+    <Compile Include="UnitSaddle\Saddle.cs" />
+    <Compile Include="UnitSaddle\SaddleMethod.cs" />
+    <Compile Include="UnitSaddle\UnitEntrySaddleInfo.cs" />
+    <Compile Include="UnitSaddle\UnitExitSaddleInfo.cs" />
+    <Compile Include="UnitSaddle\UnitSaddleTagRead.cs" />
+    <Compile Include="UnitSaddle\UnitSaddleBase.cs" />
+    <Compile Include="UnitSaddle\UnitSaddleMethod.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

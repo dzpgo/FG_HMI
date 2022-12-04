@@ -1,0 +1,522 @@
+﻿namespace UACSView
+{
+    partial class FrmPDAUser
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonQuery = new System.Windows.Forms.Button();
+            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtUserID = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.checBox_All_Details = new System.Windows.Forms.CheckBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Check1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.USERID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.User = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Priorty = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Crew = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Shift = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PassWord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnReSet = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.labelUserName = new System.Windows.Forms.Label();
+            this.buttonLogon = new System.Windows.Forms.Button();
+            this.labelLogonUser = new System.Windows.Forms.Label();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.buttonInsert = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel4.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 3);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1354, 733);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1348, 44);
+            this.panel1.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(620, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(182, 31);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "手持机人员管理";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.groupBox1);
+            this.panel2.Controls.Add(this.panel5);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 53);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1348, 114);
+            this.panel2.TabIndex = 4;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.buttonQuery);
+            this.groupBox1.Controls.Add(this.txtUserName);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.txtUserID);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox1.Location = new System.Drawing.Point(3, 13);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(799, 88);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "查询条件";
+            // 
+            // buttonQuery
+            // 
+            this.buttonQuery.Image = global::UACSView.Properties.Resources.bg_btn;
+            this.buttonQuery.Location = new System.Drawing.Point(692, 27);
+            this.buttonQuery.Name = "buttonQuery";
+            this.buttonQuery.Size = new System.Drawing.Size(101, 42);
+            this.buttonQuery.TabIndex = 8;
+            this.buttonQuery.Text = "查询";
+            this.buttonQuery.UseVisualStyleBackColor = true;
+            this.buttonQuery.Click += new System.EventHandler(this.buttonQuery_Click);
+            // 
+            // txtUserName
+            // 
+            this.txtUserName.Location = new System.Drawing.Point(477, 35);
+            this.txtUserName.Multiline = true;
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(180, 30);
+            this.txtUserName.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(381, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 21);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "人员姓名：";
+            // 
+            // txtUserID
+            // 
+            this.txtUserID.Location = new System.Drawing.Point(102, 35);
+            this.txtUserID.Multiline = true;
+            this.txtUserID.Name = "txtUserID";
+            this.txtUserID.Size = new System.Drawing.Size(180, 30);
+            this.txtUserID.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(6, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 21);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "人员编号：";
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.Controls.Add(this.label7);
+            this.panel5.Controls.Add(this.label6);
+            this.panel5.Controls.Add(this.label5);
+            this.panel5.Controls.Add(this.label4);
+            this.panel5.Location = new System.Drawing.Point(803, 13);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(542, 88);
+            this.panel5.TabIndex = 11;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label7.Location = new System.Drawing.Point(5, 64);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(520, 20);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "3.人员编号、人员姓名、优先级（1：作业人员；10：管理员）、密码为必填信息；";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Location = new System.Drawing.Point(5, 44);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(510, 20);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "2.新增、修改、删除需要勾选，双击表格可以输入信息（新增需要双击空白行）；";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.Location = new System.Drawing.Point(5, 3);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 20);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "操作提示：";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(5, 24);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(328, 20);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "1.查询、新增、修改、删除前需要登录管理员用户；";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.checBox_All_Details);
+            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 173);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1348, 507);
+            this.panel3.TabIndex = 5;
+            // 
+            // checBox_All_Details
+            // 
+            this.checBox_All_Details.AutoSize = true;
+            this.checBox_All_Details.Location = new System.Drawing.Point(42, 3);
+            this.checBox_All_Details.Name = "checBox_All_Details";
+            this.checBox_All_Details.Size = new System.Drawing.Size(48, 16);
+            this.checBox_All_Details.TabIndex = 9;
+            this.checBox_All_Details.Text = "全选";
+            this.checBox_All_Details.UseVisualStyleBackColor = true;
+            this.checBox_All_Details.CheckedChanged += new System.EventHandler(this.checBox_All_Details_CheckedChanged);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Check1,
+            this.USERID,
+            this.User,
+            this.Priorty,
+            this.Crew,
+            this.Shift,
+            this.PassWord});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(25);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1348, 507);
+            this.dataGridView1.TabIndex = 2;
+            // 
+            // Check1
+            // 
+            this.Check1.DataPropertyName = "CHECK";
+            this.Check1.Frozen = true;
+            this.Check1.HeaderText = "";
+            this.Check1.Name = "Check1";
+            this.Check1.Width = 50;
+            // 
+            // USERID
+            // 
+            this.USERID.DataPropertyName = "USERID";
+            this.USERID.Frozen = true;
+            this.USERID.HeaderText = "人员编号";
+            this.USERID.Name = "USERID";
+            this.USERID.Width = 200;
+            // 
+            // User
+            // 
+            this.User.DataPropertyName = "USERNAME";
+            this.User.Frozen = true;
+            this.User.HeaderText = "人员姓名";
+            this.User.Name = "User";
+            this.User.Width = 200;
+            // 
+            // Priorty
+            // 
+            this.Priorty.DataPropertyName = "PRIORITY";
+            this.Priorty.HeaderText = "优先级";
+            this.Priorty.Items.AddRange(new object[] {
+            "1",
+            "10"});
+            this.Priorty.Name = "Priorty";
+            this.Priorty.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Priorty.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Priorty.Width = 200;
+            // 
+            // Crew
+            // 
+            this.Crew.DataPropertyName = "CREW";
+            this.Crew.HeaderText = "组";
+            this.Crew.Name = "Crew";
+            this.Crew.Width = 200;
+            // 
+            // Shift
+            // 
+            this.Shift.DataPropertyName = "SHIFT";
+            this.Shift.HeaderText = "班";
+            this.Shift.Name = "Shift";
+            this.Shift.Width = 200;
+            // 
+            // PassWord
+            // 
+            this.PassWord.DataPropertyName = "PASSWORD";
+            this.PassWord.HeaderText = "密码";
+            this.PassWord.Name = "PassWord";
+            this.PassWord.Width = 200;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.btnReSet);
+            this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.labelUserName);
+            this.panel4.Controls.Add(this.buttonLogon);
+            this.panel4.Controls.Add(this.labelLogonUser);
+            this.panel4.Controls.Add(this.buttonDelete);
+            this.panel4.Controls.Add(this.buttonUpdate);
+            this.panel4.Controls.Add(this.buttonInsert);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(3, 686);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1348, 44);
+            this.panel4.TabIndex = 6;
+            // 
+            // btnReSet
+            // 
+            this.btnReSet.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnReSet.Image = global::UACSView.Properties.Resources.bg_btn;
+            this.btnReSet.Location = new System.Drawing.Point(246, 5);
+            this.btnReSet.Name = "btnReSet";
+            this.btnReSet.Size = new System.Drawing.Size(75, 37);
+            this.btnReSet.TabIndex = 11;
+            this.btnReSet.Text = "重置";
+            this.btnReSet.UseVisualStyleBackColor = true;
+            this.btnReSet.Click += new System.EventHandler(this.btnReSet_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.Image = global::UACSView.Properties.Resources.bg_btn;
+            this.button1.Location = new System.Drawing.Point(1232, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 37);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "退出";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // labelUserName
+            // 
+            this.labelUserName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelUserName.AutoSize = true;
+            this.labelUserName.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelUserName.Location = new System.Drawing.Point(1128, 12);
+            this.labelUserName.Name = "labelUserName";
+            this.labelUserName.Size = new System.Drawing.Size(58, 22);
+            this.labelUserName.TabIndex = 9;
+            this.labelUserName.Text = "未登录";
+            // 
+            // buttonLogon
+            // 
+            this.buttonLogon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonLogon.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonLogon.Image = global::UACSView.Properties.Resources.bg_btn;
+            this.buttonLogon.Location = new System.Drawing.Point(951, 5);
+            this.buttonLogon.Name = "buttonLogon";
+            this.buttonLogon.Size = new System.Drawing.Size(75, 37);
+            this.buttonLogon.TabIndex = 8;
+            this.buttonLogon.Text = "登录";
+            this.buttonLogon.UseVisualStyleBackColor = true;
+            this.buttonLogon.Click += new System.EventHandler(this.buttonLogon_Click);
+            // 
+            // labelLogonUser
+            // 
+            this.labelLogonUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelLogonUser.AutoSize = true;
+            this.labelLogonUser.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelLogonUser.Location = new System.Drawing.Point(1032, 12);
+            this.labelLogonUser.Name = "labelLogonUser";
+            this.labelLogonUser.Size = new System.Drawing.Size(90, 22);
+            this.labelLogonUser.TabIndex = 7;
+            this.labelLogonUser.Text = "登录用户：";
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonDelete.Image = global::UACSView.Properties.Resources.bg_btn;
+            this.buttonDelete.Location = new System.Drawing.Point(165, 5);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(75, 37);
+            this.buttonDelete.TabIndex = 5;
+            this.buttonDelete.Text = "删除";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonUpdate.Image = global::UACSView.Properties.Resources.bg_btn;
+            this.buttonUpdate.Location = new System.Drawing.Point(84, 5);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(75, 37);
+            this.buttonUpdate.TabIndex = 6;
+            this.buttonUpdate.Text = "修改";
+            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
+            // buttonInsert
+            // 
+            this.buttonInsert.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonInsert.Image = global::UACSView.Properties.Resources.bg_btn;
+            this.buttonInsert.Location = new System.Drawing.Point(3, 5);
+            this.buttonInsert.Name = "buttonInsert";
+            this.buttonInsert.Size = new System.Drawing.Size(75, 37);
+            this.buttonInsert.TabIndex = 1;
+            this.buttonInsert.Text = "新增";
+            this.buttonInsert.UseVisualStyleBackColor = true;
+            this.buttonInsert.Click += new System.EventHandler(this.buttonInsert_Click);
+            // 
+            // FrmPDAUser
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.ClientSize = new System.Drawing.Size(1354, 733);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Name = "FrmPDAUser";
+            this.Text = "FrmPDAUser";
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button buttonQuery;
+        private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtUserID;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Check1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn USERID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn User;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Priorty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Crew;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Shift;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PassWord;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelUserName;
+        private System.Windows.Forms.Button buttonLogon;
+        private System.Windows.Forms.Label labelLogonUser;
+        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Button buttonInsert;
+        private System.Windows.Forms.CheckBox checBox_All_Details;
+        private System.Windows.Forms.Button btnReSet;
+    }
+}

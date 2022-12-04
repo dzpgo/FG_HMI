@@ -1,0 +1,192 @@
+[2020/6/9 9:20:06] 未将对象引用设置到对象的实例。
+[2020/6/9 9:20:06]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 9:20:06] 未将对象引用设置到对象的实例。
+[2020/6/9 9:20:06]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 9:20:06] 未将对象引用设置到对象的实例。
+[2020/6/9 9:20:06]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 9:20:06] 未将对象引用设置到对象的实例。
+[2020/6/9 9:20:06]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 9:20:06] Z21
+[2020/6/9 9:20:06] 未将对象引用设置到对象的实例。
+[2020/6/9 9:20:06]    在 UACSDAL.AreaInfo.getPortionAreaData(String _bayno) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\AreaInfo.cs:行号 271
+   在 UACSControls.conAreaModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conAreaModel.cs:行号 65
+[2020/6/9 9:27:30] 未将对象引用设置到对象的实例。
+[2020/6/9 9:27:30]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 9:27:30] 未将对象引用设置到对象的实例。
+[2020/6/9 9:27:30]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 9:27:30] 未将对象引用设置到对象的实例。
+[2020/6/9 9:27:30]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 9:27:30] 未将对象引用设置到对象的实例。
+[2020/6/9 9:27:30]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 9:27:30] Z21
+[2020/6/9 9:27:30] 未将对象引用设置到对象的实例。
+[2020/6/9 9:27:30]    在 UACSDAL.AreaInfo.getPortionAreaData(String _bayno) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\AreaInfo.cs:行号 271
+   在 UACSControls.conAreaModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conAreaModel.cs:行号 65
+[2020/6/9 9:28:08] 未将对象引用设置到对象的实例。
+[2020/6/9 9:28:08]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 9:28:08] 未将对象引用设置到对象的实例。
+[2020/6/9 9:28:08]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 9:28:08] 未将对象引用设置到对象的实例。
+[2020/6/9 9:28:08]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 9:28:08] 未将对象引用设置到对象的实例。
+[2020/6/9 9:28:08]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 9:28:08] Z21
+[2020/6/9 9:28:08] 未将对象引用设置到对象的实例。
+[2020/6/9 9:28:08]    在 UACSDAL.AreaInfo.getPortionAreaData(String _bayno) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\AreaInfo.cs:行号 271
+   在 UACSControls.conAreaModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conAreaModel.cs:行号 65
+[2020/6/9 9:28:59] 未将对象引用设置到对象的实例。
+[2020/6/9 9:28:59]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 9:28:59] 未将对象引用设置到对象的实例。
+[2020/6/9 9:28:59]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 9:28:59] 未将对象引用设置到对象的实例。
+[2020/6/9 9:28:59]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 9:28:59] 未将对象引用设置到对象的实例。
+[2020/6/9 9:28:59]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 9:28:59] Z21
+[2020/6/9 9:28:59] 未将对象引用设置到对象的实例。
+[2020/6/9 9:28:59]    在 UACSDAL.AreaInfo.getPortionAreaData(String _bayno) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\AreaInfo.cs:行号 271
+   在 UACSControls.conAreaModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conAreaModel.cs:行号 65
+[2020/6/9 9:29:38] 未将对象引用设置到对象的实例。
+[2020/6/9 9:29:38]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 9:29:38] 未将对象引用设置到对象的实例。
+[2020/6/9 9:29:38]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 9:29:38] 未将对象引用设置到对象的实例。
+[2020/6/9 9:29:38]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 9:29:38] 未将对象引用设置到对象的实例。
+[2020/6/9 9:29:38]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 9:29:38] Z21
+[2020/6/9 9:29:38] 未将对象引用设置到对象的实例。
+[2020/6/9 9:29:38]    在 UACSDAL.AreaInfo.getPortionAreaData(String _bayno) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\AreaInfo.cs:行号 271
+   在 UACSControls.conAreaModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conAreaModel.cs:行号 65
+[2020/6/9 14:34:01] 未将对象引用设置到对象的实例。
+[2020/6/9 14:34:01]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 14:34:01] 未将对象引用设置到对象的实例。
+[2020/6/9 14:34:01]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 14:34:01] 未将对象引用设置到对象的实例。
+[2020/6/9 14:34:01]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 14:34:01] 未将对象引用设置到对象的实例。
+[2020/6/9 14:34:01]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 14:34:01] Z21
+[2020/6/9 14:34:01] 未将对象引用设置到对象的实例。
+[2020/6/9 14:34:01]    在 UACSDAL.AreaInfo.getPortionAreaData(String _bayno) 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSDAL\CraneMonitor\AreaInfo.cs:行号 271
+   在 UACSControls.conAreaModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\UACSHMI_MAIN\UACSControls\CraneMonitorModel\conAreaModel.cs:行号 65
+[2020/6/9 16:32:36] 未将对象引用设置到对象的实例。
+[2020/6/9 16:32:36]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 16:32:36] 未将对象引用设置到对象的实例。
+[2020/6/9 16:32:36]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 16:32:36] 未将对象引用设置到对象的实例。
+[2020/6/9 16:32:36]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 16:32:36] 未将对象引用设置到对象的实例。
+[2020/6/9 16:32:36]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 16:32:36] Z21
+[2020/6/9 16:32:36] 未将对象引用设置到对象的实例。
+[2020/6/9 16:32:36]    在 UACSDAL.AreaInfo.getPortionAreaData(String _bayno) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\AreaInfo.cs:行号 271
+   在 UACSControls.conAreaModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conAreaModel.cs:行号 65
+[2020/6/9 16:33:26] 未将对象引用设置到对象的实例。
+[2020/6/9 16:33:26]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 16:33:26] 未将对象引用设置到对象的实例。
+[2020/6/9 16:33:26]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 16:33:26] 未将对象引用设置到对象的实例。
+[2020/6/9 16:33:26]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 16:33:26] 未将对象引用设置到对象的实例。
+[2020/6/9 16:33:26]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 16:33:26] Z21
+[2020/6/9 16:33:26] 未将对象引用设置到对象的实例。
+[2020/6/9 16:33:26]    在 UACSDAL.AreaInfo.getPortionAreaData(String _bayno) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\AreaInfo.cs:行号 271
+   在 UACSControls.conAreaModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conAreaModel.cs:行号 65
+[2020/6/9 16:52:37] 未将对象引用设置到对象的实例。
+[2020/6/9 16:52:37]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 16:52:37] 未将对象引用设置到对象的实例。
+[2020/6/9 16:52:37]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 16:52:37] 未将对象引用设置到对象的实例。
+[2020/6/9 16:52:37]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 16:52:37] 未将对象引用设置到对象的实例。
+[2020/6/9 16:52:37]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 16:52:37] Z21
+[2020/6/9 16:52:37] 未将对象引用设置到对象的实例。
+[2020/6/9 16:52:37]    在 UACSDAL.AreaInfo.getPortionAreaData(String _bayno) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\AreaInfo.cs:行号 271
+   在 UACSControls.conAreaModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conAreaModel.cs:行号 65
+[2020/6/9 16:53:18] 未将对象引用设置到对象的实例。
+[2020/6/9 16:53:18]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 16:53:18] 未将对象引用设置到对象的实例。
+[2020/6/9 16:53:18]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 16:53:18] 未将对象引用设置到对象的实例。
+[2020/6/9 16:53:18]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 16:53:18] 未将对象引用设置到对象的实例。
+[2020/6/9 16:53:18]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 16:53:18] Z21
+[2020/6/9 16:53:18] 未将对象引用设置到对象的实例。
+[2020/6/9 16:53:18]    在 UACSDAL.AreaInfo.getPortionAreaData(String _bayno) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\AreaInfo.cs:行号 271
+   在 UACSControls.conAreaModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conAreaModel.cs:行号 65
+[2020/6/9 16:54:46] 未将对象引用设置到对象的实例。
+[2020/6/9 16:54:46]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 16:54:46] 未将对象引用设置到对象的实例。
+[2020/6/9 16:54:46]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 16:54:46] 未将对象引用设置到对象的实例。
+[2020/6/9 16:54:46]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 16:54:46] 未将对象引用设置到对象的实例。
+[2020/6/9 16:54:46]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 16:54:46] Z21
+[2020/6/9 16:54:46] 未将对象引用设置到对象的实例。
+[2020/6/9 16:54:46]    在 UACSDAL.AreaInfo.getPortionAreaData(String _bayno) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\AreaInfo.cs:行号 271
+   在 UACSControls.conAreaModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conAreaModel.cs:行号 65
+[2020/6/9 16:56:17] 未将对象引用设置到对象的实例。
+[2020/6/9 16:56:17]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 16:56:17] 未将对象引用设置到对象的实例。
+[2020/6/9 16:56:17]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 54
+[2020/6/9 16:56:17] 未将对象引用设置到对象的实例。
+[2020/6/9 16:56:17]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 16:56:17] 未将对象引用设置到对象的实例。
+[2020/6/9 16:56:17]    在 UACSDAL.SaddleInBay.getUnitSaddleData(Boolean flag) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\SaddleInBay.cs:行号 292
+   在 UACSControls.conUnitSaddleModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conUnitSaddleModel.cs:行号 59
+[2020/6/9 16:56:17] Z21
+[2020/6/9 16:56:17] 未将对象引用设置到对象的实例。
+[2020/6/9 16:56:17]    在 UACSDAL.AreaInfo.getPortionAreaData(String _bayno) 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSDAL\CraneMonitor\AreaInfo.cs:行号 271
+   在 UACSControls.conAreaModel.refreshControl() 位置 d:\ZJ_2030成品库HMI\SVN_2030_CODE_HMI\UACSControls\CraneMonitorModel\conAreaModel.cs:行号 65

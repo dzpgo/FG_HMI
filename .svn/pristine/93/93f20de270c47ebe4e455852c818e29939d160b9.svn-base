@@ -1,0 +1,654 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1ABB3661-E6D6-44EA-946D-64B5A4E2B88F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UACSControls</RootNamespace>
+    <AssemblyName>UACSControls</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Baosight.iSuperframe.Authorization">
+      <HintPath>..\lib\Baosight.iSuperframe.Authorization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.Authorization.Interface">
+      <HintPath>..\lib\Baosight.iSuperframe.Authorization.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Baosight.iSuperframe.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.Forms, Version=1.0.5634.30831, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\iPlature\SF_HOME\Baosight.iSuperframe.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.TagService.Controls">
+      <HintPath>D:\vsts\ZJ1550\Source\UACS_HMI\HMI_OF_REPOSITORIES\MODEL_OF_REPOSITORIES\bin\Debug\Baosight.iSuperframe.TagService.Controls.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.TagService.Interface">
+      <HintPath>D:\vsts\ZJ1550\Source\UACS_HMI\HMI_OF_REPOSITORIES\MODEL_OF_REPOSITORIES\bin\Debug\Baosight.iSuperframe.TagService.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="IrisSkin2, Version=2006.3.22.45, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\IrisSkin2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="ParkClassLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ParkClassLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TcmControl">
+      <HintPath>D:\vsts\ZJ1550\Source\UACS_HMI\HMI_OF_REPOSITORIES\MODEL_OF_REPOSITORIES\bin\Debug\TcmControl.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UACSDAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\UACSDAL.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CraneMonitorModel\conAreaModel.cs" />
+    <Compile Include="CraneMonitorModel\conOffinePackingSaddleModel.cs" />
+    <Compile Include="CraneMonitorModel\conParkingCarHeadModel.cs" />
+    <Compile Include="CraneMonitorModel\conParkingCarModel.cs" />
+    <Compile Include="CraneMonitorModel\conStockSaddleModel.cs" />
+    <Compile Include="CraneMonitorModel\conUnitSaddleModel.cs" />
+    <Compile Include="CraneMonitor\conArea.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\conArea.designer.cs">
+      <DependentUpon>conArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\conCarSaddle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\conCarSaddle.designer.cs">
+      <DependentUpon>conCarSaddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\conCraneDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\conCraneDisplay.designer.cs">
+      <DependentUpon>conCraneDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\conCraneStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\conCraneStatus.designer.cs">
+      <DependentUpon>conCraneStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\conOffinePackingSaddle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\conOffinePackingSaddle.designer.cs">
+      <DependentUpon>conOffinePackingSaddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\conParkingCar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\conParkingCar.designer.cs">
+      <DependentUpon>conParkingCar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\conCrane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\conCrane.designer.cs">
+      <DependentUpon>conCrane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\conParkingCarHead.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\conParkingCarHead.designer.cs">
+      <DependentUpon>conParkingCarHead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\conStockSaddle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\conStockSaddle.designer.cs">
+      <DependentUpon>conStockSaddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\conTruckStowage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\conTruckStowage.designer.cs">
+      <DependentUpon>conTruckStowage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\conUnitSaddle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\conUnitSaddle.designer.cs">
+      <DependentUpon>conUnitSaddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmCraneEvadePriority.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmCraneEvadePriority.designer.cs">
+      <DependentUpon>FrmCraneEvadePriority.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmMoreStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmMoreStock.designer.cs">
+      <DependentUpon>FrmMoreStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmOrderPriority.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmOrderPriority.Designer.cs">
+      <DependentUpon>FrmOrderPriority.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmReCoilUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmReCoilUnit.Designer.cs">
+      <DependentUpon>FrmReCoilUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmSaddleShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmSaddleShow.designer.cs">
+      <DependentUpon>FrmSaddleShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\InitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\InitForm.designer.cs">
+      <DependentUpon>InitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddTask.designer.cs">
+      <DependentUpon>FrmAddTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCraneConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCraneConfig.designer.cs">
+      <DependentUpon>FrmCraneConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGetCoilMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGetCoilMessage.designer.cs">
+      <DependentUpon>FrmGetCoilMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSeekCoil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSeekCoil.designer.cs">
+      <DependentUpon>FrmSeekCoil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSetTimesCount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSetTimesCount.designer.cs">
+      <DependentUpon>FrmSetTimesCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmYordToYordConfPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmYordToYordConfPassword.designer.cs">
+      <DependentUpon>FrmYordToYordConfPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OffLinePacking.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OffLinePacking.Designer.cs">
+      <DependentUpon>OffLinePacking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UACSYardMonitor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UACSYardMonitor.designer.cs">
+      <DependentUpon>UACSYardMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCArrow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCArrow.Designer.cs">
+      <DependentUpon>UCArrow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitSaddle\CoilCranOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnitSaddle\CoilCranOrder.designer.cs">
+      <DependentUpon>CoilCranOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitSaddle\CoilEntryMode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnitSaddle\CoilEntryMode.designer.cs">
+      <DependentUpon>CoilEntryMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitSaddle\CoilPicture.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnitSaddle\CoilPicture.designer.cs">
+      <DependentUpon>CoilPicture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitSaddle\CoilUnitSaddleButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnitSaddle\CoilUnitSaddleButton.designer.cs">
+      <DependentUpon>CoilUnitSaddleButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitSaddle\CoilUnitSaddle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnitSaddle\CoilUnitSaddle.designer.cs">
+      <DependentUpon>CoilUnitSaddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitSaddle\CoilUnitStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnitSaddle\CoilUnitStatus.designer.cs">
+      <DependentUpon>CoilUnitStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitSaddle\conEntrySpecAction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnitSaddle\conEntrySpecAction.designer.cs">
+      <DependentUpon>conEntrySpecAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitSaddle\conOffinePackingStatusSwitchover.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnitSaddle\conOffinePackingStatusSwitchover.designer.cs">
+      <DependentUpon>conOffinePackingStatusSwitchover.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitSaddle\conOffLinePackingSaddleInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnitSaddle\conOffLinePackingSaddleInfo.designer.cs">
+      <DependentUpon>conOffLinePackingSaddleInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitSaddle\ConTrolleyTag.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnitSaddle\ConTrolleyTag.designer.cs">
+      <DependentUpon>ConTrolleyTag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitSaddle\FrmForbidenCoilFlow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitSaddle\FrmForbidenCoilFlow.Designer.cs">
+      <DependentUpon>FrmForbidenCoilFlow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitSaddle\FrmInsertCoilMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitSaddle\FrmInsertCoilMessage.designer.cs">
+      <DependentUpon>FrmInsertCoilMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitSaddle\FrmRetStockMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitSaddle\FrmRetStockMessage.designer.cs">
+      <DependentUpon>FrmRetStockMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitSaddle\FrmStcokNoCoil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitSaddle\FrmStcokNoCoil.designer.cs">
+      <DependentUpon>FrmStcokNoCoil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitSaddle\FrmStcokSelectCoil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitSaddle\FrmStcokSelectCoil.designer.cs">
+      <DependentUpon>FrmStcokSelectCoil.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CraneMonitor\conArea.resx">
+      <DependentUpon>conArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\conCarSaddle.resx">
+      <DependentUpon>conCarSaddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\conCraneDisplay.resx">
+      <DependentUpon>conCraneDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\conCraneStatus.resx">
+      <DependentUpon>conCraneStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\conOffinePackingSaddle.resx">
+      <DependentUpon>conOffinePackingSaddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\conParkingCar.resx">
+      <DependentUpon>conParkingCar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\conCrane.resx">
+      <DependentUpon>conCrane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\conParkingCarHead.resx">
+      <DependentUpon>conParkingCarHead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\conStockSaddle.resx">
+      <DependentUpon>conStockSaddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\conTruckStowage.resx">
+      <DependentUpon>conTruckStowage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\conUnitSaddle.resx">
+      <DependentUpon>conUnitSaddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\FrmCraneEvadePriority.resx">
+      <DependentUpon>FrmCraneEvadePriority.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\FrmMoreStock.resx">
+      <DependentUpon>FrmMoreStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\FrmOrderPriority.resx">
+      <DependentUpon>FrmOrderPriority.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\FrmReCoilUnit.resx">
+      <DependentUpon>FrmReCoilUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\FrmSaddleShow.resx">
+      <DependentUpon>FrmSaddleShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\InitForm.resx">
+      <DependentUpon>InitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddTask.resx">
+      <DependentUpon>FrmAddTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCraneConfig.resx">
+      <DependentUpon>FrmCraneConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGetCoilMessage.resx">
+      <DependentUpon>FrmGetCoilMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSeekCoil.resx">
+      <DependentUpon>FrmSeekCoil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSetTimesCount.resx">
+      <DependentUpon>FrmSetTimesCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmYordToYordConfPassword.resx">
+      <DependentUpon>FrmYordToYordConfPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OffLinePacking.resx">
+      <DependentUpon>OffLinePacking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UACSYardMonitor.resx">
+      <DependentUpon>UACSYardMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCArrow.resx">
+      <DependentUpon>UCArrow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitSaddle\CoilCranOrder.resx">
+      <DependentUpon>CoilCranOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitSaddle\CoilEntryMode.resx">
+      <DependentUpon>CoilEntryMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitSaddle\CoilPicture.resx">
+      <DependentUpon>CoilPicture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitSaddle\CoilUnitSaddleButton.resx">
+      <DependentUpon>CoilUnitSaddleButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitSaddle\CoilUnitSaddle.resx">
+      <DependentUpon>CoilUnitSaddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitSaddle\CoilUnitStatus.resx">
+      <DependentUpon>CoilUnitStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitSaddle\conEntrySpecAction.resx">
+      <DependentUpon>conEntrySpecAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitSaddle\conOffinePackingStatusSwitchover.resx">
+      <DependentUpon>conOffinePackingStatusSwitchover.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitSaddle\conOffLinePackingSaddleInfo.resx">
+      <DependentUpon>conOffLinePackingSaddleInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitSaddle\ConTrolleyTag.resx">
+      <DependentUpon>ConTrolleyTag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitSaddle\FrmForbidenCoilFlow.resx">
+      <DependentUpon>FrmForbidenCoilFlow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitSaddle\FrmInsertCoilMessage.resx">
+      <DependentUpon>FrmInsertCoilMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitSaddle\FrmRetStockMessage.resx">
+      <DependentUpon>FrmRetStockMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitSaddle\FrmStcokNoCoil.resx">
+      <DependentUpon>FrmStcokNoCoil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitSaddle\FrmStcokSelectCoil.resx">
+      <DependentUpon>FrmStcokSelectCoil.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UACSPopupForm\UACSPopupForm.csproj">
+      <Project>{3958eb30-fe44-4bd0-ba55-58805e56c17e}</Project>
+      <Name>UACSPopupForm</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\Compass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\Crab.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\craneCar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\icon_Query.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgAllNormalCar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgBelowNormalCar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgBelowRedNormalCar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgCar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgCarCoil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgCarNoCoil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgCarSaddle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgCarSaddleIsCoil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgCoil.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgCoilBy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgmatNo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgNoCoil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgNoCoilBY.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgNormalCoil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgRedAllNormalCar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgRedBelowNormalCar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgRedTopNormalCar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgShowCoil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgStockNoInCoil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgStockNoInNoCoil.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgStockNoInUndetermined.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgTopNormalCar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgTopRedNormalCar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgTruckCoil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\imgUnknownCoil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\NArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\NCarEmpty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\NCarWeight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\SCarEmpty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\SCarWeight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\waiting.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\鞍座俯视1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\行车_Avoid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\行车_Stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\行车-Avoid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\行车-Run.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\行车-俯视2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\木托架.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\有卷木托架.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\img.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\_return.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baosight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\EmptyCarBody.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\NCarHead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\SCarHead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\WeightCarBody.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg_btn.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

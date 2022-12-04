@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{00DDF2BA-7A27-4AF1-AF78-867040E30954}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CONTROLS_OF_PREMIERE</RootNamespace>
+    <AssemblyName>CONTROLS_OF_PREMIERE</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Baosight.iSuperframe.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Baosight.iSuperframe.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.Controls, Version=1.0.5634.30826, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Baosight.iSuperframe.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Baosight.iSuperframe.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.Forms, Version=1.0.5633.18056, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Baosight.iSuperframe.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.MsgService">
+      <HintPath>..\..\lib\Baosight.iSuperframe.MsgService.dll</HintPath>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.MsgService.Interface">
+      <HintPath>..\..\lib\Baosight.iSuperframe.MsgService.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.TagService.Controls, Version=1.0.5634.30853, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Baosight.iSuperframe.TagService.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.TagService.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Baosight.iSuperframe.TagService.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="MODULES_OF_PREMIERE, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\MODULES_OF_PREMIERE.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UACSUtility">
+      <HintPath>..\..\lib\UACSUtility.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConCraneStatusPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConCraneStatusPanel.Designer.cs">
+      <DependentUpon>ConCraneStatusPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConCraneVisual.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConCraneVisual.Designer.cs">
+      <DependentUpon>ConCraneVisual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPassword.Designer.cs">
+      <DependentUpon>FrmPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopCraneEvade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopCraneEvade.Designer.cs">
+      <DependentUpon>PopCraneEvade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopAlarmCurrent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopAlarmCurrent.Designer.cs">
+      <DependentUpon>PopAlarmCurrent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopCraneComputerOrderSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopCraneComputerOrderSetting.Designer.cs">
+      <DependentUpon>PopCraneComputerOrderSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopCranePLCOrderSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopCranePLCOrderSetting.Designer.cs">
+      <DependentUpon>PopCranePLCOrderSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopCoilSelector_InYard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopCoilSelector_InYard.Designer.cs">
+      <DependentUpon>PopCoilSelector_InYard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopD202Exit_CoilSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopD202Exit_CoilSelector.Designer.cs">
+      <DependentUpon>PopD202Exit_CoilSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopStartLaserDevice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopStartLaserDevice.Designer.cs">
+      <DependentUpon>PopStartLaserDevice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopStockToStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopStockToStock.Designer.cs">
+      <DependentUpon>PopStockToStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ConCraneStatusPanel.resx">
+      <DependentUpon>ConCraneStatusPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConCraneVisual.resx">
+      <DependentUpon>ConCraneVisual.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPassword.resx">
+      <DependentUpon>FrmPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopCraneEvade.resx">
+      <DependentUpon>PopCraneEvade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopAlarmCurrent.resx">
+      <DependentUpon>PopAlarmCurrent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopCraneComputerOrderSetting.resx">
+      <DependentUpon>PopCraneComputerOrderSetting.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopCranePLCOrderSetting.resx">
+      <DependentUpon>PopCranePLCOrderSetting.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopCoilSelector_InYard.resx">
+      <DependentUpon>PopCoilSelector_InYard.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopD202Exit_CoilSelector.resx">
+      <DependentUpon>PopD202Exit_CoilSelector.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopStartLaserDevice.resx">
+      <DependentUpon>PopStartLaserDevice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopStockToStock.resx">
+      <DependentUpon>PopStockToStock.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Fakes\Baosight.iSuperframe.Common.fakes" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

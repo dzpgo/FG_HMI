@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3958EB30-FE44-4BD0-BA55-58805E56C17E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UACSPopupForm</RootNamespace>
+    <AssemblyName>UACSPopupForm</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Baosight.iSuperframe.Authorization.Interface">
+      <HintPath>..\lib\Baosight.iSuperframe.Authorization.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.Common">
+      <HintPath>..\lib\Baosight.iSuperframe.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.Forms, Version=1.0.5633.18056, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Baosight.iSuperframe.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.TagService.Controls">
+      <HintPath>..\lib\Baosight.iSuperframe.TagService.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.TagService.Interface">
+      <HintPath>..\lib\Baosight.iSuperframe.TagService.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="IrisSkin2, Version=2006.3.22.45, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\IrisSkin2.dll</HintPath>
+    </Reference>
+    <Reference Include="ParkClassLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\iPlature\SF_HOME\app\form\ParkClassLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UACSDAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\iPlature\SF_HOME\app\form\UACSDAL.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CraneMonitor\CoilAway.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\CoilAway.Designer.cs">
+      <DependentUpon>CoilAway.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmCraneConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmCraneConfig.designer.cs">
+      <DependentUpon>FrmCraneConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmHotCoilYard2Yard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmHotCoilYard2Yard.designer.cs">
+      <DependentUpon>FrmHotCoilYard2Yard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmModeSwitchover.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmModeSwitchover.designer.cs">
+      <DependentUpon>FrmModeSwitchover.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmParkingDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmParkingDetail.designer.cs">
+      <DependentUpon>FrmParkingDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmSaddleMetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmSaddleMetail.Designer.cs">
+      <DependentUpon>FrmSaddleMetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmSetCoilWidth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmSetCoilWidth.Designer.cs">
+      <DependentUpon>FrmSetCoilWidth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmYardToYardRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmYardToYardRequest.designer.cs">
+      <DependentUpon>FrmYardToYardRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\OffLineFrmYardToYardRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\OffLineFrmYardToYardRequest.designer.cs">
+      <DependentUpon>OffLineFrmYardToYardRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\PopAlarmCurrent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\PopAlarmCurrent.designer.cs">
+      <DependentUpon>PopAlarmCurrent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\TrolleyFrmYardToYardRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\TrolleyFrmYardToYardRequest.designer.cs">
+      <DependentUpon>TrolleyFrmYardToYardRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PDAUser\PDAUSserADD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDAUser\PDAUSserADD.Designer.cs">
+      <DependentUpon>PDAUSserADD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PDAUser\PDAUSserLogon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDAUser\PDAUSserLogon.Designer.cs">
+      <DependentUpon>PDAUSserLogon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UnitMonitor\FrmUnitRotateRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitMonitor\FrmUnitRotateRequest.designer.cs">
+      <DependentUpon>FrmUnitRotateRequest.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CraneMonitor\CoilAway.resx">
+      <DependentUpon>CoilAway.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\FrmCraneConfig.resx">
+      <DependentUpon>FrmCraneConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\FrmHotCoilYard2Yard.resx">
+      <DependentUpon>FrmHotCoilYard2Yard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\FrmModeSwitchover.resx">
+      <DependentUpon>FrmModeSwitchover.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\FrmParkingDetail.resx">
+      <DependentUpon>FrmParkingDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\FrmSaddleMetail.resx">
+      <DependentUpon>FrmSaddleMetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\FrmSetCoilWidth.resx">
+      <DependentUpon>FrmSetCoilWidth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\FrmYardToYardRequest.resx">
+      <DependentUpon>FrmYardToYardRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\OffLineFrmYardToYardRequest.resx">
+      <DependentUpon>OffLineFrmYardToYardRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\PopAlarmCurrent.resx">
+      <DependentUpon>PopAlarmCurrent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\TrolleyFrmYardToYardRequest.resx">
+      <DependentUpon>TrolleyFrmYardToYardRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDAUser\PDAUSserADD.resx">
+      <DependentUpon>PDAUSserADD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDAUser\PDAUSserLogon.resx">
+      <DependentUpon>PDAUSserLogon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitMonitor\FrmUnitRotateRequest.resx">
+      <DependentUpon>FrmUnitRotateRequest.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg_btn.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

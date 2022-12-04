@@ -1,0 +1,771 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5FD555CF-99F8-413B-B2F2-30D263DCA767}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UACSView</RootNamespace>
+    <AssemblyName>UACSView</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>E:\iPlature\SF_HOME\app\form\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Baosight.iSuperframe.Authorization">
+      <HintPath>..\lib\Baosight.iSuperframe.Authorization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.Authorization.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Baosight.iSuperframe.Authorization.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.Common">
+      <HintPath>..\lib\Baosight.iSuperframe.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.Controls">
+      <HintPath>..\lib\Baosight.iSuperframe.Controls.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.Forms">
+      <HintPath>..\lib\Baosight.iSuperframe.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.MsgService">
+      <HintPath>..\lib\Baosight.iSuperframe.MsgService.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.MsgService.Interface">
+      <HintPath>..\lib\Baosight.iSuperframe.MsgService.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.TagService.Controls, Version=1.0.5634.30853, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Baosight.iSuperframe.TagService.Controls.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Baosight.iSuperframe.TagService.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Baosight.iSuperframe.TagService.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="IBM.Data.DB2, Version=9.0.0.2, Culture=neutral, PublicKeyToken=7c307b91aa13d208, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\IBM\SQLLIB\BIN\netf40_32\IBM.Data.DB2.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\lib\log4net.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\Microsoft.Office.Interop.Excel\15.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="ParkClassLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ParkClassLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="ParkingControlLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ParkingControlLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TcmControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\TcmControl.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UACSControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\UACSControls.dll</HintPath>
+    </Reference>
+    <Reference Include="UACSDAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\UACSDAL.dll</HintPath>
+    </Reference>
+    <Reference Include="UACSPopupForm">
+      <HintPath>..\lib\UACSPopupForm.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="VIEW_UnitSaddle\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUACSMainMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUACSMainMonitor.designer.cs">
+      <DependentUpon>FrmUACSMainMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="L3Msg\L3MsgManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="L3Msg\L3MsgManage.designer.cs">
+      <DependentUpon>L3MsgManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="L3Msg\MsgData.cs" />
+    <Compile Include="L3Msg\MsgDataGroup.cs" />
+    <Compile Include="L3Msg\MsgField.cs" />
+    <Compile Include="L3Msg\MsgParser.cs" />
+    <Compile Include="L3Msg\MsgRecuField.cs" />
+    <Compile Include="L3Msg\MsgStandField.cs" />
+    <Compile Include="L3Msg\MsgXmlData.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View_CraneMonitor\CraneOrderHisyManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\CraneOrderHisyManage.designer.cs">
+      <DependentUpon>CraneOrderHisyManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_CraneMonitor\FrmPDAUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\FrmPDAUser.Designer.cs">
+      <DependentUpon>FrmPDAUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_CraneMonitor\FrmLogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\FrmLogForm.designer.cs">
+      <DependentUpon>FrmLogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_CraneMonitor\FrmYardToYardStraegy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\FrmYardToYardStraegy.designer.cs">
+      <DependentUpon>FrmYardToYardStraegy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_CraneMonitor\HandAutoModeMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\HandAutoModeMessage.designer.cs">
+      <DependentUpon>HandAutoModeMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_CraneMonitor\WMSCraneEVADE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\WMSCraneEVADE.designer.cs">
+      <DependentUpon>WMSCraneEVADE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_CraneMonitor\WMSCraneOrderConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\WMSCraneOrderConfig.Designer.cs">
+      <DependentUpon>WMSCraneOrderConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_CraneMonitor\Z41_library_Monitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\Z41_library_Monitor.Designer.cs">
+      <DependentUpon>Z41_library_Monitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_CraneMonitor\Z42_library_Monitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\Z42_library_Monitor.designer.cs">
+      <DependentUpon>Z42_library_Monitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_CraneMonitor\CraneOrderConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\CraneOrderConfig.designer.cs">
+      <DependentUpon>CraneOrderConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_CraneMonitor\FrmCranePlanOper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\FrmCranePlanOper.designer.cs">
+      <DependentUpon>FrmCranePlanOper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_CraneMonitor\FrmCraneScheme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\FrmCraneScheme.designer.cs">
+      <DependentUpon>FrmCraneScheme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_CraneMonitor\L3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\L3.designer.cs">
+      <DependentUpon>L3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_CraneMonitor\StatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\StatForm.designer.cs">
+      <DependentUpon>StatForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_CraneMonitor\StockDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\StockDefine.designer.cs">
+      <DependentUpon>StockDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_CraneMonitor\StockTrackForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\StockTrackForm.designer.cs">
+      <DependentUpon>StockTrackForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_CraneMonitor\StowageMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\StowageMessage.designer.cs">
+      <DependentUpon>StowageMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_CraneMonitor\SubFrmLetOutWater.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\SubFrmLetOutWater.designer.cs">
+      <DependentUpon>SubFrmLetOutWater.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_Parking\CarNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_Parking\CarNo.designer.cs">
+      <DependentUpon>CarNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_Parking\FrmCarEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_Parking\FrmCarEntry.designer.cs">
+      <DependentUpon>FrmCarEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_Parking\FrmCraneScheme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_Parking\FrmCraneScheme.designer.cs">
+      <DependentUpon>FrmCraneScheme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_Parking\FrmZ21BayOffLinePacking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_Parking\FrmZ21BayOffLinePacking.designer.cs">
+      <DependentUpon>FrmZ21BayOffLinePacking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_Parking\FrmZ21BayUnPacking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_Parking\FrmZ21BayUnPacking.designer.cs">
+      <DependentUpon>FrmZ21BayUnPacking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_Parking\FrmZ22BayUnPacking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_Parking\FrmZ22BayUnPacking.designer.cs">
+      <DependentUpon>FrmZ22BayUnPacking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_Parking\FrmZ23BayOffLinePacking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_Parking\FrmZ23BayOffLinePacking.designer.cs">
+      <DependentUpon>FrmZ23BayOffLinePacking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_Parking\FrmZ23BayUnPacking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_Parking\FrmZ23BayUnPacking.designer.cs">
+      <DependentUpon>FrmZ23BayUnPacking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_Parking\PorductMatManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_Parking\PorductMatManage.designer.cs">
+      <DependentUpon>PorductMatManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_Parking\SelectCoilByL3Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_Parking\SelectCoilByL3Form.designer.cs">
+      <DependentUpon>SelectCoilByL3Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_Parking\SelectCoilForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_Parking\SelectCoilForm.designer.cs">
+      <DependentUpon>SelectCoilForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_Parking\TagCarArrive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_Parking\TagCarArrive.designer.cs">
+      <DependentUpon>TagCarArrive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_Parking\TagLaserInEnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_Parking\TagLaserInEnd.designer.cs">
+      <DependentUpon>TagLaserInEnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_Parking\TruckStowageInT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_Parking\TruckStowageInT.designer.cs">
+      <DependentUpon>TruckStowageInT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\D174_Pack_Exit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\D174_Pack_Exit.Designer.cs">
+      <DependentUpon>D174_Pack_Exit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\DuXin_Pack_Exit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\DuXin_Pack_Exit.designer.cs">
+      <DependentUpon>DuXin_Pack_Exit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\frmCraneAlarmLogQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\frmCraneAlarmLogQuery.designer.cs">
+      <DependentUpon>frmCraneAlarmLogQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View_Parking\FrmZ22BayOffLinePacking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_Parking\FrmZ22BayOffLinePacking.designer.cs">
+      <DependentUpon>FrmZ22BayOffLinePacking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\Frm_D172WJ2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\Frm_D172WJ2.designer.cs">
+      <DependentUpon>Frm_D172WJ2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\Frm_D172WJ1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\Frm_D172WJ1.designer.cs">
+      <DependentUpon>Frm_D172WJ1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\Frm_CoilPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\Frm_CoilPlan.designer.cs">
+      <DependentUpon>Frm_CoilPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\Frm_D172WJ3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\Frm_D172WJ3.designer.cs">
+      <DependentUpon>Frm_D172WJ3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\Frm_D173WJ1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\Frm_D173WJ1.designer.cs">
+      <DependentUpon>Frm_D173WJ1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\Frm_D173WJ2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\Frm_D173WJ2.designer.cs">
+      <DependentUpon>Frm_D173WJ2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\Frm_D174WJ1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\Frm_D174WJ1.designer.cs">
+      <DependentUpon>Frm_D174WJ1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\Frm_D174WJ2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\Frm_D174WJ2.designer.cs">
+      <DependentUpon>Frm_D174WJ2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\LianTui_Pack_Exit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\LianTui_Pack_Exit.designer.cs">
+      <DependentUpon>LianTui_Pack_Exit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D108ExitLineSaddle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D108ExitLineSaddle.designer.cs">
+      <DependentUpon>VIEW_D108ExitLineSaddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D112ExitLineSaddle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D112ExitLineSaddle.designer.cs">
+      <DependentUpon>VIEW_D112ExitLineSaddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D312EntryLineSaddle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D312EntryLineSaddle.designer.cs">
+      <DependentUpon>VIEW_D312EntryLineSaddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D171ExitLineSaddle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D171ExitLineSaddle.designer.cs">
+      <DependentUpon>VIEW_D171ExitLineSaddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D122EntryLineSaddle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D122EntryLineSaddle.designer.cs">
+      <DependentUpon>VIEW_D122EntryLineSaddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D172ExitLineSaddle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D172ExitLineSaddle.designer.cs">
+      <DependentUpon>VIEW_D172ExitLineSaddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D408EntryLineSaddle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D408EntryLineSaddle.designer.cs">
+      <DependentUpon>VIEW_D408EntryLineSaddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D173ExitLineSaddle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D173ExitLineSaddle.designer.cs">
+      <DependentUpon>VIEW_D173ExitLineSaddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D508EntryLineSaddle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D508EntryLineSaddle.designer.cs">
+      <DependentUpon>VIEW_D508EntryLineSaddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D174ExitLineSaddle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D174ExitLineSaddle.designer.cs">
+      <DependentUpon>VIEW_D174ExitLineSaddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D2081EntryLineSaddle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D2081EntryLineSaddle.designer.cs">
+      <DependentUpon>VIEW_D2081EntryLineSaddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D208ExitLineSaddle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D208ExitLineSaddle.designer.cs">
+      <DependentUpon>VIEW_D208ExitLineSaddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D302ExitLineSaddle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\VIEW_D302ExitLineSaddle.designer.cs">
+      <DependentUpon>VIEW_D302ExitLineSaddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\Z21_Z22_Z23_Trolley.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW_UnitSaddle\Z21_Z22_Z23_Trolley.designer.cs">
+      <DependentUpon>Z21_Z22_Z23_Trolley.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FrmUACSMainMonitor.resx">
+      <DependentUpon>FrmUACSMainMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="L3Msg\L3MsgManage.resx">
+      <DependentUpon>L3MsgManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="View_CraneMonitor\CraneOrderHisyManage.resx">
+      <DependentUpon>CraneOrderHisyManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\FrmLogForm.resx">
+      <DependentUpon>FrmLogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\FrmPDAUser.resx">
+      <DependentUpon>FrmPDAUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\FrmYardToYardStraegy.resx">
+      <DependentUpon>FrmYardToYardStraegy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\HandAutoModeMessage.resx">
+      <DependentUpon>HandAutoModeMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\WMSCraneEVADE.resx">
+      <DependentUpon>WMSCraneEVADE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\WMSCraneOrderConfig.resx">
+      <DependentUpon>WMSCraneOrderConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\Z41_library_Monitor.resx">
+      <DependentUpon>Z41_library_Monitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\Z42_library_Monitor.resx">
+      <DependentUpon>Z42_library_Monitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\CraneOrderConfig.resx">
+      <DependentUpon>CraneOrderConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\FrmCranePlanOper.resx">
+      <DependentUpon>FrmCranePlanOper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\FrmCraneScheme.resx">
+      <DependentUpon>FrmCraneScheme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\L3.resx">
+      <DependentUpon>L3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\StatForm.resx">
+      <DependentUpon>StatForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\StockDefine.resx">
+      <DependentUpon>StockDefine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\StockTrackForm.resx">
+      <DependentUpon>StockTrackForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\StowageMessage.resx">
+      <DependentUpon>StowageMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\SubFrmLetOutWater.resx">
+      <DependentUpon>SubFrmLetOutWater.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_Parking\CarNo.resx">
+      <DependentUpon>CarNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_Parking\FrmCarEntry.resx">
+      <DependentUpon>FrmCarEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_Parking\FrmCraneScheme.resx">
+      <DependentUpon>FrmCraneScheme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_Parking\FrmZ21BayOffLinePacking.resx">
+      <DependentUpon>FrmZ21BayOffLinePacking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_Parking\FrmZ21BayUnPacking.resx">
+      <DependentUpon>FrmZ21BayUnPacking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_Parking\FrmZ22BayUnPacking.resx">
+      <DependentUpon>FrmZ22BayUnPacking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_Parking\FrmZ23BayOffLinePacking.resx">
+      <DependentUpon>FrmZ23BayOffLinePacking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_Parking\FrmZ23BayUnPacking.cs.resx">
+      <DependentUpon>FrmZ23BayUnPacking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_Parking\FrmZ23BayUnPacking.resx">
+      <DependentUpon>FrmZ23BayUnPacking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_Parking\PorductMatManage.resx">
+      <DependentUpon>PorductMatManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_Parking\SelectCoilByL3Form.resx">
+      <DependentUpon>SelectCoilByL3Form.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_Parking\SelectCoilForm.resx">
+      <DependentUpon>SelectCoilForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_Parking\TagCarArrive.resx">
+      <DependentUpon>TagCarArrive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_Parking\TagLaserInEnd.resx">
+      <DependentUpon>TagLaserInEnd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_Parking\TruckStowageInT.resx">
+      <DependentUpon>TruckStowageInT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\D174_Pack_Exit.resx">
+      <DependentUpon>D174_Pack_Exit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\DuXin_Pack_Exit.resx">
+      <DependentUpon>DuXin_Pack_Exit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\frmCraneAlarmLogQuery.resx">
+      <DependentUpon>frmCraneAlarmLogQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_Parking\FrmZ22BayOffLinePacking.resx">
+      <DependentUpon>FrmZ22BayOffLinePacking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\Frm_D172WJ2.resx">
+      <DependentUpon>Frm_D172WJ2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\Frm_D172WJ1.resx">
+      <DependentUpon>Frm_D172WJ1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\Frm_CoilPlan.resx">
+      <DependentUpon>Frm_CoilPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\Frm_D172WJ3.resx">
+      <DependentUpon>Frm_D172WJ3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\Frm_D173WJ1.resx">
+      <DependentUpon>Frm_D173WJ1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\Frm_D173WJ2.resx">
+      <DependentUpon>Frm_D173WJ2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\Frm_D174WJ1.resx">
+      <DependentUpon>Frm_D174WJ1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\Frm_D174WJ2.resx">
+      <DependentUpon>Frm_D174WJ2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\LianTui_Pack_Exit.resx">
+      <DependentUpon>LianTui_Pack_Exit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\VIEW_D108ExitLineSaddle.resx">
+      <DependentUpon>VIEW_D108ExitLineSaddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\VIEW_D112ExitLineSaddle.resx">
+      <DependentUpon>VIEW_D112ExitLineSaddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\VIEW_D312EntryLineSaddle.resx">
+      <DependentUpon>VIEW_D312EntryLineSaddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\VIEW_D171ExitLineSaddle.resx">
+      <DependentUpon>VIEW_D171ExitLineSaddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\VIEW_D122EntryLineSaddle.resx">
+      <DependentUpon>VIEW_D122EntryLineSaddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\VIEW_D172ExitLineSaddle.resx">
+      <DependentUpon>VIEW_D172ExitLineSaddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\VIEW_D408EntryLineSaddle.resx">
+      <DependentUpon>VIEW_D408EntryLineSaddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\VIEW_D173ExitLineSaddle.resx">
+      <DependentUpon>VIEW_D173ExitLineSaddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\VIEW_D508EntryLineSaddle.resx">
+      <DependentUpon>VIEW_D508EntryLineSaddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\VIEW_D174ExitLineSaddle.resx">
+      <DependentUpon>VIEW_D174ExitLineSaddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\VIEW_D2081EntryLineSaddle.resx">
+      <DependentUpon>VIEW_D2081EntryLineSaddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\VIEW_D208ExitLineSaddle.resx">
+      <DependentUpon>VIEW_D208ExitLineSaddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\VIEW_D302ExitLineSaddle.resx">
+      <DependentUpon>VIEW_D302ExitLineSaddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW_UnitSaddle\Z21_Z22_Z23_Trolley.resx">
+      <DependentUpon>Z21_Z22_Z23_Trolley.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg_btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgBigCoil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgNormalCoil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgUnknownCoil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock_Red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Outlook">
+      <Guid>{00062FFF-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>9</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

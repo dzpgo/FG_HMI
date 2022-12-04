@@ -1,0 +1,92 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace UACSDAL
+{
+    public class UnitExitSaddleInfo
+    {
+        /// <summary>
+        /// 查询机组鞍座出口鞍座信息
+        /// </summary>
+        public void getExitSaddleDt(DataGridView _dgv, string _unitNo)
+        {
+            bool hasSetColumn = false;
+            DataTable dt = new DataTable();
+            try
+            {
+                string sqlText = @"SELECT A.SADDLE_L2NAME,A.STOCK_NO,B.COIL_NO,C.WEIGHT,C.ACT_WEIGHT,C.WIDTH,C.ACT_WIDTH,C.INDIA,C.OUTDIA,C.L3_COIL_STATUS,
+                                    CASE
+                                        WHEN  C.FORBIDEN_COIL_WHERE_TO = 6 THEN '中间料入库'
+                                        WHEN  C.FORBIDEN_COIL_WHERE_TO = 2 THEN '到离线'
+                                        WHEN  C.FORBIDEN_COIL_WHERE_TO = 1 THEN '到机组'
+                                        WHEN  C.FORBIDEN_COIL_WHERE_TO = 0 THEN '到库区'
+                                    END as  FORBIDEN_COIL_WHERE_TO , 
+                                    CASE
+                                        WHEN  C.PACK_FLAG = 1 THEN '已包装'
+                                        WHEN  C.PACK_FLAG = 0 THEN '未包装'
+                                    END as  PACK_FLAG , ";
+                sqlText += "C.FORBIDEN_FLAG,C.NEXT_UNIT_NO,C.PACK_CODE ";
+                sqlText += ",B.WORK_ORDER_NO,B.PRODUCT_DATE ";
+                sqlText += "FROM UACS_LINE_SADDLE_DEFINE A LEFT JOIN UACS_LINE_EXIT_L2INFO B ";
+                sqlText += "ON A.UNIT_NO = B.UNIT_NO AND A.SADDLE_L2NAME = B.SADDLE_L2NAME ";
+                sqlText += "  LEFT JOIN UACS_YARDMAP_COIL C ON C.COIL_NO = B.COIL_NO ";
+                if (_unitNo != null)
+                {
+                    sqlText += " WHERE A.UNIT_NO = '" + _unitNo + "' AND A.FLAG_UNIT_EXIT = 1  ORDER BY A.STOCK_NO ";
+                }
+                else
+                    return;
+               
+                dt.Clear();
+                dt = new DataTable();
+                using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
+                {
+                    while (rdr.Read())
+                    {
+                        DataRow dr = dt.NewRow();
+                        for (int i = 0; i < rdr.FieldCount; i++)
+                        {
+                            if (!hasSetColumn)
+                            {
+                                DataColumn dc = new DataColumn();
+                                dc.ColumnName = rdr.GetName(i);
+                                dt.Columns.Add(dc);
+                            }
+
+                            dr[i] = rdr[i];
+                        }
+                        hasSetColumn = true;
+                        dt.Rows.Add(dr);
+                    }
+                }
+            }
+            catch (Exception er)
+            {}
+            if (hasSetColumn == false)
+            {
+                    dt.Columns.Add("SADDLE_L2NAME", typeof(String));
+                    dt.Columns.Add("STOCK_NO", typeof(String));
+                    dt.Columns.Add("COIL_NO", typeof(String));
+                    dt.Columns.Add("WEIGHT", typeof(String));
+                    dt.Columns.Add("ACT_WEIGHT", typeof(String));
+                    dt.Columns.Add("WIDTH", typeof(String));
+                    dt.Columns.Add("ACT_WIDTH", typeof(String));
+                    dt.Columns.Add("INDIA", typeof(String));
+                    dt.Columns.Add("OUTDIA", typeof(String));
+                    //dt.Columns.Add("COIL_OPEN_DIRECTION", typeof(String));
+                    //dt.Columns.Add("SLEEVE_WIDTH", typeof(String));
+                    dt.Columns.Add("NEXT_UNIT_NO", typeof(String));
+                    dt.Columns.Add("PACK_CODE", typeof(String));
+                    dt.Columns.Add("WORK_ORDER_NO", typeof(String));
+                    dt.Columns.Add("PRODUCT_DATE", typeof(String));
+                    //dt.Columns.Add("TIME_LAST_CHANGE", typeof(String));
+                    dt.Columns.Add("PACK_FLAG", typeof(String));
+            }
+            _dgv.DataSource = dt;
+        }
+    }
+}

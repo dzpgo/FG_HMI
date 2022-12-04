@@ -1,0 +1,60 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace UACSDAL
+{
+    public class constData
+    {
+        /// <summary>
+        /// 平台名称
+        /// </summary>
+        public const string tagServiceName = "iplature";
+
+        /// <summary>
+        /// 机组入口定义
+        /// </summary>
+        public const int EntrySaddleDefine = 0;
+
+        /// <summary>
+        /// 机组出口定义
+        /// </summary>
+        public const int ExitSaddleDefine = 1;
+
+        /// <summary>
+        /// 机组号
+        /// </summary>
+        public const string UnitNo_1 = "D108";
+        public const string UnitNo_2 = "D112";
+        public const string UnitNo_3 = "D171";
+        public const string UnitNo_4 = "D208";
+        public const string UnitNo_5 = "D172";
+        public const string UnitNo_6 = "D173";
+        public const string UnitNo_7 = "D174";
+        public const string UnitNo_8 = "D112";
+        public const string UnitNo_9 = "PA-1";
+        public const string UnitNo_10 = "PA-2";
+        public const string UnitNo_11 = "PA-6";
+        public const string UnitNo_D122 = "D122";
+        public const string UnitNo_D302 = "D302";
+        public const string UnitNo_D312 = "D312";
+        public const string UnitNo_D408 = "D408";
+        public const string UnitNo_D508 = "D508";
+        public const string bayNo_Z01 = "Z01";  
+        public const string bayNo_Z41 = "Z62";
+        public const string bayNo_Z42 = "Z63";
+        
+        public const long Z01BaySpaceX = 382000;
+        public const long Z01BaySpaceY = 38000;
+        public const long Z41BaySpaceX = 234000;
+        public const long Z41BaySpaceY = 42000;
+        public const long Z42BaySpaceX = 234000;
+        public const long Z42BaySpaceY = 42000;
+
+        public const bool xAxisRight = true;
+        public const bool xBxisleft = false;
+        public const bool yAxisDown = true;
+        public const bool yBxisDown = false;
+    }
+}

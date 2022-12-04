@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GDITest.clsLaserPoint">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABgAQAAYAE=</HashCode>
+      <FileName>clsLaserPoint.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GDITest.clsLaserPointsMap">
+    <Position X="2.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAAIUCAAAEAAEggEAAAAAAAAACAAAACgEEABgBBAgQ=</HashCode>
+      <FileName>clsLaserPointsMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GDITest.clsBmpFactory_Horizontal">
+    <Position X="5.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAYAADBBIAAoBCAAAICAAACQAAEAEgAAEFAAABAAQA=</HashCode>
+      <FileName>clsBmpFactory_Horizontal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GDITest.clsBmpFactory_Vertical">
+    <Position X="8.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAwAABBBIAAIBCAAAICAAACQAAEAGAAAEFAAABAAQA=</HashCode>
+      <FileName>clsBmpFactory_Vertical.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>
