@@ -410,7 +410,6 @@ namespace UACSControls
             {
                 //附对象
                 mySaddleInfo = theSaddle;
-
                 width = panelWidth;
                 height = panelHeight;
                 myArea = theArea;
@@ -419,21 +418,14 @@ namespace UACSControls
                 Coil_PlasticFlag = false;
                 //待包卷标记
                 Coil_PackFlag = false;
-
-
                 width = panelWidth;
                 height = panelHeight;
-
                 myArea = theArea;
                 MyPanel = panel;
-
                 //钢卷是否套袋
                 Coil_PlasticFlag = false;
-
                 //待包卷标记
                 Coil_PackFlag = false;
-
-
                 //计算X方向上的比例关系
                 double xScale = Convert.ToDouble(panelWidth - 40) / Convert.ToDouble(X_Width);
                 double location_X = 0;
@@ -447,8 +439,6 @@ namespace UACSControls
                     location_X = (X_Width - ((theSaddle.X_CENTER + theSaddle.SaddleWidth / 2) - theSaddle.X_START)) * xScale;
 
                 }
-
-
                 //计算Y方向的比例关系
                 double yScale = Convert.ToDouble(panelHeight - 40) / Convert.ToDouble(Y_Height);
                 double location_Y = 0;
@@ -507,7 +497,6 @@ namespace UACSControls
                     this.Height = Convert.ToInt32((theSaddle.SaddleLength - 500) * yScale / 3);
                 }
 
-
                 //定位库位鞍座的坐标
                 //this.Location = new Point(Convert.ToInt32(location_X), Convert.ToInt32(location_Y + 10));
                 if (theSaddle.Layer_Num == 2)
@@ -555,13 +544,6 @@ namespace UACSControls
 
                 toolTip1.IsBalloon = true;
                 toolTip1.ReshowDelay = 0;
-                string a1 = theSaddle.GRID_NO;
-                string a2 = theSaddle.GRID_NAME.ToString();
-                string a3 = theSaddle.Row_No.ToString();
-                string a4 = theSaddle.Col_No.ToString();
-                string a5 = theSaddle.X_CENTER.ToString();
-                string a6 = theSaddle.Y_CENTER.ToString();
-
                 toolTip1.SetToolTip(this.panel1, "材料号：" + theSaddle.GRID_NO + "\r"
                                     + "库位：    " + theSaddle.GRID_NAME.ToString()
                                     + "\r" + theSaddle.Row_No.ToString() + "行" + "-" + theSaddle.Col_No.ToString() + "列，" + "\r"
