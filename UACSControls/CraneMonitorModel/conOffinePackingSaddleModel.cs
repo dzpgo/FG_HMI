@@ -39,7 +39,7 @@ namespace UACSControls
                 xAxisRight = _xAxisRight;
                 yAxisDown = _yAxisDown;
                 theSaddlsInfoInBay.conInit(_theBayNO, _theTagServiceName);
-                refreshControl();
+                refreshControl(_theBayNO);
             }
             catch (Exception ex)
             { }
@@ -87,12 +87,12 @@ namespace UACSControls
         //}
 
         private Dictionary<string, conOffinePackingSaddle> dicSaddleVisual = new Dictionary<string, conOffinePackingSaddle>();
-        public void refreshControl()
+        public void refreshControl(string AreaNo)
         {
             try
             {
 
-                theSaddlsInfoInBay.getSaddleInfo();
+                theSaddlsInfoInBay.getSaddleInfo(AreaNo);
                 foreach (SaddleBase theSaddleInfo in theSaddlsInfoInBay.DicSaddles.Values)
                 {
                     conOffinePackingSaddle theSaddleVisual = new conOffinePackingSaddle();

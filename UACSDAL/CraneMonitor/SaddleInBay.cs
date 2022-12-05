@@ -155,15 +155,16 @@ namespace UACSDAL
 
         //}
 
-        public void getSaddleInfo()
+        public void getSaddleInfo(string AreaNo)
         {
             try
             {
                 string sql = null;
                 sql = @"SELECT B.AREA_NO,B.AREA_NAME, A.GRID_NO,A.GRID_NAME,A.GRID_DIV,A.GRID_TYPE,A.X_START,A.X_END,A.X_CENTER,A.Y_START,A.Y_END,A.Y_CENTER,A.MAT_CODE,A.COMP_CODE,A.MAT_WGT,A.GRID_STATUS,A.GRID_ENABLE,A.YARD_NO,A.BAY_NO ";
                 sql += "FROM UACS_YARDMAP_GRID_DEFINE A ";
-                sql += "INNER JOIN UACS_YARDMAP_AREA_DEFINE B ON A.AREA_NO = B.AREA_NO";
-                
+                sql += "INNER JOIN UACS_YARDMAP_AREA_DEFINE B ON A.AREA_NO = B.AREA_NO ";
+                if(!string.IsNullOrEmpty(AreaNo))
+                    sql += "WHERE A.AREA_NO = '" + AreaNo + "'";
 
                 using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
                 {

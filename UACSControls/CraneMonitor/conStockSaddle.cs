@@ -431,24 +431,27 @@ namespace UACSControls
                 double location_X = 0;
                 if (xAxisRight == true)
                 {
-
-                    location_X = Convert.ToDouble((theSaddle.X_END) - theSaddle.X_START) * xScale;
+                    location_X = Convert.ToDouble(theSaddle.X_START - 8000) * xScale;
+                    //location_X = Convert.ToDouble(theSaddle.X_START) * xScale;
+                    //location_X = Convert.ToDouble(theSaddle.X_END - theSaddle.X_START) * xScale;
                 }
                 else
                 {
-                    location_X = (X_Width - ((theSaddle.X_CENTER + theSaddle.SaddleWidth / 2) - theSaddle.X_START)) * xScale;
+                    location_X = (X_Width - (theSaddle.X_CENTER  - theSaddle.X_START)) * xScale;
 
                 }
                 //计算Y方向的比例关系
-                double yScale = Convert.ToDouble(panelHeight - 40) / Convert.ToDouble(Y_Height);
+                double yScale = Convert.ToDouble(panelHeight - 20) / Convert.ToDouble(Y_Height);
                 double location_Y = 0;
                 if (yAxisDown == true)
                 {
-                    location_Y = ((theSaddle.Y_CENTER - theSaddle.SaddleLength / 2) - theSaddle.X_START) * yScale;
+                    location_Y = (theSaddle.Y_START) * yScale;
+                    //location_Y = (theSaddle.Y_CENTER  - theSaddle.X_START) * yScale;120.8695652173913
                 }
                 else
                 {
-                    location_Y = (Y_Height - ((theSaddle.Y_CENTER) - theSaddle.X_START)) * yScale;
+                    location_Y = (theSaddle.Y_START) * yScale;
+                    //location_Y = (Y_Height - (theSaddle.Y_CENTER - theSaddle.X_START)) * yScale;
                 }
 
                 Location_X = (int)location_X;
@@ -478,8 +481,6 @@ namespace UACSControls
                     {
                         label2.Visible = false;
                     }
-
-
                 }
 
                 else
@@ -641,17 +642,18 @@ namespace UACSControls
                         string row;
                         //row = mySaddleInfo.GRID_NO.Substring(3, 2);
                         row = mySaddleInfo.GRID_NO;
-                    if (mySaddleInfo.SaddleNo.Length > 8)
-                    {
-                        strCol = mySaddleInfo.SaddleNo.Substring(5, 4);
-                    }
-                    else
-                    {
-                        strCol = mySaddleInfo.SaddleNo.Substring(5, 3);
-                    }
-                    if(strCol == "011" || strCol == "131" || strCol == "271" || strCol == "391" || strCol == "491" || strCol == "511" || strCol == "631" || strCol == "751" || strCol == "901")
-                    {
-                        row = mySaddleInfo.SaddleNo.Substring(3, 2);
+                    //if (mySaddleInfo.SaddleNo.Length > 8)
+                    //{
+                    //    strCol = mySaddleInfo.SaddleNo.Substring(5, 4);
+                    //}
+                    //else
+                    //{
+                    //    strCol = mySaddleInfo.SaddleNo.Substring(5, 3);
+                    //}
+                    strCol = mySaddleInfo.GRID_NO;
+                    //if (strCol == "011" || strCol == "131" || strCol == "271" || strCol == "391" || strCol == "491" || strCol == "511" || strCol == "631" || strCol == "751" || strCol == "901")
+                    //{
+                        row = "料格号：" + mySaddleInfo.GRID_NO + "\r" + " ，库存重量：" + mySaddleInfo.MAT_WGT;
                         if (myArea.AreaNo == "Z01-1")
                         {
                             gr.DrawString(row, new Font("微软雅黑", 12, FontStyle.Bold), Brushes.Green,
@@ -665,7 +667,7 @@ namespace UACSControls
                             gr.DrawLine(p1, Convert.ToInt32(Location_X - 25), Convert.ToInt32(Location_Y) + 33, Convert.ToInt32(Location_X), Convert.ToInt32(Location_Y) + 33);
                         }
                     //}                   
-                    }                   
+                    //}                   
                 }
             }
             catch (Exception er)
