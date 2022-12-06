@@ -34,6 +34,7 @@ namespace UACSControls
         private SaddleBase mySaddleInfo = new SaddleBase();
         private Label lblRowNo = new Label();
         private Label lblColNo = new Label();
+        private Label lbl = new Label();
 
         private int Location_X;
         private int Location_Y;
@@ -431,9 +432,10 @@ namespace UACSControls
                 double location_X = 0;
                 if (xAxisRight == true)
                 {
-                    location_X = Convert.ToDouble(theSaddle.X_START - 8000) * xScale;
+                    //location_X = Convert.ToDouble(theSaddle.X_START - 8000) * xScale;
                     //location_X = Convert.ToDouble(theSaddle.X_START) * xScale;
-                    //location_X = Convert.ToDouble(theSaddle.X_END - theSaddle.X_START) * xScale;
+                    //location_X = Convert.ToDouble( - theSaddle.X_START) * xScale;
+                    location_X = Convert.ToDouble((theSaddle.X_START) - theArea.X_Start) * xScale;
                 }
                 else
                 {
@@ -446,7 +448,7 @@ namespace UACSControls
                 if (yAxisDown == true)
                 {
                     location_Y = (theSaddle.Y_START) * yScale;
-                    //location_Y = (theSaddle.Y_CENTER  - theSaddle.X_START) * yScale;120.8695652173913
+                    //location_Y = (theSaddle.Y_CENTER  - theSaddle.X_START) * yScale;
                 }
                 else
                 {
@@ -524,13 +526,13 @@ namespace UACSControls
 
                 }
 
-                this.BringToFront();
-                this.BorderStyle = BorderStyle.None;
-                gr = panel.CreateGraphics();
-                panel.Paint += panel_Paint;
-                this.panel1.Paint += StockSaddle_Paint;
-                toolTip1.IsBalloon = true;
-                toolTip1.ReshowDelay = 0;
+                //this.BringToFront();
+                //this.BorderStyle = BorderStyle.None;
+                //gr = panel.CreateGraphics();
+                //panel.Paint += panel_Paint;
+                //this.panel1.Paint += StockSaddle_Paint;
+                //toolTip1.IsBalloon = true;
+                //toolTip1.ReshowDelay = 0;
 
 
                 this.BringToFront();
@@ -539,21 +541,38 @@ namespace UACSControls
                 //else
                 this.BorderStyle = BorderStyle.None;
 
-                gr = panel.CreateGraphics();
-                panel.Paint += panel_Paint;
-                this.panel1.Paint += StockSaddle_Paint;
+                //gr = panel.CreateGraphics();
+                //panel.Paint += panel_Paint;
+                //this.panel1.Paint += StockSaddle_Paint;
 
-                toolTip1.IsBalloon = true;
-                toolTip1.ReshowDelay = 0;
-                toolTip1.SetToolTip(this.panel1, "材料号：" + theSaddle.GRID_NO + "\r"
-                                    + "库位：    " + theSaddle.GRID_NAME.ToString()
-                                    + "\r" + theSaddle.Row_No.ToString() + "行" + "-" + theSaddle.Col_No.ToString() + "列，" + "\r"
-                                    + "坐标：" + "\r"
-                                    + "X = " + theSaddle.X_CENTER.ToString() + "\r"
-                                    + "Y = " + theSaddle.Y_CENTER.ToString() + "\r"
-                                   //+ "Z = " + theSaddle.Z_Center.ToString() + "\r"
-                                   //+ "下道机组： " + theSaddle.Next_Unit_No + "\r"
-                                   );
+                lbl.Name = theSaddle.GRID_NO;
+                lbl.BackColor = Color.MediumAquamarine;
+                lbl.Font = new System.Drawing.Font("微软雅黑", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(132)));
+                lbl.Width = 75;
+                lbl.Height = 75;
+                lbl.ForeColor = Color.Black;
+                lbl.Text = "料格号：" + theSaddle.GRID_NO + "\n"
+                              + "库存重量：   " + theSaddle.MAT_WGT + "\n";
+                              //+ "黑库位：   " + saddleCoilNum + "\n"
+                              //+ "红库位：   " + (saddleNum - saddleNoCoilNum - saddleCoilNum) + "\n"
+                              //+ lblRuler + "\n"
+                              //+ lblCol;
+                //lbl.Click += conArea_Click;
+                //_conArea.Controls.Add(lbl);
+                panel.Controls.Add(lbl);
+                lbl.Location = new Point(Convert.ToInt32(location_X), Convert.ToInt32(location_Y));
+
+                //toolTip1.IsBalloon = true;
+                //toolTip1.ReshowDelay = 0;
+                //toolTip1.SetToolTip(this.panel1, "材料号：" + theSaddle.GRID_NO + "\r"
+                //                    + "库位：    " + theSaddle.GRID_NAME.ToString()
+                //                    + "\r" + theSaddle.Row_No.ToString() + "行" + "-" + theSaddle.Col_No.ToString() + "列，" + "\r"
+                //                    + "坐标：" + "\r"
+                //                    + "X = " + theSaddle.X_CENTER.ToString() + "\r"
+                //                    + "Y = " + theSaddle.Y_CENTER.ToString() + "\r"
+                //                   //+ "Z = " + theSaddle.Z_Center.ToString() + "\r"
+                //                   //+ "下道机组： " + theSaddle.Next_Unit_No + "\r"
+                //                   );
 
                 location_x = location_X;
                 location_y = location_Y;
@@ -629,30 +648,11 @@ namespace UACSControls
                     string strCol;
                     int layer;
                     layer = mySaddleInfo.Layer_Num;
-                    //if (mySaddleInfo.GRID_NO.Length > 8)
-                    //{
-                    //    strCol = mySaddleInfo.GRID_NO.Substring(5, 4);
-                    //}
-                    //else
-                    //{
-                    //    strCol = mySaddleInfo.GRID_NO.Substring(5, 3);
-                    //}
-                    //if(strCol == "011" || strCol == "131" || strCol == "271" || strCol == "391" || strCol == "491" || strCol == "511" || strCol == "631" || strCol == "751" || strCol == "901")
-                    //{
                         string row;
-                        //row = mySaddleInfo.GRID_NO.Substring(3, 2);
                         row = mySaddleInfo.GRID_NO;
-                    //if (mySaddleInfo.SaddleNo.Length > 8)
-                    //{
-                    //    strCol = mySaddleInfo.SaddleNo.Substring(5, 4);
-                    //}
-                    //else
-                    //{
-                    //    strCol = mySaddleInfo.SaddleNo.Substring(5, 3);
-                    //}
+
                     strCol = mySaddleInfo.GRID_NO;
-                    //if (strCol == "011" || strCol == "131" || strCol == "271" || strCol == "391" || strCol == "491" || strCol == "511" || strCol == "631" || strCol == "751" || strCol == "901")
-                    //{
+
                         row = "料格号：" + mySaddleInfo.GRID_NO + "\r" + " ，库存重量：" + mySaddleInfo.MAT_WGT;
                         if (myArea.AreaNo == "Z01-1")
                         {
@@ -666,8 +666,7 @@ namespace UACSControls
                             new Point(Convert.ToInt32(location_x - 25), Convert.ToInt32(location_y)));
                             gr.DrawLine(p1, Convert.ToInt32(Location_X - 25), Convert.ToInt32(Location_Y) + 33, Convert.ToInt32(Location_X), Convert.ToInt32(Location_Y) + 33);
                         }
-                    //}                   
-                    //}                   
+             
                 }
             }
             catch (Exception er)
@@ -743,18 +742,7 @@ namespace UACSControls
             try
             {
                 Graphics gr = this.CreateGraphics();
-
                 string col = mySaddleInfo.GRID_NO;
-                //if (mySaddleInfo.SaddleNo.Length > 8)
-                //{
-                //    col = mySaddleInfo.SaddleNo.Substring(5, 3);
-                //}
-                //else
-                //{
-                //    col = mySaddleInfo.SaddleNo.Substring(5, 2);
-                //}
-
-
                 StringFormat str = new StringFormat();
                 str.Alignment = StringAlignment.Center; //居中
                 Rectangle 矩形 = new Rectangle(0, 0, this.panel1.Width, this.panel1.Height);
