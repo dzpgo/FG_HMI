@@ -409,6 +409,7 @@ namespace UACSControls
         {
             try
             {
+                //panel.BackColor = Color.MediumAquamarine;
                 //附对象
                 mySaddleInfo = theSaddle;
                 width = panelWidth;
@@ -541,38 +542,29 @@ namespace UACSControls
                 //else
                 this.BorderStyle = BorderStyle.None;
 
-                //gr = panel.CreateGraphics();
-                //panel.Paint += panel_Paint;
-                //this.panel1.Paint += StockSaddle_Paint;
+                gr = panel.CreateGraphics();
+                panel.Paint += panel_Paint;
+                this.panel1.Paint += StockSaddle_Paint;
+
 
                 lbl.Name = theSaddle.GRID_NO;
-                lbl.BackColor = Color.MediumAquamarine;
+                lbl.BackColor = Color.LightSteelBlue;  //Color.MediumAquamarine;
                 lbl.Font = new System.Drawing.Font("微软雅黑", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(132)));
                 lbl.Width = 75;
                 lbl.Height = 75;
                 lbl.ForeColor = Color.Black;
                 lbl.Text = "料格号：" + theSaddle.GRID_NO + "\n"
                               + "库存重量：   " + theSaddle.MAT_WGT + "\n";
-                              //+ "黑库位：   " + saddleCoilNum + "\n"
-                              //+ "红库位：   " + (saddleNum - saddleNoCoilNum - saddleCoilNum) + "\n"
-                              //+ lblRuler + "\n"
-                              //+ lblCol;
+                //+ "黑库位：   " + saddleCoilNum + "\n"
+                //+ "红库位：   " + (saddleNum - saddleNoCoilNum - saddleCoilNum) + "\n"
+                //+ lblRuler + "\n"
+                //+ lblCol;
                 //lbl.Click += conArea_Click;
                 //_conArea.Controls.Add(lbl);
-                panel.Controls.Add(lbl);
-                lbl.Location = new Point(Convert.ToInt32(location_X), Convert.ToInt32(location_Y));
 
-                //toolTip1.IsBalloon = true;
-                //toolTip1.ReshowDelay = 0;
-                //toolTip1.SetToolTip(this.panel1, "材料号：" + theSaddle.GRID_NO + "\r"
-                //                    + "库位：    " + theSaddle.GRID_NAME.ToString()
-                //                    + "\r" + theSaddle.Row_No.ToString() + "行" + "-" + theSaddle.Col_No.ToString() + "列，" + "\r"
-                //                    + "坐标：" + "\r"
-                //                    + "X = " + theSaddle.X_CENTER.ToString() + "\r"
-                //                    + "Y = " + theSaddle.Y_CENTER.ToString() + "\r"
-                //                   //+ "Z = " + theSaddle.Z_Center.ToString() + "\r"
-                //                   //+ "下道机组： " + theSaddle.Next_Unit_No + "\r"
-                //                   );
+
+                panel.Controls.Add(lbl);
+                lbl.Location = new Point(Convert.ToInt32(location_X + 11), Convert.ToInt32(location_Y));
 
                 location_x = location_X;
                 location_y = location_Y;
@@ -644,14 +636,9 @@ namespace UACSControls
             {
                 if (mySaddleInfo != null)
                 {
-                    Pen p1 = new Pen(Color.Lime, 3);
-                    string strCol;
-                    int layer;
-                    layer = mySaddleInfo.Layer_Num;
-                        string row;
-                        row = mySaddleInfo.GRID_NO;
-
-                    strCol = mySaddleInfo.GRID_NO;
+                    Pen p1 = new Pen(Color.White, 2);
+                    int layer = mySaddleInfo.Layer_Num;
+                    string row;
 
                         row = "料格号：" + mySaddleInfo.GRID_NO + "\r" + " ，库存重量：" + mySaddleInfo.MAT_WGT;
                         if (myArea.AreaNo == "Z01-1")
@@ -662,10 +649,17 @@ namespace UACSControls
                         }                      
                         else
                         {
-                            gr.DrawString(row, new Font("微软雅黑", 12, FontStyle.Bold), Brushes.Green,
-                            new Point(Convert.ToInt32(location_x - 25), Convert.ToInt32(location_y)));
-                            gr.DrawLine(p1, Convert.ToInt32(Location_X - 25), Convert.ToInt32(Location_Y) + 33, Convert.ToInt32(Location_X), Convert.ToInt32(Location_Y) + 33);
-                        }
+                        //gr.DrawString(row, new Font("微软雅黑", 12, FontStyle.Bold), Brushes.Green,
+                        //new Point(Convert.ToInt32(location_x - 25), Convert.ToInt32(location_y)));
+                        //gr.DrawLine(p1, Convert.ToInt32(Location_X - 25), Convert.ToInt32(Location_Y) + 33, Convert.ToInt32(Location_X), Convert.ToInt32(Location_Y) + 33);
+
+
+                        //gr.DrawString(row, new Font("微软雅黑", 12, FontStyle.Bold), Brushes.Green, new Point(Convert.ToInt32(location_x - 25), Convert.ToInt32(location_y)));
+                        //gr.DrawString("TEST", new Font("微软雅黑", 12, FontStyle.Bold), Brushes.Black, new Point(this.Width / 2 - 30, 0));
+
+                        Rectangle rec = new Rectangle(new Point(Convert.ToInt32(location_x) + 10, Location_Y), new Size(lbl.Width + 1, lbl.Height + 1));
+                        gr.DrawRectangle(p1, rec);
+                    }
              
                 }
             }
