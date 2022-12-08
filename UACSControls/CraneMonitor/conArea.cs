@@ -169,7 +169,10 @@ namespace UACSControls
                         List<int> list = rowInfo.getAreaNoRow(areaBase.AreaNo) as List<int>;
                         List<int> listCol = rowInfo.getAreaNoCol(areaBase.AreaNo) as List<int>;
                         lblRuler = rowInfo.getAreaRowsInfo(list);
-                        lblCol = rowInfo.getAreaColsInfo(listCol);
+
+                        //lblCol = rowInfo.getAreaColsInfo(listCol);
+
+
                         //foreach (int i in rowInfo.getRowColListByAreaNO(areaBase.AreaNo))
                         //{
                         //    LogManager.WriteProgramLog("RowColList>>>>>>>>" + i);
@@ -188,29 +191,38 @@ namespace UACSControls
                     }
                     else
                     {
-                        lbl.Width = 75;
-                        lbl.Height = 90;
-                        if ((!areaBase.AreaNo.Contains("PACK")) && (!areaBase.AreaNo.Contains("END")) && (!areaBase.AreaNo.Contains("WJ")) && (!theSaddle.AreaNo.Contains("D108")))
-                        {
-                            lbl.Text = "鞍座总数：" + saddleNum + "\n"
-                              + "白库位：   " + saddleNoCoilNum + "\n"
-                              + "黑库位：   " + saddleCoilNum + "\n"
-                              + "红库位：   " + (saddleNum - saddleNoCoilNum - saddleCoilNum) + "\n"
-                              + lblRuler + "\n"
-                              + lblCol;
-                        }
-                        if (!areaBase.AreaNo.Contains("Z02-P") && !areaBase.AreaNo.Contains("Z03-C"))
-                        {
-                            //int RowNum = getRowNum(areaBase.AreaNo);
-                            //label1.Visible = false;
-                            //if (saddleNoCoilNum < (RowNum + 3))
-                            //{
-                            //    label1.Visible = true;
-                            //    label1.Text = "当前白库位过少，请及时转库！";
-                            //    label1.Location = new Point(this.Width / 2 - 90, this.Height - 20);
-                            //}
 
-                        }
+
+                        lbl.Width = 50;
+                        lbl.Height = 20;
+                        lbl.Text = lblRuler;
+                        //lbl.Location = new Point(this.Width / 2, this.Height / 2);
+                        lbl.Location = new Point(this.Width / 2 - 30, this.Height / 2);
+
+
+                        //lbl.Width = 75;
+                        //lbl.Height = 90;
+                        //if ((!areaBase.AreaNo.Contains("PACK")) && (!areaBase.AreaNo.Contains("END")) && (!areaBase.AreaNo.Contains("WJ")) && (!theSaddle.AreaNo.Contains("D108")))
+                        //{
+                        //    lbl.Text = "鞍座总数：" + saddleNum + "\n"
+                        //      + "白库位：   " + saddleNoCoilNum + "\n"
+                        //      + "黑库位：   " + saddleCoilNum + "\n"
+                        //      + "红库位：   " + (saddleNum - saddleNoCoilNum - saddleCoilNum) + "\n"
+                        //      + lblRuler + "\n"
+                        //      + lblCol;
+                        //}
+                        //if (!areaBase.AreaNo.Contains("Z02-P") && !areaBase.AreaNo.Contains("Z03-C"))
+                        //{
+                        //int RowNum = getRowNum(areaBase.AreaNo);
+                        //label1.Visible = false;
+                        //if (saddleNoCoilNum < (RowNum + 3))
+                        //{
+                        //    label1.Visible = true;
+                        //    label1.Text = "当前白库位过少，请及时转库！";
+                        //    label1.Location = new Point(this.Width / 2 - 90, this.Height - 20);
+                        //}
+
+                        //}
 
                         //}
                         //设置显示的颜色
