@@ -130,6 +130,12 @@ namespace UACSParking
             this.Close();
         }
 
+
+        /// <summary>
+        /// 确定保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             if (!txtPacking.Text.ToString().Contains('Z') || txtPacking.Text.ToString().Trim()=="请选择")
@@ -198,7 +204,7 @@ namespace UACSParking
                     //{
                     //    return;
                     //}
-                    tagDP.SetData("EV_NEW_PARKING_CARARRIVE", sb.ToString());
+                    tagDP.SetData("EV_PARKING_CARARRIVE", sb.ToString());
                     DialogResult dr = MessageBox.Show("框架车车到位成功，激光扫描开始，请保证车位上方没有行车经过。", "提示", MessageBoxButtons.OK);
                     carTypeValue1550 =  Int16.Parse(carTypeValue);
                     ParkClassLibrary.HMILogger.WriteLog(button1.Text, "车到位：" + sb.ToString(), ParkClassLibrary.LogLevel.Info, this.Text);

@@ -1281,7 +1281,7 @@ namespace UACSParking
             {
                 FrmCarEntry frm = new FrmCarEntry();
                 frm.PackingNo = cbbPacking.Text.Trim();
-                //frm.CarType = "社会车";
+                //frm.CarType = "社会车"; 
                 frm.CarType = "ALL";
                 frm.ShowDialog();
                 curCarType = frm.CarTypeValue1550 != 0 ? frm.CarTypeValue1550 : curCarType;
