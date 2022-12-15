@@ -214,6 +214,8 @@
             this.label6.Size = new System.Drawing.Size(70, 25);
             this.label6.TabIndex = 21;
             this.label6.Text = "02状态";
+            //隐藏控件
+            this.label6.Visible = false;
             // 
             // label15
             // 
@@ -225,6 +227,8 @@
             this.label15.Size = new System.Drawing.Size(70, 25);
             this.label15.TabIndex = 19;
             this.label15.Text = "12状态";
+            //隐藏控件
+            this.label15.Visible = false;
             // 
             // panel15
             // 
@@ -234,6 +238,8 @@
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(30, 50);
             this.panel15.TabIndex = 20;
+            //隐藏控件
+            this.panel15.Visible = false;
             // 
             // panel8
             // 
@@ -243,6 +249,8 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(30, 50);
             this.panel8.TabIndex = 20;
+            //隐藏控件
+            this.panel8.Visible = false;
             // 
             // label5
             // 
@@ -254,6 +262,8 @@
             this.label5.Size = new System.Drawing.Size(70, 25);
             this.label5.TabIndex = 19;
             this.label5.Text = "10状态";
+            //隐藏控件
+            this.label5.Visible = false;
             // 
             // panel7
             // 
@@ -263,6 +273,8 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(30, 50);
             this.panel7.TabIndex = 18;
+            //隐藏控件
+            this.panel7.Visible = false;
             // 
             // label4
             // 
@@ -274,6 +286,8 @@
             this.label4.Size = new System.Drawing.Size(84, 25);
             this.label4.TabIndex = 16;
             this.label4.Text = "不可吊运";
+            //隐藏控件
+            this.label4.Visible = false;
             // 
             // panel4
             // 
@@ -283,6 +297,8 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(30, 50);
             this.panel4.TabIndex = 15;
+            //隐藏控件
+            this.panel4.Visible = false;
             // 
             // label3
             // 
@@ -294,6 +310,8 @@
             this.label3.Size = new System.Drawing.Size(92, 25);
             this.label3.TabIndex = 14;
             this.label3.Text = "有卷-可吊";
+            //隐藏控件
+            this.label3.Visible = false;
             // 
             // panel3
             // 
@@ -303,6 +321,8 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(30, 50);
             this.panel3.TabIndex = 13;
+            //隐藏控件
+            this.panel3.Visible = false;
             // 
             // label2
             // 
@@ -314,6 +334,8 @@
             this.label2.Size = new System.Drawing.Size(92, 25);
             this.label2.TabIndex = 12;
             this.label2.Text = "无卷-可放";
+            //隐藏控件
+            this.label2.Visible = false;
             // 
             // panel5
             // 
@@ -323,6 +345,8 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(30, 50);
             this.panel5.TabIndex = 11;
+            //隐藏控件
+            this.panel5.Visible = false;
             // 
             // btnUpdata
             // 

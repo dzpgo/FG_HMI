@@ -51,6 +51,15 @@ namespace ParkingControlLibrary
 
         public event sendMember sendMember;
 
+        /// <summary>
+        /// 车位状态与扫描状态
+        /// </summary>
+        /// <param name="parkNo">停车位编号</param>
+        /// <param name="carState">卡车状态</param>
+        /// <param name="parkState">停车位状态</param>
+        /// <param name="carNo">卡车编号</param>
+        /// <param name="carType">车类型</param>
+        /// <param name="isWoodenCar">木架卷车</param>
         public void SetPark(string parkNo,string  carState,string  parkState,string carNo ,string carType, string isWoodenCar)
         {
             try
@@ -150,8 +159,9 @@ namespace ParkingControlLibrary
 
                  if (txtParkState.Text.Contains("无车"))
                  {
-                     txtParkState.ForeColor = Color .White;
-                 }
+                    //txtParkState.ForeColor = Color .White;
+                    txtParkState.ForeColor = Color.Black;
+                }
                  else if (txtParkState.Text.Contains("暂停"))
                  {
                      txtParkState.ForeColor = Color.Orange;
