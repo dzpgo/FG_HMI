@@ -37,8 +37,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PorductMatManage));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel_Tip = new System.Windows.Forms.Panel();
-            this.label_Tip = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.txtLaserStatus = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -66,8 +64,6 @@
             this.cmbArea = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
             this.txtStowageID = new System.Windows.Forms.TextBox();
-            this.txtSelectGoove = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtTeratmentNO = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -143,7 +139,6 @@
             this.btnUnitToCar = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
-            this.panel_Tip.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -170,7 +165,6 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSteelBlue;
             this.tableLayoutPanel1.SetColumnSpan(this.panel1, 2);
-            this.panel1.Controls.Add(this.panel_Tip);
             this.panel1.Controls.Add(this.label25);
             this.panel1.Controls.Add(this.txtLaserStatus);
             this.panel1.Controls.Add(this.label23);
@@ -198,8 +192,6 @@
             this.panel1.Controls.Add(this.cmbArea);
             this.panel1.Controls.Add(this.label22);
             this.panel1.Controls.Add(this.txtStowageID);
-            this.panel1.Controls.Add(this.txtSelectGoove);
-            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.txtTeratmentNO);
             this.panel1.Controls.Add(this.label8);
@@ -219,52 +211,29 @@
             this.panel1.Size = new System.Drawing.Size(1894, 217);
             this.panel1.TabIndex = 31;
             // 
-            // panel_Tip
-            // 
-            this.panel_Tip.Controls.Add(this.label_Tip);
-            this.panel_Tip.Location = new System.Drawing.Point(1065, 158);
-            this.panel_Tip.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel_Tip.Name = "panel_Tip";
-            this.panel_Tip.Size = new System.Drawing.Size(816, 45);
-            this.panel_Tip.TabIndex = 110;
-            this.panel_Tip.Visible = false;
-            // 
-            // label_Tip
-            // 
-            this.label_Tip.AutoSize = true;
-            this.label_Tip.ForeColor = System.Drawing.Color.Red;
-            this.label_Tip.Location = new System.Drawing.Point(4, 15);
-            this.label_Tip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label_Tip.Name = "label_Tip";
-            this.label_Tip.Size = new System.Drawing.Size(620, 18);
-            this.label_Tip.TabIndex = 0;
-            this.label_Tip.Text = "请先观察一分钟，若扫描槽数与实际不符，请先点击车离位，核实现场情况！";
-            // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(1059, 12);
+            this.label25.Location = new System.Drawing.Point(1064, 164);
             this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(165, 31);
+            this.label25.Size = new System.Drawing.Size(111, 22);
             this.label25.TabIndex = 108;
             this.label25.Text = "激光扫描状态:";
-            this.label25.Visible = false;
             // 
             // txtLaserStatus
             // 
             this.txtLaserStatus.BackColor = System.Drawing.SystemColors.Control;
             this.txtLaserStatus.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtLaserStatus.ForeColor = System.Drawing.Color.Black;
-            this.txtLaserStatus.Location = new System.Drawing.Point(1238, 9);
+            this.txtLaserStatus.Location = new System.Drawing.Point(1238, 159);
             this.txtLaserStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtLaserStatus.Name = "txtLaserStatus";
             this.txtLaserStatus.ReadOnly = true;
-            this.txtLaserStatus.Size = new System.Drawing.Size(642, 39);
+            this.txtLaserStatus.Size = new System.Drawing.Size(642, 29);
             this.txtLaserStatus.TabIndex = 107;
-            this.txtLaserStatus.Visible = false;
             // 
             // label23
             // 
@@ -274,9 +243,10 @@
             this.label23.Location = new System.Drawing.Point(1586, 105);
             this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(117, 31);
+            this.label23.Size = new System.Drawing.Size(79, 22);
             this.label23.TabIndex = 105;
             this.label23.Text = "车框间距:";
+            this.label23.Visible = false;
             // 
             // txtsideDist
             // 
@@ -287,8 +257,9 @@
             this.txtsideDist.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtsideDist.Name = "txtsideDist";
             this.txtsideDist.ReadOnly = true;
-            this.txtsideDist.Size = new System.Drawing.Size(175, 39);
+            this.txtsideDist.Size = new System.Drawing.Size(175, 29);
             this.txtsideDist.TabIndex = 104;
+            this.txtsideDist.Visible = false;
             // 
             // label24
             // 
@@ -298,9 +269,10 @@
             this.label24.Location = new System.Drawing.Point(1336, 110);
             this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(117, 31);
+            this.label24.Size = new System.Drawing.Size(79, 22);
             this.label24.TabIndex = 103;
             this.label24.Text = "车头间距:";
+            this.label24.Visible = false;
             // 
             // txtHeadDist
             // 
@@ -311,8 +283,9 @@
             this.txtHeadDist.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtHeadDist.Name = "txtHeadDist";
             this.txtHeadDist.ReadOnly = true;
-            this.txtHeadDist.Size = new System.Drawing.Size(121, 39);
+            this.txtHeadDist.Size = new System.Drawing.Size(121, 29);
             this.txtHeadDist.TabIndex = 102;
+            this.txtHeadDist.Visible = false;
             // 
             // txtCarL
             // 
@@ -323,7 +296,7 @@
             this.txtCarL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCarL.Name = "txtCarL";
             this.txtCarL.ReadOnly = true;
-            this.txtCarL.Size = new System.Drawing.Size(175, 39);
+            this.txtCarL.Size = new System.Drawing.Size(175, 29);
             this.txtCarL.TabIndex = 92;
             // 
             // label17
@@ -331,12 +304,13 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label17.ForeColor = System.Drawing.Color.Black;
-            this.label17.Location = new System.Drawing.Point(1059, 114);
+            this.label17.Location = new System.Drawing.Point(1064, 114);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(165, 31);
+            this.label17.Size = new System.Drawing.Size(111, 22);
             this.label17.TabIndex = 99;
             this.label17.Text = "实际车槽总数:";
+            this.label17.Visible = false;
             // 
             // label18
             // 
@@ -346,9 +320,10 @@
             this.label18.Location = new System.Drawing.Point(806, 114);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(117, 31);
+            this.label18.Size = new System.Drawing.Size(79, 22);
             this.label18.TabIndex = 101;
             this.label18.Text = "鞍座间距:";
+            this.label18.Visible = false;
             // 
             // txtGrooveNum
             // 
@@ -359,8 +334,9 @@
             this.txtGrooveNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtGrooveNum.Name = "txtGrooveNum";
             this.txtGrooveNum.ReadOnly = true;
-            this.txtGrooveNum.Size = new System.Drawing.Size(96, 39);
+            this.txtGrooveNum.Size = new System.Drawing.Size(96, 29);
             this.txtGrooveNum.TabIndex = 98;
+            this.txtGrooveNum.Visible = false;
             // 
             // label16
             // 
@@ -370,7 +346,7 @@
             this.label16.Location = new System.Drawing.Point(15, 117);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(93, 31);
+            this.label16.Size = new System.Drawing.Size(63, 22);
             this.label16.TabIndex = 93;
             this.label16.Text = "车实长:";
             // 
@@ -383,8 +359,9 @@
             this.txtGrooveDist.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtGrooveDist.Name = "txtGrooveDist";
             this.txtGrooveDist.ReadOnly = true;
-            this.txtGrooveDist.Size = new System.Drawing.Size(114, 39);
+            this.txtGrooveDist.Size = new System.Drawing.Size(114, 29);
             this.txtGrooveDist.TabIndex = 100;
+            this.txtGrooveDist.Visible = false;
             // 
             // label19
             // 
@@ -394,7 +371,7 @@
             this.label19.Location = new System.Drawing.Point(568, 114);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(93, 31);
+            this.label19.Size = new System.Drawing.Size(63, 22);
             this.label19.TabIndex = 97;
             this.label19.Text = "车实高:";
             // 
@@ -407,7 +384,7 @@
             this.txtCarH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCarH.Name = "txtCarH";
             this.txtCarH.ReadOnly = true;
-            this.txtCarH.Size = new System.Drawing.Size(114, 39);
+            this.txtCarH.Size = new System.Drawing.Size(114, 29);
             this.txtCarH.TabIndex = 96;
             // 
             // txtCarW
@@ -419,7 +396,7 @@
             this.txtCarW.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCarW.Name = "txtCarW";
             this.txtCarW.ReadOnly = true;
-            this.txtCarW.Size = new System.Drawing.Size(146, 39);
+            this.txtCarW.Size = new System.Drawing.Size(146, 29);
             this.txtCarW.TabIndex = 94;
             // 
             // label20
@@ -430,7 +407,7 @@
             this.label20.Location = new System.Drawing.Point(304, 117);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(93, 31);
+            this.label20.Size = new System.Drawing.Size(63, 22);
             this.label20.TabIndex = 95;
             this.label20.Text = "车实宽:";
             // 
@@ -442,7 +419,7 @@
             this.label21.Location = new System.Drawing.Point(832, 165);
             this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(66, 31);
+            this.label21.Size = new System.Drawing.Size(44, 22);
             this.label21.TabIndex = 91;
             this.label21.Text = "——";
             // 
@@ -454,7 +431,7 @@
             this.label15.Location = new System.Drawing.Point(555, 165);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(109, 31);
+            this.label15.Size = new System.Drawing.Size(73, 22);
             this.label15.TabIndex = 90;
             this.label15.Text = "车边框Y:";
             // 
@@ -467,7 +444,7 @@
             this.txt_CAR_Y_BORDER_MIN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_CAR_Y_BORDER_MIN.Name = "txt_CAR_Y_BORDER_MIN";
             this.txt_CAR_Y_BORDER_MIN.ReadOnly = true;
-            this.txt_CAR_Y_BORDER_MIN.Size = new System.Drawing.Size(114, 39);
+            this.txt_CAR_Y_BORDER_MIN.Size = new System.Drawing.Size(114, 29);
             this.txt_CAR_Y_BORDER_MIN.TabIndex = 89;
             // 
             // txt_CAR_Y_BORDER_MAX
@@ -479,7 +456,7 @@
             this.txt_CAR_Y_BORDER_MAX.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_CAR_Y_BORDER_MAX.Name = "txt_CAR_Y_BORDER_MAX";
             this.txt_CAR_Y_BORDER_MAX.ReadOnly = true;
-            this.txt_CAR_Y_BORDER_MAX.Size = new System.Drawing.Size(114, 39);
+            this.txt_CAR_Y_BORDER_MAX.Size = new System.Drawing.Size(114, 29);
             this.txt_CAR_Y_BORDER_MAX.TabIndex = 88;
             // 
             // label13
@@ -490,7 +467,7 @@
             this.label13.Location = new System.Drawing.Point(318, 165);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(66, 31);
+            this.label13.Size = new System.Drawing.Size(44, 22);
             this.label13.TabIndex = 87;
             this.label13.Text = "——";
             // 
@@ -503,7 +480,7 @@
             this.txt_CAR_X_BORDER_MIN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_CAR_X_BORDER_MIN.Name = "txt_CAR_X_BORDER_MIN";
             this.txt_CAR_X_BORDER_MIN.ReadOnly = true;
-            this.txt_CAR_X_BORDER_MIN.Size = new System.Drawing.Size(146, 39);
+            this.txt_CAR_X_BORDER_MIN.Size = new System.Drawing.Size(146, 29);
             this.txt_CAR_X_BORDER_MIN.TabIndex = 86;
             // 
             // label14
@@ -514,7 +491,7 @@
             this.label14.Location = new System.Drawing.Point(3, 165);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(110, 31);
+            this.label14.Size = new System.Drawing.Size(74, 22);
             this.label14.TabIndex = 85;
             this.label14.Text = "车边框X:";
             // 
@@ -527,7 +504,7 @@
             this.txt_CAR_X_BORDER_MAX.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_CAR_X_BORDER_MAX.Name = "txt_CAR_X_BORDER_MAX";
             this.txt_CAR_X_BORDER_MAX.ReadOnly = true;
-            this.txt_CAR_X_BORDER_MAX.Size = new System.Drawing.Size(175, 39);
+            this.txt_CAR_X_BORDER_MAX.Size = new System.Drawing.Size(175, 29);
             this.txt_CAR_X_BORDER_MAX.TabIndex = 84;
             // 
             // cmbArea
@@ -541,7 +518,7 @@
             this.cmbArea.Location = new System.Drawing.Point(122, 8);
             this.cmbArea.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbArea.Name = "cmbArea";
-            this.cmbArea.Size = new System.Drawing.Size(175, 39);
+            this.cmbArea.Size = new System.Drawing.Size(175, 30);
             this.cmbArea.TabIndex = 82;
             this.cmbArea.Text = "废钢1号配料间";
             this.cmbArea.SelectedIndexChanged += new System.EventHandler(this.cmbArea_SelectedIndexChanged);
@@ -554,62 +531,40 @@
             this.label22.Location = new System.Drawing.Point(3, 14);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(110, 31);
+            this.label22.Size = new System.Drawing.Size(74, 22);
             this.label22.TabIndex = 83;
             this.label22.Text = "作业区域";
             // 
             // txtStowageID
             // 
             this.txtStowageID.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtStowageID.Location = new System.Drawing.Point(1455, 62);
+            this.txtStowageID.Location = new System.Drawing.Point(1239, 62);
             this.txtStowageID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtStowageID.Name = "txtStowageID";
             this.txtStowageID.ReadOnly = true;
-            this.txtStowageID.Size = new System.Drawing.Size(121, 39);
+            this.txtStowageID.Size = new System.Drawing.Size(121, 29);
             this.txtStowageID.TabIndex = 81;
-            // 
-            // txtSelectGoove
-            // 
-            this.txtSelectGoove.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtSelectGoove.Location = new System.Drawing.Point(1238, 62);
-            this.txtSelectGoove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtSelectGoove.Name = "txtSelectGoove";
-            this.txtSelectGoove.ReadOnly = true;
-            this.txtSelectGoove.Size = new System.Drawing.Size(96, 39);
-            this.txtSelectGoove.TabIndex = 80;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(1064, 62);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(165, 31);
-            this.label10.TabIndex = 79;
-            this.label10.Text = "扫描车槽总数:";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
-            this.label9.Location = new System.Drawing.Point(1350, 66);
+            this.label9.Location = new System.Drawing.Point(1136, 68);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(93, 31);
+            this.label9.Size = new System.Drawing.Size(63, 22);
             this.label9.TabIndex = 78;
             this.label9.Text = "配载号:";
             // 
             // txtTeratmentNO
             // 
             this.txtTeratmentNO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtTeratmentNO.Location = new System.Drawing.Point(1704, 62);
+            this.txtTeratmentNO.Location = new System.Drawing.Point(1539, 62);
             this.txtTeratmentNO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTeratmentNO.Name = "txtTeratmentNO";
             this.txtTeratmentNO.ReadOnly = true;
-            this.txtTeratmentNO.Size = new System.Drawing.Size(175, 39);
+            this.txtTeratmentNO.Size = new System.Drawing.Size(175, 29);
             this.txtTeratmentNO.TabIndex = 76;
             // 
             // label8
@@ -617,10 +572,10 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(1596, 57);
+            this.label8.Location = new System.Drawing.Point(1436, 66);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(93, 31);
+            this.label8.Size = new System.Drawing.Size(63, 22);
             this.label8.TabIndex = 75;
             this.label8.Text = "处理号:";
             // 
@@ -631,7 +586,7 @@
             this.txtLaserCount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtLaserCount.Name = "txtLaserCount";
             this.txtLaserCount.ReadOnly = true;
-            this.txtLaserCount.Size = new System.Drawing.Size(114, 39);
+            this.txtLaserCount.Size = new System.Drawing.Size(114, 29);
             this.txtLaserCount.TabIndex = 74;
             // 
             // label6
@@ -642,7 +597,7 @@
             this.label6.Location = new System.Drawing.Point(806, 63);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(117, 31);
+            this.label6.Size = new System.Drawing.Size(79, 22);
             this.label6.TabIndex = 73;
             this.label6.Text = "扫描次数:";
             // 
@@ -653,7 +608,7 @@
             this.txtCarHeadToward.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCarHeadToward.Name = "txtCarHeadToward";
             this.txtCarHeadToward.ReadOnly = true;
-            this.txtCarHeadToward.Size = new System.Drawing.Size(114, 39);
+            this.txtCarHeadToward.Size = new System.Drawing.Size(114, 29);
             this.txtCarHeadToward.TabIndex = 72;
             // 
             // label7
@@ -664,7 +619,7 @@
             this.label7.Location = new System.Drawing.Point(555, 68);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(117, 31);
+            this.label7.Size = new System.Drawing.Size(79, 22);
             this.label7.TabIndex = 71;
             this.label7.Text = "车头方向:";
             // 
@@ -676,7 +631,7 @@
             this.label4.Location = new System.Drawing.Point(322, 66);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 31);
+            this.label4.Size = new System.Drawing.Size(47, 22);
             this.label4.TabIndex = 29;
             this.label4.Text = "车号:";
             // 
@@ -687,7 +642,7 @@
             this.txtCarNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCarNo.Name = "txtCarNo";
             this.txtCarNo.ReadOnly = true;
-            this.txtCarNo.Size = new System.Drawing.Size(146, 39);
+            this.txtCarNo.Size = new System.Drawing.Size(146, 29);
             this.txtCarNo.TabIndex = 30;
             this.txtCarNo.TextChanged += new System.EventHandler(this.txtCarNo_TextChanged);
             // 
@@ -699,7 +654,7 @@
             this.cbbPacking.Location = new System.Drawing.Point(122, 62);
             this.cbbPacking.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbbPacking.Name = "cbbPacking";
-            this.cbbPacking.Size = new System.Drawing.Size(175, 39);
+            this.cbbPacking.Size = new System.Drawing.Size(175, 29);
             this.cbbPacking.TabIndex = 18;
             this.cbbPacking.SelectedIndexChanged += new System.EventHandler(this.cbbPacking_SelectedIndexChanged_1);
             this.cbbPacking.TextChanged += new System.EventHandler(this.cbbPacking_TextChanged);
@@ -712,7 +667,7 @@
             this.label1.Location = new System.Drawing.Point(20, 66);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 31);
+            this.label1.Size = new System.Drawing.Size(63, 22);
             this.label1.TabIndex = 17;
             this.label1.Text = "停车位:";
             // 
@@ -810,7 +765,7 @@
             this.panel2.Location = new System.Drawing.Point(4, 375);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1726, 740);
+            this.panel2.Size = new System.Drawing.Size(1726, 681);
             this.panel2.TabIndex = 28;
             // 
             // tableLayoutPanel2
@@ -830,7 +785,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1726, 740);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1726, 681);
             this.tableLayoutPanel2.TabIndex = 33;
             // 
             // panel5
@@ -851,7 +806,7 @@
             this.labTime.Location = new System.Drawing.Point(12, 10);
             this.labTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labTime.Name = "labTime";
-            this.labTime.Size = new System.Drawing.Size(64, 31);
+            this.labTime.Size = new System.Drawing.Size(45, 22);
             this.labTime.TabIndex = 23;
             this.labTime.Text = "-----";
             // 
@@ -876,7 +831,7 @@
             this.label5.Location = new System.Drawing.Point(681, 10);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(134, 31);
+            this.label5.Size = new System.Drawing.Size(90, 21);
             this.label5.TabIndex = 35;
             this.label5.Text = "钢卷总重：";
             // 
@@ -888,7 +843,7 @@
             this.txtCoilsWeight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCoilsWeight.Name = "txtCoilsWeight";
             this.txtCoilsWeight.ReadOnly = true;
-            this.txtCoilsWeight.Size = new System.Drawing.Size(133, 39);
+            this.txtCoilsWeight.Size = new System.Drawing.Size(133, 29);
             this.txtCoilsWeight.TabIndex = 33;
             // 
             // label12
@@ -899,7 +854,7 @@
             this.label12.Location = new System.Drawing.Point(4, 11);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(158, 31);
+            this.label12.Size = new System.Drawing.Size(106, 22);
             this.label12.TabIndex = 25;
             this.label12.Text = "车辆配载明细";
             // 
@@ -914,8 +869,8 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 664F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(965, 667);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 606F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(965, 608);
             this.tableLayoutPanel3.TabIndex = 29;
             // 
             // panel8
@@ -925,7 +880,7 @@
             this.panel8.Location = new System.Drawing.Point(4, 4);
             this.panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(957, 659);
+            this.panel8.Size = new System.Drawing.Size(957, 600);
             this.panel8.TabIndex = 0;
             // 
             // tableLayoutPanel6
@@ -941,7 +896,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(957, 659);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(957, 600);
             this.tableLayoutPanel6.TabIndex = 25;
             // 
             // dataGridView2
@@ -990,7 +945,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(949, 321);
+            this.dataGridView2.Size = new System.Drawing.Size(949, 292);
             this.dataGridView2.TabIndex = 24;
             // 
             // GROOVEID1
@@ -1000,7 +955,7 @@
             this.GROOVEID1.HeaderText = "槽号";
             this.GROOVEID1.MinimumWidth = 8;
             this.GROOVEID1.Name = "GROOVEID1";
-            this.GROOVEID1.Width = 98;
+            this.GROOVEID1.Width = 67;
             // 
             // PICK_NO
             // 
@@ -1079,7 +1034,7 @@
             this.GROOVE_ACT_X.HeaderText = "槽中心点X";
             this.GROOVE_ACT_X.MinimumWidth = 8;
             this.GROOVE_ACT_X.Name = "GROOVE_ACT_X";
-            this.GROOVE_ACT_X.Width = 161;
+            this.GROOVE_ACT_X.Width = 109;
             // 
             // GROOVE_ACT_Y
             // 
@@ -1088,7 +1043,7 @@
             this.GROOVE_ACT_Y.HeaderText = "槽中心点Y";
             this.GROOVE_ACT_Y.MinimumWidth = 8;
             this.GROOVE_ACT_Y.Name = "GROOVE_ACT_Y";
-            this.GROOVE_ACT_Y.Width = 160;
+            this.GROOVE_ACT_Y.Width = 109;
             // 
             // GROOVE_ACT_Z
             // 
@@ -1098,18 +1053,18 @@
             this.GROOVE_ACT_Z.MinimumWidth = 8;
             this.GROOVE_ACT_Z.Name = "GROOVE_ACT_Z";
             this.GROOVE_ACT_Z.Visible = false;
-            this.GROOVE_ACT_Z.Width = 161;
+            this.GROOVE_ACT_Z.Width = 109;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvOrder);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.Location = new System.Drawing.Point(4, 333);
+            this.groupBox1.Location = new System.Drawing.Point(4, 304);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(949, 322);
+            this.groupBox1.Size = new System.Drawing.Size(949, 292);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "行车出库指令信息";
@@ -1119,7 +1074,7 @@
             this.dgvOrder.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvOrder.Location = new System.Drawing.Point(4, 36);
+            this.dgvOrder.Location = new System.Drawing.Point(4, 26);
             this.dgvOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvOrder.Name = "dgvOrder";
             this.dgvOrder.RowHeadersWidth = 62;
@@ -1127,7 +1082,7 @@
             dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 14.25F);
             this.dgvOrder.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvOrder.RowTemplate.Height = 23;
-            this.dgvOrder.Size = new System.Drawing.Size(941, 282);
+            this.dgvOrder.Size = new System.Drawing.Size(941, 262);
             this.dgvOrder.TabIndex = 0;
             // 
             // panel9
@@ -1139,7 +1094,7 @@
             this.panel9.Location = new System.Drawing.Point(5, 68);
             this.panel9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(742, 667);
+            this.panel9.Size = new System.Drawing.Size(742, 608);
             this.panel9.TabIndex = 31;
             // 
             // tabControl1
@@ -1150,17 +1105,17 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(729, 468);
+            this.tabControl1.Size = new System.Drawing.Size(1641, 1053);
             this.tabControl1.TabIndex = 5;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.parkLaserOut1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 40);
+            this.tabPage1.Location = new System.Drawing.Point(4, 30);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage1.Size = new System.Drawing.Size(721, 424);
+            this.tabPage1.Size = new System.Drawing.Size(1633, 1019);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "配载图";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1172,17 +1127,17 @@
             this.parkLaserOut1.Location = new System.Drawing.Point(4, 4);
             this.parkLaserOut1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.parkLaserOut1.Name = "parkLaserOut1";
-            this.parkLaserOut1.Size = new System.Drawing.Size(713, 416);
+            this.parkLaserOut1.Size = new System.Drawing.Size(1625, 1011);
             this.parkLaserOut1.TabIndex = 3;
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.dataGridView_LASER);
-            this.tabPage2.Location = new System.Drawing.Point(4, 40);
+            this.tabPage2.Location = new System.Drawing.Point(4, 30);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage2.Size = new System.Drawing.Size(721, 424);
+            this.tabPage2.Size = new System.Drawing.Size(1633, 1019);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "激光数据";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1214,7 +1169,7 @@
             dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dataGridView_LASER.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView_LASER.RowTemplate.Height = 23;
-            this.dataGridView_LASER.Size = new System.Drawing.Size(713, 416);
+            this.dataGridView_LASER.Size = new System.Drawing.Size(1625, 1011);
             this.dataGridView_LASER.TabIndex = 77;
             // 
             // Column3
@@ -1421,7 +1376,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 225F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 146F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1914, 1119);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1914, 1060);
             this.tableLayoutPanel1.TabIndex = 32;
             // 
             // tableLayoutPanel5
@@ -1456,7 +1411,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(160, 740);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(160, 681);
             this.tableLayoutPanel5.TabIndex = 40;
             // 
             // btnReissue
@@ -1488,7 +1443,7 @@
             this.button_L3Stowage.Name = "button_L3Stowage";
             this.button_L3Stowage.Size = new System.Drawing.Size(148, 60);
             this.button_L3Stowage.TabIndex = 73;
-            this.button_L3Stowage.Text = "L3配载";
+            this.button_L3Stowage.Text = "装车配载";
             this.button_L3Stowage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_L3Stowage.UseVisualStyleBackColor = false;
             this.button_L3Stowage.Click += new System.EventHandler(this.button_L3Stowage_Click);
@@ -1576,7 +1531,7 @@
             this.btnUnitToCar.Location = new System.Drawing.Point(8, 687);
             this.btnUnitToCar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUnitToCar.Name = "btnUnitToCar";
-            this.btnUnitToCar.Size = new System.Drawing.Size(148, 48);
+            this.btnUnitToCar.Size = new System.Drawing.Size(148, 1);
             this.btnUnitToCar.TabIndex = 109;
             this.btnUnitToCar.Text = "直上社会车";
             this.btnUnitToCar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1594,15 +1549,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1914, 1119);
+            this.ClientSize = new System.Drawing.Size(1914, 1060);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "PorductMatManage";
             this.Text = "";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel_Tip.ResumeLayout(false);
-            this.panel_Tip.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -1683,8 +1636,8 @@
         private System.Windows.Forms.TableLayoutPanel tabPanelParkArea;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtSelectGoove;
-        private System.Windows.Forms.Label label10;
+        //private System.Windows.Forms.TextBox txtSelectGoove;
+        //private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtStowageID;
         private System.Windows.Forms.Button btnOperateStrat;
         private System.Windows.Forms.Button btnOperatePause;
@@ -1722,8 +1675,8 @@
         private System.Windows.Forms.TextBox txtLaserStatus;
         private System.Windows.Forms.Button button_L3Stowage;
         private System.Windows.Forms.Button btnUnitToCar;
-        private System.Windows.Forms.Panel panel_Tip;
-        private System.Windows.Forms.Label label_Tip;
+        //private System.Windows.Forms.Panel panel_Tip;
+        //private System.Windows.Forms.Label label_Tip;
         private System.Windows.Forms.Button btnWoodenCar;
         private System.Windows.Forms.DataGridViewTextBoxColumn GROOVEID1;
         private System.Windows.Forms.DataGridViewTextBoxColumn PICK_NO;

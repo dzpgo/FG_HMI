@@ -93,14 +93,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Microsoft.QualityTools.Testing.Fakes.dll</HintPath>
     </Reference>
-    <Reference Include="ParkClassLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ParkClassLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="ParkingControlLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ParkingControlLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -887,7 +879,16 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ParkClassLibrary\ParkClassLibrary.csproj">
+      <Project>{2ec69a15-9c22-4e66-8cd1-60eb77fbb252}</Project>
+      <Name>ParkClassLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ParkingControlLibrary\ParkingControlLibrary.csproj">
+      <Project>{df19dba8-c688-45c3-a07c-b429cd1d4ea0}</Project>
+      <Name>ParkingControlLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

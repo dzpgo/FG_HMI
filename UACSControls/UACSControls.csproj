@@ -63,10 +63,6 @@
       <HintPath>..\lib\IrisSkin2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="ParkClassLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\iPlature\SF_HOME\app\form\ParkClassLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -670,6 +666,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bg_btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ParkClassLibrary\ParkClassLibrary.csproj">
+      <Project>{2ec69a15-9c22-4e66-8cd1-60eb77fbb252}</Project>
+      <Name>ParkClassLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

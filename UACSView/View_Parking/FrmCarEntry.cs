@@ -28,6 +28,10 @@ namespace UACSParking
         /// 停车位
         /// </summary>
         public string PackingNo { get; set; }
+        /// <summary>
+        /// 车号
+        /// </summary>
+        public string CarNo { get; set; }        
         private string carType = "";
         string carFlag = "1";
         string carDirection = "";
@@ -50,7 +54,7 @@ namespace UACSParking
 
             cmbCarType.SelectedText = "热卷框架";
             txtPacking.Text = PackingNo;
-
+            txtCarNo.Text = CarNo;
             tagDP.ServiceName = "iplature";
             tagDP.AutoRegist = true;
             TagValues.Clear();
@@ -147,7 +151,7 @@ namespace UACSParking
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!txtPacking.Text.ToString().Contains('Z') || txtPacking.Text.ToString().Trim() == "请选择")
+            if (!txtPacking.Text.ToString().Contains('A') || txtPacking.Text.ToString().Trim() == "请选择")
             {
                 MessageBox.Show("请先选择停车位！！", "提示");
                 this.Close();

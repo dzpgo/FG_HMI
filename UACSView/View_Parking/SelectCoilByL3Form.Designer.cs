@@ -39,34 +39,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.CHECK_COLUMN = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.PLAN_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.COIL_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.STOCK_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BAY_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WEIGHT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ACT_WEIGHT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ACT_WIDTH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OUTDIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LOT_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SHIP_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WIDTH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INDIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PACK_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.X_CENTER = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Y_CENTER = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Z_CENTER = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.CHECK_COLUMN2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.GROOVEID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.COIL_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PICK_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WEIGHT2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OUTDIA2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GROOVE_ACT_X = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GROOVE_ACT_Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GROOVE_ACT_Z = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBox_LotNo = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -97,6 +71,38 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
+            this.CHECK_COLUMN = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.MAT_CNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CAR_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PLAN_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WEIGHT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.COIL_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.STOCK_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BAY_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ACT_WEIGHT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ACT_WIDTH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OUTDIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LOT_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SHIP_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WIDTH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INDIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PACK_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.X_CENTER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Y_CENTER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Z_CENTER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CHECK_COLUMN2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.GROOVEID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_CNAME2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PLAN_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_CODE2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WEIGHT2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.COIL_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PICK_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OUTDIA2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GROOVE_ACT_X = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GROOVE_ACT_Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GROOVE_ACT_Z = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -114,8 +120,8 @@
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.LightSteelBlue;
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 682F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1023F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 2, 2);
@@ -126,21 +132,23 @@
             this.tableLayoutPanel1.Controls.Add(this.panel5, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 102F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1280, 700);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1920, 1050);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(4, 148);
+            this.panel1.Location = new System.Drawing.Point(5, 220);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(676, 548);
+            this.panel1.Size = new System.Drawing.Size(1015, 825);
             this.panel1.TabIndex = 0;
             // 
             // dataGridView1
@@ -161,11 +169,14 @@
             this.dataGridView1.ColumnHeadersHeight = 29;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CHECK_COLUMN,
+            this.MAT_CNAME,
+            this.CAR_NO,
             this.PLAN_NO,
+            this.MAT_CODE,
+            this.WEIGHT,
             this.COIL_NO,
             this.STOCK_NO,
             this.BAY_NO,
-            this.WEIGHT,
             this.ACT_WEIGHT,
             this.ACT_WIDTH,
             this.OUTDIA,
@@ -188,173 +199,25 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(676, 548);
+            this.dataGridView1.Size = new System.Drawing.Size(1015, 825);
             this.dataGridView1.TabIndex = 23;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
-            // 
-            // CHECK_COLUMN
-            // 
-            this.CHECK_COLUMN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CHECK_COLUMN.DataPropertyName = "CHECK_COLUMN";
-            this.CHECK_COLUMN.FalseValue = "0";
-            this.CHECK_COLUMN.Frozen = true;
-            this.CHECK_COLUMN.HeaderText = "全选";
-            this.CHECK_COLUMN.Name = "CHECK_COLUMN";
-            this.CHECK_COLUMN.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CHECK_COLUMN.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.CHECK_COLUMN.TrueValue = "1";
-            this.CHECK_COLUMN.Width = 80;
-            // 
-            // PLAN_NO
-            // 
-            this.PLAN_NO.DataPropertyName = "PLAN_NO";
-            this.PLAN_NO.Frozen = true;
-            this.PLAN_NO.HeaderText = "发货单号";
-            this.PLAN_NO.Name = "PLAN_NO";
-            this.PLAN_NO.Width = 150;
-            // 
-            // COIL_NO
-            // 
-            this.COIL_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.COIL_NO.DataPropertyName = "COIL_NO";
-            this.COIL_NO.Frozen = true;
-            this.COIL_NO.HeaderText = "材料号";
-            this.COIL_NO.Name = "COIL_NO";
-            this.COIL_NO.ReadOnly = true;
-            this.COIL_NO.Width = 83;
-            // 
-            // STOCK_NO
-            // 
-            this.STOCK_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.STOCK_NO.DataPropertyName = "STOCK_NO";
-            this.STOCK_NO.HeaderText = "库位号";
-            this.STOCK_NO.Name = "STOCK_NO";
-            this.STOCK_NO.ReadOnly = true;
-            this.STOCK_NO.Width = 83;
-            // 
-            // BAY_NO
-            // 
-            this.BAY_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.BAY_NO.DataPropertyName = "BAY_NO";
-            this.BAY_NO.HeaderText = "跨号";
-            this.BAY_NO.Name = "BAY_NO";
-            this.BAY_NO.ReadOnly = true;
-            this.BAY_NO.Width = 67;
-            // 
-            // WEIGHT
-            // 
-            this.WEIGHT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.WEIGHT.DataPropertyName = "WEIGHT";
-            this.WEIGHT.HeaderText = "重量";
-            this.WEIGHT.Name = "WEIGHT";
-            this.WEIGHT.ReadOnly = true;
-            this.WEIGHT.Width = 67;
-            // 
-            // ACT_WEIGHT
-            // 
-            this.ACT_WEIGHT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ACT_WEIGHT.DataPropertyName = "ACT_WEIGHT";
-            this.ACT_WEIGHT.HeaderText = "实测重量";
-            this.ACT_WEIGHT.Name = "ACT_WEIGHT";
-            this.ACT_WEIGHT.ReadOnly = true;
-            this.ACT_WEIGHT.Width = 99;
-            // 
-            // ACT_WIDTH
-            // 
-            this.ACT_WIDTH.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ACT_WIDTH.DataPropertyName = "ACT_WIDTH";
-            this.ACT_WIDTH.HeaderText = "实测宽度";
-            this.ACT_WIDTH.Name = "ACT_WIDTH";
-            this.ACT_WIDTH.ReadOnly = true;
-            this.ACT_WIDTH.Width = 99;
-            // 
-            // OUTDIA
-            // 
-            this.OUTDIA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.OUTDIA.DataPropertyName = "OUTDIA";
-            this.OUTDIA.HeaderText = "外径";
-            this.OUTDIA.Name = "OUTDIA";
-            this.OUTDIA.ReadOnly = true;
-            this.OUTDIA.Width = 67;
-            // 
-            // LOT_NO
-            // 
-            this.LOT_NO.DataPropertyName = "LOT_NO";
-            this.LOT_NO.HeaderText = "提单号";
-            this.LOT_NO.Name = "LOT_NO";
-            this.LOT_NO.ReadOnly = true;
-            // 
-            // SHIP_NAME
-            // 
-            this.SHIP_NAME.DataPropertyName = "SHIP_NAME";
-            this.SHIP_NAME.HeaderText = "船名";
-            this.SHIP_NAME.Name = "SHIP_NAME";
-            this.SHIP_NAME.ReadOnly = true;
-            // 
-            // WIDTH
-            // 
-            this.WIDTH.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.WIDTH.DataPropertyName = "WIDTH";
-            this.WIDTH.HeaderText = "宽度";
-            this.WIDTH.Name = "WIDTH";
-            this.WIDTH.ReadOnly = true;
-            this.WIDTH.Width = 67;
-            // 
-            // INDIA
-            // 
-            this.INDIA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.INDIA.DataPropertyName = "INDIA";
-            this.INDIA.HeaderText = "内径";
-            this.INDIA.Name = "INDIA";
-            this.INDIA.ReadOnly = true;
-            this.INDIA.Width = 67;
-            // 
-            // PACK_CODE
-            // 
-            this.PACK_CODE.DataPropertyName = "PACK_CODE";
-            this.PACK_CODE.HeaderText = "包装代码";
-            this.PACK_CODE.Name = "PACK_CODE";
-            // 
-            // X_CENTER
-            // 
-            this.X_CENTER.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.X_CENTER.DataPropertyName = "X_CENTER";
-            this.X_CENTER.HeaderText = "X";
-            this.X_CENTER.Name = "X_CENTER";
-            this.X_CENTER.ReadOnly = true;
-            this.X_CENTER.Width = 45;
-            // 
-            // Y_CENTER
-            // 
-            this.Y_CENTER.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Y_CENTER.DataPropertyName = "Y_CENTER";
-            this.Y_CENTER.HeaderText = "Y";
-            this.Y_CENTER.Name = "Y_CENTER";
-            this.Y_CENTER.ReadOnly = true;
-            this.Y_CENTER.Width = 45;
-            // 
-            // Z_CENTER
-            // 
-            this.Z_CENTER.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Z_CENTER.DataPropertyName = "Z_CENTER";
-            this.Z_CENTER.HeaderText = "Z";
-            this.Z_CENTER.Name = "Z_CENTER";
-            this.Z_CENTER.ReadOnly = true;
-            this.Z_CENTER.Width = 45;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.dataGridView2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(748, 148);
+            this.panel2.Location = new System.Drawing.Point(1120, 220);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(528, 548);
+            this.panel2.Size = new System.Drawing.Size(795, 825);
             this.panel2.TabIndex = 1;
             // 
             // dataGridView2
@@ -378,9 +241,12 @@
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CHECK_COLUMN2,
             this.GROOVEID,
+            this.MAT_CNAME2,
+            this.PLAN_NO2,
+            this.MAT_CODE2,
+            this.WEIGHT2,
             this.COIL_NO2,
             this.PICK_NO,
-            this.WEIGHT2,
             this.OUTDIA2,
             this.GROOVE_ACT_X,
             this.GROOVE_ACT_Y,
@@ -396,95 +262,15 @@
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.EnableHeadersVisualStyles = false;
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(528, 548);
+            this.dataGridView2.Size = new System.Drawing.Size(795, 825);
             this.dataGridView2.TabIndex = 25;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            // 
-            // CHECK_COLUMN2
-            // 
-            this.CHECK_COLUMN2.DataPropertyName = "CHECK_COLUMN2";
-            this.CHECK_COLUMN2.FalseValue = "0";
-            this.CHECK_COLUMN2.Frozen = true;
-            this.CHECK_COLUMN2.HeaderText = "选择";
-            this.CHECK_COLUMN2.Name = "CHECK_COLUMN2";
-            this.CHECK_COLUMN2.TrueValue = "1";
-            this.CHECK_COLUMN2.Width = 60;
-            // 
-            // GROOVEID
-            // 
-            this.GROOVEID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GROOVEID.DataPropertyName = "GROOVEID";
-            this.GROOVEID.HeaderText = "槽号";
-            this.GROOVEID.Name = "GROOVEID";
-            this.GROOVEID.ReadOnly = true;
-            this.GROOVEID.Width = 67;
-            // 
-            // COIL_NO2
-            // 
-            this.COIL_NO2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.COIL_NO2.DataPropertyName = "COIL_NO2";
-            this.COIL_NO2.HeaderText = "材料号";
-            this.COIL_NO2.Name = "COIL_NO2";
-            this.COIL_NO2.ReadOnly = true;
-            this.COIL_NO2.Width = 150;
-            // 
-            // PICK_NO
-            // 
-            this.PICK_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.PICK_NO.DataPropertyName = "PICK_NO";
-            this.PICK_NO.HeaderText = "提单号";
-            this.PICK_NO.Name = "PICK_NO";
-            this.PICK_NO.ReadOnly = true;
-            this.PICK_NO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.PICK_NO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.PICK_NO.Width = 150;
-            // 
-            // WEIGHT2
-            // 
-            this.WEIGHT2.DataPropertyName = "WEIGHT";
-            this.WEIGHT2.HeaderText = "重量";
-            this.WEIGHT2.Name = "WEIGHT2";
-            this.WEIGHT2.ReadOnly = true;
-            // 
-            // OUTDIA2
-            // 
-            this.OUTDIA2.DataPropertyName = "OUTDIA";
-            this.OUTDIA2.HeaderText = "外径";
-            this.OUTDIA2.Name = "OUTDIA2";
-            this.OUTDIA2.ReadOnly = true;
-            // 
-            // GROOVE_ACT_X
-            // 
-            this.GROOVE_ACT_X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GROOVE_ACT_X.DataPropertyName = "GROOVE_ACT_X";
-            this.GROOVE_ACT_X.HeaderText = "槽中心点X";
-            this.GROOVE_ACT_X.Name = "GROOVE_ACT_X";
-            this.GROOVE_ACT_X.ReadOnly = true;
-            this.GROOVE_ACT_X.Width = 109;
-            // 
-            // GROOVE_ACT_Y
-            // 
-            this.GROOVE_ACT_Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GROOVE_ACT_Y.DataPropertyName = "GROOVE_ACT_Y";
-            this.GROOVE_ACT_Y.HeaderText = "槽中心点Y";
-            this.GROOVE_ACT_Y.Name = "GROOVE_ACT_Y";
-            this.GROOVE_ACT_Y.ReadOnly = true;
-            this.GROOVE_ACT_Y.Width = 109;
-            // 
-            // GROOVE_ACT_Z
-            // 
-            this.GROOVE_ACT_Z.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GROOVE_ACT_Z.DataPropertyName = "GROOVE_ACT_Z";
-            this.GROOVE_ACT_Z.HeaderText = "槽中心点Z";
-            this.GROOVE_ACT_Z.Name = "GROOVE_ACT_Z";
-            this.GROOVE_ACT_Z.ReadOnly = true;
-            this.GROOVE_ACT_Z.Visible = false;
-            this.GROOVE_ACT_Z.Width = 125;
             // 
             // panel4
             // 
@@ -505,18 +291,21 @@
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(4, 4);
+            this.panel4.Location = new System.Drawing.Point(5, 5);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(676, 96);
+            this.panel4.Size = new System.Drawing.Size(1015, 145);
             this.panel4.TabIndex = 3;
             // 
             // textBox_LotNo
             // 
             this.textBox_LotNo.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox_LotNo.Location = new System.Drawing.Point(287, 33);
+            this.textBox_LotNo.Location = new System.Drawing.Point(430, 50);
+            this.textBox_LotNo.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_LotNo.Name = "textBox_LotNo";
-            this.textBox_LotNo.Size = new System.Drawing.Size(120, 29);
+            this.textBox_LotNo.Size = new System.Drawing.Size(178, 29);
             this.textBox_LotNo.TabIndex = 47;
+            this.textBox_LotNo.Visible = false;
             // 
             // label9
             // 
@@ -524,37 +313,43 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label9.Location = new System.Drawing.Point(219, 37);
+            this.label9.Location = new System.Drawing.Point(330, 56);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(62, 21);
             this.label9.TabIndex = 46;
             this.label9.Text = "提单号:";
+            this.label9.Visible = false;
             // 
             // txtGetPlanNo
             // 
             this.txtGetPlanNo.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtGetPlanNo.Location = new System.Drawing.Point(91, 33);
+            this.txtGetPlanNo.Location = new System.Drawing.Point(136, 50);
+            this.txtGetPlanNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtGetPlanNo.Name = "txtGetPlanNo";
-            this.txtGetPlanNo.Size = new System.Drawing.Size(90, 29);
+            this.txtGetPlanNo.Size = new System.Drawing.Size(133, 29);
             this.txtGetPlanNo.TabIndex = 36;
+            this.txtGetPlanNo.Visible = false;
             this.txtGetPlanNo.Click += new System.EventHandler(this.txtGetPlanNo_Click);
             this.txtGetPlanNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtGetPlanNo_KeyDown);
             // 
             // textBox_L3_TASK_NO
             // 
             this.textBox_L3_TASK_NO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox_L3_TASK_NO.Location = new System.Drawing.Point(513, 1);
+            this.textBox_L3_TASK_NO.Location = new System.Drawing.Point(770, 2);
+            this.textBox_L3_TASK_NO.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_L3_TASK_NO.Name = "textBox_L3_TASK_NO";
-            this.textBox_L3_TASK_NO.Size = new System.Drawing.Size(150, 29);
+            this.textBox_L3_TASK_NO.Size = new System.Drawing.Size(223, 29);
             this.textBox_L3_TASK_NO.TabIndex = 45;
             this.textBox_L3_TASK_NO.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.textBox_L3_TASK_NO_MouseDoubleClick);
             // 
             // textBox_L3_PLAN_NO
             // 
             this.textBox_L3_PLAN_NO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox_L3_PLAN_NO.Location = new System.Drawing.Point(287, 1);
+            this.textBox_L3_PLAN_NO.Location = new System.Drawing.Point(430, 2);
+            this.textBox_L3_PLAN_NO.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_L3_PLAN_NO.Name = "textBox_L3_PLAN_NO";
-            this.textBox_L3_PLAN_NO.Size = new System.Drawing.Size(120, 29);
+            this.textBox_L3_PLAN_NO.Size = new System.Drawing.Size(178, 29);
             this.textBox_L3_PLAN_NO.TabIndex = 43;
             this.textBox_L3_PLAN_NO.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.textBox_L3_PLAN_NO_MouseDoubleClick);
             // 
@@ -564,7 +359,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label6.Location = new System.Drawing.Point(187, 4);
+            this.label6.Location = new System.Drawing.Point(282, 6);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(94, 21);
             this.label6.TabIndex = 42;
@@ -573,9 +369,10 @@
             // textBox_L3_TRUCK_NO
             // 
             this.textBox_L3_TRUCK_NO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox_L3_TRUCK_NO.Location = new System.Drawing.Point(91, 1);
+            this.textBox_L3_TRUCK_NO.Location = new System.Drawing.Point(136, 2);
+            this.textBox_L3_TRUCK_NO.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_L3_TRUCK_NO.Name = "textBox_L3_TRUCK_NO";
-            this.textBox_L3_TRUCK_NO.Size = new System.Drawing.Size(90, 29);
+            this.textBox_L3_TRUCK_NO.Size = new System.Drawing.Size(133, 29);
             this.textBox_L3_TRUCK_NO.TabIndex = 41;
             this.textBox_L3_TRUCK_NO.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.textBox_L3_TRUCK_NO_MouseDoubleClick);
             // 
@@ -585,7 +382,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label4.Location = new System.Drawing.Point(7, 4);
+            this.label4.Location = new System.Drawing.Point(12, 6);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 21);
             this.label4.TabIndex = 40;
@@ -595,11 +393,13 @@
             // txtBoxStockNO
             // 
             this.txtBoxStockNO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtBoxStockNO.Location = new System.Drawing.Point(91, 65);
+            this.txtBoxStockNO.Location = new System.Drawing.Point(136, 98);
+            this.txtBoxStockNO.Margin = new System.Windows.Forms.Padding(4);
             this.txtBoxStockNO.Name = "txtBoxStockNO";
-            this.txtBoxStockNO.Size = new System.Drawing.Size(90, 29);
+            this.txtBoxStockNO.Size = new System.Drawing.Size(133, 29);
             this.txtBoxStockNO.TabIndex = 39;
             this.txtBoxStockNO.Text = "行-列";
+            this.txtBoxStockNO.Visible = false;
             this.txtBoxStockNO.Click += new System.EventHandler(this.txtBoxStockNO_Click);
             this.txtBoxStockNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxStockNO_KeyDown);
             // 
@@ -611,9 +411,10 @@
             this.btnQuery.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnQuery.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuery.ForeColor = System.Drawing.Color.White;
-            this.btnQuery.Location = new System.Drawing.Point(563, 37);
+            this.btnQuery.Location = new System.Drawing.Point(846, 58);
+            this.btnQuery.Margin = new System.Windows.Forms.Padding(4);
             this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(100, 40);
+            this.btnQuery.Size = new System.Drawing.Size(150, 60);
             this.btnQuery.TabIndex = 37;
             this.btnQuery.Text = "查询";
             this.btnQuery.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -623,10 +424,12 @@
             // txtGetMat
             // 
             this.txtGetMat.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtGetMat.Location = new System.Drawing.Point(287, 65);
+            this.txtGetMat.Location = new System.Drawing.Point(430, 98);
+            this.txtGetMat.Margin = new System.Windows.Forms.Padding(4);
             this.txtGetMat.Name = "txtGetMat";
-            this.txtGetMat.Size = new System.Drawing.Size(120, 29);
+            this.txtGetMat.Size = new System.Drawing.Size(178, 29);
             this.txtGetMat.TabIndex = 34;
+            this.txtGetMat.Visible = false;
             this.txtGetMat.Click += new System.EventHandler(this.txtGetMat_Click);
             this.txtGetMat.TextChanged += new System.EventHandler(this.txtGetMat_TextChanged);
             this.txtGetMat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtGetMat_KeyDown);
@@ -637,11 +440,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label2.Location = new System.Drawing.Point(219, 68);
+            this.label2.Location = new System.Drawing.Point(330, 102);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 21);
             this.label2.TabIndex = 33;
             this.label2.Text = "材料号:";
+            this.label2.Visible = false;
             // 
             // label3
             // 
@@ -649,11 +454,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label3.Location = new System.Drawing.Point(7, 36);
+            this.label3.Location = new System.Drawing.Point(12, 54);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 21);
             this.label3.TabIndex = 35;
             this.label3.Text = "发货单号:";
+            this.label3.Visible = false;
             // 
             // label1
             // 
@@ -661,11 +468,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label1.Location = new System.Drawing.Point(7, 68);
+            this.label1.Location = new System.Drawing.Point(12, 102);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 21);
             this.label1.TabIndex = 38;
             this.label1.Text = "库位号：";
+            this.label1.Visible = false;
             // 
             // label7
             // 
@@ -673,7 +482,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label7.Location = new System.Drawing.Point(413, 4);
+            this.label7.Location = new System.Drawing.Point(622, 6);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(94, 21);
             this.label7.TabIndex = 44;
@@ -683,20 +493,22 @@
             // 
             this.panel6.Controls.Add(this.label11);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(4, 107);
+            this.panel6.Location = new System.Drawing.Point(5, 159);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(676, 34);
+            this.panel6.Size = new System.Drawing.Size(1015, 52);
             this.panel6.TabIndex = 5;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label11.Location = new System.Drawing.Point(8, 4);
+            this.label11.Location = new System.Drawing.Point(12, 6);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(106, 22);
             this.label11.TabIndex = 24;
-            this.label11.Text = "钢卷材料信息";
+            this.label11.Text = "配料计划信息";
             // 
             // panel7
             // 
@@ -704,16 +516,18 @@
             this.panel7.Controls.Add(this.label5);
             this.panel7.Controls.Add(this.txtCoilsWeight);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(748, 107);
+            this.panel7.Location = new System.Drawing.Point(1120, 159);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(528, 34);
+            this.panel7.Size = new System.Drawing.Size(795, 52);
             this.panel7.TabIndex = 6;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.Location = new System.Drawing.Point(3, 5);
+            this.label12.Location = new System.Drawing.Point(4, 8);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(122, 22);
             this.label12.TabIndex = 26;
@@ -724,7 +538,8 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label5.Location = new System.Drawing.Point(334, 5);
+            this.label5.Location = new System.Drawing.Point(504, 8);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 21);
             this.label5.TabIndex = 37;
@@ -734,10 +549,11 @@
             // 
             this.txtCoilsWeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCoilsWeight.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtCoilsWeight.Location = new System.Drawing.Point(430, 2);
+            this.txtCoilsWeight.Location = new System.Drawing.Point(648, 3);
+            this.txtCoilsWeight.Margin = new System.Windows.Forms.Padding(4);
             this.txtCoilsWeight.Name = "txtCoilsWeight";
             this.txtCoilsWeight.ReadOnly = true;
-            this.txtCoilsWeight.Size = new System.Drawing.Size(90, 29);
+            this.txtCoilsWeight.Size = new System.Drawing.Size(133, 29);
             this.txtCoilsWeight.TabIndex = 36;
             // 
             // panel3
@@ -748,10 +564,11 @@
             this.panel3.Controls.Add(this.btnAdd);
             this.panel3.Controls.Add(this.btnDelete);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(687, 4);
+            this.panel3.Location = new System.Drawing.Point(1029, 5);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.tableLayoutPanel1.SetRowSpan(this.panel3, 3);
-            this.panel3.Size = new System.Drawing.Size(54, 692);
+            this.panel3.Size = new System.Drawing.Size(82, 1040);
             this.panel3.TabIndex = 2;
             // 
             // label10
@@ -759,8 +576,9 @@
             this.label10.Dock = System.Windows.Forms.DockStyle.Top;
             this.label10.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label10.Location = new System.Drawing.Point(0, 0);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 183);
+            this.label10.Size = new System.Drawing.Size(80, 274);
             this.label10.TabIndex = 33;
             this.label10.Text = "红色：不同跨卷； 黄色：上木架卷";
             // 
@@ -768,9 +586,10 @@
             // 
             this.label8.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label8.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label8.Location = new System.Drawing.Point(0, 529);
+            this.label8.Location = new System.Drawing.Point(0, 796);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 161);
+            this.label8.Size = new System.Drawing.Size(80, 242);
             this.label8.TabIndex = 30;
             this.label8.Text = "槽号顺序：    自车头往车尾排列 。";
             // 
@@ -782,9 +601,10 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAdd.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAdd.Location = new System.Drawing.Point(1, 210);
+            this.btnAdd.Location = new System.Drawing.Point(2, 315);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(50, 50);
+            this.btnAdd.Size = new System.Drawing.Size(75, 75);
             this.btnAdd.TabIndex = 28;
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -796,9 +616,10 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDelete.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnDelete.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnDelete.Location = new System.Drawing.Point(1, 297);
+            this.btnDelete.Location = new System.Drawing.Point(2, 446);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(50, 50);
+            this.btnDelete.Size = new System.Drawing.Size(75, 75);
             this.btnDelete.TabIndex = 29;
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -809,9 +630,10 @@
             this.panel5.Controls.Add(this.button2);
             this.panel5.Controls.Add(this.btnSubmit);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(748, 4);
+            this.panel5.Location = new System.Drawing.Point(1120, 5);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(528, 96);
+            this.panel5.Size = new System.Drawing.Size(795, 145);
             this.panel5.TabIndex = 4;
             // 
             // button2
@@ -822,9 +644,10 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(419, 36);
+            this.button2.Location = new System.Drawing.Point(632, 54);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 40);
+            this.button2.Size = new System.Drawing.Size(150, 60);
             this.button2.TabIndex = 38;
             this.button2.Text = "取消";
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -838,22 +661,329 @@
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSubmit.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.Location = new System.Drawing.Point(3, 37);
+            this.btnSubmit.Location = new System.Drawing.Point(4, 56);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(100, 40);
+            this.btnSubmit.Size = new System.Drawing.Size(150, 60);
             this.btnSubmit.TabIndex = 29;
             this.btnSubmit.Text = "提交";
             this.btnSubmit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSubmit.UseVisualStyleBackColor = false;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
+            // CHECK_COLUMN
+            // 
+            this.CHECK_COLUMN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CHECK_COLUMN.DataPropertyName = "CHECK_COLUMN";
+            this.CHECK_COLUMN.FalseValue = "0";
+            this.CHECK_COLUMN.Frozen = true;
+            this.CHECK_COLUMN.HeaderText = "全选";
+            this.CHECK_COLUMN.Name = "CHECK_COLUMN";
+            this.CHECK_COLUMN.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CHECK_COLUMN.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CHECK_COLUMN.TrueValue = "1";
+            this.CHECK_COLUMN.Width = 80;
+            // 
+            // MAT_CNAME
+            // 
+            this.MAT_CNAME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MAT_CNAME.DataPropertyName = "MAT_CNAME";
+            this.MAT_CNAME.Frozen = true;
+            this.MAT_CNAME.HeaderText = "物料名称";
+            this.MAT_CNAME.Name = "MAT_CNAME";
+            this.MAT_CNAME.ReadOnly = true;
+            this.MAT_CNAME.Width = 99;
+            // 
+            // CAR_NO
+            // 
+            this.CAR_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CAR_NO.DataPropertyName = "CAR_NO";
+            this.CAR_NO.HeaderText = "车号";
+            this.CAR_NO.Name = "CAR_NO";
+            this.CAR_NO.ReadOnly = true;
+            this.CAR_NO.Width = 67;
+            // 
+            // PLAN_NO
+            // 
+            this.PLAN_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PLAN_NO.DataPropertyName = "PLAN_NO";
+            this.PLAN_NO.HeaderText = "计划号";
+            this.PLAN_NO.Name = "PLAN_NO";
+            this.PLAN_NO.Width = 83;
+            // 
+            // MAT_CODE
+            // 
+            this.MAT_CODE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MAT_CODE.DataPropertyName = "MAT_CODE";
+            this.MAT_CODE.HeaderText = "物料编号";
+            this.MAT_CODE.Name = "MAT_CODE";
+            this.MAT_CODE.Width = 99;
+            // 
+            // WEIGHT
+            // 
+            this.WEIGHT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.WEIGHT.DataPropertyName = "WEIGHT";
+            this.WEIGHT.HeaderText = "重量";
+            this.WEIGHT.Name = "WEIGHT";
+            this.WEIGHT.ReadOnly = true;
+            this.WEIGHT.Width = 67;
+            // 
+            // COIL_NO
+            // 
+            this.COIL_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.COIL_NO.DataPropertyName = "COIL_NO";
+            this.COIL_NO.HeaderText = "材料号";
+            this.COIL_NO.Name = "COIL_NO";
+            this.COIL_NO.ReadOnly = true;
+            this.COIL_NO.Visible = false;
+            this.COIL_NO.Width = 150;
+            // 
+            // STOCK_NO
+            // 
+            this.STOCK_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.STOCK_NO.DataPropertyName = "STOCK_NO";
+            this.STOCK_NO.HeaderText = "库位号";
+            this.STOCK_NO.Name = "STOCK_NO";
+            this.STOCK_NO.ReadOnly = true;
+            this.STOCK_NO.Visible = false;
+            this.STOCK_NO.Width = 83;
+            // 
+            // BAY_NO
+            // 
+            this.BAY_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BAY_NO.DataPropertyName = "BAY_NO";
+            this.BAY_NO.HeaderText = "跨号";
+            this.BAY_NO.Name = "BAY_NO";
+            this.BAY_NO.ReadOnly = true;
+            this.BAY_NO.Visible = false;
+            this.BAY_NO.Width = 67;
+            // 
+            // ACT_WEIGHT
+            // 
+            this.ACT_WEIGHT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ACT_WEIGHT.DataPropertyName = "ACT_WEIGHT";
+            this.ACT_WEIGHT.HeaderText = "实测重量";
+            this.ACT_WEIGHT.Name = "ACT_WEIGHT";
+            this.ACT_WEIGHT.ReadOnly = true;
+            this.ACT_WEIGHT.Visible = false;
+            this.ACT_WEIGHT.Width = 99;
+            // 
+            // ACT_WIDTH
+            // 
+            this.ACT_WIDTH.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ACT_WIDTH.DataPropertyName = "ACT_WIDTH";
+            this.ACT_WIDTH.HeaderText = "实测宽度";
+            this.ACT_WIDTH.Name = "ACT_WIDTH";
+            this.ACT_WIDTH.ReadOnly = true;
+            this.ACT_WIDTH.Visible = false;
+            this.ACT_WIDTH.Width = 99;
+            // 
+            // OUTDIA
+            // 
+            this.OUTDIA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.OUTDIA.DataPropertyName = "OUTDIA";
+            this.OUTDIA.HeaderText = "外径";
+            this.OUTDIA.Name = "OUTDIA";
+            this.OUTDIA.ReadOnly = true;
+            this.OUTDIA.Visible = false;
+            this.OUTDIA.Width = 67;
+            // 
+            // LOT_NO
+            // 
+            this.LOT_NO.DataPropertyName = "LOT_NO";
+            this.LOT_NO.HeaderText = "提单号";
+            this.LOT_NO.Name = "LOT_NO";
+            this.LOT_NO.ReadOnly = true;
+            this.LOT_NO.Visible = false;
+            // 
+            // SHIP_NAME
+            // 
+            this.SHIP_NAME.DataPropertyName = "SHIP_NAME";
+            this.SHIP_NAME.HeaderText = "船名";
+            this.SHIP_NAME.Name = "SHIP_NAME";
+            this.SHIP_NAME.ReadOnly = true;
+            this.SHIP_NAME.Visible = false;
+            // 
+            // WIDTH
+            // 
+            this.WIDTH.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.WIDTH.DataPropertyName = "WIDTH";
+            this.WIDTH.HeaderText = "宽度";
+            this.WIDTH.Name = "WIDTH";
+            this.WIDTH.ReadOnly = true;
+            this.WIDTH.Visible = false;
+            this.WIDTH.Width = 67;
+            // 
+            // INDIA
+            // 
+            this.INDIA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.INDIA.DataPropertyName = "INDIA";
+            this.INDIA.HeaderText = "内径";
+            this.INDIA.Name = "INDIA";
+            this.INDIA.ReadOnly = true;
+            this.INDIA.Visible = false;
+            this.INDIA.Width = 67;
+            // 
+            // PACK_CODE
+            // 
+            this.PACK_CODE.DataPropertyName = "PACK_CODE";
+            this.PACK_CODE.HeaderText = "包装代码";
+            this.PACK_CODE.Name = "PACK_CODE";
+            this.PACK_CODE.Visible = false;
+            // 
+            // X_CENTER
+            // 
+            this.X_CENTER.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.X_CENTER.DataPropertyName = "X_CENTER";
+            this.X_CENTER.HeaderText = "X";
+            this.X_CENTER.Name = "X_CENTER";
+            this.X_CENTER.ReadOnly = true;
+            this.X_CENTER.Visible = false;
+            this.X_CENTER.Width = 45;
+            // 
+            // Y_CENTER
+            // 
+            this.Y_CENTER.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Y_CENTER.DataPropertyName = "Y_CENTER";
+            this.Y_CENTER.HeaderText = "Y";
+            this.Y_CENTER.Name = "Y_CENTER";
+            this.Y_CENTER.ReadOnly = true;
+            this.Y_CENTER.Visible = false;
+            this.Y_CENTER.Width = 45;
+            // 
+            // Z_CENTER
+            // 
+            this.Z_CENTER.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Z_CENTER.DataPropertyName = "Z_CENTER";
+            this.Z_CENTER.HeaderText = "Z";
+            this.Z_CENTER.Name = "Z_CENTER";
+            this.Z_CENTER.ReadOnly = true;
+            this.Z_CENTER.Visible = false;
+            this.Z_CENTER.Width = 45;
+            // 
+            // CHECK_COLUMN2
+            // 
+            this.CHECK_COLUMN2.DataPropertyName = "CHECK_COLUMN2";
+            this.CHECK_COLUMN2.FalseValue = "0";
+            this.CHECK_COLUMN2.Frozen = true;
+            this.CHECK_COLUMN2.HeaderText = "选择";
+            this.CHECK_COLUMN2.Name = "CHECK_COLUMN2";
+            this.CHECK_COLUMN2.TrueValue = "1";
+            this.CHECK_COLUMN2.Width = 60;
+            // 
+            // GROOVEID
+            // 
+            this.GROOVEID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GROOVEID.DataPropertyName = "GROOVEID";
+            this.GROOVEID.Frozen = true;
+            this.GROOVEID.HeaderText = "槽号";
+            this.GROOVEID.Name = "GROOVEID";
+            this.GROOVEID.ReadOnly = true;
+            this.GROOVEID.Visible = false;
+            this.GROOVEID.Width = 67;
+            // 
+            // MAT_CNAME2
+            // 
+            this.MAT_CNAME2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MAT_CNAME2.DataPropertyName = "MAT_CNAME2";
+            this.MAT_CNAME2.Frozen = true;
+            this.MAT_CNAME2.HeaderText = "物料名称";
+            this.MAT_CNAME2.Name = "MAT_CNAME2";
+            this.MAT_CNAME2.Width = 99;
+            // 
+            // PLAN_NO2
+            // 
+            this.PLAN_NO2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PLAN_NO2.DataPropertyName = "PLAN_NO2";
+            this.PLAN_NO2.HeaderText = "计划号";
+            this.PLAN_NO2.Name = "PLAN_NO2";
+            this.PLAN_NO2.Width = 83;
+            // 
+            // MAT_CODE2
+            // 
+            this.MAT_CODE2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MAT_CODE2.DataPropertyName = "MAT_CODE2";
+            this.MAT_CODE2.HeaderText = "物料编号";
+            this.MAT_CODE2.Name = "MAT_CODE2";
+            this.MAT_CODE2.Width = 99;
+            // 
+            // WEIGHT2
+            // 
+            this.WEIGHT2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.WEIGHT2.DataPropertyName = "WEIGHT";
+            this.WEIGHT2.HeaderText = "重量";
+            this.WEIGHT2.Name = "WEIGHT2";
+            this.WEIGHT2.ReadOnly = true;
+            this.WEIGHT2.Width = 67;
+            // 
+            // COIL_NO2
+            // 
+            this.COIL_NO2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.COIL_NO2.DataPropertyName = "COIL_NO2";
+            this.COIL_NO2.HeaderText = "材料号";
+            this.COIL_NO2.Name = "COIL_NO2";
+            this.COIL_NO2.ReadOnly = true;
+            this.COIL_NO2.Visible = false;
+            this.COIL_NO2.Width = 150;
+            // 
+            // PICK_NO
+            // 
+            this.PICK_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PICK_NO.DataPropertyName = "PICK_NO";
+            this.PICK_NO.HeaderText = "提单号";
+            this.PICK_NO.Name = "PICK_NO";
+            this.PICK_NO.ReadOnly = true;
+            this.PICK_NO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PICK_NO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.PICK_NO.Visible = false;
+            this.PICK_NO.Width = 64;
+            // 
+            // OUTDIA2
+            // 
+            this.OUTDIA2.DataPropertyName = "OUTDIA";
+            this.OUTDIA2.HeaderText = "外径";
+            this.OUTDIA2.Name = "OUTDIA2";
+            this.OUTDIA2.ReadOnly = true;
+            this.OUTDIA2.Visible = false;
+            // 
+            // GROOVE_ACT_X
+            // 
+            this.GROOVE_ACT_X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GROOVE_ACT_X.DataPropertyName = "GROOVE_ACT_X";
+            this.GROOVE_ACT_X.HeaderText = "槽中心点X";
+            this.GROOVE_ACT_X.Name = "GROOVE_ACT_X";
+            this.GROOVE_ACT_X.ReadOnly = true;
+            this.GROOVE_ACT_X.Visible = false;
+            this.GROOVE_ACT_X.Width = 109;
+            // 
+            // GROOVE_ACT_Y
+            // 
+            this.GROOVE_ACT_Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GROOVE_ACT_Y.DataPropertyName = "GROOVE_ACT_Y";
+            this.GROOVE_ACT_Y.HeaderText = "槽中心点Y";
+            this.GROOVE_ACT_Y.Name = "GROOVE_ACT_Y";
+            this.GROOVE_ACT_Y.ReadOnly = true;
+            this.GROOVE_ACT_Y.Visible = false;
+            this.GROOVE_ACT_Y.Width = 109;
+            // 
+            // GROOVE_ACT_Z
+            // 
+            this.GROOVE_ACT_Z.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GROOVE_ACT_Z.DataPropertyName = "GROOVE_ACT_Z";
+            this.GROOVE_ACT_Z.HeaderText = "槽中心点Z";
+            this.GROOVE_ACT_Z.Name = "GROOVE_ACT_Z";
+            this.GROOVE_ACT_Z.ReadOnly = true;
+            this.GROOVE_ACT_Z.Visible = false;
+            this.GROOVE_ACT_Z.Width = 109;
+            // 
             // SelectCoilByL3Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1280, 700);
+            this.ClientSize = new System.Drawing.Size(1920, 1050);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SelectCoilByL3Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "材料选择画面";
@@ -883,15 +1013,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn CHECK_COLUMN2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GROOVEID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn COIL_NO2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PICK_NO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn WEIGHT2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OUTDIA2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GROOVE_ACT_X;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GROOVE_ACT_Y;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GROOVE_ACT_Z;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Panel panel4;
@@ -922,11 +1043,14 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CHECK_COLUMN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CNAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CAR_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn PLAN_NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CODE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WEIGHT;
         private System.Windows.Forms.DataGridViewTextBoxColumn COIL_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn STOCK_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn BAY_NO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn WEIGHT;
         private System.Windows.Forms.DataGridViewTextBoxColumn ACT_WEIGHT;
         private System.Windows.Forms.DataGridViewTextBoxColumn ACT_WIDTH;
         private System.Windows.Forms.DataGridViewTextBoxColumn OUTDIA;
@@ -938,5 +1062,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn X_CENTER;
         private System.Windows.Forms.DataGridViewTextBoxColumn Y_CENTER;
         private System.Windows.Forms.DataGridViewTextBoxColumn Z_CENTER;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CHECK_COLUMN2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GROOVEID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CNAME2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PLAN_NO2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CODE2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WEIGHT2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn COIL_NO2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PICK_NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OUTDIA2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GROOVE_ACT_X;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GROOVE_ACT_Y;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GROOVE_ACT_Z;
     }
 }
