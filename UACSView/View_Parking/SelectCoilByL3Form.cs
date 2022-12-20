@@ -929,21 +929,21 @@ namespace UACSParking
                     return;
                 }
 
-                bool flag = false;
-                foreach (DataGridViewRow dgvRows in dataGridView2.Rows)
-                {
+                //bool flag = false;
+                //foreach (DataGridViewRow dgvRows in dataGridView2.Rows)
+                //{
                     
-                    if (dgvRows.Cells["COIL_NO2"].Value.ToString() != "")
-                    {
-                        flag = true;
-                        break;
-                    }
-                }
-                if(flag == false)
-                {
-                    MessageBox.Show("请选择钢卷！");
-                    return;
-                }
+                //    if (dgvRows.Cells["COIL_NO2"].Value.ToString() != "")
+                //    {
+                //        flag = true;
+                //        break;
+                //    }
+                //}
+                //if(flag == false)
+                //{
+                //    MessageBox.Show("请选择钢卷！");
+                //    return;
+                //}
                 
                 #region    社会车卷径干涉判断  材料号输入0不判断
                 if (( carType == "101" || carType == "103") && txtGetMat.Text.Trim()!="0")                    //开关
@@ -1038,15 +1038,15 @@ namespace UACSParking
                 #endregion
 
                 #region 钢卷多库位判断
-                string temp;
-                if(checkMatNOCount(out temp))
-                {
-                    DialogResult dr = MessageBox.Show(string.Format("所选钢卷存在多库位或者卷信息有误：\r\n{0}！继续请先确认钢卷信息。", temp), "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (dr != System.Windows.Forms.DialogResult.Yes)
-                    {
-                        return;
-                    }
-                }
+                //string temp;
+                //if(checkMatNOCount(out temp))
+                //{
+                //    DialogResult dr = MessageBox.Show(string.Format("所选钢卷存在多库位或者卷信息有误：\r\n{0}！继续请先确认钢卷信息。", temp), "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                //    if (dr != System.Windows.Forms.DialogResult.Yes)
+                //    {
+                //        return;
+                //    }
+                //}
 
 
                 #endregion
@@ -1633,22 +1633,28 @@ namespace UACSParking
         {
             try
             {
-                string matNo = "";  //材料号
-                string pickNo = ""; //提单号
-                string coilwidth = "";
-                string coilweight = "";
-                string coilOutdia = "";
+                //string matNo = "";  //材料号
+                //string pickNo = ""; //提单号
+                //string coilwidth = "";
+                //string coilweight = "";
+                //string coilOutdia = "";
 
                 string MAT_CNAME2 = "";  //物料名称
+                string CAR_NO2 = "";     //车号
                 string PLAN_NO2 = "";    //计划号
                 string MAT_CODE2 = "";   //物料编号
                 string WEIGHT2 = "";     //重量
 
                 //全选
-                if (selectAllCoils())
+                //if (selectAllCoils())
+                //{
+                //    txtCoilsWeight.Text = string.Format("{0} /公斤", coilsWeight);
+                //    return;
+                //}
+                DataTable dtDGV2 = InitDataTable(dataGridView2);
+                foreach (DataGridViewRow item in dataGridView2.Rows)
                 {
-                    txtCoilsWeight.Text = string.Format("{0} /公斤", coilsWeight);
-                    return;
+                    dtDGV2.Rows.Add(0, item.Cells["MAT_CNAME2"].Value.ToString(), item.Cells["CAR_NO2"].Value.ToString(), item.Cells["PLAN_NO2"].Value.ToString(), item.Cells["MAT_CODE2"].Value.ToString(), item.Cells["WEIGHT2"].Value.ToString());
                 }
                 //检测所选材料是否为单选
                 for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
@@ -1657,123 +1663,155 @@ namespace UACSParking
                     bool hasChecked = (bool)dataGridView1.Rows[i].Cells["CHECK_COLUMN"].EditedFormattedValue;
                     if (hasChecked)
                     {
-                        matNo = dataGridView1.Rows[i].Cells["COIL_NO"].Value.ToString();            //材料号
-                        pickNo = dataGridView1.Rows[i].Cells["PLAN_NO"].Value.ToString();           //计划号
-                        coilweight = dataGridView1.Rows[i].Cells["ACT_WEIGHT"].Value.ToString();        //重量
-                        coilOutdia = dataGridView1.Rows[i].Cells["OUTDIA"].Value.ToString();        //外径
-                        coilwidth = dataGridView1.Rows[i].Cells["ACT_WIDTH"].Value.ToString();          //宽度
+                        //matNo = dataGridView1.Rows[i].Cells["COIL_NO"].Value.ToString();            //材料号
+                        //pickNo = dataGridView1.Rows[i].Cells["PLAN_NO"].Value.ToString();           //计划号
+                        //coilweight = dataGridView1.Rows[i].Cells["ACT_WEIGHT"].Value.ToString();        //重量
+                        //coilOutdia = dataGridView1.Rows[i].Cells["OUTDIA"].Value.ToString();        //外径
+                        //coilwidth = dataGridView1.Rows[i].Cells["ACT_WIDTH"].Value.ToString();          //宽度
 
                         MAT_CNAME2 = dataGridView1.Rows[i].Cells["MAT_CNAME"].Value.ToString(); //物料名称
+                        CAR_NO2 = dataGridView1.Rows[i].Cells["CAR_NO"].Value.ToString();       //车号
                         PLAN_NO2 = dataGridView1.Rows[i].Cells["PLAN_NO"].Value.ToString();     //计划号
                         MAT_CODE2 = dataGridView1.Rows[i].Cells["MAT_CODE"].Value.ToString();   //物料编号
-                        WEIGHT2 = dataGridView1.Rows[i].Cells["WEIGHT"].Value.ToString();       //重量
+                        WEIGHT2 = dataGridView1.Rows[i].Cells["WEIGHT"].Value.ToString();       //重量                                              
+
+                        dtDGV2.Rows.Add(1, MAT_CNAME2, CAR_NO2, PLAN_NO2, MAT_CODE2, WEIGHT2);
 
                         //count++;
                         //消除打钩
-                        this.dataGridView1.Rows[i].Cells["CHECK_COLUMN"].Value = 0;
-                        break;
+                        //this.dataGridView1.Rows[i].Cells["CHECK_COLUMN"].Value = 0;
+                        //this.dataGridView1.Rows.RemoveAt(i);
+                        //break;
                     }
                 }
 
-                //判断材料号是否相同
-                foreach (DataGridViewRow item in dataGridView2.Rows)
+                //删除已选中的数据
+                for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
                 {
-                    if (item.Cells["COIL_NO2"].Value.ToString() != "")
+                    bool hasChecked = (bool)dataGridView1.Rows[i].Cells["CHECK_COLUMN"].EditedFormattedValue;
+                    if (hasChecked)
                     {
-                        if (item.Cells["COIL_NO2"].Value.ToString() == matNo)
-                        {
-                            MessageBox.Show(string.Format("该材料:{0}已经选择，请重新选择材料号！", matNo));
-                            return;
-                        }
+                        this.dataGridView1.Rows.RemoveAt(i);
+                        i--;
                     }
                 }
+
+                this.dataGridView2.DataSource = dtDGV2;
+
+                #region 判断
+                ////判断材料号是否相同
+                //foreach (DataGridViewRow item in dataGridView2.Rows)
+                //{
+                //    if (item.Cells["COIL_NO2"].Value.ToString() != "")
+                //    {
+                //        if (item.Cells["COIL_NO2"].Value.ToString() == matNo)
+                //        {
+                //            MessageBox.Show(string.Format("该材料:{0}已经选择，请重新选择材料号！", matNo));
+                //            return;
+                //        }
+                //    }
+                //}
                 //if (((DataTable)dataGridView2.DataSource).Rows.Count==0)
                 //{
                 //    MessageBox.Show("扫描槽号结果为空。");
                 //    return;
                 //}
 
-                for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
-                {
-                    bool hasChecked2 = (bool)dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].EditedFormattedValue;
-                    if (hasChecked2)
-                    {
-                        if (coilwidth != "")
-                            coilWidth = Convert.ToInt32(coilwidth);
-                        if (carType == "102")
-                        {
-                            if (coilWidth < 900)//卷宽小于900
-                            {
+                //for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
+                //{
+                //    bool hasChecked2 = (bool)dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].EditedFormattedValue;
+                //    if (hasChecked2)
+                //    {
+                //        if (coilwidth != "")
+                //            coilWidth = Convert.ToInt32(coilwidth);
+                //        if (carType == "102")
+                //        {
+                //            if (coilWidth < 900)//卷宽小于900
+                //            {
 
-                                MessageBox.Show("大头车选卷钢卷宽度不允许小于900mm，请重新选卷");
-                                return;
-                            }
-                        }
+                //                MessageBox.Show("大头车选卷钢卷宽度不允许小于900mm，请重新选卷");
+                //                return;
+                //            }
+                //        }
 
-                        //显示钢卷中重量
-                        //coilsWeight += GetCoilWeight(matNo);
-                        if (coilweight != "")
-                            coilsWeight += Convert.ToInt32(coilweight);
-                        if (carType == "102")
-                        {
-                            if (coilsWeight >= 60000)//大于60吨报警
-                            {
-                                //txtCoilsWeight.BackColor = Color.Red;
-                                MessageBox.Show("大头车选卷不允许超过60吨，请重新选卷");
-                                coilsWeight -= Convert.ToInt32(coilweight);
-                                return;
-                            }
-                            else if (0 < coilsWeight && coilsWeight < 60000)
-                            {
-                                txtCoilsWeight.BackColor = Color.White;
-                            }
-                        }
-                        else
-                        {
-                            if (coilsWeight >= 50000)//大于50吨报警
-                            {
-                                txtCoilsWeight.BackColor = Color.Red;
-                                //return;                               
-                            }
-                            else if (0 < coilsWeight && coilsWeight < 50000)
-                            {
-                                txtCoilsWeight.BackColor = Color.White;
-                            }
-                        }
-                        //if (coilsWeight >= 50000)//大于50吨报警
-                        //{
-                        //    txtCoilsWeight.BackColor = Color.Red;
-                        //    //return;                               
-                        //}
-                        //else if (0 < coilsWeight && coilsWeight < 50000)
-                        //{
-                        //    txtCoilsWeight.BackColor = Color.White;
-                        //}
-                        this.dataGridView2.Rows[i].Cells["COIL_NO2"].Value = matNo;
-                        this.dataGridView2.Rows[i].Cells["PICK_NO"].Value = pickNo;
-                        this.dataGridView2.Rows[i].Cells["WEIGHT2"].Value = coilweight;
-                        this.dataGridView2.Rows[i].Cells["OUTDIA2"].Value = coilOutdia;
-
-                        
+                //        //显示钢卷中重量
+                //        //coilsWeight += GetCoilWeight(matNo);
+                //        if (coilweight != "")
+                //            coilsWeight += Convert.ToInt32(coilweight);
+                //        if (carType == "102")
+                //        {
+                //            if (coilsWeight >= 60000)//大于60吨报警
+                //            {
+                //                //txtCoilsWeight.BackColor = Color.Red;
+                //                MessageBox.Show("大头车选卷不允许超过60吨，请重新选卷");
+                //                coilsWeight -= Convert.ToInt32(coilweight);
+                //                return;
+                //            }
+                //            else if (0 < coilsWeight && coilsWeight < 60000)
+                //            {
+                //                txtCoilsWeight.BackColor = Color.White;
+                //            }
+                //        }
+                //        else
+                //        {
+                //            if (coilsWeight >= 50000)//大于50吨报警
+                //            {
+                //                txtCoilsWeight.BackColor = Color.Red;
+                //                //return;                               
+                //            }
+                //            else if (0 < coilsWeight && coilsWeight < 50000)
+                //            {
+                //                txtCoilsWeight.BackColor = Color.White;
+                //            }
+                //        }
+                //        //if (coilsWeight >= 50000)//大于50吨报警
+                //        //{
+                //        //    txtCoilsWeight.BackColor = Color.Red;
+                //        //    //return;                               
+                //        //}
+                //        //else if (0 < coilsWeight && coilsWeight < 50000)
+                //        //{
+                //        //    txtCoilsWeight.BackColor = Color.White;
+                //        //}
+                //        this.dataGridView2.Rows[i].Cells["COIL_NO2"].Value = matNo;
+                //        this.dataGridView2.Rows[i].Cells["PICK_NO"].Value = pickNo;
+                //        this.dataGridView2.Rows[i].Cells["WEIGHT2"].Value = coilweight;
+                //        this.dataGridView2.Rows[i].Cells["OUTDIA2"].Value = coilOutdia;
 
 
-                        //消除打钩
-                        this.dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].Value = 0;
-                        break;
-                    }
-                }
 
 
-                if (((DataTable)dataGridView2.DataSource).Rows.Count == 0)
-                {
-                    //this.dataGridView2.Rows[1].Cells["MAT_CNAME2"].Value = MAT_CNAME2; //物料名称
-                    //this.dataGridView2.Rows[1].Cells["PLAN_NO2"].Value = PLAN_NO2;     //计划号
-                    //this.dataGridView2.Rows[1].Cells["MAT_CODE2"].Value = MAT_CODE2;   //物料编号
-                    //this.dataGridView2.Rows[1].Cells["WEIGHT2"].Value = WEIGHT2;       //重量
-                    //this.dataGridView2.Rows.Add(1);
-                    //string[] row0 = { "0", MAT_CNAME2, MAT_CODE2, MAT_CODE2, WEIGHT2 };
-                    //this.dataGridView2.Rows.Add(row0);
-                }
+                //        //消除打钩
+                //        this.dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].Value = 0;
+                //        break;
+                //    }
+                //} 
+                #endregion
+
+
+                //if (((DataTable)dataGridView2.DataSource).Rows.Count == 0)
+                //{
+                //    DataTable dtDGV2 = InitDataTable(dataGridView2);
+
+                //    dtDGV2.Rows.Add(0, MAT_CNAME2, CAR_NO2, PLAN_NO2, MAT_CODE2, WEIGHT2);
+
+                //    this.dataGridView2.DataSource = dtDGV2;
+
+
+                //int index = this.dataGridView2.Rows.Add();
+                //this.dataGridView2.Rows[index].Cells["MAT_CNAME2"].Value = MAT_CNAME2; //物料名称
+                //this.dataGridView2.Rows[index].Cells["PLAN_NO2"].Value = PLAN_NO2;     //计划号
+                //this.dataGridView2.Rows[index].Cells["MAT_CODE2"].Value = MAT_CODE2;   //物料编号
+                //this.dataGridView2.Rows[index].Cells["WEIGHT2"].Value = WEIGHT2;       //重量
+
+                //this.dataGridView2.Rows[1].Cells["MAT_CNAME2"].Value = MAT_CNAME2; //物料名称
+                //this.dataGridView2.Rows[1].Cells["PLAN_NO2"].Value = PLAN_NO2;     //计划号
+                //this.dataGridView2.Rows[1].Cells["MAT_CODE2"].Value = MAT_CODE2;   //物料编号
+                //this.dataGridView2.Rows[1].Cells["WEIGHT2"].Value = WEIGHT2;       //重量
+                //this.dataGridView2.Rows.Add(1);
+                //string[] row0 = { "0", MAT_CNAME2, MAT_CODE2, MAT_CODE2, WEIGHT2 };
+                //this.dataGridView2.Rows.Add(row0);
+                //}
 
                 txtCoilsWeight.Text = string.Format("{0} /公斤", coilsWeight);
                 txtBoxStockNO.Focus();
@@ -1905,21 +1943,21 @@ namespace UACSParking
                     //checkbox.Checked = false;
                     ((DataGridView)sender).Rows[e.RowIndex].Cells[0].Value = !(bool)dataGridView1.Rows[e.RowIndex].Cells[0].EditedFormattedValue; ;
                 }
-                if (((DataTable)dataGridView2.DataSource).Rows.Count > 0)
-                {
-                    foreach (DataGridViewRow item2 in dataGridView2.Rows)
-                    {
-                        if (item2.Cells["COIL_NO2"].Value.ToString() == "")
-                        {
-                            item2.Cells[0].Value = true;
-                            return;
-                        }
-                        else
-                        {
-                            item2.Cells[0].Value = false;
-                        }
-                    }
-                }
+                //if (((DataTable)dataGridView2.DataSource).Rows.Count > 0)
+                //{
+                //    foreach (DataGridViewRow item2 in dataGridView2.Rows)
+                //    {
+                //        if (item2.Cells["COIL_NO2"].Value.ToString() == "")
+                //        {
+                //            item2.Cells[0].Value = true;
+                //            return;
+                //        }
+                //        else
+                //        {
+                //            item2.Cells[0].Value = false;
+                //        }
+                //    }
+                //}
             }
             catch (Exception ex)
             {
@@ -1933,25 +1971,55 @@ namespace UACSParking
         {
             try
             {
-                for (int i = this.dataGridView2.Rows.Count - 1; i >= 0; i--)
+                //for (int i = this.dataGridView2.Rows.Count - 1; i >= 0; i--)
+                //{
+                //    //string  hasChecked = this.dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].Value.ToString();
+                //    //string coilNo = this.dataGridView2.Rows[i].Cells["COIL_NO2"].Value.ToString();
+                //    bool hasChecked = (bool)this.dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].EditedFormattedValue;
+                //    if (hasChecked)
+                //    {
+                //        coilsWeight -= Convert.ToInt32(dataGridView2.Rows[i].Cells["WEIGHT2"].Value);
+                //        this.dataGridView2.Rows[i].Cells["COIL_NO2"].Value = "";
+                //        this.dataGridView2.Rows[i].Cells["PICK_NO"].Value = "";
+                //        dataGridView2.Rows[i].Cells["WEIGHT2"].Value = "";         //重量
+                //        dataGridView2.Rows[i].Cells["OUTDIA2"].Value = "";        //外径
+
+                //        //消除打钩
+
+                //        this.dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].Value = 0;
+                //        break;
+                //    }
+                //}
+
+                //保存原有数据
+                DataTable dtDGV1 = InitDataTable(dataGridView1);
+                foreach (DataGridViewRow item in dataGridView1.Rows)
                 {
-                    //string  hasChecked = this.dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].Value.ToString();
-                    //string coilNo = this.dataGridView2.Rows[i].Cells["COIL_NO2"].Value.ToString();
-                    bool hasChecked = (bool)this.dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].EditedFormattedValue;
+                    dtDGV1.Rows.Add(0, item.Cells["MAT_CNAME"].Value.ToString(), item.Cells["CAR_NO"].Value.ToString(), item.Cells["PLAN_NO"].Value.ToString(), item.Cells["MAT_CODE"].Value.ToString(), item.Cells["WEIGHT"].Value.ToString());
+                }
+                //gv1添加新选中数据
+                foreach (DataGridViewRow item in dataGridView2.Rows)
+                {
+                    bool hasChecked = (bool)item.Cells["CHECK_COLUMN2"].EditedFormattedValue;
                     if (hasChecked)
                     {
-                        coilsWeight -= Convert.ToInt32(dataGridView2.Rows[i].Cells["WEIGHT2"].Value);
-                        this.dataGridView2.Rows[i].Cells["COIL_NO2"].Value = "";
-                        this.dataGridView2.Rows[i].Cells["PICK_NO"].Value = "";
-                        dataGridView2.Rows[i].Cells["WEIGHT2"].Value = "";         //重量
-                        dataGridView2.Rows[i].Cells["OUTDIA2"].Value = "";        //外径
-
-                        //消除打钩
-
-                        this.dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].Value = 0;
-                        break;
+                        dtDGV1.Rows.Add(1, item.Cells["MAT_CNAME2"].Value.ToString(), item.Cells["CAR_NO2"].Value.ToString(), item.Cells["PLAN_NO2"].Value.ToString(), item.Cells["MAT_CODE2"].Value.ToString(), item.Cells["WEIGHT2"].Value.ToString());
+                    }                    
+                }
+                //删除gv2已选中的数据
+                for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
+                {
+                    bool hasChecked = (bool)dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].EditedFormattedValue;
+                    if (hasChecked)
+                    {
+                        this.dataGridView2.Rows.RemoveAt(i);
+                        i--;
                     }
                 }
+                //加载数据
+                this.dataGridView1.DataSource = dtDGV1;
+
+
                 // this.dataGridView2.DataSource = dt_selected;
                 txtCoilsWeight.Text = string.Format("{0} /公斤", coilsWeight);
                 txtCoilsWeight.BackColor = Color.White;
