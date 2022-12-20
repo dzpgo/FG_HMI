@@ -30,6 +30,9 @@ namespace UACSParking
         //int coilsDistance = 0;  //半径距离
         //int x_coil1 = 0;
         //int x_coil2 = 0;
+        /// <summary>
+        /// //车辆类型
+        /// </summary>
         string carType;
 
         public string CarType
@@ -1057,19 +1060,34 @@ namespace UACSParking
                 string stowageNo = "";
                 int currengMdlCalId = 0;
                 long LASER_ACTION_COUNT = 0;
-                string sqlText = @"SELECT TREATMENT_NO, STOWAGE_ID, MDL_CAL_ID, LASER_ACTION_COUNT FROM UACS_PARKING_STATUS where PARKING_NO = '{0}'";
+                //string sqlText = @"SELECT TREATMENT_NO, STOWAGE_ID, MDL_CAL_ID, LASER_ACTION_COUNT FROM UACS_PARKING_WORK_STATUS where PARKING_NO = '{0}'";
+                string sqlText = @"SELECT TREATMENT_NO, STOWAGE_ID, CAR_NO, CAR_TYPE, LASER_ACTION_COUNT FROM UACS_PARKING_WORK_STATUS where PARKING_NO = '{0}'";
                 sqlText = string.Format(sqlText, parkingNo);
                 using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
                 {
                     if (rdr.Read())
                     {
+                        //treatmentNo = rdr["TREATMENT_NO"].ToString();
+                        //LASER_ACTION_COUNT = Convert.ToInt64(rdr["LASER_ACTION_COUNT"].ToString());
+
+                        //stowageNo = rdr["STOWAGE_ID"].ToString();
+                        //if (rdr["MDL_CAL_ID"] != DBNull.Value)
+                        //{
+                        //    currengMdlCalId = (int)rdr["MDL_CAL_ID"];
+                        //}
+
                         treatmentNo = rdr["TREATMENT_NO"].ToString();
                         LASER_ACTION_COUNT = Convert.ToInt64(rdr["LASER_ACTION_COUNT"].ToString());
 
                         stowageNo = rdr["STOWAGE_ID"].ToString();
-                        if (rdr["MDL_CAL_ID"] != DBNull.Value)
+                        if (rdr["CAR_NO"] != DBNull.Value)
                         {
-                            currengMdlCalId = (int)rdr["MDL_CAL_ID"];
+                            currengMdlCalId = Convert.ToInt32(rdr["CAR_NO"].ToString());                            
+                        }
+
+                        if (!string.IsNullOrEmpty(rdr["CAR_TYPE"].ToString()))
+                        {
+                            carType = rdr["CAR_TYPE"].ToString();  //车辆类型
                         }
                     }
                 }
@@ -1157,18 +1175,24 @@ namespace UACSParking
                 //发送tag
                 myValue = myValue.Substring(0, myValue.Length - 1);
 
-                if (carType == "101" || carType == "103")
-                {
-                    tagDP.SetData("EV_NEW_PARKING_MDL_OUT_CAL_JUDGE", myValue);
+                //if (carType == "101" || carType == "103")
+                //{
+                //    tagDP.SetData("EV_NEW_PARKING_MDL_OUT_CAL_JUDGE", myValue);
 
-                }
-                else if (carType == "100" || carType == "102" || carType == "106")
+                //}
+                //else if (carType == "100" || carType == "102" || carType == "106")
+                //{
+                //    tagDP.SetData("EV_PARKING_MDL_OUT_CAL_START", myValue);
+                //}
+
+                if (carType == "0" || carType == "1" || carType == "2")
                 {
                     tagDP.SetData("EV_PARKING_MDL_OUT_CAL_START", myValue);
                 }
 
                 //更新模型计算次数
-                sqlText = @"UPDATE UACS_PARKING_STATUS SET MDL_CAL_ID = {0} where PARKING_NO = '{1}'";
+                //sqlText = @"UPDATE UACS_PARKING_STATUS SET MDL_CAL_ID = {0} where PARKING_NO = '{1}'";
+                sqlText = @"UPDATE UACS_PARKING_WORK_STATUS SET CAR_NO = {0} where PARKING_NO = '{1}'";
                 sqlText = string.Format(sqlText, mdlCalId, parkingNo);
                 DBHelper.ExecuteNonQuery(sqlText);
                 if (carType == "101" || carType == "103")
