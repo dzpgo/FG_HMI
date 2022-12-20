@@ -40,11 +40,14 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.CHECK_COLUMN = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.MAT_CNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CAR_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PLAN_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WEIGHT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.COIL_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.STOCK_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BAY_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WEIGHT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ACT_WEIGHT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ACT_WIDTH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OUTDIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,15 +61,6 @@
             this.Z_CENTER = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.CHECK_COLUMN2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.GROOVEID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.COIL_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PICK_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WEIGHT2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OUTDIA2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GROOVE_ACT_X = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GROOVE_ACT_Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GROOVE_ACT_Z = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBox_LotNo = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -97,6 +91,19 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
+            this.CHECK_COLUMN2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.MAT_CNAME2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CAR_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PLAN_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_CODE2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WEIGHT2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GROOVEID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.COIL_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PICK_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OUTDIA2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GROOVE_ACT_X = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GROOVE_ACT_Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GROOVE_ACT_Z = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -161,11 +168,14 @@
             this.dataGridView1.ColumnHeadersHeight = 29;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CHECK_COLUMN,
+            this.MAT_CNAME,
+            this.CAR_NO,
             this.PLAN_NO,
+            this.MAT_CODE,
+            this.WEIGHT,
             this.COIL_NO,
             this.STOCK_NO,
             this.BAY_NO,
-            this.WEIGHT,
             this.ACT_WEIGHT,
             this.ACT_WIDTH,
             this.OUTDIA,
@@ -211,41 +221,40 @@
             this.CHECK_COLUMN.TrueValue = "1";
             this.CHECK_COLUMN.Width = 80;
             // 
+            // MAT_CNAME
+            // 
+            this.MAT_CNAME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MAT_CNAME.DataPropertyName = "MAT_CNAME";
+            this.MAT_CNAME.Frozen = true;
+            this.MAT_CNAME.HeaderText = "物料名称";
+            this.MAT_CNAME.Name = "MAT_CNAME";
+            this.MAT_CNAME.ReadOnly = true;
+            this.MAT_CNAME.Width = 99;
+            // 
+            // CAR_NO
+            // 
+            this.CAR_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CAR_NO.DataPropertyName = "CAR_NO";
+            this.CAR_NO.HeaderText = "车号";
+            this.CAR_NO.Name = "CAR_NO";
+            this.CAR_NO.ReadOnly = true;
+            this.CAR_NO.Width = 67;
+            // 
             // PLAN_NO
             // 
+            this.PLAN_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.PLAN_NO.DataPropertyName = "PLAN_NO";
-            this.PLAN_NO.Frozen = true;
-            this.PLAN_NO.HeaderText = "发货单号";
+            this.PLAN_NO.HeaderText = "计划号";
             this.PLAN_NO.Name = "PLAN_NO";
-            this.PLAN_NO.Width = 150;
+            this.PLAN_NO.Width = 83;
             // 
-            // COIL_NO
+            // MAT_CODE
             // 
-            this.COIL_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.COIL_NO.DataPropertyName = "COIL_NO";
-            this.COIL_NO.Frozen = true;
-            this.COIL_NO.HeaderText = "材料号";
-            this.COIL_NO.Name = "COIL_NO";
-            this.COIL_NO.ReadOnly = true;
-            this.COIL_NO.Width = 83;
-            // 
-            // STOCK_NO
-            // 
-            this.STOCK_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.STOCK_NO.DataPropertyName = "STOCK_NO";
-            this.STOCK_NO.HeaderText = "库位号";
-            this.STOCK_NO.Name = "STOCK_NO";
-            this.STOCK_NO.ReadOnly = true;
-            this.STOCK_NO.Width = 83;
-            // 
-            // BAY_NO
-            // 
-            this.BAY_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.BAY_NO.DataPropertyName = "BAY_NO";
-            this.BAY_NO.HeaderText = "跨号";
-            this.BAY_NO.Name = "BAY_NO";
-            this.BAY_NO.ReadOnly = true;
-            this.BAY_NO.Width = 67;
+            this.MAT_CODE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MAT_CODE.DataPropertyName = "MAT_CODE";
+            this.MAT_CODE.HeaderText = "物料编号";
+            this.MAT_CODE.Name = "MAT_CODE";
+            this.MAT_CODE.Width = 99;
             // 
             // WEIGHT
             // 
@@ -256,6 +265,36 @@
             this.WEIGHT.ReadOnly = true;
             this.WEIGHT.Width = 67;
             // 
+            // COIL_NO
+            // 
+            this.COIL_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.COIL_NO.DataPropertyName = "COIL_NO";
+            this.COIL_NO.HeaderText = "材料号";
+            this.COIL_NO.Name = "COIL_NO";
+            this.COIL_NO.ReadOnly = true;
+            this.COIL_NO.Visible = false;
+            this.COIL_NO.Width = 150;
+            // 
+            // STOCK_NO
+            // 
+            this.STOCK_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.STOCK_NO.DataPropertyName = "STOCK_NO";
+            this.STOCK_NO.HeaderText = "库位号";
+            this.STOCK_NO.Name = "STOCK_NO";
+            this.STOCK_NO.ReadOnly = true;
+            this.STOCK_NO.Visible = false;
+            this.STOCK_NO.Width = 83;
+            // 
+            // BAY_NO
+            // 
+            this.BAY_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BAY_NO.DataPropertyName = "BAY_NO";
+            this.BAY_NO.HeaderText = "跨号";
+            this.BAY_NO.Name = "BAY_NO";
+            this.BAY_NO.ReadOnly = true;
+            this.BAY_NO.Visible = false;
+            this.BAY_NO.Width = 67;
+            // 
             // ACT_WEIGHT
             // 
             this.ACT_WEIGHT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -263,6 +302,7 @@
             this.ACT_WEIGHT.HeaderText = "实测重量";
             this.ACT_WEIGHT.Name = "ACT_WEIGHT";
             this.ACT_WEIGHT.ReadOnly = true;
+            this.ACT_WEIGHT.Visible = false;
             this.ACT_WEIGHT.Width = 99;
             // 
             // ACT_WIDTH
@@ -272,6 +312,7 @@
             this.ACT_WIDTH.HeaderText = "实测宽度";
             this.ACT_WIDTH.Name = "ACT_WIDTH";
             this.ACT_WIDTH.ReadOnly = true;
+            this.ACT_WIDTH.Visible = false;
             this.ACT_WIDTH.Width = 99;
             // 
             // OUTDIA
@@ -281,6 +322,7 @@
             this.OUTDIA.HeaderText = "外径";
             this.OUTDIA.Name = "OUTDIA";
             this.OUTDIA.ReadOnly = true;
+            this.OUTDIA.Visible = false;
             this.OUTDIA.Width = 67;
             // 
             // LOT_NO
@@ -289,6 +331,7 @@
             this.LOT_NO.HeaderText = "提单号";
             this.LOT_NO.Name = "LOT_NO";
             this.LOT_NO.ReadOnly = true;
+            this.LOT_NO.Visible = false;
             // 
             // SHIP_NAME
             // 
@@ -296,6 +339,7 @@
             this.SHIP_NAME.HeaderText = "船名";
             this.SHIP_NAME.Name = "SHIP_NAME";
             this.SHIP_NAME.ReadOnly = true;
+            this.SHIP_NAME.Visible = false;
             // 
             // WIDTH
             // 
@@ -304,6 +348,7 @@
             this.WIDTH.HeaderText = "宽度";
             this.WIDTH.Name = "WIDTH";
             this.WIDTH.ReadOnly = true;
+            this.WIDTH.Visible = false;
             this.WIDTH.Width = 67;
             // 
             // INDIA
@@ -313,6 +358,7 @@
             this.INDIA.HeaderText = "内径";
             this.INDIA.Name = "INDIA";
             this.INDIA.ReadOnly = true;
+            this.INDIA.Visible = false;
             this.INDIA.Width = 67;
             // 
             // PACK_CODE
@@ -320,6 +366,7 @@
             this.PACK_CODE.DataPropertyName = "PACK_CODE";
             this.PACK_CODE.HeaderText = "包装代码";
             this.PACK_CODE.Name = "PACK_CODE";
+            this.PACK_CODE.Visible = false;
             // 
             // X_CENTER
             // 
@@ -328,6 +375,7 @@
             this.X_CENTER.HeaderText = "X";
             this.X_CENTER.Name = "X_CENTER";
             this.X_CENTER.ReadOnly = true;
+            this.X_CENTER.Visible = false;
             this.X_CENTER.Width = 45;
             // 
             // Y_CENTER
@@ -337,6 +385,7 @@
             this.Y_CENTER.HeaderText = "Y";
             this.Y_CENTER.Name = "Y_CENTER";
             this.Y_CENTER.ReadOnly = true;
+            this.Y_CENTER.Visible = false;
             this.Y_CENTER.Width = 45;
             // 
             // Z_CENTER
@@ -346,6 +395,7 @@
             this.Z_CENTER.HeaderText = "Z";
             this.Z_CENTER.Name = "Z_CENTER";
             this.Z_CENTER.ReadOnly = true;
+            this.Z_CENTER.Visible = false;
             this.Z_CENTER.Width = 45;
             // 
             // panel2
@@ -377,10 +427,14 @@
             this.dataGridView2.ColumnHeadersHeight = 29;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CHECK_COLUMN2,
+            this.MAT_CNAME2,
+            this.CAR_NO2,
+            this.PLAN_NO2,
+            this.MAT_CODE2,
+            this.WEIGHT2,
             this.GROOVEID,
             this.COIL_NO2,
             this.PICK_NO,
-            this.WEIGHT2,
             this.OUTDIA2,
             this.GROOVE_ACT_X,
             this.GROOVE_ACT_Y,
@@ -404,87 +458,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(528, 548);
             this.dataGridView2.TabIndex = 25;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            // 
-            // CHECK_COLUMN2
-            // 
-            this.CHECK_COLUMN2.DataPropertyName = "CHECK_COLUMN2";
-            this.CHECK_COLUMN2.FalseValue = "0";
-            this.CHECK_COLUMN2.Frozen = true;
-            this.CHECK_COLUMN2.HeaderText = "选择";
-            this.CHECK_COLUMN2.Name = "CHECK_COLUMN2";
-            this.CHECK_COLUMN2.TrueValue = "1";
-            this.CHECK_COLUMN2.Width = 60;
-            // 
-            // GROOVEID
-            // 
-            this.GROOVEID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GROOVEID.DataPropertyName = "GROOVEID";
-            this.GROOVEID.HeaderText = "槽号";
-            this.GROOVEID.Name = "GROOVEID";
-            this.GROOVEID.ReadOnly = true;
-            this.GROOVEID.Width = 67;
-            // 
-            // COIL_NO2
-            // 
-            this.COIL_NO2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.COIL_NO2.DataPropertyName = "COIL_NO2";
-            this.COIL_NO2.HeaderText = "材料号";
-            this.COIL_NO2.Name = "COIL_NO2";
-            this.COIL_NO2.ReadOnly = true;
-            this.COIL_NO2.Width = 150;
-            // 
-            // PICK_NO
-            // 
-            this.PICK_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.PICK_NO.DataPropertyName = "PICK_NO";
-            this.PICK_NO.HeaderText = "提单号";
-            this.PICK_NO.Name = "PICK_NO";
-            this.PICK_NO.ReadOnly = true;
-            this.PICK_NO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.PICK_NO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.PICK_NO.Width = 150;
-            // 
-            // WEIGHT2
-            // 
-            this.WEIGHT2.DataPropertyName = "WEIGHT";
-            this.WEIGHT2.HeaderText = "重量";
-            this.WEIGHT2.Name = "WEIGHT2";
-            this.WEIGHT2.ReadOnly = true;
-            // 
-            // OUTDIA2
-            // 
-            this.OUTDIA2.DataPropertyName = "OUTDIA";
-            this.OUTDIA2.HeaderText = "外径";
-            this.OUTDIA2.Name = "OUTDIA2";
-            this.OUTDIA2.ReadOnly = true;
-            // 
-            // GROOVE_ACT_X
-            // 
-            this.GROOVE_ACT_X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GROOVE_ACT_X.DataPropertyName = "GROOVE_ACT_X";
-            this.GROOVE_ACT_X.HeaderText = "槽中心点X";
-            this.GROOVE_ACT_X.Name = "GROOVE_ACT_X";
-            this.GROOVE_ACT_X.ReadOnly = true;
-            this.GROOVE_ACT_X.Width = 109;
-            // 
-            // GROOVE_ACT_Y
-            // 
-            this.GROOVE_ACT_Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GROOVE_ACT_Y.DataPropertyName = "GROOVE_ACT_Y";
-            this.GROOVE_ACT_Y.HeaderText = "槽中心点Y";
-            this.GROOVE_ACT_Y.Name = "GROOVE_ACT_Y";
-            this.GROOVE_ACT_Y.ReadOnly = true;
-            this.GROOVE_ACT_Y.Width = 109;
-            // 
-            // GROOVE_ACT_Z
-            // 
-            this.GROOVE_ACT_Z.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GROOVE_ACT_Z.DataPropertyName = "GROOVE_ACT_Z";
-            this.GROOVE_ACT_Z.HeaderText = "槽中心点Z";
-            this.GROOVE_ACT_Z.Name = "GROOVE_ACT_Z";
-            this.GROOVE_ACT_Z.ReadOnly = true;
-            this.GROOVE_ACT_Z.Visible = false;
-            this.GROOVE_ACT_Z.Width = 125;
             // 
             // panel4
             // 
@@ -517,6 +490,7 @@
             this.textBox_LotNo.Name = "textBox_LotNo";
             this.textBox_LotNo.Size = new System.Drawing.Size(120, 29);
             this.textBox_LotNo.TabIndex = 47;
+            this.textBox_LotNo.Visible = false;
             // 
             // label9
             // 
@@ -529,6 +503,7 @@
             this.label9.Size = new System.Drawing.Size(62, 21);
             this.label9.TabIndex = 46;
             this.label9.Text = "提单号:";
+            this.label9.Visible = false;
             // 
             // txtGetPlanNo
             // 
@@ -537,6 +512,7 @@
             this.txtGetPlanNo.Name = "txtGetPlanNo";
             this.txtGetPlanNo.Size = new System.Drawing.Size(90, 29);
             this.txtGetPlanNo.TabIndex = 36;
+            this.txtGetPlanNo.Visible = false;
             this.txtGetPlanNo.Click += new System.EventHandler(this.txtGetPlanNo_Click);
             this.txtGetPlanNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtGetPlanNo_KeyDown);
             // 
@@ -600,6 +576,7 @@
             this.txtBoxStockNO.Size = new System.Drawing.Size(90, 29);
             this.txtBoxStockNO.TabIndex = 39;
             this.txtBoxStockNO.Text = "行-列";
+            this.txtBoxStockNO.Visible = false;
             this.txtBoxStockNO.Click += new System.EventHandler(this.txtBoxStockNO_Click);
             this.txtBoxStockNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxStockNO_KeyDown);
             // 
@@ -611,7 +588,7 @@
             this.btnQuery.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnQuery.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuery.ForeColor = System.Drawing.Color.White;
-            this.btnQuery.Location = new System.Drawing.Point(563, 37);
+            this.btnQuery.Location = new System.Drawing.Point(563, 38);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(100, 40);
             this.btnQuery.TabIndex = 37;
@@ -627,6 +604,7 @@
             this.txtGetMat.Name = "txtGetMat";
             this.txtGetMat.Size = new System.Drawing.Size(120, 29);
             this.txtGetMat.TabIndex = 34;
+            this.txtGetMat.Visible = false;
             this.txtGetMat.Click += new System.EventHandler(this.txtGetMat_Click);
             this.txtGetMat.TextChanged += new System.EventHandler(this.txtGetMat_TextChanged);
             this.txtGetMat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtGetMat_KeyDown);
@@ -642,6 +620,7 @@
             this.label2.Size = new System.Drawing.Size(62, 21);
             this.label2.TabIndex = 33;
             this.label2.Text = "材料号:";
+            this.label2.Visible = false;
             // 
             // label3
             // 
@@ -654,6 +633,7 @@
             this.label3.Size = new System.Drawing.Size(78, 21);
             this.label3.TabIndex = 35;
             this.label3.Text = "发货单号:";
+            this.label3.Visible = false;
             // 
             // label1
             // 
@@ -666,6 +646,7 @@
             this.label1.Size = new System.Drawing.Size(74, 21);
             this.label1.TabIndex = 38;
             this.label1.Text = "库位号：";
+            this.label1.Visible = false;
             // 
             // label7
             // 
@@ -673,7 +654,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label7.Location = new System.Drawing.Point(413, 4);
+            this.label7.Location = new System.Drawing.Point(414, 4);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(94, 21);
             this.label7.TabIndex = 44;
@@ -696,7 +677,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(106, 22);
             this.label11.TabIndex = 24;
-            this.label11.Text = "钢卷材料信息";
+            this.label11.Text = "配料计划信息";
             // 
             // panel7
             // 
@@ -822,7 +803,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(419, 36);
+            this.button2.Location = new System.Drawing.Point(418, 36);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 40);
             this.button2.TabIndex = 38;
@@ -846,6 +827,128 @@
             this.btnSubmit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSubmit.UseVisualStyleBackColor = false;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // CHECK_COLUMN2
+            // 
+            this.CHECK_COLUMN2.DataPropertyName = "CHECK_COLUMN2";
+            this.CHECK_COLUMN2.FalseValue = "0";
+            this.CHECK_COLUMN2.Frozen = true;
+            this.CHECK_COLUMN2.HeaderText = "选择";
+            this.CHECK_COLUMN2.Name = "CHECK_COLUMN2";
+            this.CHECK_COLUMN2.TrueValue = "1";
+            this.CHECK_COLUMN2.Width = 60;
+            // 
+            // MAT_CNAME2
+            // 
+            this.MAT_CNAME2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MAT_CNAME2.DataPropertyName = "MAT_CNAME2";
+            this.MAT_CNAME2.Frozen = true;
+            this.MAT_CNAME2.HeaderText = "物料名称";
+            this.MAT_CNAME2.Name = "MAT_CNAME2";
+            this.MAT_CNAME2.Width = 99;
+            // 
+            // CAR_NO2
+            // 
+            this.CAR_NO2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CAR_NO2.DataPropertyName = "CAR_NO2";
+            this.CAR_NO2.HeaderText = "车号";
+            this.CAR_NO2.Name = "CAR_NO2";
+            this.CAR_NO2.Width = 67;
+            // 
+            // PLAN_NO2
+            // 
+            this.PLAN_NO2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PLAN_NO2.DataPropertyName = "PLAN_NO2";
+            this.PLAN_NO2.HeaderText = "计划号";
+            this.PLAN_NO2.Name = "PLAN_NO2";
+            this.PLAN_NO2.Width = 83;
+            // 
+            // MAT_CODE2
+            // 
+            this.MAT_CODE2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MAT_CODE2.DataPropertyName = "MAT_CODE2";
+            this.MAT_CODE2.HeaderText = "物料编号";
+            this.MAT_CODE2.Name = "MAT_CODE2";
+            this.MAT_CODE2.Width = 99;
+            // 
+            // WEIGHT2
+            // 
+            this.WEIGHT2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.WEIGHT2.DataPropertyName = "WEIGHT2";
+            this.WEIGHT2.HeaderText = "重量";
+            this.WEIGHT2.Name = "WEIGHT2";
+            this.WEIGHT2.ReadOnly = true;
+            this.WEIGHT2.Width = 67;
+            // 
+            // GROOVEID
+            // 
+            this.GROOVEID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GROOVEID.DataPropertyName = "GROOVEID";
+            this.GROOVEID.HeaderText = "槽号";
+            this.GROOVEID.Name = "GROOVEID";
+            this.GROOVEID.ReadOnly = true;
+            this.GROOVEID.Visible = false;
+            this.GROOVEID.Width = 67;
+            // 
+            // COIL_NO2
+            // 
+            this.COIL_NO2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.COIL_NO2.DataPropertyName = "COIL_NO2";
+            this.COIL_NO2.HeaderText = "材料号";
+            this.COIL_NO2.Name = "COIL_NO2";
+            this.COIL_NO2.ReadOnly = true;
+            this.COIL_NO2.Visible = false;
+            this.COIL_NO2.Width = 150;
+            // 
+            // PICK_NO
+            // 
+            this.PICK_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PICK_NO.DataPropertyName = "PICK_NO";
+            this.PICK_NO.HeaderText = "提单号";
+            this.PICK_NO.Name = "PICK_NO";
+            this.PICK_NO.ReadOnly = true;
+            this.PICK_NO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PICK_NO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.PICK_NO.Visible = false;
+            this.PICK_NO.Width = 64;
+            // 
+            // OUTDIA2
+            // 
+            this.OUTDIA2.DataPropertyName = "OUTDIA";
+            this.OUTDIA2.HeaderText = "外径";
+            this.OUTDIA2.Name = "OUTDIA2";
+            this.OUTDIA2.ReadOnly = true;
+            this.OUTDIA2.Visible = false;
+            // 
+            // GROOVE_ACT_X
+            // 
+            this.GROOVE_ACT_X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GROOVE_ACT_X.DataPropertyName = "GROOVE_ACT_X";
+            this.GROOVE_ACT_X.HeaderText = "槽中心点X";
+            this.GROOVE_ACT_X.Name = "GROOVE_ACT_X";
+            this.GROOVE_ACT_X.ReadOnly = true;
+            this.GROOVE_ACT_X.Visible = false;
+            this.GROOVE_ACT_X.Width = 109;
+            // 
+            // GROOVE_ACT_Y
+            // 
+            this.GROOVE_ACT_Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GROOVE_ACT_Y.DataPropertyName = "GROOVE_ACT_Y";
+            this.GROOVE_ACT_Y.HeaderText = "槽中心点Y";
+            this.GROOVE_ACT_Y.Name = "GROOVE_ACT_Y";
+            this.GROOVE_ACT_Y.ReadOnly = true;
+            this.GROOVE_ACT_Y.Visible = false;
+            this.GROOVE_ACT_Y.Width = 109;
+            // 
+            // GROOVE_ACT_Z
+            // 
+            this.GROOVE_ACT_Z.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GROOVE_ACT_Z.DataPropertyName = "GROOVE_ACT_Z";
+            this.GROOVE_ACT_Z.HeaderText = "槽中心点Z";
+            this.GROOVE_ACT_Z.Name = "GROOVE_ACT_Z";
+            this.GROOVE_ACT_Z.ReadOnly = true;
+            this.GROOVE_ACT_Z.Visible = false;
+            this.GROOVE_ACT_Z.Width = 109;
             // 
             // SelectCoilByL3Form
             // 
@@ -883,15 +986,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn CHECK_COLUMN2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GROOVEID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn COIL_NO2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PICK_NO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn WEIGHT2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OUTDIA2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GROOVE_ACT_X;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GROOVE_ACT_Y;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GROOVE_ACT_Z;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Panel panel4;
@@ -922,11 +1016,14 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CHECK_COLUMN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CNAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CAR_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn PLAN_NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CODE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WEIGHT;
         private System.Windows.Forms.DataGridViewTextBoxColumn COIL_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn STOCK_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn BAY_NO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn WEIGHT;
         private System.Windows.Forms.DataGridViewTextBoxColumn ACT_WEIGHT;
         private System.Windows.Forms.DataGridViewTextBoxColumn ACT_WIDTH;
         private System.Windows.Forms.DataGridViewTextBoxColumn OUTDIA;
@@ -938,5 +1035,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn X_CENTER;
         private System.Windows.Forms.DataGridViewTextBoxColumn Y_CENTER;
         private System.Windows.Forms.DataGridViewTextBoxColumn Z_CENTER;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CHECK_COLUMN2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CNAME2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CAR_NO2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PLAN_NO2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CODE2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WEIGHT2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GROOVEID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn COIL_NO2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PICK_NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OUTDIA2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GROOVE_ACT_X;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GROOVE_ACT_Y;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GROOVE_ACT_Z;
     }
 }

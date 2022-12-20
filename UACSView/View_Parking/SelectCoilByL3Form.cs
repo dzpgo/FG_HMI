@@ -166,7 +166,8 @@ namespace UACSParking
                 textBox_L3_TASK_NO.Text = strL3TaskNo;
 
                 // 根据L3配载计划，查询装车材料信息
-                DataTable dataTable = BindMatStockByL3Stowage(strTruckNo, strL3PlanNo, strL3TaskNo);
+                //DataTable dataTable = BindMatStockByL3Stowage(strTruckNo, strL3PlanNo, strL3TaskNo);
+                DataTable dataTable = BindMatStockByL3Stowage2(strTruckNo, strL3PlanNo, strL3TaskNo);
                 this.dataGridView1.DataSource = dataTable;
             }
             else
@@ -542,6 +543,367 @@ namespace UACSParking
             return dtResult;
         }
 
+        /// <summary>
+        /// 绑定材料位置信息
+        /// </summary>
+        /// <param name="strL3TruckNo">配置车号</param>
+        /// <param name="strL3PlanNo">配载计划号</param>
+        /// <param name="strL3TaskNo">配载任务号</param>
+        /// <returns></returns>
+        private DataTable BindMatStockByL3Stowage2(string strL3TruckNo, string strL3PlanNo, string strL3TaskNo)
+        {
+            DataTable dtResult = InitDataTable(dataGridView1);
+            //bool bAddedWhere = false;
+            //string subSql = "SELECT MAT_NO FROM UACS_TRUCK_STOWAGE_L3";
+
+            // 转换
+            if (strL3PlanNo == "无")
+                strL3PlanNo = "";
+            if (strL3TaskNo == "无")
+                strL3TaskNo = "";
+            if (strL3TruckNo == "无")
+                strL3TruckNo = "";
+
+            if (strL3TruckNo.Length == 0 && strL3PlanNo.Length == 0 && strL3TaskNo.Length == 0)
+                return dtResult;
+
+            #region MyRegion
+            //// L3装车要求
+            //// 查询条件：指定配载车号
+            //if (strL3TruckNo.Length != 0)
+            //{
+            //    subSql = string.Format("{0} WHERE TRUCK_NO like '%{1}%'", subSql, strL3TruckNo);
+            //    bAddedWhere = true;
+            //}
+            //// 查询条件：指定配载计划号
+            //if (strL3PlanNo.Length != 0)
+            //{
+            //    if (bAddedWhere)
+            //    {
+            //        subSql = string.Format("{0} AND L3_PLAN_NO like '%{1}%'", subSql, strL3PlanNo);
+            //    }
+            //    else
+            //    {
+            //        subSql = string.Format("{0} WHERE L3_PLAN_NO like '%{1}%'", subSql, strL3PlanNo);
+            //        bAddedWhere = true;
+            //    }
+            //}
+            //// 查询条件：指定配载任务号
+            //if (strL3TaskNo.Length != 0)
+            //{
+            //    if (bAddedWhere)
+            //    {
+            //        subSql = string.Format("{0} AND L3_TASK_NO like '%{1}%'", subSql, strL3TaskNo);
+            //    }
+            //    else
+            //    {
+            //        subSql = string.Format("{0} WHERE L3_TASK_NO like '%{1}%'", subSql, strL3TaskNo);
+            //        bAddedWhere = true;
+            //    }
+            //}
+
+            //// 查询语句
+            //string sqlText_All = @"  SELECT 0 AS CHECK_COLUMN, C.MAT_NO AS COIL_NO, A.PLAN_NO as PLAN_NO,  C.BAY_NO, C.STOCK_NO, B.WEIGHT, B.WIDTH, B.INDIA, B.OUTDIA,";
+            //sqlText_All += "    D.X_CENTER, D.Y_CENTER, C.Z_CENTER ,";
+            //sqlText_All += " B.ACT_WEIGHT, B.ACT_WIDTH FROM UACS_YARDMAP_STOCK_DEFINE C ";
+            //sqlText_All += " LEFT JOIN UACS_YARDMAP_COIL B ON C.MAT_NO = B.COIL_NO ";
+            //sqlText_All += " LEFT JOIN  UACS_PLAN_OUT_DETAIL A ON C.MAT_NO = A.MAT_NO ";
+            //sqlText_All += " LEFT JOIN  UACS_YARDMAP_SADDLE_STOCK E ON C.STOCK_NO = E.STOCK_NO ";
+            //sqlText_All += " LEFT JOIN  UACS_YARDMAP_SADDLE_DEFINE D  ON E.SADDLE_NO = D.SADDLE_NO ";
+            //sqlText_All += " WHERE  C.BAY_NO  like '" + parkNO.Substring(0, 3) + "%' ";
+            //sqlText_All += " AND C.MAT_NO IN (" + subSql + ")";
+            ////sqlText_All += " AND C.STOCK_STATUS = 2 AND C.LOCK_FLAG = 0";
+
+            //// 排序
+            //sqlText_All += " order by C.STOCK_NO DESC "; 
+            #endregion
+
+            #region 废弃代码
+            //string sqlText_All = @" SELECT 0 AS CHECK_COLUMN, F.MAT_NO  AS COIL_NO, A.PLAN_NO as PLAN_NO,  C.BAY_NO, C.STOCK_NO, B.WEIGHT, B.WIDTH, B.INDIA, B.OUTDIA, B.PACK_CODE,
+            // D.X_CENTER, D.Y_CENTER, C.Z_CENTER ,
+            // B.ACT_WEIGHT, B.ACT_WIDTH FROM UACS_TRUCK_STOWAGE_L3 F  
+            // LEFT JOIN UACS_YARDMAP_STOCK_DEFINE C ON F.MAT_NO = C.MAT_NO
+            // LEFT JOIN UACS_YARDMAP_COIL B ON C.MAT_NO = B.COIL_NO 
+            // LEFT JOIN  UACS_PLAN_OUT_DETAIL A ON C.MAT_NO = A.MAT_NO 
+            // LEFT JOIN  UACS_YARDMAP_SADDLE_STOCK E ON C.STOCK_NO = E.STOCK_NO 
+            // LEFT JOIN  UACS_YARDMAP_SADDLE_DEFINE D  ON E.SADDLE_NO = D.SADDLE_NO 
+            // WHERE  F.MAT_NO IS NOT NULL ";
+            //sqlText_All += "AND F.TRUCK_NO ='" + strL3TruckNo + "'";
+            //// 执行
+            //using (IDataReader rdr = DBHelper.ExecuteReader(sqlText_All))
+            //{
+            //    while (rdr.Read())
+            //    {
+            //        DataRow dr = dtResult.NewRow();
+            //        for (int i = 0; i < rdr.FieldCount; i++)
+            //        {
+            //            string columnName = rdr.GetName(i);
+            //            dr[columnName] = rdr[i];
+            //        }
+            //        dtResult.Rows.Add(dr);
+            //    }
+            //}
+
+            //// 查询材料对应的发货信息
+            //DataTable dtPick = new DataTable();
+            //subSql = string.Format("SELECT PLAN_NO FROM UACS_PLAN_OUT_DETAIL WHERE MAT_NO IN ({0})", subSql);
+            //sqlText_All = string.Format("SELECT * FROM UACS_PLAN_OUT WHERE PLAN_NO IN ({0})", subSql);
+            //using (IDataReader rdr = DBHelper.ExecuteReader(sqlText_All))
+            //{
+            //    bool hasSetColumn = false;
+            //    while (rdr.Read())
+            //    {
+            //        if (!hasSetColumn)
+            //        {
+            //            setDataColumn(dtPick, rdr);
+            //        }
+            //        hasSetColumn = true;
+            //        DataRow dr = dtPick.NewRow();
+            //        for (int i = 0; i < rdr.FieldCount; i++)
+            //        {
+            //            dr[i] = rdr[i];
+            //        }
+            //        dtPick.Rows.Add(dr);
+            //    }
+            //}
+
+            //// 发货信息不为空
+            //if (dtPick.Rows.Count != 0)
+            //{
+            //    // 库存数据中补充发货信息
+            //    foreach (DataRow row in dtResult.Rows)
+            //    {
+            //        if (row["PLAN_NO"] != null)
+            //        {
+            //            string planNo = row["PLAN_NO"].ToString();
+            //            DataRow[] foundRows = dtPick.Select(string.Format("PLAN_NO = '{0}'", planNo));
+            //            if (foundRows.Length > 0)
+            //            {
+            //                row["LOT_NO"] = foundRows[0]["LOT_NO"];
+            //                row["SHIP_NAME"] = foundRows[0]["SHIP_NAME"];
+            //            }
+            //        }
+            //    }
+            //} 
+            #endregion
+
+
+            DataTable tbL3_MAT_OUT_INFO = new DataTable("UACS_L3_MAT_OUT_INFO");
+
+            string sqlText_All = @" SELECT 0 AS CHECK_COLUMN, WORK_SEQ_NO, OPER_FLAG, PLAN_NO, BOF_NO, CAR_NO, MAT_CODE_1, WEIGHT_1, MAT_CODE_2, WEIGHT_2, MAT_CODE_3, WEIGHT_3,
+            MAT_CODE_4, WEIGHT_4, MAT_CODE_5, WEIGHT_5, MAT_CODE_6, WEIGHT_6, MAT_CODE_7, WEIGHT_7, MAT_CODE_8, WEIGHT_8, MAT_CODE_9, WEIGHT_9, MAT_CODE_10, 
+            WEIGHT_10, PLAN_STATUS, REC_TIME, UPD_TIME, CYCLE_COUNT, MAT_NET_WT, WT_TIME FROM UACSAPP.UACS_L3_MAT_OUT_INFO 
+            WHERE 1 = 1 ";
+            if (!string.IsNullOrEmpty(strL3TruckNo))
+            {
+                sqlText_All += "AND CAR_NO ='" + strL3TruckNo + "'";
+            }
+            if (!string.IsNullOrEmpty(strL3PlanNo))
+            {
+                sqlText_All += "AND PLAN_NO ='" + strL3PlanNo + "'";
+            }
+            if (!string.IsNullOrEmpty(strL3TaskNo))
+            {
+                //sqlText_All += "AND L3_PLAN_NO like '%" + strL3PlanNo + "%'";
+            }
+
+            // 执行
+            using (IDataReader rdr = DBHelper.ExecuteReader(sqlText_All))
+            {
+                DataColumn col;
+                DataRow row;
+                for (int i = 0; i < rdr.FieldCount; i++)
+                {
+                    col = new DataColumn();
+                    col.ColumnName = rdr.GetName(i);
+                    col.DataType = rdr.GetFieldType(i);
+                    tbL3_MAT_OUT_INFO.Columns.Add(col);
+                }
+
+                while (rdr.Read())
+                {
+
+                    row = tbL3_MAT_OUT_INFO.NewRow();
+                    for (int i = 0; i < rdr.FieldCount; i++)
+                    {
+                        row[i] = rdr[i];
+                    }
+                    tbL3_MAT_OUT_INFO.Rows.Add(row);
+                    //tbL3_MAT_OUT_INFO.Load(rdr);
+                }
+            }
+
+
+
+            DataTable tbL3_MAT_INFO = new DataTable("UACS_L3_MAT_INFO");
+
+            string sqlText = @" SELECT MAT_CODE, BASE_RESOURCE, MAT_CNAME, MAT_TYPE, REC_TIME FROM UACSAPP.UACS_L3_MAT_INFO ";
+            // 执行
+            using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
+            {
+                DataColumn col;
+                DataRow row;
+                for (int i = 0; i < rdr.FieldCount; i++)
+                {
+                    col = new DataColumn();
+                    col.ColumnName = rdr.GetName(i);
+                    col.DataType = rdr.GetFieldType(i);
+                    tbL3_MAT_INFO.Columns.Add(col);
+                }
+
+                while (rdr.Read())
+                {
+
+                    row = tbL3_MAT_INFO.NewRow();
+                    for (int i = 0; i < rdr.FieldCount; i++)
+                    {
+                        row[i] = rdr[i];
+                    }
+                    tbL3_MAT_INFO.Rows.Add(row);
+                }
+            }
+
+            //DataTable tbL3_MAT_OUT_INFO = new DataTable("UACS_L3_MAT_OUT_INFO");
+            //tbL3_MAT_OUT_INFO.Columns.Add("ID", Type.GetType("System.Int32"));
+            //tbL3_MAT_OUT_INFO.Columns[0].AutoIncrement = true;
+            //tbL3_MAT_OUT_INFO.Columns[0].AutoIncrementSeed = 1;
+            //tbL3_MAT_OUT_INFO.Columns[0].AutoIncrementStep = 1;
+            //tbL3_MAT_OUT_INFO.Columns.Add("MAT_CNAME", Type.GetType("System.String")); //物料名称
+            //tbL3_MAT_OUT_INFO.Columns.Add("CAR_NO", Type.GetType("System.String"));  //车号
+            //tbL3_MAT_OUT_INFO.Columns.Add("PLAN_NO", Type.GetType("System.String"));  //计划号
+            //tbL3_MAT_OUT_INFO.Columns.Add("MAT_CODE", Type.GetType("System.String"));  //物料编号
+            //tbL3_MAT_OUT_INFO.Columns.Add("WEIGHT", Type.GetType("System.String"));  //物料重量
+
+
+
+            foreach (DataRow dataRow in tbL3_MAT_OUT_INFO.Rows)
+            {
+
+                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_1"].ToString()))
+                {
+                    var mat_CNAME = "";
+                    foreach (DataRow L3Row in tbL3_MAT_INFO.Rows)
+                    {
+                        if (L3Row["MAT_CODE"].ToString().Equals(dataRow["MAT_CODE_1"].ToString()))
+                        {
+                            mat_CNAME = L3Row["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(0, mat_CNAME, dataRow["CAR_NO"].ToString(), dataRow["PLAN_NO"].ToString(), dataRow["MAT_CODE_1"].ToString(), dataRow["WEIGHT_1"].ToString());
+                }
+                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_2"].ToString()))
+                {
+                    var mat_CNAME = "";
+                    foreach (DataRow L3Row in tbL3_MAT_INFO.Rows)
+                    {
+                        if (L3Row["MAT_CODE"].ToString().Equals(dataRow["MAT_CODE_2"].ToString()))
+                        {
+                            mat_CNAME = L3Row["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(0, mat_CNAME, dataRow["CAR_NO"].ToString(), dataRow["PLAN_NO"].ToString(), dataRow["MAT_CODE_2"].ToString(), dataRow["WEIGHT_2"].ToString());
+                }
+                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_3"].ToString()))
+                {
+                    var mat_CNAME = "";
+                    foreach (DataRow L3Row in tbL3_MAT_INFO.Rows)
+                    {
+                        if (L3Row["MAT_CODE"].ToString().Equals(dataRow["MAT_CODE_3"].ToString()))
+                        {
+                            mat_CNAME = L3Row["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(0, mat_CNAME, dataRow["CAR_NO"].ToString(), dataRow["PLAN_NO"].ToString(), dataRow["MAT_CODE_3"].ToString(), dataRow["WEIGHT_3"].ToString());
+                }
+                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_4"].ToString()))
+                {
+                    var mat_CNAME = "";
+                    foreach (DataRow L3Row in tbL3_MAT_INFO.Rows)
+                    {
+                        if (L3Row["MAT_CODE"].ToString().Equals(dataRow["MAT_CODE_4"].ToString()))
+                        {
+                            mat_CNAME = L3Row["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(0, mat_CNAME, dataRow["CAR_NO"].ToString(), dataRow["PLAN_NO"].ToString(), dataRow["MAT_CODE_4"].ToString(), dataRow["WEIGHT_4"].ToString());
+                }
+                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_5"].ToString()))
+                {
+                    var mat_CNAME = "";
+                    foreach (DataRow L3Row in tbL3_MAT_INFO.Rows)
+                    {
+                        if (L3Row["MAT_CODE"].ToString().Equals(dataRow["MAT_CODE_5"].ToString()))
+                        {
+                            mat_CNAME = L3Row["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(0, mat_CNAME, dataRow["CAR_NO"].ToString(), dataRow["PLAN_NO"].ToString(), dataRow["MAT_CODE_5"].ToString(), dataRow["WEIGHT_5"].ToString());
+                }
+                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_6"].ToString()))
+                {
+                    var mat_CNAME = "";
+                    foreach (DataRow L3Row in tbL3_MAT_INFO.Rows)
+                    {
+                        if (L3Row["MAT_CODE"].ToString().Equals(dataRow["MAT_CODE_6"].ToString()))
+                        {
+                            mat_CNAME = L3Row["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(0, mat_CNAME, dataRow["CAR_NO"].ToString(), dataRow["PLAN_NO"].ToString(), dataRow["MAT_CODE_6"].ToString(), dataRow["WEIGHT_6"].ToString());
+                }
+                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_7"].ToString()))
+                {
+                    var mat_CNAME = "";
+                    foreach (DataRow L3Row in tbL3_MAT_INFO.Rows)
+                    {
+                        if (L3Row["MAT_CODE"].ToString().Equals(dataRow["MAT_CODE_7"].ToString()))
+                        {
+                            mat_CNAME = L3Row["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(0, mat_CNAME, dataRow["CAR_NO"].ToString(), dataRow["PLAN_NO"].ToString(), dataRow["MAT_CODE_7"].ToString(), dataRow["WEIGHT_7"].ToString());
+                }
+                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_8"].ToString()))
+                {
+                    var mat_CNAME = "";
+                    foreach (DataRow L3Row in tbL3_MAT_INFO.Rows)
+                    {
+                        if (L3Row["MAT_CODE"].ToString().Equals(dataRow["MAT_CODE_8"].ToString()))
+                        {
+                            mat_CNAME = L3Row["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(0, mat_CNAME, dataRow["CAR_NO"].ToString(), dataRow["PLAN_NO"].ToString(), dataRow["MAT_CODE_8"].ToString(), dataRow["WEIGHT_8"].ToString());
+                }
+                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_9"].ToString()))
+                {
+                    var mat_CNAME = "";
+                    foreach (DataRow L3Row in tbL3_MAT_INFO.Rows)
+                    {
+                        if (L3Row["MAT_CODE"].ToString().Equals(dataRow["MAT_CODE_9"].ToString()))
+                        {
+                            mat_CNAME = L3Row["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(0, mat_CNAME, dataRow["CAR_NO"].ToString(), dataRow["PLAN_NO"].ToString(), dataRow["MAT_CODE_9"].ToString(), dataRow["WEIGHT_9"].ToString());
+                }
+                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_10"].ToString()))
+                {
+                    var mat_CNAME = "";
+                    foreach (DataRow L3Row in tbL3_MAT_INFO.Rows)
+                    {
+                        if (L3Row["MAT_CODE"].ToString().Equals(dataRow["MAT_CODE_10"].ToString()))
+                        {
+                            mat_CNAME = L3Row["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(0, mat_CNAME, dataRow["CAR_NO"].ToString(), dataRow["PLAN_NO"].ToString(), dataRow["MAT_CODE_10"].ToString(), dataRow["WEIGHT_10"].ToString());
+                }
+            }
+
+            return dtResult;
+        }
+
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             string truckNo = carNO;
@@ -567,21 +929,21 @@ namespace UACSParking
                     return;
                 }
 
-                bool flag = false;
-                foreach (DataGridViewRow dgvRows in dataGridView2.Rows)
-                {
+                //bool flag = false;
+                //foreach (DataGridViewRow dgvRows in dataGridView2.Rows)
+                //{
                     
-                    if (dgvRows.Cells["COIL_NO2"].Value.ToString() != "")
-                    {
-                        flag = true;
-                        break;
-                    }
-                }
-                if(flag == false)
-                {
-                    MessageBox.Show("请选择钢卷！");
-                    return;
-                }
+                //    if (dgvRows.Cells["COIL_NO2"].Value.ToString() != "")
+                //    {
+                //        flag = true;
+                //        break;
+                //    }
+                //}
+                //if(flag == false)
+                //{
+                //    MessageBox.Show("请选择钢卷！");
+                //    return;
+                //}
                 
                 #region    社会车卷径干涉判断  材料号输入0不判断
                 if (( carType == "101" || carType == "103") && txtGetMat.Text.Trim()!="0")                    //开关
@@ -676,15 +1038,15 @@ namespace UACSParking
                 #endregion
 
                 #region 钢卷多库位判断
-                string temp;
-                if(checkMatNOCount(out temp))
-                {
-                    DialogResult dr = MessageBox.Show(string.Format("所选钢卷存在多库位或者卷信息有误：\r\n{0}！继续请先确认钢卷信息。", temp), "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (dr != System.Windows.Forms.DialogResult.Yes)
-                    {
-                        return;
-                    }
-                }
+                //string temp;
+                //if(checkMatNOCount(out temp))
+                //{
+                //    DialogResult dr = MessageBox.Show(string.Format("所选钢卷存在多库位或者卷信息有误：\r\n{0}！继续请先确认钢卷信息。", temp), "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                //    if (dr != System.Windows.Forms.DialogResult.Yes)
+                //    {
+                //        return;
+                //    }
+                //}
 
 
                 #endregion
@@ -938,7 +1300,7 @@ namespace UACSParking
                 string AXES_CAR_LENGTH = "";
                 string TREND_TO_TAIL = "";
                 string sqlText_head = @"SELECT AXES_CAR_LENGTH, TREND_TO_TAIL FROM UACS_HEAD_POSITION_CONFIG WHERE HEAD_POSTION IN ";
-                sqlText_head += "(SELECT HEAD_POSTION FROM UACS_PARKING_STATUS WHERE PARKING_NO = '{0}') AND PARKING_NO = '{0}'";
+                sqlText_head += "(SELECT HEAD_POSTION FROM UACS_PARKING_WORK_STATUS WHERE PARKING_NO = '{0}') AND PARKING_NO = '{0}'";
                 sqlText_head = string.Format(sqlText_head, parkingNo);
                 using (IDataReader rdr = DBHelper.ExecuteReader(sqlText_head))
                 {
@@ -968,7 +1330,7 @@ namespace UACSParking
                 }
 
                 //从停车位表里取出处理号和激光扫描次数
-               string sqlText = @"SELECT TREATMENT_NO, LASER_ACTION_COUNT FROM UACS_PARKING_STATUS WHERE PARKING_NO='{0}' ";
+               string sqlText = @"SELECT TREATMENT_NO, LASER_ACTION_COUNT FROM UACS_PARKING_WORK_STATUS WHERE PARKING_NO='{0}' ";
                 sqlText = string.Format(sqlText, parkingNo);
                 using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
                 {
@@ -1101,78 +1463,82 @@ namespace UACSParking
         private void btnQuery_Click(object sender, EventArgs e)
         {
             // 查询条件：发货单号
-            string queryPlanNo = "";
-            if (txtGetPlanNo.Text.Trim().Length > 4)
-            {
-                queryPlanNo = txtGetPlanNo.Text.ToUpper().Trim();
-            }
-            else
-            {
-                txtGetPlanNo.Text = "";
-            }
+            //string queryPlanNo = "";
+            //if (txtGetPlanNo.Text.Trim().Length > 4)
+            //{
+            //    queryPlanNo = txtGetPlanNo.Text.ToUpper().Trim();
+            //}
+            //else
+            //{
+            //    txtGetPlanNo.Text = "";
+            //}
 
-            // 查询条件：提单号
-            string queryLotNo = "";
-            if (textBox_LotNo.Text.Trim().Length > 4)
-            {
-                queryLotNo = textBox_LotNo.Text.ToUpper().Trim();
-            }
-            else
-            {
-                textBox_LotNo.Text = "";
-            }
+            //// 查询条件：提单号
+            //string queryLotNo = "";
+            //if (textBox_LotNo.Text.Trim().Length > 4)
+            //{
+            //    queryLotNo = textBox_LotNo.Text.ToUpper().Trim();
+            //}
+            //else
+            //{
+            //    textBox_LotNo.Text = "";
+            //}
 
             // 查询条件：材料号
-            string queryMatNo = "";
-            if (txtGetMat.Text.Trim().Length > 5)
-            {
-                queryMatNo = txtGetMat.Text.Trim();
-            }
-            else
-            {
-                txtGetMat.Text = "";
-            }
+            //string queryMatNo = "";
+            //if (txtGetMat.Text.Trim().Length > 5)
+            //{
+            //    queryMatNo = txtGetMat.Text.Trim();
+            //}
+            //else
+            //{
+            //    txtGetMat.Text = "";
+            //}
 
             // 查询条件：库位号
-            string queryStockNo = "";
-            if (!txtBoxStockNO.Text.Contains('-'))
-            {
-                txtBoxStockNO.Text = "";
-            }
-            else
-            {
-                // 解析录入的库位                
-                int index = txtBoxStockNO.Text.IndexOf("-");
-                if (index != -1 && txtBoxStockNO.Text != "行-列")
-                {
-                    queryStockNo = txtBoxStockNO.Text;
-                    queryStockNo = String.Format("{0}{1}{2}1", parkNO.Contains("Z")?parkNO.Substring(0, 3):(parkNO.Contains("Z07")?"Z22":"Z21"), queryStockNo.Substring(0, index).PadLeft(2, '0'), queryStockNo.Substring(index + 1).PadLeft(2, '0'));
-                }
-            }
+            //string queryStockNo = "";
+            //if (!txtBoxStockNO.Text.Contains('-'))
+            //{
+            //    txtBoxStockNO.Text = "";
+            //}
+            //else
+            //{
+            //    // 解析录入的库位                
+            //    int index = txtBoxStockNO.Text.IndexOf("-");
+            //    if (index != -1 && txtBoxStockNO.Text != "行-列")
+            //    {
+            //        queryStockNo = txtBoxStockNO.Text;
+            //        queryStockNo = String.Format("{0}{1}{2}1", parkNO.Contains("Z")?parkNO.Substring(0, 3):(parkNO.Contains("Z07")?"Z22":"Z21"), queryStockNo.Substring(0, index).PadLeft(2, '0'), queryStockNo.Substring(index + 1).PadLeft(2, '0'));
+            //    }
+            //}
 
             // 按指定条件，查询的库存
-            DataTable dataTable1 = BindMatStock(queryPlanNo, queryLotNo, queryMatNo, queryStockNo);
-            if (dataTable1.Rows.Count==0)
-            {
-                MessageBox.Show("指定查询信息为空！");
-            }
+            //DataTable dataTable1 = BindMatStock(queryPlanNo, queryLotNo, queryMatNo, queryStockNo);
+            //if (dataTable1.Rows.Count==0)
+            //{
+            //    MessageBox.Show("指定查询信息为空！");
+            //}
             // 按L3配载计划，查询的库存
-            DataTable dataTable2 = BindMatStockByL3Stowage(textBox_L3_TRUCK_NO.Text, textBox_L3_PLAN_NO.Text, textBox_L3_TASK_NO.Text);
+            //DataTable dataTable2 = BindMatStockByL3Stowage(textBox_L3_TRUCK_NO.Text, textBox_L3_PLAN_NO.Text, textBox_L3_TASK_NO.Text);
+            //DataTable dataTable2 = BindMatStockByL3Stowage2(textBox_L3_TRUCK_NO.Text, textBox_L3_PLAN_NO.Text, textBox_L3_TASK_NO.Text);
 
-            // 查询结果合并
-            dataTable1.Merge(dataTable2);
+            //// 查询结果合并
+            //dataTable1.Merge(dataTable2);
 
+            //// 绑定到表格
+            //this.dataGridView1.DataSource = dataTable1;
+            //dataGridViewColor(dataGridView1);
             // 绑定到表格
-            this.dataGridView1.DataSource = dataTable1;
+            this.dataGridView1.DataSource = BindMatStockByL3Stowage2(textBox_L3_TRUCK_NO.Text, textBox_L3_PLAN_NO.Text, textBox_L3_TASK_NO.Text);
             dataGridViewColor(dataGridView1);
 
             // 转到特定查询条件的行
-            if (queryPlanNo.Length != 0)
-                SelectDataGridViewRow(dataGridView1, queryPlanNo, "PLAN_NO");
-            if (queryMatNo.Length != 0)
-                SelectDataGridViewRow(dataGridView1, queryMatNo, "COIL_NO");
-            if (queryStockNo.Length != 0)
-                SelectDataGridViewRow(dataGridView1, queryStockNo, "STOCK_NO");
+            //if (queryPlanNo.Length != 0)
+            //    SelectDataGridViewRow(dataGridView1, queryPlanNo, "PLAN_NO");
+            //if (queryMatNo.Length != 0)
+            //    SelectDataGridViewRow(dataGridView1, queryMatNo, "COIL_NO");
+            //if (queryStockNo.Length != 0)
+            //    SelectDataGridViewRow(dataGridView1, queryStockNo, "STOCK_NO");
 
             //// 选中行
             //if (txtBoxStockNO.Text.Trim().Length >= 1 && txtGetMat.Text.Trim() == "")
@@ -1258,20 +1624,37 @@ namespace UACSParking
             }
         }
 
+        /// <summary>
+        /// 添加选中数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                string matNo = "";  //材料号
-                string pickNo = ""; //提单号
-                string coilwidth = "";
-                string coilweight = "";
-                string coilOutdia = "";
+                //string matNo = "";  //材料号
+                //string pickNo = ""; //提单号
+                //string coilwidth = "";
+                //string coilweight = "";
+                //string coilOutdia = "";
+
+                string MAT_CNAME2 = "";  //物料名称
+                string CAR_NO2 = "";     //车号
+                string PLAN_NO2 = "";    //计划号
+                string MAT_CODE2 = "";   //物料编号
+                string WEIGHT2 = "";     //重量
+
                 //全选
-                if (selectAllCoils())
+                //if (selectAllCoils())
+                //{
+                //    txtCoilsWeight.Text = string.Format("{0} /公斤", coilsWeight);
+                //    return;
+                //}
+                DataTable dtDGV2 = InitDataTable(dataGridView2);
+                foreach (DataGridViewRow item in dataGridView2.Rows)
                 {
-                    txtCoilsWeight.Text = string.Format("{0} /公斤", coilsWeight);
-                    return;
+                    dtDGV2.Rows.Add(0, item.Cells["MAT_CNAME2"].Value.ToString(), item.Cells["CAR_NO2"].Value.ToString(), item.Cells["PLAN_NO2"].Value.ToString(), item.Cells["MAT_CODE2"].Value.ToString(), item.Cells["WEIGHT2"].Value.ToString());
                 }
                 //检测所选材料是否为单选
                 for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
@@ -1280,100 +1663,156 @@ namespace UACSParking
                     bool hasChecked = (bool)dataGridView1.Rows[i].Cells["CHECK_COLUMN"].EditedFormattedValue;
                     if (hasChecked)
                     {
-                        matNo = dataGridView1.Rows[i].Cells["COIL_NO"].Value.ToString();            //材料号
-                        pickNo = dataGridView1.Rows[i].Cells["PLAN_NO"].Value.ToString();           //计划号
-                        coilweight = dataGridView1.Rows[i].Cells["ACT_WEIGHT"].Value.ToString();        //重量
-                        coilOutdia = dataGridView1.Rows[i].Cells["OUTDIA"].Value.ToString();        //外径
-                        coilwidth = dataGridView1.Rows[i].Cells["ACT_WIDTH"].Value.ToString();          //宽度
+                        //matNo = dataGridView1.Rows[i].Cells["COIL_NO"].Value.ToString();            //材料号
+                        //pickNo = dataGridView1.Rows[i].Cells["PLAN_NO"].Value.ToString();           //计划号
+                        //coilweight = dataGridView1.Rows[i].Cells["ACT_WEIGHT"].Value.ToString();        //重量
+                        //coilOutdia = dataGridView1.Rows[i].Cells["OUTDIA"].Value.ToString();        //外径
+                        //coilwidth = dataGridView1.Rows[i].Cells["ACT_WIDTH"].Value.ToString();          //宽度
+
+                        MAT_CNAME2 = dataGridView1.Rows[i].Cells["MAT_CNAME"].Value.ToString(); //物料名称
+                        CAR_NO2 = dataGridView1.Rows[i].Cells["CAR_NO"].Value.ToString();       //车号
+                        PLAN_NO2 = dataGridView1.Rows[i].Cells["PLAN_NO"].Value.ToString();     //计划号
+                        MAT_CODE2 = dataGridView1.Rows[i].Cells["MAT_CODE"].Value.ToString();   //物料编号
+                        WEIGHT2 = dataGridView1.Rows[i].Cells["WEIGHT"].Value.ToString();       //重量                                              
+
+                        dtDGV2.Rows.Add(1, MAT_CNAME2, CAR_NO2, PLAN_NO2, MAT_CODE2, WEIGHT2);
+
                         //count++;
                         //消除打钩
-                        this.dataGridView1.Rows[i].Cells["CHECK_COLUMN"].Value = 0;
-                        break;
+                        //this.dataGridView1.Rows[i].Cells["CHECK_COLUMN"].Value = 0;
+                        //this.dataGridView1.Rows.RemoveAt(i);
+                        //break;
                     }
                 }
 
-                //判断材料号是否相同
-                foreach (DataGridViewRow item in dataGridView2.Rows)
+                //删除已选中的数据
+                for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
                 {
-                    if (item.Cells["COIL_NO2"].Value.ToString() != "")
+                    bool hasChecked = (bool)dataGridView1.Rows[i].Cells["CHECK_COLUMN"].EditedFormattedValue;
+                    if (hasChecked)
                     {
-                        if (item.Cells["COIL_NO2"].Value.ToString() == matNo)
-                        {
-                            MessageBox.Show(string.Format("该材料:{0}已经选择，请重新选择材料号！", matNo));
-                            return;
-                        }
+                        this.dataGridView1.Rows.RemoveAt(i);
+                        i--;
                     }
                 }
-                if (((DataTable)dataGridView2.DataSource).Rows.Count==0)
-                {
-                    MessageBox.Show("扫描槽号结果为空。");
-                    return;
-                }
-                for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
-                {
-                    bool hasChecked2 = (bool)dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].EditedFormattedValue;
-                    if (hasChecked2)
-                    {
-                        if (coilwidth != "")
-                            coilWidth = Convert.ToInt32(coilwidth);
-                        if (carType == "102")
-                        {
-                            if (coilWidth < 900)//卷宽小于900
-                            {
 
-                                MessageBox.Show("大头车选卷钢卷宽度不允许小于900mm，请重新选卷");
-                                return;
-                            }
-                        }
+                this.dataGridView2.DataSource = dtDGV2;
 
-                        //显示钢卷中重量
-                        //coilsWeight += GetCoilWeight(matNo);
-                        if (coilweight != "")
-                            coilsWeight += Convert.ToInt32(coilweight);
-                        if (carType == "102")
-                        {
-                            if (coilsWeight >= 60000)//大于60吨报警
-                            {
-                                //txtCoilsWeight.BackColor = Color.Red;
-                                MessageBox.Show("大头车选卷不允许超过60吨，请重新选卷");
-                                coilsWeight -= Convert.ToInt32(coilweight);
-                                return;
-                            }
-                            else if (0 < coilsWeight && coilsWeight < 60000)
-                            {
-                                txtCoilsWeight.BackColor = Color.White;
-                            }
-                        }
-                        else
-                        {
-                            if (coilsWeight >= 50000)//大于50吨报警
-                            {
-                                txtCoilsWeight.BackColor = Color.Red;
-                                //return;                               
-                            }
-                            else if (0 < coilsWeight && coilsWeight < 50000)
-                            {
-                                txtCoilsWeight.BackColor = Color.White;
-                            }
-                        }
-                        //if (coilsWeight >= 50000)//大于50吨报警
-                        //{
-                        //    txtCoilsWeight.BackColor = Color.Red;
-                        //    //return;                               
-                        //}
-                        //else if (0 < coilsWeight && coilsWeight < 50000)
-                        //{
-                        //    txtCoilsWeight.BackColor = Color.White;
-                        //}
-                        this.dataGridView2.Rows[i].Cells["COIL_NO2"].Value = matNo;
-                        this.dataGridView2.Rows[i].Cells["PICK_NO"].Value = pickNo;
-                        this.dataGridView2.Rows[i].Cells["WEIGHT2"].Value = coilweight;
-                        this.dataGridView2.Rows[i].Cells["OUTDIA2"].Value = coilOutdia;
-                        //消除打钩
-                        this.dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].Value = 0;
-                        break;
-                    }
-                }
+                #region 判断
+                ////判断材料号是否相同
+                //foreach (DataGridViewRow item in dataGridView2.Rows)
+                //{
+                //    if (item.Cells["COIL_NO2"].Value.ToString() != "")
+                //    {
+                //        if (item.Cells["COIL_NO2"].Value.ToString() == matNo)
+                //        {
+                //            MessageBox.Show(string.Format("该材料:{0}已经选择，请重新选择材料号！", matNo));
+                //            return;
+                //        }
+                //    }
+                //}
+                //if (((DataTable)dataGridView2.DataSource).Rows.Count==0)
+                //{
+                //    MessageBox.Show("扫描槽号结果为空。");
+                //    return;
+                //}
+
+                //for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
+                //{
+                //    bool hasChecked2 = (bool)dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].EditedFormattedValue;
+                //    if (hasChecked2)
+                //    {
+                //        if (coilwidth != "")
+                //            coilWidth = Convert.ToInt32(coilwidth);
+                //        if (carType == "102")
+                //        {
+                //            if (coilWidth < 900)//卷宽小于900
+                //            {
+
+                //                MessageBox.Show("大头车选卷钢卷宽度不允许小于900mm，请重新选卷");
+                //                return;
+                //            }
+                //        }
+
+                //        //显示钢卷中重量
+                //        //coilsWeight += GetCoilWeight(matNo);
+                //        if (coilweight != "")
+                //            coilsWeight += Convert.ToInt32(coilweight);
+                //        if (carType == "102")
+                //        {
+                //            if (coilsWeight >= 60000)//大于60吨报警
+                //            {
+                //                //txtCoilsWeight.BackColor = Color.Red;
+                //                MessageBox.Show("大头车选卷不允许超过60吨，请重新选卷");
+                //                coilsWeight -= Convert.ToInt32(coilweight);
+                //                return;
+                //            }
+                //            else if (0 < coilsWeight && coilsWeight < 60000)
+                //            {
+                //                txtCoilsWeight.BackColor = Color.White;
+                //            }
+                //        }
+                //        else
+                //        {
+                //            if (coilsWeight >= 50000)//大于50吨报警
+                //            {
+                //                txtCoilsWeight.BackColor = Color.Red;
+                //                //return;                               
+                //            }
+                //            else if (0 < coilsWeight && coilsWeight < 50000)
+                //            {
+                //                txtCoilsWeight.BackColor = Color.White;
+                //            }
+                //        }
+                //        //if (coilsWeight >= 50000)//大于50吨报警
+                //        //{
+                //        //    txtCoilsWeight.BackColor = Color.Red;
+                //        //    //return;                               
+                //        //}
+                //        //else if (0 < coilsWeight && coilsWeight < 50000)
+                //        //{
+                //        //    txtCoilsWeight.BackColor = Color.White;
+                //        //}
+                //        this.dataGridView2.Rows[i].Cells["COIL_NO2"].Value = matNo;
+                //        this.dataGridView2.Rows[i].Cells["PICK_NO"].Value = pickNo;
+                //        this.dataGridView2.Rows[i].Cells["WEIGHT2"].Value = coilweight;
+                //        this.dataGridView2.Rows[i].Cells["OUTDIA2"].Value = coilOutdia;
+
+
+
+
+                //        //消除打钩
+                //        this.dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].Value = 0;
+                //        break;
+                //    }
+                //} 
+                #endregion
+
+
+                //if (((DataTable)dataGridView2.DataSource).Rows.Count == 0)
+                //{
+                //    DataTable dtDGV2 = InitDataTable(dataGridView2);
+
+                //    dtDGV2.Rows.Add(0, MAT_CNAME2, CAR_NO2, PLAN_NO2, MAT_CODE2, WEIGHT2);
+
+                //    this.dataGridView2.DataSource = dtDGV2;
+
+
+                //int index = this.dataGridView2.Rows.Add();
+                //this.dataGridView2.Rows[index].Cells["MAT_CNAME2"].Value = MAT_CNAME2; //物料名称
+                //this.dataGridView2.Rows[index].Cells["PLAN_NO2"].Value = PLAN_NO2;     //计划号
+                //this.dataGridView2.Rows[index].Cells["MAT_CODE2"].Value = MAT_CODE2;   //物料编号
+                //this.dataGridView2.Rows[index].Cells["WEIGHT2"].Value = WEIGHT2;       //重量
+
+                //this.dataGridView2.Rows[1].Cells["MAT_CNAME2"].Value = MAT_CNAME2; //物料名称
+                //this.dataGridView2.Rows[1].Cells["PLAN_NO2"].Value = PLAN_NO2;     //计划号
+                //this.dataGridView2.Rows[1].Cells["MAT_CODE2"].Value = MAT_CODE2;   //物料编号
+                //this.dataGridView2.Rows[1].Cells["WEIGHT2"].Value = WEIGHT2;       //重量
+                //this.dataGridView2.Rows.Add(1);
+                //string[] row0 = { "0", MAT_CNAME2, MAT_CODE2, MAT_CODE2, WEIGHT2 };
+                //this.dataGridView2.Rows.Add(row0);
+                //}
+
                 txtCoilsWeight.Text = string.Format("{0} /公斤", coilsWeight);
                 txtBoxStockNO.Focus();
                 txtBoxStockNO.SelectAll();
@@ -1401,6 +1840,10 @@ namespace UACSParking
                 string coilweight = "";
                 string coilOutdia = "";
 
+                string MAT_CNAME2 = "";  //物料名称
+                string PLAN_NO2 = "";    //计划号
+                string MAT_CODE2 = "";   //物料编号
+                string WEIGHT2 = "";     //重量
 
                 //检测所选材料是否为单选
                 for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
@@ -1408,10 +1851,15 @@ namespace UACSParking
                     bool hasChecked = (bool)dataGridView1.Rows[i].Cells["CHECK_COLUMN"].EditedFormattedValue;
                     if (hasChecked)
                     {
-                        matNo = dataGridView1.Rows[i].Cells["COIL_NO"].Value.ToString();            //材料号
-                        pickNo = dataGridView1.Rows[i].Cells["PLAN_NO"].Value.ToString();           //计划号
-                        coilweight = dataGridView1.Rows[i].Cells["WEIGHT"].Value.ToString();        //重量
-                        coilOutdia = dataGridView1.Rows[i].Cells["OUTDIA"].Value.ToString();        //外径
+                        matNo = dataGridView1.Rows[i].Cells["COIL_NO"].Value.ToString();        //材料号
+                        pickNo = dataGridView1.Rows[i].Cells["PLAN_NO"].Value.ToString();       //计划号
+                        coilweight = dataGridView1.Rows[i].Cells["WEIGHT"].Value.ToString();    //重量
+                        coilOutdia = dataGridView1.Rows[i].Cells["OUTDIA"].Value.ToString();    //外径
+
+                        MAT_CNAME2 = dataGridView1.Rows[i].Cells["MAT_CNAME"].Value.ToString(); //物料名称
+                        PLAN_NO2 = dataGridView1.Rows[i].Cells["PLAN_NO"].Value.ToString();     //计划号
+                        MAT_CODE2 = dataGridView1.Rows[i].Cells["MAT_CODE"].Value.ToString();   //物料编号
+                        WEIGHT2 = dataGridView1.Rows[i].Cells["WEIGHT"].Value.ToString();       //重量
 
                         //判断材料号是否相同
                         bool hasCoil = false;
@@ -1459,12 +1907,19 @@ namespace UACSParking
                                 this.dataGridView2.Rows[k].Cells["PICK_NO"].Value = pickNo;
                                 this.dataGridView2.Rows[k].Cells["WEIGHT2"].Value = coilweight;
                                 this.dataGridView2.Rows[k].Cells["OUTDIA2"].Value = coilOutdia;
+
+                               
+
                                 //消除打钩
                                 this.dataGridView2.Rows[k].Cells["CHECK_COLUMN2"].Value = 0;
                                 break;
                             }
                         }
-                     //
+                        this.dataGridView2.Rows[i].Cells["MAT_CNAME2"].Value = MAT_CNAME2; //物料名称
+                        this.dataGridView2.Rows[i].Cells["PLAN_NO2"].Value = PLAN_NO2;     //计划号
+                        this.dataGridView2.Rows[i].Cells["MAT_CODE2"].Value = MAT_CODE2;   //物料编号
+                        this.dataGridView2.Rows[i].Cells["WEIGHT2"].Value = WEIGHT2;       //重量
+                        this.dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].Value = 0;
                     }
                 }
                 
@@ -1488,21 +1943,21 @@ namespace UACSParking
                     //checkbox.Checked = false;
                     ((DataGridView)sender).Rows[e.RowIndex].Cells[0].Value = !(bool)dataGridView1.Rows[e.RowIndex].Cells[0].EditedFormattedValue; ;
                 }
-                if (((DataTable)dataGridView2.DataSource).Rows.Count > 0)
-                {
-                    foreach (DataGridViewRow item2 in dataGridView2.Rows)
-                    {
-                        if (item2.Cells["COIL_NO2"].Value.ToString() == "")
-                        {
-                            item2.Cells[0].Value = true;
-                            return;
-                        }
-                        else
-                        {
-                            item2.Cells[0].Value = false;
-                        }
-                    }
-                }
+                //if (((DataTable)dataGridView2.DataSource).Rows.Count > 0)
+                //{
+                //    foreach (DataGridViewRow item2 in dataGridView2.Rows)
+                //    {
+                //        if (item2.Cells["COIL_NO2"].Value.ToString() == "")
+                //        {
+                //            item2.Cells[0].Value = true;
+                //            return;
+                //        }
+                //        else
+                //        {
+                //            item2.Cells[0].Value = false;
+                //        }
+                //    }
+                //}
             }
             catch (Exception ex)
             {
@@ -1516,25 +1971,55 @@ namespace UACSParking
         {
             try
             {
-                for (int i = this.dataGridView2.Rows.Count - 1; i >= 0; i--)
+                //for (int i = this.dataGridView2.Rows.Count - 1; i >= 0; i--)
+                //{
+                //    //string  hasChecked = this.dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].Value.ToString();
+                //    //string coilNo = this.dataGridView2.Rows[i].Cells["COIL_NO2"].Value.ToString();
+                //    bool hasChecked = (bool)this.dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].EditedFormattedValue;
+                //    if (hasChecked)
+                //    {
+                //        coilsWeight -= Convert.ToInt32(dataGridView2.Rows[i].Cells["WEIGHT2"].Value);
+                //        this.dataGridView2.Rows[i].Cells["COIL_NO2"].Value = "";
+                //        this.dataGridView2.Rows[i].Cells["PICK_NO"].Value = "";
+                //        dataGridView2.Rows[i].Cells["WEIGHT2"].Value = "";         //重量
+                //        dataGridView2.Rows[i].Cells["OUTDIA2"].Value = "";        //外径
+
+                //        //消除打钩
+
+                //        this.dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].Value = 0;
+                //        break;
+                //    }
+                //}
+
+                //保存原有数据
+                DataTable dtDGV1 = InitDataTable(dataGridView1);
+                foreach (DataGridViewRow item in dataGridView1.Rows)
                 {
-                    //string  hasChecked = this.dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].Value.ToString();
-                    //string coilNo = this.dataGridView2.Rows[i].Cells["COIL_NO2"].Value.ToString();
-                    bool hasChecked = (bool)this.dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].EditedFormattedValue;
+                    dtDGV1.Rows.Add(0, item.Cells["MAT_CNAME"].Value.ToString(), item.Cells["CAR_NO"].Value.ToString(), item.Cells["PLAN_NO"].Value.ToString(), item.Cells["MAT_CODE"].Value.ToString(), item.Cells["WEIGHT"].Value.ToString());
+                }
+                //gv1添加新选中数据
+                foreach (DataGridViewRow item in dataGridView2.Rows)
+                {
+                    bool hasChecked = (bool)item.Cells["CHECK_COLUMN2"].EditedFormattedValue;
                     if (hasChecked)
                     {
-                        coilsWeight -= Convert.ToInt32(dataGridView2.Rows[i].Cells["WEIGHT2"].Value);
-                        this.dataGridView2.Rows[i].Cells["COIL_NO2"].Value = "";
-                        this.dataGridView2.Rows[i].Cells["PICK_NO"].Value = "";
-                        dataGridView2.Rows[i].Cells["WEIGHT2"].Value = "";         //重量
-                        dataGridView2.Rows[i].Cells["OUTDIA2"].Value = "";        //外径
-
-                        //消除打钩
-
-                        this.dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].Value = 0;
-                        break;
+                        dtDGV1.Rows.Add(1, item.Cells["MAT_CNAME2"].Value.ToString(), item.Cells["CAR_NO2"].Value.ToString(), item.Cells["PLAN_NO2"].Value.ToString(), item.Cells["MAT_CODE2"].Value.ToString(), item.Cells["WEIGHT2"].Value.ToString());
+                    }                    
+                }
+                //删除gv2已选中的数据
+                for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
+                {
+                    bool hasChecked = (bool)dataGridView2.Rows[i].Cells["CHECK_COLUMN2"].EditedFormattedValue;
+                    if (hasChecked)
+                    {
+                        this.dataGridView2.Rows.RemoveAt(i);
+                        i--;
                     }
                 }
+                //加载数据
+                this.dataGridView1.DataSource = dtDGV1;
+
+
                 // this.dataGridView2.DataSource = dt_selected;
                 txtCoilsWeight.Text = string.Format("{0} /公斤", coilsWeight);
                 txtCoilsWeight.BackColor = Color.White;

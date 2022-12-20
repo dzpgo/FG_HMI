@@ -1,15 +1,20 @@
 ﻿using Baosight.iSuperframe.TagService;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
 namespace UACSParking
 {
+    /*
+     * 文件名：FrmCarEntry.cs
+     * 作者：邓赵平
+     * 描述：车到位管理，该画面用于车辆到位操作，车辆到达现场停放好后后，可进行车到位信息确认，并通知行车对料槽车进行扫描
+     * 修改人：邓赵平
+     * 修改时间：2022-12-15
+     * 修改内容：新增[装料模式],[扫描行车]
+     */
     public partial class FrmCarEntry : Form
     {
         Baosight.iSuperframe.TagService.DataCollection<object> TagValues = new DataCollection<object>();
@@ -23,9 +28,13 @@ namespace UACSParking
         /// 停车位
         /// </summary>
         public string PackingNo { get; set; }
+        /// <summary>
+        /// 车号
+        /// </summary>
+        public string CarNo { get; set; }        
         private string carType = "";
-        string carFlag="1";
-        string carDirection="";
+        string carFlag = "1";
+        string carDirection = "";
 
         public string CarType
         {
@@ -45,15 +54,15 @@ namespace UACSParking
 
             cmbCarType.SelectedText = "热卷框架";
             txtPacking.Text = PackingNo;
-
+            txtCarNo.Text = CarNo;
             tagDP.ServiceName = "iplature";
             tagDP.AutoRegist = true;
             TagValues.Clear();
-            TagValues.Add("EV_NEW_PARKING_CARARRIVE", null);
+            TagValues.Add("EV_PARKING_CARARRIVE", null);
             tagDP.Attach(TagValues);
 
             this.Text = string.Format("{0}到位", carType);
-            if (carType== "100")
+            if (carType == "100")
             {
                 txtDirection.Enabled = false;
                 txtDirection.Text = "南";
@@ -78,6 +87,10 @@ namespace UACSParking
             }
             BindCarDrection();//绑定方向
             BindCarType(cmbCarType);
+            //绑定装料模式
+            BindCmbWordMode();
+            //绑定扫描行车
+            BindCmbScanCar();
             //txtDirection.Text = "";
             //if (PackingNo.Contains("Z3"))
             //{
@@ -97,27 +110,27 @@ namespace UACSParking
             DataRow dr = dt.NewRow();
             //if (PackingNo.Contains("Z0"))
             //{
-                //dr = dt.NewRow();
-                //dr["TypeValue"] = "E";
-                //dr["TypeName"] = "东";
-                //dt.Rows.Add(dr);
+            //dr = dt.NewRow();
+            //dr["TypeValue"] = "E";
+            //dr["TypeName"] = "东";
+            //dt.Rows.Add(dr);
 
-                //dr = dt.NewRow();
-                //dr["TypeValue"] = "W";
-                //dr["TypeName"] = "西";
-                //dt.Rows.Add(dr);
+            //dr = dt.NewRow();
+            //dr["TypeValue"] = "W";
+            //dr["TypeName"] = "西";
+            //dt.Rows.Add(dr);
             //}
             //else
             //{
-                dr = dt.NewRow();
-                dr["TypeValue"] = "S";
-                dr["TypeName"] = "南";
-                dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["TypeValue"] = "S";
+            dr["TypeName"] = "南";
+            dt.Rows.Add(dr);
 
-                dr = dt.NewRow();
-                dr["TypeValue"] = "N";
-                dr["TypeName"] = "北";
-                dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["TypeValue"] = "N";
+            dr["TypeName"] = "北";
+            dt.Rows.Add(dr);
             //}
 
             //绑定列表下拉框数据
@@ -130,9 +143,15 @@ namespace UACSParking
             this.Close();
         }
 
+
+        /// <summary>
+        /// 确定保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!txtPacking.Text.ToString().Contains('Z') || txtPacking.Text.ToString().Trim()=="请选择")
+            if (!txtPacking.Text.ToString().Contains('A') || txtPacking.Text.ToString().Trim() == "请选择")
             {
                 MessageBox.Show("请先选择停车位！！", "提示");
                 this.Close();
@@ -142,10 +161,10 @@ namespace UACSParking
             if (carType == "框架车")
             {
                 //txtDirection.Text = "南";
-               // txtDirection.Enabled = false ;
+                // txtDirection.Enabled = false ;
                 txtDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
                 //txtDirection
-                if ( txtDirection.Text.Trim()=="南")
+                if (txtDirection.Text.Trim() == "南")
                 {
                     carDirection = "S";
                 }
@@ -158,7 +177,7 @@ namespace UACSParking
                     MessageBox.Show("请输入车头方向！", "提示");
                     return;
                 }
-                if (txtCarNo.Text.Length<4)
+                if (txtCarNo.Text.Length < 4)
                 {
                     MessageBox.Show("请输入四位以上的车牌号！", "提示");
                     return;
@@ -181,7 +200,7 @@ namespace UACSParking
                     sb.Append("|");
                     sb.Append(carFlag.Trim());
                     sb.Append("|");
-                   // sb.Append(carDirection.Trim());
+                    // sb.Append(carDirection.Trim());
                     sb.Append(txtDirection.SelectedValue.ToString().Trim());
                     sb.Append("|");
                     sb.Append("90");
@@ -198,9 +217,9 @@ namespace UACSParking
                     //{
                     //    return;
                     //}
-                    tagDP.SetData("EV_NEW_PARKING_CARARRIVE", sb.ToString());
+                    tagDP.SetData("EV_PARKING_CARARRIVE", sb.ToString());
                     DialogResult dr = MessageBox.Show("框架车车到位成功，激光扫描开始，请保证车位上方没有行车经过。", "提示", MessageBoxButtons.OK);
-                    carTypeValue1550 =  Int16.Parse(carTypeValue);
+                    carTypeValue1550 = Int16.Parse(carTypeValue);
                     ParkClassLibrary.HMILogger.WriteLog(button1.Text, "车到位：" + sb.ToString(), ParkClassLibrary.LogLevel.Info, this.Text);
                     if (dr == DialogResult.OK)
                     {
@@ -235,7 +254,7 @@ namespace UACSParking
                 }
                 else
                 {
-                    MessageBox.Show("请输入车头方向！","提示");
+                    MessageBox.Show("请输入车头方向！", "提示");
                     return;
                 }
                 if (txtCarNo.Text.Length < 4)
@@ -269,10 +288,10 @@ namespace UACSParking
                     sb.Append("1");
                     sb.Append("|");
                     string carTypeValue = cmbCarType.SelectedValue.ToString().Trim();
-                    sb.Append(carTypeValue); 
+                    sb.Append(carTypeValue);
                     //sb.Append("101");
                     sb.Append("|");
-                    if (carTypeValue=="102")
+                    if (carTypeValue == "102")
                     {
                         sb.Append("1");
                     }
@@ -285,7 +304,7 @@ namespace UACSParking
                     //{
                     //    return;
                     //}
-                    tagDP.SetData("EV_NEW_PARKING_CARARRIVE", sb.ToString());
+                    tagDP.SetData("EV_PARKING_CARARRIVE", sb.ToString());
                     carTypeValue1550 = Int16.Parse(carTypeValue);
                     DialogResult dr = MessageBox.Show("社会车车到位成功，激光扫描开始，请保证车位上方没有行车经过。", "提示", MessageBoxButtons.OK);
                     ParkClassLibrary.HMILogger.WriteLog("车到位", "车到位：" + sb.ToString(), ParkClassLibrary.LogLevel.Info, this.Text);
@@ -381,7 +400,7 @@ namespace UACSParking
                 dr["TypeValue"] = "100";
                 dr["TypeName"] = "普通框架";
                 dt.Rows.Add(dr);
-                
+
                 //dr = dt.NewRow();
                 //dr["TypeValue"] = "104";
                 //dr["TypeName"] = "雨棚车";
@@ -425,5 +444,82 @@ namespace UACSParking
                 button1.Enabled = true;
             }
         }
+
+        /// <summary>
+        /// 绑定装料模式
+        /// </summary>
+        private void BindCmbWordMode()
+        {
+            DataTable dt = new DataTable();
+            DataColumn dc1 = new DataColumn("ID");
+            DataColumn dc2 = new DataColumn("NAME");
+            dt.Columns.Add(dc1);
+            dt.Columns.Add(dc2);
+            DataRow dr1 = dt.NewRow();
+            dr1["ID"] = "1";
+            dr1["NAME"] = "模式一";
+            DataRow dr2 = dt.NewRow();
+            dr2["ID"] = "2";
+            dr2["NAME"] = "模式二";
+            DataRow dr3 = dt.NewRow();
+            dr3["ID"] = "3";
+            dr3["NAME"] = "模式三";
+            DataRow dr4 = dt.NewRow();
+            dr4["ID"] = "4";
+            dr4["NAME"] = "模式四";
+            dt.Rows.Add(dr1);
+            dt.Rows.Add(dr2);
+            dt.Rows.Add(dr3);
+            dt.Rows.Add(dr4);
+            //绑定数据
+            cmbWordMode.DataSource = dt;
+            cmbWordMode.ValueMember = "ID";
+            cmbWordMode.DisplayMember = "NAME";
+            //设置默认值
+            this.cmbWordMode.SelectedIndex = 0;
+        }
+
+        /**
+          *〈一句话功能简述〉
+          *〈绑定扫描行车〉
+          * @return[void]
+          * @exception/throws[违例类型][违例说明]
+          * @see[类、类#方法、类#成员]
+          * @deprecated
+        */
+        /// <summary>
+        /// 绑定扫描行车
+        /// </summary>
+        private void BindCmbScanCar()
+        {
+            DataTable dt = new DataTable();
+            DataColumn dc1 = new DataColumn("ID");
+            DataColumn dc2 = new DataColumn("NAME");
+            dt.Columns.Add(dc1);
+            dt.Columns.Add(dc2);
+            DataRow dr1 = dt.NewRow();
+            dr1["ID"] = "1";
+            dr1["NAME"] = "1号行车";
+            DataRow dr2 = dt.NewRow();
+            dr2["ID"] = "2";
+            dr2["NAME"] = "2号行车";
+            DataRow dr3 = dt.NewRow();
+            dr3["ID"] = "3";
+            dr3["NAME"] = "3号行车";
+            DataRow dr4 = dt.NewRow();
+            dr4["ID"] = "4";
+            dr4["NAME"] = "4号行车";
+            dt.Rows.Add(dr1);
+            dt.Rows.Add(dr2);
+            dt.Rows.Add(dr3);
+            dt.Rows.Add(dr4);
+            //绑定数据
+            cmbScanCar.DataSource = dt;
+            cmbScanCar.ValueMember = "ID";
+            cmbScanCar.DisplayMember = "NAME";
+            //设置默认值
+            this.cmbScanCar.SelectedIndex = 0;
+        }
+
     }
 }

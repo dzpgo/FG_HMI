@@ -51,7 +51,7 @@ namespace UACSControls
                 }
 
                 theSaddlsInfoInBay.conInit(areaBase.AreaNo, theTagServiceName);
-                refreshControl();
+                refreshControl(areaBase.AreaNo);
             }
             catch (Exception ex)
             { }
@@ -77,7 +77,7 @@ namespace UACSControls
 
                 theSaddlsInfoInBay.conInit(_theBayNO, _theTagServiceName);
 
-                refreshControl();
+                refreshControl(_theBayNO);
 
                 return isLoadUserControl;
             }
@@ -119,14 +119,14 @@ namespace UACSControls
         //    }
         //}
 
-        public void refreshControl()
+        public void refreshControl(string AreaNo)
         {
 
             //取这块小区的大小
             double X_Width = theAreaBase.X_End - theAreaBase.X_Start;
             double Y_Height = theAreaBase.Y_End - theAreaBase.Y_Start;
-
-            theSaddlsInfoInBay.getSaddleInfo();
+            
+            theSaddlsInfoInBay.getSaddleInfo(AreaNo);
             foreach (SaddleBase theSaddleInfo in theSaddlsInfoInBay.DicSaddles.Values)
             {
                 conStockSaddle theSaddleVisual = new conStockSaddle();

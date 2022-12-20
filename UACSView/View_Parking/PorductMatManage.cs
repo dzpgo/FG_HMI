@@ -142,13 +142,13 @@ namespace UACSParking
             parkingNO = parkNO;
         }
         private bool isOpenPasswordForm = false;
-        public PorductMatManage(bool _isOpenPasswordForm,string _bayNo,string parkNO)
+        public PorductMatManage(bool _isOpenPasswordForm, string _bayNo, string parkNO)
         {
             InitializeComponent();
             this.Load += PorductMatManage_Load;
             isOpenPasswordForm = _isOpenPasswordForm;
             cmbArea.Text = _bayNo;
-            parkingNO = parkNO;                           
+            parkingNO = parkNO;
         }
 
         void PorductMatManage_FormClosed(object sender, FormClosedEventArgs e)
@@ -199,7 +199,7 @@ namespace UACSParking
             BindParkingNoAndAreaNo();
             Bind_cbbAreaName(cmbArea);
             GetComboxOnParkingByBay(cbbPacking);
-            
+
             //GetComboxOnParkingByBay();
             cbbPacking.SelectedValue = "Z01A1";
             cbbPacking.SelectedIndexChanged += cbbPacking_SelectedIndexChanged;
@@ -413,12 +413,12 @@ namespace UACSParking
             //准备数据
             try
             {
-                string str1 = "";              
+                string str1 = "";
 
                 if (cmbArea.Text.Contains("1550"))
                 {
-                    str1 = "Z01";                  
-                }               
+                    str1 = "Z01";
+                }
                 else
                 {
 
@@ -476,8 +476,9 @@ namespace UACSParking
             {
                 if (cbbPacking.Text.Trim() != "")
                 {
-                    area = dicParkingNo[cbbPacking.Text.Trim()];
+                    area = dicParkingNo[cbbPacking.Text.Trim()];                    
                 }
+                RefreshHMI();
             }
             catch (Exception ex)
             {
@@ -614,8 +615,8 @@ namespace UACSParking
             {
                 string str = "";
                 //txtCarNo.Text = "";
-                string sql = string.Format("select CAR_NO,HEAD_POSTION ,TREATMENT_NO,STOWAGE_ID ,LASER_ACTION_COUNT from UACS_PARKING_STATUS where PARKING_NO = '{0}' ", parking);
-
+                string sql = string.Format("select CAR_NO,HEAD_POSTION ,TREATMENT_NO,STOWAGE_ID ,LASER_ACTION_COUNT from UACS_PARKING_WORK_STATUS where PARKING_NO = '{0}' ", parking);
+                //string sql = string.Format("select CAR_NO,HEAD_POSTION ,TREATMENT_NO,STOWAGE_ID ,LASER_ACTION_COUNT from UACS_PARKING_STATUS where PARKING_NO = '{0}' ", parking);
                 using (IDataReader rdr = DBHelper.ExecuteReader(sql))
                 {
                     while (rdr.Read())
@@ -1117,13 +1118,13 @@ namespace UACSParking
         private void RefreshHMI()
         {
             btnOperateStrat.Enabled = true;
-            panel_Tip.Visible = false;
+            //panel_Tip.Visible = false;
             bool stopRefresh = false;
             if (isStowage)
             {
                 return;
             }
-            if (cbbPacking.Text.Trim().Contains('Z'))
+            if (cbbPacking.Text.Trim().Contains('A'))
             {
                 //刷新车位信息
                 string temp = GetTextOnCar(cbbPacking.Text.Trim());
@@ -1149,7 +1150,7 @@ namespace UACSParking
                 GetParkInfoByBay();
                 if (!hasCar)
                 {
-                    stopRefresh = txtTeratmentNO.Text.Contains('Z');
+                    stopRefresh = txtTeratmentNO.Text.Contains('A');
                     hasCar = stopRefresh;
                     return;
                 }
@@ -1168,7 +1169,7 @@ namespace UACSParking
                 //刷新车上卷状态
                 reflreshParkingCoilstate(cbbPacking.Text.Trim());
 
-                stopRefresh = txtTeratmentNO.Text.Contains('Z');
+                stopRefresh = txtTeratmentNO.Text.Contains('A');
                 hasCar = stopRefresh;
                 //txtDebug.Text = hasCar.ToString();//没车只刷一次
                 setCurParkStatus(cbbPacking.Text.Trim());
@@ -1176,6 +1177,15 @@ namespace UACSParking
                 displayStowageTime(labTime, txtStowageID.Text.Trim()); // //显示配载生成后的时间差
 
                 Stowage_intercept(cmbArea.Text.Trim(), cbbPacking.Text.Trim(), txtCarNo.Text.Trim(), dataGridView2);
+            }
+            else
+            {
+                txtCarNo.Text = "";
+                txtCarHeadToward.Text = "";
+                txtLaserCount.Text = "";
+                txtStowageID.Text = "";
+                txtTeratmentNO.Text = "";
+                txtLaserStatus.Text = "";
             }
         }
         private void CalculteWeight()
@@ -1267,7 +1277,12 @@ namespace UACSParking
         private void btnCarEnter_Click(object sender, EventArgs e)
         {
 
-            if (!cbbPacking.Text.Trim().Contains('Z'))
+            //if (!cbbPacking.Text.Trim().Contains('Z'))
+            //{
+            //    MessageBox.Show("请选择停车位！", "提示");
+            //    return;
+            //}
+            if (!cbbPacking.Text.Trim().Contains('A'))
             {
                 MessageBox.Show("请选择停车位！", "提示");
                 return;
@@ -1281,7 +1296,8 @@ namespace UACSParking
             {
                 FrmCarEntry frm = new FrmCarEntry();
                 frm.PackingNo = cbbPacking.Text.Trim();
-                //frm.CarType = "社会车";
+                frm.CarNo = txtCarNo.Text.Trim();
+                //frm.CarType = "社会车"; 
                 frm.CarType = "ALL";
                 frm.ShowDialog();
                 curCarType = frm.CarTypeValue1550 != 0 ? frm.CarTypeValue1550 : curCarType;
@@ -1317,7 +1333,7 @@ namespace UACSParking
                 btnRefresh_Click(null, null);
                 return;
             }
-            if(!JudgeCraneOrder(cbbPacking.Text))
+            if (!JudgeCraneOrder(cbbPacking.Text))
             {
                 MessageBox.Show("行车已生成指令，不能车离！");
                 return;
@@ -1341,8 +1357,8 @@ namespace UACSParking
                     coilsWeight = 0;
                     txtCoilsWeight.Text = string.Format("{0}/吨", coilsWeight);
                     txtCoilsWeight.BackColor = Color.White;
-                    txtSelectGoove.Text = "";
-                    panel_Tip.Visible = false;
+                    //txtSelectGoove.Text = "";
+                    //panel_Tip.Visible = false;
                     btnOperateStrat.Enabled = true;
                     ParkClassLibrary.HMILogger.WriteLog(btnCarFrom.Text, "车离：" + cbbPacking.Text, ParkClassLibrary.LogLevel.Info, this.Text);
                 }
@@ -1391,7 +1407,7 @@ namespace UACSParking
             {
                 //string sql = @"select A.PARKING_NO,A.ISLOADED,A.PARKING_STATUS,A.CAR_NO , B.CAR_TYPE, B.ISWOODENCAR from UACS_PARKING_STATUS A
                 //                LEFT JOIN UACS_TRUCK_STOWAGE B ON A.STOWAGE_ID = B.STOWAGE_ID ";
-                string sql = @"select A.PARKING_NO,A.ISLOADED,A.WORK_STATUS,A.CAR_NO , B.CAR_TYPE, B.ISWOODENCAR from UACS_PARKING_STATUS A
+                string sql = @"select A.PARKING_NO,A.ISLOADED,A.WORK_STATUS,A.CAR_NO , B.CAR_TYPE from UACS_PARKING_WORK_STATUS A
                                 LEFT JOIN UACS_TRUCK_STOWAGE B ON A.STOWAGE_ID = B.STOWAGE_ID ";
                 bool ret = true;
                 using (IDataReader rdr = DBHelper.ExecuteReader(sql))
@@ -1399,52 +1415,60 @@ namespace UACSParking
                     while (rdr.Read())
                     {
 
-                        if (cmbArea.Text.Contains("2030"))
-                        {
-                            if (rdr["PARKING_NO"].ToString().Trim() == "Z01A1")
+                        //if (cmbArea.Text.Contains("2030"))
+                        //{
+                            if (rdr["PARKING_NO"].ToString().Trim() == "AT1A1")
                             {
                                 //parkZ21B6.SetPark(JudgeStrNull(rdr["PARKING_NO"]), JudgeStrNull(rdr["ISLOADED"]), JudgeStrNull(rdr["PARKING_STATUS"]), JudgeStrNull(rdr["CAR_NO"]), JudgeStrNull(rdr["CAR_TYPE"]), JudgeStrNull(rdr["ISWOODENCAR"]));
-                                parkZ21B6.SetPark(JudgeStrNull(rdr["PARKING_NO"]), JudgeStrNull(rdr["ISLOADED"]), JudgeStrNull(rdr["WORK_STATUS"]), JudgeStrNull(rdr["CAR_NO"]), JudgeStrNull(rdr["CAR_TYPE"]), JudgeStrNull(rdr["ISWOODENCAR"]));
+                                parkZ21B6.SetPark(JudgeStrNull(rdr["PARKING_NO"]), JudgeStrNull(rdr["ISLOADED"]), JudgeStrNull(rdr["WORK_STATUS"]), JudgeStrNull(rdr["CAR_NO"]), JudgeStrNull(rdr["CAR_TYPE"]), "");
                             }
-                            if (rdr["PARKING_NO"].ToString().Trim() == "Z01A2")
+                            else if (rdr["PARKING_NO"].ToString().Trim() == "AT1A2")
                             {
                                 //parkZ21B5.SetPark(JudgeStrNull(rdr["PARKING_NO"]), JudgeStrNull(rdr["ISLOADED"]), JudgeStrNull(rdr["PARKING_STATUS"]), JudgeStrNull(rdr["CAR_NO"]), JudgeStrNull(rdr["CAR_TYPE"]), JudgeStrNull(rdr["ISWOODENCAR"]));
-                                parkZ21B5.SetPark(JudgeStrNull(rdr["PARKING_NO"]), JudgeStrNull(rdr["ISLOADED"]), JudgeStrNull(rdr["WORK_STATUS"]), JudgeStrNull(rdr["CAR_NO"]), JudgeStrNull(rdr["CAR_TYPE"]), JudgeStrNull(rdr["ISWOODENCAR"]));
+                                parkZ21B5.SetPark(JudgeStrNull(rdr["PARKING_NO"]), JudgeStrNull(rdr["ISLOADED"]), JudgeStrNull(rdr["WORK_STATUS"]), JudgeStrNull(rdr["CAR_NO"]), JudgeStrNull(rdr["CAR_TYPE"]), "");
                             }
-                        }
+                            else if (rdr["PARKING_NO"].ToString().Trim() == "AT1A3")
+                            {
+                                parkZ21B5.SetPark(JudgeStrNull(rdr["PARKING_NO"]), JudgeStrNull(rdr["ISLOADED"]), JudgeStrNull(rdr["WORK_STATUS"]), JudgeStrNull(rdr["CAR_NO"]), JudgeStrNull(rdr["CAR_TYPE"]), "");
+                            }
+                            else if (rdr["PARKING_NO"].ToString().Trim() == "AT1A4")
+                            {
+                                parkZ21B5.SetPark(JudgeStrNull(rdr["PARKING_NO"]), JudgeStrNull(rdr["ISLOADED"]), JudgeStrNull(rdr["WORK_STATUS"]), JudgeStrNull(rdr["CAR_NO"]), JudgeStrNull(rdr["CAR_TYPE"]), "");
+                            }
+                        //}
                     }
                 }
 
-                string treatmentNO = txtTeratmentNO.Text;
-                string laserCount = txtLaserCount.Text;
-                string sqlTextTotal = @"SELECT COUNT(distinct(LASER_ID)) AS IDTOTAL  FROM UACS_LASER_OUT WHERE 1=1 ";
-                sqlTextTotal += " AND LASER_ACTION_COUNT = '" + laserCount + "' AND TREATMENT_NO = '" + treatmentNO + "' FETCH FIRST 1 ROWS ONLY ";
+                //string treatmentNO = txtTeratmentNO.Text;
+                //string laserCount = txtLaserCount.Text;
+                //string sqlTextTotal = @"SELECT COUNT(distinct(LASER_ID)) AS IDTOTAL  FROM UACS_LASER_OUT WHERE 1=1 ";
+                //sqlTextTotal += " AND LASER_ACTION_COUNT = '" + laserCount + "' AND TREATMENT_NO = '" + treatmentNO + "' FETCH FIRST 1 ROWS ONLY ";
 
-                using (IDataReader rdr = DBHelper.ExecuteReader(sqlTextTotal))
-                {
-                    while (rdr.Read())
-                    {
-                        if (rdr["IDTOTAL"] != System.DBNull.Value)
-                        {
-                            //txtSelectGoove.Text = Convert.ToString(rdr["IDTOTAL"]);
-                            if (Convert.ToInt16(rdr["IDTOTAL"]) == 0 && txtCarNo.Text.Equals(""))
-                            {
-                                txtSelectGoove.Text = "";
-                                txtSelectGoove.BackColor = SystemColors.Control;
-                            }
-                            else if (curCarType == 100)
-                            {
-                                txtSelectGoove.Text = Convert.ToString(rdr["IDTOTAL"]);
-                                txtSelectGoove.BackColor = txtSelectGoove.Text == txtGrooveNum.Text ? SystemColors.Control : txtSelectGoove.BackColor = Color.Red; ;
-                            }
-                            else
-                            {
-                                txtSelectGoove.Text = Convert.ToString(rdr["IDTOTAL"]);
-                                txtSelectGoove.BackColor = SystemColors.Control;
-                            }
-                        }
-                    }
-                }
+                //using (IDataReader rdr = DBHelper.ExecuteReader(sqlTextTotal))
+                //{
+                //    while (rdr.Read())
+                //    {
+                //        if (rdr["IDTOTAL"] != System.DBNull.Value)
+                //        {
+                //            //txtSelectGoove.Text = Convert.ToString(rdr["IDTOTAL"]);
+                //            if (Convert.ToInt16(rdr["IDTOTAL"]) == 0 && txtCarNo.Text.Equals(""))
+                //            {
+                //                txtSelectGoove.Text = "";
+                //                txtSelectGoove.BackColor = SystemColors.Control;
+                //            }
+                //            else if (curCarType == 100)
+                //            {
+                //                txtSelectGoove.Text = Convert.ToString(rdr["IDTOTAL"]);
+                //                txtSelectGoove.BackColor = txtSelectGoove.Text == txtGrooveNum.Text ? SystemColors.Control : txtSelectGoove.BackColor = Color.Red; ;
+                //            }
+                //            else
+                //            {
+                //                txtSelectGoove.Text = Convert.ToString(rdr["IDTOTAL"]);
+                //                txtSelectGoove.BackColor = SystemColors.Control;
+                //            }
+                //        }
+                //    }
+                //}
                 return ret;
             }
             catch (Exception ex)
@@ -1594,7 +1618,7 @@ namespace UACSParking
                     {
                         if (e.Value == null || e.Value.ToString() == "")
                         {
-                            if(dataGridView2.Rows[e.RowIndex].Cells["COIL_NO2"].Value.ToString().Contains("待装钢卷"))
+                            if (dataGridView2.Rows[e.RowIndex].Cells["COIL_NO2"].Value.ToString().Contains("待装钢卷"))
                             {
                                 e.Value = "";
                                 return;
@@ -1612,7 +1636,7 @@ namespace UACSParking
                         {
                             e.Value = "待判";
                             e.CellStyle.BackColor = Color.Yellow;
-                        } 
+                        }
                         else if (e.Value.Equals(2))
                         {
                             e.Value = "封锁";
@@ -1642,8 +1666,10 @@ namespace UACSParking
             {
                 //string sql = string.Format("select BAY_NO,MAT_NO,FROM_STOCK_NO,TO_STOCK_NO from UACS_CRANE_ORDER_Z32_Z33 WHERE BAY_NO ='{0}' AND ORDER_TYPE = '12' ", parkNO);  //社会车？？框架车23
                 string SQLOder = " SELECT C.GROOVEID, C.MAT_NO,B.BAY_NO,B.FROM_STOCK_NO ,B.TO_STOCK_NO FROM UACS_TRUCK_STOWAGE_DETAIL C ";
-                SQLOder += " RIGHT JOIN UACS_CRANE_ORDER_CURRENT B ON C.MAT_NO = B.MAT_NO ";
-                SQLOder += " WHERE C.STOWAGE_ID IN (SELECT STOWAGE_ID FROM UACS_PARKING_STATUS  ";
+                //SQLOder += " RIGHT JOIN UACS_CRANE_ORDER_CURRENT B ON C.MAT_NO = B.MAT_NO ";
+                SQLOder += " RIGHT JOIN UACS_CRANE_ORDER_CURRENT B ON C.MAT_NO = B.MAT_CODE ";
+                //SQLOder += " WHERE C.STOWAGE_ID IN (SELECT STOWAGE_ID FROM UACS_PARKING_STATUS  ";
+                SQLOder += " WHERE C.STOWAGE_ID IN (SELECT STOWAGE_ID FROM UACS_PARKING_WORK_STATUS  ";
                 SQLOder += " WHERE PARKING_NO ='{0}') ORDER BY C.GROOVEID ";
                 SQLOder = string.Format(SQLOder, parkNO);
                 using (IDataReader odrIn = DBHelper.ExecuteReader(SQLOder))
@@ -1671,8 +1697,10 @@ namespace UACSParking
             dtLaserData.Clear();
             try
             {
+                //string sqlLaser = @"SELECT CAR_X_BORDER_MAX,CAR_X_BORDER_MIN,CAR_Y_BORDER_MAX,CAR_Y_BORDER_MIN,GROOVE_ACT_X,GROOVE_ACT_Y,GROOVE_ACT_Z,GROOVEID FROM UACS_LASER_OUT  ";
+                //sqlLaser = string.Format("{0}  WHERE TREATMENT_NO  IN (SELECT TREATMENT_NO FROM UACS_PARKING_STATUS WHERE PARKING_NO = '{1}')", sqlLaser, strParkNo); //strParkNo:Z53A1
                 string sqlLaser = @"SELECT CAR_X_BORDER_MAX,CAR_X_BORDER_MIN,CAR_Y_BORDER_MAX,CAR_Y_BORDER_MIN,GROOVE_ACT_X,GROOVE_ACT_Y,GROOVE_ACT_Z,GROOVEID FROM UACS_LASER_OUT  ";
-                sqlLaser = string.Format("{0}  WHERE TREATMENT_NO  IN (SELECT TREATMENT_NO FROM UACS_PARKING_STATUS WHERE PARKING_NO = '{1}')", sqlLaser, strParkNo); //strParkNo:Z53A1
+                sqlLaser = string.Format("{0}  WHERE TREATMENT_NO  IN (SELECT TREATMENT_NO FROM UACS_PARKING_WORK_STATUS WHERE PARKING_NO = '{1}')", sqlLaser, strParkNo); //strParkNo:Z53A1
                 using (IDataReader rdr = DBHelper.ExecuteReader(sqlLaser))
                 {
                     dtLaserData.Load(rdr);
@@ -1733,8 +1761,10 @@ namespace UACSParking
             park.ClearbitM();
             try
             {
+                //string sqlLaser = @"SELECT CAR_X_BORDER_MAX,CAR_X_BORDER_MIN,CAR_Y_BORDER_MAX,CAR_Y_BORDER_MIN,GROOVE_ACT_X,GROOVE_ACT_Y,GROOVE_ACT_Z,GROOVEID,TIME_CREATED FROM UACS_LASER_OUT  ";
+                //sqlLaser = string.Format("{0}  WHERE TREATMENT_NO  IN (SELECT TREATMENT_NO FROM UACS_PARKING_STATUS WHERE PARKING_NO = '{1}')", sqlLaser, strParkNo); //strParkNo:Z53A1
                 string sqlLaser = @"SELECT CAR_X_BORDER_MAX,CAR_X_BORDER_MIN,CAR_Y_BORDER_MAX,CAR_Y_BORDER_MIN,GROOVE_ACT_X,GROOVE_ACT_Y,GROOVE_ACT_Z,GROOVEID,TIME_CREATED FROM UACS_LASER_OUT  ";
-                sqlLaser = string.Format("{0}  WHERE TREATMENT_NO  IN (SELECT TREATMENT_NO FROM UACS_PARKING_STATUS WHERE PARKING_NO = '{1}')", sqlLaser, strParkNo); //strParkNo:Z53A1
+                sqlLaser = string.Format("{0}  WHERE TREATMENT_NO  IN (SELECT TREATMENT_NO FROM UACS_PARKING_WORK_STATUS WHERE PARKING_NO = '{1}')", sqlLaser, strParkNo); //strParkNo:Z53A1
                 using (IDataReader rdr = DBHelper.ExecuteReader(sqlLaser))
                 {
                     dtLaserData.Load(rdr);
@@ -1776,7 +1806,7 @@ namespace UACSParking
                     //park.DrawParksize(XStart, YEnd, XEnd - XStart, YEnd - YStart);
                     if (strParkNo.Contains("Z62"))
                     {
-                        park.DrawParksize(XStart, YEnd, XEnd - XStart, YEnd - YStart, carHearDrection,"INC");
+                        park.DrawParksize(XStart, YEnd, XEnd - XStart, YEnd - YStart, carHearDrection, "INC");
                     }
                     else
                     {
@@ -2045,7 +2075,8 @@ namespace UACSParking
                 if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('Z'))
                 {
                     string parkNO = cbbPacking.Text;
-                    string GrooveNum = txtSelectGoove.Text;
+                    //string GrooveNum = txtSelectGoove.Text;
+                    string GrooveNum = "";
                     if (auth.IsOpen("框架车出库材料选择"))
                     {
                         auth.CloseForm("框架车出库材料选择");
@@ -2124,14 +2155,14 @@ namespace UACSParking
             bool ret = false;
             try
             {
-                string SQLOder = "  SELECT PARKING_STATUS FROM UACS_PARKING_STATUS WHERE PARKING_NO ='{0}' ";
+                string SQLOder = "  SELECT WORK_STATUS FROM UACS_PARKING_WORK_STATUS WHERE PARKING_NO ='{0}' ";
                 SQLOder = string.Format(SQLOder, parkNO);
                 using (IDataReader rdr = DBHelper.ExecuteReader(SQLOder))
                 {
                     while (rdr.Read())
                     {
                         int status = 0;
-                        status = JudgeIntNull(rdr["PARKING_STATUS"]);
+                        status = JudgeIntNull(rdr["WORK_STATUS"]);
                         if (status == 270) //暂停
                         {
                             ret = true;
@@ -2231,6 +2262,8 @@ namespace UACSParking
             //    auth.OpenForm("成品库框架车出库", currPark);
             //    ret = true;
             //}
+            //刷新画面
+            RefreshHMI();
             return ret;
         }
         /// <summary>
@@ -2249,9 +2282,12 @@ namespace UACSParking
             }
             try
             {
-                string sqlText = " SELECT C.PARKING_STATUS,A.CAR_TYPE,A.ISWOODENCAR FROM UACS_PARKING_STATUS  C ";
+                string sqlText = " SELECT C.PARKING_STATUS,A.CAR_TYPE,A.ISWOODENCAR FROM UACS_PARKING_WORK_STATUS  C ";
                 sqlText += " LEFT JOIN UACS_TRUCK_STOWAGE A ON C.STOWAGE_ID = A.STOWAGE_ID ";
                 sqlText += " WHERE PARKING_NO = '" + parkingNO + "'";
+                //string sqlText = " SELECT C.PARKING_STATUS,A.CAR_TYPE,A.ISWOODENCAR FROM UACS_PARKING_STATUS  C ";
+                //sqlText += " LEFT JOIN UACS_TRUCK_STOWAGE A ON C.STOWAGE_ID = A.STOWAGE_ID ";
+                //sqlText += " WHERE PARKING_NO = '" + parkingNO + "'";
                 using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
                 {
                     while (rdr.Read())
@@ -2265,7 +2301,7 @@ namespace UACSParking
                     }
                     if (carType == 100 || carType == 101 || carType == 102 || carType == 103 || carType == 106)
                     {
-                        if(carType == 101 && isWoodenCar == 1)
+                        if (carType == 101 && isWoodenCar == 1)
                         {
                             btnUnitToCar.Enabled = false;
                             button_L3Stowage.Enabled = false;
@@ -2280,7 +2316,7 @@ namespace UACSParking
                             btnWoodenCar.Enabled = false;
                         }
                     }
-                    else if(carType == 200)
+                    else if (carType == 200)
                     {
                         btnUnitToCar.Enabled = false;
                         button_L3Stowage.Enabled = false;
@@ -2362,8 +2398,10 @@ namespace UACSParking
             dt.Clear();
             try
             {
+                //string SQLOder = " SELECT A.LENGTH,A.WIDTH,A.HEIGHT,A.LOAD_CAPACITY,A.SADDLE_NUM,A.SADDLE_INTERVAL,A.DISTANCE_HEAD,A.DISTANCE_LEFT,A.DISTANCE_RIGHT";
+                //SQLOder += " FROM UACS_TRUCK_FRAME_DEFINE A WHERE FRAME_TYPE_NO IN ( SELECT  CAR_NO FROM UACS_PARKING_STATUS B WHERE B.PARKING_NO ='{0}') ";
                 string SQLOder = " SELECT A.LENGTH,A.WIDTH,A.HEIGHT,A.LOAD_CAPACITY,A.SADDLE_NUM,A.SADDLE_INTERVAL,A.DISTANCE_HEAD,A.DISTANCE_LEFT,A.DISTANCE_RIGHT";
-                SQLOder += " FROM UACS_TRUCK_FRAME_DEFINE A WHERE FRAME_TYPE_NO IN ( SELECT  CAR_NO FROM UACS_PARKING_STATUS B WHERE B.PARKING_NO ='{0}') ";
+                SQLOder += " FROM UACS_TRUCK_FRAME_DEFINE A WHERE FRAME_TYPE_NO IN ( SELECT  CAR_NO FROM UACS_PARKING_WORK_STATUS B WHERE B.PARKING_NO ='{0}') ";
                 SQLOder = string.Format(SQLOder, parkNO);
                 using (IDataReader odrIn = DBHelper.ExecuteReader(SQLOder))
                 {
@@ -2395,13 +2433,13 @@ namespace UACSParking
 
                 //添加激光状态显示
                 SQLOder = "";
-                SQLOder = " SELECT LASER_STATUS FROM UACS_PARKING_STATUS WHERE PARKING_NO = '" + parkNO + "'";
+                SQLOder = " SELECT WORK_STATUS FROM UACS_PARKING_WORK_STATUS WHERE PARKING_NO = '" + parkNO + "'";
                 string laserStatus = "";
                 using (IDataReader rdr = DBHelper.ExecuteReader(SQLOder))
                 {
                     if (rdr.Read())
                     {
-                        laserStatus = ManagerHelper.JudgeStrNull(rdr["LASER_STATUS"]);
+                        laserStatus = ManagerHelper.JudgeStrNull(rdr["WORK_STATUS"]);
                         int index = laserStatus.IndexOf("::");
                         if (index != -1)
                         {
@@ -2463,7 +2501,7 @@ namespace UACSParking
                 selectCoilF.ParkNO = cbbPacking.Text.Trim();
                 selectCoilF.TransferValue += selectCoilF_TransferValue;
                 selectCoilF.GrooveNum = txtGrooveNum.Text.Trim();
-                selectCoilF.GrooveTotal = txtSelectGoove.Text.Trim();
+                //selectCoilF.GrooveTotal = txtSelectGoove.Text.Trim();
 
                 if (txtCarNo.Text.Trim().Length > 3)
                     selectCoilF.CarNO = txtCarNo.Text.Trim();
@@ -2618,12 +2656,12 @@ namespace UACSParking
             }
             SelectCoilByL3Form selectCoilF = new SelectCoilByL3Form();
             selectCoilF.CarType = curCarType.ToString().Trim();
-            if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('Z'))
+            if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('A'))
             {
                 selectCoilF.ParkNO = cbbPacking.Text.Trim();
                 selectCoilF.TransferValue += selectCoilF_TransferValue;
                 selectCoilF.GrooveNum = txtGrooveNum.Text.Trim();
-                selectCoilF.GrooveTotal = txtSelectGoove.Text.Trim();
+                //selectCoilF.GrooveTotal = txtSelectGoove.Text.Trim();
 
                 if (txtCarNo.Text.Trim().Length > 3)
                     selectCoilF.CarNO = txtCarNo.Text.Trim();
@@ -2658,11 +2696,11 @@ namespace UACSParking
                 {
                     while (rdr.Read())
                     {
-                        if(rdr["FROM_STOCK_NO"] != DBNull.Value&& rdr["TO_STOCK_NO"] != DBNull.Value)
+                        if (rdr["FROM_STOCK_NO"] != DBNull.Value && rdr["TO_STOCK_NO"] != DBNull.Value)
                         {
                             fromStockNo = rdr["FROM_STOCK_NO"].ToString();
                             toStockNo = rdr["TO_STOCK_NO"].ToString();
-                            if (fromStockNo.Contains(ParkingNo)|| toStockNo.Contains(ParkingNo))
+                            if (fromStockNo.Contains(ParkingNo) || toStockNo.Contains(ParkingNo))
                             {
                                 count++;
                             }
@@ -2689,7 +2727,7 @@ namespace UACSParking
         {
             int flag = 0;
             try
-            {             
+            {
                 if (!cbbPacking.Text.Contains('Z'))
                 {
                     MessageBox.Show("请选择停车位。");
@@ -2717,13 +2755,13 @@ namespace UACSParking
                 {
                     if (rdr.Read())
                     {
-                        if(rdr["IS_LINE_EXIT_TO_CAR"] != DBNull.Value)
+                        if (rdr["IS_LINE_EXIT_TO_CAR"] != DBNull.Value)
                         {
                             flag = Convert.ToInt32(rdr["IS_LINE_EXIT_TO_CAR"]);
                         }
                     }
                 }
-                if(flag == 1)
+                if (flag == 1)
                 {
                     MessageBoxButtons btn = MessageBoxButtons.OKCancel;
                     DialogResult dr = MessageBox.Show("确定要对" + cbbPacking.Text.Trim() + "进行直上社会车吗？", "操作提示", btn, MessageBoxIcon.Asterisk);
@@ -2738,7 +2776,7 @@ namespace UACSParking
                     MessageBox.Show("直上社会车标记不为1。");
                     return;
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -2778,7 +2816,7 @@ namespace UACSParking
                 selectCoilF.ParkNO = cbbPacking.Text.Trim();
                 selectCoilF.TransferValue += selectCoilF_TransferValue;
                 selectCoilF.GrooveNum = txtGrooveNum.Text.Trim();
-                selectCoilF.GrooveTotal = txtSelectGoove.Text.Trim();
+                //selectCoilF.GrooveTotal = txtSelectGoove.Text.Trim();
 
                 if (txtCarNo.Text.Trim().Length > 3)
                     selectCoilF.CarNO = txtCarNo.Text.Trim();
@@ -2816,8 +2854,8 @@ namespace UACSParking
                     TagDP.SetData("EV_NEW_PARKING_JOB_PAUSE", parkNO);
                     HMILogger.WriteLog(btnOperatePause.Text, "作业暂停：" + parkNO, LogLevel.Info, this.Text);
                     btnOperateStrat.Enabled = false;
-                    label_Tip.Text = "框架车配载偏差值过大，配载拦截，请做车离！";
-                    panel_Tip.Visible = true;
+                    //label_Tip.Text = "框架车配载偏差值过大，配载拦截，请做车离！";
+                    //panel_Tip.Visible = true;
                     //}
                 }
             }
@@ -2884,7 +2922,7 @@ namespace UACSParking
             try
             {
                 btnOperateStrat.Enabled = true;
-                panel_Tip.Visible = false;
+                //panel_Tip.Visible = false;
                 if (curCarType == 100 && txtCarNo.Text.Trim() != "")
                 {
                     int Intercept_Value = 0;
