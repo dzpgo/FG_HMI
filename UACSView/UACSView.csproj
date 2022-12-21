@@ -170,6 +170,12 @@
     <Compile Include="View_CraneMonitor\RedStockInquiry.designer.cs">
       <DependentUpon>RedStockInquiry.cs</DependentUpon>
     </Compile>
+    <Compile Include="View_CraneMonitor\Welcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\Welcome.Designer.cs">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </Compile>
     <Compile Include="View_CraneMonitor\Z01_library_Monitor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -636,6 +642,9 @@
     <EmbeddedResource Include="View_CraneMonitor\RedStockInquiry.resx">
       <DependentUpon>RedStockInquiry.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\Welcome.resx">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View_CraneMonitor\WMSCraneEVADE.resx">
       <DependentUpon>WMSCraneEVADE.cs</DependentUpon>
     </EmbeddedResource>
@@ -888,6 +897,11 @@
       <Project>{df19dba8-c688-45c3-a07c-b429cd1d4ea0}</Project>
       <Name>ParkingControlLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\close.png" />
+    <Content Include="Resources\welcome.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

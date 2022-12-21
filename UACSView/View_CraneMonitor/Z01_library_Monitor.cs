@@ -1123,8 +1123,6 @@ namespace UACSView.View_CraneMonitor
 
         }
 
-        
-
         //private void btnMode1_Click(object sender, EventArgs e)
         //{
         //    FrmYordToYordConfPassword password = new FrmYordToYordConfPassword();
