@@ -69,8 +69,8 @@ namespace UACSView
             try
             {
                 this.tabControl1.SelectedTab = this.tabPage1;
-                getCraneOrderData();
-                dataGridView1.DataSource = dt;
+                //getCraneOrderData();
+                //dataGridView1.DataSource = dt;
             }
             catch (Exception er)
             {
@@ -91,7 +91,7 @@ namespace UACSView
                 {
                     return;
                 }
-                this.tabControl1.SelectedTab = this.tabPage2;
+                //this.tabControl1.SelectedTab = this.tabPage2;
                 string orderNo = this.dataGridView1.CurrentRow.Cells["ORDER_NO"].Value.ToString();
                 string orderGroupNo = this.dataGridView1.CurrentRow.Cells["ORDER_GROUP_NO"].Value.ToString();
                 string sqlText = @"SELECT UNIQUE_ID,ORDER_NO as ORDER_NO2,ORDER_GROUP_NO as ORDER_GROUP_NO2,CRANE_NO as CRANE_NO2,MAT_NO as MAT_NO2, STOCK_NO, X, Y,CMD_STATUS as CMD_STATUS2, DEL_FLAG, OPER_USERNAME, REC_TIME, OPER_EQUIPIP,ORDER_TYPE as ORDER_TYPE2, CRANE_SEQ, HG_NO,SEND_FLAG FROM UACS_CRANE_ORDER_OPER A ";
@@ -142,7 +142,7 @@ namespace UACSView
                     }
                 }
 
-                dataGridView2.DataSource = dt_oper;
+                //dataGridView2.DataSource = dt_oper;
             }
             catch (Exception er)
             {
@@ -159,38 +159,38 @@ namespace UACSView
         {
             try
             {
-                if (this.dataGridView2.Rows.Count <= 0)
-                {
-                    return;
-                }
-                string craneSeq = this.dataGridView2.CurrentRow.Cells["CRANE_SEQ"].Value.ToString();
-                string hgNo = this.dataGridView2.CurrentRow.Cells["HG_NO"].Value.ToString();
-                string cmdStatus = this.dataGridView2.CurrentRow.Cells["CMD_STATUS2"].Value.ToString();
-                string matNo = this.dataGridView2.CurrentRow.Cells["MAT_NO2"].Value.ToString();
-                string sqlText = @"SELECT ACK_FLAG,MESSAGE,REC_TIME FROM UACS_PLAN_CRANPLAN_OPERACK ";
-                sqlText += "WHERE CRANE_SEQ = " + craneSeq + " and HG_NO = " + hgNo + " and CMD_STATUS = '" + cmdStatus + "' and MAT_NO = '" + matNo + "'";
-                dt_ack.Clear();
-                using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
-                {
-                    while (rdr.Read())
-                    {
-                        DataRow dr = dt_ack.NewRow();
-                        for (int i = 0; i < rdr.FieldCount; i++)
-                        {
-                            if (!hasSetColumn_ack)
-                            {
-                                DataColumn dc = new DataColumn();
-                                dc.ColumnName = rdr.GetName(i);
-                                dt_ack.Columns.Add(dc);
-                            }
-                            dr[i] = rdr[i];
-                        }
-                        hasSetColumn_ack = true;
-                        dt_ack.Rows.Add(dr);
-                    }
-                }
+                //if (this.dataGridView2.Rows.Count <= 0)
+                //{
+                //    return;
+                //}
+                //string craneSeq = this.dataGridView2.CurrentRow.Cells["CRANE_SEQ"].Value.ToString();
+                //string hgNo = this.dataGridView2.CurrentRow.Cells["HG_NO"].Value.ToString();
+                //string cmdStatus = this.dataGridView2.CurrentRow.Cells["CMD_STATUS2"].Value.ToString();
+                //string matNo = this.dataGridView2.CurrentRow.Cells["MAT_NO2"].Value.ToString();
+                //string sqlText = @"SELECT ACK_FLAG,MESSAGE,REC_TIME FROM UACS_PLAN_CRANPLAN_OPERACK ";
+                //sqlText += "WHERE CRANE_SEQ = " + craneSeq + " and HG_NO = " + hgNo + " and CMD_STATUS = '" + cmdStatus + "' and MAT_NO = '" + matNo + "'";
+                //dt_ack.Clear();
+                //using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
+                //{
+                //    while (rdr.Read())
+                //    {
+                //        DataRow dr = dt_ack.NewRow();
+                //        for (int i = 0; i < rdr.FieldCount; i++)
+                //        {
+                //            if (!hasSetColumn_ack)
+                //            {
+                //                DataColumn dc = new DataColumn();
+                //                dc.ColumnName = rdr.GetName(i);
+                //                dt_ack.Columns.Add(dc);
+                //            }
+                //            dr[i] = rdr[i];
+                //        }
+                //        hasSetColumn_ack = true;
+                //        dt_ack.Rows.Add(dr);
+                //    }
+                //}
 
-                dataGridView3.DataSource = dt_ack;
+                //dataGridView3.DataSource = dt_ack;
             }
             catch (Exception er)
             {
@@ -223,6 +223,7 @@ namespace UACSView
         private void BindCombox()
         {
             CraneOrderImpl craneOrderImpl = new CraneOrderImpl();
+
             ////绑定跨号
             //DataTable dtBayNo2 = craneOrderImpl.GetBayNo(true);
             //bindCombox(this.cbb_AREA_NO, dtBayNo2, true);
@@ -236,12 +237,86 @@ namespace UACSView
             //dicDelFlag = craneOrderImpl.GetCodeValueDicByCodeId("DEL_FLAG", false);
             //绑定指令类型
             //dicOrderType = craneOrderImpl.GetCodeValueDicByCodeId("ORDER_TYPE", false);
+
+            //绑定行车号
+            DataTable dtCRANE_DEFINE = craneOrderImpl.GetCRANE_DEFINE(true);
+            bindCombox(this.cbb_CRANE_NO, dtCRANE_DEFINE, true);
+            //绑定区域号
+            DataTable dtAREA_DEFINE = craneOrderImpl.GetAREA_DEFINE(true);
+            bindCombox(this.cbb_AREA_NO, dtAREA_DEFINE, true);
+            //绑定指令类型
+            DataTable dtORDER_TYPE = craneOrderImpl.GetORDER_TYPE(true);
+            bindCombox(this.cbb_ORDER_TYPE, dtORDER_TYPE, true);
+
+
         }
 
         /// <summary>
         /// 查询数据
         /// </summary>
         private void getCraneOrderData()
+        {
+            string matNo = this.txt_MAT_CODE.Text.Trim();
+            string bayNo = this.cbb_AREA_NO.SelectedValue.ToString();
+            string cmdStatus = this.cbb_ORDER_TYPE.SelectedValue.ToString();
+            string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");
+            string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");
+            string sqlText = @"SELECT BAY_NO,MAT_NO,ORDER_NO,ORDER_GROUP_NO,ORDER_TYPE,ORDER_PRIORITY,FROM_STOCK_NO, TO_STOCK_NO, CMD_STATUS, FLAG_DISPAT, FLAG_ENABLE, CRANE_NO, REC_TIME, UPD_TIME FROM UACS_CRANE_ORDER ";
+            sqlText += "WHERE MAT_NO LIKE '%{0}%' and REC_TIME > '{1}' and REC_TIME < '{2}' ";
+            sqlText = string.Format(sqlText, matNo, recTime1, recTime2);
+            if (bayNo != "全部")
+            {
+                sqlText = string.Format("{0} and BAY_NO = '{1}'", sqlText, bayNo);
+            }
+            if (cmdStatus != "全部")
+            {
+                sqlText = string.Format("{0} and CMD_STATUS = '{1}'", sqlText, cmdStatus);
+            }
+            dt = new DataTable();
+            hasSetColumn = false;
+            using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
+            {
+                while (rdr.Read())
+                {
+                    DataRow dr = dt.NewRow();
+                    for (int i = 0; i < rdr.FieldCount; i++)
+                    {
+                        if (!hasSetColumn)
+                        {
+                            DataColumn dc = new DataColumn();
+                            dc.ColumnName = rdr.GetName(i);
+                            dt.Columns.Add(dc);
+                        }
+                        dr[i] = rdr[i];
+                    }
+                    hasSetColumn = true;
+                    dt.Rows.Add(dr);
+                }
+            }
+            foreach (DataRow dr in dt.Rows)
+            {
+                string cmdStatusValue = dr["CMD_STATUS"].ToString();
+                if (dicCmdStatus.ContainsKey(cmdStatusValue))
+                {
+                    dr["CMD_STATUS"] = dicCmdStatus[cmdStatusValue];
+                }
+                string flagDispatValue = dr["FLAG_DISPAT"].ToString();
+                if (dicFlagDispat.ContainsKey(flagDispatValue))
+                {
+                    dr["FLAG_DISPAT"] = dicFlagDispat[flagDispatValue];
+                }
+                string orderTypeValue = dr["ORDER_TYPE"].ToString();
+                if (dicOrderType.ContainsKey(orderTypeValue))
+                {
+                    dr["ORDER_TYPE"] = dicOrderType[orderTypeValue];
+                }
+            }
+        }
+
+        /// <summary>
+        /// 查询指令数据
+        /// </summary>
+        private void getCraneOrderData2()
         {
             string matNo = this.txt_MAT_CODE.Text.Trim();
             string bayNo = this.cbb_AREA_NO.SelectedValue.ToString();

@@ -189,5 +189,95 @@ namespace UACSDAL
             }
             return CodeValue;
         }
+
+
+        /// <summary>
+        /// 获取行车号
+        /// </summary>
+        /// <param name="showAll"></param>
+        /// <returns></returns>
+        public DataTable GetCRANE_DEFINE(bool showAll)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("TypeValue");
+            dt.Columns.Add("TypeName");
+            //准备数据
+            string sqlText = @"SELECT CRANE_NO AS TypeValue,CRANE_NO AS TypeName, BAY_NO, CLAMP_TYPE, SEQ_NO, WORK_POS_X_START, WORK_POS_X_END FROM UACSAPP.UACS_CRANE_DEFINE ";
+            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
+            {
+                while (rdr.Read())
+                {
+                    DataRow dr = dt.NewRow();
+                    dr["TypeValue"] = rdr["TypeValue"];
+                    dr["TypeName"] = rdr["TypeName"];
+                    dt.Rows.Add(dr);
+                }
+            }
+            if (showAll)
+            {
+                dt.Rows.Add("全部", "全部");
+            }
+            return dt;
+        }
+
+        /// <summary>
+        /// 获取图库AREA 区域
+        /// </summary>
+        /// <param name="showAll"></param>
+        /// <returns></returns>
+        public DataTable GetAREA_DEFINE(bool showAll)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("TypeValue");
+            dt.Columns.Add("TypeName");
+            //准备数据
+            string sqlText = @"SELECT AREA_NO AS TypeValue,AREA_NO AS TypeName, AREA_NAME, AREA_TYPE, BAY_NO, YARD_NO, X_START, X_END, Y_START, Y_END FROM UACSAPP.UACS_YARDMAP_AREA_DEFINE  WHERE AREA_TYPE = 0 ";
+            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
+            {
+                while (rdr.Read())
+                {
+                    DataRow dr = dt.NewRow();
+                    dr["TypeValue"] = rdr["TypeValue"];
+                    dr["TypeName"] = rdr["TypeName"];
+                    dt.Rows.Add(dr);
+                }
+            }
+            if (showAll)
+            {
+                dt.Rows.Add("全部", "全部");
+            }
+            return dt;
+        }
+
+        /// <summary>
+        /// 获取指令类型
+        /// </summary>
+        /// <param name="showAll"></param>
+        /// <returns></returns>
+        public DataTable GetORDER_TYPE(bool showAll)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("TypeValue");
+            dt.Columns.Add("TypeName");
+            //准备数据
+            string sqlText = @"SELECT ORDER_TYPE AS TypeValue, ORDER_TYPE AS TypeName, ORDER_PRIORITY, ORDER_TYPE_NAME, FROM_STOCK_TYPE, TO_STOCK_TYPE FROM UACSAPP.UACS_ORDER_TYPE ";
+            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
+            {
+                while (rdr.Read())
+                {
+                    DataRow dr = dt.NewRow();
+                    dr["TypeValue"] = rdr["TypeValue"];
+                    dr["TypeName"] = rdr["TypeName"];
+                    dt.Rows.Add(dr);
+                }
+            }
+            if (showAll)
+            {
+                dt.Rows.Add("全部", "全部");
+            }
+            return dt;
+        }
+
+
     }
 }
