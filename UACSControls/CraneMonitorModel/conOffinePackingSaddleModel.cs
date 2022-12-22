@@ -92,7 +92,7 @@ namespace UACSControls
             try
             {
 
-                theSaddlsInfoInBay.getSaddleInfo(AreaNo);
+                theSaddlsInfoInBay.getSaddleInfo(AreaNo, false);
                 foreach (SaddleBase theSaddleInfo in theSaddlsInfoInBay.DicSaddles.Values)
                 {
                     conOffinePackingSaddle theSaddleVisual = new conOffinePackingSaddle();

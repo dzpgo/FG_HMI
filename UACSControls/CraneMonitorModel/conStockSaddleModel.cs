@@ -51,42 +51,82 @@ namespace UACSControls
                 }
 
                 theSaddlsInfoInBay.conInit(areaBase.AreaNo, theTagServiceName);
-                refreshControl(areaBase.AreaNo);
+                refreshControl(areaBase.AreaNo, false);
             }
             catch (Exception ex)
             { }
         }
 
-        public bool conInit(Panel _theBayPanel, string _theBayNO, string _theTagServiceName, long _baySpaceX, long _baySpaceY, int _panelWidth, int _panelHeight, bool _xAxisRight, bool _yAxisDown, string _coilNo = null)
+        /// <summary>
+        /// 数据加载
+        /// </summary>
+        /// <param name="theBayPanel"></param>
+        /// <param name="areaBase"></param>
+        /// <param name="theTagServiceName"></param>
+        /// <param name="_panelWidth"></param>
+        /// <param name="_panelHeight"></param>
+        /// <param name="_xAxisRight"></param>
+        /// <param name="_yAxisDown"></param>
+        /// <param name="_index"></param>
+        /// <param name="isGRID_DIV"></param>
+        public void conInit(Panel theBayPanel, AreaBase areaBase, string theTagServiceName, int _panelWidth, int _panelHeight, bool _xAxisRight, bool _yAxisDown, int _index, bool isGRID_DIV)
         {
             try
             {
-                bool isLoadUserControl = false;
-                bayPanel = _theBayPanel;
-                bayNO = _theBayNO;
-                tagServiceName = _theTagServiceName;
-
-                baySpaceX = _baySpaceX;
-                baySpaceY = _baySpaceY;
-                panelWidth = _panelWidth;
-                panelHeight = _panelHeight;
+                theAreaBase = areaBase;
+                bayPanel = theBayPanel;
+                tagServiceName = theTagServiceName;
                 xAxisRight = _xAxisRight;
                 yAxisDown = _yAxisDown;
+                panelWidth = _panelWidth;
+                panelHeight = _panelHeight;
 
-                CoilNo = _coilNo;
+                if (_index == 888)
+                {
+                    list = null;
+                }
+                else
+                {
+                    list.Add(_index);
+                }
 
-                theSaddlsInfoInBay.conInit(_theBayNO, _theTagServiceName);
-
-                refreshControl(_theBayNO);
-
-                return isLoadUserControl;
+                theSaddlsInfoInBay.conInit(areaBase.AreaNo, theTagServiceName);
+                refreshControl(areaBase.AreaNo, isGRID_DIV);
             }
             catch (Exception ex)
-            {
-                return false;
-            }
-
+            { }
         }
+
+        //public bool conInit(Panel _theBayPanel, string _theBayNO, string _theTagServiceName, long _baySpaceX, long _baySpaceY, int _panelWidth, int _panelHeight, bool _xAxisRight, bool _yAxisDown, string _coilNo = null)
+        //{
+        //    try
+        //    {
+        //        bool isLoadUserControl = false;
+        //        bayPanel = _theBayPanel;
+        //        bayNO = _theBayNO;
+        //        tagServiceName = _theTagServiceName;
+
+        //        baySpaceX = _baySpaceX;
+        //        baySpaceY = _baySpaceY;
+        //        panelWidth = _panelWidth;
+        //        panelHeight = _panelHeight;
+        //        xAxisRight = _xAxisRight;
+        //        yAxisDown = _yAxisDown;
+
+        //        CoilNo = _coilNo;
+
+        //        theSaddlsInfoInBay.conInit(_theBayNO, _theTagServiceName);
+
+        //        refreshControl(_theBayNO);
+
+        //        return isLoadUserControl;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return false;
+        //    }
+
+        //}
 
         private Dictionary<string, conStockSaddle> dicSaddleVisual = new Dictionary<string, conStockSaddle>();
 
@@ -119,14 +159,19 @@ namespace UACSControls
         //    }
         //}
 
-        public void refreshControl(string AreaNo)
+        /// <summary>
+        /// 数据刷新
+        /// </summary>
+        /// <param name="AreaNo"></param>
+        /// <param name="isGRID_DIV"></param>
+        public void refreshControl(string AreaNo, bool isGRID_DIV)
         {
 
             //取这块小区的大小
             double X_Width = theAreaBase.X_End - theAreaBase.X_Start;
             double Y_Height = theAreaBase.Y_End - theAreaBase.Y_Start;
             
-            theSaddlsInfoInBay.getSaddleInfo(AreaNo);
+            theSaddlsInfoInBay.getSaddleInfo(AreaNo, isGRID_DIV);
             foreach (SaddleBase theSaddleInfo in theSaddlsInfoInBay.DicSaddles.Values)
             {
                 conStockSaddle theSaddleVisual = new conStockSaddle();

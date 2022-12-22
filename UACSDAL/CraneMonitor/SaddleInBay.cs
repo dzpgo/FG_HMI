@@ -155,15 +155,23 @@ namespace UACSDAL
 
         //}
 
-        public void getSaddleInfo(string AreaNo)
+        /// <summary>
+        /// 查询图库GRID定义表和图库AREA定义表、废钢品种物料名信息表
+        /// </summary>
+        /// <param name="AreaNo">区域号</param>
+        /// <param name="isGRID_DIV">是否切换展示模式</param>
+        public void getSaddleInfo(string AreaNo, bool isGRID_DIV)
         {
             try
-            {
+            {                
+                var GRID_NO = "";   //料格号
+                var GRID_DIV = -1;  //料格区分 0:全格 1:南北划分 2:田字划分
                 string sql = null;
-                sql = @"SELECT B.AREA_NO,B.AREA_NAME, A.GRID_NO,A.GRID_NAME,A.GRID_DIV,A.GRID_TYPE,A.X_START,A.X_END,A.X_CENTER,A.Y_START,A.Y_END,A.Y_CENTER,A.MAT_CODE,A.COMP_CODE,A.MAT_WGT,A.GRID_STATUS,A.GRID_ENABLE,A.YARD_NO,A.BAY_NO ";
+                sql = @"SELECT B.AREA_NO,B.AREA_NAME, C.MAT_CNAME,A.GRID_NO,A.GRID_NAME,A.GRID_DIV,A.GRID_TYPE,A.X_START,A.X_END,A.X_CENTER,A.Y_START,A.Y_END,A.Y_CENTER,A.MAT_CODE,A.COMP_CODE,A.MAT_WGT,A.GRID_STATUS,A.GRID_ENABLE,A.YARD_NO,A.BAY_NO ";
                 sql += "FROM UACS_YARDMAP_GRID_DEFINE A ";
                 sql += "INNER JOIN UACS_YARDMAP_AREA_DEFINE B ON A.AREA_NO = B.AREA_NO ";
-                if(!string.IsNullOrEmpty(AreaNo))
+                sql += "LEFT JOIN UACS_L3_MAT_INFO C ON A.MAT_CODE = C.MAT_CODE ";
+                if (!string.IsNullOrEmpty(AreaNo))
                     sql += "WHERE A.AREA_NO = '" + AreaNo + "'";
 
                 using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
@@ -174,6 +182,29 @@ namespace UACSDAL
                         if (rdr["GRID_NO"] != System.DBNull.Value)
                         {
                             theGRID.GRID_NO = Convert.ToString(rdr["GRID_NO"]);
+                            if (theGRID.GRID_NO.Length >= 4)
+                            {
+                                string[] array = theGRID.GRID_NO.Split('-');  // 01-0 分割截取横杠后第4位为0的数                          
+                                if (array.Length > 1 && array[1].Equals("0"))
+                                {
+                                    GRID_NO = Convert.ToString(rdr["GRID_NO"]);
+                                    if (rdr["GRID_DIV"] != System.DBNull.Value)
+                                    {
+                                        GRID_DIV = Convert.ToInt32(rdr["GRID_DIV"]);
+                                        if (!GRID_DIV.Equals(0))
+                                        {
+                                            continue; //结束本次循环，执行下次循环
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (!GRID_DIV.Equals(Convert.ToInt32(rdr["GRID_DIV"])))
+                                    {
+                                        continue; //结束本次循环，执行下次循环
+                                    }
+                                }
+                            }
                         }
                         if (rdr["GRID_NAME"] != System.DBNull.Value)
                         {
@@ -186,6 +217,10 @@ namespace UACSDAL
                         if (rdr["AREA_NAME"] != System.DBNull.Value)
                         {
                             theGRID.AREA_NAME = Convert.ToString(rdr["AREA_NAME"]);
+                        }
+                        if (rdr["MAT_CNAME"] != System.DBNull.Value)
+                        {
+                            theGRID.MAT_CNAME = Convert.ToString(rdr["MAT_CNAME"]);
                         }
                         if (rdr["GRID_DIV"] != System.DBNull.Value)
                         {
@@ -251,6 +286,33 @@ namespace UACSDAL
                         dicSaddles[theGRID.GRID_NO] = theGRID;
                     }
                 }
+
+                //更新料格区分 0:全格 1:南北划分 2:田字划分
+                if (isGRID_DIV && !string.IsNullOrEmpty(GRID_NO))
+                {
+                    if (GRID_DIV.Equals(0))
+                    {
+                        GRID_DIV++;
+                    }
+                    else if (GRID_DIV.Equals(1))
+                    {
+                        GRID_DIV++;
+                    }
+                    else if (GRID_DIV.Equals(2))
+                    {
+                        GRID_DIV = 0;
+                    }
+                    else
+                    {
+                        GRID_DIV = 0;
+                    }
+                    string upsql = null;
+                    upsql = "UPDATE UACS_YARDMAP_GRID_DEFINE ";
+                    upsql += "SET GRID_DIV = '" + GRID_DIV + "' ";
+                    upsql += "WHERE AREA_NO = '" + AreaNo + "' ";
+                    upsql += "AND GRID_NO = '" + GRID_NO + "' ";
+                    DB2Connect.DBHelper.ExecuteNonQuery(upsql);
+                }                
             }
             catch (Exception er)
             {

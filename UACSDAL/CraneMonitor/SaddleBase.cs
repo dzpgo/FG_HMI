@@ -337,7 +337,11 @@ namespace UACSDAL
         /// </summary>
         public string AREA_NAME { get; set; }
         /// <summary>
-        /// 料格区分
+        /// 物料名
+        /// </summary>
+        public string MAT_CNAME { get; set; }
+        /// <summary>
+        /// 料格区分 0:全格 1:南北划分 2:田字划分
         /// </summary>
         public string GRID_DIV { get; set; }
         /// <summary>

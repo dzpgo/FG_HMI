@@ -433,12 +433,12 @@ namespace UACSView.View_CraneMonitor
                 {
                     return;
                 }
+                txtX.Text = Convert.ToString(Convert.ToInt32(Convert.ToDouble(p.X) / xScale));
+                //txtY.Text = Convert.ToString(Convert.ToInt32((Convert.ToDouble(panelZ62Bay.Height)-Convert.ToDouble(p.Y)) / yScale));
+                //txtX.Text = Convert.ToString(Convert.ToInt32((Convert.ToDouble(panelZ61Bay.Width) - Convert.ToDouble(p.X)) / xScale));
                 //txtX.Text = Convert.ToString(Convert.ToInt32(Convert.ToDouble(p.X) / xScale));
-                  //txtY.Text = Convert.ToString(Convert.ToInt32((Convert.ToDouble(panelZ62Bay.Height)-Convert.ToDouble(p.Y)) / yScale));
-                  //txtX.Text = Convert.ToString(Convert.ToInt32((Convert.ToDouble(panelZ61Bay.Width) - Convert.ToDouble(p.X)) / xScale));
-                //txtX.Text = Convert.ToString(Convert.ToInt32(Convert.ToDouble(p.X) / xScale));
-                 //txtY.Text = Convert.ToString(Convert.ToInt32((Convert.ToDouble(panelZ61Bay.Height) - Convert.ToDouble(p.Y)) / yScale));
-                 //txtY.Text = Convert.ToString(Convert.ToInt32(Convert.ToDouble(p.Y) / yScale));
+                txtY.Text = Convert.ToString(Convert.ToInt32((Convert.ToDouble(panelZ61Bay.Height) - Convert.ToDouble(p.Y)) / yScale));
+                //txtY.Text = Convert.ToString(Convert.ToInt32(Convert.ToDouble(p.Y) / yScale));
             }
         }
 

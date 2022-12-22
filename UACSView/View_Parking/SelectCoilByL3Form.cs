@@ -1080,10 +1080,12 @@ namespace UACSParking
                         LASER_ACTION_COUNT = Convert.ToInt64(rdr["LASER_ACTION_COUNT"].ToString());
 
                         stowageNo = rdr["STOWAGE_ID"].ToString();
-                        if (rdr["CAR_NO"] != DBNull.Value)
-                        {
-                            currengMdlCalId = Convert.ToInt32(rdr["CAR_NO"].ToString());                            
-                        }
+                        //if (rdr["CAR_NO"] != DBNull.Value)
+                        //{
+                        //    currengMdlCalId = Convert.ToInt32(rdr["CAR_NO"].ToString());                            
+                        //}
+
+                        currengMdlCalId = Convert.ToInt32(LASER_ACTION_COUNT);
 
                         if (!string.IsNullOrEmpty(rdr["CAR_TYPE"].ToString()))
                         {
@@ -1192,7 +1194,8 @@ namespace UACSParking
 
                 //更新模型计算次数
                 //sqlText = @"UPDATE UACS_PARKING_STATUS SET MDL_CAL_ID = {0} where PARKING_NO = '{1}'";
-                sqlText = @"UPDATE UACS_PARKING_WORK_STATUS SET CAR_NO = {0} where PARKING_NO = '{1}'";
+                //sqlText = @"UPDATE UACS_PARKING_WORK_STATUS SET CAR_NO = {0} where PARKING_NO = '{1}'";
+                sqlText = @"UPDATE UACS_PARKING_WORK_STATUS SET LASER_ACTION_COUNT = {0} where PARKING_NO = '{1}'";
                 sqlText = string.Format(sqlText, mdlCalId, parkingNo);
                 DBHelper.ExecuteNonQuery(sqlText);
                 if (carType == "101" || carType == "103")

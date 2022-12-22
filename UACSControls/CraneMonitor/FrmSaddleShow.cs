@@ -136,7 +136,7 @@ namespace UACSControls
             if (areaBase.AreaNo.Contains("WJ"))
             {
                 btnKillStock.Visible = true;
-                btnResetStock.Visible = true;
+                btGRID_DIV.Visible = true;
                 btnResetLight.Visible = true;
                 tagDataProvider.ServiceName = tagServiceName;
                 SetReady();
@@ -157,6 +157,16 @@ namespace UACSControls
             {
                 stockSaddleModel.conInit(panel2, areaBase, constData.tagServiceName, panel2.Width, panel2.Height, constData.xBxisleft, constData.yBxisDown, 999);
             }
+
+            //pieChart1.Series = new ISeries[]
+            //  {
+            //    new PieSeries<double> { Values = new double[] { 2 } },
+            //    new PieSeries<double> { Values = new double[] { 4 } },
+            //    new PieSeries<double> { Values = new double[] { 1 } },
+            //    new PieSeries<double> { Values = new double[] { 4 } },
+            //    new PieSeries<double> { Values = new double[] { 3 } }
+            //  };
+
         }
         /// <summary>
         /// 关闭按钮
@@ -205,25 +215,45 @@ namespace UACSControls
             }
         }
 
-        private void btnResetStock_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                MessageBoxButtons btn = MessageBoxButtons.OKCancel;
-                DialogResult dr = MessageBox.Show("确定要全部放白小尾卷鞍座吗？", "操作提示", btn);
-                if (dr == DialogResult.Cancel)
-                {
-                    return;
-                }
-                string sql = @"UPDATE UACS_YARDMAP_STOCK_DEFINE SET STOCK_STATUS = 0,LOCK_FLAG = 0,MAT_NO = NULL,EVENT_ID= 888888 WHERE LOCK_FLAG != 2 AND STOCK_NO IN(SELECT SADDLE_NO FROM UACS_YARDMAP_SADDLE_DEFINE WHERE COL_ROW_NO = '" + areaBase.AreaNo + "')";
-                DBHelper.ExecuteNonQuery(sql);
-                ParkClassLibrary.HMILogger.WriteLog("全部放白", "全部放白：" + areaBase.AreaNo, ParkClassLibrary.LogLevel.Info, this.Text);
-            }
-            catch (Exception er)
-            {
-                MessageBox.Show(er.ToString());
-            }
-        }
+        //private void btnResetStock_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        MessageBoxButtons btn = MessageBoxButtons.OKCancel;
+        //        DialogResult dr = MessageBox.Show("确定要全部放白小尾卷鞍座吗？", "操作提示", btn);
+        //        if (dr == DialogResult.Cancel)
+        //        {
+        //            return;
+        //        }
+        //        string sql = @"UPDATE UACS_YARDMAP_STOCK_DEFINE SET STOCK_STATUS = 0,LOCK_FLAG = 0,MAT_NO = NULL,EVENT_ID= 888888 WHERE LOCK_FLAG != 2 AND STOCK_NO IN(SELECT SADDLE_NO FROM UACS_YARDMAP_SADDLE_DEFINE WHERE COL_ROW_NO = '" + areaBase.AreaNo + "')";
+        //        DBHelper.ExecuteNonQuery(sql);
+        //        ParkClassLibrary.HMILogger.WriteLog("全部放白", "全部放白：" + areaBase.AreaNo, ParkClassLibrary.LogLevel.Info, this.Text);
+        //    }
+        //    catch (Exception er)
+        //    {
+        //        MessageBox.Show(er.ToString());
+        //    }
+        //}
+
+        //private void btnResetStock_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        MessageBoxButtons btn = MessageBoxButtons.OKCancel;
+        //        DialogResult dr = MessageBox.Show("确定要全部放白小尾卷鞍座吗？", "操作提示", btn);
+        //        if (dr == DialogResult.Cancel)
+        //        {
+        //            return;
+        //        }
+        //        string sql = @"UPDATE UACS_YARDMAP_STOCK_DEFINE SET STOCK_STATUS = 0,LOCK_FLAG = 0,MAT_NO = NULL,EVENT_ID= 888888 WHERE LOCK_FLAG != 2 AND STOCK_NO IN(SELECT SADDLE_NO FROM UACS_YARDMAP_SADDLE_DEFINE WHERE COL_ROW_NO = '" + areaBase.AreaNo + "')";
+        //        DBHelper.ExecuteNonQuery(sql);
+        //        ParkClassLibrary.HMILogger.WriteLog("全部放白", "全部放白：" + areaBase.AreaNo, ParkClassLibrary.LogLevel.Info, this.Text);
+        //    }
+        //    catch (Exception er)
+        //    {
+        //        MessageBox.Show(er.ToString());
+        //    }
+        //}
 
         private void btnResetLight_Click(object sender, EventArgs e)
         {
@@ -306,6 +336,17 @@ namespace UACSControls
             {
 
             }
+        }
+
+        /// <summary>
+        /// 切换展示模式，料格区分 0:全格 1:南北划分 2:田字划分
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btGRID_DIV_Click(object sender, EventArgs e)
+        {           
+            stockSaddleModel.conInit(panel2, areaBase, constData.tagServiceName, panel2.Width, panel2.Height, constData.xBxisleft, constData.yBxisDown, 999, true);
+            //stockSaddleModel.conInit(panel2, areaBase, constData.tagServiceName, panel2.Width, panel2.Height, constData.xBxisleft, constData.yBxisDown, 999);
         }
         //画图对象
         //Graphics g;

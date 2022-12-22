@@ -223,19 +223,19 @@ namespace UACSView
         private void BindCombox()
         {
             CraneOrderImpl craneOrderImpl = new CraneOrderImpl();
-            //绑定跨号
-            DataTable dtBayNo2 = craneOrderImpl.GetBayNo(true);
-            bindCombox(this.comboBox_bayNo, dtBayNo2, true);
-            //绑定吊运状态
-            dicCmdStatus = craneOrderImpl.GetCodeValueDicByCodeId("CMD_STATUS", false);
-            DataTable dtCmdStatus2 = craneOrderImpl.GetCodeValueByCodeId("CMD_STATUS", true);
-            bindCombox(this.comboBox_cmdStatus, dtCmdStatus2, true);
+            ////绑定跨号
+            //DataTable dtBayNo2 = craneOrderImpl.GetBayNo(true);
+            //bindCombox(this.cbb_AREA_NO, dtBayNo2, true);
+            ////绑定吊运状态
+            //dicCmdStatus = craneOrderImpl.GetCodeValueDicByCodeId("CMD_STATUS", false);
+            //DataTable dtCmdStatus2 = craneOrderImpl.GetCodeValueByCodeId("CMD_STATUS", true);
+            //bindCombox(this.comboBox_cmdStatus, dtCmdStatus2, true);
             //绑定分配标记
-            dicFlagDispat = craneOrderImpl.GetCodeValueDicByCodeId("FLAG_DISPAT", false);
+            //dicFlagDispat = craneOrderImpl.GetCodeValueDicByCodeId("FLAG_DISPAT", false);
             //绑定执行类型
-            dicDelFlag = craneOrderImpl.GetCodeValueDicByCodeId("DEL_FLAG", false);
+            //dicDelFlag = craneOrderImpl.GetCodeValueDicByCodeId("DEL_FLAG", false);
             //绑定指令类型
-            dicOrderType = craneOrderImpl.GetCodeValueDicByCodeId("ORDER_TYPE", false);
+            //dicOrderType = craneOrderImpl.GetCodeValueDicByCodeId("ORDER_TYPE", false);
         }
 
         /// <summary>
@@ -243,9 +243,9 @@ namespace UACSView
         /// </summary>
         private void getCraneOrderData()
         {
-            string matNo = this.textBox_matNo.Text.Trim();
-            string bayNo = this.comboBox_bayNo.SelectedValue.ToString();
-            string cmdStatus = this.comboBox_cmdStatus.SelectedValue.ToString();
+            string matNo = this.txt_MAT_CODE.Text.Trim();
+            string bayNo = this.cbb_AREA_NO.SelectedValue.ToString();
+            string cmdStatus = this.cbb_ORDER_TYPE.SelectedValue.ToString();
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");
             string sqlText = @"SELECT BAY_NO,MAT_NO,ORDER_NO,ORDER_GROUP_NO,ORDER_TYPE,ORDER_PRIORITY,FROM_STOCK_NO, TO_STOCK_NO, CMD_STATUS, FLAG_DISPAT, FLAG_ENABLE, CRANE_NO, REC_TIME, UPD_TIME FROM UACS_CRANE_ORDER ";
