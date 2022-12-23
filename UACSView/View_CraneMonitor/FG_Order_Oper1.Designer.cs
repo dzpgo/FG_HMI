@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PLAN_X = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PLAN_Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ACT_Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -193,9 +193,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.panel2);
             this.groupBox2.Location = new System.Drawing.Point(-3, 146);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(1929, 780);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
@@ -205,7 +205,7 @@
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(4, 25);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1921, 751);
             this.panel2.TabIndex = 3;
@@ -215,18 +215,18 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OPER_ID,
@@ -252,7 +252,7 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -342,9 +342,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Location = new System.Drawing.Point(-3, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1929, 141);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
@@ -369,7 +369,7 @@
             this.panel1.Controls.Add(this.btnQuery);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(4, 25);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1921, 112);
             this.panel1.TabIndex = 14;
@@ -379,7 +379,7 @@
             this.cbb_CRANE_MODE.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbb_CRANE_MODE.FormattingEnabled = true;
             this.cbb_CRANE_MODE.Location = new System.Drawing.Point(924, 10);
-            this.cbb_CRANE_MODE.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbb_CRANE_MODE.Margin = new System.Windows.Forms.Padding(4);
             this.cbb_CRANE_MODE.Name = "cbb_CRANE_MODE";
             this.cbb_CRANE_MODE.Size = new System.Drawing.Size(178, 29);
             this.cbb_CRANE_MODE.TabIndex = 16;
@@ -389,7 +389,7 @@
             this.cbb_BAY_NO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbb_BAY_NO.FormattingEnabled = true;
             this.cbb_BAY_NO.Location = new System.Drawing.Point(609, 10);
-            this.cbb_BAY_NO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbb_BAY_NO.Margin = new System.Windows.Forms.Padding(4);
             this.cbb_BAY_NO.Name = "cbb_BAY_NO";
             this.cbb_BAY_NO.Size = new System.Drawing.Size(178, 29);
             this.cbb_BAY_NO.TabIndex = 16;
@@ -400,7 +400,7 @@
             this.dateTimePicker2_recTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dateTimePicker2_recTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker2_recTime.Location = new System.Drawing.Point(315, 10);
-            this.dateTimePicker2_recTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker2_recTime.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker2_recTime.Name = "dateTimePicker2_recTime";
             this.dateTimePicker2_recTime.Size = new System.Drawing.Size(181, 29);
             this.dateTimePicker2_recTime.TabIndex = 12;
@@ -408,11 +408,12 @@
             // textWORK_SEQ_NO
             // 
             this.textWORK_SEQ_NO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textWORK_SEQ_NO.Location = new System.Drawing.Point(1262, 10);
-            this.textWORK_SEQ_NO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textWORK_SEQ_NO.Location = new System.Drawing.Point(1222, 12);
+            this.textWORK_SEQ_NO.Margin = new System.Windows.Forms.Padding(4);
             this.textWORK_SEQ_NO.Name = "textWORK_SEQ_NO";
             this.textWORK_SEQ_NO.Size = new System.Drawing.Size(180, 29);
             this.textWORK_SEQ_NO.TabIndex = 8;
+            this.textWORK_SEQ_NO.Visible = false;
             this.textWORK_SEQ_NO.WordWrap = false;
             // 
             // label6
@@ -433,7 +434,7 @@
             this.dateTimePicker1_recTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dateTimePicker1_recTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1_recTime.Location = new System.Drawing.Point(87, 10);
-            this.dateTimePicker1_recTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker1_recTime.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1_recTime.Name = "dateTimePicker1_recTime";
             this.dateTimePicker1_recTime.Size = new System.Drawing.Size(180, 29);
             this.dateTimePicker1_recTime.TabIndex = 10;
@@ -494,7 +495,7 @@
             this.button3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(390, 63);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(108, 44);
             this.button3.TabIndex = 13;
@@ -509,7 +510,7 @@
             this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(216, 63);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(108, 44);
             this.button2.TabIndex = 13;
@@ -524,7 +525,7 @@
             this.button1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(52, 63);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 44);
             this.button1.TabIndex = 13;
@@ -540,7 +541,7 @@
             this.button4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Location = new System.Drawing.Point(1777, 22);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(120, 60);
             this.button4.TabIndex = 13;
@@ -556,7 +557,7 @@
             this.btnQuery.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuery.ForeColor = System.Drawing.Color.White;
             this.btnQuery.Location = new System.Drawing.Point(1651, 22);
-            this.btnQuery.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQuery.Margin = new System.Windows.Forms.Padding(4);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(120, 60);
             this.btnQuery.TabIndex = 13;
@@ -572,7 +573,6 @@
             this.ClientSize = new System.Drawing.Size(1924, 924);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FG_Order_Oper1";
             this.Text = "行车作业实绩";
             this.Load += new System.EventHandler(this.FG_Order_Oper1_Load);
