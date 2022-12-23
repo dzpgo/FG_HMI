@@ -13,8 +13,7 @@ using UACSDAL;
 namespace UACSView
 {
     /// <summary>
-    /// 吊运指令管理
-    /// 查询已经分配了的吊运指令
+    /// L3配料计划
     /// </summary>
     public partial class L3_MAT_Out_Info : FormBase
     {
@@ -29,11 +28,11 @@ namespace UACSView
 
         #region 事件
         /// <summary>
-        /// 页面加载事件
+        /// 数据加载
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CraneOrderHisyManage_Load(object sender, EventArgs e)
+        private void L3_MAT_Out_Info_Load(object sender, EventArgs e)
         {
             try
             {

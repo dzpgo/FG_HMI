@@ -10,30 +10,26 @@ using UACS;
 using Baosight.iSuperframe.Forms;
 using UACSDAL;
 
-namespace UACSView
+namespace UACSView.View_CraneMonitor
 {
-    /// <summary>
-    /// L3送料计划
-    /// </summary>
-    public partial class L3_MAT_Weight_Info : FormBase
+    public partial class L3_MAT_Weight_Info2 : FormBase
     {
         DataTable dt = new DataTable();
         bool hasSetColumn = false;
         private static Baosight.iSuperframe.Common.IDBHelper DBHelper = null;
-        public L3_MAT_Weight_Info()
+        public L3_MAT_Weight_Info2()
         {
             InitializeComponent();
             DBHelper = Baosight.iSuperframe.Common.DataBase.DBFactory.GetHelper("ZJDB0");//平台连接数据库的Text
         }
 
         #region 事件
-
         /// <summary>
         /// 数据加载
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void L3_MAT_Weight_Info_Load(object sender, EventArgs e)
+        private void L3_MAT_Weight_Info2_Load(object sender, EventArgs e)
         {
             try
             {
@@ -68,7 +64,7 @@ namespace UACSView
             }
         }
 
-        #endregion
+    #endregion
 
         #region 方法
         /// <summary>
@@ -123,7 +119,7 @@ namespace UACSView
         /// <param name="control">下拉框控件</param>
         /// <param name="dt">数据源</param>
         /// <param name="showLastIndex">是否显示最后一条（通常用于查询条件中全部）</param>
-        private void bindCombox(ComboBox control,DataTable dt, bool showLastIndex)
+        private void bindCombox(ComboBox control, DataTable dt, bool showLastIndex)
         {
             control.DataSource = dt;
             control.DisplayMember = "TypeName";
@@ -134,7 +130,5 @@ namespace UACSView
             }
         }
         #endregion
-
-        
     }
 }
