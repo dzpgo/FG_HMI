@@ -68,9 +68,12 @@ namespace UACSView
         {
             try
             {
-                this.tabControl1.SelectedTab = this.tabPage1;
+                //this.tabControl1.SelectedTab = this.tabPage1;
                 //getCraneOrderData();
                 //dataGridView1.DataSource = dt;
+                this.tabControl1.SelectedTab = this.tabPage1;
+                 getCraneOrderData2();
+                dataGridView1.DataSource = dt;
             }
             catch (Exception er)
             {
@@ -319,20 +322,24 @@ namespace UACSView
         private void getCraneOrderData2()
         {
             string matNo = this.txt_MAT_CODE.Text.Trim();
-            string bayNo = this.cbb_AREA_NO.SelectedValue.ToString();
-            string cmdStatus = this.cbb_ORDER_TYPE.SelectedValue.ToString();
+            string aeraNo = this.cbb_AREA_NO.SelectedValue.ToString();
+            string orderType = this.cbb_ORDER_TYPE.SelectedValue.ToString();
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");
-            string sqlText = @"SELECT BAY_NO,MAT_NO,ORDER_NO,ORDER_GROUP_NO,ORDER_TYPE,ORDER_PRIORITY,FROM_STOCK_NO, TO_STOCK_NO, CMD_STATUS, FLAG_DISPAT, FLAG_ENABLE, CRANE_NO, REC_TIME, UPD_TIME FROM UACS_CRANE_ORDER ";
-            sqlText += "WHERE MAT_NO LIKE '%{0}%' and REC_TIME > '{1}' and REC_TIME < '{2}' ";
-            sqlText = string.Format(sqlText, matNo, recTime1, recTime2);
-            if (bayNo != "全部")
+            string sqlText = @"SELECT ORDER_NO, ORDER_GROUP_NO, ORDER_TYPE, ORDER_PRIORITY, BAY_NO, MAT_CODE, FROM_STOCK_NO, TO_STOCK_NO, REC_TIME, UPD_TIME FROM UACSAPP.UACS_ORDER_DATA  ";
+            sqlText += "WHERE REC_TIME > '{0}' and REC_TIME < '{1}' ";
+            sqlText = string.Format(sqlText, recTime1, recTime2);
+            if (!string.IsNullOrEmpty(matNo))
             {
-                sqlText = string.Format("{0} and BAY_NO = '{1}'", sqlText, bayNo);
+                sqlText = string.Format("{0} and MAT_CODE LIKE '%{1}%' ", sqlText, matNo);
             }
-            if (cmdStatus != "全部")
+            if (aeraNo != "全部")
             {
-                sqlText = string.Format("{0} and CMD_STATUS = '{1}'", sqlText, cmdStatus);
+                //sqlText = string.Format("{0} and AREA_NO = '{1}' ", sqlText, aeraNo);
+            }
+            if (orderType != "全部")
+            {
+                sqlText = string.Format("{0} and ORDER_TYPE = '{1}' ", sqlText, orderType);
             }
             dt = new DataTable();
             hasSetColumn = false;
@@ -355,24 +362,24 @@ namespace UACSView
                     dt.Rows.Add(dr);
                 }
             }
-            foreach (DataRow dr in dt.Rows)
-            {
-                string cmdStatusValue = dr["CMD_STATUS"].ToString();
-                if (dicCmdStatus.ContainsKey(cmdStatusValue))
-                {
-                    dr["CMD_STATUS"] = dicCmdStatus[cmdStatusValue];
-                }
-                string flagDispatValue = dr["FLAG_DISPAT"].ToString();
-                if (dicFlagDispat.ContainsKey(flagDispatValue))
-                {
-                    dr["FLAG_DISPAT"] = dicFlagDispat[flagDispatValue];
-                }
-                string orderTypeValue = dr["ORDER_TYPE"].ToString();
-                if (dicOrderType.ContainsKey(orderTypeValue))
-                {
-                    dr["ORDER_TYPE"] = dicOrderType[orderTypeValue];
-                }
-            }
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    string cmdStatusValue = dr["CMD_STATUS"].ToString();
+            //    if (dicCmdStatus.ContainsKey(cmdStatusValue))
+            //    {
+            //        dr["CMD_STATUS"] = dicCmdStatus[cmdStatusValue];
+            //    }
+            //    string flagDispatValue = dr["FLAG_DISPAT"].ToString();
+            //    if (dicFlagDispat.ContainsKey(flagDispatValue))
+            //    {
+            //        dr["FLAG_DISPAT"] = dicFlagDispat[flagDispatValue];
+            //    }
+            //    string orderTypeValue = dr["ORDER_TYPE"].ToString();
+            //    if (dicOrderType.ContainsKey(orderTypeValue))
+            //    {
+            //        dr["ORDER_TYPE"] = dicOrderType[orderTypeValue];
+            //    }
+            //}
         }
 
         /// <summary>
