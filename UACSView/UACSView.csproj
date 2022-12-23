@@ -171,6 +171,12 @@
     <Compile Include="View_CraneMonitor\Frm_Yard2Yard_ByCar_Plan.designer.cs">
       <DependentUpon>Frm_Yard2Yard_ByCar_Plan.cs</DependentUpon>
     </Compile>
+    <Compile Include="View_CraneMonitor\MaterialCellManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\MaterialCellManage.designer.cs">
+      <DependentUpon>MaterialCellManage.cs</DependentUpon>
+    </Compile>
     <Compile Include="View_CraneMonitor\RedStockInquiry.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -645,6 +651,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View_CraneMonitor\HandAutoModeMessage.resx">
       <DependentUpon>HandAutoModeMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\MaterialCellManage.resx">
+      <DependentUpon>MaterialCellManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View_CraneMonitor\RedStockInquiry.resx">
       <DependentUpon>RedStockInquiry.cs</DependentUpon>

@@ -250,6 +250,31 @@ namespace UACSDAL
         }
 
         /// <summary>
+        /// 获取图库GRID 料格
+        /// </summary>
+        /// <param name="showAll"></param>
+        /// <returns></returns>
+        public DataTable GetGRID_DEFINE(String areaNo)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("TypeValue");
+            dt.Columns.Add("TypeName");
+            //准备数据
+            string sqlText = @"SELECT GRID_NO AS TypeValue,GRID_NAME AS TypeName FROM UACSAPP.UACS_YARDMAP_GRID_DEFINE  WHERE AREA_NO = '" + areaNo + "'";
+            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
+            {
+                while (rdr.Read())
+                {
+                    DataRow dr = dt.NewRow();
+                    dr["TypeValue"] = rdr["TypeValue"];
+                    dr["TypeName"] = rdr["TypeName"];
+                    dt.Rows.Add(dr);
+                }
+            }
+            return dt;
+        }
+
+        /// <summary>
         /// 获取指令类型
         /// </summary>
         /// <param name="showAll"></param>

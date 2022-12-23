@@ -71,8 +71,8 @@ namespace UACSPopupForm
                 BayNo = "999";
             }
             GetManuOrder(CraneNo);
-            txtFromYard.SelectAll();
-            txtFromYard.Focus();
+            txtBayNo.SelectAll();
+            txtBayNo.Focus();
 
          //   if (txtFromYard.Text.Trim() != "")
 	        //{
@@ -115,13 +115,13 @@ namespace UACSPopupForm
         private void BtnOk_Click(object sender, EventArgs e)
         {
 
-            if (txtCoilno.Text.Trim() == "" || txtFromYard.Text.Trim() == "" || txtToYard.Text.Trim() == "")
+            if (txtCoilno.Text.Trim() == "" || txtBayNo.Text.Trim() == "" || txtFromStock.Text.Trim() == "")
             {
                 MessageBox.Show("请输入完整");
                 return;
             }
-            bool From_status = GetStockInfo(txtFromYard.Text);
-            bool To_status = CheckStockInfo(txtToYard.Text);
+            bool From_status = GetStockInfo(txtBayNo.Text);
+            bool To_status = CheckStockInfo(txtFromStock.Text);
 
             bool flag = false;
             try
@@ -129,8 +129,8 @@ namespace UACSPopupForm
                 if(From_status && To_status)
                 {
                     string coilNo = txtCoilno.Text.Trim();
-                    string strFrom = txtFromYard.Text.Trim();
-                    string strTo = txtToYard.Text.Trim();
+                    string strFrom = txtBayNo.Text.Trim();
+                    string strTo = txtFromStock.Text.Trim();
 
                     string sql = @"update UACS_CRANE_MANU_ORDER  set COIL_NO = '" + coilNo + "',FROM_STOCK = '" + strFrom + "',TO_STOCK = '" + strTo + "',STATUS = 'INIT' ";
                     sql += " WHERE CRANE_NO = '" + CraneNo + "'";
@@ -160,7 +160,7 @@ namespace UACSPopupForm
         {
             //txtFromYard.Enabled = false;
 
-            string strFromYard = txtFromYard.Text.Trim();
+            string strFromYard = txtBayNo.Text.Trim();
 
             //if (CheckStockNo(strFromYard))
             //{
@@ -216,8 +216,8 @@ namespace UACSPopupForm
 
         private void btnResetOrder_Click(object sender, EventArgs e)
         {
-            txtFromYard.Enabled = true;
-            txtToYard.Enabled = true;
+            txtBayNo.Enabled = true;
+            txtFromStock.Enabled = true;
         }
 
 
@@ -437,9 +437,9 @@ namespace UACSPopupForm
                     while (rdr.Read())
                     {
                         if (rdr["FROM_STOCK"] != DBNull.Value)
-	                        txtFromYard.Text = rdr["FROM_STOCK"].ToString();
+	                        txtBayNo.Text = rdr["FROM_STOCK"].ToString();
                         else
-                            txtFromYard.Text = "";
+                            txtBayNo.Text = "";
 
                         if (rdr["COIL_NO"] != DBNull.Value)
 	                        txtCoilno.Text = rdr["COIL_NO"].ToString();
@@ -448,10 +448,10 @@ namespace UACSPopupForm
 
                         if (rdr["TO_STOCK"] != DBNull.Value)
                         {
-                            txtToYard.Text = rdr["TO_STOCK"].ToString();
+                            txtFromStock.Text = rdr["TO_STOCK"].ToString();
                         }
                         else
-                            txtToYard.Text = "";
+                            txtFromStock.Text = "";
                        
                     }
                 }
@@ -537,16 +537,16 @@ namespace UACSPopupForm
         private void txtFromYard_TextChanged(object sender, EventArgs e)
         {
             string stockFrom;
-            stockFrom = txtFromYard.Text.ToUpper().ToString().Trim();
-            txtFromYard.Text = stockFrom;
-            txtFromYard.SelectionStart = txtFromYard.Text.Length;
-            txtFromYard.SelectionLength = 0;
-            if (txtFromYard.Text.Trim().Length == 8 || txtFromYard.Text.Trim().Length == 10)
+            stockFrom = txtBayNo.Text.ToUpper().ToString().Trim();
+            txtBayNo.Text = stockFrom;
+            txtBayNo.SelectionStart = txtBayNo.Text.Length;
+            txtBayNo.SelectionLength = 0;
+            if (txtBayNo.Text.Trim().Length == 8 || txtBayNo.Text.Trim().Length == 10)
             {
-                GetStockInfo(txtFromYard.Text);
+                GetStockInfo(txtBayNo.Text);
                 if (lblStockStatus.Text == "库位正常")
                 {
-                    string strFromYard = txtFromYard.Text.Trim();
+                    string strFromYard = txtBayNo.Text.Trim();
                     txtCoilno.Text = GetCoilNoByStockNO(strFromYard);
                 }
             }
@@ -555,13 +555,13 @@ namespace UACSPopupForm
         private void txtToYard_TextChanged(object sender, EventArgs e)
         {
             string stockTo;
-            stockTo = txtToYard.Text.ToUpper().ToString().Trim();
-            txtToYard.Text = stockTo;
-            txtToYard.SelectionStart = txtToYard.Text.Length;
-            txtToYard.SelectionLength = 0;
-            if (txtToYard.Text.Trim().Length == 10)
+            stockTo = txtFromStock.Text.ToUpper().ToString().Trim();
+            txtFromStock.Text = stockTo;
+            txtFromStock.SelectionStart = txtFromStock.Text.Length;
+            txtFromStock.SelectionLength = 0;
+            if (txtFromStock.Text.Trim().Length == 10)
             {
-                CheckStockInfo(txtToYard.Text);
+                CheckStockInfo(txtFromStock.Text);
             }
         }
 
