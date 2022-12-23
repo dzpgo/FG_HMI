@@ -37,7 +37,7 @@ namespace UACSView.View_CraneMonitor
                 this.panel1.BackColor = UACSDAL.ColorSln.FormBgColor;
                 this.panel2.BackColor = UACSDAL.ColorSln.FormBgColor;
                 //绑定下拉框
-                //BindCombox();
+                BindCombox();
                 //
                 this.dateTimePicker1_recTime.Value = DateTime.Now.AddDays(-1);
             }
@@ -130,5 +130,10 @@ namespace UACSView.View_CraneMonitor
             }
         }
         #endregion
+
+        private void btnQuery_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
