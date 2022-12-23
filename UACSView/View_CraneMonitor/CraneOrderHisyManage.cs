@@ -71,9 +71,26 @@ namespace UACSView
                 //this.tabControl1.SelectedTab = this.tabPage1;
                 //getCraneOrderData();
                 //dataGridView1.DataSource = dt;
-                this.tabControl1.SelectedTab = this.tabPage1;
-                 getCraneOrderData2();
+
+                //当前选中页
+                int index = this.tabControl1.SelectedIndex;
+                if (index == 0)
+                {
+                    this.tabControl1.SelectedTab = this.tabPage1;
+                }
+                else if (index == 1)
+                {
+                    this.tabControl1.SelectedTab = this.tabPage2;
+                }
+                else
+                {
+                    this.tabControl1.SelectedTab = this.tabPage1;
+                }
+                //行车指令
+                getCraneOrderData2();
                 dataGridView1.DataSource = dt;
+                //当前行车指令              
+                dataGridView2.DataSource = getCraneOrderData3();
             }
             catch (Exception er)
             {
@@ -245,8 +262,8 @@ namespace UACSView
             DataTable dtCRANE_DEFINE = craneOrderImpl.GetCRANE_DEFINE(true);
             bindCombox(this.cbb_CRANE_NO, dtCRANE_DEFINE, true);
             //绑定区域号
-            DataTable dtAREA_DEFINE = craneOrderImpl.GetAREA_DEFINE(true);
-            bindCombox(this.cbb_AREA_NO, dtAREA_DEFINE, true);
+            //DataTable dtAREA_DEFINE = craneOrderImpl.GetAREA_DEFINE(true);
+            //bindCombox(this.cbb_AREA_NO, dtAREA_DEFINE, true);
             //绑定指令类型
             DataTable dtORDER_TYPE = craneOrderImpl.GetORDER_TYPE(true);
             bindCombox(this.cbb_ORDER_TYPE, dtORDER_TYPE, true);
@@ -260,17 +277,17 @@ namespace UACSView
         private void getCraneOrderData()
         {
             string matNo = this.txt_MAT_CODE.Text.Trim();
-            string bayNo = this.cbb_AREA_NO.SelectedValue.ToString();
+            //string bayNo = this.cbb_AREA_NO.SelectedValue.ToString();
             string cmdStatus = this.cbb_ORDER_TYPE.SelectedValue.ToString();
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");
             string sqlText = @"SELECT BAY_NO,MAT_NO,ORDER_NO,ORDER_GROUP_NO,ORDER_TYPE,ORDER_PRIORITY,FROM_STOCK_NO, TO_STOCK_NO, CMD_STATUS, FLAG_DISPAT, FLAG_ENABLE, CRANE_NO, REC_TIME, UPD_TIME FROM UACS_CRANE_ORDER ";
             sqlText += "WHERE MAT_NO LIKE '%{0}%' and REC_TIME > '{1}' and REC_TIME < '{2}' ";
             sqlText = string.Format(sqlText, matNo, recTime1, recTime2);
-            if (bayNo != "全部")
-            {
-                sqlText = string.Format("{0} and BAY_NO = '{1}'", sqlText, bayNo);
-            }
+            //if (bayNo != "全部")
+            //{
+            //    sqlText = string.Format("{0} and BAY_NO = '{1}'", sqlText, bayNo);
+            //}
             if (cmdStatus != "全部")
             {
                 sqlText = string.Format("{0} and CMD_STATUS = '{1}'", sqlText, cmdStatus);
@@ -322,7 +339,6 @@ namespace UACSView
         private void getCraneOrderData2()
         {
             string matNo = this.txt_MAT_CODE.Text.Trim();
-            string aeraNo = this.cbb_AREA_NO.SelectedValue.ToString();
             string orderType = this.cbb_ORDER_TYPE.SelectedValue.ToString();
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");
@@ -332,10 +348,6 @@ namespace UACSView
             if (!string.IsNullOrEmpty(matNo))
             {
                 sqlText = string.Format("{0} and MAT_CODE LIKE '%{1}%' ", sqlText, matNo);
-            }
-            if (aeraNo != "全部")
-            {
-                //sqlText = string.Format("{0} and AREA_NO = '{1}' ", sqlText, aeraNo);
             }
             if (orderType != "全部")
             {
@@ -362,24 +374,55 @@ namespace UACSView
                     dt.Rows.Add(dr);
                 }
             }
-            //foreach (DataRow dr in dt.Rows)
-            //{
-            //    string cmdStatusValue = dr["CMD_STATUS"].ToString();
-            //    if (dicCmdStatus.ContainsKey(cmdStatusValue))
-            //    {
-            //        dr["CMD_STATUS"] = dicCmdStatus[cmdStatusValue];
-            //    }
-            //    string flagDispatValue = dr["FLAG_DISPAT"].ToString();
-            //    if (dicFlagDispat.ContainsKey(flagDispatValue))
-            //    {
-            //        dr["FLAG_DISPAT"] = dicFlagDispat[flagDispatValue];
-            //    }
-            //    string orderTypeValue = dr["ORDER_TYPE"].ToString();
-            //    if (dicOrderType.ContainsKey(orderTypeValue))
-            //    {
-            //        dr["ORDER_TYPE"] = dicOrderType[orderTypeValue];
-            //    }
-            //}
+        }
+
+        /// <summary>
+        /// 查询当前指令数据
+        /// </summary>
+        private DataTable getCraneOrderData3()
+        {
+            string matNo = this.txt_MAT_CODE.Text.Trim();
+            string craneNo = this.cbb_CRANE_NO.SelectedValue.ToString();
+            string orderType = this.cbb_ORDER_TYPE.SelectedValue.ToString();
+            string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");
+            string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");
+            string sqlText = @"SELECT ORDER_NO, ORDER_GROUP_NO, ORDER_TYPE, CRANE_NO, ORDER_PRIORITY, BAY_NO, MAT_CODE, FROM_STOCK_NO, TO_STOCK_NO, REC_TIME, UPD_TIME FROM UACS_ORDER_QUEUE ";
+            sqlText += "WHERE REC_TIME > '{0}' and REC_TIME < '{1}' ";
+            sqlText = string.Format(sqlText, recTime1, recTime2);
+            if (!string.IsNullOrEmpty(matNo))
+            {
+                sqlText = string.Format("{0} and MAT_CODE LIKE '%{1}%' ", sqlText, matNo);
+            }
+            if (orderType != "全部")
+            {
+                sqlText = string.Format("{0} and ORDER_TYPE = '{1}' ", sqlText, orderType);
+            }
+            if (craneNo != "全部")
+            {
+                sqlText = string.Format("{0} and CRANE_NO = '{1}' ", sqlText, craneNo);
+            }
+            DataTable dtdata = new DataTable();
+            hasSetColumn = false;
+            using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
+            {
+                while (rdr.Read())
+                {
+                    DataRow dr = dtdata.NewRow();
+                    for (int i = 0; i < rdr.FieldCount; i++)
+                    {
+                        if (!hasSetColumn)
+                        {
+                            DataColumn dc = new DataColumn();
+                            dc.ColumnName = rdr.GetName(i);
+                            dtdata.Columns.Add(dc);
+                        }
+                        dr[i] = rdr[i];
+                    }
+                    hasSetColumn = true;
+                    dtdata.Rows.Add(dr);
+                }
+            }
+            return dtdata;
         }
 
         /// <summary>
