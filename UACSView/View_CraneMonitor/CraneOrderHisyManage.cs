@@ -13,8 +13,7 @@ using UACSDAL;
 namespace UACSView
 {
     /// <summary>
-    /// 吊运指令管理
-    /// 查询已经分配了的吊运指令
+    /// 行车指令管理
     /// </summary>
     public partial class CraneOrderHisyManage : FormBase
     {

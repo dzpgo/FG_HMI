@@ -12,6 +12,9 @@ using UACSDAL;
 
 namespace UACSView.View_CraneMonitor
 {
+    /// <summary>
+    /// L3送料计划
+    /// </summary>
     public partial class L3_MAT_Weight_Info2 : FormBase
     {
         DataTable dt = new DataTable();
