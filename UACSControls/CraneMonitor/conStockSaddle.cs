@@ -527,26 +527,20 @@ namespace UACSControls
 
                 }
 
-                //this.BringToFront();
-                //this.BorderStyle = BorderStyle.None;
-                //gr = panel.CreateGraphics();
-                //panel.Paint += panel_Paint;
-                //this.panel1.Paint += StockSaddle_Paint;
-                //toolTip1.IsBalloon = true;
-                //toolTip1.ReshowDelay = 0;
-
+                
 
                 this.BringToFront();
-                //if (theSaddle.SaddleNo.Substring( Convert.ToInt32( theSaddle.SaddleNo.Length.ToString()) - 1,1) == "2")
-                //    this.BorderStyle = BorderStyle.Fixed3D;
-                //else
-                this.BorderStyle = BorderStyle.None;
+                this.BorderStyle = BorderStyle.None;                
+                gr = panel.CreateGraphics();
+
+                gr.Clear(panel.BackColor);
+                gr.Dispose();//释放资源
 
                 gr = panel.CreateGraphics();
                 panel.Paint += panel_Paint;
                 this.panel1.Paint += StockSaddle_Paint;
 
-
+                
                 lbl.Name = theSaddle.GRID_NO;
                 lbl.BackColor = Color.LightSteelBlue;  //Color.MediumAquamarine;
                 lbl.Font = new System.Drawing.Font("微软雅黑", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(132)));
@@ -554,7 +548,8 @@ namespace UACSControls
                 lbl.Height = 75;
                 lbl.ForeColor = Color.Black;
                 lbl.Text = "料格号：" + theSaddle.GRID_NO + "\n"
-                              + "库存重量：   " + theSaddle.MAT_WGT + "\n";
+                + "库存重量：   " + theSaddle.MAT_WGT + "\n"
+                + "物料代码：   " + theSaddle.MAT_CODE + "\n";
                 //+ "黑库位：   " + saddleCoilNum + "\n"
                 //+ "红库位：   " + (saddleNum - saddleNoCoilNum - saddleCoilNum) + "\n"
                 //+ lblRuler + "\n"
@@ -735,7 +730,8 @@ namespace UACSControls
         {
             try
             {
-                Graphics gr = this.CreateGraphics();
+                
+                Graphics gr2 = this.CreateGraphics();
                 string col = mySaddleInfo.GRID_NO;
                 StringFormat str = new StringFormat();
                 str.Alignment = StringAlignment.Center; //居中
@@ -744,11 +740,11 @@ namespace UACSControls
                 Brush br = Brushes.Green;
                 if (mySaddleInfo.Layer_Num == 2)
                 {
-                    gr.DrawString(col + "上", size, br, 矩形, str);
+                    gr2.DrawString(col + "上", size, br, 矩形, str);
                 }
                 else
                 {
-                    gr.DrawString(col + "下", size, br, 矩形, str);
+                    gr2.DrawString(col + "下", size, br, 矩形, str);
                 }
             }
             catch (Exception er)

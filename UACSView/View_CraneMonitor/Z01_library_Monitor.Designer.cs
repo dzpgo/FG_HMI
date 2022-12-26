@@ -30,6 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panelZ61Bay = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtY = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtX = new System.Windows.Forms.Label();
             this.conCrane2_4 = new UACSControls.conCrane();
             this.conCrane2_3 = new UACSControls.conCrane();
             this.conCrane2_2 = new UACSControls.conCrane();
@@ -57,19 +62,14 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.timer_InitializeLoad = new System.Windows.Forms.Timer(this.components);
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtY = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtX = new System.Windows.Forms.Label();
             this.panelZ61Bay.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelZ53BayS.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelZ61Bay
@@ -83,50 +83,111 @@
             this.panelZ61Bay.Controls.Add(this.conCrane2_1);
             this.panelZ61Bay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelZ61Bay.Location = new System.Drawing.Point(0, 0);
-            this.panelZ61Bay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelZ61Bay.Name = "panelZ61Bay";
-            this.panelZ61Bay.Size = new System.Drawing.Size(1898, 583);
+            this.panelZ61Bay.Size = new System.Drawing.Size(1265, 388);
             this.panelZ61Bay.TabIndex = 6;
             this.panelZ61Bay.Paint += new System.Windows.Forms.PaintEventHandler(this.panelZ11_Z22Bay_Paint);
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel4.Controls.Add(this.label2);
+            this.panel4.Controls.Add(this.txtY);
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.txtX);
+            this.panel4.Location = new System.Drawing.Point(1165, 322);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(100, 66);
+            this.panel4.TabIndex = 18;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(13, 5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(19, 17);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "X:";
+            // 
+            // txtY
+            // 
+            this.txtY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtY.AutoSize = true;
+            this.txtY.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtY.ForeColor = System.Drawing.Color.White;
+            this.txtY.Location = new System.Drawing.Point(36, 37);
+            this.txtY.Name = "txtY";
+            this.txtY.Size = new System.Drawing.Size(50, 17);
+            this.txtY.TabIndex = 15;
+            this.txtY.Text = "999999";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(13, 37);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(19, 17);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Y:";
+            // 
+            // txtX
+            // 
+            this.txtX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtX.AutoSize = true;
+            this.txtX.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtX.ForeColor = System.Drawing.Color.White;
+            this.txtX.Location = new System.Drawing.Point(36, 5);
+            this.txtX.Name = "txtX";
+            this.txtX.Size = new System.Drawing.Size(50, 17);
+            this.txtX.TabIndex = 14;
+            this.txtX.Text = "999999";
             // 
             // conCrane2_4
             // 
             this.conCrane2_4.BackColor = System.Drawing.SystemColors.Control;
             this.conCrane2_4.CraneNO = null;
-            this.conCrane2_4.Location = new System.Drawing.Point(1648, 34);
-            this.conCrane2_4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.conCrane2_4.Location = new System.Drawing.Point(1099, 23);
+            this.conCrane2_4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.conCrane2_4.Name = "conCrane2_4";
-            this.conCrane2_4.Size = new System.Drawing.Size(70, 612);
+            this.conCrane2_4.Size = new System.Drawing.Size(47, 408);
             this.conCrane2_4.TabIndex = 4;
             // 
             // conCrane2_3
             // 
             this.conCrane2_3.BackColor = System.Drawing.SystemColors.Control;
             this.conCrane2_3.CraneNO = null;
-            this.conCrane2_3.Location = new System.Drawing.Point(1356, 32);
-            this.conCrane2_3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.conCrane2_3.Location = new System.Drawing.Point(904, 21);
+            this.conCrane2_3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.conCrane2_3.Name = "conCrane2_3";
-            this.conCrane2_3.Size = new System.Drawing.Size(70, 612);
+            this.conCrane2_3.Size = new System.Drawing.Size(47, 408);
             this.conCrane2_3.TabIndex = 3;
             // 
             // conCrane2_2
             // 
             this.conCrane2_2.BackColor = System.Drawing.SystemColors.Control;
             this.conCrane2_2.CraneNO = null;
-            this.conCrane2_2.Location = new System.Drawing.Point(771, 33);
-            this.conCrane2_2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.conCrane2_2.Location = new System.Drawing.Point(514, 22);
+            this.conCrane2_2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.conCrane2_2.Name = "conCrane2_2";
-            this.conCrane2_2.Size = new System.Drawing.Size(70, 612);
+            this.conCrane2_2.Size = new System.Drawing.Size(47, 408);
             this.conCrane2_2.TabIndex = 2;
             // 
             // conCrane2_1
             // 
             this.conCrane2_1.BackColor = System.Drawing.SystemColors.Control;
             this.conCrane2_1.CraneNO = null;
-            this.conCrane2_1.Location = new System.Drawing.Point(476, 33);
-            this.conCrane2_1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.conCrane2_1.Location = new System.Drawing.Point(317, 22);
+            this.conCrane2_1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.conCrane2_1.Name = "conCrane2_1";
-            this.conCrane2_1.Size = new System.Drawing.Size(70, 612);
+            this.conCrane2_1.Size = new System.Drawing.Size(47, 408);
             this.conCrane2_1.TabIndex = 1;
             // 
             // label4
@@ -135,8 +196,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(1538, 8);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(1025, 5);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(246, 17);
             this.label4.TabIndex = 16;
@@ -175,14 +235,13 @@
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 105F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 346F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1924, 1060);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 231F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1283, 707);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -198,12 +257,11 @@
             this.tableLayoutPanel2.Controls.Add(this.conCraneStatus2_3, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.conCraneStatus2_4, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 718);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 479);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1916, 338);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1277, 225);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // conCraneStatus2_2
@@ -211,10 +269,10 @@
             this.conCraneStatus2_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.conCraneStatus2_2.CraneNO = "";
             this.conCraneStatus2_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.conCraneStatus2_2.Location = new System.Drawing.Point(485, 6);
-            this.conCraneStatus2_2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.conCraneStatus2_2.Location = new System.Drawing.Point(323, 4);
+            this.conCraneStatus2_2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.conCraneStatus2_2.Name = "conCraneStatus2_2";
-            this.conCraneStatus2_2.Size = new System.Drawing.Size(467, 326);
+            this.conCraneStatus2_2.Size = new System.Drawing.Size(311, 217);
             this.conCraneStatus2_2.TabIndex = 3;
             // 
             // conCraneStatus2_1
@@ -222,10 +280,10 @@
             this.conCraneStatus2_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.conCraneStatus2_1.CraneNO = "";
             this.conCraneStatus2_1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.conCraneStatus2_1.Location = new System.Drawing.Point(6, 6);
-            this.conCraneStatus2_1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.conCraneStatus2_1.Location = new System.Drawing.Point(4, 4);
+            this.conCraneStatus2_1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.conCraneStatus2_1.Name = "conCraneStatus2_1";
-            this.conCraneStatus2_1.Size = new System.Drawing.Size(467, 326);
+            this.conCraneStatus2_1.Size = new System.Drawing.Size(311, 217);
             this.conCraneStatus2_1.TabIndex = 0;
             // 
             // conCraneStatus2_3
@@ -233,10 +291,10 @@
             this.conCraneStatus2_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.conCraneStatus2_3.CraneNO = "";
             this.conCraneStatus2_3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.conCraneStatus2_3.Location = new System.Drawing.Point(964, 6);
-            this.conCraneStatus2_3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.conCraneStatus2_3.Location = new System.Drawing.Point(642, 4);
+            this.conCraneStatus2_3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.conCraneStatus2_3.Name = "conCraneStatus2_3";
-            this.conCraneStatus2_3.Size = new System.Drawing.Size(467, 326);
+            this.conCraneStatus2_3.Size = new System.Drawing.Size(311, 217);
             this.conCraneStatus2_3.TabIndex = 1;
             // 
             // conCraneStatus2_4
@@ -244,20 +302,19 @@
             this.conCraneStatus2_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.conCraneStatus2_4.CraneNO = "";
             this.conCraneStatus2_4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.conCraneStatus2_4.Location = new System.Drawing.Point(1443, 6);
-            this.conCraneStatus2_4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.conCraneStatus2_4.Location = new System.Drawing.Point(961, 4);
+            this.conCraneStatus2_4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.conCraneStatus2_4.Name = "conCraneStatus2_4";
-            this.conCraneStatus2_4.Size = new System.Drawing.Size(467, 326);
+            this.conCraneStatus2_4.Size = new System.Drawing.Size(312, 217);
             this.conCraneStatus2_4.TabIndex = 2;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(4, 4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1916, 97);
+            this.panel1.Size = new System.Drawing.Size(1277, 64);
             this.panel1.TabIndex = 3;
             // 
             // panel2
@@ -266,9 +323,8 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1916, 97);
+            this.panel2.Size = new System.Drawing.Size(1277, 64);
             this.panel2.TabIndex = 5;
             // 
             // label1
@@ -277,8 +333,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(806, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(537, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(262, 42);
             this.label1.TabIndex = 3;
@@ -289,10 +344,9 @@
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.panelZ53BayS);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(4, 109);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Location = new System.Drawing.Point(3, 73);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1916, 601);
+            this.panel3.Size = new System.Drawing.Size(1277, 400);
             this.panel3.TabIndex = 4;
             // 
             // panelZ53BayS
@@ -302,10 +356,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelZ53BayS.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panelZ53BayS.Controls.Add(this.panelZ61Bay);
-            this.panelZ53BayS.Location = new System.Drawing.Point(9, 9);
-            this.panelZ53BayS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelZ53BayS.Location = new System.Drawing.Point(6, 6);
             this.panelZ53BayS.Name = "panelZ53BayS";
-            this.panelZ53BayS.Size = new System.Drawing.Size(1898, 583);
+            this.panelZ53BayS.Size = new System.Drawing.Size(1265, 388);
             this.panelZ53BayS.TabIndex = 0;
             // 
             // button6
@@ -347,85 +400,20 @@
             // 
             this.timer_InitializeLoad.Tick += new System.EventHandler(this.timer_InitializeLoad_Tick);
             // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel4.Controls.Add(this.label2);
-            this.panel4.Controls.Add(this.txtY);
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Controls.Add(this.txtX);
-            this.panel4.Location = new System.Drawing.Point(1749, 485);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(148, 97);
-            this.panel4.TabIndex = 18;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(20, 8);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(19, 17);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "X:";
-            // 
-            // txtY
-            // 
-            this.txtY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtY.AutoSize = true;
-            this.txtY.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtY.ForeColor = System.Drawing.Color.White;
-            this.txtY.Location = new System.Drawing.Point(54, 56);
-            this.txtY.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.txtY.Name = "txtY";
-            this.txtY.Size = new System.Drawing.Size(50, 17);
-            this.txtY.TabIndex = 15;
-            this.txtY.Text = "999999";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(20, 56);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(19, 17);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Y:";
-            // 
-            // txtX
-            // 
-            this.txtX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtX.AutoSize = true;
-            this.txtX.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtX.ForeColor = System.Drawing.Color.White;
-            this.txtX.Location = new System.Drawing.Point(54, 8);
-            this.txtX.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.txtX.Name = "txtX";
-            this.txtX.Size = new System.Drawing.Size(50, 17);
-            this.txtX.TabIndex = 14;
-            this.txtX.Text = "999999";
-            // 
             // Z01_library_Monitor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 1060);
+            this.ClientSize = new System.Drawing.Size(1283, 707);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Z01_library_Monitor";
             this.Text = "Z12_library_Monitor";
             this.TabActivated += new System.EventHandler(this.MyTabActivated);
             this.TabDeactivated += new System.EventHandler(this.MyTabDeactivated);
             this.panelZ61Bay.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -433,8 +421,6 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panelZ53BayS.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }

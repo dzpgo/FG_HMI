@@ -71,7 +71,7 @@ namespace UACSView.View_CraneMonitor
         /// </summary>
         private void BindCombox()
         {
-            //绑定行车号
+            //绑定跨号
             DataTable dtCRANE_DEFINE = GetBAY_NO(true);
             bindCombox(this.cbb_BAY_NO, dtCRANE_DEFINE, true);
             //绑定行车模式
@@ -201,16 +201,24 @@ namespace UACSView.View_CraneMonitor
                         }
                     }
 
-                    //行车模式转中文展示， 1-自动 2-非自动
+                    //行车模式转中文展示，1-远程操控 2-人工 4-自动 5-等待
                     if (dr["CRANE_MODE"] != System.DBNull.Value)
                     {
                         if (dr["CRANE_MODE"].Equals("1"))
                         {
-                            dr["CRANE_MODE"] = "自动";
+                            dr["CRANE_MODE"] = "远程操控";
                         }
                         else if (dr["CRANE_MODE"].Equals("2"))
                         {
-                            dr["CRANE_MODE"] = "非自动";
+                            dr["CRANE_MODE"] = "人工";
+                        }
+                        else if (dr["CRANE_MODE"].Equals("4"))
+                        {
+                            dr["CRANE_MODE"] = "自动";
+                        }
+                        else if (dr["CRANE_MODE"].Equals("5"))
+                        {
+                            dr["CRANE_MODE"] = "等待";
                         }
                     }
                     #endregion
@@ -274,7 +282,7 @@ namespace UACSView.View_CraneMonitor
         }
 
         /// <summary>
-        /// 获取行车模式 1-自动 2-非自动
+        /// 获取行车模式 1-远程操控 2-人工 4-自动 5-等待
         /// </summary>
         /// <param name="showAll"></param>
         /// <returns></returns>
@@ -283,8 +291,10 @@ namespace UACSView.View_CraneMonitor
             DataTable dt = new DataTable();
             dt.Columns.Add("TypeValue");
             dt.Columns.Add("TypeName");
-            dt.Rows.Add("1", "自动");
-            dt.Rows.Add("2", "非自动");
+            dt.Rows.Add("1", "远程操控");
+            dt.Rows.Add("2", "人工");
+            dt.Rows.Add("4", "自动");
+            dt.Rows.Add("5", "等待");
             if (showAll)
             {
                 dt.Rows.Add("全部", "全部");

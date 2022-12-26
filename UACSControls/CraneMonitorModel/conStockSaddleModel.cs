@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using UACSDAL;
 
@@ -170,7 +171,7 @@ namespace UACSControls
             //取这块小区的大小
             double X_Width = theAreaBase.X_End - theAreaBase.X_Start;
             double Y_Height = theAreaBase.Y_End - theAreaBase.Y_Start;
-            
+            bayPanel.Controls.Clear();
             theSaddlsInfoInBay.getSaddleInfo(AreaNo, isGRID_DIV);
             foreach (SaddleBase theSaddleInfo in theSaddlsInfoInBay.DicSaddles.Values)
             {

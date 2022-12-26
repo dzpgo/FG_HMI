@@ -322,129 +322,129 @@ namespace UACSControls
 
         private void 避让ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                tagDP.ServiceName = "iplature";
-                tagDP.AutoRegist = true;
-                TagValues.Clear();
-                TagValues.Add("Z01_EVADE_REQUEST", null);                
-                tagDP.Attach(TagValues);
+            //try
+            //{
+            //    tagDP.ServiceName = "iplature";
+            //    tagDP.AutoRegist = true;
+            //    TagValues.Clear();
+            //    TagValues.Add("Z01_EVADE_REQUEST", null);                
+            //    tagDP.Attach(TagValues);
 
-                string startPoint = "";
-                string endPoint = "";
-                string sqlPos = @"SELECT POS_WAIT FROM CRANE_PIPI WHERE CRANE_NO = '{0}'";
-                sqlPos = string.Format(sqlPos, craneNO);
-                using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlPos))
-                {
-                    while (rdr.Read())
-                    {
-                        if (rdr["POS_WAIT"] != DBNull.Value)
-                        {
-                            string value = rdr["POS_WAIT"].ToString().Trim();
-                            string[] sArray = value.Split(',');
-                            double xValues = (Convert.ToDouble(sArray[0].ToString()) / 1000);
-                            double yValues = (Convert.ToDouble(sArray[1].ToString()) / 1000);
-                            startPoint = xValues.ToString() + "," + yValues.ToString() +",5";
-                            endPoint = xValues.ToString() + "," + yValues.ToString() + ",5";
-                            //startPoint = rdr["POS_WAIT"].ToString().Trim() + ",5";
-                            //endPoint = rdr["POS_WAIT"].ToString().Trim() + ",5";
-                        }
-                        else
-                        {
-                            MessageBox.Show("该行车未设置避让位置！");
-                            return;
-                        }
-                    }
-                }
+            //    string startPoint = "";
+            //    string endPoint = "";
+            //    string sqlPos = @"SELECT POS_WAIT FROM CRANE_PIPI WHERE CRANE_NO = '{0}'";
+            //    sqlPos = string.Format(sqlPos, craneNO);
+            //    using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlPos))
+            //    {
+            //        while (rdr.Read())
+            //        {
+            //            if (rdr["POS_WAIT"] != DBNull.Value)
+            //            {
+            //                string value = rdr["POS_WAIT"].ToString().Trim();
+            //                string[] sArray = value.Split(',');
+            //                double xValues = (Convert.ToDouble(sArray[0].ToString()) / 1000);
+            //                double yValues = (Convert.ToDouble(sArray[1].ToString()) / 1000);
+            //                startPoint = xValues.ToString() + "," + yValues.ToString() +",5";
+            //                endPoint = xValues.ToString() + "," + yValues.ToString() + ",5";
+            //                //startPoint = rdr["POS_WAIT"].ToString().Trim() + ",5";
+            //                //endPoint = rdr["POS_WAIT"].ToString().Trim() + ",5";
+            //            }
+            //            else
+            //            {
+            //                MessageBox.Show("该行车未设置避让位置！");
+            //                return;
+            //            }
+            //        }
+            //    }
 
-                if (craneNO == "2_1")
-                {
-                    string sql = @"INSERT INTO WMS_CRANE_EVADE
-                            (ORDER_NUMBER, BAY_NO, ALTERN_CRANE_NO, TASK_PRIORITY, TIME_TYPE_FRM_WMS, START_POINT, END_POINT, ORDER_SOURCE, CURRENT_2_START_TIME, START_2_END_TIME, CRANE_NO, SOUR_CRANE) 
-                            VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}')";
-                    sql = string.Format(sql, 3, "Z01", craneNO, 999999, 0, startPoint, endPoint, 6, "999999", "999999", "", "0");
-                    try
-                    {
-                        if (JudgeCraneEvade(craneNO))
-                        {
-                            MessageBox.Show("行车已设置避让！");
-                            return;
-                        }
-                        DB2Connect.DBHelper.ExecuteNonQuery(sql);
-                        MessageBox.Show(craneNO + "避让已经创建成功");
-                        ParkClassLibrary.HMILogger.WriteLog("设置避让", craneNO + "行车设置避让", ParkClassLibrary.LogLevel.Info, "主监控");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
+            //    if (craneNO == "2_1")
+            //    {
+            //        string sql = @"INSERT INTO WMS_CRANE_EVADE
+            //                (ORDER_NUMBER, BAY_NO, ALTERN_CRANE_NO, TASK_PRIORITY, TIME_TYPE_FRM_WMS, START_POINT, END_POINT, ORDER_SOURCE, CURRENT_2_START_TIME, START_2_END_TIME, CRANE_NO, SOUR_CRANE) 
+            //                VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}')";
+            //        sql = string.Format(sql, 3, "Z01", craneNO, 999999, 0, startPoint, endPoint, 6, "999999", "999999", "", "0");
+            //        try
+            //        {
+            //            if (JudgeCraneEvade(craneNO))
+            //            {
+            //                MessageBox.Show("行车已设置避让！");
+            //                return;
+            //            }
+            //            DB2Connect.DBHelper.ExecuteNonQuery(sql);
+            //            MessageBox.Show(craneNO + "避让已经创建成功");
+            //            ParkClassLibrary.HMILogger.WriteLog("设置避让", craneNO + "行车设置避让", ParkClassLibrary.LogLevel.Info, "主监控");
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            MessageBox.Show(ex.ToString());
+            //        }
 
-                    //tagDP.SetData("Z21_EVADE_REQUEST", "6_3,6_2,999999,25000,X_DES");
-                    //MessageBox.Show(craneNO + "避让已经创建成功");
-                    //ParkClassLibrary.HMILogger.WriteLog("设置避让", craneNO + "行车设置避让", ParkClassLibrary.LogLevel.Info, "主监控");
-                }
-                else if (craneNO == "2_2")
-                {
+            //        //tagDP.SetData("Z21_EVADE_REQUEST", "6_3,6_2,999999,25000,X_DES");
+            //        //MessageBox.Show(craneNO + "避让已经创建成功");
+            //        //ParkClassLibrary.HMILogger.WriteLog("设置避让", craneNO + "行车设置避让", ParkClassLibrary.LogLevel.Info, "主监控");
+            //    }
+            //    else if (craneNO == "2_2")
+            //    {
 
-                    string sql = @"INSERT INTO WMS_CRANE_EVADE
-                            (ORDER_NUMBER, BAY_NO, ALTERN_CRANE_NO, TASK_PRIORITY, TIME_TYPE_FRM_WMS, START_POINT, END_POINT, ORDER_SOURCE, CURRENT_2_START_TIME, START_2_END_TIME, CRANE_NO, SOUR_CRANE) 
-                            VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}')";
-                    sql = string.Format(sql, 3, "Z01", craneNO, 999999, 0, startPoint, endPoint, 6, "999999", "999999", "", "0");
-                    try
-                    {
-                        if (JudgeCraneEvade(craneNO))
-                        {
-                            MessageBox.Show("行车已设置避让！");
-                            return;
-                        }
-                        DB2Connect.DBHelper.ExecuteNonQuery(sql);
-                        MessageBox.Show(craneNO + "避让已经创建成功");
-                        ParkClassLibrary.HMILogger.WriteLog("设置避让", craneNO + "行车设置避让", ParkClassLibrary.LogLevel.Info, "主监控");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
+            //        string sql = @"INSERT INTO WMS_CRANE_EVADE
+            //                (ORDER_NUMBER, BAY_NO, ALTERN_CRANE_NO, TASK_PRIORITY, TIME_TYPE_FRM_WMS, START_POINT, END_POINT, ORDER_SOURCE, CURRENT_2_START_TIME, START_2_END_TIME, CRANE_NO, SOUR_CRANE) 
+            //                VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}')";
+            //        sql = string.Format(sql, 3, "Z01", craneNO, 999999, 0, startPoint, endPoint, 6, "999999", "999999", "", "0");
+            //        try
+            //        {
+            //            if (JudgeCraneEvade(craneNO))
+            //            {
+            //                MessageBox.Show("行车已设置避让！");
+            //                return;
+            //            }
+            //            DB2Connect.DBHelper.ExecuteNonQuery(sql);
+            //            MessageBox.Show(craneNO + "避让已经创建成功");
+            //            ParkClassLibrary.HMILogger.WriteLog("设置避让", craneNO + "行车设置避让", ParkClassLibrary.LogLevel.Info, "主监控");
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            MessageBox.Show(ex.ToString());
+            //        }
 
-                    //tagDP.SetData("Z22_EVADE_REQUEST", "6_6,6_5,999999,25000,X_DES");
-                    //MessageBox.Show(craneNO + "避让已经创建成功");
-                    //ParkClassLibrary.HMILogger.WriteLog("设置避让", craneNO + "行车设置避让", ParkClassLibrary.LogLevel.Info, "主监控");
-                }
-                else if (craneNO == "2_3")
-                {
-                    string sql = @"INSERT INTO WMS_CRANE_EVADE
-                            (ORDER_NUMBER, BAY_NO, ALTERN_CRANE_NO, TASK_PRIORITY, TIME_TYPE_FRM_WMS, START_POINT, END_POINT, ORDER_SOURCE, CURRENT_2_START_TIME, START_2_END_TIME, CRANE_NO, SOUR_CRANE) 
-                            VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}')";
-                    sql = string.Format(sql, 3, "Z01", craneNO, 999999, 0, startPoint, endPoint, 6, "999999", "999999", "", "0");
-                    try
-                    {
-                        if (JudgeCraneEvade(craneNO))
-                        {
-                            MessageBox.Show("行车已设置避让！");
-                            return;
-                        }
-                        DB2Connect.DBHelper.ExecuteNonQuery(sql);
-                        MessageBox.Show(craneNO + "避让已经创建成功");
-                        ParkClassLibrary.HMILogger.WriteLog("设置避让", craneNO + "行车设置避让", ParkClassLibrary.LogLevel.Info, "主监控");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
+            //        //tagDP.SetData("Z22_EVADE_REQUEST", "6_6,6_5,999999,25000,X_DES");
+            //        //MessageBox.Show(craneNO + "避让已经创建成功");
+            //        //ParkClassLibrary.HMILogger.WriteLog("设置避让", craneNO + "行车设置避让", ParkClassLibrary.LogLevel.Info, "主监控");
+            //    }
+            //    else if (craneNO == "2_3")
+            //    {
+            //        string sql = @"INSERT INTO WMS_CRANE_EVADE
+            //                (ORDER_NUMBER, BAY_NO, ALTERN_CRANE_NO, TASK_PRIORITY, TIME_TYPE_FRM_WMS, START_POINT, END_POINT, ORDER_SOURCE, CURRENT_2_START_TIME, START_2_END_TIME, CRANE_NO, SOUR_CRANE) 
+            //                VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}')";
+            //        sql = string.Format(sql, 3, "Z01", craneNO, 999999, 0, startPoint, endPoint, 6, "999999", "999999", "", "0");
+            //        try
+            //        {
+            //            if (JudgeCraneEvade(craneNO))
+            //            {
+            //                MessageBox.Show("行车已设置避让！");
+            //                return;
+            //            }
+            //            DB2Connect.DBHelper.ExecuteNonQuery(sql);
+            //            MessageBox.Show(craneNO + "避让已经创建成功");
+            //            ParkClassLibrary.HMILogger.WriteLog("设置避让", craneNO + "行车设置避让", ParkClassLibrary.LogLevel.Info, "主监控");
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            MessageBox.Show(ex.ToString());
+            //        }
 
-                    //tagDP.SetData("Z23_EVADE_REQUEST", "6_9,6_8,999999,25000,X_DES");
-                    //MessageBox.Show(craneNO + "避让已经创建成功");
-                    //ParkClassLibrary.HMILogger.WriteLog("设置避让", craneNO + "行车设置避让", ParkClassLibrary.LogLevel.Info, "主监控");
-                }                
-                else
-                {
-                    //MessageBox.Show("暂无该功能！");
-                }
-            }
-            catch(Exception err)
-            {
-                throw;
-            }
+            //        //tagDP.SetData("Z23_EVADE_REQUEST", "6_9,6_8,999999,25000,X_DES");
+            //        //MessageBox.Show(craneNO + "避让已经创建成功");
+            //        //ParkClassLibrary.HMILogger.WriteLog("设置避让", craneNO + "行车设置避让", ParkClassLibrary.LogLevel.Info, "主监控");
+            //    }                
+            //    else
+            //    {
+            //        //MessageBox.Show("暂无该功能！");
+            //    }
+            //}
+            //catch(Exception err)
+            //{
+            //    throw;
+            //}
         }
 
         private void 取消ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -611,76 +611,76 @@ namespace UACSControls
         {
             try
             {
-                string sql = @"SELECT STATUS,POS_DENGJI_1,POS_DENGJI_2,TYPE FROM CRANE_PIPI ";
-                sql += " WHERE CRANE_NO = '" + craneNO + "'";
-                using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
-                {
-                    while (rdr.Read())
-                    {
-                        if (rdr["POS_DENGJI_1"].ToString().Trim() == "" && rdr["POS_DENGJI_2"].ToString().Trim() == "")
-                        {
-                            this.登机请求ToolStripMenuItem.Visible = false;
-                        }
-                        else if (rdr["POS_DENGJI_1"].ToString().Trim() == "")
-                        {
-                            this.登机1ToolStripMenuItem.Visible = false;
-                        }
-                        else if(rdr["POS_DENGJI_2"].ToString().Trim() == "")
-                        {
-                            this.登机2ToolStripMenuItem.Visible = false;
-                        }
-                        if (rdr["TYPE"].ToString() == "1")
-                        {
-                            this.行车排水ToolStripMenuItem.Text = "行车排水：关闭";
-                            if (rdr["STATUS"].ToString() == "ENDED" || rdr["STATUS"].ToString() == "TO_BE_END")
-                            {
-                                this.登机请求ToolStripMenuItem.Text = "登机请求：关闭";
-                                this.开启ToolStripMenuItem.Enabled = true;
-                                this.关闭ToolStripMenuItem.Enabled = true;
-                            }
-                            else
-                            {
-                                this.登机请求ToolStripMenuItem.Text = "登机请求：登机1";
-                                this.开启ToolStripMenuItem.Enabled = false;
-                                this.关闭ToolStripMenuItem.Enabled = false;
-                            }
-                        }
-                        else if(rdr["TYPE"].ToString() == "2")
-                        {
-                            this.行车排水ToolStripMenuItem.Text = "行车排水：关闭";
-                            if (rdr["STATUS"].ToString() == "ENDED" || rdr["STATUS"].ToString() == "TO_BE_END")
-                            {
-                                this.登机请求ToolStripMenuItem.Text = "登机请求：关闭";
-                                this.开启ToolStripMenuItem.Enabled = true;
-                                this.关闭ToolStripMenuItem.Enabled = true;
-                            }
-                            else
-                            {
-                                this.登机请求ToolStripMenuItem.Text = "登机请求：登机2";
-                                this.开启ToolStripMenuItem.Enabled = false;
-                                this.关闭ToolStripMenuItem.Enabled = false;
-                            }
-                        }
-                        else
-                        {
-                            this.登机请求ToolStripMenuItem.Text = "登机请求：关闭";
-                            if (rdr["STATUS"].ToString() == "ENDED" || rdr["STATUS"].ToString() == "TO_BE_END")
-                            {
-                                this.行车排水ToolStripMenuItem.Text = "行车排水：关闭";
-                                this.登机1ToolStripMenuItem.Enabled = true;
-                                this.登机2ToolStripMenuItem.Enabled = true;
-                                this.关闭ToolStripMenuItem1.Enabled = true;
-                            }
-                            else
-                            {
-                                this.行车排水ToolStripMenuItem.Text = "行车排水：开启";
-                                this.登机1ToolStripMenuItem.Enabled = false;
-                                this.登机2ToolStripMenuItem.Enabled = false;
-                                this.关闭ToolStripMenuItem1.Enabled = false;
-                            }
-                        }
-                    }
-                }
+                //string sql = @"SELECT STATUS,POS_DENGJI_1,POS_DENGJI_2,TYPE FROM CRANE_PIPI ";
+                //sql += " WHERE CRANE_NO = '" + craneNO + "'";
+                //using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
+                //{
+                //    while (rdr.Read())
+                //    {
+                //        if (rdr["POS_DENGJI_1"].ToString().Trim() == "" && rdr["POS_DENGJI_2"].ToString().Trim() == "")
+                //        {
+                //            this.登机请求ToolStripMenuItem.Visible = false;
+                //        }
+                //        else if (rdr["POS_DENGJI_1"].ToString().Trim() == "")
+                //        {
+                //            this.登机1ToolStripMenuItem.Visible = false;
+                //        }
+                //        else if(rdr["POS_DENGJI_2"].ToString().Trim() == "")
+                //        {
+                //            this.登机2ToolStripMenuItem.Visible = false;
+                //        }
+                //        if (rdr["TYPE"].ToString() == "1")
+                //        {
+                //            //this.行车排水ToolStripMenuItem.Text = "行车排水：关闭";
+                //            if (rdr["STATUS"].ToString() == "ENDED" || rdr["STATUS"].ToString() == "TO_BE_END")
+                //            {
+                //                this.登机请求ToolStripMenuItem.Text = "登机请求：关闭";
+                //                this.开启ToolStripMenuItem.Enabled = true;
+                //                this.关闭ToolStripMenuItem.Enabled = true;
+                //            }
+                //            else
+                //            {
+                //                this.登机请求ToolStripMenuItem.Text = "登机请求：登机1";
+                //                this.开启ToolStripMenuItem.Enabled = false;
+                //                this.关闭ToolStripMenuItem.Enabled = false;
+                //            }
+                //        }
+                //        else if(rdr["TYPE"].ToString() == "2")
+                //        {
+                //            //this.行车排水ToolStripMenuItem.Text = "行车排水：关闭";
+                //            if (rdr["STATUS"].ToString() == "ENDED" || rdr["STATUS"].ToString() == "TO_BE_END")
+                //            {
+                //                this.登机请求ToolStripMenuItem.Text = "登机请求：关闭";
+                //                this.开启ToolStripMenuItem.Enabled = true;
+                //                this.关闭ToolStripMenuItem.Enabled = true;
+                //            }
+                //            else
+                //            {
+                //                this.登机请求ToolStripMenuItem.Text = "登机请求：登机2";
+                //                this.开启ToolStripMenuItem.Enabled = false;
+                //                this.关闭ToolStripMenuItem.Enabled = false;
+                //            }
+                //        }
+                //        else
+                //        {
+                //            this.登机请求ToolStripMenuItem.Text = "登机请求：关闭";
+                //            if (rdr["STATUS"].ToString() == "ENDED" || rdr["STATUS"].ToString() == "TO_BE_END")
+                //            {
+                //                //this.行车排水ToolStripMenuItem.Text = "行车排水：关闭";
+                //                this.登机1ToolStripMenuItem.Enabled = true;
+                //                this.登机2ToolStripMenuItem.Enabled = true;
+                //                this.关闭ToolStripMenuItem1.Enabled = true;
+                //            }
+                //            else
+                //            {
+                //                //this.行车排水ToolStripMenuItem.Text = "行车排水：开启";
+                //                this.登机1ToolStripMenuItem.Enabled = false;
+                //                this.登机2ToolStripMenuItem.Enabled = false;
+                //                this.关闭ToolStripMenuItem1.Enabled = false;
+                //            }
+                //        }
+                //    }
+                //}
             }
             catch (Exception err)
             {
@@ -699,11 +699,11 @@ namespace UACSControls
 
             try
             {
-                string sql = @"update CRANE_PIPI set STATUS = 'TO_BE_START',TYPE = '1' ";
-                sql += " WHERE CRANE_NO = '" + craneNO + "'";
-                DB2Connect.DBHelper.ExecuteNonQuery(sql);
-                MessageBox.Show(craneNO + "登机1请求开启");
-                HMILogger.WriteLog("登机请求", "登机1：" + craneNO, LogLevel.Info, this.Text);
+                //string sql = @"update CRANE_PIPI set STATUS = 'TO_BE_START',TYPE = '1' ";
+                //sql += " WHERE CRANE_NO = '" + craneNO + "'";
+                //DB2Connect.DBHelper.ExecuteNonQuery(sql);
+                //MessageBox.Show(craneNO + "登机1请求开启");
+                //HMILogger.WriteLog("登机请求", "登机1：" + craneNO, LogLevel.Info, this.Text);
             }
             catch (Exception er)
             {
@@ -722,11 +722,11 @@ namespace UACSControls
 
             try
             {
-                string sql = @"update CRANE_PIPI set STATUS = 'TO_BE_START',TYPE = '2' ";
-                sql += " WHERE CRANE_NO = '" + craneNO + "'";
-                DB2Connect.DBHelper.ExecuteNonQuery(sql);
-                MessageBox.Show(craneNO + "登机2请求开启");
-                HMILogger.WriteLog("登机请求", "登机2：" + craneNO, LogLevel.Info, this.Text);
+                //string sql = @"update CRANE_PIPI set STATUS = 'TO_BE_START',TYPE = '2' ";
+                //sql += " WHERE CRANE_NO = '" + craneNO + "'";
+                //DB2Connect.DBHelper.ExecuteNonQuery(sql);
+                //MessageBox.Show(craneNO + "登机2请求开启");
+                //HMILogger.WriteLog("登机请求", "登机2：" + craneNO, LogLevel.Info, this.Text);
             }
             catch (Exception er)
             {
@@ -745,11 +745,11 @@ namespace UACSControls
 
             try
             {
-                string sql = @"update CRANE_PIPI set STATUS = 'TO_BE_END' ";
-                sql += " WHERE CRANE_NO = '" + craneNO + "'";
-                DB2Connect.DBHelper.ExecuteNonQuery(sql);
-                MessageBox.Show(craneNO + "登机请求关闭");
-                HMILogger.WriteLog("登机请求", "登机关闭：" + craneNO, LogLevel.Info, this.Text);
+                //string sql = @"update CRANE_PIPI set STATUS = 'TO_BE_END' ";
+                //sql += " WHERE CRANE_NO = '" + craneNO + "'";
+                //DB2Connect.DBHelper.ExecuteNonQuery(sql);
+                //MessageBox.Show(craneNO + "登机请求关闭");
+                //HMILogger.WriteLog("登机请求", "登机关闭：" + craneNO, LogLevel.Info, this.Text);
             }
             catch (Exception er)
             {
@@ -768,11 +768,11 @@ namespace UACSControls
 
             try
             {
-                string sql = @"update CRANE_PIPI set STATUS = 'TO_BE_START',TYPE = '0' ";
-                sql += " WHERE CRANE_NO = '" + craneNO + "'";
-                DB2Connect.DBHelper.ExecuteNonQuery(sql);
-                MessageBox.Show(craneNO + "行车排水开启");
-                HMILogger.WriteLog("行车排水", "排水开启：" + craneNO, LogLevel.Info, this.Text);
+                //string sql = @"update CRANE_PIPI set STATUS = 'TO_BE_START',TYPE = '0' ";
+                //sql += " WHERE CRANE_NO = '" + craneNO + "'";
+                //DB2Connect.DBHelper.ExecuteNonQuery(sql);
+                //MessageBox.Show(craneNO + "行车排水开启");
+                //HMILogger.WriteLog("行车排水", "排水开启：" + craneNO, LogLevel.Info, this.Text);
             }
             catch (Exception er)
             {
@@ -790,11 +790,11 @@ namespace UACSControls
             }
             try
             {
-                string sql = @"update CRANE_PIPI set STATUS = 'TO_BE_END' ";
-                sql += " WHERE CRANE_NO = '" + craneNO + "'";
-                DB2Connect.DBHelper.ExecuteNonQuery(sql);
-                MessageBox.Show(craneNO + "行车排水关闭");
-                HMILogger.WriteLog("行车排水", "排水关闭：" + craneNO, LogLevel.Info, this.Text);
+                //string sql = @"update CRANE_PIPI set STATUS = 'TO_BE_END' ";
+                //sql += " WHERE CRANE_NO = '" + craneNO + "'";
+                //DB2Connect.DBHelper.ExecuteNonQuery(sql);
+                //MessageBox.Show(craneNO + "行车排水关闭");
+                //HMILogger.WriteLog("行车排水", "排水关闭：" + craneNO, LogLevel.Info, this.Text);
             }
             catch (Exception er)
             {
@@ -810,7 +810,7 @@ namespace UACSControls
                 this.设置避让ToolStripMenuItem.Enabled = false;
                 this.登车ToolStripMenuItem.Enabled = false;
                 this.登机请求ToolStripMenuItem.Enabled = false;
-                this.行车排水ToolStripMenuItem.Enabled = false;
+                //this.行车排水ToolStripMenuItem.Enabled = false;
                 this.角度ToolStripMenuItem.Enabled = false;
             }
             if (CraneNO.ToString().Trim() == "1_1" || CraneNO.ToString().Trim() == "1_2" || CraneNO.ToString().Trim() == "1_3")
@@ -819,7 +819,7 @@ namespace UACSControls
                 this.设置避让ToolStripMenuItem.Enabled = true;
                 this.登车ToolStripMenuItem.Enabled = true;
                 this.登机请求ToolStripMenuItem.Enabled = true;
-                this.行车排水ToolStripMenuItem.Enabled = true;
+                //this.行车排水ToolStripMenuItem.Enabled = true;
                 this.角度ToolStripMenuItem.Enabled = true;
             }
         }

@@ -161,7 +161,7 @@ namespace UACSDAL
         /// <param name="AreaNo">区域号</param>
         /// <param name="isGRID_DIV">是否切换展示模式</param>
         public void getSaddleInfo(string AreaNo, bool isGRID_DIV)
-        {
+        {            
             try
             {                
                 var GRID_NO = "";   //料格号
@@ -176,6 +176,10 @@ namespace UACSDAL
 
                 using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
                 {
+                    if (dicSaddles.Count > 0)
+                    {
+                        dicSaddles.Clear();//清空字典
+                    }
                     while (rdr.Read())
                     {
                         SaddleBase theGRID = new SaddleBase();
