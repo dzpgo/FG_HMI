@@ -316,6 +316,7 @@ namespace UACSDAL
                     upsql += "WHERE AREA_NO = '" + AreaNo + "' ";
                     upsql += "AND GRID_NO = '" + GRID_NO + "' ";
                     DB2Connect.DBHelper.ExecuteNonQuery(upsql);
+                    getSaddleInfo(AreaNo, false);
                 }                
             }
             catch (Exception er)

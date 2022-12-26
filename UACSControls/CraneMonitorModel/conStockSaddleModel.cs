@@ -19,6 +19,7 @@ namespace UACSControls
         private long baySpaceX = 0;
         private long baySpaceY = 0;
         private string CoilNo = null;
+        public bool isGRID_DIV = false;
 
         private Panel bayPanel = new Panel();
         private bool xAxisRight = false;
@@ -165,14 +166,15 @@ namespace UACSControls
         /// </summary>
         /// <param name="AreaNo"></param>
         /// <param name="isGRID_DIV"></param>
-        public void refreshControl(string AreaNo, bool isGRID_DIV)
+        public void refreshControl(string AreaNo, bool isGRID_div)
         {
-
+            isGRID_div = isGRID_DIV;
             //取这块小区的大小
             double X_Width = theAreaBase.X_End - theAreaBase.X_Start;
             double Y_Height = theAreaBase.Y_End - theAreaBase.Y_Start;
             bayPanel.Controls.Clear();
-            theSaddlsInfoInBay.getSaddleInfo(AreaNo, isGRID_DIV);
+            theSaddlsInfoInBay.getSaddleInfo(AreaNo, isGRID_div);
+            isGRID_DIV = false;
             foreach (SaddleBase theSaddleInfo in theSaddlsInfoInBay.DicSaddles.Values)
             {
                 conStockSaddle theSaddleVisual = new conStockSaddle();

@@ -36,7 +36,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnResetLight = new System.Windows.Forms.Button();
             this.btGRID_DIV = new System.Windows.Forms.Button();
             this.btnKillStock = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -118,7 +117,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnResetLight);
             this.panel1.Controls.Add(this.btGRID_DIV);
             this.panel1.Controls.Add(this.btnKillStock);
             this.panel1.Controls.Add(this.label6);
@@ -140,21 +138,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1238, 53);
             this.panel1.TabIndex = 2;
-            // 
-            // btnResetLight
-            // 
-            this.btnResetLight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnResetLight.BackColor = System.Drawing.Color.AliceBlue;
-            this.btnResetLight.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnResetLight.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnResetLight.Location = new System.Drawing.Point(625, 13);
-            this.btnResetLight.Name = "btnResetLight";
-            this.btnResetLight.Size = new System.Drawing.Size(116, 36);
-            this.btnResetLight.TabIndex = 24;
-            this.btnResetLight.Text = "光幕复位";
-            this.btnResetLight.UseVisualStyleBackColor = false;
-            this.btnResetLight.Visible = false;
-            this.btnResetLight.Click += new System.EventHandler(this.btnResetLight_Click);
             // 
             // btGRID_DIV
             // 
@@ -408,7 +391,6 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Button btGRID_DIV;
         private System.Windows.Forms.Button btnKillStock;
-        private System.Windows.Forms.Button btnResetLight;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolTip toolTip1;
         private UACS.CoilPicture coilPicture1;

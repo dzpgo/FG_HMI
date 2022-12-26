@@ -543,13 +543,29 @@ namespace UACSControls
                 
                 lbl.Name = theSaddle.GRID_NO;
                 lbl.BackColor = Color.LightSteelBlue;  //Color.MediumAquamarine;
-                lbl.Font = new System.Drawing.Font("微软雅黑", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(132)));
-                lbl.Width = 75;
-                lbl.Height = 75;
+                lbl.Font = new System.Drawing.Font("微软雅黑", 16, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(132)));
+                lbl.Width = 565;
+                lbl.Height = 180;
+                if (theSaddle.GRID_DIV.Equals("0"))
+                {
+                    lbl.Width = 1136;
+                    lbl.Height = 365;
+                }
+                else if (theSaddle.GRID_DIV.Equals("1"))
+                {
+                    lbl.Width = 565;
+                    lbl.Height = 365;
+                }
+                else if (theSaddle.GRID_DIV.Equals("2"))
+                {
+                    lbl.Width = 565;
+                    lbl.Height = 180;
+                }                
                 lbl.ForeColor = Color.Black;
                 lbl.Text = "料格号：" + theSaddle.GRID_NO + "\n"
-                + "库存重量：   " + theSaddle.MAT_WGT + "\n"
-                + "物料代码：   " + theSaddle.MAT_CODE + "\n";
+                + " 库存重量：" + theSaddle.MAT_WGT + "\n"
+                + " 物料代码：" + theSaddle.MAT_CODE + "\n"
+                + " 料格名：" + theSaddle.GRID_NAME + "\n";
                 //+ "黑库位：   " + saddleCoilNum + "\n"
                 //+ "红库位：   " + (saddleNum - saddleNoCoilNum - saddleCoilNum) + "\n"
                 //+ lblRuler + "\n"
@@ -635,7 +651,7 @@ namespace UACSControls
                     int layer = mySaddleInfo.Layer_Num;
                     string row;
 
-                        row = "料格号：" + mySaddleInfo.GRID_NO + "\r" + " ，库存重量：" + mySaddleInfo.MAT_WGT;
+                        row = "料格号：" + mySaddleInfo.GRID_NO + "\r" + " ，库存重量：" + mySaddleInfo.MAT_WGT + "\r" + " ，物料代码：" + mySaddleInfo.MAT_CODE;
                         if (myArea.AreaNo == "Z01-1")
                         {
                             gr.DrawString(row, new Font("微软雅黑", 12, FontStyle.Bold), Brushes.Green,

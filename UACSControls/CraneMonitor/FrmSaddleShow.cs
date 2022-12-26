@@ -137,7 +137,7 @@ namespace UACSControls
             {
                 btnKillStock.Visible = true;
                 btGRID_DIV.Visible = true;
-                btnResetLight.Visible = true;
+                //btnResetLight.Visible = true;
                 tagDataProvider.ServiceName = tagServiceName;
                 SetReady();
             }
@@ -260,36 +260,36 @@ namespace UACSControls
             readTags();
             if (areaBase.AreaNo.Contains("D172"))
             {
-                MessageBoxButtons btn = MessageBoxButtons.OKCancel;
-                DialogResult dr = MessageBox.Show("确定要光幕复位吗？", "操作提示", btn);
-                if (dr == DialogResult.OK)
-                {
-                    inDatas["D172WJ_LIGHT_CURTAIN_RESET"] = 1;
-                    tagDataProvider.Write2Level1(inDatas, 1);
-                    ParkClassLibrary.HMILogger.WriteLog(btnResetLight.Text, "D172WJ" + btnResetLight.Text, ParkClassLibrary.LogLevel.Info, "库区详细画面");
-                }
+                //MessageBoxButtons btn = MessageBoxButtons.OKCancel;
+                //DialogResult dr = MessageBox.Show("确定要光幕复位吗？", "操作提示", btn);
+                //if (dr == DialogResult.OK)
+                //{
+                //    inDatas["D172WJ_LIGHT_CURTAIN_RESET"] = 1;
+                //    tagDataProvider.Write2Level1(inDatas, 1);
+                //    //ParkClassLibrary.HMILogger.WriteLog(btnResetLight.Text, "D172WJ" + btnResetLight.Text, ParkClassLibrary.LogLevel.Info, "库区详细画面");
+                //}
             }
             else if (areaBase.AreaNo.Contains("D173"))
             {
-                MessageBoxButtons btn = MessageBoxButtons.OKCancel;
-                DialogResult dr = MessageBox.Show("确定要光幕复位吗？", "操作提示", btn);
-                if (dr == DialogResult.OK)
-                {
-                    inDatas["D173WJ_LIGHT_CURTAIN_RESET"] = 1;
-                    tagDataProvider.Write2Level1(inDatas, 1);
-                    ParkClassLibrary.HMILogger.WriteLog(btnResetLight.Text, "D173WJ" + btnResetLight.Text, ParkClassLibrary.LogLevel.Info, "库区详细画面");
-                }
+                //MessageBoxButtons btn = MessageBoxButtons.OKCancel;
+                //DialogResult dr = MessageBox.Show("确定要光幕复位吗？", "操作提示", btn);
+                //if (dr == DialogResult.OK)
+                //{
+                //    inDatas["D173WJ_LIGHT_CURTAIN_RESET"] = 1;
+                //    tagDataProvider.Write2Level1(inDatas, 1);
+                //    ParkClassLibrary.HMILogger.WriteLog(btnResetLight.Text, "D173WJ" + btnResetLight.Text, ParkClassLibrary.LogLevel.Info, "库区详细画面");
+                //}
             }
             else if (areaBase.AreaNo.Contains("D174"))
             {
-                MessageBoxButtons btn = MessageBoxButtons.OKCancel;
-                DialogResult dr = MessageBox.Show("确定要光幕复位吗？", "操作提示", btn);
-                if (dr == DialogResult.OK)
-                {
-                    inDatas["D174WJ_LIGHT_CURTAIN_RESET"] = 1;
-                    tagDataProvider.Write2Level1(inDatas, 1);
-                    ParkClassLibrary.HMILogger.WriteLog(btnResetLight.Text, "D174WJ" + btnResetLight.Text, ParkClassLibrary.LogLevel.Info, "库区详细画面");
-                }
+                //MessageBoxButtons btn = MessageBoxButtons.OKCancel;
+                //DialogResult dr = MessageBox.Show("确定要光幕复位吗？", "操作提示", btn);
+                //if (dr == DialogResult.OK)
+                //{
+                //    inDatas["D174WJ_LIGHT_CURTAIN_RESET"] = 1;
+                //    tagDataProvider.Write2Level1(inDatas, 1);
+                //    ParkClassLibrary.HMILogger.WriteLog(btnResetLight.Text, "D174WJ" + btnResetLight.Text, ParkClassLibrary.LogLevel.Info, "库区详细画面");
+                //}
             }
             timer1.Enabled = true;
         }
@@ -344,9 +344,19 @@ namespace UACSControls
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btGRID_DIV_Click(object sender, EventArgs e)
-        {           
-            stockSaddleModel.conInit(panel2, areaBase, constData.tagServiceName, panel2.Width, panel2.Height, constData.xBxisleft, constData.yBxisDown, 999, true);
+        {
+            stockSaddleModel.isGRID_DIV = true;
+            btnUpdata_Click(sender,e);
+            stockSaddleModel.isGRID_DIV = false;
+            //stockSaddleModel.conInit(panel2, areaBase, constData.tagServiceName, panel2.Width, panel2.Height, constData.xBxisleft, constData.yBxisDown, 999, true);
             //stockSaddleModel.conInit(panel2, areaBase, constData.tagServiceName, panel2.Width, panel2.Height, constData.xBxisleft, constData.yBxisDown, 999);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            stockSaddleModel.isGRID_DIV = true;
+            btnUpdata_Click(sender, e);
+            stockSaddleModel.isGRID_DIV = false;
         }
         //画图对象
         //Graphics g;
