@@ -101,7 +101,7 @@
             this.ToolStrip_YardToTard.Name = "ToolStrip_YardToTard";
             this.ToolStrip_YardToTard.Size = new System.Drawing.Size(181, 26);
             this.ToolStrip_YardToTard.Text = "人工指令";
-            //this.ToolStrip_YardToTard.Click += new System.EventHandler(this.ToolStrip_YardToTard_Click);
+            this.ToolStrip_YardToTard.Click += new System.EventHandler(this.ToolStrip_YardToTard_Click);
             // 
             // ToolStrip_DelCraneOrder
             // 

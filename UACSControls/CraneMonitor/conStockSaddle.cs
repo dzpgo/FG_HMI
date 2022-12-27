@@ -544,25 +544,27 @@ namespace UACSControls
                 lbl.Name = theSaddle.GRID_NO;
                 lbl.BackColor = Color.LightSteelBlue;  //Color.MediumAquamarine;
                 lbl.Font = new System.Drawing.Font("微软雅黑", 16, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(132)));
-                lbl.Width = 565;
-                lbl.Height = 180;
+                lbl.AutoSize = false; //关闭自动大小
+                lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter; //文字居中
+                lbl.Width = width - 30; //1159
+                lbl.Height = height - 53;  //518
                 if (theSaddle.GRID_DIV.Equals("0"))
                 {
-                    lbl.Width = 1136;
-                    lbl.Height = 365;
+                    lbl.Width = 1130; //1130;
+                    lbl.Height = 465; //465;
                 }
                 else if (theSaddle.GRID_DIV.Equals("1"))
                 {
                     lbl.Width = 565;
-                    lbl.Height = 365;
+                    lbl.Height = 465;
                 }
                 else if (theSaddle.GRID_DIV.Equals("2"))
                 {
                     lbl.Width = 565;
-                    lbl.Height = 180;
+                    lbl.Height = 232;
                 }                
                 lbl.ForeColor = Color.Black;
-                lbl.Text = "料格号：" + theSaddle.GRID_NO + "\n"
+                lbl.Text = " 料格号：" + theSaddle.GRID_NO + "\n"
                 + " 库存重量：" + theSaddle.MAT_WGT + "\n"
                 + " 物料代码：" + theSaddle.MAT_CODE + "\n"
                 + " 料格名：" + theSaddle.GRID_NAME + "\n";

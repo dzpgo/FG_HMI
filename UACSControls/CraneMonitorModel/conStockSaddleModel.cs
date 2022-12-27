@@ -20,6 +20,7 @@ namespace UACSControls
         private long baySpaceY = 0;
         private string CoilNo = null;
         public bool isGRID_DIV = false;
+        public string grid_DIV = string.Empty;
 
         private Panel bayPanel = new Panel();
         private bool xAxisRight = false;
@@ -173,7 +174,7 @@ namespace UACSControls
             double X_Width = theAreaBase.X_End - theAreaBase.X_Start;
             double Y_Height = theAreaBase.Y_End - theAreaBase.Y_Start;
             bayPanel.Controls.Clear();
-            theSaddlsInfoInBay.getSaddleInfo(AreaNo, isGRID_div);
+            theSaddlsInfoInBay.getSaddleInfo(AreaNo, grid_DIV, isGRID_div);
             isGRID_DIV = false;
             foreach (SaddleBase theSaddleInfo in theSaddlsInfoInBay.DicSaddles.Values)
             {

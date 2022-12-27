@@ -15,6 +15,9 @@ using Baosight.iSuperframe.Authorization.Interface;
 using Baosight.iSuperframe.Authorization;
 namespace UACSView
 {
+    /// <summary>
+    /// 画面操作历史
+    /// </summary>
     public partial class FrmLogForm : Baosight.iSuperframe.Forms.FormBase
     {
        // private static Baosight.iSuperframe.Common.IDBHelper dBHelper = null;

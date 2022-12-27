@@ -95,7 +95,8 @@ namespace UACSPopupForm
             bool flag = false;
             try
             {
-                string sql = @"update UACS_CRANE_MANU_ORDER set COIL_NO = null,FROM_STOCK = null,TO_STOCK = null,STATUS = 'EMPTY' ";
+                //string sql = @"update UACS_CRANE_MANU_ORDER set COIL_NO = null,FROM_STOCK = null,TO_STOCK = null,STATUS = 'EMPTY' ";
+                string sql = @"update UACS_CRANE_MANU_ORDER set MAT_NO = null,FROM_STOCK = null,TO_STOCK = null,STATUS = 'EMPTY' ";
                 sql += " WHERE CRANE_NO = '" + CraneNo + "'";
                 DBHelper.ExecuteNonQuery(sql);
             }
@@ -128,11 +129,11 @@ namespace UACSPopupForm
             {
                 if(From_status && To_status)
                 {
-                    string coilNo = txtCoilno.Text.Trim();
+                    string mat_NO = txtCoilno.Text.Trim();
                     string strFrom = txtBayNo.Text.Trim();
                     string strTo = txtFromStock.Text.Trim();
 
-                    string sql = @"update UACS_CRANE_MANU_ORDER  set COIL_NO = '" + coilNo + "',FROM_STOCK = '" + strFrom + "',TO_STOCK = '" + strTo + "',STATUS = 'INIT' ";
+                    string sql = @"update UACS_CRANE_MANU_ORDER  set MAT_NO = '" + mat_NO + "',FROM_STOCK = '" + strFrom + "',TO_STOCK = '" + strTo + "',STATUS = 'INIT' ";
                     sql += " WHERE CRANE_NO = '" + CraneNo + "'";
                     DBHelper.ExecuteNonQuery(sql);
                 }
@@ -441,10 +442,14 @@ namespace UACSPopupForm
                         else
                             txtBayNo.Text = "";
 
-                        if (rdr["COIL_NO"] != DBNull.Value)
-	                        txtCoilno.Text = rdr["COIL_NO"].ToString();
+                        //if (rdr["COIL_NO"] != DBNull.Value)
+                        // txtCoilno.Text = rdr["COIL_NO"].ToString();
+                        //else
+                        //     txtCoilno.Text = "";
+                        if (rdr["MAT_NO"] != DBNull.Value)
+                            txtCoilno.Text = rdr["MAT_NO"].ToString();
                         else
-                             txtCoilno.Text = "";
+                            txtCoilno.Text = "";
 
                         if (rdr["TO_STOCK"] != DBNull.Value)
                         {

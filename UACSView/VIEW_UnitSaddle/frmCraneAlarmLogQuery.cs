@@ -14,6 +14,9 @@ using UACSDAL;
 
 namespace UACSView 
 {
+    /// <summary>
+    /// 报警信息管理
+    /// </summary>
     public partial class frmCraneAlarmLogQuery  : FormBase
     {
         public frmCraneAlarmLogQuery()

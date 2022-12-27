@@ -160,7 +160,7 @@ namespace UACSDAL
         /// </summary>
         /// <param name="AreaNo">区域号</param>
         /// <param name="isGRID_DIV">是否切换展示模式</param>
-        public void getSaddleInfo(string AreaNo, bool isGRID_DIV)
+        public void getSaddleInfo(string AreaNo,string grid_DIV, bool isGRID_DIV)
         {            
             try
             {                
@@ -311,12 +311,20 @@ namespace UACSDAL
                         GRID_DIV = 0;
                     }
                     string upsql = null;
+
                     upsql = "UPDATE UACS_YARDMAP_GRID_DEFINE ";
-                    upsql += "SET GRID_DIV = '" + GRID_DIV + "' ";
+                    if (!string.IsNullOrEmpty(grid_DIV))
+                    {
+                        upsql += "SET GRID_DIV = '" + grid_DIV + "' ";
+                    }
+                    else
+                    {
+                        upsql += "SET GRID_DIV = '" + GRID_DIV + "' ";
+                    }
                     upsql += "WHERE AREA_NO = '" + AreaNo + "' ";
                     upsql += "AND GRID_NO = '" + GRID_NO + "' ";
                     DB2Connect.DBHelper.ExecuteNonQuery(upsql);
-                    getSaddleInfo(AreaNo, false);
+                    getSaddleInfo(AreaNo, grid_DIV, false);
                 }                
             }
             catch (Exception er)

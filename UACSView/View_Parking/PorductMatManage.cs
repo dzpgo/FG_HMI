@@ -16,6 +16,9 @@ using UACSDAL;
 
 namespace UACSParking
 {
+    /// <summary>
+    /// 车辆出库作业管理
+    /// </summary>
     public partial class PorductMatManage : FormBase
     {
         IAuthorization auth = Baosight.iSuperframe.Common.FrameContext.Instance.GetPlugin<Baosight.iSuperframe.Authorization.Interface.IAuthorization>()

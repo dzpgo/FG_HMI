@@ -135,8 +135,8 @@ namespace UACSControls
 
             if (areaBase.AreaNo.Contains("WJ"))
             {
-                btnKillStock.Visible = true;
-                btGRID_DIV.Visible = true;
+                btnNS.Visible = true;
+                btnTianZi.Visible = true;
                 //btnResetLight.Visible = true;
                 tagDataProvider.ServiceName = tagServiceName;
                 SetReady();
@@ -343,20 +343,41 @@ namespace UACSControls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btGRID_DIV_Click(object sender, EventArgs e)
+        private void btnTianZi_Click(object sender, EventArgs e)
         {
             stockSaddleModel.isGRID_DIV = true;
+            stockSaddleModel.grid_DIV = "2";
             btnUpdata_Click(sender,e);
             stockSaddleModel.isGRID_DIV = false;
+            stockSaddleModel.grid_DIV = string.Empty;
             //stockSaddleModel.conInit(panel2, areaBase, constData.tagServiceName, panel2.Width, panel2.Height, constData.xBxisleft, constData.yBxisDown, 999, true);
             //stockSaddleModel.conInit(panel2, areaBase, constData.tagServiceName, panel2.Width, panel2.Height, constData.xBxisleft, constData.yBxisDown, 999);
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// 全部展示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAll_Click(object sender, EventArgs e)
         {
             stockSaddleModel.isGRID_DIV = true;
+            stockSaddleModel.grid_DIV = "0";
             btnUpdata_Click(sender, e);
             stockSaddleModel.isGRID_DIV = false;
+            stockSaddleModel.grid_DIV = string.Empty;
+        }
+        /// <summary>
+        /// 南北展示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnNS_Click(object sender, EventArgs e)
+        {
+            stockSaddleModel.isGRID_DIV = true;
+            stockSaddleModel.grid_DIV = "1";
+            btnUpdata_Click(sender, e);
+            stockSaddleModel.isGRID_DIV = false;
+            stockSaddleModel.grid_DIV = string.Empty;
         }
         //画图对象
         //Graphics g;
