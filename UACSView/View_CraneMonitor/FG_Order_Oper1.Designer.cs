@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PLAN_X = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PLAN_Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ACT_Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,109 +82,121 @@
             this.PLAN_X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.PLAN_X.DataPropertyName = "PLAN_X";
             this.PLAN_X.HeaderText = "计划X";
+            this.PLAN_X.MinimumWidth = 8;
             this.PLAN_X.Name = "PLAN_X";
             this.PLAN_X.ReadOnly = true;
-            this.PLAN_X.Width = 77;
+            this.PLAN_X.Width = 113;
             // 
             // PLAN_Y
             // 
             this.PLAN_Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.PLAN_Y.DataPropertyName = "PLAN_Y";
             this.PLAN_Y.HeaderText = "计划Y";
+            this.PLAN_Y.MinimumWidth = 8;
             this.PLAN_Y.Name = "PLAN_Y";
             this.PLAN_Y.ReadOnly = true;
-            this.PLAN_Y.Width = 77;
+            this.PLAN_Y.Width = 112;
             // 
             // ACT_Y
             // 
             this.ACT_Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.ACT_Y.DataPropertyName = "ACT_Y";
             this.ACT_Y.HeaderText = "实际Y";
+            this.ACT_Y.MinimumWidth = 8;
             this.ACT_Y.Name = "ACT_Y";
             this.ACT_Y.ReadOnly = true;
-            this.ACT_Y.Width = 77;
+            this.ACT_Y.Width = 112;
             // 
             // FROM_STOCK_NO
             // 
             this.FROM_STOCK_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.FROM_STOCK_NO.DataPropertyName = "FROM_STOCK_NO";
             this.FROM_STOCK_NO.HeaderText = "指令起吊位置";
+            this.FROM_STOCK_NO.MinimumWidth = 8;
             this.FROM_STOCK_NO.Name = "FROM_STOCK_NO";
             this.FROM_STOCK_NO.ReadOnly = true;
-            this.FROM_STOCK_NO.Width = 131;
+            this.FROM_STOCK_NO.Width = 194;
             // 
             // TO_STOCK_NO
             // 
             this.TO_STOCK_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.TO_STOCK_NO.DataPropertyName = "TO_STOCK_NO";
             this.TO_STOCK_NO.HeaderText = "指令放下位置";
+            this.TO_STOCK_NO.MinimumWidth = 8;
             this.TO_STOCK_NO.Name = "TO_STOCK_NO";
             this.TO_STOCK_NO.ReadOnly = true;
-            this.TO_STOCK_NO.Width = 131;
+            this.TO_STOCK_NO.Width = 194;
             // 
             // STOCK_NO
             // 
             this.STOCK_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.STOCK_NO.DataPropertyName = "STOCK_NO";
             this.STOCK_NO.HeaderText = "当前位置";
+            this.STOCK_NO.MinimumWidth = 8;
             this.STOCK_NO.Name = "STOCK_NO";
             this.STOCK_NO.ReadOnly = true;
-            this.STOCK_NO.Width = 99;
+            this.STOCK_NO.Width = 146;
             // 
             // MAT_REQ_WGT
             // 
             this.MAT_REQ_WGT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.MAT_REQ_WGT.DataPropertyName = "MAT_REQ_WGT";
             this.MAT_REQ_WGT.HeaderText = "要求重量-KG";
+            this.MAT_REQ_WGT.MinimumWidth = 8;
             this.MAT_REQ_WGT.Name = "MAT_REQ_WGT";
             this.MAT_REQ_WGT.ReadOnly = true;
-            this.MAT_REQ_WGT.Width = 128;
+            this.MAT_REQ_WGT.Width = 189;
             // 
             // MAT_CUR_WGT
             // 
             this.MAT_CUR_WGT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.MAT_CUR_WGT.DataPropertyName = "MAT_CUR_WGT";
             this.MAT_CUR_WGT.HeaderText = "已作业量-KG";
+            this.MAT_CUR_WGT.MinimumWidth = 8;
             this.MAT_CUR_WGT.Name = "MAT_CUR_WGT";
             this.MAT_CUR_WGT.ReadOnly = true;
-            this.MAT_CUR_WGT.Width = 128;
+            this.MAT_CUR_WGT.Width = 189;
             // 
             // ACT_X
             // 
             this.ACT_X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.ACT_X.DataPropertyName = "ACT_X";
             this.ACT_X.HeaderText = "实际X";
+            this.ACT_X.MinimumWidth = 8;
             this.ACT_X.Name = "ACT_X";
             this.ACT_X.ReadOnly = true;
-            this.ACT_X.Width = 77;
+            this.ACT_X.Width = 113;
             // 
             // MAT_TYPE
             // 
             this.MAT_TYPE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.MAT_TYPE.DataPropertyName = "MAT_TYPE";
             this.MAT_TYPE.HeaderText = "废钢类型";
+            this.MAT_TYPE.MinimumWidth = 8;
             this.MAT_TYPE.Name = "MAT_TYPE";
             this.MAT_TYPE.ReadOnly = true;
-            this.MAT_TYPE.Width = 99;
+            this.MAT_TYPE.Width = 146;
             // 
             // CMD_SEQ
             // 
             this.CMD_SEQ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.CMD_SEQ.DataPropertyName = "CMD_SEQ";
             this.CMD_SEQ.HeaderText = "指令执行次数";
+            this.CMD_SEQ.MinimumWidth = 8;
             this.CMD_SEQ.Name = "CMD_SEQ";
             this.CMD_SEQ.ReadOnly = true;
-            this.CMD_SEQ.Width = 131;
+            this.CMD_SEQ.Width = 194;
             // 
             // REC_TIME
             // 
             this.REC_TIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.REC_TIME.DataPropertyName = "REC_TIME";
             this.REC_TIME.HeaderText = "记录时间";
+            this.REC_TIME.MinimumWidth = 8;
             this.REC_TIME.Name = "REC_TIME";
             this.REC_TIME.ReadOnly = true;
             this.REC_TIME.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.REC_TIME.Width = 80;
+            this.REC_TIME.Width = 116;
             // 
             // groupBox2
             // 
@@ -215,18 +227,18 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OPER_ID,
@@ -257,6 +269,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1921, 751);
@@ -268,9 +281,10 @@
             this.OPER_ID.DataPropertyName = "OPER_ID";
             this.OPER_ID.Frozen = true;
             this.OPER_ID.HeaderText = "实绩号";
+            this.OPER_ID.MinimumWidth = 8;
             this.OPER_ID.Name = "OPER_ID";
             this.OPER_ID.ReadOnly = true;
-            this.OPER_ID.Width = 83;
+            this.OPER_ID.Width = 122;
             // 
             // CRANE_MODE
             // 
@@ -278,63 +292,70 @@
             this.CRANE_MODE.DataPropertyName = "CRANE_MODE";
             this.CRANE_MODE.Frozen = true;
             this.CRANE_MODE.HeaderText = "操作模式";
+            this.CRANE_MODE.MinimumWidth = 8;
             this.CRANE_MODE.Name = "CRANE_MODE";
             this.CRANE_MODE.ReadOnly = true;
-            this.CRANE_MODE.Width = 99;
+            this.CRANE_MODE.Width = 146;
             // 
             // ORDER_NO
             // 
             this.ORDER_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.ORDER_NO.DataPropertyName = "ORDER_NO";
             this.ORDER_NO.HeaderText = "指令号";
+            this.ORDER_NO.MinimumWidth = 8;
             this.ORDER_NO.Name = "ORDER_NO";
             this.ORDER_NO.ReadOnly = true;
-            this.ORDER_NO.Width = 83;
+            this.ORDER_NO.Width = 122;
             // 
             // ORDER_TYPE
             // 
             this.ORDER_TYPE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.ORDER_TYPE.DataPropertyName = "ORDER_TYPE";
             this.ORDER_TYPE.HeaderText = "指令类型";
+            this.ORDER_TYPE.MinimumWidth = 8;
             this.ORDER_TYPE.Name = "ORDER_TYPE";
             this.ORDER_TYPE.ReadOnly = true;
-            this.ORDER_TYPE.Width = 99;
+            this.ORDER_TYPE.Width = 146;
             // 
             // BAY_NO
             // 
             this.BAY_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.BAY_NO.DataPropertyName = "BAY_NO";
             this.BAY_NO.HeaderText = "跨号";
+            this.BAY_NO.MinimumWidth = 8;
             this.BAY_NO.Name = "BAY_NO";
             this.BAY_NO.ReadOnly = true;
-            this.BAY_NO.Width = 67;
+            this.BAY_NO.Width = 98;
             // 
             // MAT_CODE
             // 
             this.MAT_CODE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.MAT_CODE.DataPropertyName = "MAT_CODE";
             this.MAT_CODE.HeaderText = "物料编号";
+            this.MAT_CODE.MinimumWidth = 8;
             this.MAT_CODE.Name = "MAT_CODE";
             this.MAT_CODE.ReadOnly = true;
-            this.MAT_CODE.Width = 99;
+            this.MAT_CODE.Width = 146;
             // 
             // HAS_COIL_WGT
             // 
             this.HAS_COIL_WGT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.HAS_COIL_WGT.DataPropertyName = "HAS_COIL_WGT";
             this.HAS_COIL_WGT.HeaderText = "重量";
+            this.HAS_COIL_WGT.MinimumWidth = 8;
             this.HAS_COIL_WGT.Name = "HAS_COIL_WGT";
             this.HAS_COIL_WGT.ReadOnly = true;
-            this.HAS_COIL_WGT.Width = 67;
+            this.HAS_COIL_WGT.Width = 98;
             // 
             // CMD_STATUS
             // 
             this.CMD_STATUS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.CMD_STATUS.DataPropertyName = "CMD_STATUS";
             this.CMD_STATUS.HeaderText = "指令状态";
+            this.CMD_STATUS.MinimumWidth = 8;
             this.CMD_STATUS.Name = "CMD_STATUS";
             this.CMD_STATUS.ReadOnly = true;
-            this.CMD_STATUS.Width = 99;
+            this.CMD_STATUS.Width = 146;
             // 
             // groupBox1
             // 
@@ -378,20 +399,20 @@
             // 
             this.cbb_CRANE_MODE.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbb_CRANE_MODE.FormattingEnabled = true;
-            this.cbb_CRANE_MODE.Location = new System.Drawing.Point(924, 10);
+            this.cbb_CRANE_MODE.Location = new System.Drawing.Point(665, 7);
             this.cbb_CRANE_MODE.Margin = new System.Windows.Forms.Padding(4);
             this.cbb_CRANE_MODE.Name = "cbb_CRANE_MODE";
-            this.cbb_CRANE_MODE.Size = new System.Drawing.Size(178, 29);
+            this.cbb_CRANE_MODE.Size = new System.Drawing.Size(178, 39);
             this.cbb_CRANE_MODE.TabIndex = 16;
             // 
             // cbb_BAY_NO
             // 
             this.cbb_BAY_NO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbb_BAY_NO.FormattingEnabled = true;
-            this.cbb_BAY_NO.Location = new System.Drawing.Point(609, 10);
+            this.cbb_BAY_NO.Location = new System.Drawing.Point(954, 7);
             this.cbb_BAY_NO.Margin = new System.Windows.Forms.Padding(4);
             this.cbb_BAY_NO.Name = "cbb_BAY_NO";
-            this.cbb_BAY_NO.Size = new System.Drawing.Size(178, 29);
+            this.cbb_BAY_NO.Size = new System.Drawing.Size(178, 39);
             this.cbb_BAY_NO.TabIndex = 16;
             // 
             // dateTimePicker2_recTime
@@ -402,18 +423,17 @@
             this.dateTimePicker2_recTime.Location = new System.Drawing.Point(315, 10);
             this.dateTimePicker2_recTime.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker2_recTime.Name = "dateTimePicker2_recTime";
-            this.dateTimePicker2_recTime.Size = new System.Drawing.Size(181, 29);
+            this.dateTimePicker2_recTime.Size = new System.Drawing.Size(181, 39);
             this.dateTimePicker2_recTime.TabIndex = 12;
             // 
             // textWORK_SEQ_NO
             // 
             this.textWORK_SEQ_NO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textWORK_SEQ_NO.Location = new System.Drawing.Point(1222, 12);
+            this.textWORK_SEQ_NO.Location = new System.Drawing.Point(663, 61);
             this.textWORK_SEQ_NO.Margin = new System.Windows.Forms.Padding(4);
             this.textWORK_SEQ_NO.Name = "textWORK_SEQ_NO";
-            this.textWORK_SEQ_NO.Size = new System.Drawing.Size(180, 29);
+            this.textWORK_SEQ_NO.Size = new System.Drawing.Size(180, 39);
             this.textWORK_SEQ_NO.TabIndex = 8;
-            this.textWORK_SEQ_NO.Visible = false;
             this.textWORK_SEQ_NO.WordWrap = false;
             // 
             // label6
@@ -424,7 +444,7 @@
             this.label6.Location = new System.Drawing.Point(9, 16);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 21);
+            this.label6.Size = new System.Drawing.Size(68, 31);
             this.label6.TabIndex = 5;
             this.label6.Text = "日期:";
             // 
@@ -436,7 +456,7 @@
             this.dateTimePicker1_recTime.Location = new System.Drawing.Point(87, 10);
             this.dateTimePicker1_recTime.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1_recTime.Name = "dateTimePicker1_recTime";
-            this.dateTimePicker1_recTime.Size = new System.Drawing.Size(180, 29);
+            this.dateTimePicker1_recTime.Size = new System.Drawing.Size(180, 39);
             this.dateTimePicker1_recTime.TabIndex = 10;
             // 
             // label7
@@ -447,7 +467,7 @@
             this.label7.Location = new System.Drawing.Point(278, 16);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(19, 20);
+            this.label7.Size = new System.Drawing.Size(28, 28);
             this.label7.TabIndex = 11;
             this.label7.Text = "~";
             // 
@@ -456,10 +476,10 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(798, 16);
+            this.label2.Location = new System.Drawing.Point(539, 13);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 21);
+            this.label2.Size = new System.Drawing.Size(116, 31);
             this.label2.TabIndex = 3;
             this.label2.Text = "操作模式:";
             // 
@@ -468,10 +488,10 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(531, 16);
+            this.label1.Location = new System.Drawing.Point(876, 13);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 21);
+            this.label1.Size = new System.Drawing.Size(68, 31);
             this.label1.TabIndex = 3;
             this.label1.Text = "跨号:";
             // 
@@ -480,13 +500,12 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(1136, 16);
+            this.label4.Location = new System.Drawing.Point(539, 67);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 21);
+            this.label4.Size = new System.Drawing.Size(116, 31);
             this.label4.TabIndex = 3;
             this.label4.Text = "物料编号:";
-            this.label4.Visible = false;
             // 
             // button3
             // 
@@ -502,6 +521,7 @@
             this.button3.Text = "月度";
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -517,6 +537,7 @@
             this.button2.Text = "季度";
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -532,6 +553,7 @@
             this.button1.Text = "年度";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button4
             // 
@@ -556,7 +578,7 @@
             this.btnQuery.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.btnQuery.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuery.ForeColor = System.Drawing.Color.White;
-            this.btnQuery.Location = new System.Drawing.Point(1651, 22);
+            this.btnQuery.Location = new System.Drawing.Point(1204, 22);
             this.btnQuery.Margin = new System.Windows.Forms.Padding(4);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(120, 60);

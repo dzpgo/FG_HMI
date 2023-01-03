@@ -63,6 +63,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.lblArea, 0, 0);
@@ -85,10 +86,10 @@
             this.lblArea.AutoSize = true;
             this.lblArea.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblArea.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblArea.Location = new System.Drawing.Point(890, 30);
+            this.lblArea.Location = new System.Drawing.Point(869, 22);
             this.lblArea.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblArea.Name = "lblArea";
-            this.lblArea.Size = new System.Drawing.Size(86, 31);
+            this.lblArea.Size = new System.Drawing.Size(128, 47);
             this.lblArea.TabIndex = 0;
             this.lblArea.Text = "库区号";
             // 
@@ -106,6 +107,8 @@
             // 
             // panel2
             // 
+            this.panel2.AutoSize = true;
+            this.panel2.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel2.Location = new System.Drawing.Point(64, 50);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
@@ -114,6 +117,7 @@
             // 
             // panel6
             // 
+            this.panel6.AutoSize = true;
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Margin = new System.Windows.Forms.Padding(4);
@@ -199,7 +203,7 @@
             this.label6.Location = new System.Drawing.Point(543, 36);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 17);
+            this.label6.Size = new System.Drawing.Size(70, 25);
             this.label6.TabIndex = 21;
             this.label6.Text = "02状态";
             this.label6.Visible = false;
@@ -211,7 +215,7 @@
             this.label15.Location = new System.Drawing.Point(806, 36);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(46, 17);
+            this.label15.Size = new System.Drawing.Size(70, 25);
             this.label15.TabIndex = 19;
             this.label15.Text = "12状态";
             this.label15.Visible = false;
@@ -243,7 +247,7 @@
             this.label5.Location = new System.Drawing.Point(666, 36);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 17);
+            this.label5.Size = new System.Drawing.Size(70, 25);
             this.label5.TabIndex = 19;
             this.label5.Text = "10状态";
             this.label5.Visible = false;
@@ -265,7 +269,7 @@
             this.label4.Location = new System.Drawing.Point(384, 36);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 17);
+            this.label4.Size = new System.Drawing.Size(84, 25);
             this.label4.TabIndex = 16;
             this.label4.Text = "不可吊运";
             this.label4.Visible = false;
@@ -287,7 +291,7 @@
             this.label3.Location = new System.Drawing.Point(213, 36);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 17);
+            this.label3.Size = new System.Drawing.Size(92, 25);
             this.label3.TabIndex = 14;
             this.label3.Text = "有卷-可吊";
             this.label3.Visible = false;
@@ -309,7 +313,7 @@
             this.label2.Location = new System.Drawing.Point(50, 36);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 17);
+            this.label2.Size = new System.Drawing.Size(92, 25);
             this.label2.TabIndex = 12;
             this.label2.Text = "无卷-可放";
             this.label2.Visible = false;
@@ -390,6 +394,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1866, 1060);
             this.Controls.Add(this.coilPicture1);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -401,9 +406,11 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panelSaddle.ResumeLayout(false);
+            this.panelSaddle.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

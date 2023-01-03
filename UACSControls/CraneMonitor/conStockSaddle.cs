@@ -433,28 +433,23 @@ namespace UACSControls
                 double location_X = 0;
                 if (xAxisRight == true)
                 {
-                    //location_X = Convert.ToDouble(theSaddle.X_START - 8000) * xScale;
-                    //location_X = Convert.ToDouble(theSaddle.X_START) * xScale;
-                    //location_X = Convert.ToDouble( - theSaddle.X_START) * xScale;
                     location_X = Convert.ToDouble((theSaddle.X_START) - theArea.X_Start) * xScale;
                 }
                 else
                 {
-                    location_X = (X_Width - (theSaddle.X_CENTER  - theSaddle.X_START)) * xScale;
-
+                    location_X = (X_Width - (theSaddle.X_CENTER - theSaddle.X_START)) * xScale;
                 }
+
                 //计算Y方向的比例关系
                 double yScale = Convert.ToDouble(panelHeight - 20) / Convert.ToDouble(Y_Height);
                 double location_Y = 0;
                 if (yAxisDown == true)
                 {
                     location_Y = (theSaddle.Y_START) * yScale;
-                    //location_Y = (theSaddle.Y_CENTER  - theSaddle.X_START) * yScale;
                 }
                 else
                 {
                     location_Y = (theSaddle.Y_START) * yScale;
-                    //location_Y = (Y_Height - (theSaddle.Y_CENTER - theSaddle.X_START)) * yScale;
                 }
 
                 Location_X = (int)location_X;
@@ -527,8 +522,6 @@ namespace UACSControls
 
                 }
 
-                
-
                 this.BringToFront();
                 this.BorderStyle = BorderStyle.None;                
                 gr = panel.CreateGraphics();
@@ -544,30 +537,34 @@ namespace UACSControls
                 lbl.Name = theSaddle.GRID_NO;
                 lbl.BackColor = Color.LightSteelBlue;  //Color.MediumAquamarine;
                 lbl.Font = new System.Drawing.Font("微软雅黑", 16, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(132)));
-                lbl.AutoSize = false; //关闭自动大小
+                //lbl.AutoSize = false; //关闭自动大小
                 lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter; //文字居中
-                lbl.Width = width - 30; //1159
-                lbl.Height = height - 53;  //518
-                if (theSaddle.GRID_DIV.Equals("0"))
-                {
-                    lbl.Width = 1130; //1130;
-                    lbl.Height = 465; //465;
-                }
-                else if (theSaddle.GRID_DIV.Equals("1"))
-                {
-                    lbl.Width = 565;
-                    lbl.Height = 465;
-                }
-                else if (theSaddle.GRID_DIV.Equals("2"))
-                {
-                    lbl.Width = 565;
-                    lbl.Height = 232;
-                }                
+
+                double xScale2 = Convert.ToDouble(panelWidth - 29) / Convert.ToDouble(X_Width);
+                lbl.Width = Convert.ToInt32(Convert.ToDouble((theSaddle.X_END) - theSaddle.X_START) * xScale2); //1159
+                double yScale2 = Convert.ToDouble(panelHeight + 25) / Convert.ToDouble(Y_Height);
+                lbl.Height = Convert.ToInt32(Convert.ToDouble((theSaddle.Y_END) - theSaddle.Y_START) * yScale2);  //518
+                //if (theSaddle.GRID_DIV.Equals("0"))
+                //{
+                //    //lbl.Width = 100; //1130;
+                //    lbl.Height = sss;//100; //465;
+                //}
+                //else if (theSaddle.GRID_DIV.Equals("1"))
+                //{
+                //    //lbl.Width = Convert.ToInt32(Width_X); //565;
+                //    lbl.Height = 465;
+                //}
+                //else if (theSaddle.GRID_DIV.Equals("2"))
+                //{
+                //    //lbl.Width = 565;
+                //    lbl.Height = 232;
+                //}                
                 lbl.ForeColor = Color.Black;
                 lbl.Text = " 料格号：" + theSaddle.GRID_NO + "\n"
-                + " 库存重量：" + theSaddle.MAT_WGT + "\n"
-                + " 物料代码：" + theSaddle.MAT_CODE + "\n"
-                + " 料格名：" + theSaddle.GRID_NAME + "\n";
+                    + " 物料名：" + theSaddle.MAT_CNAME + "\n"
+                    + " 物料代码：" + theSaddle.MAT_CODE + "\n"
+                    + " 库存重量：" + theSaddle.MAT_WGT + "\n";
+
                 //+ "黑库位：   " + saddleCoilNum + "\n"
                 //+ "红库位：   " + (saddleNum - saddleNoCoilNum - saddleCoilNum) + "\n"
                 //+ lblRuler + "\n"

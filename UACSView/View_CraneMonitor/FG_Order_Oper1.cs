@@ -86,16 +86,16 @@ namespace UACSView.View_CraneMonitor
         {
             string bayNo = this.cbb_BAY_NO.SelectedValue.ToString();  //跨号
             string craneMode = this.cbb_CRANE_MODE.SelectedValue.ToString();  //行车模式
-            //string work_seqNo = this.textWORK_SEQ_NO.Text.Trim();        //计划号
+            string work_seqNo = this.textWORK_SEQ_NO.Text.Trim();        //计划号
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");  //开始时间
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");  //结束时间
             string sqlText = @"SELECT OPER_ID, ORDER_NO, ORDER_TYPE, BAY_NO, MAT_CODE, MAT_TYPE, MAT_REQ_WGT, MAT_CUR_WGT, HAS_COIL_WGT, FROM_STOCK_NO, TO_STOCK_NO, STOCK_NO, CMD_STATUS, CMD_SEQ, PLAN_X, PLAN_Y, ACT_X, ACT_Y, CRANE_MODE, REC_TIME FROM UACSAPP.UACS_ORDER_OPER ";
             sqlText += "WHERE REC_TIME > '{0}' and REC_TIME < '{1}' ";
             sqlText = string.Format(sqlText, recTime1, recTime2);
-            //if (!string.IsNullOrEmpty(work_seqNo))
-            //{
-            //    sqlText = string.Format("{0} and WORK_SEQ_NO LIKE '%{1}%' ", sqlText, work_seqNo);
-            //}
+            if (!string.IsNullOrEmpty(work_seqNo))
+            {
+                sqlText = string.Format("{0} and MAT_CODE LIKE '%{1}%' ", sqlText, work_seqNo);
+            }
             if (bayNo != "全部")
             {
                 sqlText = string.Format("{0} and BAY_NO = '{1}' ", sqlText, bayNo);
@@ -302,5 +302,50 @@ namespace UACSView.View_CraneMonitor
             return dt;
         }
         #endregion
+
+        /// <summary>
+        /// 当前季度
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //季度第一天
+            var day1 = DateTime.Now.AddMonths(0 - (DateTime.Now.Month - 1) % 3).ToString("yyyy-MM-01");
+            //季度最后一天
+            var lastday = DateTime.Parse(DateTime.Now.AddMonths(3 - (DateTime.Now.Month - 1) % 3).ToString("yyyy-MM-01")).AddDays(-1).ToShortDateString();
+            //控件设置值
+            this.dateTimePicker1_recTime.Value = Convert.ToDateTime(day1);
+            //查询
+            dataGridView1.DataSource = getCraneOrderData();
+        }
+
+        /// <summary>
+        /// 月度
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var day1 = DateTime.Now.ToString("yyyy-MM-01");
+            //控件设置值
+            this.dateTimePicker1_recTime.Value = Convert.ToDateTime(day1);
+            //查询
+            dataGridView1.DataSource = getCraneOrderData();
+        }
+
+        /// <summary>
+        /// 年度
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var day1 = DateTime.Now.ToString("yyyy-01-01");
+            //控件设置值
+            this.dateTimePicker1_recTime.Value = Convert.ToDateTime(day1);
+            //查询
+            dataGridView1.DataSource = getCraneOrderData();
+        }
     }
 }
