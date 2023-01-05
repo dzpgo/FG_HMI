@@ -321,7 +321,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(54, 28);
             this.label12.TabIndex = 4;
-            this.label12.Text = "落卷";
+            this.label12.Text = "落钩";
             // 
             // panel11
             // 
@@ -439,7 +439,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 28);
             this.label6.TabIndex = 2;
-            this.label6.Text = "起卷";
+            this.label6.Text = "起钩";
             // 
             // panel8
             // 
@@ -553,7 +553,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 28);
             this.label2.TabIndex = 0;
-            this.label2.Text = "卷号";
+            this.label2.Text = "指令号";
             // 
             // panel5
             // 

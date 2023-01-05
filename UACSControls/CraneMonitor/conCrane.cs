@@ -168,7 +168,9 @@ namespace UACSControls
                 //有卷显示有卷标记
                 else if (_cranePLCStatusBase.HasCoil == 1)
                 {
-                    this.panelCrab.BackgroundImage = global::UACSControls.Resource1.imgCarCoil;
+                    //this.panelCrab.BackgroundImage = global::UACSControls.Resource1.imgCarCoil;
+                    this.panelCrab.BackgroundImage = null; //背景图片
+                    this.panelCrab.BackColor = Color.SaddleBrown; //棕色
                 }
                 this.BringToFront();
 
