@@ -269,7 +269,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(54, 28);
             this.label10.TabIndex = 10;
-            this.label10.Text = "有卷";
+            this.label10.Text = "有料";
             // 
             // light_HAS_COIL
             // 
@@ -319,9 +319,9 @@
             this.label12.Location = new System.Drawing.Point(6, 13);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(54, 28);
+            this.label12.Size = new System.Drawing.Size(75, 28);
             this.label12.TabIndex = 4;
-            this.label12.Text = "落钩";
+            this.label12.Text = "落料位";
             // 
             // panel11
             // 
@@ -437,9 +437,9 @@
             this.label6.Location = new System.Drawing.Point(6, 13);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 28);
+            this.label6.Size = new System.Drawing.Size(75, 28);
             this.label6.TabIndex = 2;
-            this.label6.Text = "起钩";
+            this.label6.Text = "取料位";
             // 
             // panel8
             // 
@@ -551,9 +551,9 @@
             this.label2.Location = new System.Drawing.Point(6, 13);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 28);
+            this.label2.Size = new System.Drawing.Size(75, 28);
             this.label2.TabIndex = 0;
-            this.label2.Text = "指令号";
+            this.label2.Text = "废钢名";
             // 
             // panel5
             // 
