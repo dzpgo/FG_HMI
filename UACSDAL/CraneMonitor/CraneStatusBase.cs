@@ -473,8 +473,7 @@ namespace UACSDAL
         /// <summary>
         /// 行车状态
         /// </summary>
-        public const string ADRESS_CRANE_STATUS = "RunStep";
-        //public const string ADRESS_CRANE_STATUS = "CRANE_STATUS";
+        public const string ADRESS_CRANE_STATUS = "CRANE_STATUS";
         /// <summary>
         /// 心跳
         /// </summary>
