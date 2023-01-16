@@ -112,18 +112,6 @@
       <HintPath>..\lib\TcmControl.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UACSControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\UACSControls.dll</HintPath>
-    </Reference>
-    <Reference Include="UACSDAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\UACSDAL.dll</HintPath>
-    </Reference>
-    <Reference Include="UACSPopupForm, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\UACSPopupForm.dll</HintPath>
-    </Reference>
     <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
@@ -939,6 +927,18 @@
     <ProjectReference Include="..\ParkingControlLibrary\ParkingControlLibrary.csproj">
       <Project>{df19dba8-c688-45c3-a07c-b429cd1d4ea0}</Project>
       <Name>ParkingControlLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UACSControls\UACSControls.csproj">
+      <Project>{1abb3661-e6d6-44ea-946d-64b5a4e2b88f}</Project>
+      <Name>UACSControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UACSDAL\UACSDAL.csproj">
+      <Project>{d3f6ff21-68b2-40e4-9d1c-603eb926c87c}</Project>
+      <Name>UACSDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UACSPopupForm\UACSPopupForm.csproj">
+      <Project>{3958eb30-fe44-4bd0-ba55-58805e56c17e}</Project>
+      <Name>UACSPopupForm</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

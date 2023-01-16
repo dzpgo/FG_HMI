@@ -1024,18 +1024,6 @@ namespace UACSView.View_CraneMonitor
             //}
         }
 
-        //private void button2_Click(object sender, EventArgs e)
-        //{
-        //    List<string> lstAdress = new List<string>();
-        //    lstAdress.Clear();
-        //    lstAdress.Add("UPDATE_COILMESSAGE");
-        //    arrTagAdress = lstAdress.ToArray<string>();
-        //    readTags();
-        //    tagDataProvider.SetData("UPDATE_COILMESSAGE", "1");
-        //    btnUpdate.BackColor = Color.Yellow;
-        //    ParkClassLibrary.HMILogger.WriteLog(btnUpdate.Text, "更新钢卷信息", ParkClassLibrary.LogLevel.Info, this.Text);
-        //}
-
         private void UpdateMessage()
         {
             List<string> lstAdress = new List<string>();
@@ -1122,6 +1110,20 @@ namespace UACSView.View_CraneMonitor
             //}
 
         }
+
+        #region 代码弃用
+
+        //private void button2_Click(object sender, EventArgs e)
+        //{
+        //    List<string> lstAdress = new List<string>();
+        //    lstAdress.Clear();
+        //    lstAdress.Add("UPDATE_COILMESSAGE");
+        //    arrTagAdress = lstAdress.ToArray<string>();
+        //    readTags();
+        //    tagDataProvider.SetData("UPDATE_COILMESSAGE", "1");
+        //    btnUpdate.BackColor = Color.Yellow;
+        //    ParkClassLibrary.HMILogger.WriteLog(btnUpdate.Text, "更新钢卷信息", ParkClassLibrary.LogLevel.Info, this.Text);
+        //}
 
         //private void btnMode1_Click(object sender, EventArgs e)
         //{
@@ -1440,6 +1442,7 @@ namespace UACSView.View_CraneMonitor
         //            ParkClassLibrary.HMILogger.WriteLog(button6.Text, "夹钳区域：关闭", ParkClassLibrary.LogLevel.Info, this.Text);
         //        }
         //    }
-        //}
+        //} 
+        #endregion
     }
 }

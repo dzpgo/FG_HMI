@@ -241,27 +241,27 @@ namespace UACSDAL
         /// <returns></returns>
         public string CraneStatusDesc()
         {
-            //空钩起升过程= 000;
+            //空载起升过程= 000;
             if (craneStatus == STATUS_NEED_TO_READY)
             {
                 return STATUS_NEED_TO_READY_Desc;
             }
-            //空钩等待状态= 010
+            //空载等待状态= 010
             else if (craneStatus == STATUS_WAITING_ORDER_WITH_OUT_COIL)
             {
                 return STATUS_WAITING_ORDER_WITH_OUT_COIL_Desc;
             }
-            //空钩走行状态= 020
+            //空载走行状态= 020
             else if (craneStatus == STATUS_MOVING_WITH_OUT_COIL)
             {
                 return STATUS_MOVING_WITH_OUT_COIL_Desc;
             }
-            //空钩走行到位状态= 030
+            //空载走行到位状态= 030
             else if (craneStatus == STATUS_ARRIVED_POS_WITH_OUT_COIL)
             {
                 return STATUS_ARRIVED_POS_WITH_OUT_COIL_Desc;
             }
-            //空钩下降去取卷= 040
+            //空载下降去取卷= 040
             else if (craneStatus == STATUS_LIFT_COIL_DOWN_PHASE)
             {
                 return STATUS_LIFT_COIL_DOWN_PHASE_Desc;
@@ -271,27 +271,27 @@ namespace UACSDAL
             {
                 return STATUS_COIL_LIFTED_Desc;
             }
-            //重钩起升过程= 060
+            //重载起升过程= 060
             else if (craneStatus == STATUS_LIFT_COIL_UP_PHASE)
             {
                 return STATUS_LIFT_COIL_UP_PHASE_Desc;
             }
-            //重钩等待状态= 070
+            //重载等待状态= 070
             else if (craneStatus == STATUS_WAITING_ORDER_WITH_COIL)
             {
                 return STATUS_WAITING_ORDER_WITH_COIL_Desc;
             }
-            //重钩走行状态= 080
+            //重载走行状态= 080
             else if (craneStatus == STATUS_MOVING_WITH_COIL)
             {
                 return STATUS_MOVING_WITH_COIL_Desc;
             }
-            //重钩走行到位= 090
+            //重载走行到位= 090
             else if (craneStatus == STATUS_ARRIVED_POS_WITH_COIL)
             {
                 return STATUS_ARRIVED_POS_WITH_COIL_Desc;
             }
-            //重钩下降去落卷= 100
+            //重载下降去落卷= 100
             else if (craneStatus == STATUS_DOWN_COIL_DOWN_PHASE)
             {
                 return STATUS_DOWN_COIL_DOWN_PHASE_Desc;
@@ -374,29 +374,31 @@ namespace UACSDAL
 
 
         //--------------------------------------------------行车设备状态定义----------------------------------------------------------------
-        //空钩起升过程= 000;
+        //空载起升过程= 000;
         public const long STATUS_NEED_TO_READY = 0;
-        //空钩等待状态= 010
+        //空载等待状态= 010
         public const long STATUS_WAITING_ORDER_WITH_OUT_COIL = 10;
-        //空钩走行状态= 020
+        //空载走行状态= 020
         public const long STATUS_MOVING_WITH_OUT_COIL = 20;
-        //空钩走行到位状态= 030
+        //空载走行到位状态= 030
         public const long STATUS_ARRIVED_POS_WITH_OUT_COIL = 30;
-        //空钩下降去取卷= 040
+        //取料下降= 040
         public const long STATUS_LIFT_COIL_DOWN_PHASE = 40;
-        //钢卷起吊= 050
+        //空载取料= 050
         public const long STATUS_COIL_LIFTED = 50;
-        //重钩起升过程= 060
+        //取料上升过程= 060
         public const long STATUS_LIFT_COIL_UP_PHASE = 60;
-        //重钩等待状态= 070
+        //重载称重一一065
+        public const long STATUS_WEIGH_WITH_COIL = 65;
+        //重载等待状态= 070
         public const long STATUS_WAITING_ORDER_WITH_COIL = 70;
-        //重钩走行状态= 080
+        //重载走行状态= 080
         public const long STATUS_MOVING_WITH_COIL = 80;
-        //重钩走行到位= 090
+        //重载走行到位= 090
         public const long STATUS_ARRIVED_POS_WITH_COIL = 90;
-        //重钩下降去落卷= 100
+        //落料下降= 100
         public const long STATUS_DOWN_COIL_DOWN_PHASE = 100;
-        //钢卷落关= 110
+        //重载落料= 110
         public const long STATUS_COIL_DOWN = 110;
         //行车排水= 456
         public const long STATUS_CRANE_WATER = 456;
@@ -404,30 +406,32 @@ namespace UACSDAL
         public const long STATUS_NOTHING_TO_DO = 777;
 
 
-        //空钩起升过程= 000;
-        public const string STATUS_NEED_TO_READY_Desc = "空钩起升";
-        //空钩等待状态= 010
-        public const string STATUS_WAITING_ORDER_WITH_OUT_COIL_Desc = "空钩等待";
-        //空钩走行状态= 020
-        public const string STATUS_MOVING_WITH_OUT_COIL_Desc = "空钩走行";
-        //空钩走行到位状态= 030
-        public const string STATUS_ARRIVED_POS_WITH_OUT_COIL_Desc = "空钩到位";
-        //空钩下降去取卷= 040
-        public const string STATUS_LIFT_COIL_DOWN_PHASE_Desc = "空钩下降";
+        //空载起升过程= 000;
+        public const string STATUS_NEED_TO_READY_Desc = "空载起升";
+        //空载等待状态= 010
+        public const string STATUS_WAITING_ORDER_WITH_OUT_COIL_Desc = "空载等待";
+        //空载走行状态= 020
+        public const string STATUS_MOVING_WITH_OUT_COIL_Desc = "空载走行";
+        //空载走行到位状态= 030
+        public const string STATUS_ARRIVED_POS_WITH_OUT_COIL_Desc = "空载到位";
+        //空载下降去取卷= 040
+        public const string STATUS_LIFT_COIL_DOWN_PHASE_Desc = "取料下降";
         //钢卷起吊= 050
-        public const string STATUS_COIL_LIFTED_Desc = "钢卷起吊";
-        //重钩起升过程= 060
-        public const string STATUS_LIFT_COIL_UP_PHASE_Desc = "起卷上升";
-        //重钩等待状态= 070
-        public const string STATUS_WAITING_ORDER_WITH_COIL_Desc = "重钩等待";
-        //重钩走行状态= 080
-        public const string STATUS_MOVING_WITH_COIL_Desc = "重钩走行";
-        //重钩走行到位= 090
-        public const string STATUS_ARRIVED_POS_WITH_COIL_Desc = "重钩到位";
-        //重钩下降去落卷= 100
-        public const string STATUS_DOWN_COIL_DOWN_PHASE_Desc = "落卷下降";
+        public const string STATUS_COIL_LIFTED_Desc = "空载取料";
+        //重载起升过程= 060
+        public const string STATUS_LIFT_COIL_UP_PHASE_Desc = "取料上升";
+        //重载称重= 065
+        public const string STATUS_WEIGH_WITH_COIL_Desc = "重载称重";
+        //重载等待状态= 070
+        public const string STATUS_WAITING_ORDER_WITH_COIL_Desc = "重载等待";
+        //重载走行状态= 080
+        public const string STATUS_MOVING_WITH_COIL_Desc = "重载走行";
+        //重载走行到位= 090
+        public const string STATUS_ARRIVED_POS_WITH_COIL_Desc = "重载到位";
+        //重载下降去落卷= 100
+        public const string STATUS_DOWN_COIL_DOWN_PHASE_Desc = "落料下降";
         //钢卷落关= 110
-        public const string STATUS_COIL_DOWN_Desc = "钢卷落关";
+        public const string STATUS_COIL_DOWN_Desc = "重载落料";
         //行车排水= 456
         public const string STATUS_CRANE_WATER_Desc = "行车排水";
         //空闲= 777

@@ -1325,7 +1325,7 @@ namespace UACSParking
         /// <param name="e"></param>
         private void btnCarFrom_Click(object sender, EventArgs e)
         {
-            if (!cbbPacking.Text.Contains('Z'))
+            if (!cbbPacking.Text.Contains('A'))
             {
                 MessageBox.Show("请选择停车位。");
                 return;
@@ -1346,13 +1346,13 @@ namespace UACSParking
             {
                 MessageBox.Show("车位还有（" + coilsNotComplete + " )个卷没有完成!", "提示");
             }
-            if (cbbPacking.Text.Contains('Z'))
+            if (cbbPacking.Text.Contains('A'))
             {
                 MessageBoxButtons btn = MessageBoxButtons.OKCancel;
                 DialogResult dr = MessageBox.Show("确定要对" + cbbPacking.Text.Trim() + "进行车离位吗？", "操作提示", btn, MessageBoxIcon.Asterisk);
                 if (dr == DialogResult.OK)
                 {
-                    TagDP.SetData("EV_NEW_PARKING_CARLEAVE", cbbPacking.Text.Trim());
+                    TagDP.SetData("EV_PARKING_CARLEAVE", cbbPacking.Text.Trim());
                     //画面清空
                     dt_selected.Clear();
                     dataGridView2.DataSource = dt_selected;
