@@ -350,26 +350,50 @@ namespace UACSDAL
 
         //--------------------------------------------------行车当前模式定义----------------------------------------------------------------
 
-        //遥控 = 1
+        /// <summary>
+        /// 遥控 = 1
+        /// </summary>
         public const long CRANE_MODE_REMOTE = 1;
-        //人工 = 2
+        /// <summary>
+        /// 人工 = 2
+        /// </summary>
         public const long CRANE_MODE_MANPOWER = 2;
-        //自动 = 4
+        /// <summary>
+        /// 自动 = 4
+        /// </summary>
         public const long CRANE_MODE_AUTO = 4;
-        //等待 = 5
+        /// <summary>
+        /// 等待 = 5
+        /// </summary>
         public const long CRANE_MODE_AWAIT = 5;
+        /// <summary>
+        /// 检修 = 6
+        /// </summary>
+        public const long CRANE_MODE_Recondition = 6;
 
 
 
-        //遥控 = 1
+        /// <summary>
+        /// 遥控 = 1
+        /// </summary>
         public const string CRANE_MODE_REMOTE_DESC = "遥控";
-        //人工 = 2
+        /// <summary>
+        /// 人工 = 2
+        /// </summary>
         public const string CRANE_MODE_MANPOWER_DESC = "人工";
-        //自动 = 4
+        /// <summary>
+        /// 自动 = 4
+        /// </summary>
         public const string CRANE_MODE_AUTO_DESC = "自动";
-        //等待 = 5
+        /// <summary>
+        /// 等待 = 5
+        /// </summary>
         public const string CRANE_MODE_AWAIT_DESC = "等待";
-
+        /// <summary>
+        /// 检修 = 6
+        /// </summary>
+        public const string CRANE_MODE_Recondition_DESC = "检修";
+        
         public const string CRANE_MODE_UNKNOWN = "未知";
 
 
