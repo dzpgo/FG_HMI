@@ -63,6 +63,16 @@ namespace UACSView.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap baosight {
+            get {
+                object obj = ResourceManager.GetObject("baosight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap bg_btn {
             get {
                 object obj = ResourceManager.GetObject("bg_btn", resourceCulture);

@@ -505,7 +505,7 @@ namespace UACSDAL
         /// <summary>
         /// 心跳
         /// </summary>
-        public const string ADRESS_CRANE_PLC_HEART_BEAT = "heartBeat";
+        public const string ADRESS_CRANE_PLC_HEART_BEAT = "Heart";
         /// <summary>
         /// 大车方向实际速度
         /// </summary>
@@ -525,7 +525,8 @@ namespace UACSDAL
         /// <summary>
         /// 夹钳旋转角度
         /// </summary>
-        public const string ADRESS_ROTATE_ANGLE_ACT = "ROTATE_ANGLE_ACT";
+        public const string ADRESS_ROTATE_ANGLE_ACT = "DIP_ANGLE_ACT";
+        //public const string ADRESS_ROTATE_ANGLE_ACT = "ROTATE_ANGLE_ACT";
         /// <summary>
         /// 夹钳开度
         /// </summary>

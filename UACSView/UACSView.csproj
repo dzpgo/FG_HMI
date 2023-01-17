@@ -943,6 +943,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Resources\baosight.png" />
     <Content Include="Resources\close.png" />
     <Content Include="Resources\welcome.jpeg" />
   </ItemGroup>
