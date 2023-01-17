@@ -163,7 +163,7 @@ namespace UACSParking
         {
             if (isStowage == true)
             {
-                if (cbbPacking.Text.Contains('Z'))
+                if (cbbPacking.Text.Contains('A'))
                 {
                     reflreshParkingCoilstate(cbbPacking.Text.Trim());
                     RefreshOrderDgv(cbbPacking.Text.Trim());
@@ -234,7 +234,7 @@ namespace UACSParking
 
         void cbbPacking_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('Z'))
+            if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('A'))
             {
                 isStowage = false;
                 hasCar = true;
@@ -715,7 +715,7 @@ namespace UACSParking
             {
                 //查询是车位状态
                 string carNo = GetTextOnCar(cbbPacking.Text.Trim());
-                if (carNo != "" && cbbPacking.Text.Contains('Z') && cbbPacking.Text.Trim() != "请选择")
+                if (carNo != "" && cbbPacking.Text.Contains('A') && cbbPacking.Text.Trim() != "请选择")
                 {
                     string strStowageID = GetStowageID(cbbPacking.Text.Trim(), carNo); //"1451";// 
                     if (strStowageID != "")
@@ -752,7 +752,7 @@ namespace UACSParking
         /// </summary>
         private void BindMatStock(string packing, string planNo = null)
         {
-            if (!packing.Contains('Z') || packing.Trim() == "")
+            if (!packing.Contains('A') || packing.Trim() == "")
             {
                 return;
             }
@@ -1260,7 +1260,7 @@ namespace UACSParking
             if (txtCarNo.Text.Trim().Length > 2)
             {
                 //判断是否已经配载
-                if (cbbPacking.Text.Trim().Contains('Z'))
+                if (cbbPacking.Text.Trim().Contains('A'))
                 {
                     if (!GetStowageDetail())
                     {
@@ -1373,7 +1373,7 @@ namespace UACSParking
         private string GetParkStatus(string parkingNO)
         {
             string ret = "";
-            if (!parkingNO.Contains('Z'))
+            if (!parkingNO.Contains('A'))
             {
                 return ret;
             }
@@ -1751,7 +1751,7 @@ namespace UACSParking
         /// <param name="strParkNo"></param>
         private void LoadLaserInfo(string strParkNo, ParkLaserOut park)
         {
-            if (!strParkNo.Contains('Z'))
+            if (!strParkNo.Contains('A'))
             {
                 return;
             }
@@ -1926,7 +1926,7 @@ namespace UACSParking
             string matNO;
             string coilStatus;
             string stowageID = txtStowageID.Text.Trim();
-            if (!parkNO.Contains('Z') || stowageID.Length < 2)
+            if (!parkNO.Contains('A') || stowageID.Length < 2)
             {
                 return ret;
             }
@@ -2016,7 +2016,7 @@ namespace UACSParking
 
             if (isStowage == true)
             {
-                if (cbbPacking.Text.Contains('Z'))
+                if (cbbPacking.Text.Contains('A'))
                 {
                     reflreshParkingCoilstate(cbbPacking.Text.Trim());
                     RefreshOrderDgv(cbbPacking.Text.Trim());
@@ -2031,7 +2031,7 @@ namespace UACSParking
                 return;
             }
             isStowage = false;
-            if (!cbbPacking.Text.Contains('Z'))
+            if (!cbbPacking.Text.Contains('A'))
             {
                 //GetParkInfo();
                 GetParkInfoByBay();
@@ -2056,7 +2056,7 @@ namespace UACSParking
             SelectCoilForm selectCoilF = new SelectCoilForm();
             selectCoilF.TransferValue += selectCoilF_TransferValue;
             selectCoilF.CarType = "社会车";
-            if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('Z'))
+            if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('A'))
             {
                 selectCoilF.ParkNO = cbbPacking.Text.Trim();
                 if (txtCarNo.Text.Trim().Length > 3)
@@ -2075,7 +2075,7 @@ namespace UACSParking
             return;
         kuangjiache:
             {
-                if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('Z'))
+                if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('A'))
                 {
                     string parkNO = cbbPacking.Text;
                     //string GrooveNum = txtSelectGoove.Text;
@@ -2117,7 +2117,7 @@ namespace UACSParking
             string parkNO = cbbPacking.Text.Trim();
             try
             {
-                if (parkNO == "" || !parkNO.Contains('Z'))
+                if (parkNO == "" || !parkNO.Contains('A'))
                 {
                     MessageBox.Show("请选择停车位。");
                     return;
@@ -2201,7 +2201,7 @@ namespace UACSParking
             string parkNO = cbbPacking.Text.Trim();
             try
             {
-                if (parkNO == "" || !parkNO.Contains('Z'))
+                if (parkNO == "" || !parkNO.Contains('A'))
                 {
                     MessageBox.Show("请选择停车位。");
                     return;
@@ -2279,7 +2279,7 @@ namespace UACSParking
             string ret = "";
             int isWoodenCar = 0;
             carType = -1;
-            if (!parkingNO.Contains('Z'))
+            if (!parkingNO.Contains('A'))
             {
                 return ret;
             }
@@ -2499,7 +2499,7 @@ namespace UACSParking
                 }
             }
 
-            if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('Z'))
+            if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('A'))
             {
                 selectCoilF.ParkNO = cbbPacking.Text.Trim();
                 selectCoilF.TransferValue += selectCoilF_TransferValue;
@@ -2731,7 +2731,7 @@ namespace UACSParking
             int flag = 0;
             try
             {
-                if (!cbbPacking.Text.Contains('Z'))
+                if (!cbbPacking.Text.Contains('A'))
                 {
                     MessageBox.Show("请选择停车位。");
                     return;
@@ -2814,7 +2814,7 @@ namespace UACSParking
             //    }
             //}
 
-            if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('Z'))
+            if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('A'))
             {
                 selectCoilF.ParkNO = cbbPacking.Text.Trim();
                 selectCoilF.TransferValue += selectCoilF_TransferValue;
@@ -2987,7 +2987,7 @@ namespace UACSParking
                         }
                     }
                 }
-                if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('Z') && txtStowageID.Text.Trim() != "" && isLoaded == "0")
+                if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('A') && txtStowageID.Text.Trim() != "" && isLoaded == "0")
                 {
                     string tagReissue = cbbPacking.Text.Trim() + "|" + txtStowageID.Text.Trim() + "|1|O|";
                     TagDP.SetData("EV_NEW_PARKING_SEND_STOWAGE_TO_MES", tagReissue);

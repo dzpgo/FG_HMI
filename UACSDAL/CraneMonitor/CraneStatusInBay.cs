@@ -352,7 +352,7 @@ namespace UACSDAL
             try
             {
 
-                string sql = string.Format("SELECT * FROM UACS_CRANE_ORDER_CURRENT WHERE CRANE_NO = '{0}' ", craneNo);
+                string sql = string.Format("SELECT A.*,B.MAT_CNAME FROM UACS_CRANE_ORDER_CURRENT AS A LEFT JOIN UACS_L3_MAT_INFO AS B ON A.MAT_CODE = B.MAT_CODE WHERE CRANE_NO = '{0}' ", craneNo);
 
                 using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
                 {
@@ -369,14 +369,14 @@ namespace UACSDAL
                             txt_CraneOrder.Text = "";
 
 
-                        ////材料号
-                        //if (rdr["MAT_NO"] != System.DBNull.Value)
-                        //{
+                        //废钢代码
+                        if (rdr["MAT_CODE"] != System.DBNull.Value)
+                        {
 
-                        //    txt_CoilNo.Text = rdr["MAT_NO"].ToString();
-                        //}
-                        //else
-                        //    txt_CoilNo.Text = numberIsNull;
+                            txt_CoilNo.Text = rdr["MAT_CNAME"].ToString();
+                        }
+                        else
+                            txt_CoilNo.Text = numberIsNull;
 
                         //起卷库位
                         if (rdr["FROM_STOCK_NO"] != System.DBNull.Value)
@@ -408,27 +408,27 @@ namespace UACSDAL
                 if (!isValue)
                 {
                     txt_CraneOrder.Text = "";
-                    txt_CoilNo.Text = numberIsNull;
+                    //txt_CoilNo.Text = numberIsNull;
                     txt_FromStock.Text = numberIsNull;
                     txt_ToStock.Text = numberIsNull;
                 }
                 else
                 {
-                    if (txt_CoilNo.Text.Trim() != numberIsNull)
-                    {
-                        if (IsRepetitionCoil(txt_CoilNo.Text.Trim()))
-                        {
-                            txt_CoilNo.ForeColor = Color.Red;
-                        }
-                        else
-                        {
-                            txt_CoilNo.ForeColor = Color.Black;
-                        }
-                    }
-                    else
-                    {
-                        txt_CoilNo.ForeColor = Color.Black;
-                    }
+                    //if (txt_CoilNo.Text.Trim() != numberIsNull)
+                    //{
+                    //    if (IsRepetitionCoil(txt_CoilNo.Text.Trim()))
+                    //    {
+                    //        txt_CoilNo.ForeColor = Color.Red;
+                    //    }
+                    //    else
+                    //    {
+                    //        txt_CoilNo.ForeColor = Color.Black;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    txt_CoilNo.ForeColor = Color.Black;
+                    //}
                 }
             }
         }

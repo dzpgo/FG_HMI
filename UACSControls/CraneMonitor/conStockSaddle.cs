@@ -544,29 +544,12 @@ namespace UACSControls
                 lbl.Width = Convert.ToInt32(Convert.ToDouble((theSaddle.X_END) - theSaddle.X_START) * xScale2); //1159
                 double yScale2 = Convert.ToDouble(panelHeight + 25) / Convert.ToDouble(Y_Height);
                 lbl.Height = Convert.ToInt32(Convert.ToDouble((theSaddle.Y_END) - theSaddle.Y_START) * yScale2);  //518
-                //if (theSaddle.GRID_DIV.Equals("0"))
-                //{
-                //    //lbl.Width = 100; //1130;
-                //    lbl.Height = sss;//100; //465;
-                //}
-                //else if (theSaddle.GRID_DIV.Equals("1"))
-                //{
-                //    //lbl.Width = Convert.ToInt32(Width_X); //565;
-                //    lbl.Height = 465;
-                //}
-                //else if (theSaddle.GRID_DIV.Equals("2"))
-                //{
-                //    //lbl.Width = 565;
-                //    lbl.Height = 232;
-                //}                
                 lbl.ForeColor = Color.Black;
                 lbl.Text = " 料格号：" + theSaddle.GRID_NO + "\n"
                     + " 物料名：" + theSaddle.MAT_CNAME + "\n"
                     + " 物料代码：" + theSaddle.MAT_CODE + "\n"
                     + " 库存重量：" + theSaddle.MAT_WGT + "\n";
 
-                //+ "黑库位：   " + saddleCoilNum + "\n"
-                //+ "红库位：   " + (saddleNum - saddleNoCoilNum - saddleCoilNum) + "\n"
                 //+ lblRuler + "\n"
                 //+ lblCol;
                 //lbl.Click += conArea_Click;
