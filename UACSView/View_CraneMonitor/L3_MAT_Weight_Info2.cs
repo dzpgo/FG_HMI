@@ -85,12 +85,13 @@ namespace UACSView.View_CraneMonitor
             string work_seqNo = this.textWORK_SEQ_NO.Text.Trim();  //计划号
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");  //开始时间
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");  //结束时间
-            string sqlText = @"SELECT WORK_SEQ_NO,TRUCK_NO,MAT_PROD_CODE,MAT_WT,REC_TIME FROM UACSAPP.UACS_L3_MAT_WEIGHT_INFO ";
-            sqlText += "WHERE REC_TIME > '{0}' and REC_TIME < '{1}' ";
+            string sqlText = @"SELECT A.WORK_SEQ_NO,A.TRUCK_NO,A.MAT_PROD_CODE, C.MAT_CNAME,A.MAT_WT,A.REC_TIME FROM UACSAPP.UACS_L3_MAT_WEIGHT_INFO A ";
+            sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_PROD_CODE ";
+            sqlText += "WHERE A.REC_TIME > '{0}' and A.REC_TIME < '{1}' ";
             sqlText = string.Format(sqlText, recTime1, recTime2);
             if (!string.IsNullOrEmpty(work_seqNo))
             {
-                sqlText = string.Format("{0} and WORK_SEQ_NO LIKE '%{1}%' ", sqlText, work_seqNo);
+                sqlText = string.Format("{0} and A.WORK_SEQ_NO LIKE '%{1}%' ", sqlText, work_seqNo);
             }
             DataTable dataTable = new DataTable();
             hasSetColumn = false;
@@ -134,9 +135,5 @@ namespace UACSView.View_CraneMonitor
         }
         #endregion
 
-        private void btnQuery_Click_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }

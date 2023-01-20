@@ -14,7 +14,7 @@ using System.Windows.Forms.VisualStyles;
 namespace UACSView.View_CraneMonitor
 {
     /// <summary>
-    /// 行车作业实绩
+    /// 行车作业实绩管理
     /// </summary>
     public partial class FG_Order_Oper1 : FormBase
     {
@@ -89,20 +89,21 @@ namespace UACSView.View_CraneMonitor
             string work_seqNo = this.textWORK_SEQ_NO.Text.Trim();        //计划号
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");  //开始时间
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");  //结束时间
-            string sqlText = @"SELECT OPER_ID, ORDER_NO, ORDER_TYPE, BAY_NO, MAT_CODE, MAT_TYPE, MAT_REQ_WGT, MAT_CUR_WGT, HAS_COIL_WGT, FROM_STOCK_NO, TO_STOCK_NO, STOCK_NO, CMD_STATUS, CMD_SEQ, PLAN_X, PLAN_Y, ACT_X, ACT_Y, CRANE_MODE, REC_TIME FROM UACSAPP.UACS_ORDER_OPER ";
-            sqlText += "WHERE REC_TIME > '{0}' and REC_TIME < '{1}' ";
+            string sqlText = @"SELECT A.OPER_ID, A.ORDER_NO, A.ORDER_TYPE, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.MAT_TYPE, A.MAT_REQ_WGT, A.MAT_CUR_WGT, A.HAS_COIL_WGT, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.STOCK_NO, A.CMD_STATUS, A.CMD_SEQ, A.PLAN_X, A.PLAN_Y, A.ACT_X, A.ACT_Y, A.CRANE_MODE, A.REC_TIME FROM UACSAPP.UACS_ORDER_OPER A ";
+            sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE ";
+            sqlText += "WHERE A.REC_TIME > '{0}' and A.REC_TIME < '{1}' ";
             sqlText = string.Format(sqlText, recTime1, recTime2);
             if (!string.IsNullOrEmpty(work_seqNo))
             {
-                sqlText = string.Format("{0} and MAT_CODE LIKE '%{1}%' ", sqlText, work_seqNo);
+                sqlText = string.Format("{0} and A.MAT_CODE LIKE '%{1}%' ", sqlText, work_seqNo);
             }
             if (bayNo != "全部")
             {
-                sqlText = string.Format("{0} and BAY_NO = '{1}' ", sqlText, bayNo);
+                sqlText = string.Format("{0} and A.BAY_NO = '{1}' ", sqlText, bayNo);
             }
             if (craneMode != "全部")
             {
-                sqlText = string.Format("{0} and CRANE_MODE = '{1}' ", sqlText, craneMode);
+                sqlText = string.Format("{0} and A.CRANE_MODE = '{1}' ", sqlText, craneMode);
             }
             DataTable dataTable = new DataTable();
             hasSetColumn = false;

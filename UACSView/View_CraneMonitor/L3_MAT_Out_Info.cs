@@ -103,7 +103,8 @@ namespace UACSView
             string planNo = this.textPLAN_NO.Text.Trim();  //计划号
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");  //开始时间
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");  //结束时间
-            string sqlText = @"SELECT WORK_SEQ_NO, OPER_FLAG, PLAN_NO, BOF_NO, CAR_NO, MAT_CODE_1, WEIGHT_1, MAT_CODE_2, WEIGHT_2, MAT_CODE_3, WEIGHT_3, MAT_CODE_4, WEIGHT_4, MAT_CODE_5, WEIGHT_5, MAT_CODE_6, WEIGHT_6, MAT_CODE_7, WEIGHT_7, MAT_CODE_8, WEIGHT_8, MAT_CODE_9, WEIGHT_9, MAT_CODE_10, WEIGHT_10, PLAN_STATUS, REC_TIME, UPD_TIME, CYCLE_COUNT, MAT_NET_WT, WT_TIME FROM UACSAPP.UACS_L3_MAT_OUT_INFO ";
+            string sqlText = @"SELECT WORK_SEQ_NO, OPER_FLAG, PLAN_NO, BOF_NO, CAR_NO, MAT_CODE_1, '' AS MAT_CNAME_1, WEIGHT_1, MAT_CODE_2,  '' AS MAT_CNAME_2, WEIGHT_2, MAT_CODE_3, '' AS MAT_CNAME_3, WEIGHT_3, MAT_CODE_4,  '' AS MAT_CNAME_4, WEIGHT_4, MAT_CODE_5,  '' AS MAT_CNAME_5, WEIGHT_5, MAT_CODE_6,  '' AS MAT_CNAME_6, WEIGHT_6, MAT_CODE_7,  '' AS MAT_CNAME_7, WEIGHT_7, MAT_CODE_8,  '' AS MAT_CNAME_8, WEIGHT_8, MAT_CODE_9,  '' AS MAT_CNAME_9, WEIGHT_9, MAT_CODE_10,  '' AS MAT_CNAME_10, WEIGHT_10, PLAN_STATUS, REC_TIME, UPD_TIME, CYCLE_COUNT, MAT_NET_WT, WT_TIME FROM UACSAPP.UACS_L3_MAT_OUT_INFO A ";
+            //sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE ";
             sqlText += "WHERE REC_TIME > '{0}' and REC_TIME < '{1}' ";
             sqlText = string.Format(sqlText, recTime1, recTime2);
             if (!string.IsNullOrEmpty(planNo))
@@ -136,59 +137,160 @@ namespace UACSView
                     //tbL3_MAT_OUT_INFO.Load(rdr);
                 }
             }
+            DataTable dtMAT_INFO = GetMAT_INFO();
 
             foreach (DataRow dataRow in tbL3_MAT_OUT_INFO.Rows)
             {
 
                 if (!string.IsNullOrEmpty(dataRow["MAT_CODE_1"].ToString()))
                 {
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_1"].ToString(), dataRow["WEIGHT_1"].ToString(), dataRow["REC_TIME"].ToString());
+                    var MAT_CNAME = dataRow["MAT_CNAME_1"].ToString();
+                    foreach (DataRow matRow in dtMAT_INFO.Rows)
+                    {
+                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_1"].ToString()) && dataRow["MAT_CODE_1"].ToString().Equals(matRow["MAT_CODE"].ToString()))
+                        {
+                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_1"].ToString(), MAT_CNAME, dataRow["WEIGHT_1"].ToString(), dataRow["REC_TIME"].ToString());
                 }
                 if (!string.IsNullOrEmpty(dataRow["MAT_CODE_2"].ToString()))
                 {
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_2"].ToString(), dataRow["WEIGHT_2"].ToString(), dataRow["REC_TIME"].ToString());
+                    var MAT_CNAME = dataRow["MAT_CNAME_2"].ToString();
+                    foreach (DataRow matRow in dtMAT_INFO.Rows)
+                    {
+                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_2"].ToString()) && dataRow["MAT_CODE_2"].ToString().Equals(matRow["MAT_CODE"].ToString()))
+                        {
+                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_2"].ToString(), MAT_CNAME, dataRow["WEIGHT_2"].ToString(), dataRow["REC_TIME"].ToString());
                 }
                 if (!string.IsNullOrEmpty(dataRow["MAT_CODE_3"].ToString()))
                 {
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_3"].ToString(), dataRow["WEIGHT_3"].ToString(), dataRow["REC_TIME"].ToString());
+                    var MAT_CNAME = dataRow["MAT_CNAME_3"].ToString();
+                    foreach (DataRow matRow in dtMAT_INFO.Rows)
+                    {
+                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_3"].ToString()) && dataRow["MAT_CODE_3"].ToString().Equals(matRow["MAT_CODE"].ToString()))
+                        {
+                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_3"].ToString(), MAT_CNAME, dataRow["WEIGHT_3"].ToString(), dataRow["REC_TIME"].ToString());
                 }
                 if (!string.IsNullOrEmpty(dataRow["MAT_CODE_4"].ToString()))
                 {
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_4"].ToString(), dataRow["WEIGHT_4"].ToString(), dataRow["REC_TIME"].ToString());
+                    var MAT_CNAME = dataRow["MAT_CNAME_4"].ToString();
+                    foreach (DataRow matRow in dtMAT_INFO.Rows)
+                    {
+                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_4"].ToString()) && dataRow["MAT_CODE_4"].ToString().Equals(matRow["MAT_CODE"].ToString()))
+                        {
+                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_4"].ToString(), MAT_CNAME, dataRow["WEIGHT_4"].ToString(), dataRow["REC_TIME"].ToString());
                 }
                 if (!string.IsNullOrEmpty(dataRow["MAT_CODE_5"].ToString()))
                 {
-
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_5"].ToString(), dataRow["WEIGHT_5"].ToString(), dataRow["REC_TIME"].ToString());
+                    var MAT_CNAME = dataRow["MAT_CNAME_5"].ToString();
+                    foreach (DataRow matRow in dtMAT_INFO.Rows)
+                    {
+                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_5"].ToString()) && dataRow["MAT_CODE_5"].ToString().Equals(matRow["MAT_CODE"].ToString()))
+                        {
+                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_5"].ToString(), MAT_CNAME, dataRow["WEIGHT_5"].ToString(), dataRow["REC_TIME"].ToString());
                 }
                 if (!string.IsNullOrEmpty(dataRow["MAT_CODE_6"].ToString()))
                 {
-
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_6"].ToString(), dataRow["WEIGHT_6"].ToString(), dataRow["REC_TIME"].ToString());
+                    var MAT_CNAME = dataRow["MAT_CNAME_6"].ToString();
+                    foreach (DataRow matRow in dtMAT_INFO.Rows)
+                    {
+                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_6"].ToString()) && dataRow["MAT_CODE_6"].ToString().Equals(matRow["MAT_CODE"].ToString()))
+                        {
+                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_6"].ToString(), MAT_CNAME, dataRow["WEIGHT_6"].ToString(), dataRow["REC_TIME"].ToString());
                 }
                 if (!string.IsNullOrEmpty(dataRow["MAT_CODE_7"].ToString()))
                 {
-
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_7"].ToString(), dataRow["WEIGHT_7"].ToString(), dataRow["REC_TIME"].ToString());
+                    var MAT_CNAME = dataRow["MAT_CNAME_7"].ToString();
+                    foreach (DataRow matRow in dtMAT_INFO.Rows)
+                    {
+                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_7"].ToString()) && dataRow["MAT_CODE_7"].ToString().Equals(matRow["MAT_CODE"].ToString()))
+                        {
+                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_7"].ToString(), MAT_CNAME, dataRow["WEIGHT_7"].ToString(), dataRow["REC_TIME"].ToString());
                 }
                 if (!string.IsNullOrEmpty(dataRow["MAT_CODE_8"].ToString()))
                 {
-
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_8"].ToString(), dataRow["WEIGHT_8"].ToString(), dataRow["REC_TIME"].ToString());
+                    var MAT_CNAME = dataRow["MAT_CNAME_8"].ToString();
+                    foreach (DataRow matRow in dtMAT_INFO.Rows)
+                    {
+                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_8"].ToString()) && dataRow["MAT_CODE_8"].ToString().Equals(matRow["MAT_CODE"].ToString()))
+                        {
+                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_8"].ToString(), MAT_CNAME, dataRow["WEIGHT_8"].ToString(), dataRow["REC_TIME"].ToString());
                 }
                 if (!string.IsNullOrEmpty(dataRow["MAT_CODE_9"].ToString()))
                 {
-
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_9"].ToString(), dataRow["WEIGHT_9"].ToString(), dataRow["REC_TIME"].ToString());
+                    var MAT_CNAME = dataRow["MAT_CNAME_9"].ToString();
+                    foreach (DataRow matRow in dtMAT_INFO.Rows)
+                    {
+                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_9"].ToString()) && dataRow["MAT_CODE_9"].ToString().Equals(matRow["MAT_CODE"].ToString()))
+                        {
+                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_9"].ToString(), MAT_CNAME, dataRow["WEIGHT_9"].ToString(), dataRow["REC_TIME"].ToString());
                 }
                 if (!string.IsNullOrEmpty(dataRow["MAT_CODE_10"].ToString()))
                 {
-
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_10"].ToString(), dataRow["WEIGHT_10"].ToString(), dataRow["REC_TIME"].ToString());
+                    var MAT_CNAME = dataRow["MAT_CNAME_10"].ToString();
+                    foreach (DataRow matRow in dtMAT_INFO.Rows)
+                    {
+                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_10"].ToString()) && dataRow["MAT_CODE_10"].ToString().Equals(matRow["MAT_CODE"].ToString()))
+                        {
+                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
+                        }
+                    }
+                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_10"].ToString(), MAT_CNAME, dataRow["WEIGHT_10"].ToString(), dataRow["REC_TIME"].ToString());
                 }
             }
 
             return dtResult;
+        }
+
+        /// <summary>
+        /// 获取废钢物料名
+        /// </summary>
+        /// <param name="showAll"></param>
+        /// <returns></returns>
+        public DataTable GetMAT_INFO()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("MAT_CODE");
+            dt.Columns.Add("MAT_CNAME");
+            //准备数据
+            string sqlText = @"SELECT MAT_CODE,MAT_CNAME FROM UACSAPP.UACS_L3_MAT_INFO ";
+            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
+            {
+                while (rdr.Read())
+                {
+                    DataRow dr = dt.NewRow();
+                    dr["MAT_CODE"] = rdr["MAT_CODE"];
+                    dr["MAT_CNAME"] = rdr["MAT_CNAME"];
+                    dt.Rows.Add(dr);
+                }
+            }
+            
+            return dt;
         }
 
         /// <summary>

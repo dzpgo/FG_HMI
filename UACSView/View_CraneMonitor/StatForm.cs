@@ -15,6 +15,7 @@ namespace UACSView
 {
     /// <summary>
     /// 行车作业统计
+    /// 行车作业结果分析
     /// </summary>
     public partial class StatForm : FormBase
     {

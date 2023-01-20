@@ -341,16 +341,17 @@ namespace UACSView
             string orderType = this.cbb_ORDER_TYPE.SelectedValue.ToString();
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");
-            string sqlText = @"SELECT ORDER_NO, ORDER_GROUP_NO, ORDER_TYPE, ORDER_PRIORITY, BAY_NO, MAT_CODE, FROM_STOCK_NO, TO_STOCK_NO, REC_TIME, UPD_TIME FROM UACSAPP.UACS_ORDER_DATA  ";
-            sqlText += "WHERE REC_TIME > '{0}' and REC_TIME < '{1}' ";
+            string sqlText = @"SELECT A.ORDER_NO, A.ORDER_GROUP_NO, A.ORDER_TYPE, A.ORDER_PRIORITY, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.REC_TIME, A.UPD_TIME FROM UACSAPP.UACS_ORDER_DATA A ";
+            sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE ";
+            sqlText += "WHERE A.REC_TIME > '{0}' and A.REC_TIME < '{1}' ";
             sqlText = string.Format(sqlText, recTime1, recTime2);
             if (!string.IsNullOrEmpty(matNo))
             {
-                sqlText = string.Format("{0} and MAT_CODE LIKE '%{1}%' ", sqlText, matNo);
+                sqlText = string.Format("{0} and A.MAT_CODE LIKE '%{1}%' ", sqlText, matNo);
             }
             if (orderType != "全部")
             {
-                sqlText = string.Format("{0} and ORDER_TYPE = '{1}' ", sqlText, orderType);
+                sqlText = string.Format("{0} and A.ORDER_TYPE = '{1}' ", sqlText, orderType);
             }
             dt = new DataTable();
             hasSetColumn = false;
@@ -385,20 +386,21 @@ namespace UACSView
             string orderType = this.cbb_ORDER_TYPE.SelectedValue.ToString();
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");
-            string sqlText = @"SELECT ORDER_NO, ORDER_GROUP_NO, ORDER_TYPE, CRANE_NO, ORDER_PRIORITY, BAY_NO, MAT_CODE, FROM_STOCK_NO, TO_STOCK_NO, REC_TIME, UPD_TIME FROM UACS_ORDER_QUEUE ";
-            sqlText += "WHERE REC_TIME > '{0}' and REC_TIME < '{1}' ";
+            string sqlText = @"SELECT A.ORDER_NO, A.ORDER_GROUP_NO, A.ORDER_TYPE, A.CRANE_NO, A.ORDER_PRIORITY, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.REC_TIME, A.UPD_TIME FROM UACS_ORDER_QUEUE A ";
+            sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE ";
+            sqlText += "WHERE A.REC_TIME > '{0}' and A.REC_TIME < '{1}' ";
             sqlText = string.Format(sqlText, recTime1, recTime2);
             if (!string.IsNullOrEmpty(matNo))
             {
-                sqlText = string.Format("{0} and MAT_CODE LIKE '%{1}%' ", sqlText, matNo);
+                sqlText = string.Format("{0} and A.MAT_CODE LIKE '%{1}%' ", sqlText, matNo);
             }
             if (orderType != "全部")
             {
-                sqlText = string.Format("{0} and ORDER_TYPE = '{1}' ", sqlText, orderType);
+                sqlText = string.Format("{0} and A.ORDER_TYPE = '{1}' ", sqlText, orderType);
             }
             if (craneNo != "全部")
             {
-                sqlText = string.Format("{0} and CRANE_NO = '{1}' ", sqlText, craneNo);
+                sqlText = string.Format("{0} and A.CRANE_NO = '{1}' ", sqlText, craneNo);
             }
             DataTable dtdata = new DataTable();
             hasSetColumn = false;

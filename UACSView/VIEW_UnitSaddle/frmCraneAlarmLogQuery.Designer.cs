@@ -30,11 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCraneAlarmLogQuery));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnDown = new System.Windows.Forms.Button();
@@ -87,7 +86,7 @@
             this.panel1.Controls.Add(this.dateTimePicker_Start);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1924, 135);
             this.panel1.TabIndex = 0;
@@ -138,7 +137,7 @@
             this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.Location = new System.Drawing.Point(1078, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 21);
+            this.label2.Size = new System.Drawing.Size(110, 31);
             this.label2.TabIndex = 24;
             this.label2.Text = "报警号：";
             // 
@@ -147,9 +146,9 @@
             this.txtAlarmCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtAlarmCode.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtAlarmCode.Location = new System.Drawing.Point(1197, 44);
-            this.txtAlarmCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAlarmCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtAlarmCode.Name = "txtAlarmCode";
-            this.txtAlarmCode.Size = new System.Drawing.Size(223, 29);
+            this.txtAlarmCode.Size = new System.Drawing.Size(223, 39);
             this.txtAlarmCode.TabIndex = 23;
             // 
             // comboBox_ShipLotNo
@@ -164,7 +163,7 @@
             "4"});
             this.comboBox_ShipLotNo.Location = new System.Drawing.Point(938, 44);
             this.comboBox_ShipLotNo.Name = "comboBox_ShipLotNo";
-            this.comboBox_ShipLotNo.Size = new System.Drawing.Size(133, 29);
+            this.comboBox_ShipLotNo.Size = new System.Drawing.Size(133, 39);
             this.comboBox_ShipLotNo.TabIndex = 22;
             this.comboBox_ShipLotNo.Text = "1";
             // 
@@ -188,7 +187,7 @@
             this.label6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label6.Location = new System.Drawing.Point(16, 52);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 21);
+            this.label6.Size = new System.Drawing.Size(86, 31);
             this.label6.TabIndex = 18;
             this.label6.Text = "起始：";
             // 
@@ -199,7 +198,7 @@
             this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(844, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 21);
+            this.label1.Size = new System.Drawing.Size(86, 31);
             this.label1.TabIndex = 20;
             this.label1.Text = "行车：";
             // 
@@ -210,7 +209,7 @@
             this.label8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label8.Location = new System.Drawing.Point(430, 52);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 21);
+            this.label8.Size = new System.Drawing.Size(86, 31);
             this.label8.TabIndex = 19;
             this.label8.Text = "终了：";
             // 
@@ -223,7 +222,7 @@
             this.dateTimePicker_End.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_End.Location = new System.Drawing.Point(524, 44);
             this.dateTimePicker_End.Name = "dateTimePicker_End";
-            this.dateTimePicker_End.Size = new System.Drawing.Size(313, 29);
+            this.dateTimePicker_End.Size = new System.Drawing.Size(313, 39);
             this.dateTimePicker_End.TabIndex = 17;
             // 
             // dateTimePicker_Start
@@ -235,14 +234,14 @@
             this.dateTimePicker_Start.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_Start.Location = new System.Drawing.Point(110, 44);
             this.dateTimePicker_Start.Name = "dateTimePicker_Start";
-            this.dateTimePicker_Start.Size = new System.Drawing.Size(313, 29);
+            this.dateTimePicker_Start.Size = new System.Drawing.Size(313, 39);
             this.dateTimePicker_Start.TabIndex = 16;
             // 
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 135);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1924, 926);
             this.panel2.TabIndex = 1;
@@ -252,7 +251,7 @@
             this.panel3.Controls.Add(this.GridAlarmLog);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 135);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1924, 926);
             this.panel3.TabIndex = 2;
@@ -261,17 +260,15 @@
             // 
             this.GridAlarmLog.AllowUserToAddRows = false;
             this.GridAlarmLog.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Moccasin;
-            this.GridAlarmLog.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.GridAlarmLog.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridAlarmLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridAlarmLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.GridAlarmLog.ColumnHeadersHeight = 29;
             this.GridAlarmLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.GridAlarmLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -288,29 +285,30 @@
             this.CONTROL_MODE,
             this.CRANE_STATUS,
             this.ORDER_ID});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridAlarmLog.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridAlarmLog.DefaultCellStyle = dataGridViewCellStyle3;
             this.GridAlarmLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridAlarmLog.EnableHeadersVisualStyles = false;
             this.GridAlarmLog.Location = new System.Drawing.Point(0, 0);
             this.GridAlarmLog.Name = "GridAlarmLog";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridAlarmLog.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridAlarmLog.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.GridAlarmLog.RowHeadersVisible = false;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.GridAlarmLog.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.GridAlarmLog.RowHeadersWidth = 62;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.GridAlarmLog.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.GridAlarmLog.RowTemplate.Height = 45;
             this.GridAlarmLog.RowTemplate.ReadOnly = true;
             this.GridAlarmLog.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -322,9 +320,11 @@
             this.CRANE_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.CRANE_NO.FillWeight = 15F;
             this.CRANE_NO.HeaderText = "行车号";
+            this.CRANE_NO.MinimumWidth = 8;
             this.CRANE_NO.Name = "CRANE_NO";
             this.CRANE_NO.ReadOnly = true;
             this.CRANE_NO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CRANE_NO.Width = 150;
             // 
             // ALARM_CODE
             // 
@@ -340,10 +340,11 @@
             // ALARM_INFO
             // 
             this.ALARM_INFO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ALARM_INFO.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ALARM_INFO.DefaultCellStyle = dataGridViewCellStyle2;
             this.ALARM_INFO.FillWeight = 15F;
             this.ALARM_INFO.HeaderText = "描述";
+            this.ALARM_INFO.MinimumWidth = 8;
             this.ALARM_INFO.Name = "ALARM_INFO";
             this.ALARM_INFO.ReadOnly = true;
             this.ALARM_INFO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -354,6 +355,7 @@
             this.ALARM_CLASS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.ALARM_CLASS.FillWeight = 20F;
             this.ALARM_CLASS.HeaderText = "等级";
+            this.ALARM_CLASS.MinimumWidth = 8;
             this.ALARM_CLASS.Name = "ALARM_CLASS";
             this.ALARM_CLASS.ReadOnly = true;
             this.ALARM_CLASS.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -364,6 +366,7 @@
             this.ALARM_TIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.ALARM_TIME.FillWeight = 20F;
             this.ALARM_TIME.HeaderText = "记录时刻";
+            this.ALARM_TIME.MinimumWidth = 8;
             this.ALARM_TIME.Name = "ALARM_TIME";
             this.ALARM_TIME.ReadOnly = true;
             this.ALARM_TIME.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -374,6 +377,7 @@
             this.X_ACT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.X_ACT.FillWeight = 5F;
             this.X_ACT.HeaderText = "X";
+            this.X_ACT.MinimumWidth = 8;
             this.X_ACT.Name = "X_ACT";
             this.X_ACT.ReadOnly = true;
             this.X_ACT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -384,6 +388,7 @@
             this.Y_ACT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Y_ACT.FillWeight = 5F;
             this.Y_ACT.HeaderText = "Y";
+            this.Y_ACT.MinimumWidth = 8;
             this.Y_ACT.Name = "Y_ACT";
             this.Y_ACT.ReadOnly = true;
             this.Y_ACT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -394,6 +399,7 @@
             this.Z_ACT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Z_ACT.FillWeight = 5F;
             this.Z_ACT.HeaderText = "Z";
+            this.Z_ACT.MinimumWidth = 8;
             this.Z_ACT.Name = "Z_ACT";
             this.Z_ACT.ReadOnly = true;
             this.Z_ACT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -404,6 +410,7 @@
             this.HAS_COIL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.HAS_COIL.FillWeight = 5F;
             this.HAS_COIL.HeaderText = "有料";
+            this.HAS_COIL.MinimumWidth = 8;
             this.HAS_COIL.Name = "HAS_COIL";
             this.HAS_COIL.ReadOnly = true;
             this.HAS_COIL.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -414,6 +421,7 @@
             this.CLAMP_WIDTH_ACT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.CLAMP_WIDTH_ACT.FillWeight = 5F;
             this.CLAMP_WIDTH_ACT.HeaderText = "夹钳开度";
+            this.CLAMP_WIDTH_ACT.MinimumWidth = 8;
             this.CLAMP_WIDTH_ACT.Name = "CLAMP_WIDTH_ACT";
             this.CLAMP_WIDTH_ACT.ReadOnly = true;
             this.CLAMP_WIDTH_ACT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -424,6 +432,7 @@
             // 
             this.CONTROL_MODE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.CONTROL_MODE.HeaderText = "控制模式";
+            this.CONTROL_MODE.MinimumWidth = 8;
             this.CONTROL_MODE.Name = "CONTROL_MODE";
             this.CONTROL_MODE.Width = 90;
             // 
@@ -431,6 +440,7 @@
             // 
             this.CRANE_STATUS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.CRANE_STATUS.HeaderText = "行车状态";
+            this.CRANE_STATUS.MinimumWidth = 8;
             this.CRANE_STATUS.Name = "CRANE_STATUS";
             this.CRANE_STATUS.Width = 120;
             // 
@@ -438,6 +448,7 @@
             // 
             this.ORDER_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ORDER_ID.HeaderText = "指令号";
+            this.ORDER_ID.MinimumWidth = 8;
             this.ORDER_ID.Name = "ORDER_ID";
             // 
             // saveFileDialog1
@@ -454,7 +465,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmCraneAlarmLogQuery";
             this.Text = "报警信息管理";
             this.panel1.ResumeLayout(false);

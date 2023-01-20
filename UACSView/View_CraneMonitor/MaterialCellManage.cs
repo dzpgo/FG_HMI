@@ -15,6 +15,7 @@ namespace UACSView
     /// <summary>
     /// 吊运指令管理
     /// 查询已经分配了的吊运指令
+    /// 料格信息管理
     /// </summary>
     public partial class MaterialCellManage : FormBase
     {
@@ -389,7 +390,7 @@ namespace UACSView
             {
                 if(cbb_GridNo1.Text.Trim() != "")
                 {
-                    string sql = "SELECT ROW_NUMBER() OVER() as ROW_INDEX,GRID_NO,GRID_STATUS,MAT_CODE,MAT_WGT FROM UACS_YARDMAP_GRID_DEFINE WHERE GRID_NO = '" + cbb_GridNo1.SelectedValue.ToString().Trim() + "'";
+                    string sql = "SELECT ROW_NUMBER() OVER() as ROW_INDEX,A.GRID_NO,A.GRID_STATUS,A.MAT_CODE,C.MAT_CNAME,A.MAT_WGT FROM UACS_YARDMAP_GRID_DEFINE A LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE WHERE A.GRID_NO = '" + cbb_GridNo1.SelectedValue.ToString().Trim() + "'";
                     dt.Clear();
                     dt = new DataTable();
 
@@ -413,7 +414,7 @@ namespace UACSView
             {
                 if(txt_matCode1.Text.Trim()!="")
                 {
-                    string sql = "SELECT ROW_NUMBER() OVER() as ROW_INDEX,GRID_NO,MAT_CODE,MAT_WGT FROM UACS_YARDMAP_GRID_DEFINE WHERE MAT_CODE = '" + txt_matCode1.Text.ToString().Trim() + "'";
+                    string sql = "SELECT ROW_NUMBER() OVER() as ROW_INDEX,A.GRID_NO,A.MAT_CODE,C.MAT_CNAME,A.MAT_WGT FROM UACS_YARDMAP_GRID_DEFINE A LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE WHERE A.MAT_CODE = '" + txt_matCode1.Text.ToString().Trim() + "'";
                     dt.Clear();
                     dt = new DataTable();
 

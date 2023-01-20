@@ -28,31 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.PLAN_X = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PLAN_Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ACT_Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FROM_STOCK_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TO_STOCK_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.STOCK_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAT_REQ_WGT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAT_CUR_WGT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ACT_X = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAT_TYPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CMD_SEQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.REC_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.OPER_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CRANE_MODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ORDER_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ORDER_TYPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BAY_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAT_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HAS_COIL_WGT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CMD_STATUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cbb_CRANE_MODE = new System.Windows.Forms.ComboBox();
@@ -70,133 +49,33 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btnQuery = new System.Windows.Forms.Button();
+            this.OPER_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CRANE_MODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORDER_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORDER_TYPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BAY_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_CNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HAS_COIL_WGT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PLAN_X = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ACT_X = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PLAN_Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ACT_Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FROM_STOCK_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TO_STOCK_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.STOCK_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_REQ_WGT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_CUR_WGT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_TYPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CMD_STATUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CMD_SEQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.REC_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // PLAN_X
-            // 
-            this.PLAN_X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.PLAN_X.DataPropertyName = "PLAN_X";
-            this.PLAN_X.HeaderText = "计划X";
-            this.PLAN_X.MinimumWidth = 8;
-            this.PLAN_X.Name = "PLAN_X";
-            this.PLAN_X.ReadOnly = true;
-            this.PLAN_X.Width = 113;
-            // 
-            // PLAN_Y
-            // 
-            this.PLAN_Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.PLAN_Y.DataPropertyName = "PLAN_Y";
-            this.PLAN_Y.HeaderText = "计划Y";
-            this.PLAN_Y.MinimumWidth = 8;
-            this.PLAN_Y.Name = "PLAN_Y";
-            this.PLAN_Y.ReadOnly = true;
-            this.PLAN_Y.Width = 112;
-            // 
-            // ACT_Y
-            // 
-            this.ACT_Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ACT_Y.DataPropertyName = "ACT_Y";
-            this.ACT_Y.HeaderText = "实际Y";
-            this.ACT_Y.MinimumWidth = 8;
-            this.ACT_Y.Name = "ACT_Y";
-            this.ACT_Y.ReadOnly = true;
-            this.ACT_Y.Width = 112;
-            // 
-            // FROM_STOCK_NO
-            // 
-            this.FROM_STOCK_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.FROM_STOCK_NO.DataPropertyName = "FROM_STOCK_NO";
-            this.FROM_STOCK_NO.HeaderText = "指令起吊位置";
-            this.FROM_STOCK_NO.MinimumWidth = 8;
-            this.FROM_STOCK_NO.Name = "FROM_STOCK_NO";
-            this.FROM_STOCK_NO.ReadOnly = true;
-            this.FROM_STOCK_NO.Width = 194;
-            // 
-            // TO_STOCK_NO
-            // 
-            this.TO_STOCK_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TO_STOCK_NO.DataPropertyName = "TO_STOCK_NO";
-            this.TO_STOCK_NO.HeaderText = "指令放下位置";
-            this.TO_STOCK_NO.MinimumWidth = 8;
-            this.TO_STOCK_NO.Name = "TO_STOCK_NO";
-            this.TO_STOCK_NO.ReadOnly = true;
-            this.TO_STOCK_NO.Width = 194;
-            // 
-            // STOCK_NO
-            // 
-            this.STOCK_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.STOCK_NO.DataPropertyName = "STOCK_NO";
-            this.STOCK_NO.HeaderText = "当前位置";
-            this.STOCK_NO.MinimumWidth = 8;
-            this.STOCK_NO.Name = "STOCK_NO";
-            this.STOCK_NO.ReadOnly = true;
-            this.STOCK_NO.Width = 146;
-            // 
-            // MAT_REQ_WGT
-            // 
-            this.MAT_REQ_WGT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MAT_REQ_WGT.DataPropertyName = "MAT_REQ_WGT";
-            this.MAT_REQ_WGT.HeaderText = "要求重量-KG";
-            this.MAT_REQ_WGT.MinimumWidth = 8;
-            this.MAT_REQ_WGT.Name = "MAT_REQ_WGT";
-            this.MAT_REQ_WGT.ReadOnly = true;
-            this.MAT_REQ_WGT.Width = 189;
-            // 
-            // MAT_CUR_WGT
-            // 
-            this.MAT_CUR_WGT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MAT_CUR_WGT.DataPropertyName = "MAT_CUR_WGT";
-            this.MAT_CUR_WGT.HeaderText = "已作业量-KG";
-            this.MAT_CUR_WGT.MinimumWidth = 8;
-            this.MAT_CUR_WGT.Name = "MAT_CUR_WGT";
-            this.MAT_CUR_WGT.ReadOnly = true;
-            this.MAT_CUR_WGT.Width = 189;
-            // 
-            // ACT_X
-            // 
-            this.ACT_X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ACT_X.DataPropertyName = "ACT_X";
-            this.ACT_X.HeaderText = "实际X";
-            this.ACT_X.MinimumWidth = 8;
-            this.ACT_X.Name = "ACT_X";
-            this.ACT_X.ReadOnly = true;
-            this.ACT_X.Width = 113;
-            // 
-            // MAT_TYPE
-            // 
-            this.MAT_TYPE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MAT_TYPE.DataPropertyName = "MAT_TYPE";
-            this.MAT_TYPE.HeaderText = "废钢类型";
-            this.MAT_TYPE.MinimumWidth = 8;
-            this.MAT_TYPE.Name = "MAT_TYPE";
-            this.MAT_TYPE.ReadOnly = true;
-            this.MAT_TYPE.Width = 146;
-            // 
-            // CMD_SEQ
-            // 
-            this.CMD_SEQ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CMD_SEQ.DataPropertyName = "CMD_SEQ";
-            this.CMD_SEQ.HeaderText = "指令执行次数";
-            this.CMD_SEQ.MinimumWidth = 8;
-            this.CMD_SEQ.Name = "CMD_SEQ";
-            this.CMD_SEQ.ReadOnly = true;
-            this.CMD_SEQ.Width = 194;
-            // 
-            // REC_TIME
-            // 
-            this.REC_TIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.REC_TIME.DataPropertyName = "REC_TIME";
-            this.REC_TIME.HeaderText = "记录时间";
-            this.REC_TIME.MinimumWidth = 8;
-            this.REC_TIME.Name = "REC_TIME";
-            this.REC_TIME.ReadOnly = true;
-            this.REC_TIME.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.REC_TIME.Width = 116;
             // 
             // groupBox2
             // 
@@ -227,18 +106,16 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OPER_ID,
@@ -247,6 +124,7 @@
             this.ORDER_TYPE,
             this.BAY_NO,
             this.MAT_CODE,
+            this.MAT_CNAME,
             this.HAS_COIL_WGT,
             this.PLAN_X,
             this.ACT_X,
@@ -274,88 +152,6 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1921, 751);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // OPER_ID
-            // 
-            this.OPER_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.OPER_ID.DataPropertyName = "OPER_ID";
-            this.OPER_ID.Frozen = true;
-            this.OPER_ID.HeaderText = "实绩号";
-            this.OPER_ID.MinimumWidth = 8;
-            this.OPER_ID.Name = "OPER_ID";
-            this.OPER_ID.ReadOnly = true;
-            this.OPER_ID.Width = 122;
-            // 
-            // CRANE_MODE
-            // 
-            this.CRANE_MODE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CRANE_MODE.DataPropertyName = "CRANE_MODE";
-            this.CRANE_MODE.Frozen = true;
-            this.CRANE_MODE.HeaderText = "操作模式";
-            this.CRANE_MODE.MinimumWidth = 8;
-            this.CRANE_MODE.Name = "CRANE_MODE";
-            this.CRANE_MODE.ReadOnly = true;
-            this.CRANE_MODE.Width = 146;
-            // 
-            // ORDER_NO
-            // 
-            this.ORDER_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ORDER_NO.DataPropertyName = "ORDER_NO";
-            this.ORDER_NO.HeaderText = "指令号";
-            this.ORDER_NO.MinimumWidth = 8;
-            this.ORDER_NO.Name = "ORDER_NO";
-            this.ORDER_NO.ReadOnly = true;
-            this.ORDER_NO.Width = 122;
-            // 
-            // ORDER_TYPE
-            // 
-            this.ORDER_TYPE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ORDER_TYPE.DataPropertyName = "ORDER_TYPE";
-            this.ORDER_TYPE.HeaderText = "指令类型";
-            this.ORDER_TYPE.MinimumWidth = 8;
-            this.ORDER_TYPE.Name = "ORDER_TYPE";
-            this.ORDER_TYPE.ReadOnly = true;
-            this.ORDER_TYPE.Width = 146;
-            // 
-            // BAY_NO
-            // 
-            this.BAY_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.BAY_NO.DataPropertyName = "BAY_NO";
-            this.BAY_NO.HeaderText = "跨号";
-            this.BAY_NO.MinimumWidth = 8;
-            this.BAY_NO.Name = "BAY_NO";
-            this.BAY_NO.ReadOnly = true;
-            this.BAY_NO.Width = 98;
-            // 
-            // MAT_CODE
-            // 
-            this.MAT_CODE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MAT_CODE.DataPropertyName = "MAT_CODE";
-            this.MAT_CODE.HeaderText = "物料编号";
-            this.MAT_CODE.MinimumWidth = 8;
-            this.MAT_CODE.Name = "MAT_CODE";
-            this.MAT_CODE.ReadOnly = true;
-            this.MAT_CODE.Width = 146;
-            // 
-            // HAS_COIL_WGT
-            // 
-            this.HAS_COIL_WGT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.HAS_COIL_WGT.DataPropertyName = "HAS_COIL_WGT";
-            this.HAS_COIL_WGT.HeaderText = "重量";
-            this.HAS_COIL_WGT.MinimumWidth = 8;
-            this.HAS_COIL_WGT.Name = "HAS_COIL_WGT";
-            this.HAS_COIL_WGT.ReadOnly = true;
-            this.HAS_COIL_WGT.Width = 98;
-            // 
-            // CMD_STATUS
-            // 
-            this.CMD_STATUS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CMD_STATUS.DataPropertyName = "CMD_STATUS";
-            this.CMD_STATUS.HeaderText = "指令状态";
-            this.CMD_STATUS.MinimumWidth = 8;
-            this.CMD_STATUS.Name = "CMD_STATUS";
-            this.CMD_STATUS.ReadOnly = true;
-            this.CMD_STATUS.Width = 146;
             // 
             // groupBox1
             // 
@@ -578,7 +374,7 @@
             this.btnQuery.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.btnQuery.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuery.ForeColor = System.Drawing.Color.White;
-            this.btnQuery.Location = new System.Drawing.Point(1204, 22);
+            this.btnQuery.Location = new System.Drawing.Point(1649, 22);
             this.btnQuery.Margin = new System.Windows.Forms.Padding(4);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(120, 60);
@@ -587,6 +383,219 @@
             this.btnQuery.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnQuery.UseVisualStyleBackColor = false;
             this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
+            // 
+            // OPER_ID
+            // 
+            this.OPER_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.OPER_ID.DataPropertyName = "OPER_ID";
+            this.OPER_ID.Frozen = true;
+            this.OPER_ID.HeaderText = "实绩号";
+            this.OPER_ID.MinimumWidth = 8;
+            this.OPER_ID.Name = "OPER_ID";
+            this.OPER_ID.ReadOnly = true;
+            this.OPER_ID.Width = 122;
+            // 
+            // CRANE_MODE
+            // 
+            this.CRANE_MODE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CRANE_MODE.DataPropertyName = "CRANE_MODE";
+            this.CRANE_MODE.Frozen = true;
+            this.CRANE_MODE.HeaderText = "操作模式";
+            this.CRANE_MODE.MinimumWidth = 8;
+            this.CRANE_MODE.Name = "CRANE_MODE";
+            this.CRANE_MODE.ReadOnly = true;
+            this.CRANE_MODE.Width = 146;
+            // 
+            // ORDER_NO
+            // 
+            this.ORDER_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ORDER_NO.DataPropertyName = "ORDER_NO";
+            this.ORDER_NO.HeaderText = "指令号";
+            this.ORDER_NO.MinimumWidth = 8;
+            this.ORDER_NO.Name = "ORDER_NO";
+            this.ORDER_NO.ReadOnly = true;
+            this.ORDER_NO.Width = 122;
+            // 
+            // ORDER_TYPE
+            // 
+            this.ORDER_TYPE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ORDER_TYPE.DataPropertyName = "ORDER_TYPE";
+            this.ORDER_TYPE.HeaderText = "指令类型";
+            this.ORDER_TYPE.MinimumWidth = 8;
+            this.ORDER_TYPE.Name = "ORDER_TYPE";
+            this.ORDER_TYPE.ReadOnly = true;
+            this.ORDER_TYPE.Width = 146;
+            // 
+            // BAY_NO
+            // 
+            this.BAY_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BAY_NO.DataPropertyName = "BAY_NO";
+            this.BAY_NO.HeaderText = "跨号";
+            this.BAY_NO.MinimumWidth = 8;
+            this.BAY_NO.Name = "BAY_NO";
+            this.BAY_NO.ReadOnly = true;
+            this.BAY_NO.Width = 98;
+            // 
+            // MAT_CODE
+            // 
+            this.MAT_CODE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MAT_CODE.DataPropertyName = "MAT_CODE";
+            this.MAT_CODE.HeaderText = "物料编号";
+            this.MAT_CODE.MinimumWidth = 8;
+            this.MAT_CODE.Name = "MAT_CODE";
+            this.MAT_CODE.ReadOnly = true;
+            this.MAT_CODE.Width = 146;
+            // 
+            // MAT_CNAME
+            // 
+            this.MAT_CNAME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MAT_CNAME.DataPropertyName = "MAT_CNAME";
+            this.MAT_CNAME.HeaderText = "物料名";
+            this.MAT_CNAME.MinimumWidth = 8;
+            this.MAT_CNAME.Name = "MAT_CNAME";
+            this.MAT_CNAME.ReadOnly = true;
+            this.MAT_CNAME.Width = 122;
+            // 
+            // HAS_COIL_WGT
+            // 
+            this.HAS_COIL_WGT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.HAS_COIL_WGT.DataPropertyName = "HAS_COIL_WGT";
+            this.HAS_COIL_WGT.HeaderText = "重量";
+            this.HAS_COIL_WGT.MinimumWidth = 8;
+            this.HAS_COIL_WGT.Name = "HAS_COIL_WGT";
+            this.HAS_COIL_WGT.ReadOnly = true;
+            this.HAS_COIL_WGT.Width = 98;
+            // 
+            // PLAN_X
+            // 
+            this.PLAN_X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PLAN_X.DataPropertyName = "PLAN_X";
+            this.PLAN_X.HeaderText = "计划X";
+            this.PLAN_X.MinimumWidth = 8;
+            this.PLAN_X.Name = "PLAN_X";
+            this.PLAN_X.ReadOnly = true;
+            this.PLAN_X.Width = 113;
+            // 
+            // ACT_X
+            // 
+            this.ACT_X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ACT_X.DataPropertyName = "ACT_X";
+            this.ACT_X.HeaderText = "实际X";
+            this.ACT_X.MinimumWidth = 8;
+            this.ACT_X.Name = "ACT_X";
+            this.ACT_X.ReadOnly = true;
+            this.ACT_X.Width = 113;
+            // 
+            // PLAN_Y
+            // 
+            this.PLAN_Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PLAN_Y.DataPropertyName = "PLAN_Y";
+            this.PLAN_Y.HeaderText = "计划Y";
+            this.PLAN_Y.MinimumWidth = 8;
+            this.PLAN_Y.Name = "PLAN_Y";
+            this.PLAN_Y.ReadOnly = true;
+            this.PLAN_Y.Width = 112;
+            // 
+            // ACT_Y
+            // 
+            this.ACT_Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ACT_Y.DataPropertyName = "ACT_Y";
+            this.ACT_Y.HeaderText = "实际Y";
+            this.ACT_Y.MinimumWidth = 8;
+            this.ACT_Y.Name = "ACT_Y";
+            this.ACT_Y.ReadOnly = true;
+            this.ACT_Y.Width = 112;
+            // 
+            // FROM_STOCK_NO
+            // 
+            this.FROM_STOCK_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.FROM_STOCK_NO.DataPropertyName = "FROM_STOCK_NO";
+            this.FROM_STOCK_NO.HeaderText = "指令起吊位置";
+            this.FROM_STOCK_NO.MinimumWidth = 8;
+            this.FROM_STOCK_NO.Name = "FROM_STOCK_NO";
+            this.FROM_STOCK_NO.ReadOnly = true;
+            this.FROM_STOCK_NO.Width = 194;
+            // 
+            // TO_STOCK_NO
+            // 
+            this.TO_STOCK_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TO_STOCK_NO.DataPropertyName = "TO_STOCK_NO";
+            this.TO_STOCK_NO.HeaderText = "指令放下位置";
+            this.TO_STOCK_NO.MinimumWidth = 8;
+            this.TO_STOCK_NO.Name = "TO_STOCK_NO";
+            this.TO_STOCK_NO.ReadOnly = true;
+            this.TO_STOCK_NO.Width = 194;
+            // 
+            // STOCK_NO
+            // 
+            this.STOCK_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.STOCK_NO.DataPropertyName = "STOCK_NO";
+            this.STOCK_NO.HeaderText = "当前位置";
+            this.STOCK_NO.MinimumWidth = 8;
+            this.STOCK_NO.Name = "STOCK_NO";
+            this.STOCK_NO.ReadOnly = true;
+            this.STOCK_NO.Width = 146;
+            // 
+            // MAT_REQ_WGT
+            // 
+            this.MAT_REQ_WGT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MAT_REQ_WGT.DataPropertyName = "MAT_REQ_WGT";
+            this.MAT_REQ_WGT.HeaderText = "要求重量-KG";
+            this.MAT_REQ_WGT.MinimumWidth = 8;
+            this.MAT_REQ_WGT.Name = "MAT_REQ_WGT";
+            this.MAT_REQ_WGT.ReadOnly = true;
+            this.MAT_REQ_WGT.Width = 189;
+            // 
+            // MAT_CUR_WGT
+            // 
+            this.MAT_CUR_WGT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MAT_CUR_WGT.DataPropertyName = "MAT_CUR_WGT";
+            this.MAT_CUR_WGT.HeaderText = "已作业量-KG";
+            this.MAT_CUR_WGT.MinimumWidth = 8;
+            this.MAT_CUR_WGT.Name = "MAT_CUR_WGT";
+            this.MAT_CUR_WGT.ReadOnly = true;
+            this.MAT_CUR_WGT.Width = 189;
+            // 
+            // MAT_TYPE
+            // 
+            this.MAT_TYPE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MAT_TYPE.DataPropertyName = "MAT_TYPE";
+            this.MAT_TYPE.HeaderText = "废钢类型";
+            this.MAT_TYPE.MinimumWidth = 8;
+            this.MAT_TYPE.Name = "MAT_TYPE";
+            this.MAT_TYPE.ReadOnly = true;
+            this.MAT_TYPE.Width = 146;
+            // 
+            // CMD_STATUS
+            // 
+            this.CMD_STATUS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CMD_STATUS.DataPropertyName = "CMD_STATUS";
+            this.CMD_STATUS.HeaderText = "指令状态";
+            this.CMD_STATUS.MinimumWidth = 8;
+            this.CMD_STATUS.Name = "CMD_STATUS";
+            this.CMD_STATUS.ReadOnly = true;
+            this.CMD_STATUS.Width = 146;
+            // 
+            // CMD_SEQ
+            // 
+            this.CMD_SEQ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CMD_SEQ.DataPropertyName = "CMD_SEQ";
+            this.CMD_SEQ.HeaderText = "指令执行次数";
+            this.CMD_SEQ.MinimumWidth = 8;
+            this.CMD_SEQ.Name = "CMD_SEQ";
+            this.CMD_SEQ.ReadOnly = true;
+            this.CMD_SEQ.Width = 194;
+            // 
+            // REC_TIME
+            // 
+            this.REC_TIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.REC_TIME.DataPropertyName = "REC_TIME";
+            this.REC_TIME.HeaderText = "记录时间";
+            this.REC_TIME.MinimumWidth = 8;
+            this.REC_TIME.Name = "REC_TIME";
+            this.REC_TIME.ReadOnly = true;
+            this.REC_TIME.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.REC_TIME.Width = 116;
             // 
             // FG_Order_Oper1
             // 
@@ -609,30 +618,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridViewTextBoxColumn PLAN_X;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PLAN_Y;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ACT_Y;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FROM_STOCK_NO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TO_STOCK_NO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn STOCK_NO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_REQ_WGT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CUR_WGT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ACT_X;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_TYPE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CMD_SEQ;
-        private System.Windows.Forms.DataGridViewTextBoxColumn REC_TIME;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OPER_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CRANE_MODE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ORDER_NO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ORDER_TYPE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BAY_NO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CODE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HAS_COIL_WGT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CMD_STATUS;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox cbb_CRANE_MODE;
@@ -650,5 +638,26 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnQuery;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OPER_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CRANE_MODE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ORDER_NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ORDER_TYPE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BAY_NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CODE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CNAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HAS_COIL_WGT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PLAN_X;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ACT_X;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PLAN_Y;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ACT_Y;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FROM_STOCK_NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TO_STOCK_NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STOCK_NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_REQ_WGT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CUR_WGT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_TYPE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CMD_STATUS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CMD_SEQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn REC_TIME;
     }
 }
