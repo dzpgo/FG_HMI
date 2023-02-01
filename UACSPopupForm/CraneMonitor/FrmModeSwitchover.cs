@@ -159,7 +159,7 @@ namespace UACSPopupForm
         /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
-           // SendShortCmd(Crane_No, CraneStatusBase.SHORT_CMD_NORMAL_STOP);
+            SendShortCmd(Crane_No, CraneStatusBase.SHORT_CMD_NORMAL_STOP);
         }
 
 
