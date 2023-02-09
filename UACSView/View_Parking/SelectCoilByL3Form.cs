@@ -14,6 +14,11 @@ using ParkClassLibrary;
 
 namespace UACSParking
 {
+    /// <summary>
+    /// /// <summary>
+    /// 装车配载（旧）
+    /// </summary>
+    /// </summary>
     public partial class SelectCoilByL3Form : Form
     {
         public event TransferValue TransferValue;
@@ -911,6 +916,7 @@ namespace UACSParking
         {
             string truckNo = carNO;
             string parkingNo = parkNO;
+            string planN0 = "";
             try
             {
                 //框架车号不能为空
@@ -1038,6 +1044,12 @@ namespace UACSParking
                         //}
                     }
                 }
+
+                for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
+                {
+                    planN0 = Convert.ToString(this.dataGridView2.Rows[i].Cells["PLAN_NO2"].Value.ToString());  
+                }
+
                 #endregion
 
                 #region 钢卷多库位判断
@@ -1117,16 +1129,19 @@ namespace UACSParking
 
                 //模型计算次数
                 int mdlCalId = currengMdlCalId + 1;
-                myValue = string.Format("{0}|{1}|{2}|{3}|{4}-", parkingNo, truckNo, treatmentNo, mdlCalId, stowageNo);
+                //myValue = string.Format("{0}|{1}|{2}|{3}|{4}-", parkingNo, truckNo, treatmentNo, mdlCalId, stowageNo);
+                myValue = string.Format("{0}|{1}|{2}", parkingNo, truckNo, planN0);
                 //MessageBox.Show(dt_selected.Rows.Count.ToString());
-                for (int i = 0; i < dt_selected.Rows.Count; i++)
-                {
-                    if (i < 30)
-                    {
-                        myValue += dt_selected.Rows[i]["COIL_NO2"].ToString();
-                        myValue += "|";
-                    }
-                }
+                //for (int i = 0; i < dt_selected.Rows.Count; i++)
+                //{
+                //    if (i < 30)
+                //    {
+                //        myValue += dt_selected.Rows[i]["COIL_NO2"].ToString();
+                //        myValue += "|";
+                //    }
+                //}
+
+
                 //debug
                 //richTextBoxDebug.Text += string.Format("发送的Tag的myValue 的值：\n{0}\n", myValue);
                 //DialogResult dr = MessageBox.Show(string.Format("发送的Tag的myValue 的值：\n{0}\n", myValue), "提示", MessageBoxButtons.YesNo);
@@ -1175,7 +1190,7 @@ namespace UACSParking
                 DBHelper.ExecuteNonQuery(sqlText);
 
                 //发送tag
-                myValue = myValue.Substring(0, myValue.Length - 1);
+                //myValue = myValue.Substring(0, myValue.Length - 1);
 
                 //if (carType == "101" || carType == "103")
                 //{

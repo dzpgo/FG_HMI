@@ -52,7 +52,8 @@ namespace UACSParking
         void FrmCarEntry_Load(object sender, EventArgs e)
         {
 
-            cmbCarType.SelectedText = "热卷框架";
+            //cmbCarType.SelectedText = "热卷框架";
+            cmbCarType.SelectedText = "装料车";
             txtPacking.Text = PackingNo;
             txtCarNo.Text = CarNo;
             tagDP.ServiceName = "iplature";
@@ -79,6 +80,10 @@ namespace UACSParking
                 //cmbCarType.SelectedText = "一般社会车辆";
                 cmbCarType.Text = "一般社会车辆";
                 cmbCarType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            }
+            else if (carType == "ALL")
+            {
+
             }
             else
             {
@@ -110,27 +115,27 @@ namespace UACSParking
             DataRow dr = dt.NewRow();
             //if (PackingNo.Contains("Z0"))
             //{
-            //dr = dt.NewRow();
-            //dr["TypeValue"] = "E";
-            //dr["TypeName"] = "东";
-            //dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["TypeValue"] = "E";
+            dr["TypeName"] = "东";
+            dt.Rows.Add(dr);
 
-            //dr = dt.NewRow();
-            //dr["TypeValue"] = "W";
-            //dr["TypeName"] = "西";
-            //dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["TypeValue"] = "W";
+            dr["TypeName"] = "西";
+            dt.Rows.Add(dr);
             //}
             //else
             //{
-            dr = dt.NewRow();
-            dr["TypeValue"] = "S";
-            dr["TypeName"] = "南";
-            dt.Rows.Add(dr);
+            //dr = dt.NewRow();
+            //dr["TypeValue"] = "S";
+            //dr["TypeName"] = "南";
+            //dt.Rows.Add(dr);
 
-            dr = dt.NewRow();
-            dr["TypeValue"] = "N";
-            dr["TypeName"] = "北";
-            dt.Rows.Add(dr);
+            //dr = dt.NewRow();
+            //dr["TypeValue"] = "N";
+            //dr["TypeName"] = "北";
+            //dt.Rows.Add(dr);
             //}
 
             //绑定列表下拉框数据
@@ -158,7 +163,7 @@ namespace UACSParking
                 return;
             }
             //框架车
-            if (carType == "框架车")
+            if (carType == "框架车" || carType == "装料车")
             {
                 //txtDirection.Text = "南";
                 // txtDirection.Enabled = false ;
@@ -172,6 +177,14 @@ namespace UACSParking
                 {
                     carDirection = "N";
                 }
+                else if (txtDirection.Text.Trim() == "东")
+                {
+                    carDirection = "E";
+                }
+                else if (txtDirection.Text.Trim() == "西")
+                {
+                    carDirection = "W";
+                }
                 else
                 {
                     MessageBox.Show("请输入车头方向！", "提示");
@@ -184,33 +197,79 @@ namespace UACSParking
                 }
                 if (txtCarNo.Text.Trim() != "" || txtDirection.Text.Trim() != "" || txtFlag.Text.Trim() != "" || txtPacking.Text.Trim() != "")
                 {
+                    ////操作人|日期|班次|班组|停车位|车号|空满标记|车头方向|载重能力|设备号
+                    ////车头位置(东：E 西：W 南：S 北：N)
+                    //StringBuilder sb = new StringBuilder("HMI");
+                    //sb.Append("|");
+                    //sb.Append(DateTime.Now.ToString("yyyyMMddHHmmss"));
+                    //sb.Append("|");
+                    //sb.Append("1");
+                    //sb.Append("|");
+                    //sb.Append("1");
+                    //sb.Append("|");
+                    //sb.Append(txtPacking.Text.Trim());
+                    //sb.Append("|");
+                    //sb.Append(txtCarNo.Text.ToUpper().Trim());
+                    //sb.Append("|");
+                    //sb.Append(carFlag.Trim());
+                    //sb.Append("|");
+                    //// sb.Append(carDirection.Trim());
+                    //sb.Append(txtDirection.SelectedValue.ToString().Trim());
+                    //sb.Append("|");
+                    //sb.Append("90");
+                    //sb.Append("|");
+                    //if (txtFlag.Text.Trim().Equals("空"))
+                    //{
+                    //    sb.Append("0");
+                    //}
+                    //else
+                    //{
+                    //    sb.Append("1");
+                    //}                    
+                    //sb.Append("|");
+                    //string carTypeValue = cmbCarType.SelectedValue.ToString().Trim();
+                    //sb.Append(carTypeValue); //100
+                    //sb.Append("|");
+                    //sb.Append("0");
+
+                    //操作人 | 日期 | 班次 | 班组 | 停车位 | 车号 | 空重标记 | 车头朝向 | 装料模式 | 扫描行车 | 车辆类型 | 停车位类型
                     //操作人|日期|班次|班组|停车位|车号|空满标记|车头方向|载重能力|设备号
                     //车头位置(东：E 西：W 南：S 北：N)
-                    StringBuilder sb = new StringBuilder("HMI");
+                    StringBuilder sb = new StringBuilder("HMI");  //操作人
                     sb.Append("|");
-                    sb.Append(DateTime.Now.ToString("yyyyMMddHHmmss"));
+                    sb.Append(DateTime.Now.ToString("yyyyMMddHHmmss")); //日期
                     sb.Append("|");
-                    sb.Append("1");
+                    sb.Append("1");  //班次
                     sb.Append("|");
-                    sb.Append("1");
+                    sb.Append("1");  //班组
                     sb.Append("|");
-                    sb.Append(txtPacking.Text.Trim());
+                    sb.Append(txtPacking.Text.Trim());   //停车位
                     sb.Append("|");
-                    sb.Append(txtCarNo.Text.ToUpper().Trim());
+                    sb.Append(txtCarNo.Text.ToUpper().Trim());   //车号
                     sb.Append("|");
-                    sb.Append(carFlag.Trim());
+                    if (txtFlag.Text.Trim().Equals("空"))
+                    {
+                        sb.Append("0");  //空重标记 0：空
+                    }
+                    else
+                    {
+                        sb.Append("1");  //空重标记 1：满
+                    }
+                    //sb.Append(carFlag.Trim());
                     sb.Append("|");
                     // sb.Append(carDirection.Trim());
-                    sb.Append(txtDirection.SelectedValue.ToString().Trim());
+                    sb.Append(txtDirection.SelectedValue.ToString().Trim());   //车头朝向
                     sb.Append("|");
-                    sb.Append("90");
+                    //sb.Append("90");
+                    sb.Append(cmbWordMode.SelectedValue.ToString().Trim());   //装料模式
                     sb.Append("|");
-                    sb.Append("1");
+                    sb.Append("0"); //扫描行车
                     sb.Append("|");
                     string carTypeValue = cmbCarType.SelectedValue.ToString().Trim();
-                    sb.Append(carTypeValue); //100
+                    sb.Append(carTypeValue); //车辆类型
                     sb.Append("|");
-                    sb.Append("0");
+                    sb.Append("0");   //停车位类型
+
 
                     //DialogResult dResult = MessageBox.Show(sb.ToString(), "调试", MessageBoxButtons.YesNo);
                     //if (dResult == DialogResult.No)
@@ -285,19 +344,26 @@ namespace UACSParking
                     sb.Append("|");
                     sb.Append("90");
                     sb.Append("|");
-                    sb.Append("1");
+                    if (txtFlag.Text.Trim().Equals("空"))
+                    {
+                        sb.Append("0");
+                    }
+                    else
+                    {
+                        sb.Append("1");
+                    }
                     sb.Append("|");
                     string carTypeValue = cmbCarType.SelectedValue.ToString().Trim();
                     sb.Append(carTypeValue);
                     //sb.Append("101");
                     sb.Append("|");
-                    if (carTypeValue == "102")
+                    if (carTypeValue == "2")
                     {
-                        sb.Append("1");
+                        sb.Append("2");
                     }
                     else
                     {
-                        sb.Append("0");
+                        sb.Append("1");
                     }
                     //DialogResult dResult = MessageBox.Show(sb.ToString(), "调试", MessageBoxButtons.YesNo);
                     //if (dResult == DialogResult.No)
@@ -306,7 +372,7 @@ namespace UACSParking
                     //}
                     tagDP.SetData("EV_PARKING_CARARRIVE", sb.ToString());
                     carTypeValue1550 = Int16.Parse(carTypeValue);
-                    DialogResult dr = MessageBox.Show("社会车车到位成功，激光扫描开始，请保证车位上方没有行车经过。", "提示", MessageBoxButtons.OK);
+                    DialogResult dr = MessageBox.Show("装料车车到位成功，激光扫描开始，请保证车位上方没有行车经过。", "提示", MessageBoxButtons.OK);
                     ParkClassLibrary.HMILogger.WriteLog("车到位", "车到位：" + sb.ToString(), ParkClassLibrary.LogLevel.Info, this.Text);
                     if (dr == DialogResult.OK)
                     {
@@ -376,30 +442,30 @@ namespace UACSParking
             }
             else if (carType == "ALL")
             {
-                dr = dt.NewRow();
-                dr["TypeValue"] = "106";
-                dr["TypeName"] = "热卷框架";
-                dt.Rows.Add(dr);
+                //dr = dt.NewRow();
+                //dr["TypeValue"] = "106";
+                //dr["TypeName"] = "热卷框架";
+                //dt.Rows.Add(dr);
 
-                dr = dt.NewRow();
-                dr["TypeValue"] = "101";
-                dr["TypeName"] = "一般社会车";
-                dt.Rows.Add(dr);
+                //dr = dt.NewRow();
+                //dr["TypeValue"] = "101";
+                //dr["TypeName"] = "一般社会车";
+                //dt.Rows.Add(dr);
 
-                dr = dt.NewRow();
-                dr["TypeValue"] = "103";
-                dr["TypeName"] = "较低社会车";
-                dt.Rows.Add(dr);
+                //dr = dt.NewRow();
+                //dr["TypeValue"] = "103";
+                //dr["TypeName"] = "较低社会车";
+                //dt.Rows.Add(dr);
 
-                dr = dt.NewRow();
-                dr["TypeValue"] = "102";
-                dr["TypeName"] = "大头娃娃车";
-                dt.Rows.Add(dr);
+                //dr = dt.NewRow();
+                //dr["TypeValue"] = "102";
+                //dr["TypeName"] = "大头娃娃车";
+                //dt.Rows.Add(dr);
 
-                dr = dt.NewRow();
-                dr["TypeValue"] = "100";
-                dr["TypeName"] = "普通框架";
-                dt.Rows.Add(dr);
+                //dr = dt.NewRow();
+                //dr["TypeValue"] = "100";
+                //dr["TypeName"] = "普通框架";
+                //dt.Rows.Add(dr);
 
                 //dr = dt.NewRow();
                 //dr["TypeValue"] = "104";
@@ -409,6 +475,28 @@ namespace UACSParking
                 //dr = dt.NewRow();
                 //dr["TypeValue"] = "200";
                 //dr["TypeName"] = "木架卷车";
+                //dt.Rows.Add(dr);
+
+                dr = dt.NewRow();
+                dr["TypeValue"] = "2";
+                dr["TypeName"] = "装料车";
+                dt.Rows.Add(dr);
+
+                //dr = dt.NewRow();
+                //dr["TypeValue"] = "1";
+                //dr["TypeName"] = "卡车";
+                //dt.Rows.Add(dr);
+            }
+            else if (carType == "装料车")
+            {
+                dr = dt.NewRow();
+                dr["TypeValue"] = "2";
+                dr["TypeName"] = "装料车";
+                dt.Rows.Add(dr);
+
+                //dr = dt.NewRow();
+                //dr["TypeValue"] = "1";
+                //dr["TypeName"] = "卡车";
                 //dt.Rows.Add(dr);
             }
 
@@ -434,6 +522,13 @@ namespace UACSParking
                 txtDirection.Enabled = true;
                 //txtDirection.Text = "南";
                 carType = "ALL";
+                button1.Enabled = true;
+            }
+            else if (cmbCarType.SelectedValue != null && int.Parse(cmbCarType.SelectedValue.ToString()) == 2)
+            {
+                txtDirection.Enabled = true;
+                //txtDirection.Text = "南";
+                carType = "装料车";
                 button1.Enabled = true;
             }
             else

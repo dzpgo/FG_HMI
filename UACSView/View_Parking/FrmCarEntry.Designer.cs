@@ -38,7 +38,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.txtFlag = new System.Windows.Forms.ComboBox();
             this.txtDirection = new System.Windows.Forms.ComboBox();
-            this.labTips = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbCarType = new System.Windows.Forms.ComboBox();
             this.cmbWordMode = new System.Windows.Forms.ComboBox();
@@ -62,7 +61,7 @@
             // 
             this.txtPacking.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtPacking.Location = new System.Drawing.Point(180, 45);
-            this.txtPacking.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPacking.Margin = new System.Windows.Forms.Padding(4);
             this.txtPacking.Name = "txtPacking";
             this.txtPacking.Size = new System.Drawing.Size(223, 39);
             this.txtPacking.TabIndex = 1;
@@ -71,7 +70,7 @@
             // 
             this.txtCarNo.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtCarNo.Location = new System.Drawing.Point(180, 114);
-            this.txtCarNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCarNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCarNo.Name = "txtCarNo";
             this.txtCarNo.Size = new System.Drawing.Size(223, 39);
             this.txtCarNo.TabIndex = 3;
@@ -115,8 +114,8 @@
             this.button1.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(44, 593);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(42, 551);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 60);
             this.button1.TabIndex = 8;
@@ -129,8 +128,8 @@
             this.button2.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(253, 593);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Location = new System.Drawing.Point(251, 551);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(150, 60);
             this.button2.TabIndex = 9;
@@ -148,7 +147,7 @@
             "1",
             "2"});
             this.txtFlag.Location = new System.Drawing.Point(180, 183);
-            this.txtFlag.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFlag.Margin = new System.Windows.Forms.Padding(4);
             this.txtFlag.Name = "txtFlag";
             this.txtFlag.Size = new System.Drawing.Size(223, 39);
             this.txtFlag.TabIndex = 10;
@@ -160,21 +159,10 @@
             this.txtDirection.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtDirection.FormattingEnabled = true;
             this.txtDirection.Location = new System.Drawing.Point(180, 327);
-            this.txtDirection.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDirection.Margin = new System.Windows.Forms.Padding(4);
             this.txtDirection.Name = "txtDirection";
             this.txtDirection.Size = new System.Drawing.Size(223, 39);
             this.txtDirection.TabIndex = 11;
-            // 
-            // labTips
-            // 
-            this.labTips.AutoSize = true;
-            this.labTips.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labTips.Location = new System.Drawing.Point(176, 387);
-            this.labTips.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labTips.Name = "labTips";
-            this.labTips.Size = new System.Drawing.Size(232, 24);
-            this.labTips.TabIndex = 12;
-            this.labTips.Text = "朝1-1门为南，朝1-2门为北";
             // 
             // label6
             // 
@@ -194,7 +182,7 @@
             this.cmbCarType.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbCarType.FormattingEnabled = true;
             this.cmbCarType.Location = new System.Drawing.Point(180, 255);
-            this.cmbCarType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbCarType.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCarType.Name = "cmbCarType";
             this.cmbCarType.Size = new System.Drawing.Size(223, 39);
             this.cmbCarType.TabIndex = 14;
@@ -205,7 +193,7 @@
             this.cmbWordMode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmbWordMode.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbWordMode.FormattingEnabled = true;
-            this.cmbWordMode.Location = new System.Drawing.Point(180, 441);
+            this.cmbWordMode.Location = new System.Drawing.Point(178, 398);
             this.cmbWordMode.Margin = new System.Windows.Forms.Padding(4);
             this.cmbWordMode.Name = "cmbWordMode";
             this.cmbWordMode.Size = new System.Drawing.Size(223, 39);
@@ -216,7 +204,7 @@
             this.cmbScanCar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmbScanCar.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbScanCar.FormattingEnabled = true;
-            this.cmbScanCar.Location = new System.Drawing.Point(180, 515);
+            this.cmbScanCar.Location = new System.Drawing.Point(178, 472);
             this.cmbScanCar.Margin = new System.Windows.Forms.Padding(4);
             this.cmbScanCar.Name = "cmbScanCar";
             this.cmbScanCar.Size = new System.Drawing.Size(223, 39);
@@ -226,7 +214,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(36, 449);
+            this.label5.Location = new System.Drawing.Point(34, 406);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(134, 31);
@@ -237,7 +225,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(38, 515);
+            this.label7.Location = new System.Drawing.Point(36, 472);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(134, 31);
@@ -250,10 +238,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(470, 684);
+            this.ClientSize = new System.Drawing.Size(470, 652);
             this.Controls.Add(this.cmbCarType);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.labTips);
             this.Controls.Add(this.cmbScanCar);
             this.Controls.Add(this.cmbWordMode);
             this.Controls.Add(this.txtDirection);
@@ -269,7 +256,7 @@
             this.Controls.Add(this.txtPacking);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "FrmCarEntry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -292,7 +279,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox txtFlag;
         private System.Windows.Forms.ComboBox txtDirection;
-        private System.Windows.Forms.Label labTips;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbCarType;
         private System.Windows.Forms.ComboBox cmbWordMode;

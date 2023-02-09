@@ -13,6 +13,7 @@ using Baosight.iSuperframe.Common;
 using ParkingControlLibrary;
 using ParkClassLibrary;
 using UACSDAL;
+using UACSView.View_Parking;
 
 namespace UACSParking
 {
@@ -2658,7 +2659,33 @@ namespace UACSParking
                 MessageBox.Show("车辆已经配载材料，请先做车离。");
                 return;
             }
-            SelectCoilByL3Form selectCoilF = new SelectCoilByL3Form();
+            #region 旧窗口
+
+            //SelectCoilByL3Form selectCoilF = new SelectCoilByL3Form();
+            //selectCoilF.CarType = curCarType.ToString().Trim();
+            //if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('A'))
+            //{
+            //    selectCoilF.ParkNO = cbbPacking.Text.Trim();
+            //    selectCoilF.TransferValue += selectCoilF_TransferValue;
+            //    selectCoilF.GrooveNum = txtGrooveNum.Text.Trim();
+            //    //selectCoilF.GrooveTotal = txtSelectGoove.Text.Trim();
+
+            //    if (txtCarNo.Text.Trim().Length > 3)
+            //        selectCoilF.CarNO = txtCarNo.Text.Trim();
+            //    else
+            //    {
+            //        MessageBox.Show("车牌号信息不正确！");
+            //        return;
+            //    }
+            //    selectCoilF.ShowDialog();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("车位号信息不正确！");
+            //} 
+            #endregion
+
+            SelectCoilByL3FormNew selectCoilF = new SelectCoilByL3FormNew();
             selectCoilF.CarType = curCarType.ToString().Trim();
             if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('A'))
             {
@@ -2680,6 +2707,7 @@ namespace UACSParking
             {
                 MessageBox.Show("车位号信息不正确！");
             }
+
         }
 
         private void cbbPacking_SelectedIndexChanged_1(object sender, EventArgs e)
