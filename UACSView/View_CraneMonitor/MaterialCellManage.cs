@@ -58,6 +58,9 @@ namespace UACSView
                 BindCombox();
                 //
                 //this.dateTimePicker1_recTime.Value = DateTime.Now.AddDays(-1);
+
+                //加载初始化数据
+                GetYARDMAP_GRID_DEFINE();
             }
             catch (Exception er)
             {
@@ -406,6 +409,24 @@ namespace UACSView
             {
                 MessageBox.Show(er.Message);
             }         
+        }
+        /// <summary>
+        /// 初始化加载
+        /// </summary>
+        private void GetYARDMAP_GRID_DEFINE()
+        {
+            if (cbb_GridNo1.Text.Trim() != "")
+            {
+                string sql = "SELECT ROW_NUMBER() OVER() as ROW_INDEX,A.GRID_NO,A.GRID_STATUS,A.MAT_CODE,C.MAT_CNAME,A.MAT_WGT FROM UACS_YARDMAP_GRID_DEFINE A LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE WHERE A.GRID_NO = '" + cbb_GridNo1.SelectedValue.ToString().Trim() + "'";
+                dt.Clear();
+                dt = new DataTable();
+
+                using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
+                {
+                    dt.Load(rdr);
+                }
+                dataGridView2.DataSource = dt;
+            }
         }
 
         private void btnSelect2_Click(object sender, EventArgs e)

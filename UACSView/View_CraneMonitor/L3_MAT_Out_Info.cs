@@ -43,6 +43,8 @@ namespace UACSView
                 //BindCombox();
                 //
                 this.dateTimePicker1_recTime.Value = DateTime.Now.AddDays(-1);
+
+                dataGridView1.DataSource = getCraneOrderData(true);
             }
             catch (Exception er)
             {
@@ -61,7 +63,7 @@ namespace UACSView
             {
                 //this.tabControl1.SelectedTab = this.tabPage1;
                 //getCraneOrderData();
-                dataGridView1.DataSource = getCraneOrderData();
+                dataGridView1.DataSource = getCraneOrderData(false);
             }
             catch (Exception er)
             {
@@ -97,20 +99,40 @@ namespace UACSView
         /// <summary>
         /// 查询数据
         /// </summary>
-        private DataTable getCraneOrderData()
+        /// <param name="isLoad">是否是初始化 true=是初始化，false=不是初始化</param>
+        private DataTable getCraneOrderData(bool isLoad)
         {
             DataTable dtResult = InitDataTable(dataGridView1);
             string planNo = this.textPLAN_NO.Text.Trim();  //计划号
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");  //开始时间
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");  //结束时间
-            string sqlText = @"SELECT WORK_SEQ_NO, OPER_FLAG, PLAN_NO, BOF_NO, CAR_NO, MAT_CODE_1, '' AS MAT_CNAME_1, WEIGHT_1, MAT_CODE_2,  '' AS MAT_CNAME_2, WEIGHT_2, MAT_CODE_3, '' AS MAT_CNAME_3, WEIGHT_3, MAT_CODE_4,  '' AS MAT_CNAME_4, WEIGHT_4, MAT_CODE_5,  '' AS MAT_CNAME_5, WEIGHT_5, MAT_CODE_6,  '' AS MAT_CNAME_6, WEIGHT_6, MAT_CODE_7,  '' AS MAT_CNAME_7, WEIGHT_7, MAT_CODE_8,  '' AS MAT_CNAME_8, WEIGHT_8, MAT_CODE_9,  '' AS MAT_CNAME_9, WEIGHT_9, MAT_CODE_10,  '' AS MAT_CNAME_10, WEIGHT_10, PLAN_STATUS, REC_TIME, UPD_TIME, CYCLE_COUNT, MAT_NET_WT, WT_TIME FROM UACSAPP.UACS_L3_MAT_OUT_INFO A ";
+            string sqlText = @"SELECT WORK_SEQ_NO, OPER_FLAG, PLAN_NO, BOF_NO, CAR_NO, MAT_CODE_1, '' AS MAT_CNAME_1, WEIGHT_1, MAT_CODE_2,  '' AS MAT_CNAME_2, WEIGHT_2, MAT_CODE_3, '' AS MAT_CNAME_3, WEIGHT_3, MAT_CODE_4,  '' AS MAT_CNAME_4, WEIGHT_4, MAT_CODE_5,  '' AS MAT_CNAME_5, WEIGHT_5, MAT_CODE_6,  '' AS MAT_CNAME_6, WEIGHT_6, MAT_CODE_7,  '' AS MAT_CNAME_7, WEIGHT_7, MAT_CODE_8,  '' AS MAT_CNAME_8, WEIGHT_8, MAT_CODE_9,  '' AS MAT_CNAME_9, WEIGHT_9, MAT_CODE_10,  '' AS MAT_CNAME_10, WEIGHT_10, PLAN_STATUS, REC_TIME, UPD_TIME, CYCLE_COUNT, MAT_NET_WT, WT_TIME FROM UACSAPP.UACS_L3_MAT_OUT_INFO ";
             //sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE ";
             sqlText += "WHERE REC_TIME > '{0}' and REC_TIME < '{1}' ";
-            sqlText = string.Format(sqlText, recTime1, recTime2);
-            if (!string.IsNullOrEmpty(planNo))
+            sqlText = string.Format(sqlText, recTime1, recTime2);           
+
+            if (!isLoad)
             {
-                sqlText = string.Format("{0} and PLAN_NO LIKE '%{1}%' ", sqlText, planNo);
+                if (!string.IsNullOrEmpty(planNo))
+                {
+                    sqlText = string.Format("{0} and PLAN_NO LIKE '%{1}%' ", sqlText, planNo);
+                }
+                //按 NO>流水号>记录时间>更新时间 降序
+                sqlText += " ORDER BY WORK_SEQ_NO DESC,PLAN_NO DESC,REC_TIME DESC,UPD_TIME DESC ";
             }
+            else
+            {
+                //初次加载时默认查询倒序30条数据（仅初始化时用）
+                sqlText = @"SELECT WORK_SEQ_NO, OPER_FLAG, PLAN_NO, BOF_NO, CAR_NO, MAT_CODE_1, '' AS MAT_CNAME_1, WEIGHT_1, MAT_CODE_2,  '' AS MAT_CNAME_2, WEIGHT_2, MAT_CODE_3, '' AS MAT_CNAME_3, WEIGHT_3, MAT_CODE_4,  '' AS MAT_CNAME_4, WEIGHT_4, MAT_CODE_5,  '' AS MAT_CNAME_5, WEIGHT_5, MAT_CODE_6,  '' AS MAT_CNAME_6, WEIGHT_6, MAT_CODE_7,  '' AS MAT_CNAME_7, WEIGHT_7, MAT_CODE_8,  '' AS MAT_CNAME_8, WEIGHT_8, MAT_CODE_9,  '' AS MAT_CNAME_9, WEIGHT_9, MAT_CODE_10,  '' AS MAT_CNAME_10, WEIGHT_10, PLAN_STATUS, REC_TIME, UPD_TIME, CYCLE_COUNT, MAT_NET_WT, WT_TIME
+                            FROM (
+                            SELECT ROW_NUMBER() OVER(ORDER BY WORK_SEQ_NO DESC,OPER_FLAG DESC,REC_TIME DESC,UPD_TIME DESC) AS ROWNUM,
+                            WORK_SEQ_NO, OPER_FLAG, PLAN_NO, BOF_NO, CAR_NO, MAT_CODE_1, '' AS MAT_CNAME_1, WEIGHT_1, MAT_CODE_2,  '' AS MAT_CNAME_2, WEIGHT_2, MAT_CODE_3, '' AS MAT_CNAME_3, WEIGHT_3, MAT_CODE_4,  '' AS MAT_CNAME_4, WEIGHT_4, MAT_CODE_5,  '' AS MAT_CNAME_5, WEIGHT_5, MAT_CODE_6,  '' AS MAT_CNAME_6, WEIGHT_6, MAT_CODE_7,  '' AS MAT_CNAME_7, WEIGHT_7, MAT_CODE_8,  '' AS MAT_CNAME_8, WEIGHT_8, MAT_CODE_9,  '' AS MAT_CNAME_9, WEIGHT_9, MAT_CODE_10,  '' AS MAT_CNAME_10, WEIGHT_10, PLAN_STATUS, REC_TIME, UPD_TIME, CYCLE_COUNT, MAT_NET_WT, WT_TIME FROM UACSAPP.UACS_L3_MAT_OUT_INFO 
+                            ) a 
+                            WHERE ROWNUM > 0 and ROWNUM <=30";
+            }
+
+
+
             DataTable tbL3_MAT_OUT_INFO = new DataTable();
             // 执行
             using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))

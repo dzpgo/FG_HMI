@@ -40,6 +40,9 @@ namespace UACSView.View_CraneMonitor
                 BindCombox();
                 //
                 this.dateTimePicker1_recTime.Value = DateTime.Now.AddDays(-1);
+
+                //加载初始化数据
+                dataGridView1.DataSource = getCraneOrderData(true);
             }
             catch (Exception er)
             {
@@ -55,7 +58,7 @@ namespace UACSView.View_CraneMonitor
         {
             try
             {
-                dataGridView1.DataSource = getCraneOrderData();
+                dataGridView1.DataSource = getCraneOrderData(false);
             }
             catch (Exception er)
             {
@@ -82,7 +85,8 @@ namespace UACSView.View_CraneMonitor
         /// <summary>
         /// 查询数据
         /// </summary>
-        private DataTable getCraneOrderData()
+        /// <param name="isLoad">是否是初始化 true=是初始化，false=不是初始化</param>
+        private DataTable getCraneOrderData(bool isLoad)
         {
             string bayNo = this.cbb_BAY_NO.SelectedValue.ToString();  //跨号
             string craneMode = this.cbb_CRANE_MODE.SelectedValue.ToString();  //行车模式
@@ -93,18 +97,35 @@ namespace UACSView.View_CraneMonitor
             sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE ";
             sqlText += "WHERE A.REC_TIME > '{0}' and A.REC_TIME < '{1}' ";
             sqlText = string.Format(sqlText, recTime1, recTime2);
-            if (!string.IsNullOrEmpty(work_seqNo))
+            if (!isLoad)
             {
-                sqlText = string.Format("{0} and A.MAT_CODE LIKE '%{1}%' ", sqlText, work_seqNo);
+                if (!string.IsNullOrEmpty(work_seqNo))
+                {
+                    sqlText = string.Format("{0} and A.MAT_CODE LIKE '%{1}%' ", sqlText, work_seqNo);
+                }
+                if (bayNo != "全部")
+                {
+                    sqlText = string.Format("{0} and A.BAY_NO = '{1}' ", sqlText, bayNo);
+                }
+                if (craneMode != "全部")
+                {
+                    sqlText = string.Format("{0} and A.CRANE_MODE = '{1}' ", sqlText, craneMode);
+                }
+                //按 NO>流水号>记录时间>更新时间 降序
+                sqlText += " ORDER BY A.OPER_ID DESC,A.ORDER_NO DESC,A.REC_TIME DESC ";
             }
-            if (bayNo != "全部")
+            else
             {
-                sqlText = string.Format("{0} and A.BAY_NO = '{1}' ", sqlText, bayNo);
+                //初次加载时默认查询倒序30条数据（仅初始化时用）
+                sqlText = @"SELECT OPER_ID,ORDER_NO,ORDER_TYPE,BAY_NO,MAT_CODE,MAT_CNAME,MAT_TYPE,MAT_REQ_WGT,MAT_CUR_WGT,HAS_COIL_WGT,FROM_STOCK_NO,TO_STOCK_NO,STOCK_NO,CMD_STATUS,CMD_SEQ,PLAN_X,PLAN_Y,ACT_X,ACT_Y,CRANE_MODE,REC_TIME 
+                            FROM (
+                            SELECT ROW_NUMBER() OVER(ORDER BY A.OPER_ID DESC,A.ORDER_NO DESC,A.REC_TIME DESC) AS ROWNUM,
+                            A.OPER_ID, A.ORDER_NO, A.ORDER_TYPE, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.MAT_TYPE, A.MAT_REQ_WGT, A.MAT_CUR_WGT, A.HAS_COIL_WGT, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.STOCK_NO, A.CMD_STATUS, A.CMD_SEQ, A.PLAN_X, A.PLAN_Y, A.ACT_X, A.ACT_Y, A.CRANE_MODE, A.REC_TIME FROM UACSAPP.UACS_ORDER_OPER A 
+                            LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE 
+                            ) a 
+                            WHERE ROWNUM > 0 and ROWNUM <=30";
             }
-            if (craneMode != "全部")
-            {
-                sqlText = string.Format("{0} and A.CRANE_MODE = '{1}' ", sqlText, craneMode);
-            }
+
             DataTable dataTable = new DataTable();
             hasSetColumn = false;
             using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
@@ -318,7 +339,18 @@ namespace UACSView.View_CraneMonitor
             //控件设置值
             this.dateTimePicker1_recTime.Value = Convert.ToDateTime(day1);
             //查询
-            dataGridView1.DataSource = getCraneOrderData();
+            DataTable dataTable = getCraneOrderData(false);
+            if (dataTable.Rows.Count > 0)
+            {
+                dataGridView1.DataSource = dataTable;
+            }
+            else
+            {
+                while (dataGridView1.Rows.Count != 0)
+                {
+                    dataGridView1.Rows.RemoveAt(0);
+                }
+            }
         }
 
         /// <summary>
@@ -332,7 +364,19 @@ namespace UACSView.View_CraneMonitor
             //控件设置值
             this.dateTimePicker1_recTime.Value = Convert.ToDateTime(day1);
             //查询
-            dataGridView1.DataSource = getCraneOrderData();
+            DataTable dataTable = getCraneOrderData(false);
+            if (dataTable.Rows.Count > 0)
+            {
+                dataGridView1.DataSource = dataTable;
+            }
+            else
+            {
+                while (dataGridView1.Rows.Count != 0)
+                {
+                    dataGridView1.Rows.RemoveAt(0);
+                }
+            }
+            
         }
 
         /// <summary>
@@ -346,7 +390,18 @@ namespace UACSView.View_CraneMonitor
             //控件设置值
             this.dateTimePicker1_recTime.Value = Convert.ToDateTime(day1);
             //查询
-            dataGridView1.DataSource = getCraneOrderData();
+            DataTable dataTable = getCraneOrderData(false);
+            if (dataTable.Rows.Count > 0)
+            {
+                dataGridView1.DataSource = dataTable;
+            }
+            else
+            {
+                while (dataGridView1.Rows.Count != 0)
+                {
+                    dataGridView1.Rows.RemoveAt(0);
+                }
+            }
         }
     }
 }

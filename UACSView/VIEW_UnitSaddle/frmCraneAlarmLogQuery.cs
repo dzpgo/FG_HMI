@@ -33,6 +33,11 @@ namespace UACSView
             dateTimePicker_Start.Value = dt.Subtract(tp);
             dateTimePicker_End.Value = dt.Add(tp);
             BindComboBox(comboBox_ShipLotNo);
+
+            DateTime timeStart = dateTimePicker_Start.Value;
+            DateTime timeEnd = dateTimePicker_End.Value;
+            string craneNO = comboBox_ShipLotNo.Text;
+            readAlarmLog(true, craneNO, timeStart, timeEnd);
         }
 
 
@@ -63,36 +68,60 @@ namespace UACSView
         string alarmTime_Old = string.Empty;
         int araneCode = 0;
         bool flagColor = false;
-        private void readAlarmLog(string craneNO, DateTime timeStart, DateTime timeEnd)
+        /// <summary>
+        /// 查询报警信息
+        /// </summary>
+        /// <param name="isLoad">是否是初始化 true=是初始化，false=不是初始化</param>
+        /// <param name="craneNO">行车</param>
+        /// <param name="timeStart">开始时间</param>
+        /// <param name="timeEnd">结束时间</param>
+        private void readAlarmLog(bool isLoad,string craneNO, DateTime timeStart, DateTime timeEnd)
         {
             try
             {
-                string tableName = "UACS_CRANE_ALARM_" + craneNO;
-
                 string strSql = "";
-                strSql = "select ";
-                strSql += " a.CRANE_NO   CRANE_NO, ";
-                strSql += " a.ALARM_CODE   ALARM_CODE, ";
-                strSql += " a.ALARM_TIME   ALARM_TIME, ";
-                strSql += " a.X_ACT   X_ACT, ";
-                strSql += " a.Y_ACT   Y_ACT, ";
-                strSql += " a.Z_ACT   Z_ACT, ";
-                strSql += " a.HAS_COIL   HAS_COIL, ";
-                strSql += " a.CLAMP_WIDTH_ACT   CLAMP_WIDTH_ACT, ";
-                strSql += " a.CONTROL_MODE   CONTROL_MODE, ";
-                strSql += " a.CRANE_STATUS   CRANE_STATUS, ";
-                strSql += " a.ORDER_ID   ORDER_ID, ";
-                strSql += " b.ALARM_INFO   ALARM_INFO, ";
-                strSql += " b.ALARM_CLASS   ALARM_CLASS ";
-                strSql += " from ";
-                strSql += tableName+" a "+",";
-                strSql += "  UACS_CRANE_ALARM_CODE_DEFINE b  ";
-                strSql += " where ";
-                strSql += "       a.ALARM_CODE=b.ALARM_CODE ";
-                strSql += " and a.CRANE_NO=" + "'" + craneNO + "'";
-                strSql += " and a.ALARM_TIME>= " + DateNormal_ToString(timeStart);
-                strSql += " and a.ALARM_TIME<= " + DateNormal_ToString(timeEnd);
-                strSql += " Order By a.ALARM_TIME " ;
+                string tableName = "UACS_CRANE_ALARM_" + craneNO;
+                if (!isLoad)
+                {
+                    strSql = "select ";
+                    strSql += " a.CRANE_NO   CRANE_NO, ";
+                    strSql += " a.ALARM_CODE   ALARM_CODE, ";
+                    strSql += " a.ALARM_TIME   ALARM_TIME, ";
+                    strSql += " a.X_ACT   X_ACT, ";
+                    strSql += " a.Y_ACT   Y_ACT, ";
+                    strSql += " a.Z_ACT   Z_ACT, ";
+                    strSql += " a.HAS_COIL   HAS_COIL, ";
+                    strSql += " a.CLAMP_WIDTH_ACT   CLAMP_WIDTH_ACT, ";
+                    strSql += " a.CONTROL_MODE   CONTROL_MODE, ";
+                    strSql += " a.CRANE_STATUS   CRANE_STATUS, ";
+                    strSql += " a.ORDER_ID   ORDER_ID, ";
+                    strSql += " b.ALARM_INFO   ALARM_INFO, ";
+                    strSql += " b.ALARM_CLASS   ALARM_CLASS ";
+                    strSql += " from ";
+                    strSql += tableName + " a " + ",";
+                    strSql += "  UACS_CRANE_ALARM_CODE_DEFINE b  ";
+                    strSql += " where ";
+                    strSql += "       a.ALARM_CODE=b.ALARM_CODE ";
+                    strSql += " and a.CRANE_NO=" + "'" + craneNO + "'";
+                    strSql += " and a.ALARM_TIME>= " + DateNormal_ToString(timeStart);
+                    strSql += " and a.ALARM_TIME<= " + DateNormal_ToString(timeEnd);
+                    strSql += " Order By a.ALARM_TIME ";
+                }
+                else
+                {
+                    //初次加载时默认查询倒序30条数据（仅初始化时用）
+                    strSql += "SELECT CRANE_NO,ALARM_CODE,ALARM_TIME,X_ACT,Y_ACT,Z_ACT,HAS_COIL,CLAMP_WIDTH_ACT,CONTROL_MODE,CRANE_STATUS,ORDER_ID,ALARM_INFO,ALARM_CLASS ";
+                    strSql += "FROM ( ";
+                    strSql += "SELECT ROW_NUMBER() OVER(ORDER BY A.ALARM_TIME) AS ROWNUM, ";
+                    strSql += "a.CRANE_NO, a.ALARM_CODE, a.ALARM_TIME, a.X_ACT, a.Y_ACT, a.Z_ACT, a.HAS_COIL, a.CLAMP_WIDTH_ACT, a.CONTROL_MODE, a.CRANE_STATUS, a.ORDER_ID, b.ALARM_INFO, b.ALARM_CLASS  ";
+                    strSql += "FROM ";
+                    strSql += tableName + " a " + ",";
+                    strSql += "UACS_CRANE_ALARM_CODE_DEFINE b  ";
+                    strSql += "where a.ALARM_CODE=b.ALARM_CODE ";
+                    strSql += " AND a.CRANE_NO=" + "'" + craneNO + "'";
+                    strSql += ") a  ";
+                    strSql += "WHERE ROWNUM > 0 and ROWNUM <=30 ";
+                }
 
                 using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(strSql))
                 {
@@ -198,7 +227,7 @@ namespace UACSView
                             + theDateTime.Hour.ToString("00") + theDateTime.Minute.ToString("00") + theDateTime.Second.ToString("00");
                 strDateTime = "to_date('" + strDateTime + "','YYYYMMDDHH24MISS')";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return strDateTime;
@@ -211,12 +240,12 @@ namespace UACSView
                 DateTime timeStart = dateTimePicker_Start.Value;
                 DateTime timeEnd = dateTimePicker_End.Value;
                 string craneNO = comboBox_ShipLotNo.Text ;
-                readAlarmLog(craneNO, timeStart, timeEnd);
+                readAlarmLog(false ,craneNO, timeStart, timeEnd);
 
                 //光标显示到最后一行
                 GridAlarmLog.FirstDisplayedScrollingRowIndex = GridAlarmLog.RowCount - 1;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -352,7 +381,7 @@ namespace UACSView
                 comBox.ValueMember = "TypeValue";
                 comBox.SelectedItem = 0;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }

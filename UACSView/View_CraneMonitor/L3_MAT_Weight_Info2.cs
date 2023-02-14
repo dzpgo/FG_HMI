@@ -43,6 +43,8 @@ namespace UACSView.View_CraneMonitor
                 BindCombox();
                 //
                 this.dateTimePicker1_recTime.Value = DateTime.Now.AddDays(-1);
+                //
+                dataGridView1.DataSource = getCraneOrderData(true);
             }
             catch (Exception er)
             {
@@ -59,7 +61,7 @@ namespace UACSView.View_CraneMonitor
         {
             try
             {
-                dataGridView1.DataSource = getCraneOrderData();
+                dataGridView1.DataSource = getCraneOrderData(false);
             }
             catch (Exception er)
             {
@@ -80,18 +82,35 @@ namespace UACSView.View_CraneMonitor
         /// <summary>
         /// 查询数据
         /// </summary>
-        private DataTable getCraneOrderData()
+        /// <param name="isLoad">是否是初始化 true=是初始化，false=不是初始化</param>
+        private DataTable getCraneOrderData(bool isLoad)
         {
             string work_seqNo = this.textWORK_SEQ_NO.Text.Trim();  //计划号
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");  //开始时间
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");  //结束时间
-            string sqlText = @"SELECT A.WORK_SEQ_NO,A.TRUCK_NO,A.MAT_PROD_CODE, C.MAT_CNAME,A.MAT_WT,A.REC_TIME FROM UACSAPP.UACS_L3_MAT_WEIGHT_INFO A ";
+            string sqlText = @"SELECT A.WORK_SEQ_NO,A.TRUCK_NO,A.MAT_PROD_CODE, C.MAT_CNAME,A.MAT_WT,A.REC_TIME,A.UPD_TIME FROM UACSAPP.UACS_L3_MAT_WEIGHT_INFO A ";
             sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_PROD_CODE ";
             sqlText += "WHERE A.REC_TIME > '{0}' and A.REC_TIME < '{1}' ";
-            sqlText = string.Format(sqlText, recTime1, recTime2);
-            if (!string.IsNullOrEmpty(work_seqNo))
+            sqlText = string.Format(sqlText, recTime1, recTime2);            
+            if (!isLoad) 
             {
-                sqlText = string.Format("{0} and A.WORK_SEQ_NO LIKE '%{1}%' ", sqlText, work_seqNo);
+                if (!string.IsNullOrEmpty(work_seqNo))
+                {
+                    sqlText = string.Format("{0} and A.WORK_SEQ_NO LIKE '%{1}%' ", sqlText, work_seqNo);
+                    //按 NO>>记录时间>更新时间 降序
+                    sqlText += " ORDER BY A.WORK_SEQ_NO DESC,A.REC_TIME DESC,A.UPD_TIME DESC ";
+                }
+            }
+            else
+            {
+                //初次加载时默认查询倒序30条数据（仅初始化时用）
+                sqlText = @"SELECT WORK_SEQ_NO,TRUCK_NO,MAT_PROD_CODE,MAT_CNAME,MAT_WT,REC_TIME,UPD_TIME
+                            FROM (
+                            SELECT ROW_NUMBER() OVER(ORDER BY A.WORK_SEQ_NO DESC,A.REC_TIME DESC,A.UPD_TIME DESC) AS ROWNUM,
+                            A.WORK_SEQ_NO,A.TRUCK_NO,A.MAT_PROD_CODE, C.MAT_CNAME,A.MAT_WT,A.REC_TIME,A.UPD_TIME FROM UACSAPP.UACS_L3_MAT_WEIGHT_INFO A 
+                            LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_PROD_CODE 
+                            ) a 
+                            WHERE ROWNUM > 0 and ROWNUM <=30";
             }
             DataTable dataTable = new DataTable();
             hasSetColumn = false;

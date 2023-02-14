@@ -13,6 +13,8 @@ using Baosight.iSuperframe.Common;
 using UACSDAL;
 using Baosight.iSuperframe.Authorization.Interface;
 using Baosight.iSuperframe.Authorization;
+using System.Xml;
+
 namespace UACSView
 {
     /// <summary>
@@ -29,6 +31,11 @@ namespace UACSView
             //dBHelper = Baosight.iSuperframe.Common.DataBase.DBFactory.GetHelper("ZJDB0");
         }
 
+        /// <summary>
+        /// 数据加载事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MLogForm_Load(object sender, EventArgs e)
         {
             //dataGridView1.ColumnHeadersHeight = 35;
@@ -40,7 +47,7 @@ namespace UACSView
             //UACS.ViewHelper.DataGridViewInit(cbxKey1);
             this.dateTimeStart.Value = DateTime.Now.Date;
             dateTimeEnd.Text = DateTime.Now.Date.AddDays(1).ToString();
-            GetoLogsData(dateTimeStart.Value, dateTimeEnd.Value, "", "");
+            GetoLogsData(true,dateTimeStart.Value, dateTimeEnd.Value, "", "");
         }
         private void GetFormLogData()
         {
@@ -55,12 +62,26 @@ namespace UACSView
             //}
         }
 
+        /// <summary>
+        /// 点击查询事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             //GetFormLogData();
-            GetoLogsData(dateTimeStart.Value, dateTimeEnd.Value, txtKey1.Text.Trim(), txtInfo.Text.Trim());                 
+            GetoLogsData(false,dateTimeStart.Value, dateTimeEnd.Value, txtKey1.Text.Trim(), txtInfo.Text.Trim());                 
         }
-        private void GetoLogsData(DateTime start, DateTime end, string key1, string info)
+
+        /// <summary>
+        /// 查询数据
+        /// </summary>
+        /// <param name="isLoad">是否是初始化 true=是初始化，false=不是初始化</param>
+        /// <param name="start">开始时间</param>
+        /// <param name="end">结束时间</param>
+        /// <param name="key1">单独记录的关键信息1</param>
+        /// <param name="info">日志信息</param>
+        private void GetoLogsData(bool isLoad, DateTime start, DateTime end, string key1, string info)
         {            
             string strStart = start.ToString("yyyyMMddHHmmss");
             string strEnd = end.ToString("yyyyMMddHHmmss");
@@ -70,27 +91,36 @@ namespace UACSView
                 string sql = "SELECT ROW_NUMBER() OVER() as ROW_INDEX , SEQNO, KEY1, KEY2, \"LEVEL\", INFO, MODULE, USERID, TOC FROM UACS_HMI_LOG   WHERE 1 = 1  ";
                 sql += " AND TOC  > '" + strStart + "' and TOC <'" + strEnd + "'";
 
-                if (key1 != "" && key1 != "全部")
+                if (!isLoad)
                 {
-                    sql += " AND KEY1 LIKE '%" + key1 + "%' ";
+                    if (key1 != "" && key1 != "全部")
+                    {
+                        sql += " AND KEY1 LIKE '%" + key1 + "%' ";
+                    }
+                    if (info != "" && info != "全部")
+                    {
+                        sql += " AND INFO LIKE  '%" + info + "%' ";
+                    }
+                    if (cmbLevelId.Text.Contains("出错信息"))
+                    {
+                        sql += " AND LEVEL = '" + 3 + "' ";
+                    }
+                    else if (cmbLevelId.Text.Contains("普通警告"))
+                    {
+                        sql += " AND LEVEL = '" + 2 + "' ";
+                    }
+                    else if (cmbLevelId.Text.Contains("普通信息"))
+                    {
+                        sql += " AND LEVEL = '" + 1 + "' ";
+                    }
+                    sql += " ORDER BY TOC DESC ";
                 }
-                if (info != "" && info != "全部")
+                else
                 {
-                    sql += " AND INFO LIKE  '%" + info + "%' ";
+                    //初次加载时默认查询倒序30条数据（仅初始化时用）
+                    sql = "SELECT ROWNUM AS ROW_INDEX,SEQNO, KEY1, KEY2, \"LEVEL\", INFO, MODULE, USERID, TOC FROM (SELECT ROW_NUMBER() OVER(ORDER BY TOC DESC) AS ROWNUM, SEQNO, KEY1, KEY2, \"LEVEL\", INFO, MODULE, USERID, TOC FROM UACS_HMI_LOG WHERE TOC IS NOT NULL) a WHERE ROWNUM > 0 and ROWNUM <=30 ";
                 }
-                if (cmbLevelId.Text.Contains("出错信息"))
-                {
-                    sql += " AND LEVEL = '" + 3 + "' ";
-                }
-                 else if (cmbLevelId.Text.Contains("普通警告"))
-                {
-                    sql += " AND LEVEL = '" + 2 + "' ";
-                }
-                else if (cmbLevelId.Text.Contains("普通信息"))
-                {
-                    sql += " AND LEVEL = '" + 1 + "' ";
-                }
-                sql += " ORDER BY TOC DESC ";
+                
                 dt.Clear();
                 dt = new DataTable();
 

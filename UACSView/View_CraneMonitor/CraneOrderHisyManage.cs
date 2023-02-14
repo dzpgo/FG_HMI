@@ -51,6 +51,13 @@ namespace UACSView
                 BindCombox();
                 //
                 this.dateTimePicker1_recTime.Value = DateTime.Now.AddDays(-1);
+
+                //行车指令
+                getCraneOrderData2(true);
+                dataGridView1.DataSource = dt;
+                //当前行车指令              
+                dataGridView2.DataSource = getCraneOrderData3(true);
+
             }
             catch (Exception er)
             {
@@ -86,10 +93,10 @@ namespace UACSView
                     this.tabControl1.SelectedTab = this.tabPage1;
                 }
                 //行车指令
-                getCraneOrderData2();
+                getCraneOrderData2(false);
                 dataGridView1.DataSource = dt;
                 //当前行车指令              
-                dataGridView2.DataSource = getCraneOrderData3();
+                dataGridView2.DataSource = getCraneOrderData3(false);
             }
             catch (Exception er)
             {
@@ -335,24 +342,44 @@ namespace UACSView
         /// <summary>
         /// 查询指令数据
         /// </summary>
-        private void getCraneOrderData2()
+        /// <param name="isLoad">是否是初始化 true=是初始化，false=不是初始化</param>
+        private void getCraneOrderData2(bool isLoad)
         {
             string matNo = this.txt_MAT_CODE.Text.Trim();
             string orderType = this.cbb_ORDER_TYPE.SelectedValue.ToString();
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");
-            string sqlText = @"SELECT A.ORDER_NO, A.ORDER_GROUP_NO, A.ORDER_TYPE, A.ORDER_PRIORITY, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.REC_TIME, A.UPD_TIME FROM UACSAPP.UACS_ORDER_DATA A ";
-            sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE ";
-            sqlText += "WHERE A.REC_TIME > '{0}' and A.REC_TIME < '{1}' ";
-            sqlText = string.Format(sqlText, recTime1, recTime2);
-            if (!string.IsNullOrEmpty(matNo))
+            string sqlText = "";
+            if (!isLoad)
             {
-                sqlText = string.Format("{0} and A.MAT_CODE LIKE '%{1}%' ", sqlText, matNo);
+                sqlText = @"SELECT A.ORDER_NO, A.ORDER_GROUP_NO, A.ORDER_TYPE, A.ORDER_PRIORITY, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.REC_TIME, A.UPD_TIME FROM UACSAPP.UACS_ORDER_DATA A ";
+                sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE ";
+                sqlText += "WHERE 1=1 ";
+                sqlText += "AND A.REC_TIME > '{0}' AND A.REC_TIME < '{1}' ";
+                sqlText = string.Format(sqlText, recTime1, recTime2);
+                if (!string.IsNullOrEmpty(matNo))
+                {
+                    sqlText = string.Format("{0} AND A.MAT_CODE LIKE '%{1}%' ", sqlText, matNo);
+                }
+                if (orderType != "全部")
+                {
+                    sqlText = string.Format("{0} AND A.ORDER_TYPE = '{1}' ", sqlText, orderType);
+                }
+                //按 NO>流水号>记录时间>更新时间 降序
+                sqlText += " ORDER BY A.ORDER_NO DESC,A.REC_TIME DESC,A.UPD_TIME DESC ";
             }
-            if (orderType != "全部")
+            else
             {
-                sqlText = string.Format("{0} and A.ORDER_TYPE = '{1}' ", sqlText, orderType);
+                //初次加载时默认查询倒序30条数据（仅初始化时用）
+                sqlText = @"SELECT ORDER_NO,ORDER_GROUP_NO,ORDER_TYPE,ORDER_PRIORITY,BAY_NO,MAT_CODE,MAT_CNAME,FROM_STOCK_NO,TO_STOCK_NO,REC_TIME,UPD_TIME 
+                            FROM (
+                            SELECT ROW_NUMBER() OVER(ORDER BY A.ORDER_NO DESC,A.REC_TIME DESC,A.UPD_TIME DESC) AS ROWNUM,
+                            A.ORDER_NO, A.ORDER_GROUP_NO, A.ORDER_TYPE, A.ORDER_PRIORITY, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.REC_TIME, A.UPD_TIME  FROM UACSAPP.UACS_ORDER_DATA A 
+                            LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE 
+                            ) a 
+                            WHERE ROWNUM > 0 and ROWNUM <=30";
             }
+
             dt = new DataTable();
             hasSetColumn = false;
             using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
@@ -379,7 +406,8 @@ namespace UACSView
         /// <summary>
         /// 查询当前指令数据
         /// </summary>
-        private DataTable getCraneOrderData3()
+        /// <param name="isLoad">是否是初始化 true=是初始化，false=不是初始化</param>
+        private DataTable getCraneOrderData3(bool isLoad)
         {
             string matNo = this.txt_MAT_CODE.Text.Trim();
             string craneNo = this.cbb_CRANE_NO.SelectedValue.ToString();
@@ -390,18 +418,35 @@ namespace UACSView
             sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE ";
             sqlText += "WHERE A.REC_TIME > '{0}' and A.REC_TIME < '{1}' ";
             sqlText = string.Format(sqlText, recTime1, recTime2);
-            if (!string.IsNullOrEmpty(matNo))
+            if (!isLoad)
             {
-                sqlText = string.Format("{0} and A.MAT_CODE LIKE '%{1}%' ", sqlText, matNo);
+                if (!string.IsNullOrEmpty(matNo))
+                {
+                    sqlText = string.Format("{0} and A.MAT_CODE LIKE '%{1}%' ", sqlText, matNo);
+                }
+                if (orderType != "全部")
+                {
+                    sqlText = string.Format("{0} and A.ORDER_TYPE = '{1}' ", sqlText, orderType);
+                }
+                if (craneNo != "全部")
+                {
+                    sqlText = string.Format("{0} and A.CRANE_NO = '{1}' ", sqlText, craneNo);
+                }
+                //按 NO>流水号>记录时间>更新时间 降序
+                sqlText += " ORDER BY A.ORDER_NO DESC,A.REC_TIME DESC,A.UPD_TIME DESC ";
             }
-            if (orderType != "全部")
+            else
             {
-                sqlText = string.Format("{0} and A.ORDER_TYPE = '{1}' ", sqlText, orderType);
+                //初次加载时默认查询倒序30条数据（仅初始化时用）
+                sqlText = @"SELECT ORDER_NO, ORDER_GROUP_NO, ORDER_TYPE, CRANE_NO, ORDER_PRIORITY, BAY_NO, MAT_CODE, MAT_CNAME, FROM_STOCK_NO, TO_STOCK_NO, REC_TIME, UPD_TIME 
+                            FROM (
+                            SELECT ROW_NUMBER() OVER(ORDER BY A.ORDER_NO DESC,A.REC_TIME DESC,A.UPD_TIME DESC) AS ROWNUM,
+                            A.ORDER_NO, A.ORDER_GROUP_NO, A.ORDER_TYPE, A.CRANE_NO, A.ORDER_PRIORITY, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.REC_TIME, A.UPD_TIME FROM UACS_ORDER_QUEUE A 
+                            LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE 
+                            ) a 
+                            WHERE ROWNUM > 0 and ROWNUM <=30 ";
             }
-            if (craneNo != "全部")
-            {
-                sqlText = string.Format("{0} and A.CRANE_NO = '{1}' ", sqlText, craneNo);
-            }
+
             DataTable dtdata = new DataTable();
             hasSetColumn = false;
             using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))

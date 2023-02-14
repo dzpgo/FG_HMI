@@ -56,6 +56,8 @@ namespace UACSView
             m_dbHelper.OpenDB(DBHelper.ConnectionString);
             //绑定下拉框
             BindCombox();
+            //初始化查询
+            GetUACS_ORDER_OPER(true);
         }
         /// <summary>
         /// 绑定下拉框数据
@@ -79,6 +81,14 @@ namespace UACSView
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+            GetUACS_ORDER_OPER(false);
+        }
+        /// <summary>
+        /// 查询指令数据
+        /// </summary>
+        /// <param name="isLoad">是否是初始化 true=是初始化，false=不是初始化</param>
+        private void GetUACS_ORDER_OPER(bool isLoad)
+        {
             if (m_dbHelper == null)
                 return;
 
@@ -86,17 +96,33 @@ namespace UACSView
             string craneMode = this.cbb_CRANE_MODE.SelectedValue.ToString();  //行车模式
             string recTime1 = this.dateTimePicker1.Value.ToString("yyyyMMdd000000");  //开始时间
             string recTime2 = this.dateTimePicker2.Value.ToString("yyyyMMdd235959");  //结束时间
-            string sqlText = @"SELECT CRANE_NO, '' AS CRANE_MODENAME, 1 AS COUNT, '' AS PERCENTAGE, OPER_ID, CRANE_MODE FROM UACSAPP.UACS_ORDER_OPER ";
+            string sqlText = @"SELECT CRANE_NO, '' AS CRANE_MODENAME, 1 AS COUNT, '' AS PERCENTAGE, OPER_ID,ORDER_NO, CRANE_MODE FROM UACSAPP.UACS_ORDER_OPER ";
             sqlText += "WHERE REC_TIME >= '{0}' and REC_TIME <= '{1}' ";
             sqlText = string.Format(sqlText, recTime1, recTime2);
-
-            if (craneNo != "全部")
+            if (!isLoad)
             {
-                sqlText = string.Format("{0} and CRANE_NO = '{1}' ", sqlText, craneNo);     //行车号
+                if (craneNo != "全部")
+                {
+                    sqlText = string.Format("{0} and CRANE_NO = '{1}' ", sqlText, craneNo);     //行车号
+                }
+                if (craneMode != "全部")
+                {
+                    sqlText = string.Format("{0} and CRANE_MODE = '{1}' ", sqlText, craneMode); //操作模式
+                }
+                //按 NO>流水号>记录时间>更新时间 降序
+                sqlText += " ORDER BY OPER_ID DESC,ORDER_NO DESC,REC_TIME DESC ";
             }
-            if (craneMode != "全部")
+            else
             {
-                sqlText = string.Format("{0} and CRANE_MODE = '{1}' ", sqlText, craneMode); //操作模式
+                //初次加载时默认查询倒序30条数据（仅初始化时用）
+                sqlText = @"SELECT CRANE_NO, '' AS CRANE_MODENAME, 1 AS COUNT, '' AS PERCENTAGE, OPER_ID, CRANE_MODE 
+                            FROM (
+                            SELECT ROW_NUMBER() OVER(ORDER BY OPER_ID DESC,ORDER_NO DESC,REC_TIME DESC) AS ROWNUM,
+                            CRANE_NO, '' AS CRANE_MODENAME, 1 AS COUNT, '' AS PERCENTAGE, OPER_ID, CRANE_MODE 
+                            FROM UACSAPP.UACS_ORDER_OPER 
+                            WHERE CRANE_NO IS NOT NULL 
+                            ) a 
+                            WHERE ROWNUM > 0 and ROWNUM <=90";
             }
 
             DataTable dataTable = new DataTable();
@@ -144,7 +170,6 @@ namespace UACSView
             }
             //dataGridView2.Rows.Clear();
             dataGridView2.DataSource = dts2;
-
         }
 
         #region 业务数据处理
