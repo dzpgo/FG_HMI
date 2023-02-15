@@ -122,7 +122,7 @@ namespace UACSView
                             FROM UACSAPP.UACS_ORDER_OPER 
                             WHERE CRANE_NO IS NOT NULL 
                             ) a 
-                            WHERE ROWNUM > 0 and ROWNUM <=90";
+                            WHERE ROWNUM > 0 and ROWNUM <=50";
             }
 
             DataTable dataTable = new DataTable();
