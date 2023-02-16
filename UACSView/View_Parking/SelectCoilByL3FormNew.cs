@@ -23,29 +23,35 @@ namespace UACSView.View_Parking
     /// </summary>
     public partial class SelectCoilByL3FormNew : Form
     {
+        #region 变量
+
         public event TransferValue TransferValue;
         private static Baosight.iSuperframe.Common.IDBHelper DBHelper = null;
         DataTable dt_selected = new DataTable();
         CheckBox checkbox;
-        string bayNO;
-        string parkNO;
-        string carNO;
-        /// <summary>
-        /// //车辆类型
-        /// </summary>
-        string carType;
 
+        Baosight.iSuperframe.TagService.DataCollection<object> TagValues = new DataCollection<object>();
+        private Baosight.iSuperframe.TagService.Controls.TagDataProvider tagDP = new Baosight.iSuperframe.TagService.Controls.TagDataProvider();
+
+        #region 模型
+        private string bayNO;
+        private string parkNO;
+        private string carNO;
+        private string carType;
+        private string grooveNum;
+        private string grooveTotal;
+
+        /// <summary>
+        /// 车辆类型
+        /// </summary>
         public string CarType
         {
             get { return carType; }
             set
             {
                 carType = value;
-                //this.Text = string.Format("{0}类型车辆材料选择", carType);
             }
         }
-        Baosight.iSuperframe.TagService.DataCollection<object> TagValues = new DataCollection<object>();
-        private Baosight.iSuperframe.TagService.Controls.TagDataProvider tagDP = new Baosight.iSuperframe.TagService.Controls.TagDataProvider();
         /// <summary>
         /// 车号
         /// </summary>
@@ -62,12 +68,28 @@ namespace UACSView.View_Parking
             get { return parkNO; }
             set { parkNO = value; }
         }
-        private string grooveNum;
+        /// <summary>
+        /// 凹槽编号
+        /// </summary>
         public string GrooveNum
         {
             get { return grooveNum; }
             set { grooveNum = value; }
         }
+        /// <summary>
+        /// 凹槽总计
+        /// </summary>
+        public string GrooveTotal
+        {
+            get { return grooveTotal; }
+            set { grooveTotal = value; }
+        }
+        #endregion
+
+        #endregion
+
+        #region 初始化
+
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -95,9 +117,9 @@ namespace UACSView.View_Parking
         private void SelectCoilByL3FormNew_Load(object sender, EventArgs e)
         {
             //加载扫描数据
-            //RefreshHMILaserOutData();
+            RefreshHMILaserOutData();
             //加载L3装车要求
-            InitialL3StowagePlan(carNO);            
+            InitialL3StowagePlan(carNO);
         }
 
         /// <summary>
@@ -116,7 +138,7 @@ namespace UACSView.View_Parking
                 tbL3_TASK_NO.Text = strTaskNo;
 
                 // 根据L3配载计划，查询装车材料信息
-                DataTable dataTable = BindMatStockByL3Stowage2(false,strCarNo, strPlanNo, strTaskNo);
+                DataTable dataTable = BindMatStockByL3Stowage2(false, strCarNo, strPlanNo, strTaskNo);
                 this.dataGridView1.DataSource = dataTable;
             }
             else
@@ -125,11 +147,41 @@ namespace UACSView.View_Parking
                 tbPLAN_NO.Text = "无";
                 tbL3_TASK_NO.Text = "无";
                 // 初始数据
-                DataTable dataTable = BindMatStockByL3Stowage2(true,"", "", "");
+                DataTable dataTable = BindMatStockByL3Stowage2(true, "", "", "");
                 this.dataGridView1.DataSource = dataTable;
             }
         }
-        
+
+        /// <summary>
+        /// 初始化数据
+        /// </summary>
+        /// <param name="datagridView"></param>
+        /// <returns></returns>
+        private DataTable InitDataTable(DataGridView datagridView)
+        {
+            DataTable dataTable = new DataTable();
+            foreach (DataGridViewColumn dgvColumn in datagridView.Columns)
+            {
+                DataColumn dtColumn = new DataColumn();
+                if (!dgvColumn.GetType().Equals(typeof(DataGridViewCheckBoxColumn)))
+                {
+                    dtColumn.ColumnName = dgvColumn.Name.ToUpper();
+                    dtColumn.DataType = typeof(String);
+                    dataTable.Columns.Add(dtColumn);
+                }
+                else
+                {
+                    dtColumn.ColumnName = dgvColumn.Name.ToUpper();
+                    //dtColumn.DataType = typeof(bool);
+                    dataTable.Columns.Add(dtColumn);
+                }
+            }
+
+            return dataTable;
+        }
+
+
+        #endregion
 
         #region 控件点击
 
@@ -363,39 +415,6 @@ namespace UACSView.View_Parking
 
             }
         }
-
-        #endregion
-
-        #region 初始化
-
-        /// <summary>
-        /// 初始化数据
-        /// </summary>
-        /// <param name="datagridView"></param>
-        /// <returns></returns>
-        private DataTable InitDataTable(DataGridView datagridView)
-        {
-            DataTable dataTable = new DataTable();
-            foreach (DataGridViewColumn dgvColumn in datagridView.Columns)
-            {
-                DataColumn dtColumn = new DataColumn();
-                if (!dgvColumn.GetType().Equals(typeof(DataGridViewCheckBoxColumn)))
-                {
-                    dtColumn.ColumnName = dgvColumn.Name.ToUpper();
-                    dtColumn.DataType = typeof(String);
-                    dataTable.Columns.Add(dtColumn);
-                }
-                else
-                {
-                    dtColumn.ColumnName = dgvColumn.Name.ToUpper();
-                    //dtColumn.DataType = typeof(bool);
-                    dataTable.Columns.Add(dtColumn);
-                }
-            }
-
-            return dataTable;
-        }
-
 
         #endregion
 
@@ -933,7 +952,118 @@ namespace UACSView.View_Parking
         private void UpdateDgvRow(bool isNulls = false)
         {
             UpdateDgvRow(isNulls, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        } 
+        }
+
+        /// <summary>
+        /// 激光扫描数据
+        /// </summary>
+        /// <returns></returns>
+        private bool RefreshHMILaserOutData()
+        {
+            bool bResut = false;
+            try
+            {
+                string parkingNo = "";
+                string TREATMENT_NO = "";
+                long LASER_ACTION_COUNT = 0;
+
+                // 读取车牌数据
+                string truckNo = carNO;      //车号
+                if (truckNo == "")
+                {
+                    return bResut;
+                }
+
+                parkingNo = parkNO;
+                //先获取车头方向配置表里的车长方向坐标轴和趋势
+                string AXES_CAR_LENGTH = "";
+                string TREND_TO_TAIL = "";
+                string sqlText_head = @"SELECT AXES_CAR_LENGTH, TREND_TO_TAIL FROM UACS_HEAD_POSITION_CONFIG WHERE HEAD_POSTION IN ";
+                sqlText_head += "(SELECT HEAD_POSTION FROM UACS_PARKING_WORK_STATUS WHERE PARKING_NO = '{0}') AND PARKING_NO = '{0}'";
+                sqlText_head = string.Format(sqlText_head, parkingNo);
+                using (IDataReader rdr = DBHelper.ExecuteReader(sqlText_head))
+                {
+                    if (rdr.Read())
+                    {
+                        AXES_CAR_LENGTH = rdr["AXES_CAR_LENGTH"].ToString();
+                        TREND_TO_TAIL = rdr["TREND_TO_TAIL"].ToString();
+                    }
+                }
+
+                string sqlorder = "";
+                if (AXES_CAR_LENGTH == "X" && TREND_TO_TAIL == "INC")
+                {
+                    sqlorder = "ORDER BY GROOVE_ACT_X ";
+                }
+                else if (AXES_CAR_LENGTH == "X" && TREND_TO_TAIL == "DES")
+                {
+                    sqlorder = "ORDER BY GROOVE_ACT_X DESC";
+                }
+                else if (AXES_CAR_LENGTH == "Y" && TREND_TO_TAIL == "INC")
+                {
+                    sqlorder = "ORDER BY GROOVE_ACT_Y ";
+                }
+                else if (AXES_CAR_LENGTH == "Y" && TREND_TO_TAIL == "DES")
+                {
+                    sqlorder = "ORDER BY GROOVE_ACT_Y DESC";
+                }
+
+                //从停车位表里取出处理号和激光扫描次数
+                string sqlText = @"SELECT TREATMENT_NO, LASER_ACTION_COUNT FROM UACS_PARKING_WORK_STATUS WHERE PARKING_NO='{0}' ";
+                sqlText = string.Format(sqlText, parkingNo);
+                using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
+                {
+                    while (rdr.Read())
+                    {
+                        TREATMENT_NO = rdr["TREATMENT_NO"].ToString();
+                        LASER_ACTION_COUNT = Convert.ToInt64(rdr["LASER_ACTION_COUNT"].ToString());
+                    }
+                }
+
+                string GROOVE_ACT_X = "";
+                string GROOVE_ACT_Y = "";
+                string GROOVE_ACT_Z = "";
+                string GROOVEID = "";
+                dt_selected.Clear();
+
+                //从出库激光表里取出激光扫描数据
+                sqlText = @"SELECT GROOVE_ACT_X, GROOVE_ACT_Y, GROOVE_ACT_Z, GROOVEID FROM UACS_LASER_OUT ";
+                sqlText += "WHERE TREATMENT_NO = '{0}' AND LASER_ACTION_COUNT = '{1}' ";
+                sqlText += sqlorder;
+                sqlText = string.Format(sqlText, TREATMENT_NO, LASER_ACTION_COUNT);
+
+                using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
+                {
+                    while (rdr.Read())
+                    {
+                        GROOVE_ACT_X = rdr["GROOVE_ACT_X"].ToString();
+                        GROOVE_ACT_Y = rdr["GROOVE_ACT_Y"].ToString();
+                        GROOVE_ACT_Z = rdr["GROOVE_ACT_Z"].ToString();
+                        GROOVEID = rdr["GROOVEID"].ToString();
+                        dt_selected.Rows.Add("0", GROOVEID, "", "", "", "", GROOVE_ACT_X, GROOVE_ACT_Y, GROOVE_ACT_Z);
+                    }
+
+                    if ((carType == "100" || carType == "102" || carType == "106") && Convert.ToInt32(grooveTotal) >= 1)
+                    {
+                        for (int i = 1; i <= Convert.ToInt32(grooveNum) - Convert.ToInt32(grooveTotal); i++)
+                        {
+
+                            dt_selected.Rows.Add("0", "", "", "", "", "", 999999, 999999, 999999);
+                        }
+                    }
+                }
+                //this.dataGridView2.DataSource = dt_selected;
+
+                bResut = true;
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show(string.Format("{0} {1}", er.TargetSite, er.ToString()));
+            }
+
+            return bResut;
+        }
+
         #endregion
 
     }
