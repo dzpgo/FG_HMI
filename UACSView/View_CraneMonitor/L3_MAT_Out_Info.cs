@@ -37,8 +37,8 @@ namespace UACSView
             try
             {
                 //设置背景色
-                this.panel1.BackColor = UACSDAL.ColorSln.FormBgColor;
-                this.panel2.BackColor = UACSDAL.ColorSln.FormBgColor;
+                //this.panel1.BackColor = UACSDAL.ColorSln.FormBgColor;
+                //this.panel2.BackColor = UACSDAL.ColorSln.FormBgColor;
                 //绑定下拉框
                 //BindCombox();
                 //

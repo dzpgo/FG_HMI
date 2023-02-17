@@ -40,7 +40,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.PLAN_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TRUCK_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CAR_TYPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +49,7 @@
             this.REC_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GRID_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UPD_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -89,7 +89,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(246)))), ((int)(((byte)(252)))));
+            this.panel1.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel1.Controls.Add(this.dateTimePicker2_recTime);
             this.panel1.Controls.Add(this.textWORK_SEQ_NO);
             this.panel1.Controls.Add(this.label6);
@@ -221,20 +221,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1211, 501);
             this.dataGridView1.TabIndex = 2;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.panel2);
-            this.groupBox2.Location = new System.Drawing.Point(3, 144);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(1219, 530);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            // 
             // PLAN_NO
             // 
             this.PLAN_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -265,7 +251,7 @@
             this.CAR_TYPE.Name = "CAR_TYPE";
             this.CAR_TYPE.ReadOnly = true;
             this.CAR_TYPE.Visible = false;
-            this.CAR_TYPE.Width = 146;
+            this.CAR_TYPE.Width = 150;
             // 
             // MAT_PROD_CODE
             // 
@@ -317,7 +303,7 @@
             this.GRID_NAME.Name = "GRID_NAME";
             this.GRID_NAME.ReadOnly = true;
             this.GRID_NAME.Visible = false;
-            this.GRID_NAME.Width = 146;
+            this.GRID_NAME.Width = 150;
             // 
             // UPD_TIME
             // 
@@ -329,12 +315,27 @@
             this.UPD_TIME.ReadOnly = true;
             this.UPD_TIME.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.UPD_TIME.Visible = false;
-            this.UPD_TIME.Width = 116;
+            this.UPD_TIME.Width = 150;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.panel2);
+            this.groupBox2.Location = new System.Drawing.Point(3, 144);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(1219, 530);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
             // 
             // L3_MAT_Weight_Info2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(1214, 674);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
