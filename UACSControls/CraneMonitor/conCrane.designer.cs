@@ -43,8 +43,8 @@
             this.登机2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关闭ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.矫正高度ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.高度ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.角度ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            //this.高度ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            //this.角度ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.修改卸下位置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.开启ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关闭ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -174,25 +174,27 @@
             // 
             // 矫正高度ToolStripMenuItem
             // 
-            this.矫正高度ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.高度ToolStripMenuItem,
-            this.角度ToolStripMenuItem});
+            //this.矫正高度ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            ////this.高度ToolStripMenuItem
+            ////,this.角度ToolStripMenuItem
+            //});
             this.矫正高度ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.矫正高度ToolStripMenuItem.Name = "矫正高度ToolStripMenuItem";
             this.矫正高度ToolStripMenuItem.Size = new System.Drawing.Size(238, 38);
-            this.矫正高度ToolStripMenuItem.Text = "矫正高度/角度";
+            this.矫正高度ToolStripMenuItem.Text = "矫正高度";
+            this.矫正高度ToolStripMenuItem.Click += new System.EventHandler(this.矫正高度ToolStripMenuItem_Click);
             // 
             // 高度ToolStripMenuItem
             // 
-            this.高度ToolStripMenuItem.Name = "高度ToolStripMenuItem";
-            this.高度ToolStripMenuItem.Size = new System.Drawing.Size(166, 40);
-            this.高度ToolStripMenuItem.Text = "高度";
+            //this.高度ToolStripMenuItem.Name = "高度ToolStripMenuItem";
+            //this.高度ToolStripMenuItem.Size = new System.Drawing.Size(166, 40);
+            //this.高度ToolStripMenuItem.Text = "高度";
             // 
             // 角度ToolStripMenuItem
             // 
-            this.角度ToolStripMenuItem.Name = "角度ToolStripMenuItem";
-            this.角度ToolStripMenuItem.Size = new System.Drawing.Size(166, 40);
-            this.角度ToolStripMenuItem.Text = "角度";
+            //this.角度ToolStripMenuItem.Name = "角度ToolStripMenuItem";
+            //this.角度ToolStripMenuItem.Size = new System.Drawing.Size(166, 40);
+            //this.角度ToolStripMenuItem.Text = "角度";
             // 
             // 修改卸下位置ToolStripMenuItem
             // 
@@ -242,8 +244,8 @@
         private System.Windows.Forms.ToolStripMenuItem 取消ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 登车ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 矫正高度ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 高度ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 角度ToolStripMenuItem;
+        //private System.Windows.Forms.ToolStripMenuItem 高度ToolStripMenuItem;
+        //private System.Windows.Forms.ToolStripMenuItem 角度ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 登机请求ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 登机1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 登机2ToolStripMenuItem;

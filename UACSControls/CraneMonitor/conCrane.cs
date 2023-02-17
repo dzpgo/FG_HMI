@@ -321,6 +321,10 @@ namespace UACSControls
             //wirteDatas["RESET_CRANE_Z"] = tagValue;
             //tagDataProvider.SetData("RESET_CRANE_Z", tagValue);
             //ParkClassLibrary.HMILogger.WriteLog("标高", craneNO + "行车矫正高度为：" + s + "mm", ParkClassLibrary.LogLevel.Info, "主监控");
+
+            var tagValue = craneNO + ",20";
+            var tag_CraneMode = craneNO + "_DownLoadShortCommand";
+            tagDataProvider.SetData(tag_CraneMode, tagValue);
         }
 
         private void 避让ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -547,25 +551,25 @@ namespace UACSControls
             ParkClassLibrary.HMILogger.WriteLog("矫正高度", craneNO + "行车矫正高度为：" + s + "mm", ParkClassLibrary.LogLevel.Info, "主监控");
         }
 
-        private void 角度ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmYordToYordConfPassword password = new FrmYordToYordConfPassword();
-            password.PassWords = craneNO.Trim();
-            DialogResult retValue = password.ShowDialog();
-            if (retValue != DialogResult.OK)
-            {
-                return;
-            }
+        //private void 角度ToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    FrmYordToYordConfPassword password = new FrmYordToYordConfPassword();
+        //    password.PassWords = craneNO.Trim();
+        //    DialogResult retValue = password.ShowDialog();
+        //    if (retValue != DialogResult.OK)
+        //    {
+        //        return;
+        //    }
 
-            string s = Interaction.InputBox("输入角度值（单位：°)", craneNO + "行车角度矫正", "", -1, -1);
-            if (string.IsNullOrEmpty(s))
-                return;
-            string tagValue = craneNO + ",0,0," + s + ",0,1,0,0";
-            Baosight.iSuperframe.TagService.DataCollection<object> wirteDatas = new Baosight.iSuperframe.TagService.DataCollection<object>();
-            wirteDatas["RESET_CRANE_Z"] = tagValue;
-            tagDataProvider.SetData("RESET_CRANE_Z", tagValue);
-            ParkClassLibrary.HMILogger.WriteLog("矫正角度", craneNO + "行车矫正角度为：" + s + "°", ParkClassLibrary.LogLevel.Info, "主监控");
-        }
+        //    string s = Interaction.InputBox("输入角度值（单位：°)", craneNO + "行车角度矫正", "", -1, -1);
+        //    if (string.IsNullOrEmpty(s))
+        //        return;
+        //    string tagValue = craneNO + ",0,0," + s + ",0,1,0,0";
+        //    Baosight.iSuperframe.TagService.DataCollection<object> wirteDatas = new Baosight.iSuperframe.TagService.DataCollection<object>();
+        //    wirteDatas["RESET_CRANE_Z"] = tagValue;
+        //    tagDataProvider.SetData("RESET_CRANE_Z", tagValue);
+        //    ParkClassLibrary.HMILogger.WriteLog("矫正角度", craneNO + "行车矫正角度为：" + s + "°", ParkClassLibrary.LogLevel.Info, "主监控");
+        //}
 
         //用户功能限制
         private void getUserName()
@@ -814,7 +818,7 @@ namespace UACSControls
                 this.登车ToolStripMenuItem.Enabled = false;
                 this.登机请求ToolStripMenuItem.Enabled = false;
                 //this.行车排水ToolStripMenuItem.Enabled = false;
-                this.角度ToolStripMenuItem.Enabled = false;
+                //this.角度ToolStripMenuItem.Enabled = false;
             }
             if (CraneNO.ToString().Trim() == "1_1" || CraneNO.ToString().Trim() == "1_2" || CraneNO.ToString().Trim() == "1_3")
             {
@@ -823,7 +827,7 @@ namespace UACSControls
                 this.登车ToolStripMenuItem.Enabled = true;
                 this.登机请求ToolStripMenuItem.Enabled = true;
                 //this.行车排水ToolStripMenuItem.Enabled = true;
-                this.角度ToolStripMenuItem.Enabled = true;
+                //this.角度ToolStripMenuItem.Enabled = true;
             }
         }
 
