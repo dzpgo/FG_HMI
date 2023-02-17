@@ -170,7 +170,8 @@ namespace UACSControls
                 {
                     //this.panelCrab.BackgroundImage = global::UACSControls.Resource1.imgCarCoil;
                     this.panelCrab.BackgroundImage = null; //背景图片
-                    this.panelCrab.BackColor = Color.SaddleBrown; //棕色
+                    //this.panelCrab.BackColor = Color.SaddleBrown; //棕色
+                    this.panelCrab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(175)))), ((int)(((byte)(66)))));  //虎皮黄
                 }
                 this.BringToFront();
 
