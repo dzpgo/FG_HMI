@@ -305,13 +305,16 @@ namespace UACSDAL
 
                 DB2Connect.DBHelper.ExecuteNonQuery(strSql);
 
-                string strSq2 = " Update UACS_YARDMAP_CRANE set ";
+                //string strSq2 = " Update UACS_YARDMAP_CRANE set ";
 
-                strSq2 += " STATE_SIGN=0";
+                //strSq2 += " STATE_SIGN=0";
 
-                strSq2 += " where ID=" + "'" + craneNo + "'";
+                //strSq2 += " where ID=" + "'" + craneNo + "'";
 
-                DB2Connect.DBHelper.ExecuteNonQuery(strSq2);
+                //DB2Connect.DBHelper.ExecuteNonQuery(strSq2);
+
+
+
 
                 //string strSq2 = " Update UACS_YARDMAP_CRANE set ";
 
@@ -343,23 +346,23 @@ namespace UACSDAL
         {
             try
             {
-                string strSq4 = " DELETE FROM WMS_CRANE_ORDER ";
+                //string strSq4 = " DELETE FROM WMS_CRANE_ORDER ";
 
-                strSq4 += " where ORDER_NO IN (SELECT ORDER_NO FROM UACS_CRANE_ORDER_CURRENT where CRANE_NO='" + craneNo + "')";
+                //strSq4 += " where ORDER_NO IN (SELECT ORDER_NO FROM UACS_CRANE_ORDER_CURRENT where CRANE_NO='" + craneNo + "')";
 
-                DB2Connect.DBHelper.ExecuteNonQuery(strSq4);
+                //DB2Connect.DBHelper.ExecuteNonQuery(strSq4);
 
-                string strSq5 = " Update UACS_YARDMAP_STOCK_DEFINE set ";
+                //string strSq5 = " Update UACS_YARDMAP_STOCK_DEFINE set ";
 
-                strSq5 += " BOOKING_MAT_NO=NULL" + ",";
+                //strSq5 += " BOOKING_MAT_NO=NULL" + ",";
 
-                strSq5 += " BOOKING_CRANE_NO=NULL" + ",";
+                //strSq5 += " BOOKING_CRANE_NO=NULL" + ",";
 
-                strSq5 += " BOOKING_FLAG=0";
+                //strSq5 += " BOOKING_FLAG=0";
 
-                strSq5 += " where BOOKING_MAT_NO IN (SELECT MAT_NO FROM UACS_CRANE_ORDER_CURRENT where CRANE_NO='" + craneNo + "')";
+                //strSq5 += " where BOOKING_MAT_NO IN (SELECT MAT_NO FROM UACS_CRANE_ORDER_CURRENT where CRANE_NO='" + craneNo + "')";
 
-                DB2Connect.DBHelper.ExecuteNonQuery(strSq5);
+                //DB2Connect.DBHelper.ExecuteNonQuery(strSq5);
 
 
                 string strSql = " Update UACS_CRANE_ORDER_CURRENT set ";

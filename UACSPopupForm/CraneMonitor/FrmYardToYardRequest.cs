@@ -64,7 +64,12 @@ namespace UACSPopupForm
             }
             else if (CraneNo == "1_1" || CraneNo == "1_2" || CraneNo == "1_3")
             {
-                BayNo = "Z01";
+                //BayNo = "Z01";
+                BayNo = "A";
+            }
+            else if (CraneNo == "1" || CraneNo == "2" || CraneNo == "3" || CraneNo == "4")
+            {
+                BayNo = "A";
             }
             else
             {

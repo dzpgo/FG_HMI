@@ -110,6 +110,7 @@
             this.ToolStrip_DelCraneOrder.Name = "ToolStrip_DelCraneOrder";
             this.ToolStrip_DelCraneOrder.Size = new System.Drawing.Size(238, 38);
             this.ToolStrip_DelCraneOrder.Text = "清空指令";
+            this.ToolStrip_DelCraneOrder.Click += new System.EventHandler(this.ToolStrip_DelCraneOrder_Click);
             // 
             // 设置避让ToolStripMenuItem
             // 

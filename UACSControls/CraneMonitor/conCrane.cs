@@ -196,54 +196,7 @@ namespace UACSControls
 
         }
 
-        private void ToolStrip_DelCraneOrder_Click(object sender, EventArgs e)
-        {
-            if (cranePLCStatusBase.HasCoil == 1)
-            {
-                MessageBox.Show("行车有卷状态禁止清除指令");
-                return;
-            }
-            //if(cranePLCStatusBase.CraneStatus == 40 && cranePLCStatusBase.ControlMode == 4)
-            //{
-            //    MessageBox.Show("自动模式空钩下降状态禁止清除指令");
-            //    return;
-            //}
-            if (cranePLCStatusBase.ControlMode == 4)
-            {
-                MessageBox.Show("自动模式禁止清除指令");
-                return;
-            }
-
-            DialogResult ret = MessageBox.Show("确定要清空" + craneNO + "行车的指令吗？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            if (ret == DialogResult.Cancel)
-                return;
-            if(cranePLCStatusBase.ControlMode == 4)
-            {
-                if (CreateManuOrder.isDelCraneOrder(craneNO))
-                {
-                    MessageBox.Show(craneNO + "指令已清空");
-                    ParkClassLibrary.HMILogger.WriteLog("清空指令", craneNO + "行车清空指令", ParkClassLibrary.LogLevel.Info, this.Text);
-                }
-                else
-                {
-                    MessageBox.Show(craneNO + "指令清空失败");
-                }
-            }
-            else
-            {
-                if (CreateManuOrder.isDelNotAutoCraneOrder(craneNO))
-                {
-                    MessageBox.Show(craneNO + "指令已清空");
-                    ParkClassLibrary.HMILogger.WriteLog("清空指令", craneNO + "行车清空指令", ParkClassLibrary.LogLevel.Info, this.Text);
-                }
-                else
-                {
-                    MessageBox.Show(craneNO + "指令清空失败");
-                }
-            }
-
-
-        }
+        
 
         private void panelCrane_DoubleClick(object sender, EventArgs e)
         {
@@ -286,11 +239,69 @@ namespace UACSControls
             }
         }
 
+        /// <summary>
+        /// 人工指令 点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToolStrip_YardToTard_Click(object sender, EventArgs e)
         {
            FrmYardToYardRequest yard = new FrmYardToYardRequest();
             yard.CraneNo = craneNO;
             yard.Show();
+        }
+        /// <summary>
+        /// 清空指令 点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStrip_DelCraneOrder_Click(object sender, EventArgs e)
+        {
+            if (cranePLCStatusBase.HasCoil == 1)
+            {
+                MessageBox.Show("行车有料状态禁止清除指令");
+                return;
+            }
+            //if(cranePLCStatusBase.CraneStatus == 40 && cranePLCStatusBase.ControlMode == 4)
+            //{
+            //    MessageBox.Show("自动模式空钩下降状态禁止清除指令");
+            //    return;
+            //}
+            if (cranePLCStatusBase.ControlMode == 4)
+            {
+                MessageBox.Show("自动模式禁止清除指令");
+                return;
+            }
+
+            DialogResult ret = MessageBox.Show("确定要清空" + craneNO + "行车的指令吗？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (ret == DialogResult.Cancel)
+                return;
+            if (cranePLCStatusBase.ControlMode == 4)
+            {
+                if (CreateManuOrder.isDelCraneOrder(craneNO))
+                {
+                    MessageBox.Show(craneNO + "指令已清空");
+                    ParkClassLibrary.HMILogger.WriteLog("清空指令", craneNO + "行车清空指令", ParkClassLibrary.LogLevel.Info, this.Text);
+                }
+                else
+                {
+                    MessageBox.Show(craneNO + "指令清空失败");
+                }
+            }
+            else
+            {
+                if (CreateManuOrder.isDelNotAutoCraneOrder(craneNO))
+                {
+                    MessageBox.Show(craneNO + "指令已清空");
+                    ParkClassLibrary.HMILogger.WriteLog("清空指令", craneNO + "行车清空指令", ParkClassLibrary.LogLevel.Info, this.Text);
+                }
+                else
+                {
+                    MessageBox.Show(craneNO + "指令清空失败");
+                }
+            }
+
+
         }
 
         private void 登车ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -821,6 +832,15 @@ namespace UACSControls
                 //this.角度ToolStripMenuItem.Enabled = false;
             }
             if (CraneNO.ToString().Trim() == "1_1" || CraneNO.ToString().Trim() == "1_2" || CraneNO.ToString().Trim() == "1_3")
+            {
+                this.ToolStrip_DelCraneOrder.Enabled = true;
+                this.设置避让ToolStripMenuItem.Enabled = true;
+                this.登车ToolStripMenuItem.Enabled = true;
+                this.登机请求ToolStripMenuItem.Enabled = true;
+                //this.行车排水ToolStripMenuItem.Enabled = true;
+                //this.角度ToolStripMenuItem.Enabled = true;
+            }
+            if (CraneNO.ToString().Trim() == "1" || CraneNO.ToString().Trim() == "2" || CraneNO.ToString().Trim() == "3" || CraneNO.ToString().Trim() == "4")
             {
                 this.ToolStrip_DelCraneOrder.Enabled = true;
                 this.设置避让ToolStripMenuItem.Enabled = true;
