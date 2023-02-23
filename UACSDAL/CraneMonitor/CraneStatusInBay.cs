@@ -341,12 +341,18 @@ namespace UACSDAL
             return data;
         }
 
-
         /// <summary>
         /// 行车指令显示
         /// </summary>
-        /// <param name="craneNo"></param>
-        public void craneOrderInfo(string craneNo, TextBox txt_CraneOrder, TextBox txt_CoilNo, TextBox txt_FromStock, TextBox txt_ToStock)
+        /// <param name="craneNo">行车号</param>
+        /// <param name="txt_CraneOrder">指令号</param>
+        /// <param name="txt_CoilNo">废钢代码</param>
+        /// <param name="txt_FromStock">起吊位置</param>
+        /// <param name="txt_ToStock">放下位置</param>
+        /// <param name="tb_MAT_REQ_WGT">要求重量（装车时有效，卸料为0） 单位-KG</param>
+        /// <param name="tb_MAT_ACT_WGT">累计作业重量(当放下时累加)</param>
+        /// <param name="tb_MAT_CUR_WGT">当次作业重量(当吊起时记录,当放下时清空)</param>
+        public void craneOrderInfo(string craneNo, TextBox txt_CraneOrder, TextBox txt_CoilNo, TextBox txt_FromStock, TextBox txt_ToStock, TextBox tb_MAT_REQ_WGT, TextBox tb_MAT_ACT_WGT, TextBox tb_MAT_CUR_WGT)
         {
             bool isValue = false;
             try
@@ -368,7 +374,6 @@ namespace UACSDAL
                         else
                             txt_CraneOrder.Text = "";
 
-
                         //废钢代码
                         if (rdr["MAT_CODE"] != System.DBNull.Value)
                         {
@@ -377,6 +382,33 @@ namespace UACSDAL
                         }
                         else
                             txt_CoilNo.Text = numberIsNull;
+
+                        //要求重量
+                        if (rdr["MAT_REQ_WGT"] != System.DBNull.Value)
+                        {
+
+                            tb_MAT_REQ_WGT.Text = rdr["MAT_REQ_WGT"].ToString();
+                        }
+                        else
+                            tb_MAT_REQ_WGT.Text = numberIsNull;
+
+                        //累计作业重量
+                        if (rdr["MAT_ACT_WGT"] != System.DBNull.Value)
+                        {
+
+                            tb_MAT_ACT_WGT.Text = rdr["MAT_ACT_WGT"].ToString();
+                        }
+                        else
+                            tb_MAT_ACT_WGT.Text = numberIsNull;
+
+                        //当次作业重量
+                        if (rdr["MAT_CUR_WGT"] != System.DBNull.Value)
+                        {
+
+                            tb_MAT_CUR_WGT.Text = rdr["MAT_CUR_WGT"].ToString();
+                        }
+                        else
+                            tb_MAT_CUR_WGT.Text = numberIsNull;
 
                         //起卷库位
                         if (rdr["FROM_STOCK_NO"] != System.DBNull.Value)

@@ -220,6 +220,9 @@ namespace UACSDAL
 
         private long weightLoaded;
 
+        /// <summary>
+        /// 当前重量
+        /// </summary>
         public long WeightLoaded
         {
             get { return weightLoaded; }

@@ -1016,7 +1016,8 @@ namespace UACSView.View_Parking
                     while (rdr.Read())
                     {
                         TREATMENT_NO = rdr["TREATMENT_NO"].ToString();
-                        LASER_ACTION_COUNT = Convert.ToInt64(rdr["LASER_ACTION_COUNT"].ToString());
+                        if (!string.IsNullOrEmpty(rdr["LASER_ACTION_COUNT"].ToString()))                        
+                            LASER_ACTION_COUNT = Convert.ToInt64(rdr["LASER_ACTION_COUNT"].ToString());
                     }
                 }
 

@@ -149,6 +149,8 @@ namespace UACSControls
                 //夹钳温度
                 //txt_CraneOrder.Text = craneStatusBase.COIL_TEMPERATURE.ToString() + "°";
 
+                //当前重量
+                tb_Tag_WEIGHT_LOADED.Text = craneStatusBase.WeightLoaded.ToString();
                 //有卷信号灯
                 refresh_Textbox_Light(light_HAS_COIL, craneStatusBase.HasCoil);
                 //行车状态
@@ -211,7 +213,7 @@ namespace UACSControls
                 //时间心跳
                 lbl_HeartBeat.Text = craneStatusBase.ReceiveTime.ToString();
                 //行车指令
-                craneinfo.craneOrderInfo(craneStatusBase.CraneNO.ToString(), txt_CraneOrder, txt_CoilNo, txt_FromStock, txt_ToStock);
+                craneinfo.craneOrderInfo(craneStatusBase.CraneNO.ToString(), txt_CraneOrder, txt_CoilNo, txt_FromStock, txt_ToStock, tb_MAT_REQ_WGT, tb_MAT_ACT_WGT, tb_MAT_CUR_WGT);
 
                 string TagName = craneNO + "_ALARM_CURRENT";
                 SetReady(TagName);

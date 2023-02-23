@@ -205,7 +205,7 @@ namespace UACSParking
             GetComboxOnParkingByBay(cbbPacking);
 
             //GetComboxOnParkingByBay();
-            cbbPacking.SelectedValue = "Z01A1";
+            cbbPacking.SelectedValue = "A1";
             cbbPacking.SelectedIndexChanged += cbbPacking_SelectedIndexChanged;
             //开启定时器、
             timer1.Enabled = true;
@@ -314,7 +314,7 @@ namespace UACSParking
                 comBox.DataSource = dt;
                 comBox.DisplayMember = "TypeName";
                 comBox.ValueMember = "TypeValue";
-                comBox.SelectedItem = 0;
+                comBox.SelectedItem = 1;
 
             }
             catch (Exception ex)
@@ -1342,10 +1342,15 @@ namespace UACSParking
                 MessageBox.Show("行车已生成指令，不能车离！");
                 return;
             }
-            int coilsNotComplete = checkParkingIsWorking(int.Parse(txtStowageID.Text));
+            int coilsNotComplete = 0;
+            if (!string.IsNullOrEmpty(txtStowageID.Text.ToString()))
+            {
+                coilsNotComplete = checkParkingIsWorking(int.Parse(txtStowageID.Text));
+            }
+            
             if (txtStowageID.Text != "" && coilsNotComplete > 0)
             {
-                MessageBox.Show("车位还有（" + coilsNotComplete + " )个卷没有完成!", "提示");
+                MessageBox.Show("车位还有（" + coilsNotComplete + " )个物料没有完成!", "提示");
             }
             if (cbbPacking.Text.Contains('A'))
             {
@@ -1421,23 +1426,23 @@ namespace UACSParking
 
                         //if (cmbArea.Text.Contains("2030"))
                         //{
-                        if (rdr["PARKING_NO"].ToString().Trim() == "AT1A1")
+                        if (rdr["PARKING_NO"].ToString().Trim() == "A1")
                         {
                             //parkZ21B6.SetPark(JudgeStrNull(rdr["PARKING_NO"]), JudgeStrNull(rdr["ISLOADED"]), JudgeStrNull(rdr["PARKING_STATUS"]), JudgeStrNull(rdr["CAR_NO"]), JudgeStrNull(rdr["CAR_TYPE"]), JudgeStrNull(rdr["ISWOODENCAR"]));
                             parkZ21B6.SetPark(JudgeStrNull(rdr["PARKING_NO"]), JudgeStrNull(rdr["ISLOADED"]), JudgeStrNull(rdr["WORK_STATUS"]), JudgeStrNull(rdr["CAR_NO"]), JudgeStrNull(rdr["CAR_TYPE"]), "");
                         }
-                        else if (rdr["PARKING_NO"].ToString().Trim() == "AT1A2")
+                        else if (rdr["PARKING_NO"].ToString().Trim() == "A2")
                         {
                             //parkZ21B5.SetPark(JudgeStrNull(rdr["PARKING_NO"]), JudgeStrNull(rdr["ISLOADED"]), JudgeStrNull(rdr["PARKING_STATUS"]), JudgeStrNull(rdr["CAR_NO"]), JudgeStrNull(rdr["CAR_TYPE"]), JudgeStrNull(rdr["ISWOODENCAR"]));
                             parkZ21B5.SetPark(JudgeStrNull(rdr["PARKING_NO"]), JudgeStrNull(rdr["ISLOADED"]), JudgeStrNull(rdr["WORK_STATUS"]), JudgeStrNull(rdr["CAR_NO"]), JudgeStrNull(rdr["CAR_TYPE"]), "");
                         }
-                        else if (rdr["PARKING_NO"].ToString().Trim() == "AT1A3")
+                        else if (rdr["PARKING_NO"].ToString().Trim() == "A3")
                         {
-                            parkZ21B5.SetPark(JudgeStrNull(rdr["PARKING_NO"]), JudgeStrNull(rdr["ISLOADED"]), JudgeStrNull(rdr["WORK_STATUS"]), JudgeStrNull(rdr["CAR_NO"]), JudgeStrNull(rdr["CAR_TYPE"]), "");
+                            parkZ21B4.SetPark(JudgeStrNull(rdr["PARKING_NO"]), JudgeStrNull(rdr["ISLOADED"]), JudgeStrNull(rdr["WORK_STATUS"]), JudgeStrNull(rdr["CAR_NO"]), JudgeStrNull(rdr["CAR_TYPE"]), "");
                         }
-                        else if (rdr["PARKING_NO"].ToString().Trim() == "AT1A4")
+                        else if (rdr["PARKING_NO"].ToString().Trim() == "A4")
                         {
-                            parkZ21B5.SetPark(JudgeStrNull(rdr["PARKING_NO"]), JudgeStrNull(rdr["ISLOADED"]), JudgeStrNull(rdr["WORK_STATUS"]), JudgeStrNull(rdr["CAR_NO"]), JudgeStrNull(rdr["CAR_TYPE"]), "");
+                            parkZ21B3.SetPark(JudgeStrNull(rdr["PARKING_NO"]), JudgeStrNull(rdr["ISLOADED"]), JudgeStrNull(rdr["WORK_STATUS"]), JudgeStrNull(rdr["CAR_NO"]), JudgeStrNull(rdr["CAR_TYPE"]), "");
                         }
                         //}
                     }
@@ -2652,6 +2657,11 @@ namespace UACSParking
         }
         #endregion
 
+        /// <summary>
+        /// 装车配载 点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_L3Stowage_Click(object sender, EventArgs e)
         {
             if (GetStowageDetail())

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace UACSDAL
 {
@@ -366,16 +368,37 @@ namespace UACSDAL
 
 
                 string strSql = " Update UACS_CRANE_ORDER_CURRENT set ";
-
                 strSql += " ORDER_NO=NULL" + ",";
-
                 strSql += " BAY_NO=NULL" + ",";
+                //strSql += " BAY_NO='A'" + ",";
+                strSql += " MAT_CODE=NULL" + ",";
+                strSql += " COMP_CODE=NULL" + ",";
 
-                strSql += " MAT_NO=NULL" + ",";
+                strSql += " MAT_TYPE=NULL" + ",";
+
+                strSql += " MAT_REQ_WGT=NULL" + ",";
+
+                strSql += " MAT_ACT_WGT=NULL" + ",";
+
+                strSql += " MAT_CUR_WGT=NULL" + ",";
+
+                strSql += " ORDER_TYPE=NULL" + ",";
+
+                strSql += " ORDER_PRIORITY=NULL" + ",";
 
                 strSql += " FROM_STOCK_NO=NULL" + ",";
 
                 strSql += " TO_STOCK_NO=NULL" + ",";
+
+                //strSql += " CMD_STATUS=NULL" + ",";
+
+                strSql += " CMD_SEQ=NULL" + ",";
+
+                //strSql += " CRANE_NO=NULL" + ",";
+
+                strSql += " CAR_SCAN_NO=NULL" + ",";
+
+                strSql += " MAT_UP_SCAN_NO=NULL" + ",";
 
                 strSql += " PLAN_UP_X=NULL" + ",";
 
@@ -383,37 +406,16 @@ namespace UACSDAL
 
                 strSql += " PLAN_UP_Z=NULL" + ",";
 
-                strSql += " UP_ROTATE_ANGLE_SET=NULL" + ",";
+                strSql += " UP_ROTATE_ANGLE=NULL" + ",";
 
-                strSql += " CLAMP_WIDTH_SET=NULL" + ",";
+                strSql += " MAT_DOWN_SCAN_NO=NULL" + ",";
 
                 strSql += " PLAN_DOWN_X=NULL" + ",";
 
                 strSql += " PLAN_DOWN_Y=NULL" + ",";
 
                 strSql += " PLAN_DOWN_Z=NULL" + ",";
-
-                strSql += " DOWN_ROTATE_ANGLESET=NULL" + ",";
-
-                strSql += " COIL_WIDTH=NULL" + ",";
-
-                strSql += " COIL_WEIGHT=NULL" + ",";
-
-                strSql += " COIL_OUT_DIA=NULL" + ",";
-
-                strSql += " COIL_IN_DIA=NULL" + ",";
-
-                strSql += " FLOOR_UP_Z=NULL" + ",";
-
-                strSql += " FLAG_SMALL_COIL=NULL" + ",";
-
-                strSql += " FLOOR_DOWN_Z=NULL" + ",";
-
-                strSql += " TARGET_X=NULL" + ",";
-
-                strSql += " TARGET_Y=NULL" + ",";
-
-                strSql += " TARGET_Z=NULL" + ",";
+                strSql += " DOWN_ROTATE_ANGLE=NULL" + ",";
 
                 strSql += " CMD_STATUS=" + "'" + "EMPTY" + "'";
 
