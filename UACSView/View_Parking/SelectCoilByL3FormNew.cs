@@ -120,6 +120,16 @@ namespace UACSView.View_Parking
             RefreshHMILaserOutData();
             //加载L3装车要求
             InitialL3StowagePlan(carNO);
+            //绑定停车位
+            BindCmbParKing(this.ParkNO);
+            //绑定车辆类型
+            BindCmbCarType();
+            //绑定车头方向
+            BindCarDrection();
+            //绑定装料模式
+            BindCmbWordMode();
+            //绑定扫描行车
+            BindCmbScanCar();
         }
 
         /// <summary>
@@ -1067,5 +1077,219 @@ namespace UACSView.View_Parking
 
         #endregion
 
+
+        #region 绑定下拉框
+
+        /// <summary>
+        /// 绑定停车位
+        /// </summary>
+        /// <param name="ParkNO">停车位号</param>
+        private void BindCmbParKing(string ParkNO)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("NAME");
+            DataRow dr = dt.NewRow();
+            dr = dt.NewRow();
+            dr["ID"] = "1";
+            dr["NAME"] = "A1";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["ID"] = "2";
+            dr["NAME"] = "A2";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["ID"] = "3";
+            dr["NAME"] = "A3";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["ID"] = "4";
+            dr["NAME"] = "A4";
+            dt.Rows.Add(dr);
+            //绑定数据
+            cmb_ParKingNO.ValueMember = "ID";
+            cmb_ParKingNO.DisplayMember = "NAME";
+            cmb_ParKingNO.DataSource = dt;
+
+            int selectedIndex = 0;
+            //设置默认值
+            if (ParkNO.Equals("A1"))
+                selectedIndex = 0;
+            if (ParkNO.Equals("A2"))
+                selectedIndex = 1;
+            if (ParkNO.Equals("A3"))
+                selectedIndex = 2;
+            if (ParkNO.Equals("A4"))
+                selectedIndex = 3;
+
+            this.cmb_ParKingNO.SelectedIndex = selectedIndex;
+        }
+
+        /// <summary>
+        /// 绑定车辆
+        /// </summary>
+        private void BindCmbCar()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("NAME");
+            DataRow dr = dt.NewRow();
+            dr = dt.NewRow();
+            dr["ID"] = "1";
+            dr["NAME"] = "A1";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["ID"] = "2";
+            dr["NAME"] = "A1";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["ID"] = "3";
+            dr["NAME"] = "A3";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["ID"] = "4";
+            dr["NAME"] = "A4";
+            dt.Rows.Add(dr);
+            //绑定数据
+            cmb_CarNo.ValueMember = "ID";
+            cmb_CarNo.DisplayMember = "NAME";
+            cmb_CarNo.DataSource = dt;
+            //设置默认值
+            this.cmb_CarNo.SelectedIndex = 0;
+        }
+
+        /// <summary>
+        /// 绑定车辆类型
+        /// </summary>
+        private void BindCmbCarType()
+        {
+            DataTable dt = new DataTable();
+            DataColumn dc1 = new DataColumn("ID");
+            DataColumn dc2 = new DataColumn("NAME");
+            dt.Columns.Add(dc1);
+            dt.Columns.Add(dc2);
+            DataRow dr1 = dt.NewRow();
+            //dr1["ID"] = "1";
+            //dr1["NAME"] = "社会车";
+            DataRow dr2 = dt.NewRow();
+            dr2["ID"] = "2";
+            dr2["NAME"] = "装料车";
+            //dt.Rows.Add(dr1);
+            dt.Rows.Add(dr2);
+            //绑定数据
+            cmbCarType.ValueMember = "ID";
+            cmbCarType.DisplayMember = "NAME";
+            cmbCarType.DataSource = dt;            
+            //设置默认值
+            this.cmbCarType.SelectedIndex = 0;
+        }
+
+        /// <summary>
+        /// 绑定车头方向
+        /// </summary>
+        private void BindCarDrection()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("TypeValue");
+            dt.Columns.Add("TypeName");
+            DataRow dr = dt.NewRow();
+            dr = dt.NewRow();
+            dr["TypeValue"] = "E";
+            dr["TypeName"] = "东";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["TypeValue"] = "W";
+            dr["TypeName"] = "西";
+            dt.Rows.Add(dr);
+
+            //dr = dt.NewRow();
+            //dr["TypeValue"] = "S";
+            //dr["TypeName"] = "南";
+            //dt.Rows.Add(dr);
+            //dr = dt.NewRow();
+            //dr["TypeValue"] = "N";
+            //dr["TypeName"] = "北";
+            //dt.Rows.Add(dr);
+            
+            this.txtDirection.DisplayMember = "TypeName";
+            this.txtDirection.ValueMember = "TypeValue";
+            //绑定列表下拉框数据
+            this.txtDirection.DataSource = dt;
+            //设置默认值
+            this.cmbCarType.SelectedIndex = 0;
+        }
+
+        /// <summary>
+        /// 绑定装料模式
+        /// </summary>
+        private void BindCmbWordMode()
+        {
+            DataTable dt = new DataTable();
+            DataColumn dc1 = new DataColumn("ID");
+            DataColumn dc2 = new DataColumn("NAME");
+            dt.Columns.Add(dc1);
+            dt.Columns.Add(dc2);
+            DataRow dr1 = dt.NewRow();
+            dr1["ID"] = "1";
+            dr1["NAME"] = "模式一";
+            DataRow dr2 = dt.NewRow();
+            dr2["ID"] = "2";
+            dr2["NAME"] = "模式二";
+            DataRow dr3 = dt.NewRow();
+            dr3["ID"] = "3";
+            dr3["NAME"] = "模式三";
+            DataRow dr4 = dt.NewRow();
+            dr4["ID"] = "4";
+            dr4["NAME"] = "模式四";
+            dt.Rows.Add(dr1);
+            dt.Rows.Add(dr2);
+            dt.Rows.Add(dr3);
+            dt.Rows.Add(dr4);
+
+            cmbWordMode.ValueMember = "ID";
+            cmbWordMode.DisplayMember = "NAME";
+            //绑定数据
+            cmbWordMode.DataSource = dt;            
+            //设置默认值
+            this.cmbWordMode.SelectedIndex = 0;
+        }
+
+
+        /// <summary>
+        /// 绑定扫描行车
+        /// </summary>
+        private void BindCmbScanCar()
+        {
+            DataTable dt = new DataTable();
+            DataColumn dc1 = new DataColumn("ID");
+            DataColumn dc2 = new DataColumn("NAME");
+            dt.Columns.Add(dc1);
+            dt.Columns.Add(dc2);
+            DataRow dr1 = dt.NewRow();
+            dr1["ID"] = "1";
+            dr1["NAME"] = "1号行车";
+            DataRow dr2 = dt.NewRow();
+            dr2["ID"] = "2";
+            dr2["NAME"] = "2号行车";
+            DataRow dr3 = dt.NewRow();
+            dr3["ID"] = "3";
+            dr3["NAME"] = "3号行车";
+            DataRow dr4 = dt.NewRow();
+            dr4["ID"] = "4";
+            dr4["NAME"] = "4号行车";
+            dt.Rows.Add(dr1);
+            dt.Rows.Add(dr2);
+            dt.Rows.Add(dr3);
+            dt.Rows.Add(dr4);
+
+            cmbScanCar.ValueMember = "ID";
+            cmbScanCar.DisplayMember = "NAME";
+            //绑定数据
+            cmbScanCar.DataSource = dt;
+            //设置默认值
+            this.cmbScanCar.SelectedIndex = 0;
+        }
+
+        #endregion
     }
 }

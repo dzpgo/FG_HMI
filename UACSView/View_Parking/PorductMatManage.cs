@@ -2657,44 +2657,21 @@ namespace UACSParking
         }
         #endregion
 
+
+        #region 车到位和装车配载
+
         /// <summary>
-        /// 装车配载 点击事件
+        /// 装车配载 点击事件（新）
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void button_L3Stowage_Click(object sender, EventArgs e)
         {
-            if (GetStowageDetail())
-            {
-                MessageBox.Show("车辆已经配载材料，请先做车离。");
-                return;
-            }
-            #region 旧窗口
-
-            //SelectCoilByL3Form selectCoilF = new SelectCoilByL3Form();
-            //selectCoilF.CarType = curCarType.ToString().Trim();
-            //if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('A'))
+            //if (GetStowageDetail())
             //{
-            //    selectCoilF.ParkNO = cbbPacking.Text.Trim();
-            //    selectCoilF.TransferValue += selectCoilF_TransferValue;
-            //    selectCoilF.GrooveNum = txtGrooveNum.Text.Trim();
-            //    //selectCoilF.GrooveTotal = txtSelectGoove.Text.Trim();
-
-            //    if (txtCarNo.Text.Trim().Length > 3)
-            //        selectCoilF.CarNO = txtCarNo.Text.Trim();
-            //    else
-            //    {
-            //        MessageBox.Show("车牌号信息不正确！");
-            //        return;
-            //    }
-            //    selectCoilF.ShowDialog();
+            //    MessageBox.Show("车辆已经配载材料，请先做车离。");
+            //    return;
             //}
-            //else
-            //{
-            //    MessageBox.Show("车位号信息不正确！");
-            //} 
-            #endregion
-
             SelectCoilByL3FormNew selectCoilF = new SelectCoilByL3FormNew();
             selectCoilF.CarType = curCarType.ToString().Trim();
             if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('A'))
@@ -2702,15 +2679,7 @@ namespace UACSParking
                 selectCoilF.ParkNO = cbbPacking.Text.Trim();
                 selectCoilF.TransferValue += selectCoilF_TransferValue;
                 selectCoilF.GrooveNum = txtGrooveNum.Text.Trim();
-                //selectCoilF.GrooveTotal = txtSelectGoove.Text.Trim();
-
-                if (txtCarNo.Text.Trim().Length > 3)
-                    selectCoilF.CarNO = txtCarNo.Text.Trim();
-                else
-                {
-                    MessageBox.Show("车牌号信息不正确！");
-                    return;
-                }
+                selectCoilF.CarNO = txtCarNo.Text.Trim();
                 selectCoilF.ShowDialog();
             }
             else
@@ -2719,6 +2688,74 @@ namespace UACSParking
             }
 
         }
+        #region 装车配载（旧）
+
+        ///// <summary>
+        ///// 装车配载 点击事件（旧）
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void button_L3Stowage_Click(object sender, EventArgs e)
+        //{
+        //    if (GetStowageDetail())
+        //    {
+        //        MessageBox.Show("车辆已经配载材料，请先做车离。");
+        //        return;
+        //    }
+        //    #region 旧窗口
+
+        //    //SelectCoilByL3Form selectCoilF = new SelectCoilByL3Form();
+        //    //selectCoilF.CarType = curCarType.ToString().Trim();
+        //    //if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('A'))
+        //    //{
+        //    //    selectCoilF.ParkNO = cbbPacking.Text.Trim();
+        //    //    selectCoilF.TransferValue += selectCoilF_TransferValue;
+        //    //    selectCoilF.GrooveNum = txtGrooveNum.Text.Trim();
+        //    //    //selectCoilF.GrooveTotal = txtSelectGoove.Text.Trim();
+
+        //    //    if (txtCarNo.Text.Trim().Length > 3)
+        //    //        selectCoilF.CarNO = txtCarNo.Text.Trim();
+        //    //    else
+        //    //    {
+        //    //        MessageBox.Show("车牌号信息不正确！");
+        //    //        return;
+        //    //    }
+        //    //    selectCoilF.ShowDialog();
+        //    //}
+        //    //else
+        //    //{
+        //    //    MessageBox.Show("车位号信息不正确！");
+        //    //} 
+        //    #endregion
+
+        //    SelectCoilByL3FormNew selectCoilF = new SelectCoilByL3FormNew();
+        //    selectCoilF.CarType = curCarType.ToString().Trim();
+        //    if (cbbPacking.Text.Trim() != "请选择" && cbbPacking.Text.Trim() != "" && cbbPacking.Text.Trim().Contains('A'))
+        //    {
+        //        selectCoilF.ParkNO = cbbPacking.Text.Trim();
+        //        selectCoilF.TransferValue += selectCoilF_TransferValue;
+        //        selectCoilF.GrooveNum = txtGrooveNum.Text.Trim();
+        //        //selectCoilF.GrooveTotal = txtSelectGoove.Text.Trim();
+
+        //        if (txtCarNo.Text.Trim().Length > 3)
+        //            selectCoilF.CarNO = txtCarNo.Text.Trim();
+        //        else
+        //        {
+        //            MessageBox.Show("车牌号信息不正确！");
+        //            return;
+        //        }
+        //        selectCoilF.ShowDialog();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("车位号信息不正确！");
+        //    }
+
+        //}
+
+        #endregion
+
+        #endregion
 
         private void cbbPacking_SelectedIndexChanged_1(object sender, EventArgs e)
         {
