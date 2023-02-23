@@ -126,7 +126,7 @@ namespace UACSParking
         string parkingNO = "";
         //
         string[] dgvColumnsName = { "GROOVEID", "MAT_NO", "FROM_STOCK_NO", "TO_STOCK_NO", "BAY_NO" };
-        string[] dgvHeaderText = { "槽号", "材料号", "起卷库位", "落卷库位", "跨别" };
+        string[] dgvHeaderText = { "槽号", "材料号", "起吊位置", "放下位置", "跨别" };
         //配载时间显示
         //private DateTime dtimeLaserEnd;
         bool isReadTime = false;
