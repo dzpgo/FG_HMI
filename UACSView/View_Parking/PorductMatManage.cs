@@ -14,6 +14,7 @@ using ParkingControlLibrary;
 using ParkClassLibrary;
 using UACSDAL;
 using UACSView.View_Parking;
+using Baosight.iSuperframe.Authorization;
 
 namespace UACSParking
 {
@@ -126,7 +127,7 @@ namespace UACSParking
         string parkingNO = "";
         //
         string[] dgvColumnsName = { "GROOVEID", "MAT_NO", "FROM_STOCK_NO", "TO_STOCK_NO", "BAY_NO" };
-        string[] dgvHeaderText = { "槽号", "材料号", "起吊位置", "放下位置", "跨别" };
+        string[] dgvHeaderText = { "槽号", "材料号", "取料位", "落料位", "跨别" };
         //配载时间显示
         //private DateTime dtimeLaserEnd;
         bool isReadTime = false;
@@ -2680,6 +2681,7 @@ namespace UACSParking
                 selectCoilF.TransferValue += selectCoilF_TransferValue;
                 selectCoilF.GrooveNum = txtGrooveNum.Text.Trim();
                 selectCoilF.CarNO = txtCarNo.Text.Trim();
+                //selectCoilF.Size = new Size(2155, 1400);
                 selectCoilF.ShowDialog();
             }
             else

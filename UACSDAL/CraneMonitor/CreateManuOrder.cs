@@ -255,7 +255,8 @@ namespace UACSDAL
 
                 strSql += " ORDER_NO=NULL" + ",";
 
-                strSql += " BAY_NO=NULL" + ",";
+                //strSql += " BAY_NO=NULL" + ",";
+                strSql += " BAY_NO='A'" + ",";
 
                 strSql += " MAT_NO=NULL" + ",";
 
@@ -369,8 +370,8 @@ namespace UACSDAL
 
                 string strSql = " Update UACS_CRANE_ORDER_CURRENT set ";
                 strSql += " ORDER_NO=NULL" + ",";
-                strSql += " BAY_NO=NULL" + ",";
-                //strSql += " BAY_NO='A'" + ",";
+                //strSql += " BAY_NO=NULL" + ",";
+                strSql += " BAY_NO='A'" + ",";
                 strSql += " MAT_CODE=NULL" + ",";
                 strSql += " COMP_CODE=NULL" + ",";
 

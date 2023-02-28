@@ -122,6 +122,8 @@ namespace UACSView.View_Parking
             InitialL3StowagePlan(carNO);
             //绑定停车位
             BindCmbParKing(this.ParkNO);
+            //绑定车号
+            BindCmbCar(this.ParkNO);
             //绑定车辆类型
             BindCmbCarType();
             //绑定车头方向
@@ -130,6 +132,9 @@ namespace UACSView.View_Parking
             BindCmbWordMode();
             //绑定扫描行车
             BindCmbScanCar();
+
+            //窗体大小
+            this.Size = new Size(1440, 950);
         }
 
         /// <summary>
@@ -203,7 +208,7 @@ namespace UACSView.View_Parking
         private void btnQuery_Click(object sender, EventArgs e)
         {
             UpdateDgvRow(false);
-            this.dataGridView1.DataSource = BindMatStockByL3Stowage2(false,tbCAR_NO.Text, tbPLAN_NO.Text, tbL3_TASK_NO.Text);
+            this.dataGridView1.DataSource = BindMatStockByL3Stowage2(false, tbCAR_NO.Text, tbPLAN_NO.Text, tbL3_TASK_NO.Text);
         }
 
         /// <summary>
@@ -270,7 +275,7 @@ namespace UACSView.View_Parking
                         }
                     }
                 }
-                
+
 
                 //更新社会车辆中间选卷数据到配载图的选卷完成中间数据里
                 string shehuicheValue = "";
@@ -524,8 +529,8 @@ namespace UACSView.View_Parking
                                 WHERE ROWNUM > 0 and ROWNUM <=50";
             }
 
-            
-            
+
+
 
             // 执行
             using (IDataReader rdr = DBHelper.ExecuteReader(sqlText_All))
@@ -553,31 +558,6 @@ namespace UACSView.View_Parking
             }
 
 
-
-            //DataTable tbL3_MAT_INFO = new DataTable("UACS_L3_MAT_INFO");
-            //string sqlText = @" SELECT MAT_CODE, BASE_RESOURCE, MAT_CNAME, MAT_TYPE, REC_TIME FROM UACSAPP.UACS_L3_MAT_INFO ";
-            //// 执行
-            //using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
-            //{
-            //    DataColumn col;
-            //    DataRow row;
-            //    for (int i = 0; i < rdr.FieldCount; i++)
-            //    {
-            //        col = new DataColumn();
-            //        col.ColumnName = rdr.GetName(i);
-            //        col.DataType = rdr.GetFieldType(i);
-            //        tbL3_MAT_INFO.Columns.Add(col);
-            //    }
-            //    while (rdr.Read())
-            //    {
-            //        row = tbL3_MAT_INFO.NewRow();
-            //        for (int i = 0; i < rdr.FieldCount; i++)
-            //        {
-            //            row[i] = rdr[i];
-            //        }
-            //        tbL3_MAT_INFO.Rows.Add(row);
-            //    }
-            //}
 
             foreach (DataRow dataRow in tbL3_MAT_OUT_INFO.Rows)
             {
@@ -720,91 +700,6 @@ namespace UACSView.View_Parking
 
                 #endregion
 
-                #region 更新物料 (旧)
-
-                //if (!string.IsNullOrEmpty(GMatCode_1))
-                //{
-                //    tbMatCode_1.Text = GMatCode_1;
-                //}
-                //else
-                //{
-                //    tbMatCode_1.Text = "";
-                //}
-                //if (!string.IsNullOrEmpty(GMatCode_2))
-                //{
-                //    tbMatCode_2.Text = GMatCode_2;
-                //}
-                //else
-                //{
-                //    tbMatCode_2.Text = "";
-                //}
-                //if (!string.IsNullOrEmpty(GMatCode_3))
-                //{
-                //    tbMatCode_3.Text = GMatCode_3;
-                //}
-                //else
-                //{
-                //    tbMatCode_3.Text = "";
-                //}
-                //if (!string.IsNullOrEmpty(GMatCode_4))
-                //{
-                //    tbMatCode_4.Text = GMatCode_4;
-                //}
-                //else
-                //{
-                //    tbMatCode_4.Text = "";
-                //}
-                //if (!string.IsNullOrEmpty(GMatCode_5))
-                //{
-                //    tbMatCode_5.Text = GMatCode_5;
-                //}
-                //else
-                //{
-                //    tbMatCode_5.Text = "";
-                //}
-                //if (!string.IsNullOrEmpty(GMatCode_6))
-                //{
-                //    tbMatCode_6.Text = GMatCode_6;
-                //}
-                //else
-                //{
-                //    tbMatCode_6.Text = "";
-                //}
-                //if (!string.IsNullOrEmpty(GMatCode_7))
-                //{
-                //    tbMatCode_7.Text = GMatCode_7;
-                //}
-                //else
-                //{
-                //    tbMatCode_7.Text = "";
-                //}
-                //if (!string.IsNullOrEmpty(GMatCode_8))
-                //{
-                //    tbMatCode_8.Text = GMatCode_8;
-                //}
-                //else
-                //{
-                //    tbMatCode_8.Text = "";
-                //}
-                //if (!string.IsNullOrEmpty(GMatCode_9))
-                //{
-                //    tbMatCode_9.Text = GMatCode_9;
-                //}
-                //else
-                //{
-                //    tbMatCode_9.Text = "";
-                //}
-                //if (!string.IsNullOrEmpty(GMatCode_10))
-                //{
-                //    tbMatCode_10.Text = GMatCode_10;
-                //}
-                //else
-                //{
-                //    tbMatCode_10.Text = "";
-                //}
-
-                #endregion
-
                 #region 更新重量
 
 
@@ -909,21 +804,6 @@ namespace UACSView.View_Parking
                 var sum = Convert.ToString(Convert.ToInt32(!string.IsNullOrEmpty(tbWeight_Sum.Text) ? tbWeight_Sum.Text : "0") + w_1 + w_2 + w_3 + w_4 + w_5 + w_6 + w_7 + w_8 + w_9 + w_10);
                 tbWeight_Sum.Text = sum;
 
-
-                //tbWeight_Sum.Text = Convert.ToString(
-                //        Convert.ToInt32(tbWeight_Sum.Text.Trim())
-                //        + Convert.ToInt32(!string.IsNullOrEmpty(GWeight_1) ? GWeight_1 : "0")
-                //        + Convert.ToInt32(!string.IsNullOrEmpty(GWeight_2) ? GWeight_2 : "0")
-                //        + Convert.ToInt32(!string.IsNullOrEmpty(GWeight_3) ? GWeight_3 : "0")
-                //        + Convert.ToInt32(!string.IsNullOrEmpty(GWeight_4) ? GWeight_4 : "0")
-                //        + Convert.ToInt32(!string.IsNullOrEmpty(GWeight_5) ? GWeight_5 : "0")
-                //        + Convert.ToInt32(!string.IsNullOrEmpty(GWeight_6) ? GWeight_6 : "0")
-                //        + Convert.ToInt32(!string.IsNullOrEmpty(GWeight_7) ? GWeight_7 : "0")
-                //        + Convert.ToInt32(!string.IsNullOrEmpty(GWeight_8) ? GWeight_8 : "0")
-                //        + Convert.ToInt32(!string.IsNullOrEmpty(GWeight_9) ? GWeight_9 : "0")
-                //        + Convert.ToInt32(!string.IsNullOrEmpty(GWeight_10) ? GWeight_10 : "0")
-                //        );
-
                 #endregion
             }
             else
@@ -1026,7 +906,7 @@ namespace UACSView.View_Parking
                     while (rdr.Read())
                     {
                         TREATMENT_NO = rdr["TREATMENT_NO"].ToString();
-                        if (!string.IsNullOrEmpty(rdr["LASER_ACTION_COUNT"].ToString()))                        
+                        if (!string.IsNullOrEmpty(rdr["LASER_ACTION_COUNT"].ToString()))
                             LASER_ACTION_COUNT = Convert.ToInt64(rdr["LASER_ACTION_COUNT"].ToString());
                     }
                 }
@@ -1128,34 +1008,64 @@ namespace UACSView.View_Parking
         /// <summary>
         /// 绑定车辆
         /// </summary>
-        private void BindCmbCar()
+        /// <param name="ParkNO">停车位号</param>
+        private void BindCmbCar(string ParkNO)
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("ID");
-            dt.Columns.Add("NAME");
-            DataRow dr = dt.NewRow();
-            dr = dt.NewRow();
-            dr["ID"] = "1";
-            dr["NAME"] = "A1";
-            dt.Rows.Add(dr);
-            dr = dt.NewRow();
-            dr["ID"] = "2";
-            dr["NAME"] = "A1";
-            dt.Rows.Add(dr);
-            dr = dt.NewRow();
-            dr["ID"] = "3";
-            dr["NAME"] = "A3";
-            dt.Rows.Add(dr);
-            dr = dt.NewRow();
-            dr["ID"] = "4";
-            dr["NAME"] = "A4";
-            dt.Rows.Add(dr);
-            //绑定数据
-            cmb_CarNo.ValueMember = "ID";
-            cmb_CarNo.DisplayMember = "NAME";
-            cmb_CarNo.DataSource = dt;
-            //设置默认值
-            this.cmb_CarNo.SelectedIndex = 0;
+            try
+            {
+                DataTable dt = new DataTable();
+                dt.Columns.Add("ID");
+                dt.Columns.Add("NAME");
+                DataRow dr = dt.NewRow();
+                int IndexID = 0;
+                var HopperNo = ""; //料槽号（车号）
+                if (!string.IsNullOrEmpty(ParkNO))
+                {
+                    //L3配料间空料斗与工位对照
+                    string sqlText0 = @"SELECT ARRIVE_FLAG, HOPPER_NO,POSITION_NO,LOAD_FLAG,STATUS FROM UACS_L3_MAT_CRA_RELATION WHERE POSITION_NO='{0}' ";
+                    //sqlText0 += " AND LOAD_FLAG='1' ";  //1:满斗/0:空斗
+                    sqlText0 = string.Format(sqlText0, ParkNO);
+                    using (IDataReader rdr = DBHelper.ExecuteReader(sqlText0))
+                    {
+                        //只取匹配到的第一个
+                        if (rdr.Read())
+                        {
+                            if (!string.IsNullOrEmpty(rdr["HOPPER_NO"].ToString()))
+                            {
+                                HopperNo = rdr["HOPPER_NO"].ToString();//料槽号（车号）
+                            }
+                        }
+                    }
+                }
+                //查车辆号
+                string sqlText = @"SELECT FRAME_TYPE_NO FROM UACS_TRUCK_FRAME_DEFINE ";
+                using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
+                {
+                    while (rdr.Read())
+                    {
+                        dr = dt.NewRow();
+                        dr["ID"] = rdr["FRAME_TYPE_NO"].ToString();
+                        dr["NAME"] = rdr["FRAME_TYPE_NO"].ToString();
+                        dt.Rows.Add(dr);
+                    }
+                }
+                dr = dt.NewRow();
+                dr["ID"] = "SG99";
+                dr["NAME"] = "SG99";
+                dt.Rows.Add(dr);
+                //绑定数据
+                cmb_CarNo.ValueMember = "ID";
+                cmb_CarNo.DisplayMember = "NAME";
+                cmb_CarNo.DataSource = dt;
+                //根据text值选中项
+                this.cmb_CarNo.SelectedIndex = string.IsNullOrEmpty(HopperNo) ? 0 : this.cmb_CarNo.FindString(HopperNo) >= 0 ? this.cmb_CarNo.FindString(HopperNo) : 0;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         /// <summary>
@@ -1179,7 +1089,7 @@ namespace UACSView.View_Parking
             //绑定数据
             cmbCarType.ValueMember = "ID";
             cmbCarType.DisplayMember = "NAME";
-            cmbCarType.DataSource = dt;            
+            cmbCarType.DataSource = dt;
             //设置默认值
             this.cmbCarType.SelectedIndex = 0;
         }
@@ -1210,7 +1120,7 @@ namespace UACSView.View_Parking
             //dr["TypeValue"] = "N";
             //dr["TypeName"] = "北";
             //dt.Rows.Add(dr);
-            
+
             this.txtDirection.DisplayMember = "TypeName";
             this.txtDirection.ValueMember = "TypeValue";
             //绑定列表下拉框数据
@@ -1249,7 +1159,7 @@ namespace UACSView.View_Parking
             cmbWordMode.ValueMember = "ID";
             cmbWordMode.DisplayMember = "NAME";
             //绑定数据
-            cmbWordMode.DataSource = dt;            
+            cmbWordMode.DataSource = dt;
             //设置默认值
             this.cmbWordMode.SelectedIndex = 0;
         }
@@ -1291,5 +1201,209 @@ namespace UACSView.View_Parking
         }
 
         #endregion
+
+        #region 值发生更改时触发事件
+
+        /// <summary>
+        /// 车辆类型 值发生更改时触发事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmbCarType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCarType.SelectedValue != null && (int.Parse(cmbCarType.SelectedValue.ToString()) == 100 || int.Parse(cmbCarType.SelectedValue.ToString()) == 106))
+            {
+                txtDirection.Enabled = true;
+                //txtDirection.Text = "南";
+                carType = "框架车";
+                //button1.Enabled = true;
+            }
+            else if (cmbCarType.SelectedValue != null && int.Parse(cmbCarType.SelectedValue.ToString()) == 102)
+            {
+                txtDirection.Enabled = true;
+                //txtDirection.Text = "南";
+                carType = "ALL";
+                //button1.Enabled = true;
+            }
+            else if (cmbCarType.SelectedValue != null && int.Parse(cmbCarType.SelectedValue.ToString()) == 2)
+            {
+                txtDirection.Enabled = true;
+                //txtDirection.Text = "南";
+                carType = "装料车";
+                //button1.Enabled = true;
+            }
+            else
+            {
+                txtDirection.Enabled = true;
+                txtDirection.Text = "";
+                carType = "社会车";
+                //button1.Enabled = true;
+            }
+        }
+        /// <summary>
+        /// 车号 值发生更改时触发事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmb_CarNo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var dd = this.cmb_CarNo.Text;
+            if (this.cmb_CarNo.FindString(this.cmb_CarNo.Text) < 0)
+            {
+                MessageBox.Show("车号不存在！");
+            }
+            this.cmb_CarNo.SelectedIndex = string.IsNullOrEmpty(this.cmb_CarNo.Text) ? 0 : this.cmb_CarNo.FindString(this.cmb_CarNo.Text) >= 0 ? this.cmb_CarNo.FindString(this.cmb_CarNo.Text) : 0;
+        }
+
+        #endregion
+
+        /// <summary>
+        /// 车到位和装车配载合二为一测试
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnTestSubmit_Click(object sender, EventArgs e)
+        {
+            #region 条件
+            if (!cmb_ParKingNO.Text.ToString().Contains('A') || cmb_ParKingNO.Text.ToString().Trim() == "请选择")
+            {
+                MessageBox.Show("请先选择停车位！！", "提示");
+                this.Close();
+                return;
+            }
+            if (!string.IsNullOrEmpty(ParkNO) && !string.IsNullOrEmpty(CarNO))
+            {
+                MessageBox.Show("车位已经有车！！", "提示");
+                return;
+            }
+            if (!txtDirection.Text.Trim().Equals("东") || txtDirection.Text.Trim().Equals("西"))
+            {
+                MessageBox.Show("请输入车头方向！", "提示");
+                return;
+            }
+            if (cmb_CarNo.Text.Length < 4)
+            {
+                MessageBox.Show("请输入四位以上的车牌号！", "提示");
+                return;
+            }
+            var cbChoiceData = string.Empty;
+            if (dataGridView1.SelectedCells.Count <= 0)
+            {
+                MessageBox.Show("请先选择计划！！", "提示");
+                this.Close();
+                return;
+            }
+            else
+            {
+                // 选中行
+                foreach (DataGridViewRow dgvRow in dataGridView1.Rows)
+                {
+                    if (!string.IsNullOrEmpty(dgvRow.Cells["cbChoice"].Value.ToString()))
+                    {
+                        var isChoice = dgvRow.Cells["cbChoice"].Value.ToString();
+                        if (isChoice.Equals("1"))
+                        {
+                            cbChoiceData = dgvRow.Cells["GPlanNO"].Value.ToString();
+                        }
+                    }
+                }
+
+                if (string.IsNullOrEmpty(cbChoiceData))
+                {
+                    MessageBox.Show("请先选择计划！！", "提示");
+                    return;
+                }
+            } 
+            #endregion
+
+            //确认提示
+            MessageBoxButtons btn = MessageBoxButtons.OKCancel;
+            DialogResult drmsg = MessageBox.Show("确认是否装车配载？", "提示", btn, MessageBoxIcon.Asterisk);
+            if (drmsg == DialogResult.OK)
+            {
+                int currengMdlCalId = 0;
+                long LASER_ACTION_COUNT = 0;
+                string sqlText = @"SELECT TREATMENT_NO, STOWAGE_ID, CAR_NO, CAR_TYPE, LASER_ACTION_COUNT FROM UACS_PARKING_WORK_STATUS where PARKING_NO = '{0}'";
+                sqlText = string.Format(sqlText, cmb_ParKingNO.Text.ToString());
+                using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
+                {
+                    if (rdr.Read())
+                    {
+                        LASER_ACTION_COUNT = Convert.ToInt64(string.IsNullOrEmpty(rdr["LASER_ACTION_COUNT"].ToString()) ? "0" : rdr["LASER_ACTION_COUNT"].ToString());
+                        currengMdlCalId = Convert.ToInt32(LASER_ACTION_COUNT);
+                    }
+                }
+                //模型计算次数
+                int mdlCalId = currengMdlCalId + 1;
+                //更新模型计算次数
+                sqlText = @"UPDATE UACS_PARKING_WORK_STATUS SET LASER_ACTION_COUNT = {0} where PARKING_NO = '{1}'";
+                sqlText = string.Format(sqlText, mdlCalId, cmb_ParKingNO.Text.ToString());
+                DBHelper.ExecuteNonQuery(sqlText);
+
+                //框架车
+                if (carType == "框架车" || carType == "装料车" || carType == "2")
+                {
+                    if (cmb_CarNo.Text.Trim() != "" || txtDirection.Text.Trim() != "" || txtFlag.Text.Trim() != "" || cmb_ParKingNO.Text.Trim() != "")
+                    {
+                        //操作人 | 日期 | 班次 | 班组 | 停车位 | 车号 | 空重标记 | 车头朝向 | 装料模式 | 扫描行车 | 车辆类型 | 停车位类型
+                        //车头位置(东：E 西：W 南：S 北：N)
+                        StringBuilder sb = new StringBuilder("HMI");  //操作人
+                        sb.Append("|");
+                        sb.Append(DateTime.Now.ToString("yyyyMMddHHmmss")); //日期
+                        sb.Append("|");
+                        sb.Append("1");  //班次
+                        sb.Append("|");
+                        sb.Append("1");  //班组
+                        sb.Append("|");
+                        sb.Append(cmb_ParKingNO.Text.Trim());   //停车位
+                        sb.Append("|");
+                        sb.Append(cmb_CarNo.Text.ToUpper().Trim());   //车号
+                        sb.Append("|");
+                        if (txtFlag.Text.Trim().Equals("空"))
+                        {
+                            sb.Append("0");  //空重标记 0：空
+                        }
+                        else
+                        {
+                            sb.Append("1");  //空重标记 1：满
+                        }
+                        //sb.Append(carFlag.Trim());
+                        sb.Append("|");
+                        // sb.Append(carDirection.Trim());
+                        sb.Append(txtDirection.SelectedValue.ToString().Trim());   //车头朝向
+                        sb.Append("|");
+                        //sb.Append("90");
+                        sb.Append(cmbWordMode.SelectedValue.ToString().Trim());   //装料模式
+                        sb.Append("|");
+                        sb.Append("0"); //扫描行车
+                        sb.Append("|");
+                        string carTypeValue = cmbCarType.SelectedValue.ToString().Trim();
+                        sb.Append(carTypeValue); //车辆类型
+                        sb.Append("|");
+                        sb.Append("0");   //停车位类型
+                        sb.Append("|");
+                        sb.Append(cbChoiceData);   //计划号
+
+                        tagDP.SetData("EV_PARKING_CARARRIVE", sb.ToString());
+                        DialogResult dr = MessageBox.Show("框架车车到位成功，激光扫描开始，请保证车位上方没有行车经过。", "提示", MessageBoxButtons.OK);
+                        ParkClassLibrary.HMILogger.WriteLog("车到位", "车到位：" + sb.ToString(), ParkClassLibrary.LogLevel.Info, this.Text);
+                        if (dr == DialogResult.OK)
+                        {
+                            this.Close();
+                            return;
+                        }
+                        else
+                        {
+                            this.Close();
+                        }
+                    }
+                    else
+                        MessageBox.Show("请填写完整");
+                }
+                else
+                    MessageBox.Show("不存在该出库类型！");
+
+            }
+        }
     }
 }
