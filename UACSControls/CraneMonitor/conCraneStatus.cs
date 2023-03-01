@@ -16,9 +16,12 @@ using UACSPopupForm;
 
 namespace UACSControls
 {
-
+    /// <summary>
+    /// 行车状态
+    /// </summary>
     public partial class conCraneStatus : UserControl
     {
+        #region 定义
         public const long SHORT_CMD_NORMAL_STOP = 100;
         public const long SHORT_CMD_EMG_STOP = 200;
         public const long SHORT_CMD_RESET = 300;
@@ -93,8 +96,13 @@ namespace UACSControls
         private CraneStatusBase craneStatusBase = new CraneStatusBase();
         public delegate void RefreshControlInvoke(CraneStatusBase theCraneStatusBase);
 
+        #endregion
 
-        //step3
+        #region 刷新行车状态Tag值
+        /// <summary>
+        /// 刷新行车状态Tag值
+        /// </summary>
+        /// <param name="theCraneStatusBase">Tag值</param>
         public void RefreshControl(CraneStatusBase theCraneStatusBase)
         {
             try
@@ -102,26 +110,6 @@ namespace UACSControls
                 auth = FrameContext.Instance.GetPlugin<IAuthorization>() as IAuthorization;
                 getUserName();
                 craneStatusBase = theCraneStatusBase;
-
-                //if(craneStatusBase.CraneNO.ToString().Trim() == "1_4" || craneStatusBase.CraneNO.ToString().Trim() == "1_5" || craneStatusBase.CraneNO.ToString().Trim() == "1_6")
-                //{
-                //    btnStop.Visible = false;
-                //    btnStop.Enabled = false;
-                //    btnMode.Visible = false;
-                //    btnMode.Enabled = false;
-                //    btnShow.Visible = false;
-                //    btnShow.Enabled = false;
-                //}
-
-                if (craneStatusBase.CraneNO.ToString().Trim() == "1_5" || craneStatusBase.CraneNO.ToString().Trim() == "1_6")
-                {
-                    btnStop.Visible = false;
-                    btnStop.Enabled = false;
-                    btnMode.Visible = false;
-                    btnMode.Enabled = false;                    
-                }
-                btnShow.Visible = false;
-                btnShow.Enabled = false;
 
                 //行车号
                 lbl_CraneNo.Text = "行车 " + craneStatusBase.CraneNO.ToString();
@@ -245,24 +233,9 @@ namespace UACSControls
                     }
                 }
 
-                //if (txt_CONTROL_MODE.Text == "等待" && txt_CRANE_STATUS.Text == "999")
                 //if ((!String.IsNullOrEmpty(value.Trim()) || !String.IsNullOrEmpty(valueWMS.Trim())) && (hasValues == true) && (txt_CONTROL_MODE.Text == "等待" || txt_CONTROL_MODE.Text == "自动"))
                 if ((!String.IsNullOrEmpty(value.Trim()) || !String.IsNullOrEmpty(valueWMS.Trim())) && (txt_CONTROL_MODE.Text == "等待" || txt_CONTROL_MODE.Text == "自动"))
                 {
-                    //btnShow.Visible = true;
-                    //timer1.Enabled = true; 
-                    //if (!flag)
-                    //{
-                    //    btnShow.BackColor = Color.Red;
-                    //    flag = true;
-                    //}
-                    //else
-                    //{
-                    //    btnShow.BackColor = System.Drawing.SystemColors.Control;
-                    //    flag = false;
-                    //}
-
-
                     btnShow.Visible = true;
                     if (firstTimeShow == false)
                     {
@@ -272,14 +245,6 @@ namespace UACSControls
                     if (CraneAlarmGetValues(listAlarm))
                     {
                         btnShow.BackColor = Color.Red;
-                        //if ((!String.IsNullOrEmpty(value.Trim()) || !String.IsNullOrEmpty(valueWMS.Trim())) && txt_CONTROL_MODE.Text == "自动")
-                        //{
-                        //    timer1.Enabled = true;
-                        //}
-                        //else
-                        //{
-                        //    timer1.Enabled = false;
-                        //}
                     }
                     else
                     {
@@ -299,26 +264,14 @@ namespace UACSControls
 
                 #region 行车故障音频
                 listCrane.Clear();
-                if (craneNO == "1_1" || craneNO == "1_2" || craneNO == "1_3" || craneNO == "1_4")
+                if (craneNO == "1" || craneNO == "2" || craneNO == "3" || craneNO == "4")
                 {
-                    listCrane.Add("1_1");
-                    listCrane.Add("1_2");
-                    listCrane.Add("1_3");
-                    listCrane.Add("1_4");
+                    listCrane.Add("1");
+                    listCrane.Add("2");
+                    listCrane.Add("3");
+                    listCrane.Add("4");
                 }
-                //else if(craneNO == "6_4" || craneNO == "6_5" || craneNO == "6_6")
-                //{
-                //    listCrane.Add("6_4");
-                //    listCrane.Add("6_5");
-                //    listCrane.Add("6_6");
-                //}
-                //else if (craneNO == "6_7" || craneNO == "6_8" || craneNO == "6_9" || craneNO == "6_10")
-                //{
-                //    listCrane.Add("6_7");
-                //    listCrane.Add("6_8");
-                //    listCrane.Add("6_9");
-                //    listCrane.Add("6_10");
-                //}
+
                 int craneAlarmCount = 0;
                 foreach (string item in listCrane)
                 {
@@ -367,7 +320,7 @@ namespace UACSControls
                         }
                     }
                 }
-                if (craneAlarmCount >= 1 && (craneNO == "1_1" || craneNO == "1_2" || craneNO == "1_3" || craneNO == "1_4"))
+                if (craneAlarmCount >= 1 && (craneNO == "1" || craneNO == "2" || craneNO == "3" || craneNO == "4"))
                 {
                     timer1.Enabled = true;
                 }
@@ -377,78 +330,18 @@ namespace UACSControls
                 }
                 #endregion
 
-                //if (craneStatusBase.CraneNO.ToString().Trim() == "1_4" || craneStatusBase.CraneNO.ToString().Trim() == "1_5" || craneStatusBase.CraneNO.ToString().Trim() == "1_6")
+                //if (craneStatusBase.CraneNO.ToString().Trim() == "1_5" || craneStatusBase.CraneNO.ToString().Trim() == "1_6")
                 //{
                 //    btnStop.Visible = false;
                 //    btnStop.Enabled = false;
                 //    btnMode.Visible = false;
-                //    btnMode.Enabled = false;
-                //    btnShow.Visible = false;
-                //    btnShow.Enabled = false;
+                //    btnMode.Enabled = false;                    
                 //}
-                if (craneStatusBase.CraneNO.ToString().Trim() == "1_5" || craneStatusBase.CraneNO.ToString().Trim() == "1_6")
-                {
-                    btnStop.Visible = false;
-                    btnStop.Enabled = false;
-                    btnMode.Visible = false;
-                    btnMode.Enabled = false;                    
-                }
-                btnShow.Visible = false;
-                btnShow.Enabled = false;
             }
             catch (Exception ex)
             {
                 LogManager.WriteProgramLog(ex.Message);
                 LogManager.WriteProgramLog(ex.StackTrace);
-            }
-        }
-
-        private void showMessageBox2()
-        {
-            box = new FormMessageBox();
-            box.MesssageBoxFlag = 2;
-            box.MesssageBoxInfo = "【" + CraneNO + "】行车心跳中断\r\n 人工或遥控起落卷时请做好库位记录！";
-            box.ShowDialog();
-        }
-        private void showMessageBox3()
-        {
-            box = new FormMessageBox();
-            box.MesssageBoxFlag = 3;
-            box.MesssageBoxInfo = "【" + CraneNO + "】行车载荷异常\r\n 人工或遥控起落卷时请盘库，确认库位信息！";
-            box.ShowDialog();
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            PlaySoundDelegate dge = new PlaySoundDelegate(PlaySoundFuntion);
-            dge.BeginInvoke("行车故障.wav", null, null);
-        }
-
-        private void PlaySoundFuntion(string fileName)
-        {
-            if (btnShow.Visible == true)
-            {
-                SoundEvtAgs e = new SoundEvtAgs();
-                e.FileName = fileName;
-                playSound(this, e);
-            }
-        }
-        private void PlaySoundEvt(object sender, SoundEvtAgs e)
-        {
-            playesounder(e.FileName);
-        }
-        private void playesounder(String strWaveName)
-        {
-            try
-            {
-                System.Media.SoundPlayer player = new SoundPlayer();
-                player.SoundLocation = System.Windows.Forms.Application.StartupPath + "\\" + strWaveName;
-                player.Load();
-                player.PlaySync();
-            }
-            catch (System.Exception ex)
-            {
-                throw ex;
             }
         }
 
@@ -469,7 +362,8 @@ namespace UACSControls
                         {
                             if (firstTime == false)
                             {
-                                string sqlInsert = string.Format("INSERT INTO UACS_CRANE_ALARM_CODE_NO_DEFINE(CRANE_NO, ALARM_CODE, ALARM_TIME) VALUES('{0}', '{1}', '{2}')", craneNO, item, alarmTime);
+                                //string sqlInsert = string.Format("INSERT INTO UACS_CRANE_ALARM_CODE_NO_DEFINE(CRANE_NO, ALARM_CODE, ALARM_TIME) VALUES('{0}', '{1}', '{2}')", craneNO, item, alarmTime);
+                                string sqlInsert = string.Format("INSERT INTO UACS_CRANE_ALARM_CODE_DEFINE(ALARM_CODE) VALUES('{0}')", item);
                                 DB2Connect.DBHelper.ExecuteNonQuery(sqlInsert);
                             }
                         }
@@ -539,6 +433,75 @@ namespace UACSControls
             { }
         }
 
+        #endregion
+
+        #region 错误弹窗 And ~
+
+        /// <summary>
+        /// 行车心跳中断 弹窗
+        /// </summary>
+        private void showMessageBox2()
+        {
+            box = new FormMessageBox();
+            box.MesssageBoxFlag = 2;
+            box.MesssageBoxInfo = "【" + CraneNO + "】行车心跳中断\r\n 人工或遥控起落卷时请做好库位记录！";
+            box.ShowDialog();
+        }
+
+        /// <summary>
+        /// 行车载荷异常 弹窗
+        /// </summary>
+        private void showMessageBox3()
+        {
+            box = new FormMessageBox();
+            box.MesssageBoxFlag = 3;
+            box.MesssageBoxInfo = "【" + CraneNO + "】行车载荷异常\r\n 人工或遥控起落卷时请盘库，确认库位信息！";
+            box.ShowDialog();
+        }
+
+        /// <summary>
+        /// 行车故障
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            PlaySoundDelegate dge = new PlaySoundDelegate(PlaySoundFuntion);
+            dge.BeginInvoke("行车故障.wav", null, null);
+        }
+
+        private void PlaySoundFuntion(string fileName)
+        {
+            if (btnShow.Visible == true)
+            {
+                SoundEvtAgs e = new SoundEvtAgs();
+                e.FileName = fileName;
+                playSound(this, e);
+            }
+        }
+        private void PlaySoundEvt(object sender, SoundEvtAgs e)
+        {
+            playesounder(e.FileName);
+        }
+        private void playesounder(String strWaveName)
+        {
+            try
+            {
+                System.Media.SoundPlayer player = new SoundPlayer();
+                player.SoundLocation = System.Windows.Forms.Application.StartupPath + "\\" + strWaveName;
+                player.Load();
+                player.PlaySync();
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        #endregion
+
+        #region 点击事件
+
         /// <summary>
         /// 紧停
         /// </summary>
@@ -591,7 +554,11 @@ namespace UACSControls
             catch (Exception ex)
             { }
         }
-
+        /// <summary>
+        /// 行车报警 点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnShow_Click(object sender, EventArgs e)
         {
             PopAlarmCurrent pop = new PopAlarmCurrent();
@@ -599,6 +566,9 @@ namespace UACSControls
             pop.ShowDialog();
 
         }
+        #endregion
+
+        #region 处理
 
         private string get_value_string(string tagName)
         {
@@ -766,7 +736,11 @@ namespace UACSControls
         {
             weightFlag = true;
         }
+        #endregion
+
     }
+
+    #region 文件
 
     delegate void queryTimer_TickDelegate(object state);
     public delegate void Closedelegate();
@@ -782,4 +756,6 @@ namespace UACSControls
             get { return fileName; }
         }
     }
+
+    #endregion
 }

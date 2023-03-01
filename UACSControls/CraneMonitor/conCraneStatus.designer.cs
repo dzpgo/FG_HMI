@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnMode = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
@@ -89,9 +90,9 @@
             this.panel19 = new System.Windows.Forms.Label();
             this.panel20 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer();
-            this.timer2 = new System.Windows.Forms.Timer();
-            this.timer3 = new System.Windows.Forms.Timer();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel14.SuspendLayout();
@@ -119,8 +120,8 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28F));
             this.tableLayoutPanel1.Controls.Add(this.btnMode, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.btnStop, 0, 5);
@@ -166,7 +167,7 @@
             this.btnMode.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnMode.Location = new System.Drawing.Point(84, 183);
             this.btnMode.Name = "btnMode";
-            this.btnMode.Size = new System.Drawing.Size(79, 35);
+            this.btnMode.Size = new System.Drawing.Size(83, 35);
             this.btnMode.TabIndex = 17;
             this.btnMode.Text = "模式切换";
             this.btnMode.UseVisualStyleBackColor = false;
@@ -192,9 +193,9 @@
             this.panel15.Controls.Add(this.txt_CONTROL_MODE);
             this.panel15.Controls.Add(this.label13);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel15.Location = new System.Drawing.Point(169, 147);
+            this.panel15.Location = new System.Drawing.Point(173, 147);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(120, 30);
+            this.panel15.Size = new System.Drawing.Size(116, 30);
             this.panel15.TabIndex = 15;
             // 
             // txt_CONTROL_MODE
@@ -204,7 +205,7 @@
             this.txt_CONTROL_MODE.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_CONTROL_MODE.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txt_CONTROL_MODE.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.txt_CONTROL_MODE.Location = new System.Drawing.Point(45, 6);
+            this.txt_CONTROL_MODE.Location = new System.Drawing.Point(41, 6);
             this.txt_CONTROL_MODE.Name = "txt_CONTROL_MODE";
             this.txt_CONTROL_MODE.ReadOnly = true;
             this.txt_CONTROL_MODE.Size = new System.Drawing.Size(76, 19);
@@ -230,7 +231,7 @@
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel14.Location = new System.Drawing.Point(84, 147);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(79, 30);
+            this.panel14.Size = new System.Drawing.Size(83, 30);
             this.panel14.TabIndex = 14;
             // 
             // txt_CRANE_STATUS
@@ -240,7 +241,7 @@
             this.txt_CRANE_STATUS.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_CRANE_STATUS.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txt_CRANE_STATUS.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.txt_CRANE_STATUS.Location = new System.Drawing.Point(7, 6);
+            this.txt_CRANE_STATUS.Location = new System.Drawing.Point(11, 6);
             this.txt_CRANE_STATUS.Name = "txt_CRANE_STATUS";
             this.txt_CRANE_STATUS.ReadOnly = true;
             this.txt_CRANE_STATUS.Size = new System.Drawing.Size(69, 19);
@@ -297,9 +298,9 @@
             this.panel12.Controls.Add(this.txt_ToStock);
             this.panel12.Controls.Add(this.label12);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(169, 111);
+            this.panel12.Location = new System.Drawing.Point(173, 111);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(120, 30);
+            this.panel12.Size = new System.Drawing.Size(116, 30);
             this.panel12.TabIndex = 12;
             // 
             // txt_ToStock
@@ -308,10 +309,10 @@
             this.txt_ToStock.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txt_ToStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_ToStock.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_ToStock.Location = new System.Drawing.Point(45, 6);
+            this.txt_ToStock.Location = new System.Drawing.Point(49, 6);
             this.txt_ToStock.Name = "txt_ToStock";
             this.txt_ToStock.ReadOnly = true;
-            this.txt_ToStock.Size = new System.Drawing.Size(76, 19);
+            this.txt_ToStock.Size = new System.Drawing.Size(67, 19);
             this.txt_ToStock.TabIndex = 5;
             this.txt_ToStock.Text = "999999              ";
             // 
@@ -335,7 +336,7 @@
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel11.Location = new System.Drawing.Point(84, 111);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(79, 30);
+            this.panel11.Size = new System.Drawing.Size(83, 30);
             this.panel11.TabIndex = 11;
             // 
             // txt_ZACT
@@ -344,7 +345,7 @@
             this.txt_ZACT.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txt_ZACT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_ZACT.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_ZACT.Location = new System.Drawing.Point(20, 6);
+            this.txt_ZACT.Location = new System.Drawing.Point(24, 6);
             this.txt_ZACT.Name = "txt_ZACT";
             this.txt_ZACT.ReadOnly = true;
             this.txt_ZACT.Size = new System.Drawing.Size(56, 19);
@@ -401,9 +402,9 @@
             this.panel9.Controls.Add(this.txt_FromStock);
             this.panel9.Controls.Add(this.label6);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(169, 75);
+            this.panel9.Location = new System.Drawing.Point(173, 75);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(120, 30);
+            this.panel9.Size = new System.Drawing.Size(116, 30);
             this.panel9.TabIndex = 9;
             // 
             // txt_FromStock
@@ -412,10 +413,10 @@
             this.txt_FromStock.BackColor = System.Drawing.Color.White;
             this.txt_FromStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_FromStock.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_FromStock.Location = new System.Drawing.Point(45, 6);
+            this.txt_FromStock.Location = new System.Drawing.Point(49, 6);
             this.txt_FromStock.Name = "txt_FromStock";
             this.txt_FromStock.ReadOnly = true;
-            this.txt_FromStock.Size = new System.Drawing.Size(76, 19);
+            this.txt_FromStock.Size = new System.Drawing.Size(67, 19);
             this.txt_FromStock.TabIndex = 3;
             this.txt_FromStock.Text = "999999";
             // 
@@ -438,7 +439,7 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(84, 75);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(79, 30);
+            this.panel8.Size = new System.Drawing.Size(83, 30);
             this.panel8.TabIndex = 8;
             // 
             // txt_YACT
@@ -447,7 +448,7 @@
             this.txt_YACT.BackColor = System.Drawing.Color.White;
             this.txt_YACT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_YACT.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_YACT.Location = new System.Drawing.Point(20, 6);
+            this.txt_YACT.Location = new System.Drawing.Point(24, 6);
             this.txt_YACT.Name = "txt_YACT";
             this.txt_YACT.ReadOnly = true;
             this.txt_YACT.Size = new System.Drawing.Size(56, 19);
@@ -502,9 +503,9 @@
             this.panel6.Controls.Add(this.txt_CoilNo);
             this.panel6.Controls.Add(this.label2);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(169, 39);
+            this.panel6.Location = new System.Drawing.Point(173, 39);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(120, 30);
+            this.panel6.Size = new System.Drawing.Size(116, 30);
             this.panel6.TabIndex = 6;
             // 
             // txt_CoilNo
@@ -513,10 +514,10 @@
             this.txt_CoilNo.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txt_CoilNo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_CoilNo.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_CoilNo.Location = new System.Drawing.Point(40, 6);
+            this.txt_CoilNo.Location = new System.Drawing.Point(30, 6);
             this.txt_CoilNo.Name = "txt_CoilNo";
             this.txt_CoilNo.ReadOnly = true;
-            this.txt_CoilNo.Size = new System.Drawing.Size(76, 19);
+            this.txt_CoilNo.Size = new System.Drawing.Size(86, 19);
             this.txt_CoilNo.TabIndex = 1;
             this.txt_CoilNo.Text = "999999";
             // 
@@ -528,9 +529,9 @@
             this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.Location = new System.Drawing.Point(-3, 6);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 20);
+            this.label2.Size = new System.Drawing.Size(37, 20);
             this.label2.TabIndex = 0;
-            this.label2.Text = "废钢名";
+            this.label2.Text = "物料";
             // 
             // panel5
             // 
@@ -538,9 +539,9 @@
             this.panel5.Controls.Add(this.txt_CraneOrder);
             this.panel5.Controls.Add(this.label1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(169, 3);
+            this.panel5.Location = new System.Drawing.Point(173, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(120, 30);
+            this.panel5.Size = new System.Drawing.Size(116, 30);
             this.panel5.TabIndex = 5;
             // 
             // txt_CraneOrder
@@ -549,10 +550,10 @@
             this.txt_CraneOrder.BackColor = System.Drawing.Color.White;
             this.txt_CraneOrder.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_CraneOrder.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_CraneOrder.Location = new System.Drawing.Point(56, 6);
+            this.txt_CraneOrder.Location = new System.Drawing.Point(35, 6);
             this.txt_CraneOrder.Name = "txt_CraneOrder";
             this.txt_CraneOrder.ReadOnly = true;
-            this.txt_CraneOrder.Size = new System.Drawing.Size(60, 19);
+            this.txt_CraneOrder.Size = new System.Drawing.Size(81, 19);
             this.txt_CraneOrder.TabIndex = 4;
             this.txt_CraneOrder.Text = "999999";
             // 
@@ -564,9 +565,9 @@
             this.label1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(-3, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 20);
+            this.label1.Size = new System.Drawing.Size(37, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "行车指令";
+            this.label1.Text = "指令";
             // 
             // plCraneStatus
             // 
@@ -596,7 +597,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(84, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(79, 30);
+            this.panel2.Size = new System.Drawing.Size(83, 30);
             this.panel2.TabIndex = 2;
             // 
             // lbl_HeartBeat
@@ -651,7 +652,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(84, 39);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(79, 30);
+            this.panel4.Size = new System.Drawing.Size(83, 30);
             this.panel4.TabIndex = 4;
             // 
             // txt_XACT
@@ -660,7 +661,7 @@
             this.txt_XACT.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txt_XACT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_XACT.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_XACT.Location = new System.Drawing.Point(20, 6);
+            this.txt_XACT.Location = new System.Drawing.Point(24, 6);
             this.txt_XACT.Name = "txt_XACT";
             this.txt_XACT.ReadOnly = true;
             this.txt_XACT.Size = new System.Drawing.Size(56, 19);
@@ -683,10 +684,10 @@
             // 
             this.btnShow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnShow.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnShow.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnShow.Location = new System.Drawing.Point(169, 183);
+            this.btnShow.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.btnShow.Location = new System.Drawing.Point(173, 183);
             this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(120, 35);
+            this.btnShow.Size = new System.Drawing.Size(116, 35);
             this.btnShow.TabIndex = 18;
             this.btnShow.Text = "行车报警";
             this.btnShow.UseVisualStyleBackColor = true;
