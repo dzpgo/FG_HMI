@@ -30,13 +30,16 @@ namespace UACSPopupForm
         private void FrmParkingDetail_Load(object sender, EventArgs e)
         {
             lblCarNo.Text = packingInfo.Car_No;
-            lblCarStatus.Text = packingInfo.PackingStatusDesc();           
+            lblCarStatus.Text = packingInfo.PackingStatusDesc();
             lblPacking.Text = packingInfo.ParkingName;
             carIsLoad = packingInfo.IsLoaded;
-            lblCarType.Text = ParkingInfo.getStowageCarType(packingInfo.STOWAGE_ID);
-            ParkingInfo.dgvStowageMessage(packingInfo.STOWAGE_ID, dgvStowageMessage);
-            ParkingInfo.dgvStowageOrder(packingInfo.ParkingName, dgvCraneOder);
-            ShiftStowageMessage();
+            //lblCarType.Text = ParkingInfo.getStowageCarType(packingInfo.STOWAGE_ID);
+            //ParkingInfo.dgvStowageMessage(packingInfo.STOWAGE_ID, dgvStowageMessage);
+            //ParkingInfo.dgvStowageOrder(packingInfo.ParkingName, dgvCraneOder);
+            lblCarType.Text = ParkingInfo.getStowageCarType(packingInfo.STOWAGE_ID, packingInfo.Car_No, packingInfo.ParkingName);
+            ParkingInfo.dgvStowageMessage(packingInfo.STOWAGE_ID, packingInfo.Car_No, packingInfo.ParkingName, dgvStowageMessage);
+            ParkingInfo.dgvStowageOrder(packingInfo.Car_No, packingInfo.ParkingName, dgvCraneOder);
+            //ShiftStowageMessage();
             this.Deactivate += new EventHandler(frmSaddleDetail_Deactivate);
         }
         void frmSaddleDetail_Deactivate(object sender, EventArgs e)
@@ -67,7 +70,7 @@ namespace UACSPopupForm
         private void button1_Click(object sender, EventArgs e)
         {
             auth = FrameContext.Instance.GetPlugin<IAuthorization>() as IAuthorization;
-            if (lblPacking.Text.Contains("Z"))
+            if (lblPacking.Text.Contains("A"))
             {
                 string bayno = null;
                 switch (lblPacking.Text)
@@ -81,10 +84,10 @@ namespace UACSPopupForm
                         bayno = "轧后库63跨";
                         break;
                     default:
-                        bayno = null; ;
+                        bayno = null;
                         break;
                 }
-                if (lblCarStatus.Text.Contains("出库")|| carIsLoad == 0)
+                if (lblCarStatus.Text.Contains("出库") || carIsLoad == 0)
                 {
                     if (auth.IsOpen("02 车辆出库"))
                     {
@@ -99,7 +102,7 @@ namespace UACSPopupForm
                     }
                     this.Close();
                 }
-                if (lblCarStatus.Text.Contains("入库")||carIsLoad == 1)
+                if (lblCarStatus.Text.Contains("入库") || carIsLoad == 1)
                 {
                     if (auth.IsOpen("01 车辆入库"))
                     {
@@ -116,6 +119,6 @@ namespace UACSPopupForm
                 }
             }
         }
-        
+
     }
 }

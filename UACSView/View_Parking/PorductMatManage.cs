@@ -1392,6 +1392,10 @@ namespace UACSParking
                     //{
                     //    n1 += JudgeIntNull(item.Cells["WEIGHT2"].Value);
                     //}
+                    if (item.Cells["REQ_WEIGHT"].Value != null)
+                    {
+                        n1 += JudgeIntNull(item.Cells["REQ_WEIGHT"].Value);
+                    }
                 }
                 txtCoilsWeight.Text = string.Format("{0} /公斤", n1.ToString());
                 if (n1 > 500000)

@@ -5,6 +5,8 @@ using System.Text;
 using System.Data;
 using System.Collections;
 using System.Windows.Forms;
+using Baosight.iSuperframe.Common;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace UACSDAL
 {
@@ -138,6 +140,8 @@ namespace UACSDAL
         /// <summary>
         /// 获得框架配载图指令
         /// </summary>
+        /// <param name="theParkNO">停车位号</param>
+        /// <param name="dgv"></param>
         public static void dgvStowageOrder(string theParkNO, DataGridView dgv)
         {
             DataTable dt = new DataTable();
@@ -153,6 +157,42 @@ namespace UACSDAL
                     dt.Load(odrIn);
                 }
                 dgv.DataSource = dt;
+            }
+            catch (Exception ex)
+            {}
+        }
+
+        /// <summary>
+        /// 获得框架配载图指令
+        /// </summary>
+        /// <param name="theCarNo">车辆号</param>
+        /// <param name="theParkNO">停车位号</param>
+        /// <param name="dgv"></param>
+        public static void dgvStowageOrder(string theCarNo, string theParkNO, DataGridView dgv)
+        {
+            DataTable dtNull = new DataTable();
+            DataTable dtOrder = new DataTable();
+            dtOrder.Clear();
+            try
+            {
+                if (!string.IsNullOrEmpty(theParkNO) && !string.IsNullOrEmpty(theCarNo))
+                {
+                    //对应指令车辆配载明细
+                    string SQLOder = @"SELECT A.ORDER_NO,B.MAT_CNAME,A.FROM_STOCK_NO,A.TO_STOCK_NO,A.BAY_NO FROM UACS_ORDER_QUEUE AS A ";
+                    SQLOder += " LEFT JOIN UACS_L3_MAT_INFO AS B ON A.MAT_CODE = B.MAT_CODE ";
+                    SQLOder += " WHERE A.CMD_STATUS = '0' AND A.CAR_NO = '{0}' AND A.TO_STOCK_NO = '{1}' ";
+                    SQLOder = string.Format(SQLOder, theCarNo, theParkNO);
+                    using (IDataReader odrIn = DB2Connect.DBHelper.ExecuteReader(SQLOder))
+                    {
+                        dtOrder.Load(odrIn);
+                    }
+                    dgv.DataSource = dtOrder;
+                }
+                else
+                {
+                    dtNull.Clear();
+                    dgv.DataSource = dtNull;
+                }
             }
             catch (Exception ex)
             {}
@@ -199,6 +239,99 @@ namespace UACSDAL
         }
 
         /// <summary>
+        /// 获取配载信息
+        /// </summary>
+        /// <param name="theStowageId">配载号</param>
+        /// <param name="carNo">车辆号</param>
+        /// <param name="packingNo">停车位号</param>
+        /// <param name="dgv"></param>
+        /// <returns></returns>
+        public static void dgvStowageMessage(int theStowageId,string carNo, string packingNo, DataGridView dgv)
+        {
+            DataTable dtNull = new DataTable();
+            try
+            {
+                if (!string.IsNullOrEmpty(carNo) && packingNo.Contains('A') && packingNo != "请选择")
+                {
+                    //对应指令车辆配载明细
+                    string sqlText_ORDER = @"SELECT A.ORDER_NO,A.ORDER_GROUP_NO,A.EXE_SEQ,A.CMD_STATUS,A.PLAN_NO,B.MAT_CNAME,A.FROM_STOCK_NO,A.REQ_WEIGHT,A.ACT_WEIGHT FROM UACS_ORDER_QUEUE AS A ";
+                    sqlText_ORDER += " LEFT JOIN UACS_L3_MAT_INFO AS B ON A.MAT_CODE = B.MAT_CODE ";
+                    sqlText_ORDER += " WHERE A.CMD_STATUS = '0' AND A.CAR_NO = '{0}' AND A.TO_STOCK_NO = '{1}' ";
+                    sqlText_ORDER = string.Format(sqlText_ORDER, carNo, packingNo);
+                    DataTable dt = new DataTable();
+                    using (IDataReader odrIn = DB2Connect.DBHelper.ExecuteReader(sqlText_ORDER))
+                    {
+                            dt.Load(odrIn);
+                            dgv.DataSource = dt;
+                            foreach (DataGridViewColumn item in dgv.Columns)
+                            {
+                                if (item.Name == "Index")
+                                {
+                                    for (int y = 0; y < dgv.Rows.Count - 1; y++)
+                                    {
+                                        dgv.Rows[y].Cells["Index"].Value = y;
+                                    }
+                                    break;
+                                }
+                            }
+                        odrIn.Close();
+                    }
+                    dt.Dispose();
+                }
+                else
+                {
+                    dgv.DataSource = dtNull;
+                    dtNull.Dispose();
+                }                
+            }
+            catch (Exception ex)
+            {}
+        }
+
+        /// <summary>
+        /// 获取停车位车辆的类别
+        /// </summary>
+        /// <param name="theStowageId">配载号</param>
+        /// <param name="carNo">车辆号</param>
+        /// <param name="packingNo">停车位号</param>
+        /// <returns></returns>
+        public static string getStowageCarType(int theStowageId, string carNo, string packingNo)
+        {
+            string carType = "未知";
+            try
+            {
+                string sql = @"SELECT  CASE
+                                        WHEN CAR_TYPE = 1 THEN '社会车'
+                                        WHEN CAR_TYPE = 2 THEN '装料车'
+                                        ELSE '其他'
+                                    END as CAR_TYPE  FROM UACS_PARKING_WORK_STATUS WHERE 1=1 ";
+                if (theStowageId > 0)
+                {
+                    sql += " AND STOWAGE_ID = " + theStowageId + "";
+                }
+                if (!string.IsNullOrEmpty(carNo))
+                {
+                    sql += " AND CAR_NO = '" + carNo + "'";
+                }
+                if (!string.IsNullOrEmpty(packingNo))
+                {
+                    sql += " AND PARKING_NO = '" + packingNo + "'";
+                }
+                using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
+                {
+                    while (rdr.Read())
+                    {
+                        carType = rdr["CAR_TYPE"].ToString();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return carType;
+            }
+            return carType;
+        }
+        /// <summary>
         /// 获取停车位车辆的类别
         /// </summary>
         /// <param name="theStowageId"></param>
@@ -217,14 +350,14 @@ namespace UACSDAL
                                         WHEN CAR_TYPE = 104 THEN '雨棚车'
                                         WHEN CAR_TYPE = 200 THEN '木架卷车'
                                         ELSE '其他'
-                                    END as CAR_TYPE, ISWOODENCAR  FROM UACS_TRUCK_STOWAGE WHERE STOWAGE_ID = " + theStowageId+"";
+                                    END as CAR_TYPE, ISWOODENCAR  FROM UACS_TRUCK_STOWAGE WHERE STOWAGE_ID = " + theStowageId + "";
                 using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
                 {
                     while (rdr.Read())
                     {
                         isWoodenCar = rdr["ISWOODENCAR"].ToString();
                         carType = rdr["CAR_TYPE"].ToString();
-                        if(carType == "一般社会车辆" && isWoodenCar == "1")
+                        if (carType == "一般社会车辆" && isWoodenCar == "1")
                         {
                             carType = "木架卷车";
                         }
