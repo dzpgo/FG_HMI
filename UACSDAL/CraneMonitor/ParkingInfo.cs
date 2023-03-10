@@ -254,9 +254,26 @@ namespace UACSDAL
                 if (!string.IsNullOrEmpty(carNo) && packingNo.Contains('A') && packingNo != "请选择")
                 {
                     //对应指令车辆配载明细
-                    string sqlText_ORDER = @"SELECT A.ORDER_NO,A.ORDER_GROUP_NO,A.EXE_SEQ,A.CMD_STATUS,A.PLAN_NO,B.MAT_CNAME,A.FROM_STOCK_NO,A.REQ_WEIGHT,A.ACT_WEIGHT FROM UACS_ORDER_QUEUE AS A ";
+                    string sqlText_ORDER = @"SELECT A.ORDER_NO,A.ORDER_GROUP_NO,A.EXE_SEQ,A.ORDER_PRIORITY,
+                                                    CASE 
+                                                    WHEN A.CMD_STATUS = 0 THEN '初始化' 
+                                                    WHEN A.CMD_STATUS = 1 THEN '获取指令' 
+                                                    WHEN A.CMD_STATUS = 2 THEN '激光扫描' 
+                                                    WHEN A.CMD_STATUS = 3 THEN '到取料点上方' 
+                                                    WHEN A.CMD_STATUS = 4 THEN '空载下降到位' 
+                                                    WHEN A.CMD_STATUS = 5 THEN '有载荷量' 
+                                                    WHEN A.CMD_STATUS = 6 THEN '重载上升到位' 
+                                                    WHEN A.CMD_STATUS = 7 THEN '到放料点上方' 
+                                                    WHEN A.CMD_STATUS = 8 THEN '重载下降到位' 
+                                                    WHEN A.CMD_STATUS = 9 THEN '无载荷量' 
+                                                    WHEN A.CMD_STATUS = 10 THEN '空载上升到位' 
+                                                    ELSE '其他' 
+                                                    END AS CMD_STATUS
+                                                    ,A.PLAN_NO,B.MAT_CNAME,A.FROM_STOCK_NO,A.TO_STOCK_NO,A.REQ_WEIGHT,A.ACT_WEIGHT,A.UPD_TIME,A.REC_TIME 
+                                                    FROM UACS_ORDER_QUEUE AS A ";
                     sqlText_ORDER += " LEFT JOIN UACS_L3_MAT_INFO AS B ON A.MAT_CODE = B.MAT_CODE ";
                     sqlText_ORDER += " WHERE A.CMD_STATUS = '0' AND A.CAR_NO = '{0}' AND A.TO_STOCK_NO = '{1}' ";
+                    sqlText_ORDER += " ORDER BY A.ORDER_PRIORITY,A.ORDER_NO ";
                     sqlText_ORDER = string.Format(sqlText_ORDER, carNo, packingNo);
                     DataTable dt = new DataTable();
                     using (IDataReader odrIn = DB2Connect.DBHelper.ExecuteReader(sqlText_ORDER))

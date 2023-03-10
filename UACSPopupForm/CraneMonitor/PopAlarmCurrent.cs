@@ -21,8 +21,9 @@ namespace UACSPopupForm
         private string crane_No = null;
 
         private string TagName = null;
-
         private string TagNameWMS = null;
+
+        private string TagName_FaultCode = null;
 
         /// <summary>
         /// 存解析出来的报警代码
@@ -49,7 +50,7 @@ namespace UACSPopupForm
             {
             }
         }
-        
+
         public PopAlarmCurrent()
         {
             InitializeComponent();
@@ -61,52 +62,69 @@ namespace UACSPopupForm
             if (Crane_No != null)
             {
                 tagDataProvider.ServiceName = "iplature";
-                TagName = Crane_No + "_ALARM_CURRENT";
-                TagNameWMS = Crane_No + "_WMS_ALARM_CURRENT";
                 lblCraneNo.Text = Crane_No + " 报警";
-                SetReady(TagName);
-                readTags();
-                string value = get_value_string(TagName).Trim();
-
-                SetReady(TagNameWMS);
-                readTags();
-                string valueWMS = get_value_string(TagNameWMS).Trim();
-
-                if (String.IsNullOrEmpty(value.Trim()) && String.IsNullOrEmpty(valueWMS.Trim()))
-                {
-                    //MessageBox.Show("无行车报警");
-                    return;
-                }
-
-                string[] sArray = value.Split(',');
-                string[] sArrayWMS = valueWMS.Split(',');
                 listAlarm.Clear();
-                //foreach (string i in sArray)
-                //{
-                //    int values = Convert.ToInt32(i.ToString());
-                //    listAlarm.Add(values);
-                //}
+                for (int i = 0; i <= 9; i++)
+                {
+                    TagName_FaultCode = Crane_No + "_FaultCode_" + "" + i + "";
 
-                if (!String.IsNullOrEmpty(value.Trim()))
-                {
-                    foreach (string i in sArray)
-                    {
-                        int values = Convert.ToInt32(i.ToString());
-                        listAlarm.Add(values);
-                    }
-                }
-                if (!String.IsNullOrEmpty(valueWMS.Trim()))
-                {
-                    foreach (string i in sArrayWMS)
-                    {
-                        int valuesWMS = Convert.ToInt32(i.ToString());
-                        listAlarm.Add(valuesWMS);
-                    }
+                    SetReady(TagName_FaultCode);
+                    readTags();
+                    string data = get_value_string(TagName_FaultCode).Trim();
+                    if (!string.IsNullOrEmpty(data))
+                        listAlarm.Add(Convert.ToInt32(data));
                 }
                 GetDgvMessage(listAlarm);
-               
+
+                #region 弃用（旧）
+                //tagDataProvider.ServiceName = "iplature";
+                //TagName = Crane_No + "_ALARM_CURRENT";
+                //TagNameWMS = Crane_No + "_WMS_ALARM_CURRENT";
+                //lblCraneNo.Text = Crane_No + " 报警";
+                //SetReady(TagName);
+                //readTags();
+                //string value = get_value_string(TagName).Trim();
+
+                //SetReady(TagNameWMS);
+                //readTags();
+                //string valueWMS = get_value_string(TagNameWMS).Trim();
+
+                //if (String.IsNullOrEmpty(value.Trim()) && String.IsNullOrEmpty(valueWMS.Trim()))
+                //{
+                //    //MessageBox.Show("无行车报警");
+                //    return;
+                //}
+
+                //string[] sArray = value.Split(',');
+                //string[] sArrayWMS = valueWMS.Split(',');
+                //listAlarm.Clear();
+                ////foreach (string i in sArray)
+                ////{
+                ////    int values = Convert.ToInt32(i.ToString());
+                ////    listAlarm.Add(values);
+                ////}
+
+                //if (!String.IsNullOrEmpty(value.Trim()))
+                //{
+                //    foreach (string i in sArray)
+                //    {
+                //        int values = Convert.ToInt32(i.ToString());
+                //        listAlarm.Add(values);
+                //    }
+                //}
+                //if (!String.IsNullOrEmpty(valueWMS.Trim()))
+                //{
+                //    foreach (string i in sArrayWMS)
+                //    {
+                //        int valuesWMS = Convert.ToInt32(i.ToString());
+                //        listAlarm.Add(valuesWMS);
+                //    }
+                //}
+                //GetDgvMessage(listAlarm); 
+                #endregion
+
             }
-            
+
         }
 
 
@@ -117,14 +135,13 @@ namespace UACSPopupForm
 
             try
             {
-               
-                string sql = @"SELECT * FROM UACS_CRANE_ALARM_CODE_DEFINE ";
+                string sql = @"SELECT ALARM_CODE,ALARM_INFO,ALARM_CLASS FROM UACS_CRANE_ALARM_CODE_DEFINE ";
                 sql += " WHERE ALARM_CODE IN (";
                 foreach (int item in list)
                 {
                     sql += "" + item + ",";
                 }
-                sql = sql.Substring(0,sql.Length -1);
+                sql = sql.Substring(0, sql.Length - 1);
                 sql += ");";
 
                 using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
@@ -176,7 +193,7 @@ namespace UACSPopupForm
             }
             catch (Exception er)
             {
-                
+
             }
 
             dataGridView1.DataSource = dt;
@@ -222,7 +239,7 @@ namespace UACSPopupForm
             }
             catch
             {
-                valueObject = null; 
+                valueObject = null;
             }
             return theValue; ;
         }

@@ -41,6 +41,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnTestSubmit = new System.Windows.Forms.Button();
             this.tbMatCode_1 = new System.Windows.Forms.TextBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -125,7 +126,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.btnTestSubmit = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -147,7 +147,7 @@
             this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
@@ -162,7 +162,7 @@
             this.panel4.Controls.Add(this.groupBox2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(2, 2);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1420, 68);
             this.panel4.TabIndex = 0;
@@ -263,7 +263,7 @@
             this.panel5.Controls.Add(this.groupBox3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(2, 174);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1420, 132);
             this.panel5.TabIndex = 1;
@@ -321,12 +321,29 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "计划";
             // 
+            // btnTestSubmit
+            // 
+            this.btnTestSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTestSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(137)))), ((int)(((byte)(241)))));
+            this.btnTestSubmit.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.btnTestSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTestSubmit.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
+            this.btnTestSubmit.ForeColor = System.Drawing.Color.White;
+            this.btnTestSubmit.Location = new System.Drawing.Point(1302, 70);
+            this.btnTestSubmit.Name = "btnTestSubmit";
+            this.btnTestSubmit.Size = new System.Drawing.Size(100, 40);
+            this.btnTestSubmit.TabIndex = 96;
+            this.btnTestSubmit.Text = "提交";
+            this.btnTestSubmit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTestSubmit.UseVisualStyleBackColor = false;
+            this.btnTestSubmit.Click += new System.EventHandler(this.btnTestSubmit_Click);
+            // 
             // tbMatCode_1
             // 
             this.tbMatCode_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbMatCode_1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tbMatCode_1.Location = new System.Drawing.Point(4, 34);
-            this.tbMatCode_1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbMatCode_1.Margin = new System.Windows.Forms.Padding(2);
             this.tbMatCode_1.Name = "tbMatCode_1";
             this.tbMatCode_1.ReadOnly = true;
             this.tbMatCode_1.Size = new System.Drawing.Size(100, 23);
@@ -340,13 +357,14 @@
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSubmit.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.Location = new System.Drawing.Point(1302, 70);
+            this.btnSubmit.Location = new System.Drawing.Point(1302, 17);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(100, 40);
             this.btnSubmit.TabIndex = 6;
             this.btnSubmit.Text = "提交";
             this.btnSubmit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSubmit.UseVisualStyleBackColor = false;
+            this.btnSubmit.Visible = false;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // label1
@@ -365,7 +383,7 @@
             this.tbWeight_Sum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbWeight_Sum.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.tbWeight_Sum.Location = new System.Drawing.Point(1071, 85);
-            this.tbWeight_Sum.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbWeight_Sum.Margin = new System.Windows.Forms.Padding(2);
             this.tbWeight_Sum.Multiline = true;
             this.tbWeight_Sum.Name = "tbWeight_Sum";
             this.tbWeight_Sum.ReadOnly = true;
@@ -389,7 +407,7 @@
             this.tbWeight_10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbWeight_10.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.tbWeight_10.Location = new System.Drawing.Point(941, 85);
-            this.tbWeight_10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbWeight_10.Margin = new System.Windows.Forms.Padding(2);
             this.tbWeight_10.Name = "tbWeight_10";
             this.tbWeight_10.ReadOnly = true;
             this.tbWeight_10.Size = new System.Drawing.Size(100, 25);
@@ -412,7 +430,7 @@
             this.tbMatCode_10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbMatCode_10.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.tbMatCode_10.Location = new System.Drawing.Point(941, 34);
-            this.tbMatCode_10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbMatCode_10.Margin = new System.Windows.Forms.Padding(2);
             this.tbMatCode_10.Name = "tbMatCode_10";
             this.tbMatCode_10.ReadOnly = true;
             this.tbMatCode_10.Size = new System.Drawing.Size(100, 23);
@@ -434,7 +452,7 @@
             this.tbWeight_9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbWeight_9.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.tbWeight_9.Location = new System.Drawing.Point(837, 85);
-            this.tbWeight_9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbWeight_9.Margin = new System.Windows.Forms.Padding(2);
             this.tbWeight_9.Name = "tbWeight_9";
             this.tbWeight_9.ReadOnly = true;
             this.tbWeight_9.Size = new System.Drawing.Size(100, 25);
@@ -457,7 +475,7 @@
             this.tbMatCode_9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbMatCode_9.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.tbMatCode_9.Location = new System.Drawing.Point(837, 34);
-            this.tbMatCode_9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbMatCode_9.Margin = new System.Windows.Forms.Padding(2);
             this.tbMatCode_9.Name = "tbMatCode_9";
             this.tbMatCode_9.ReadOnly = true;
             this.tbMatCode_9.Size = new System.Drawing.Size(100, 23);
@@ -479,7 +497,7 @@
             this.tbWeight_8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbWeight_8.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.tbWeight_8.Location = new System.Drawing.Point(732, 85);
-            this.tbWeight_8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbWeight_8.Margin = new System.Windows.Forms.Padding(2);
             this.tbWeight_8.Name = "tbWeight_8";
             this.tbWeight_8.ReadOnly = true;
             this.tbWeight_8.Size = new System.Drawing.Size(100, 25);
@@ -502,7 +520,7 @@
             this.tbMatCode_8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbMatCode_8.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.tbMatCode_8.Location = new System.Drawing.Point(732, 34);
-            this.tbMatCode_8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbMatCode_8.Margin = new System.Windows.Forms.Padding(2);
             this.tbMatCode_8.Name = "tbMatCode_8";
             this.tbMatCode_8.ReadOnly = true;
             this.tbMatCode_8.Size = new System.Drawing.Size(100, 23);
@@ -524,7 +542,7 @@
             this.tbWeight_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbWeight_7.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.tbWeight_7.Location = new System.Drawing.Point(628, 85);
-            this.tbWeight_7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbWeight_7.Margin = new System.Windows.Forms.Padding(2);
             this.tbWeight_7.Name = "tbWeight_7";
             this.tbWeight_7.ReadOnly = true;
             this.tbWeight_7.Size = new System.Drawing.Size(100, 25);
@@ -547,7 +565,7 @@
             this.tbMatCode_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbMatCode_7.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.tbMatCode_7.Location = new System.Drawing.Point(628, 34);
-            this.tbMatCode_7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbMatCode_7.Margin = new System.Windows.Forms.Padding(2);
             this.tbMatCode_7.Name = "tbMatCode_7";
             this.tbMatCode_7.ReadOnly = true;
             this.tbMatCode_7.Size = new System.Drawing.Size(100, 23);
@@ -569,7 +587,7 @@
             this.tbWeight_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbWeight_6.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.tbWeight_6.Location = new System.Drawing.Point(524, 85);
-            this.tbWeight_6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbWeight_6.Margin = new System.Windows.Forms.Padding(2);
             this.tbWeight_6.Name = "tbWeight_6";
             this.tbWeight_6.ReadOnly = true;
             this.tbWeight_6.Size = new System.Drawing.Size(100, 25);
@@ -592,7 +610,7 @@
             this.tbMatCode_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbMatCode_6.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.tbMatCode_6.Location = new System.Drawing.Point(524, 34);
-            this.tbMatCode_6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbMatCode_6.Margin = new System.Windows.Forms.Padding(2);
             this.tbMatCode_6.Name = "tbMatCode_6";
             this.tbMatCode_6.ReadOnly = true;
             this.tbMatCode_6.Size = new System.Drawing.Size(100, 23);
@@ -614,7 +632,7 @@
             this.tbWeight_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbWeight_5.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.tbWeight_5.Location = new System.Drawing.Point(420, 85);
-            this.tbWeight_5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbWeight_5.Margin = new System.Windows.Forms.Padding(2);
             this.tbWeight_5.Name = "tbWeight_5";
             this.tbWeight_5.ReadOnly = true;
             this.tbWeight_5.Size = new System.Drawing.Size(100, 25);
@@ -637,7 +655,7 @@
             this.tbMatCode_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbMatCode_5.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.tbMatCode_5.Location = new System.Drawing.Point(420, 34);
-            this.tbMatCode_5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbMatCode_5.Margin = new System.Windows.Forms.Padding(2);
             this.tbMatCode_5.Name = "tbMatCode_5";
             this.tbMatCode_5.ReadOnly = true;
             this.tbMatCode_5.Size = new System.Drawing.Size(100, 23);
@@ -659,7 +677,7 @@
             this.tbWeight_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbWeight_4.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.tbWeight_4.Location = new System.Drawing.Point(316, 85);
-            this.tbWeight_4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbWeight_4.Margin = new System.Windows.Forms.Padding(2);
             this.tbWeight_4.Name = "tbWeight_4";
             this.tbWeight_4.ReadOnly = true;
             this.tbWeight_4.Size = new System.Drawing.Size(100, 25);
@@ -682,7 +700,7 @@
             this.tbMatCode_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbMatCode_4.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.tbMatCode_4.Location = new System.Drawing.Point(316, 34);
-            this.tbMatCode_4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbMatCode_4.Margin = new System.Windows.Forms.Padding(2);
             this.tbMatCode_4.Name = "tbMatCode_4";
             this.tbMatCode_4.ReadOnly = true;
             this.tbMatCode_4.Size = new System.Drawing.Size(100, 23);
@@ -704,7 +722,7 @@
             this.tbWeight_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbWeight_3.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.tbWeight_3.Location = new System.Drawing.Point(212, 85);
-            this.tbWeight_3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbWeight_3.Margin = new System.Windows.Forms.Padding(2);
             this.tbWeight_3.Name = "tbWeight_3";
             this.tbWeight_3.ReadOnly = true;
             this.tbWeight_3.Size = new System.Drawing.Size(100, 25);
@@ -727,7 +745,7 @@
             this.tbMatCode_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbMatCode_3.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.tbMatCode_3.Location = new System.Drawing.Point(212, 34);
-            this.tbMatCode_3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbMatCode_3.Margin = new System.Windows.Forms.Padding(2);
             this.tbMatCode_3.Name = "tbMatCode_3";
             this.tbMatCode_3.ReadOnly = true;
             this.tbMatCode_3.Size = new System.Drawing.Size(100, 23);
@@ -749,7 +767,7 @@
             this.tbWeight_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbWeight_2.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.tbWeight_2.Location = new System.Drawing.Point(108, 85);
-            this.tbWeight_2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbWeight_2.Margin = new System.Windows.Forms.Padding(2);
             this.tbWeight_2.Name = "tbWeight_2";
             this.tbWeight_2.ReadOnly = true;
             this.tbWeight_2.Size = new System.Drawing.Size(100, 25);
@@ -772,7 +790,7 @@
             this.tbMatCode_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbMatCode_2.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.tbMatCode_2.Location = new System.Drawing.Point(108, 34);
-            this.tbMatCode_2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbMatCode_2.Margin = new System.Windows.Forms.Padding(2);
             this.tbMatCode_2.Name = "tbMatCode_2";
             this.tbMatCode_2.ReadOnly = true;
             this.tbMatCode_2.Size = new System.Drawing.Size(100, 23);
@@ -806,7 +824,7 @@
             this.tbWeight_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbWeight_1.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.tbWeight_1.Location = new System.Drawing.Point(6, 85);
-            this.tbWeight_1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbWeight_1.Margin = new System.Windows.Forms.Padding(2);
             this.tbWeight_1.Name = "tbWeight_1";
             this.tbWeight_1.ReadOnly = true;
             this.tbWeight_1.Size = new System.Drawing.Size(100, 25);
@@ -818,7 +836,7 @@
             this.panel6.Controls.Add(this.dataGridView1);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(2, 310);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1420, 599);
             this.panel6.TabIndex = 2;
@@ -855,7 +873,7 @@
             this.GWeight_10});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 62;
@@ -1281,23 +1299,6 @@
             this.label28.Text = "车辆类型:";
             this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnTestSubmit
-            // 
-            this.btnTestSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTestSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(137)))), ((int)(((byte)(241)))));
-            this.btnTestSubmit.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
-            this.btnTestSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnTestSubmit.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
-            this.btnTestSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnTestSubmit.Location = new System.Drawing.Point(1302, 21);
-            this.btnTestSubmit.Name = "btnTestSubmit";
-            this.btnTestSubmit.Size = new System.Drawing.Size(100, 40);
-            this.btnTestSubmit.TabIndex = 96;
-            this.btnTestSubmit.Text = "测试提交";
-            this.btnTestSubmit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnTestSubmit.UseVisualStyleBackColor = false;
-            this.btnTestSubmit.Click += new System.EventHandler(this.btnTestSubmit_Click);
-            // 
             // SelectCoilByL3FormNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1305,7 +1306,7 @@
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(1424, 911);
             this.Controls.Add(this.tableLayoutPanel2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SelectCoilByL3FormNew";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "装车配载";

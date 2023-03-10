@@ -12,6 +12,9 @@ using Baosight.iSuperframe.Common;
 
 namespace UACSPopupForm
 {
+    /// <summary>
+    /// 停车位详细
+    /// </summary>
     public partial class FrmParkingDetail : Form
     {
         private Baosight.iSuperframe.Authorization.Interface.IAuthorization auth;

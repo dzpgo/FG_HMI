@@ -127,7 +127,7 @@ namespace UACSView.View_Parking
             //绑定车辆类型
             BindCmbCarType();
             //绑定车头方向
-            BindCarDrection();
+            BindCarDrection();            
             //绑定装料模式
             BindCmbWordMode();
             //绑定扫描行车
@@ -512,7 +512,7 @@ namespace UACSView.View_Parking
                 }
 
                 //按 计划号>流水号>记录时间>更新时间 降序
-                sqlText_All += " order by PLAN_NO DESC,WORK_SEQ_NO DESC,REC_TIME DESC,UPD_TIME DESC ";
+                sqlText_All += " order by WORK_SEQ_NO DESC,PLAN_NO DESC,REC_TIME DESC,UPD_TIME DESC ";
             }
             else
             {
@@ -521,12 +521,12 @@ namespace UACSView.View_Parking
                                 MAT_CODE_4, WEIGHT_4, MAT_CODE_5, WEIGHT_5, MAT_CODE_6, WEIGHT_6, MAT_CODE_7, WEIGHT_7, MAT_CODE_8, WEIGHT_8, MAT_CODE_9, WEIGHT_9, MAT_CODE_10, 
                                 WEIGHT_10, PLAN_STATUS, REC_TIME, UPD_TIME, CYCLE_COUNT, MAT_NET_WT, WT_TIME
                                 FROM (
-                                SELECT ROW_NUMBER() OVER(ORDER BY PLAN_NO DESC,WORK_SEQ_NO DESC,REC_TIME DESC,UPD_TIME DESC) AS ROWNUM,
+                                SELECT ROW_NUMBER() OVER(ORDER BY WORK_SEQ_NO DESC,PLAN_NO DESC,REC_TIME DESC,UPD_TIME DESC) AS ROWNUM,
                                 0 AS CHECK_COLUMN, WORK_SEQ_NO, OPER_FLAG, PLAN_NO, BOF_NO, CAR_NO, MAT_CODE_1, WEIGHT_1, MAT_CODE_2, WEIGHT_2, MAT_CODE_3, WEIGHT_3,
                                 MAT_CODE_4, WEIGHT_4, MAT_CODE_5, WEIGHT_5, MAT_CODE_6, WEIGHT_6, MAT_CODE_7, WEIGHT_7, MAT_CODE_8, WEIGHT_8, MAT_CODE_9, WEIGHT_9, MAT_CODE_10, 
                                 WEIGHT_10, PLAN_STATUS, REC_TIME, UPD_TIME, CYCLE_COUNT, MAT_NET_WT, WT_TIME FROM UACSAPP.UACS_L3_MAT_OUT_INFO 
                                 ) a 
-                                WHERE ROWNUM > 0 and ROWNUM <=50";
+                                WHERE ROWNUM > 0 and ROWNUM <=30";
             }
 
 
@@ -698,11 +698,32 @@ namespace UACSView.View_Parking
 
                 #endregion
 
+                #region 物料名称清空
+                if (string.IsNullOrEmpty(GMatCode_1))
+                    tbMatCode_1.Text = "";
+                if (string.IsNullOrEmpty(GMatCode_2))
+                    tbMatCode_2.Text = "";
+                if (string.IsNullOrEmpty(GMatCode_3))
+                    tbMatCode_3.Text = "";
+                if (string.IsNullOrEmpty(GMatCode_4))
+                    tbMatCode_4.Text = "";
+                if (string.IsNullOrEmpty(GMatCode_5))
+                    tbMatCode_5.Text = "";
+                if (string.IsNullOrEmpty(GMatCode_6))
+                    tbMatCode_6.Text = "";
+                if (string.IsNullOrEmpty(GMatCode_7))
+                    tbMatCode_7.Text = "";
+                if (string.IsNullOrEmpty(GMatCode_8))
+                    tbMatCode_8.Text = "";
+                if (string.IsNullOrEmpty(GMatCode_9))
+                    tbMatCode_9.Text = "";
+                if (string.IsNullOrEmpty(GMatCode_10))
+                    tbMatCode_10.Text = ""; 
+                #endregion
+
                 #endregion
 
                 #region 更新重量
-
-
                 if (!string.IsNullOrEmpty(GWeight_1))
                 {
                     tbWeight_1.Text = GWeight_1;
@@ -1126,7 +1147,7 @@ namespace UACSView.View_Parking
             //绑定列表下拉框数据
             this.txtDirection.DataSource = dt;
             //设置默认值
-            this.cmbCarType.SelectedIndex = 0;
+            this.txtDirection.SelectedIndex = 1;
         }
 
         /// <summary>
@@ -1276,7 +1297,7 @@ namespace UACSView.View_Parking
                 MessageBox.Show("车位已经有车！！", "提示");
                 return;
             }
-            if (!txtDirection.Text.Trim().Equals("东") || txtDirection.Text.Trim().Equals("西"))
+            if (!txtDirection.Text.Trim().Equals("东") && !txtDirection.Text.Trim().Equals("西"))
             {
                 MessageBox.Show("请输入车头方向！", "提示");
                 return;

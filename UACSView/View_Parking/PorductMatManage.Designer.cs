@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PorductMatManage));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label25 = new System.Windows.Forms.Label();
@@ -49,9 +49,13 @@
             this.txtGrooveNum = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtGrooveDist = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.txt_CENTER_Z = new System.Windows.Forms.TextBox();
             this.txt_CENTER_X = new System.Windows.Forms.TextBox();
+            this.txt_CENTER_Y = new System.Windows.Forms.TextBox();
             this.txt_WIDTH = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -76,10 +80,6 @@
             this.cbbPacking = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnCarFrom = new System.Windows.Forms.Button();
-            this.btnCarEnter = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -128,17 +128,17 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.btnReissue = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.button_L3Stowage = new System.Windows.Forms.Button();
             this.btnSeleceByMat = new System.Windows.Forms.Button();
             this.btnOperateStrat = new System.Windows.Forms.Button();
             this.btnOperatePause = new System.Windows.Forms.Button();
+            this.btnCarFrom = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.btnWoodenCar = new System.Windows.Forms.Button();
             this.btnUnitToCar = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label10 = new System.Windows.Forms.Label();
-            this.txt_CENTER_Y = new System.Windows.Forms.TextBox();
-            this.txt_CENTER_Z = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
+            this.btnCarEnter = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -355,6 +355,17 @@
             this.txtGrooveDist.TabIndex = 100;
             this.txtGrooveDist.Visible = false;
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label26.ForeColor = System.Drawing.Color.Black;
+            this.label26.Location = new System.Drawing.Point(910, 78);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(73, 22);
+            this.label26.TabIndex = 97;
+            this.label26.Text = "中心点Z:";
+            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -365,6 +376,17 @@
             this.label19.Size = new System.Drawing.Size(74, 22);
             this.label19.TabIndex = 97;
             this.label19.Text = "中心点X:";
+            // 
+            // txt_CENTER_Z
+            // 
+            this.txt_CENTER_Z.BackColor = System.Drawing.SystemColors.Control;
+            this.txt_CENTER_Z.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txt_CENTER_Z.ForeColor = System.Drawing.Color.Black;
+            this.txt_CENTER_Z.Location = new System.Drawing.Point(989, 71);
+            this.txt_CENTER_Z.Name = "txt_CENTER_Z";
+            this.txt_CENTER_Z.ReadOnly = true;
+            this.txt_CENTER_Z.Size = new System.Drawing.Size(130, 29);
+            this.txt_CENTER_Z.TabIndex = 96;
             // 
             // txt_CENTER_X
             // 
@@ -377,6 +399,17 @@
             this.txt_CENTER_X.Size = new System.Drawing.Size(130, 29);
             this.txt_CENTER_X.TabIndex = 96;
             // 
+            // txt_CENTER_Y
+            // 
+            this.txt_CENTER_Y.BackColor = System.Drawing.SystemColors.Control;
+            this.txt_CENTER_Y.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txt_CENTER_Y.ForeColor = System.Drawing.Color.Black;
+            this.txt_CENTER_Y.Location = new System.Drawing.Point(732, 72);
+            this.txt_CENTER_Y.Name = "txt_CENTER_Y";
+            this.txt_CENTER_Y.ReadOnly = true;
+            this.txt_CENTER_Y.Size = new System.Drawing.Size(130, 29);
+            this.txt_CENTER_Y.TabIndex = 94;
+            // 
             // txt_WIDTH
             // 
             this.txt_WIDTH.BackColor = System.Drawing.SystemColors.Control;
@@ -387,6 +420,17 @@
             this.txt_WIDTH.ReadOnly = true;
             this.txt_WIDTH.Size = new System.Drawing.Size(130, 29);
             this.txt_WIDTH.TabIndex = 94;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(653, 78);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(73, 22);
+            this.label10.TabIndex = 95;
+            this.label10.Text = "中心点Y:";
             // 
             // label20
             // 
@@ -650,75 +694,6 @@
             this.label11.Text = "车辆出库";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(137)))), ((int)(((byte)(241)))));
-            this.button2.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(3, 413);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 39);
-            this.button2.TabIndex = 73;
-            this.button2.Text = "选卷装车";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Visible = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnCarFrom
-            // 
-            this.btnCarFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCarFrom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(137)))), ((int)(((byte)(241)))));
-            this.btnCarFrom.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
-            this.btnCarFrom.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCarFrom.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCarFrom.ForeColor = System.Drawing.Color.Black;
-            this.btnCarFrom.Location = new System.Drawing.Point(4, 233);
-            this.btnCarFrom.Name = "btnCarFrom";
-            this.btnCarFrom.Size = new System.Drawing.Size(99, 40);
-            this.btnCarFrom.TabIndex = 69;
-            this.btnCarFrom.Text = "车离位";
-            this.btnCarFrom.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCarFrom.UseVisualStyleBackColor = false;
-            this.btnCarFrom.Click += new System.EventHandler(this.btnCarFrom_Click);
-            // 
-            // btnCarEnter
-            // 
-            this.btnCarEnter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCarEnter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(137)))), ((int)(((byte)(241)))));
-            this.btnCarEnter.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
-            this.btnCarEnter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCarEnter.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCarEnter.ForeColor = System.Drawing.Color.Black;
-            this.btnCarEnter.Location = new System.Drawing.Point(4, 3);
-            this.btnCarEnter.Name = "btnCarEnter";
-            this.btnCarEnter.Size = new System.Drawing.Size(99, 40);
-            this.btnCarEnter.TabIndex = 68;
-            this.btnCarEnter.Text = "车到位";
-            this.btnCarEnter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCarEnter.UseVisualStyleBackColor = false;
-            this.btnCarEnter.Click += new System.EventHandler(this.btnCarEnter_Click);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(137)))), ((int)(((byte)(241)))));
-            this.btnRefresh.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRefresh.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnRefresh.ForeColor = System.Drawing.Color.Black;
-            this.btnRefresh.Location = new System.Drawing.Point(4, 279);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(99, 40);
-            this.btnRefresh.TabIndex = 67;
-            this.btnRefresh.Text = "刷新";
-            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(246)))), ((int)(((byte)(252)))));
@@ -856,14 +831,14 @@
             this.dataGridView2.AllowUserToOrderColumns = true;
             this.dataGridView2.AllowUserToResizeRows = false;
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridView2.ColumnHeadersHeight = 29;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ORDER_NO,
@@ -875,22 +850,22 @@
             this.FROM_STOCK_NO,
             this.REQ_WEIGHT,
             this.ACT_WEIGHT});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.EnableHeadersVisualStyles = false;
             this.dataGridView2.Location = new System.Drawing.Point(3, 3);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 62;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridView2.RowTemplate.Height = 23;
             this.dataGridView2.Size = new System.Drawing.Size(981, 194);
             this.dataGridView2.TabIndex = 24;
@@ -996,9 +971,9 @@
             this.dgvOrder.Location = new System.Drawing.Point(3, 25);
             this.dgvOrder.Name = "dgvOrder";
             this.dgvOrder.RowHeadersWidth = 62;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 14.25F);
-            this.dgvOrder.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("微软雅黑", 14.25F);
+            this.dgvOrder.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvOrder.RowTemplate.Height = 23;
             this.dgvOrder.Size = new System.Drawing.Size(975, 166);
             this.dgvOrder.TabIndex = 0;
@@ -1059,14 +1034,14 @@
             // dataGridView_LASER
             // 
             this.dataGridView_LASER.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_LASER.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_LASER.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridView_LASER.ColumnHeadersHeight = 29;
             this.dataGridView_LASER.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ROW_INDEX,
@@ -1079,8 +1054,8 @@
             this.dataGridView_LASER.Name = "dataGridView_LASER";
             this.dataGridView_LASER.RowHeadersVisible = false;
             this.dataGridView_LASER.RowHeadersWidth = 62;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dataGridView_LASER.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dataGridView_LASER.RowsDefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridView_LASER.RowTemplate.Height = 23;
             this.dataGridView_LASER.Size = new System.Drawing.Size(19404, 19378);
             this.dataGridView_LASER.TabIndex = 77;
@@ -1144,7 +1119,7 @@
             this.tabPanelParkArea.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16F));
             this.tabPanelParkArea.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tabPanelParkArea.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16F));
-            this.tabPanelParkArea.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            this.tabPanelParkArea.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
             this.tabPanelParkArea.Controls.Add(this.parkZ21B6, 1, 0);
             this.tabPanelParkArea.Controls.Add(this.parkZ21B5, 3, 0);
             this.tabPanelParkArea.Controls.Add(this.parkZ21B4, 5, 0);
@@ -1168,37 +1143,37 @@
             this.parkZ21B6.Location = new System.Drawing.Point(97, 4);
             this.parkZ21B6.Margin = new System.Windows.Forms.Padding(4);
             this.parkZ21B6.Name = "parkZ21B6";
-            this.parkZ21B6.Size = new System.Drawing.Size(216, 83);
+            this.parkZ21B6.Size = new System.Drawing.Size(213, 83);
             this.parkZ21B6.TabIndex = 33;
             // 
             // parkZ21B5
             // 
             this.parkZ21B5.BackColor = System.Drawing.SystemColors.Control;
             this.parkZ21B5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parkZ21B5.Location = new System.Drawing.Point(331, 4);
+            this.parkZ21B5.Location = new System.Drawing.Point(328, 4);
             this.parkZ21B5.Margin = new System.Windows.Forms.Padding(4);
             this.parkZ21B5.Name = "parkZ21B5";
-            this.parkZ21B5.Size = new System.Drawing.Size(216, 83);
+            this.parkZ21B5.Size = new System.Drawing.Size(213, 83);
             this.parkZ21B5.TabIndex = 34;
             // 
             // parkZ21B4
             // 
             this.parkZ21B4.BackColor = System.Drawing.SystemColors.Control;
             this.parkZ21B4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parkZ21B4.Location = new System.Drawing.Point(565, 4);
+            this.parkZ21B4.Location = new System.Drawing.Point(559, 4);
             this.parkZ21B4.Margin = new System.Windows.Forms.Padding(4);
             this.parkZ21B4.Name = "parkZ21B4";
-            this.parkZ21B4.Size = new System.Drawing.Size(216, 83);
+            this.parkZ21B4.Size = new System.Drawing.Size(213, 83);
             this.parkZ21B4.TabIndex = 35;
             // 
             // parkZ21B1
             // 
             this.parkZ21B1.BackColor = System.Drawing.SystemColors.Control;
             this.parkZ21B1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parkZ21B1.Location = new System.Drawing.Point(1253, 4);
+            this.parkZ21B1.Location = new System.Drawing.Point(1239, 4);
             this.parkZ21B1.Margin = new System.Windows.Forms.Padding(4);
             this.parkZ21B1.Name = "parkZ21B1";
-            this.parkZ21B1.Size = new System.Drawing.Size(202, 83);
+            this.parkZ21B1.Size = new System.Drawing.Size(200, 83);
             this.parkZ21B1.TabIndex = 38;
             this.parkZ21B1.Visible = false;
             // 
@@ -1206,20 +1181,20 @@
             // 
             this.parkZ21B3.BackColor = System.Drawing.SystemColors.Control;
             this.parkZ21B3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parkZ21B3.Location = new System.Drawing.Point(799, 4);
+            this.parkZ21B3.Location = new System.Drawing.Point(790, 4);
             this.parkZ21B3.Margin = new System.Windows.Forms.Padding(4);
             this.parkZ21B3.Name = "parkZ21B3";
-            this.parkZ21B3.Size = new System.Drawing.Size(216, 83);
+            this.parkZ21B3.Size = new System.Drawing.Size(213, 83);
             this.parkZ21B3.TabIndex = 36;
             // 
             // parkZ21B2
             // 
             this.parkZ21B2.BackColor = System.Drawing.SystemColors.Control;
             this.parkZ21B2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parkZ21B2.Location = new System.Drawing.Point(1033, 4);
+            this.parkZ21B2.Location = new System.Drawing.Point(1021, 4);
             this.parkZ21B2.Margin = new System.Windows.Forms.Padding(4);
             this.parkZ21B2.Name = "parkZ21B2";
-            this.parkZ21B2.Size = new System.Drawing.Size(202, 83);
+            this.parkZ21B2.Size = new System.Drawing.Size(200, 83);
             this.parkZ21B2.TabIndex = 37;
             this.parkZ21B2.Visible = false;
             // 
@@ -1260,9 +1235,9 @@
             this.labTips.BackColor = System.Drawing.Color.LightSteelBlue;
             this.labTips.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labTips.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labTips.Location = new System.Drawing.Point(1462, 0);
+            this.labTips.Location = new System.Drawing.Point(1446, 0);
             this.labTips.Name = "labTips";
-            this.labTips.Size = new System.Drawing.Size(149, 91);
+            this.labTips.Size = new System.Drawing.Size(165, 91);
             this.labTips.TabIndex = 40;
             this.labTips.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.labTips.Visible = false;
@@ -1292,9 +1267,7 @@
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Controls.Add(this.btnReissue, 0, 8);
-            this.tableLayoutPanel5.Controls.Add(this.btnCarEnter, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.button2, 0, 9);
-            this.tableLayoutPanel5.Controls.Add(this.button_L3Stowage, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.btnSeleceByMat, 0, 2);
             this.tableLayoutPanel5.Controls.Add(this.btnOperateStrat, 0, 3);
             this.tableLayoutPanel5.Controls.Add(this.btnOperatePause, 0, 4);
@@ -1302,6 +1275,8 @@
             this.tableLayoutPanel5.Controls.Add(this.btnRefresh, 0, 6);
             this.tableLayoutPanel5.Controls.Add(this.btnWoodenCar, 0, 7);
             this.tableLayoutPanel5.Controls.Add(this.btnUnitToCar, 0, 10);
+            this.tableLayoutPanel5.Controls.Add(this.btnCarEnter, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.button_L3Stowage, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(1511, 250);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -1336,6 +1311,24 @@
             this.btnReissue.Visible = false;
             this.btnReissue.Click += new System.EventHandler(this.btnReissue_Click);
             // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(137)))), ((int)(((byte)(241)))));
+            this.button2.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(3, 413);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 39);
+            this.button2.TabIndex = 73;
+            this.button2.Text = "选卷装车";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Visible = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // button_L3Stowage
             // 
             this.button_L3Stowage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1344,11 +1337,11 @@
             this.button_L3Stowage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_L3Stowage.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button_L3Stowage.ForeColor = System.Drawing.Color.Black;
-            this.button_L3Stowage.Location = new System.Drawing.Point(4, 49);
+            this.button_L3Stowage.Location = new System.Drawing.Point(4, 3);
             this.button_L3Stowage.Name = "button_L3Stowage";
             this.button_L3Stowage.Size = new System.Drawing.Size(99, 40);
             this.button_L3Stowage.TabIndex = 73;
-            this.button_L3Stowage.Text = "装车配载";
+            this.button_L3Stowage.Text = "车到位";
             this.button_L3Stowage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_L3Stowage.UseVisualStyleBackColor = false;
             this.button_L3Stowage.Click += new System.EventHandler(this.button_L3Stowage_Click);
@@ -1404,6 +1397,40 @@
             this.btnOperatePause.UseVisualStyleBackColor = false;
             this.btnOperatePause.Click += new System.EventHandler(this.btnOperatePause_Click);
             // 
+            // btnCarFrom
+            // 
+            this.btnCarFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCarFrom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(137)))), ((int)(((byte)(241)))));
+            this.btnCarFrom.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.btnCarFrom.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCarFrom.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCarFrom.ForeColor = System.Drawing.Color.Black;
+            this.btnCarFrom.Location = new System.Drawing.Point(4, 233);
+            this.btnCarFrom.Name = "btnCarFrom";
+            this.btnCarFrom.Size = new System.Drawing.Size(99, 40);
+            this.btnCarFrom.TabIndex = 69;
+            this.btnCarFrom.Text = "车离位";
+            this.btnCarFrom.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCarFrom.UseVisualStyleBackColor = false;
+            this.btnCarFrom.Click += new System.EventHandler(this.btnCarFrom_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(137)))), ((int)(((byte)(241)))));
+            this.btnRefresh.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRefresh.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnRefresh.ForeColor = System.Drawing.Color.Black;
+            this.btnRefresh.Location = new System.Drawing.Point(4, 279);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(99, 40);
+            this.btnRefresh.TabIndex = 67;
+            this.btnRefresh.Text = "刷新";
+            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // btnWoodenCar
             // 
             this.btnWoodenCar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1444,49 +1471,23 @@
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // label10
+            // btnCarEnter
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(653, 78);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(73, 22);
-            this.label10.TabIndex = 95;
-            this.label10.Text = "中心点Y:";
-            // 
-            // txt_CENTER_Y
-            // 
-            this.txt_CENTER_Y.BackColor = System.Drawing.SystemColors.Control;
-            this.txt_CENTER_Y.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_CENTER_Y.ForeColor = System.Drawing.Color.Black;
-            this.txt_CENTER_Y.Location = new System.Drawing.Point(732, 72);
-            this.txt_CENTER_Y.Name = "txt_CENTER_Y";
-            this.txt_CENTER_Y.ReadOnly = true;
-            this.txt_CENTER_Y.Size = new System.Drawing.Size(130, 29);
-            this.txt_CENTER_Y.TabIndex = 94;
-            // 
-            // txt_CENTER_Z
-            // 
-            this.txt_CENTER_Z.BackColor = System.Drawing.SystemColors.Control;
-            this.txt_CENTER_Z.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_CENTER_Z.ForeColor = System.Drawing.Color.Black;
-            this.txt_CENTER_Z.Location = new System.Drawing.Point(989, 71);
-            this.txt_CENTER_Z.Name = "txt_CENTER_Z";
-            this.txt_CENTER_Z.ReadOnly = true;
-            this.txt_CENTER_Z.Size = new System.Drawing.Size(130, 29);
-            this.txt_CENTER_Z.TabIndex = 96;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label26.ForeColor = System.Drawing.Color.Black;
-            this.label26.Location = new System.Drawing.Point(910, 78);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(73, 22);
-            this.label26.TabIndex = 97;
-            this.label26.Text = "中心点Z:";
+            this.btnCarEnter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCarEnter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(137)))), ((int)(((byte)(241)))));
+            this.btnCarEnter.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.btnCarEnter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCarEnter.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCarEnter.ForeColor = System.Drawing.Color.Black;
+            this.btnCarEnter.Location = new System.Drawing.Point(4, 49);
+            this.btnCarEnter.Name = "btnCarEnter";
+            this.btnCarEnter.Size = new System.Drawing.Size(99, 40);
+            this.btnCarEnter.TabIndex = 68;
+            this.btnCarEnter.Text = "车到位";
+            this.btnCarEnter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCarEnter.UseVisualStyleBackColor = false;
+            this.btnCarEnter.Visible = false;
+            this.btnCarEnter.Click += new System.EventHandler(this.btnCarEnter_Click);
             // 
             // PorductMatManage
             // 
@@ -1536,7 +1537,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnCarFrom;
-        private System.Windows.Forms.Button btnCarEnter;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label labTime;
         private System.Windows.Forms.Label label12;
@@ -1636,5 +1636,6 @@
         private System.Windows.Forms.TextBox txt_CENTER_Z;
         private System.Windows.Forms.TextBox txt_CENTER_Y;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnCarEnter;
     }
 }

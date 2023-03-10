@@ -147,6 +147,12 @@
     <Compile Include="CLTSHMI\FrmCLTS_YARD_TO_CAR.designer.cs">
       <DependentUpon>FrmCLTS_YARD_TO_CAR.cs</DependentUpon>
     </Compile>
+    <Compile Include="View_CraneMonitor\Achievements_Feed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\Achievements_Feed.Designer.cs">
+      <DependentUpon>Achievements_Feed.cs</DependentUpon>
+    </Compile>
     <Compile Include="View_CraneMonitor\FG_Order_Oper1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -643,6 +649,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View_CraneMonitor\Achievements_Feed.resx">
+      <DependentUpon>Achievements_Feed.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View_CraneMonitor\CraneOrderHisyManage.resx">
       <DependentUpon>CraneOrderHisyManage.cs</DependentUpon>
     </EmbeddedResource>
