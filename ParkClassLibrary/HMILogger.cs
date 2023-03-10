@@ -83,6 +83,15 @@ namespace ParkClassLibrary
                 return strIPList; }
             //set { strIPList = value; }
         }
+        /// <summary>
+        /// 写入画面操作日志表
+        /// </summary>
+        /// <param name="key1">单独记录的关键信息1</param>
+        /// <param name="message">详细信息</param>
+        /// <param name="level">日志级别</param>
+        /// <param name="module">记录日志的模块或者画面名称</param>
+        /// <param name="userid">当时的操作人员</param>
+        /// <returns></returns>
         public static string WriteLog(string key1, string message, LogLevel level = 0, string module = "UACS_HMI", string userid = "")
         {
             return GenSQL(key1, "", message, level, module, userid);  
