@@ -1294,6 +1294,7 @@ namespace UACSParking
             hasParkSize = false;
             RefreshHMI();
             //Stowage_intercept(cmbArea.Text.Trim(), cbbPacking.Text.Trim(), txtCarNo.Text.Trim(), dataGridView2);
+            ParkClassLibrary.HMILogger.WriteLog(btnRefresh.Text, "刷新", ParkClassLibrary.LogLevel.Info, this.Text);
         }
         /// <summary>
         /// 刷新画面

@@ -576,6 +576,7 @@
             this.button4.Text = "导出";
             this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Visible = false;
             // 
             // btnQuery
             // 

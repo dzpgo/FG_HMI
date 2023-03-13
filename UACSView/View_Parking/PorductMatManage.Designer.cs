@@ -827,6 +827,7 @@
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.AllowUserToOrderColumns = true;
             this.dataGridView2.AllowUserToResizeRows = false;
@@ -862,6 +863,7 @@
             this.dataGridView2.EnableHeadersVisualStyles = false;
             this.dataGridView2.Location = new System.Drawing.Point(3, 3);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 62;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -877,6 +879,7 @@
             this.ORDER_NO.HeaderText = "指令号";
             this.ORDER_NO.MinimumWidth = 8;
             this.ORDER_NO.Name = "ORDER_NO";
+            this.ORDER_NO.ReadOnly = true;
             this.ORDER_NO.Width = 83;
             // 
             // ORDER_GROUP_NO
@@ -886,6 +889,7 @@
             this.ORDER_GROUP_NO.HeaderText = "指令组号";
             this.ORDER_GROUP_NO.MinimumWidth = 8;
             this.ORDER_GROUP_NO.Name = "ORDER_GROUP_NO";
+            this.ORDER_GROUP_NO.ReadOnly = true;
             this.ORDER_GROUP_NO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ORDER_GROUP_NO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ORDER_GROUP_NO.Width = 150;
@@ -897,6 +901,7 @@
             this.EXE_SEQ.HeaderText = "指令顺序";
             this.EXE_SEQ.MinimumWidth = 8;
             this.EXE_SEQ.Name = "EXE_SEQ";
+            this.EXE_SEQ.ReadOnly = true;
             this.EXE_SEQ.Width = 150;
             // 
             // CMD_STATUS
@@ -905,6 +910,7 @@
             this.CMD_STATUS.HeaderText = "指令状态";
             this.CMD_STATUS.MinimumWidth = 8;
             this.CMD_STATUS.Name = "CMD_STATUS";
+            this.CMD_STATUS.ReadOnly = true;
             this.CMD_STATUS.Visible = false;
             this.CMD_STATUS.Width = 150;
             // 
@@ -914,6 +920,7 @@
             this.PLAN_NO.HeaderText = "计划号";
             this.PLAN_NO.MinimumWidth = 8;
             this.PLAN_NO.Name = "PLAN_NO";
+            this.PLAN_NO.ReadOnly = true;
             this.PLAN_NO.Width = 150;
             // 
             // MAT_CNAME
@@ -922,6 +929,7 @@
             this.MAT_CNAME.HeaderText = "物料名称";
             this.MAT_CNAME.MinimumWidth = 8;
             this.MAT_CNAME.Name = "MAT_CNAME";
+            this.MAT_CNAME.ReadOnly = true;
             this.MAT_CNAME.Width = 150;
             // 
             // FROM_STOCK_NO
@@ -939,6 +947,7 @@
             this.REQ_WEIGHT.HeaderText = "要求重量";
             this.REQ_WEIGHT.MinimumWidth = 8;
             this.REQ_WEIGHT.Name = "REQ_WEIGHT";
+            this.REQ_WEIGHT.ReadOnly = true;
             this.REQ_WEIGHT.Width = 150;
             // 
             // ACT_WEIGHT
@@ -947,6 +956,7 @@
             this.ACT_WEIGHT.HeaderText = "实际重量";
             this.ACT_WEIGHT.MinimumWidth = 8;
             this.ACT_WEIGHT.Name = "ACT_WEIGHT";
+            this.ACT_WEIGHT.ReadOnly = true;
             this.ACT_WEIGHT.Width = 150;
             // 
             // groupBox1
@@ -963,6 +973,7 @@
             // 
             // dgvOrder
             // 
+            this.dgvOrder.AllowUserToAddRows = false;
             this.dgvOrder.AllowUserToDeleteRows = false;
             this.dgvOrder.AllowUserToOrderColumns = true;
             this.dgvOrder.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -970,6 +981,7 @@
             this.dgvOrder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvOrder.Location = new System.Drawing.Point(3, 25);
             this.dgvOrder.Name = "dgvOrder";
+            this.dgvOrder.ReadOnly = true;
             this.dgvOrder.RowHeadersWidth = 62;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 14.25F);
@@ -1033,6 +1045,9 @@
             // 
             // dataGridView_LASER
             // 
+            this.dataGridView_LASER.AllowUserToAddRows = false;
+            this.dataGridView_LASER.AllowUserToDeleteRows = false;
+            this.dataGridView_LASER.AllowUserToOrderColumns = true;
             this.dataGridView_LASER.BackgroundColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightBlue;

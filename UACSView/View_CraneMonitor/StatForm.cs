@@ -983,7 +983,7 @@ namespace UACSView
                     Export2Excel(dataGridView1, saveFileDialog1.FileName);
 
                 }));
-
+                ParkClassLibrary.HMILogger.WriteLog("行车作业结果分析", "行车统计导出", ParkClassLibrary.LogLevel.Info, this.Text);
             }
             catch (Exception ex)
             {

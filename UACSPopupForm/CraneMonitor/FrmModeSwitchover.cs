@@ -160,6 +160,7 @@ namespace UACSPopupForm
         private void button4_Click(object sender, EventArgs e)
         {
             SendShortCmd(Crane_No, CraneStatusBase.SHORT_CMD_NORMAL_STOP);
+            HMILogger.WriteLog("请求停车", "请求停车：" + Crane_No, LogLevel.Info, this.Text);
         }
 
 
@@ -200,11 +201,6 @@ namespace UACSPopupForm
             {
                 this.Close();
             }        
-        }
-
-        private void FrmModeSwitchover_Load_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

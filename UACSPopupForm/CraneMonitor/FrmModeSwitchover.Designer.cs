@@ -164,7 +164,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "模式切换";
             this.Deactivate += new System.EventHandler(this.FrmModeSwitchover_Deactivate);
-            this.Load += new System.EventHandler(this.FrmModeSwitchover_Load_1);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

@@ -69,7 +69,7 @@ namespace UACSView
         }
 
         /// <summary>
-        /// 查询按钮事件
+        /// 修改按钮事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -84,6 +84,7 @@ namespace UACSView
                         string sql = "UPDATE UACS_YARDMAP_GRID_DEFINE SET GRID_STATUS = '" + txt_gridStatus.Text + "',MAT_CODE = '" + txt_matCode.Text + "',MAT_WGT = '" + txt_matWeight.Text + "' WHERE GRID_NO = '" + cbb_GridNo2.SelectedValue.ToString().Trim() + "'";
                         DB2Connect.DBHelper.ExecuteNonQuery(sql);
                         MessageBox.Show("修改成功");
+                        ParkClassLibrary.HMILogger.WriteLog(btnOk.Text, "修改", ParkClassLibrary.LogLevel.Info, this.Text);
                     }
                 }
             }

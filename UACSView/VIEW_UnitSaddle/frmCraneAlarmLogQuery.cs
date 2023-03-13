@@ -346,7 +346,7 @@ namespace UACSView
                     Export2Excel(GridAlarmLog, saveFileDialog1.FileName);
 
                 }));
-
+                ParkClassLibrary.HMILogger.WriteLog("报警信息管理", "导出", ParkClassLibrary.LogLevel.Info, this.Text);
             }
             catch (Exception ex)
             {
