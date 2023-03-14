@@ -361,6 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/UACSView/View_CraneMonitor
 /lib/Baosight.iSuperframe.iPlatureServer.dll
 /lib
