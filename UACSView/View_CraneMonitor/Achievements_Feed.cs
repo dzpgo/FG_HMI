@@ -36,7 +36,7 @@ namespace UACSView.View_CraneMonitor
             tagDP.ServiceName = "iplature";
             tagDP.AutoRegist = true;
             SetNull();
-            dataGridView1.DataSource =  BindMatStockByL3Stowage(tb_Query_PlanNo.Text, tb_Query_CarNo.Text);
+            dataGridView1.DataSource =  BindMatStockByL3Stowage(tb_Query_PlanNo.Text, cmb_Query_CarNo.Text);
         }
 
         #region 初始化
@@ -50,6 +50,8 @@ namespace UACSView.View_CraneMonitor
             //this.dtp_StartTime.Value = DateTime.Now.AddDays(-1);
             this.dtp_StartTime.Value = DateTime.Now;
             this.dtp_EndTime.Value = DateTime.Now;
+            //绑定槽号
+            BindCmbCar();
         }
 
         /// <summary>
@@ -90,7 +92,7 @@ namespace UACSView.View_CraneMonitor
         private void bt_Query_Click(object sender, EventArgs e)
         {
             SetNull();
-            dataGridView1.DataSource = BindMatStockByL3Stowage(tb_Query_PlanNo.Text, tb_Query_CarNo.Text);
+            dataGridView1.DataSource = BindMatStockByL3Stowage(tb_Query_PlanNo.Text, cmb_Query_CarNo.Text);
             
         }
         /// <summary>
@@ -101,11 +103,11 @@ namespace UACSView.View_CraneMonitor
         private void bt_Resetting_Click(object sender, EventArgs e)
         {
             this.tb_Query_PlanNo.Text = string.Empty;
-            this.tb_Query_CarNo.Text = string.Empty;
+            this.cmb_Query_CarNo.Text = string.Empty;
             this.dtp_StartTime.Value = DateTime.Now;
             this.dtp_EndTime.Value = DateTime.Now;
             SetNull();
-            dataGridView1.DataSource = BindMatStockByL3Stowage(tb_Query_PlanNo.Text, tb_Query_CarNo.Text);
+            dataGridView1.DataSource = BindMatStockByL3Stowage(tb_Query_PlanNo.Text, cmb_Query_CarNo.Text);
         }
         /// <summary>
         /// 查询保存 实绩重量
@@ -595,7 +597,12 @@ namespace UACSView.View_CraneMonitor
         #endregion
 
         #region 数据处理
-
+        /// <summary>
+        /// 绑定计划数据
+        /// </summary>
+        /// <param name="PlanNo">计划号</param>
+        /// <param name="CarNo">行车号</param>
+        /// <returns></returns>
         private DataTable BindMatStockByL3Stowage(string PlanNo, string CarNo)
         {
             DataTable dtResult = InitDataTable(dataGridView1);            
@@ -609,7 +616,7 @@ namespace UACSView.View_CraneMonitor
             FROM UACSAPP.UACS_L3_MAT_OUT_INFO 
             WHERE 1 = 1 ";
             sqlText_All += " AND REC_TIME >= '{0}' and REC_TIME <= '{1}' ";
-            if (!string.IsNullOrEmpty(CarNo))
+            if (!string.IsNullOrEmpty(CarNo) && !CarNo.Equals("无"))
             {
                 sqlText_All += "AND CAR_NO ='" + CarNo + "'";
             }
@@ -1194,6 +1201,52 @@ namespace UACSView.View_CraneMonitor
             tb_Feed_MatCodeName_10.Text = "";
         }
 
+        /// <summary>
+        /// 绑定槽号
+        /// </summary>
+        /// <param name="ParkNO">停车位号</param>
+        private void BindCmbCar()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt.Columns.Add("ID");
+                dt.Columns.Add("NAME");
+                DataRow dr = dt.NewRow();
+                dr = dt.NewRow();
+                dr["ID"] = "无";
+                dr["NAME"] = "无";
+                dt.Rows.Add(dr);
+                //查车辆号
+                string sqlText = @"SELECT FRAME_TYPE_NO FROM UACS_TRUCK_FRAME_DEFINE ";
+                using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
+                {
+                    while (rdr.Read())
+                    {
+                        dr = dt.NewRow();
+                        dr["ID"] = rdr["FRAME_TYPE_NO"].ToString();
+                        dr["NAME"] = rdr["FRAME_TYPE_NO"].ToString();
+                        dt.Rows.Add(dr);
+                    }
+                }
+                dr = dt.NewRow();
+                dr["ID"] = "SG99";
+                dr["NAME"] = "SG99";
+                dt.Rows.Add(dr);
+                //绑定数据
+                cmb_Query_CarNo.ValueMember = "ID";
+                cmb_Query_CarNo.DisplayMember = "NAME";
+                cmb_Query_CarNo.DataSource = dt;
+                //根据text值选中项
+                this.cmb_Query_CarNo.SelectedIndex = 0;
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
         #endregion
 
         #region 弃用（旧）
@@ -1446,6 +1499,6 @@ namespace UACSView.View_CraneMonitor
 
         #endregion
 
-       
+
     }
 }

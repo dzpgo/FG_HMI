@@ -496,48 +496,55 @@ namespace UACSView.View_CraneMonitor
         }
         #endregion
 
-        //private void btnShowXY_Click(object sender, EventArgs e)
-        //{
-        //    if (!isShowCurrentBayXY)
-        //    {
-        //        isShowCurrentBayXY = true;
-        //        btnShowXY.Text = "取消显示";
 
-        //        timer_ShowXY.Enabled = true;
-        //        timer_ShowXY.Interval = 1000;
-        //    }
-        //    else
-        //    {
-        //        isShowCurrentBayXY = false;
-        //        btnShowXY.Text = "显示XY";
-        //        timer_ShowXY.Enabled = false;
-
-        //    }
-        //}
-
-        //private void btnShowCrane_Click(object sender, EventArgs e)
-        //{
-        //    if (btnShowCrane.Text == "隐藏行车")
-        //    {
-        //        conCrane2_3.Visible = false;
-        //        conCrane2_1.Visible = false;
-        //        conCrane2_2.Visible = false;
-                
-        //        btnShowCrane.Text = "显示行车";
-        //    }
-        //    else
-        //    {
-        //        conCrane2_3.Visible = true;
-        //        conCrane2_1.Visible = true;
-        //        conCrane2_2.Visible = true;
-                
-        //        btnShowCrane.Text = "隐藏行车";
-        //    }
-        //}
-
-        private void panelZ11_Z22Bay_Paint_1(object sender, PaintEventArgs e)
+        /// <summary>
+        /// 显示行车 / 隐藏行车  点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnShowCrane_Click(object sender, EventArgs e)
         {
+            if (btnShowCrane.Text == "隐藏行车")
+            {
+                conCrane2_1.Visible = false;
+                conCrane2_2.Visible = false;
+                conCrane2_3.Visible = false;
+                conCrane2_4.Visible = false;
 
+                btnShowCrane.Text = "显示行车";
+            }
+            else
+            {
+                conCrane2_1.Visible = true;
+                conCrane2_2.Visible = true;
+                conCrane2_3.Visible = true;
+                conCrane2_4.Visible = true;
+
+                btnShowCrane.Text = "隐藏行车";
+            }
+        }
+        /// <summary>
+        /// 显示XY / 取消显示  点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnShowXY_Click(object sender, EventArgs e)
+        {
+            if (!isShowCurrentBayXY)
+            {
+                isShowCurrentBayXY = true;
+                btnShowXY.Text = "取消显示";
+
+                timer_ShowXY.Enabled = true;
+                timer_ShowXY.Interval = 1000;
+            }
+            else
+            {
+                isShowCurrentBayXY = false;
+                btnShowXY.Text = "显示XY";
+                timer_ShowXY.Enabled = false;
+
+            }
         }
 
         //private void btnSeekCoil_Click(object sender, EventArgs e)
@@ -1444,5 +1451,6 @@ namespace UACSView.View_CraneMonitor
         //    }
         //} 
         #endregion
+
     }
 }

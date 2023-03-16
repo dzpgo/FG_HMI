@@ -71,7 +71,7 @@ namespace UACSPopupForm
                     SetReady(TagName_FaultCode);
                     readTags();
                     string data = get_value_string(TagName_FaultCode).Trim();
-                    if (!string.IsNullOrEmpty(data))
+                    if (!string.IsNullOrEmpty(data) && !data.Equals("0"))
                         listAlarm.Add(Convert.ToInt32(data));
                 }
                 GetDgvMessage(listAlarm);

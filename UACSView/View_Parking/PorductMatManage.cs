@@ -1555,6 +1555,9 @@ namespace UACSParking
                     //画面清空
                     dt_selected.Clear();
                     dataGridView2.DataSource = dt_selected;
+                    DataTable dtOrder = new DataTable();
+                    dtOrder.Clear();
+                    dgvOrder.DataSource = dtOrder;
                     //重量清空
                     coilsWeight = 0;
                     txtCoilsWeight.Text = string.Format("{0}/吨", coilsWeight);

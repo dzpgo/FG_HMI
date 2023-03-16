@@ -203,38 +203,50 @@ namespace UACSControls
                 //行车指令
                 craneinfo.craneOrderInfo(craneStatusBase.CraneNO.ToString(), txt_CraneOrder, txt_CoilNo, txt_FromStock, txt_ToStock, tb_MAT_REQ_WGT, tb_MAT_ACT_WGT, tb_MAT_CUR_WGT);
 
-                string TagName = craneNO + "_ALARM_CURRENT";
-                SetReady(TagName);
-                readTags();
-                string value = get_value_string(TagName).Trim();
-                string[] sArray = value.Split(',');
+                //string TagName = craneNO + "_ALARM_CURRENT";
+                //SetReady(TagName);
+                //readTags();
+                //string value = get_value_string(TagName).Trim();
+                //string[] sArray = value.Split(',');
 
-                string TagNameWMS = craneNO + "_WMS_ALARM_CURRENT";
-                SetReady(TagNameWMS);
-                readTags();
-                string valueWMS = get_value_string(TagNameWMS).Trim();
-                string[] sArrayWMS = valueWMS.Split(',');
+                //string TagNameWMS = craneNO + "_WMS_ALARM_CURRENT";
+                //SetReady(TagNameWMS);
+                //readTags();
+                //string valueWMS = get_value_string(TagNameWMS).Trim();
+                //string[] sArrayWMS = valueWMS.Split(',');
+
+                //listAlarm.Clear();
+                //if (!String.IsNullOrEmpty(value.Trim()))
+                //{
+                //    foreach (string i in sArray)
+                //    {
+                //        int values = Convert.ToInt32(i.ToString());
+                //        listAlarm.Add(values);
+                //    }
+                //}
+                //if (!String.IsNullOrEmpty(valueWMS.Trim()))
+                //{
+                //    foreach (string i in sArrayWMS)
+                //    {
+                //        int valuesWMS = Convert.ToInt32(i.ToString());
+                //        listAlarm.Add(valuesWMS);
+                //    }
+                //}
 
                 listAlarm.Clear();
-                if (!String.IsNullOrEmpty(value.Trim()))
+                for (int i = 0; i <= 9; i++)
                 {
-                    foreach (string i in sArray)
-                    {
-                        int values = Convert.ToInt32(i.ToString());
-                        listAlarm.Add(values);
-                    }
-                }
-                if (!String.IsNullOrEmpty(valueWMS.Trim()))
-                {
-                    foreach (string i in sArrayWMS)
-                    {
-                        int valuesWMS = Convert.ToInt32(i.ToString());
-                        listAlarm.Add(valuesWMS);
-                    }
+                    var TagName_FaultCode = craneNO + "_FaultCode_" + "" + i + "";
+
+                    SetReady(TagName_FaultCode);
+                    readTags();
+                    string data = get_value_string(TagName_FaultCode).Trim();
+                    if (!string.IsNullOrEmpty(data) && !data.Equals("0"))
+                        listAlarm.Add(Convert.ToInt32(data));
                 }
 
                 //if ((!String.IsNullOrEmpty(value.Trim()) || !String.IsNullOrEmpty(valueWMS.Trim())) && (hasValues == true) && (txt_CONTROL_MODE.Text == "等待" || txt_CONTROL_MODE.Text == "自动"))
-                if ((!String.IsNullOrEmpty(value.Trim()) || !String.IsNullOrEmpty(valueWMS.Trim())) && (txt_CONTROL_MODE.Text == "等待" || txt_CONTROL_MODE.Text == "自动"))
+                if (listAlarm.Count > 0 && (txt_CONTROL_MODE.Text == "等待" || txt_CONTROL_MODE.Text == "自动" || txt_CONTROL_MODE.Text == "人工"))
                 {
                     btnShow.Visible = true;
                     if (firstTimeShow == false)
@@ -275,54 +287,67 @@ namespace UACSControls
                 int craneAlarmCount = 0;
                 foreach (string item in listCrane)
                 {
-                    string VoiceTagName = item + "_ALARM_CURRENT";
-                    SetReady(VoiceTagName);
-                    readTags();
-                    string VoiceValue = get_value_string(VoiceTagName).Trim();
-                    string[] VoiceArray = VoiceValue.Split(',');
+                    //string VoiceTagName = item + "_ALARM_CURRENT";
+                    //SetReady(VoiceTagName);
+                    //readTags();
+                    //string VoiceValue = get_value_string(VoiceTagName).Trim();
+                    //string[] VoiceArray = VoiceValue.Split(',');
 
-                    string VoiceTagNameWMS = item + "_WMS_ALARM_CURRENT";
-                    SetReady(VoiceTagNameWMS);
-                    readTags();
-                    string VoiceValueWMS = get_value_string(VoiceTagNameWMS).Trim();
-                    string[] VoiceArrayWMS = VoiceValueWMS.Split(',');
+                    //string VoiceTagNameWMS = item + "_WMS_ALARM_CURRENT";
+                    //SetReady(VoiceTagNameWMS);
+                    //readTags();
+                    //string VoiceValueWMS = get_value_string(VoiceTagNameWMS).Trim();
+                    //string[] VoiceArrayWMS = VoiceValueWMS.Split(',');
 
-                    string VoiceTagNameMode = item + "_autoMode";
-                    SetReady(VoiceTagNameMode);
-                    readTags();
-                    string VoiceValueMode = get_value_string(VoiceTagNameMode).Trim();
+                    //string VoiceTagNameMode = item + "_autoMode";
+                    //SetReady(VoiceTagNameMode);
+                    //readTags();
+                    //string VoiceValueMode = get_value_string(VoiceTagNameMode).Trim();
 
+                    //listAlarm.Clear();
+                    //if (!String.IsNullOrEmpty(VoiceValue.Trim()))
+                    //{
+                    //    foreach (string i in VoiceArray)
+                    //    {
+                    //        int values = Convert.ToInt32(i.ToString());
+                    //        listAlarm.Add(values);
+                    //    }
+                    //}
+                    //if (!String.IsNullOrEmpty(VoiceValueWMS.Trim()))
+                    //{
+                    //    foreach (string i in VoiceArrayWMS)
+                    //    {
+                    //        int valuesWMS = Convert.ToInt32(i.ToString());
+                    //        listAlarm.Add(valuesWMS);
+                    //    }
+                    //}
                     listAlarm.Clear();
-                    if (!String.IsNullOrEmpty(VoiceValue.Trim()))
+                    for (int i = 0; i <= 9; i++)
                     {
-                        foreach (string i in VoiceArray)
-                        {
-                            int values = Convert.ToInt32(i.ToString());
-                            listAlarm.Add(values);
-                        }
+                        var TagName_FaultCode = craneNO + "_FaultCode_" + "" + i + "";
+
+                        SetReady(TagName_FaultCode);
+                        readTags();
+                        string data = get_value_string(TagName_FaultCode).Trim();
+                        if (!string.IsNullOrEmpty(data) && !data.Equals("0"))
+                            listAlarm.Add(Convert.ToInt32(data));
                     }
-                    if (!String.IsNullOrEmpty(VoiceValueWMS.Trim()))
-                    {
-                        foreach (string i in VoiceArrayWMS)
-                        {
-                            int valuesWMS = Convert.ToInt32(i.ToString());
-                            listAlarm.Add(valuesWMS);
-                        }
-                    }
-                    if ((!String.IsNullOrEmpty(VoiceValue.Trim()) || !String.IsNullOrEmpty(VoiceValueWMS.Trim())) && (VoiceValueMode == "5" || VoiceValueMode == "4"))
+                    //if ((!String.IsNullOrEmpty(VoiceValue.Trim()) || !String.IsNullOrEmpty(VoiceValueWMS.Trim())) && (VoiceValueMode == "5" || VoiceValueMode == "4"))
+                    if (listAlarm.Count > 0 && (txt_CONTROL_MODE.Text == "等待" || txt_CONTROL_MODE.Text == "自动"))
                     {
                         if (CraneAlarmGetValues(listAlarm))
                         {
-                            if (VoiceValueMode == "4")
-                            {
-                                craneAlarmCount++;
-                            }
+                            //if (VoiceValueMode == "4")
+                            //{
+                            //    craneAlarmCount++;
+                            //}
+                            craneAlarmCount++;
                         }
                     }
                 }
                 if (craneAlarmCount >= 1 && (craneNO == "1" || craneNO == "2" || craneNO == "3" || craneNO == "4"))
                 {
-                    timer1.Enabled = true;
+                    //timer1.Enabled = true;
                 }
                 else
                 {
@@ -386,7 +411,7 @@ namespace UACSControls
                 foreach (int item in list)
                 {
 
-                    string sql = @"SELECT * FROM UACS_CRANE_ALARM_CODE_DEFINE WHERE ALARM_CODE = " + item;
+                    string sql = @"SELECT ALARM_CODE,ALARM_INFO,ALARM_CLASS FROM UACS_CRANE_ALARM_CODE_DEFINE WHERE ALARM_CODE = " + item;
                     using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
                     {
                         while (rdr.Read())
