@@ -34,21 +34,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.plParking = new System.Windows.Forms.Panel();
             this.dgvCraneOder = new System.Windows.Forms.DataGridView();
+            this.ORDER_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_CNAME2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FROM_STOCK_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TO_STOCK_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BAY_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvStowageMessage = new System.Windows.Forms.DataGridView();
-            this.ORDER_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ORDER_GROUP_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EXE_SEQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ORDER_PRIORITY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CMD_STATUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PLAN_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAT_CNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FROM_STOCK_NO1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TO_STOCK_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.REQ_WEIGHT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ACT_WEIGHT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UPD_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.REC_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblPacking = new System.Windows.Forms.Label();
@@ -59,11 +51,27 @@
             this.lblCarType = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.ORDER_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAT_CNAME2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FROM_STOCK_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TO_STOCK_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BAY_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lb_REQ_WEIGHT = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lb_ACT_WEIGHT = new System.Windows.Forms.Label();
+            this.bt_Refurbish = new System.Windows.Forms.Button();
+            this.bt_Save = new System.Windows.Forms.Button();
+            this.ORDER_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORDER_GROUP_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EXE_SEQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORDER_PRIORITY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CMD_SEQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CMD_STATUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PLAN_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_CNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FROM_STOCK_NO1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TO_STOCK_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.REQ_WEIGHT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ACT_WEIGHT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UPD_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.REC_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plParking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCraneOder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStowageMessage)).BeginInit();
@@ -79,11 +87,12 @@
             this.plParking.Dock = System.Windows.Forms.DockStyle.Top;
             this.plParking.Location = new System.Drawing.Point(0, 0);
             this.plParking.Name = "plParking";
-            this.plParking.Size = new System.Drawing.Size(1179, 521);
+            this.plParking.Size = new System.Drawing.Size(1269, 563);
             this.plParking.TabIndex = 0;
             // 
             // dgvCraneOder
             // 
+            this.dgvCraneOder.AllowUserToAddRows = false;
             this.dgvCraneOder.AllowUserToDeleteRows = false;
             this.dgvCraneOder.AllowUserToResizeRows = false;
             this.dgvCraneOder.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -111,14 +120,62 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvCraneOder.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCraneOder.EnableHeadersVisualStyles = false;
-            this.dgvCraneOder.Location = new System.Drawing.Point(12, 300);
+            this.dgvCraneOder.Location = new System.Drawing.Point(12, 322);
             this.dgvCraneOder.Name = "dgvCraneOder";
-            this.dgvCraneOder.ReadOnly = true;
             this.dgvCraneOder.RowHeadersVisible = false;
             this.dgvCraneOder.RowHeadersWidth = 62;
             this.dgvCraneOder.RowTemplate.Height = 23;
-            this.dgvCraneOder.Size = new System.Drawing.Size(1159, 213);
+            this.dgvCraneOder.Size = new System.Drawing.Size(1245, 229);
             this.dgvCraneOder.TabIndex = 10;
+            // 
+            // ORDER_NO2
+            // 
+            this.ORDER_NO2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ORDER_NO2.DataPropertyName = "ORDER_NO";
+            this.ORDER_NO2.HeaderText = "指令号";
+            this.ORDER_NO2.MinimumWidth = 8;
+            this.ORDER_NO2.Name = "ORDER_NO2";
+            this.ORDER_NO2.Width = 83;
+            // 
+            // MAT_CNAME2
+            // 
+            this.MAT_CNAME2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MAT_CNAME2.DataPropertyName = "MAT_CNAME";
+            this.MAT_CNAME2.HeaderText = "物料名称";
+            this.MAT_CNAME2.MinimumWidth = 8;
+            this.MAT_CNAME2.Name = "MAT_CNAME2";
+            this.MAT_CNAME2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.MAT_CNAME2.Width = 80;
+            // 
+            // FROM_STOCK_NO2
+            // 
+            this.FROM_STOCK_NO2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.FROM_STOCK_NO2.DataPropertyName = "FROM_STOCK_NO";
+            this.FROM_STOCK_NO2.HeaderText = "取料位";
+            this.FROM_STOCK_NO2.MinimumWidth = 8;
+            this.FROM_STOCK_NO2.Name = "FROM_STOCK_NO2";
+            this.FROM_STOCK_NO2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.FROM_STOCK_NO2.Width = 64;
+            // 
+            // TO_STOCK_NO2
+            // 
+            this.TO_STOCK_NO2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TO_STOCK_NO2.DataPropertyName = "TO_STOCK_NO";
+            this.TO_STOCK_NO2.HeaderText = "落料位";
+            this.TO_STOCK_NO2.MinimumWidth = 8;
+            this.TO_STOCK_NO2.Name = "TO_STOCK_NO2";
+            this.TO_STOCK_NO2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.TO_STOCK_NO2.Width = 64;
+            // 
+            // BAY_NO
+            // 
+            this.BAY_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BAY_NO.DataPropertyName = "BAY_NO";
+            this.BAY_NO.HeaderText = "跨别";
+            this.BAY_NO.MinimumWidth = 8;
+            this.BAY_NO.Name = "BAY_NO";
+            this.BAY_NO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.BAY_NO.Width = 48;
             // 
             // label2
             // 
@@ -126,7 +183,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(16, 278);
+            this.label2.Location = new System.Drawing.Point(16, 299);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(329, 20);
             this.label2.TabIndex = 9;
@@ -134,6 +191,7 @@
             // 
             // dgvStowageMessage
             // 
+            this.dgvStowageMessage.AllowUserToAddRows = false;
             this.dgvStowageMessage.AllowUserToDeleteRows = false;
             this.dgvStowageMessage.AllowUserToResizeRows = false;
             this.dgvStowageMessage.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -151,8 +209,10 @@
             this.ORDER_GROUP_NO,
             this.EXE_SEQ,
             this.ORDER_PRIORITY,
+            this.CMD_SEQ,
             this.CMD_STATUS,
             this.PLAN_NO,
+            this.MAT_CODE,
             this.MAT_CNAME,
             this.FROM_STOCK_NO1,
             this.TO_STOCK_NO,
@@ -171,142 +231,13 @@
             this.dgvStowageMessage.EnableHeadersVisualStyles = false;
             this.dgvStowageMessage.Location = new System.Drawing.Point(12, 28);
             this.dgvStowageMessage.Name = "dgvStowageMessage";
-            this.dgvStowageMessage.ReadOnly = true;
             this.dgvStowageMessage.RowHeadersVisible = false;
             this.dgvStowageMessage.RowHeadersWidth = 62;
             this.dgvStowageMessage.RowTemplate.Height = 23;
-            this.dgvStowageMessage.Size = new System.Drawing.Size(1159, 238);
+            this.dgvStowageMessage.Size = new System.Drawing.Size(1245, 258);
             this.dgvStowageMessage.TabIndex = 8;
-            // 
-            // ORDER_NO
-            // 
-            this.ORDER_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ORDER_NO.DataPropertyName = "ORDER_NO";
-            this.ORDER_NO.HeaderText = "指令号";
-            this.ORDER_NO.MinimumWidth = 8;
-            this.ORDER_NO.Name = "ORDER_NO";
-            this.ORDER_NO.ReadOnly = true;
-            this.ORDER_NO.Width = 83;
-            // 
-            // ORDER_GROUP_NO
-            // 
-            this.ORDER_GROUP_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ORDER_GROUP_NO.DataPropertyName = "ORDER_GROUP_NO";
-            this.ORDER_GROUP_NO.HeaderText = "指令组号";
-            this.ORDER_GROUP_NO.MinimumWidth = 8;
-            this.ORDER_GROUP_NO.Name = "ORDER_GROUP_NO";
-            this.ORDER_GROUP_NO.ReadOnly = true;
-            this.ORDER_GROUP_NO.Width = 99;
-            // 
-            // EXE_SEQ
-            // 
-            this.EXE_SEQ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.EXE_SEQ.DataPropertyName = "EXE_SEQ";
-            this.EXE_SEQ.HeaderText = "指令顺序";
-            this.EXE_SEQ.MinimumWidth = 8;
-            this.EXE_SEQ.Name = "EXE_SEQ";
-            this.EXE_SEQ.ReadOnly = true;
-            this.EXE_SEQ.Width = 99;
-            // 
-            // ORDER_PRIORITY
-            // 
-            this.ORDER_PRIORITY.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ORDER_PRIORITY.DataPropertyName = "ORDER_PRIORITY";
-            this.ORDER_PRIORITY.HeaderText = "指令优先级";
-            this.ORDER_PRIORITY.MinimumWidth = 8;
-            this.ORDER_PRIORITY.Name = "ORDER_PRIORITY";
-            this.ORDER_PRIORITY.ReadOnly = true;
-            this.ORDER_PRIORITY.Width = 115;
-            // 
-            // CMD_STATUS
-            // 
-            this.CMD_STATUS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CMD_STATUS.DataPropertyName = "CMD_STATUS";
-            this.CMD_STATUS.HeaderText = "指令状态";
-            this.CMD_STATUS.MinimumWidth = 8;
-            this.CMD_STATUS.Name = "CMD_STATUS";
-            this.CMD_STATUS.ReadOnly = true;
-            this.CMD_STATUS.Width = 99;
-            // 
-            // PLAN_NO
-            // 
-            this.PLAN_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.PLAN_NO.DataPropertyName = "PLAN_NO";
-            this.PLAN_NO.HeaderText = "计划号";
-            this.PLAN_NO.MinimumWidth = 8;
-            this.PLAN_NO.Name = "PLAN_NO";
-            this.PLAN_NO.ReadOnly = true;
-            this.PLAN_NO.Width = 83;
-            // 
-            // MAT_CNAME
-            // 
-            this.MAT_CNAME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MAT_CNAME.DataPropertyName = "MAT_CNAME";
-            this.MAT_CNAME.HeaderText = "物料名称";
-            this.MAT_CNAME.MinimumWidth = 8;
-            this.MAT_CNAME.Name = "MAT_CNAME";
-            this.MAT_CNAME.ReadOnly = true;
-            this.MAT_CNAME.Width = 99;
-            // 
-            // FROM_STOCK_NO1
-            // 
-            this.FROM_STOCK_NO1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.FROM_STOCK_NO1.DataPropertyName = "FROM_STOCK_NO";
-            this.FROM_STOCK_NO1.HeaderText = "取料位";
-            this.FROM_STOCK_NO1.MinimumWidth = 8;
-            this.FROM_STOCK_NO1.Name = "FROM_STOCK_NO1";
-            this.FROM_STOCK_NO1.ReadOnly = true;
-            this.FROM_STOCK_NO1.Width = 83;
-            // 
-            // TO_STOCK_NO
-            // 
-            this.TO_STOCK_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TO_STOCK_NO.DataPropertyName = "TO_STOCK_NO";
-            this.TO_STOCK_NO.HeaderText = "落料位";
-            this.TO_STOCK_NO.MinimumWidth = 8;
-            this.TO_STOCK_NO.Name = "TO_STOCK_NO";
-            this.TO_STOCK_NO.ReadOnly = true;
-            this.TO_STOCK_NO.Width = 83;
-            // 
-            // REQ_WEIGHT
-            // 
-            this.REQ_WEIGHT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.REQ_WEIGHT.DataPropertyName = "REQ_WEIGHT";
-            this.REQ_WEIGHT.HeaderText = "要求重量";
-            this.REQ_WEIGHT.MinimumWidth = 8;
-            this.REQ_WEIGHT.Name = "REQ_WEIGHT";
-            this.REQ_WEIGHT.ReadOnly = true;
-            this.REQ_WEIGHT.Width = 99;
-            // 
-            // ACT_WEIGHT
-            // 
-            this.ACT_WEIGHT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ACT_WEIGHT.DataPropertyName = "ACT_WEIGHT";
-            this.ACT_WEIGHT.HeaderText = "实际重量";
-            this.ACT_WEIGHT.MinimumWidth = 8;
-            this.ACT_WEIGHT.Name = "ACT_WEIGHT";
-            this.ACT_WEIGHT.ReadOnly = true;
-            this.ACT_WEIGHT.Width = 99;
-            // 
-            // UPD_TIME
-            // 
-            this.UPD_TIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.UPD_TIME.DataPropertyName = "UPD_TIME";
-            this.UPD_TIME.HeaderText = "更新时间";
-            this.UPD_TIME.MinimumWidth = 8;
-            this.UPD_TIME.Name = "UPD_TIME";
-            this.UPD_TIME.ReadOnly = true;
-            this.UPD_TIME.Width = 99;
-            // 
-            // REC_TIME
-            // 
-            this.REC_TIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.REC_TIME.DataPropertyName = "REC_TIME";
-            this.REC_TIME.HeaderText = "记录时间";
-            this.REC_TIME.MinimumWidth = 8;
-            this.REC_TIME.Name = "REC_TIME";
-            this.REC_TIME.ReadOnly = true;
-            this.REC_TIME.Width = 99;
+            this.dgvStowageMessage.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStowageMessage_CellClick);
+            this.dgvStowageMessage.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStowageMessage_CellValueChanged);
             // 
             // label1
             // 
@@ -314,7 +245,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(16, 5);
+            this.label1.Location = new System.Drawing.Point(16, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(343, 20);
             this.label1.TabIndex = 0;
@@ -325,7 +256,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(32, 544);
+            this.label3.Location = new System.Drawing.Point(16, 579);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 22);
             this.label3.TabIndex = 1;
@@ -336,7 +267,7 @@
             this.lblPacking.AutoSize = true;
             this.lblPacking.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblPacking.ForeColor = System.Drawing.Color.Black;
-            this.lblPacking.Location = new System.Drawing.Point(103, 544);
+            this.lblPacking.Location = new System.Drawing.Point(87, 579);
             this.lblPacking.Name = "lblPacking";
             this.lblPacking.Size = new System.Drawing.Size(70, 22);
             this.lblPacking.TabIndex = 2;
@@ -347,7 +278,7 @@
             this.lblCarNo.AutoSize = true;
             this.lblCarNo.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblCarNo.ForeColor = System.Drawing.Color.Black;
-            this.lblCarNo.Location = new System.Drawing.Point(265, 544);
+            this.lblCarNo.Location = new System.Drawing.Point(228, 579);
             this.lblCarNo.Name = "lblCarNo";
             this.lblCarNo.Size = new System.Drawing.Size(70, 22);
             this.lblCarNo.TabIndex = 4;
@@ -358,7 +289,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(210, 544);
+            this.label6.Location = new System.Drawing.Point(173, 579);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 22);
             this.label6.TabIndex = 3;
@@ -369,7 +300,7 @@
             this.lblCarStatus.AutoSize = true;
             this.lblCarStatus.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblCarStatus.ForeColor = System.Drawing.Color.Black;
-            this.lblCarStatus.Location = new System.Drawing.Point(728, 544);
+            this.lblCarStatus.Location = new System.Drawing.Point(560, 579);
             this.lblCarStatus.Name = "lblCarStatus";
             this.lblCarStatus.Size = new System.Drawing.Size(70, 22);
             this.lblCarStatus.TabIndex = 6;
@@ -380,7 +311,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(671, 544);
+            this.label8.Location = new System.Drawing.Point(503, 579);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 22);
             this.label8.TabIndex = 5;
@@ -391,7 +322,7 @@
             this.lblCarType.AutoSize = true;
             this.lblCarType.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblCarType.ForeColor = System.Drawing.Color.Black;
-            this.lblCarType.Location = new System.Drawing.Point(490, 544);
+            this.lblCarType.Location = new System.Drawing.Point(411, 579);
             this.lblCarType.Name = "lblCarType";
             this.lblCarType.Size = new System.Drawing.Size(70, 22);
             this.lblCarType.TabIndex = 8;
@@ -402,7 +333,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(401, 544);
+            this.label5.Location = new System.Drawing.Point(322, 579);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 22);
             this.label5.TabIndex = 7;
@@ -412,78 +343,231 @@
             // 
             this.button1.BackgroundImage = global::UACSPopupForm.Properties.Resources.bg_btn;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(1071, 534);
+            this.button1.Location = new System.Drawing.Point(990, 569);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 40);
+            this.button1.Size = new System.Drawing.Size(85, 40);
             this.button1.TabIndex = 9;
             this.button1.Text = "详情";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // ORDER_NO2
+            // label4
             // 
-            this.ORDER_NO2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ORDER_NO2.DataPropertyName = "ORDER_NO";
-            this.ORDER_NO2.HeaderText = "指令号";
-            this.ORDER_NO2.MinimumWidth = 8;
-            this.ORDER_NO2.Name = "ORDER_NO2";
-            this.ORDER_NO2.ReadOnly = true;
-            this.ORDER_NO2.Width = 83;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(650, 579);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 22);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "要求重量：";
             // 
-            // MAT_CNAME2
+            // lb_REQ_WEIGHT
             // 
-            this.MAT_CNAME2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MAT_CNAME2.DataPropertyName = "MAT_CNAME";
-            this.MAT_CNAME2.HeaderText = "物料名称";
-            this.MAT_CNAME2.MinimumWidth = 8;
-            this.MAT_CNAME2.Name = "MAT_CNAME2";
-            this.MAT_CNAME2.ReadOnly = true;
-            this.MAT_CNAME2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.MAT_CNAME2.Width = 80;
+            this.lb_REQ_WEIGHT.AutoSize = true;
+            this.lb_REQ_WEIGHT.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb_REQ_WEIGHT.ForeColor = System.Drawing.Color.Black;
+            this.lb_REQ_WEIGHT.Location = new System.Drawing.Point(732, 579);
+            this.lb_REQ_WEIGHT.Name = "lb_REQ_WEIGHT";
+            this.lb_REQ_WEIGHT.Size = new System.Drawing.Size(70, 22);
+            this.lb_REQ_WEIGHT.TabIndex = 6;
+            this.lb_REQ_WEIGHT.Text = "999999";
             // 
-            // FROM_STOCK_NO2
+            // label9
             // 
-            this.FROM_STOCK_NO2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.FROM_STOCK_NO2.DataPropertyName = "FROM_STOCK_NO";
-            this.FROM_STOCK_NO2.HeaderText = "取料位";
-            this.FROM_STOCK_NO2.MinimumWidth = 8;
-            this.FROM_STOCK_NO2.Name = "FROM_STOCK_NO2";
-            this.FROM_STOCK_NO2.ReadOnly = true;
-            this.FROM_STOCK_NO2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.FROM_STOCK_NO2.Width = 64;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(816, 579);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(90, 22);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "累计重量：";
             // 
-            // TO_STOCK_NO2
+            // lb_ACT_WEIGHT
             // 
-            this.TO_STOCK_NO2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TO_STOCK_NO2.DataPropertyName = "TO_STOCK_NO";
-            this.TO_STOCK_NO2.HeaderText = "落料位";
-            this.TO_STOCK_NO2.MinimumWidth = 8;
-            this.TO_STOCK_NO2.Name = "TO_STOCK_NO2";
-            this.TO_STOCK_NO2.ReadOnly = true;
-            this.TO_STOCK_NO2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.TO_STOCK_NO2.Width = 64;
+            this.lb_ACT_WEIGHT.AutoSize = true;
+            this.lb_ACT_WEIGHT.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb_ACT_WEIGHT.ForeColor = System.Drawing.Color.Black;
+            this.lb_ACT_WEIGHT.Location = new System.Drawing.Point(901, 579);
+            this.lb_ACT_WEIGHT.Name = "lb_ACT_WEIGHT";
+            this.lb_ACT_WEIGHT.Size = new System.Drawing.Size(70, 22);
+            this.lb_ACT_WEIGHT.TabIndex = 6;
+            this.lb_ACT_WEIGHT.Text = "999999";
             // 
-            // BAY_NO
+            // bt_Refurbish
             // 
-            this.BAY_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.BAY_NO.DataPropertyName = "BAY_NO";
-            this.BAY_NO.HeaderText = "跨别";
-            this.BAY_NO.MinimumWidth = 8;
-            this.BAY_NO.Name = "BAY_NO";
-            this.BAY_NO.ReadOnly = true;
-            this.BAY_NO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.BAY_NO.Width = 48;
+            this.bt_Refurbish.BackgroundImage = global::UACSPopupForm.Properties.Resources.bg_btn;
+            this.bt_Refurbish.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_Refurbish.Location = new System.Drawing.Point(1081, 569);
+            this.bt_Refurbish.Name = "bt_Refurbish";
+            this.bt_Refurbish.Size = new System.Drawing.Size(85, 40);
+            this.bt_Refurbish.TabIndex = 9;
+            this.bt_Refurbish.Text = "刷新";
+            this.bt_Refurbish.UseVisualStyleBackColor = true;
+            this.bt_Refurbish.Click += new System.EventHandler(this.bt_Refurbish_Click);
+            // 
+            // bt_Save
+            // 
+            this.bt_Save.BackgroundImage = global::UACSPopupForm.Properties.Resources.bg_btn;
+            this.bt_Save.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_Save.Location = new System.Drawing.Point(1172, 569);
+            this.bt_Save.Name = "bt_Save";
+            this.bt_Save.Size = new System.Drawing.Size(85, 40);
+            this.bt_Save.TabIndex = 9;
+            this.bt_Save.Text = "保存";
+            this.bt_Save.UseVisualStyleBackColor = true;
+            this.bt_Save.Click += new System.EventHandler(this.bt_Save_Click);
+            // 
+            // ORDER_NO
+            // 
+            this.ORDER_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ORDER_NO.DataPropertyName = "ORDER_NO";
+            this.ORDER_NO.HeaderText = "指令号";
+            this.ORDER_NO.MinimumWidth = 8;
+            this.ORDER_NO.Name = "ORDER_NO";
+            this.ORDER_NO.Width = 83;
+            // 
+            // ORDER_GROUP_NO
+            // 
+            this.ORDER_GROUP_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ORDER_GROUP_NO.DataPropertyName = "ORDER_GROUP_NO";
+            this.ORDER_GROUP_NO.HeaderText = "指令组号";
+            this.ORDER_GROUP_NO.MinimumWidth = 8;
+            this.ORDER_GROUP_NO.Name = "ORDER_GROUP_NO";
+            this.ORDER_GROUP_NO.Width = 99;
+            // 
+            // EXE_SEQ
+            // 
+            this.EXE_SEQ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EXE_SEQ.DataPropertyName = "EXE_SEQ";
+            this.EXE_SEQ.HeaderText = "指令顺序";
+            this.EXE_SEQ.MinimumWidth = 8;
+            this.EXE_SEQ.Name = "EXE_SEQ";
+            this.EXE_SEQ.Width = 99;
+            // 
+            // ORDER_PRIORITY
+            // 
+            this.ORDER_PRIORITY.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ORDER_PRIORITY.DataPropertyName = "ORDER_PRIORITY";
+            this.ORDER_PRIORITY.HeaderText = "指令优先级";
+            this.ORDER_PRIORITY.MinimumWidth = 8;
+            this.ORDER_PRIORITY.Name = "ORDER_PRIORITY";
+            this.ORDER_PRIORITY.Width = 115;
+            // 
+            // CMD_SEQ
+            // 
+            this.CMD_SEQ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CMD_SEQ.DataPropertyName = "CMD_SEQ";
+            this.CMD_SEQ.HeaderText = "吊运次数";
+            this.CMD_SEQ.Name = "CMD_SEQ";
+            this.CMD_SEQ.Width = 99;
+            // 
+            // CMD_STATUS
+            // 
+            this.CMD_STATUS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CMD_STATUS.DataPropertyName = "CMD_STATUS";
+            this.CMD_STATUS.HeaderText = "指令状态";
+            this.CMD_STATUS.MinimumWidth = 8;
+            this.CMD_STATUS.Name = "CMD_STATUS";
+            this.CMD_STATUS.Width = 99;
+            // 
+            // PLAN_NO
+            // 
+            this.PLAN_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PLAN_NO.DataPropertyName = "PLAN_NO";
+            this.PLAN_NO.HeaderText = "计划号";
+            this.PLAN_NO.MinimumWidth = 8;
+            this.PLAN_NO.Name = "PLAN_NO";
+            this.PLAN_NO.Width = 83;
+            // 
+            // MAT_CODE
+            // 
+            this.MAT_CODE.DataPropertyName = "MAT_CODE";
+            this.MAT_CODE.HeaderText = "物料代码";
+            this.MAT_CODE.Name = "MAT_CODE";
+            this.MAT_CODE.Visible = false;
+            // 
+            // MAT_CNAME
+            // 
+            this.MAT_CNAME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MAT_CNAME.DataPropertyName = "MAT_CNAME";
+            this.MAT_CNAME.HeaderText = "物料名称";
+            this.MAT_CNAME.MinimumWidth = 8;
+            this.MAT_CNAME.Name = "MAT_CNAME";
+            this.MAT_CNAME.Width = 99;
+            // 
+            // FROM_STOCK_NO1
+            // 
+            this.FROM_STOCK_NO1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.FROM_STOCK_NO1.DataPropertyName = "FROM_STOCK_NO";
+            this.FROM_STOCK_NO1.HeaderText = "取料位";
+            this.FROM_STOCK_NO1.MinimumWidth = 8;
+            this.FROM_STOCK_NO1.Name = "FROM_STOCK_NO1";
+            this.FROM_STOCK_NO1.Width = 83;
+            // 
+            // TO_STOCK_NO
+            // 
+            this.TO_STOCK_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TO_STOCK_NO.DataPropertyName = "TO_STOCK_NO";
+            this.TO_STOCK_NO.HeaderText = "落料位";
+            this.TO_STOCK_NO.MinimumWidth = 8;
+            this.TO_STOCK_NO.Name = "TO_STOCK_NO";
+            this.TO_STOCK_NO.Width = 83;
+            // 
+            // REQ_WEIGHT
+            // 
+            this.REQ_WEIGHT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.REQ_WEIGHT.DataPropertyName = "REQ_WEIGHT";
+            this.REQ_WEIGHT.HeaderText = "要求重量";
+            this.REQ_WEIGHT.MinimumWidth = 8;
+            this.REQ_WEIGHT.Name = "REQ_WEIGHT";
+            this.REQ_WEIGHT.Width = 99;
+            // 
+            // ACT_WEIGHT
+            // 
+            this.ACT_WEIGHT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ACT_WEIGHT.DataPropertyName = "ACT_WEIGHT";
+            this.ACT_WEIGHT.HeaderText = "实际重量";
+            this.ACT_WEIGHT.MinimumWidth = 8;
+            this.ACT_WEIGHT.Name = "ACT_WEIGHT";
+            this.ACT_WEIGHT.Width = 99;
+            // 
+            // UPD_TIME
+            // 
+            this.UPD_TIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.UPD_TIME.DataPropertyName = "UPD_TIME";
+            this.UPD_TIME.HeaderText = "更新时间";
+            this.UPD_TIME.MinimumWidth = 8;
+            this.UPD_TIME.Name = "UPD_TIME";
+            this.UPD_TIME.Width = 99;
+            // 
+            // REC_TIME
+            // 
+            this.REC_TIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.REC_TIME.DataPropertyName = "REC_TIME";
+            this.REC_TIME.HeaderText = "记录时间";
+            this.REC_TIME.MinimumWidth = 8;
+            this.REC_TIME.Name = "REC_TIME";
+            this.REC_TIME.Width = 99;
             // 
             // FrmParkingDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1179, 586);
+            this.ClientSize = new System.Drawing.Size(1269, 619);
+            this.Controls.Add(this.bt_Refurbish);
+            this.Controls.Add(this.bt_Save);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblCarType);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.lb_ACT_WEIGHT);
+            this.Controls.Add(this.lb_REQ_WEIGHT);
             this.Controls.Add(this.lblCarStatus);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lblCarNo);
             this.Controls.Add(this.label6);
@@ -522,12 +606,25 @@
         private System.Windows.Forms.Label lblCarType;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ORDER_NO2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CNAME2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FROM_STOCK_NO2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TO_STOCK_NO2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BAY_NO;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lb_REQ_WEIGHT;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lb_ACT_WEIGHT;
+        private System.Windows.Forms.Button bt_Refurbish;
+        private System.Windows.Forms.Button bt_Save;
         private System.Windows.Forms.DataGridViewTextBoxColumn ORDER_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn ORDER_GROUP_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn EXE_SEQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn ORDER_PRIORITY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CMD_SEQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn CMD_STATUS;
         private System.Windows.Forms.DataGridViewTextBoxColumn PLAN_NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CODE;
         private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CNAME;
         private System.Windows.Forms.DataGridViewTextBoxColumn FROM_STOCK_NO1;
         private System.Windows.Forms.DataGridViewTextBoxColumn TO_STOCK_NO;
@@ -535,11 +632,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ACT_WEIGHT;
         private System.Windows.Forms.DataGridViewTextBoxColumn UPD_TIME;
         private System.Windows.Forms.DataGridViewTextBoxColumn REC_TIME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ORDER_NO2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CNAME2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FROM_STOCK_NO2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TO_STOCK_NO2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BAY_NO;
         // private Sunisoft.IrisSkin.SkinEngine skinEngine1;
     }
 }

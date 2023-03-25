@@ -339,6 +339,7 @@ namespace UACSControls
             var tagValue = craneNO + ",20";
             var tag_CraneMode = craneNO + "_DownLoadShortCommand";
             tagDataProvider.SetData(tag_CraneMode, tagValue);
+            ParkClassLibrary.HMILogger.WriteLog("标高", craneNO + "行车矫正高度为：" + tagValue , ParkClassLibrary.LogLevel.Info, "主监控");
         }
 
         private void 避让ToolStripMenuItem_Click(object sender, EventArgs e)

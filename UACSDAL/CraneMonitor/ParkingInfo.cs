@@ -180,7 +180,7 @@ namespace UACSDAL
                     //对应指令车辆配载明细
                     string SQLOder = @"SELECT A.ORDER_NO,B.MAT_CNAME,A.FROM_STOCK_NO,A.TO_STOCK_NO,A.BAY_NO FROM UACS_ORDER_QUEUE AS A ";
                     SQLOder += " LEFT JOIN UACS_L3_MAT_INFO AS B ON A.MAT_CODE = B.MAT_CODE ";
-                    SQLOder += " WHERE A.CMD_STATUS = '0' AND A.CAR_NO = '{0}' AND A.TO_STOCK_NO = '{1}' ";
+                    SQLOder += " WHERE A.CMD_STATUS = '0' AND A.CAR_NO = '{0}' AND A.TO_STOCK_NO = '{1}' ORDER BY A.ORDER_PRIORITY,A.ORDER_NO ";
                     SQLOder = string.Format(SQLOder, theCarNo, theParkNO);
                     using (IDataReader odrIn = DB2Connect.DBHelper.ExecuteReader(SQLOder))
                     {
@@ -254,7 +254,7 @@ namespace UACSDAL
                 if (!string.IsNullOrEmpty(carNo) && packingNo.Contains('A') && packingNo != "请选择")
                 {
                     //对应指令车辆配载明细
-                    string sqlText_ORDER = @"SELECT A.ORDER_NO,A.ORDER_GROUP_NO,A.EXE_SEQ,A.ORDER_PRIORITY,
+                    string sqlText_ORDER = @"SELECT A.ORDER_NO,A.ORDER_GROUP_NO,A.EXE_SEQ,A.ORDER_PRIORITY,CMD_SEQ,
                                                     CASE 
                                                     WHEN A.CMD_STATUS = 0 THEN '初始化' 
                                                     WHEN A.CMD_STATUS = 1 THEN '获取指令' 
@@ -269,7 +269,7 @@ namespace UACSDAL
                                                     WHEN A.CMD_STATUS = 10 THEN '空载上升到位' 
                                                     ELSE '其他' 
                                                     END AS CMD_STATUS
-                                                    ,A.PLAN_NO,B.MAT_CNAME,A.FROM_STOCK_NO,A.TO_STOCK_NO,A.REQ_WEIGHT,A.ACT_WEIGHT,A.UPD_TIME,A.REC_TIME 
+                                                    ,A.PLAN_NO,B.MAT_CNAME,B.MAT_CNAME AS MAT_CNAME2 ,A.FROM_STOCK_NO,A.TO_STOCK_NO,A.REQ_WEIGHT,A.ACT_WEIGHT,A.UPD_TIME,A.REC_TIME 
                                                     FROM UACS_ORDER_QUEUE AS A ";
                     sqlText_ORDER += " LEFT JOIN UACS_L3_MAT_INFO AS B ON A.MAT_CODE = B.MAT_CODE ";
                     sqlText_ORDER += " WHERE A.CMD_STATUS = '0' AND A.CAR_NO = '{0}' AND A.TO_STOCK_NO = '{1}' ";

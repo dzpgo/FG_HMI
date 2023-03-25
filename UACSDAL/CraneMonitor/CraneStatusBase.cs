@@ -249,6 +249,11 @@ namespace UACSDAL
             {
                 return STATUS_NEED_TO_READY_Desc;
             }
+            //空载起升过程= 001;
+            else if (craneStatus == STATUS_FIRST_AUTOMATIC)
+            {
+                return STATUS_FIRST_AUTOMATIC_Desc;
+            }
             //空载等待状态= 010
             else if (craneStatus == STATUS_WAITING_ORDER_WITH_OUT_COIL)
             {
@@ -278,6 +283,11 @@ namespace UACSDAL
             else if (craneStatus == STATUS_LIFT_COIL_UP_PHASE)
             {
                 return STATUS_LIFT_COIL_UP_PHASE_Desc;
+            }
+            //匹重调磁(重载称重)= 065
+            else if (craneStatus == STATUS_WEIGH_WITH_COIL)
+            {
+                return STATUS_WEIGH_WITH_COIL_Desc;
             }
             //重载等待状态= 070
             else if (craneStatus == STATUS_WAITING_ORDER_WITH_COIL)
@@ -403,6 +413,8 @@ namespace UACSDAL
         //--------------------------------------------------行车设备状态定义----------------------------------------------------------------
         //空载起升过程= 000;
         public const long STATUS_NEED_TO_READY = 0;
+        //首次切自动= 001;
+        public const long STATUS_FIRST_AUTOMATIC = 1;
         //空载等待状态= 010
         public const long STATUS_WAITING_ORDER_WITH_OUT_COIL = 10;
         //空载走行状态= 020
@@ -415,7 +427,7 @@ namespace UACSDAL
         public const long STATUS_COIL_LIFTED = 50;
         //取料上升过程= 060
         public const long STATUS_LIFT_COIL_UP_PHASE = 60;
-        //重载称重一一065
+        //匹重调磁(重载称重)一一065
         public const long STATUS_WEIGH_WITH_COIL = 65;
         //重载等待状态= 070
         public const long STATUS_WAITING_ORDER_WITH_COIL = 70;
@@ -435,6 +447,8 @@ namespace UACSDAL
 
         //空载起升过程= 000;
         public const string STATUS_NEED_TO_READY_Desc = "空载起升";
+        //首次切自动= 001;
+        public const string STATUS_FIRST_AUTOMATIC_Desc = "首次切自动";
         //空载等待状态= 010
         public const string STATUS_WAITING_ORDER_WITH_OUT_COIL_Desc = "空载等待";
         //空载走行状态= 020
@@ -447,8 +461,8 @@ namespace UACSDAL
         public const string STATUS_COIL_LIFTED_Desc = "空载取料";
         //重载起升过程= 060
         public const string STATUS_LIFT_COIL_UP_PHASE_Desc = "取料上升";
-        //重载称重= 065
-        public const string STATUS_WEIGH_WITH_COIL_Desc = "重载称重";
+        //匹重调磁(重载称重)= 065
+        public const string STATUS_WEIGH_WITH_COIL_Desc = "匹重调磁";
         //重载等待状态= 070
         public const string STATUS_WAITING_ORDER_WITH_COIL_Desc = "重载等待";
         //重载走行状态= 080

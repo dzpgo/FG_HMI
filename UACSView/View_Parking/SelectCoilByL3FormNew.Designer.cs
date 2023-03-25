@@ -361,7 +361,7 @@
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(100, 40);
             this.btnSubmit.TabIndex = 6;
-            this.btnSubmit.Text = "提交";
+            this.btnSubmit.Text = "提交(旧)";
             this.btnSubmit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSubmit.UseVisualStyleBackColor = false;
             this.btnSubmit.Visible = false;
