@@ -14,6 +14,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 using System.Collections;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using ParkClassLibrary;
 
 namespace UACSPopupForm
 {
@@ -24,8 +25,11 @@ namespace UACSPopupForm
     {
         private Baosight.iSuperframe.Authorization.Interface.IAuthorization auth;
         private Dictionary<string, string> MatCode = new Dictionary<string, string>();
-        string[] dgvColumnsName = { "ORDER_NO", "ORDER_GROUP_NO", "EXE_SEQ", "ORDER_PRIORITY", "CMD_SEQ" , "CMD_STATUS", "PLAN_NO", "MAT_CODE", "MAT_CNAME", "MAT_CNAME2", "FROM_STOCK_NO", "TO_STOCK_NO", "REQ_WEIGHT", "ACT_WEIGHT", "UPD_TIME", "REC_TIME" };
-        string[] dgvHeaderText = { "指令号", "指令组号", "指令顺序", "指令优先级", "吊运次数","吊运状态", "计划号", "物料代码", "物料名称", "物料名称2", "取料位置", "落料位", "要求重量", "实绩重量", "更新时间", "记录时间" };
+        string[] dgvColumnsName = { "ORDER_NO", "ORDER_GROUP_NO", "PLAN_NO", "EXE_SEQ", "ORDER_PRIORITY", "CMD_SEQ" , "CMD_STATUS", "MAT_CODE", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "REQ_WEIGHT", "ACT_WEIGHT", "UPD_TIME", "REC_TIME" };
+        string[] dgvHeaderText = { "指令号", "指令组号", "计划号", "指令顺序", "优先级", "吊运次数","吊运状态", "物料代码", "物料名称", "取料位置", "落料位", "要求重量", "实绩重量", "更新时间", "记录时间" };
+        string[] dgvOderColumnsName = { "ORDER_NO", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "BAY_NO" };
+        string[] dgvOderHeaderText = { "指令号", "物料名称", "取料位", "落料位", "跨别" };
+        
         public FrmParkingDetail()
         {
             InitializeComponent();
@@ -39,66 +43,21 @@ namespace UACSPopupForm
             set { packingInfo = value; }
         }
         int carIsLoad;
-
-        ComboBox combo = new ComboBox();
-        int colIndex = 7, rowIndex = 0;
-        private void combo_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                var d1 = dgvStowageMessage.Rows[rowIndex].Cells[colIndex].Value.ToString();
-                var d2 = combo.Text;
-                if (dgvStowageMessage.Rows[rowIndex].Cells[colIndex].Value.ToString() != combo.Text)
-                {
-                    dgvStowageMessage.Rows[rowIndex].Cells[colIndex].Value = combo.SelectedIndex;
-                    combo.Visible = false;
-                }
-            }
-            catch { }
-        }
-        /// <summary>
-        /// 点击事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dgvStowageMessage_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvStowageMessage.Columns[e.ColumnIndex].HeaderText == "test")
-            {
-                colIndex = e.ColumnIndex;
-                rowIndex = e.RowIndex;
-                SetComboBoxItem2(7, rowIndex);
-            }
-        }
-        private void SetComboBoxItem2(int cIndex,int rIndex)
-        {
-            #region 设置ComboBox在窗体中的位置为点击单元格位置
-            GroupBox groupBox1 = new GroupBox();
-            Rectangle rect = dgvStowageMessage.GetCellDisplayRectangle(cIndex, rIndex, false);
-            combo.Left = rect.Left + dgvStowageMessage.Left + groupBox1.Left;
-            combo.Top = rect.Top + dgvStowageMessage.Top + groupBox1.Top;
-            combo.Width = rect.Width;
-            combo.Height = rect.Height; 
-            #endregion
-
-            combo.Items.Clear();
-            combo.Items.Add("男");
-            combo.Items.Add("女");
-            combo.Visible = true;
-            combo.BringToFront();
-            var data = dgvStowageMessage.Rows[rIndex].Cells[cIndex].Value.ToString();
-            combo.Text = dgvStowageMessage.Rows[rIndex].Cells[cIndex].Value.ToString();
-        }
-
         private void FrmParkingDetail_Load(object sender, EventArgs e)
         {
 
-            //this.Controls.Add(combo);
-            //combo.TextChanged += new EventHandler(combo_TextChanged);
+            ManagerHelper.DataGridViewInit(dgvStowageMessage);
+            dgvStowageMessage.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            CreatDgvHeader(dgvStowageMessage, dgvColumnsName, dgvHeaderText);
+            //dgvStowageMessage.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
+            ManagerHelper.DataGridViewInit(dgvCraneOder);
+            dgvCraneOder.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            CreatDgvHeader(dgvCraneOder, dgvOderColumnsName, dgvOderHeaderText);
+            //dgvCraneOder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             GetMAT_Code();
-            CreateComboBoxColumn();
+            //CreateComboBoxColumn();
             Refurbish();
             //ShiftStowageMessage();
             this.Deactivate += new EventHandler(frmSaddleDetail_Deactivate);
@@ -108,7 +67,7 @@ namespace UACSPopupForm
         {
             try
             {
-                //this.Close();
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -241,45 +200,34 @@ namespace UACSPopupForm
             }
             //this.dgvStowageMessage
         }
-
-        /// <summary>
-        /// 单元格编辑时
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dgvStowageMessage_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            var dd = dgvStowageMessage.DataSource;
-            var dd2 = Initial_dgv;
-        }
         private bool CreatDgvHeader(DataGridView dataGridView, string[] columnsName, string[] headerText)
         {
             bool isFirst = false;
             if (!isFirst)
             {
-                //dataGridView.Columns.Add("Index", "序号");
-                //DataGridViewColumn columnIndex = new DataGridViewTextBoxColumn();
-                //columnIndex.Width = 50;
-                //columnIndex.DataPropertyName = "Index";
-                //columnIndex.Name = "Index";
-                //columnIndex.HeaderText = "序号";
-                //dataGridView.Columns.Add(columnIndex);
+                dataGridView.ReadOnly = false;
                 for (int i = 0; i < headerText.Count(); i++)
                 {
                     int index = 0;
-                    if (columnsName[i].Equals(""))
+                    if (columnsName[i].Equals("MAT_CNAME"))
                     {
                         DataGridViewComboBoxColumn column1 = new DataGridViewComboBoxColumn();
                         column1.Name = columnsName[i];
                         column1.DataPropertyName = columnsName[i];//对应数据源的字段
                         column1.HeaderText = headerText[i];
+                        column1.ReadOnly = false;
                         if (i > 0)
                         {
                             column1.Width = 130;
                         }
-                        index = dataGridView.Columns.Add(column1);
                         List<string> ListData = new List<string> { "厂内中混废", "外购中混废", "矽钢片", "汽车切片打包块", "破碎料", "厂内切头", "外购重废", "渣钢", "渣铁", "炼钢生铁", "边角余料一号", "热压铁块", "厂内矽钢片", "高纯渣钢", "冷却剂" };
                         column1.DataSource = ListData;
+                        index = dataGridView.Columns.Add(column1);
+
+                        //dataGridView.Columns[index].DefaultCellStyle.BackColor = Color.Yellow;
+                        //dataGridView.Columns[index].DefaultCellStyle.ForeColor = Color.Yellow;
+                        //dataGridView.Columns[index].DefaultCellStyle.SelectionBackColor = Color.Yellow;
+                        //dataGridView.Columns[index].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     }
                     else
                     {
@@ -287,15 +235,44 @@ namespace UACSPopupForm
                         column.DataPropertyName = columnsName[i];
                         column.Name = columnsName[i];
                         column.HeaderText = headerText[i];
+                        if(columnsName[i].Equals("FROM_STOCK_NO"))
+                        {
+                            column.ReadOnly = false;
+                        }
+                        else if (columnsName[i].Equals("TO_STOCK_NO")) 
+                        {
+                            column.ReadOnly = false;
+                        }
+                        else if (columnsName[i].Equals("REQ_WEIGHT"))
+                        {
+                            column.ReadOnly = false;
+                        }
+                        else if (columnsName[i].Equals("ACT_WEIGHT"))
+                        {
+                            column.ReadOnly = false;
+                        }
+                        else
+                        {
+                            column.ReadOnly = true;
+                        }                        
                         if (i > 0)
                         {
-                            column.Width = 150;
+                            column.Width = 85;
+                        }
+                        if (columnsName[i].Equals("UPD_TIME"))
+                        {
+                            column.Width = 120;
+                        }
+                        if (columnsName[i].Equals("REC_TIME"))
+                        {
+                            column.Width = 120;
+                        }
+                        if (columnsName[i].Equals("MAT_CODE"))
+                        {
+                            column.Visible = false;
                         }
                         index = dataGridView.Columns.Add(column);
                     }
-                    
-
-                    
                     dataGridView.Columns[index].SortMode = DataGridViewColumnSortMode.NotSortable;
                 }
                 isFirst = true;
@@ -362,18 +339,18 @@ namespace UACSPopupForm
                             isTrue = false;
                             foreach (DataRow Initdgr in Initial_dgv.Rows)
                             {
-                                var ddd = Initdgr["MAT_CNAME2"].ToString();
-                                var MAT_CNAME2 = dgr.Cells["MAT_CNAME2"].Value.ToString();
-                                var qq = Initdgr["FROM_STOCK_NO1"].ToString();
-                                var qqq = dgr.Cells["FROM_STOCK_NO1"].Value.ToString();
+                                var ddd = Initdgr["MAT_CNAME"].ToString();
+                                var MAT_CNAME2 = dgr.Cells["MAT_CNAME"].Value.ToString();
+                                var qq = Initdgr["FROM_STOCK_NO"].ToString();
+                                var qqq = dgr.Cells["FROM_STOCK_NO"].Value.ToString();
                                 //判断计划号和指令号是否空，判断dgvStowageMessage计划号和Initial_dgv计划号是否一致，判断dgvStowageMessage指令号和Initial_dgv指令号是否一致
                                 if (!string.IsNullOrEmpty(dgr.Cells["PLAN_NO"].Value.ToString()) && !string.IsNullOrEmpty(Initdgr["ORDER_NO"].ToString()) && dgr.Cells["PLAN_NO"].Value.ToString().Equals(Initdgr["PLAN_NO"].ToString()) && dgr.Cells["ORDER_NO"].Value.ToString().Equals(Initdgr["ORDER_NO"].ToString()))
                                 {
                                     //判断物料是否更改
-                                    if (!dgr.Cells["MAT_CNAME2"].Value.ToString().Equals(Initdgr["MAT_CNAME2"].ToString()))
+                                    if (!dgr.Cells["MAT_CNAME"].Value.ToString().Equals(Initdgr["MAT_CNAME"].ToString()))
                                     {
                                         //物料
-                                        var dd = dgr.Cells["MAT_CNAME2"].Value.ToString();
+                                        var dd = dgr.Cells["MAT_CNAME"].Value.ToString();
                                         count++;
                                         isTrue = true;
                                     }
@@ -389,7 +366,7 @@ namespace UACSPopupForm
                                         count++;
                                         isTrue = true;
                                     }
-                                    if (!dgr.Cells["FROM_STOCK_NO1"].Value.ToString().Equals(Initdgr["FROM_STOCK_NO1"].ToString()))
+                                    if (!dgr.Cells["FROM_STOCK_NO"].Value.ToString().Equals(Initdgr["FROM_STOCK_NO"].ToString()))
                                     {
                                         //取料位
                                         count++;
@@ -408,8 +385,8 @@ namespace UACSPopupForm
                                 DataRow dr = dt.NewRow();
                                 dr["ORDER_NO"] = dgr.Cells["ORDER_NO"].Value.ToString();
                                 dr["ORDER_GROUP_NO"] = dgr.Cells["ORDER_GROUP_NO"].Value.ToString();
-                                dr["MAT_CNAME2"] = dgr.Cells["MAT_CNAME2"].Value.ToString();
-                                dr["FROM_STOCK_NO"] = dgr.Cells["FROM_STOCK_NO1"].Value.ToString();
+                                //dr["MAT_CNAME2"] = dgr.Cells["MAT_CNAME2"].Value.ToString();
+                                dr["FROM_STOCK_NO"] = dgr.Cells["FROM_STOCK_NO"].Value.ToString();
                                 dr["TO_STOCK_NO"] = dgr.Cells["TO_STOCK_NO"].Value.ToString();
                                 dr["REQ_WEIGHT"] = dgr.Cells["REQ_WEIGHT"].Value.ToString();
                                 dr["ACT_WEIGHT"] = dgr.Cells["ACT_WEIGHT"].Value.ToString();
@@ -439,7 +416,7 @@ namespace UACSPopupForm
                             string ExeSql = @" UPDATE UACS_ORDER_QUEUE SET  ";
                             foreach (KeyValuePair<string, string> keyvalue in MatCode)
                             {
-                                if (keyvalue.Value.Equals(dr["MAT_CNAME2"].ToString()))
+                                if (keyvalue.Value.Equals(dr["MAT_CNAME"].ToString()))
                                 {
                                     ExeSql += " MAT_CODE = '" + keyvalue.Key + "' ,";
                                     break;
@@ -518,7 +495,7 @@ namespace UACSPopupForm
                                                     WHEN A.CMD_STATUS = 10 THEN '空载上升到位' 
                                                     ELSE '其他' 
                                                     END AS CMD_STATUS
-                                                    ,A.PLAN_NO,A.MAT_CODE,B.MAT_CNAME,B.MAT_CNAME AS MAT_CNAME2 ,A.FROM_STOCK_NO,A.TO_STOCK_NO,A.REQ_WEIGHT,A.ACT_WEIGHT,A.UPD_TIME,A.REC_TIME 
+                                                    ,A.PLAN_NO,A.MAT_CODE,B.MAT_CNAME ,A.FROM_STOCK_NO,A.TO_STOCK_NO,A.REQ_WEIGHT,A.ACT_WEIGHT,A.UPD_TIME,A.REC_TIME 
                                                     FROM UACS_ORDER_QUEUE AS A ";
                     sqlText_ORDER += " LEFT JOIN UACS_L3_MAT_INFO AS B ON A.MAT_CODE = B.MAT_CODE ";
                     sqlText_ORDER += " WHERE A.CMD_STATUS = '0' AND A.CAR_NO = '{0}' AND A.TO_STOCK_NO = '{1}' ";
