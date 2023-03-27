@@ -31,7 +31,10 @@ namespace UACSPopupForm
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmYardToYardRequest));
             this.lblCraneYardToYard = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtCoilno = new System.Windows.Forms.TextBox();
+            this.txtBayNo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtFromStock = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.BtnOk = new System.Windows.Forms.Button();
             this.BtnClose = new System.Windows.Forms.Button();
@@ -53,11 +56,8 @@ namespace UACSPopupForm
             this.label8 = new System.Windows.Forms.Label();
             this.lblStockStatus = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtToStock = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmb_AeraNo = new System.Windows.Forms.ComboBox();
-            this.cmb_GridNo = new System.Windows.Forms.ComboBox();
-            this.tb_MatCname = new System.Windows.Forms.TextBox();
-            this.cmb_LMR = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,11 +79,28 @@ namespace UACSPopupForm
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label2.Location = new System.Drawing.Point(115, 203);
+            this.label2.Location = new System.Drawing.Point(132, 203);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 21);
+            this.label2.Size = new System.Drawing.Size(90, 21);
             this.label2.TabIndex = 1;
-            this.label2.Text = "被归堆物格：";
+            this.label2.Text = "归堆物料：";
+            // 
+            // txtCoilno
+            // 
+            this.txtCoilno.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtCoilno.Location = new System.Drawing.Point(228, 200);
+            this.txtCoilno.Name = "txtCoilno";
+            this.txtCoilno.Size = new System.Drawing.Size(184, 29);
+            this.txtCoilno.TabIndex = 2;
+            // 
+            // txtBayNo
+            // 
+            this.txtBayNo.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtBayNo.Location = new System.Drawing.Point(228, 130);
+            this.txtBayNo.Name = "txtBayNo";
+            this.txtBayNo.Size = new System.Drawing.Size(184, 29);
+            this.txtBayNo.TabIndex = 4;
+            this.txtBayNo.TextChanged += new System.EventHandler(this.txtFromYard_TextChanged);
             // 
             // label3
             // 
@@ -95,15 +112,24 @@ namespace UACSPopupForm
             this.label3.TabIndex = 3;
             this.label3.Text = "归堆作业跨：";
             // 
+            // txtFromStock
+            // 
+            this.txtFromStock.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtFromStock.Location = new System.Drawing.Point(228, 270);
+            this.txtFromStock.Name = "txtFromStock";
+            this.txtFromStock.Size = new System.Drawing.Size(184, 29);
+            this.txtFromStock.TabIndex = 6;
+            this.txtFromStock.TextChanged += new System.EventHandler(this.txtToYard_TextChanged);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label4.Location = new System.Drawing.Point(131, 335);
+            this.label4.Location = new System.Drawing.Point(116, 273);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 21);
+            this.label4.Size = new System.Drawing.Size(106, 21);
             this.label4.TabIndex = 5;
-            this.label4.Text = "归堆物料：";
+            this.label4.Text = "被归堆物格：";
             // 
             // BtnOk
             // 
@@ -113,7 +139,7 @@ namespace UACSPopupForm
             this.BtnOk.Location = new System.Drawing.Point(61, 487);
             this.BtnOk.Name = "BtnOk";
             this.BtnOk.Size = new System.Drawing.Size(101, 38);
-            this.BtnOk.TabIndex = 14;
+            this.BtnOk.TabIndex = 7;
             this.BtnOk.Text = "执行归堆";
             this.BtnOk.UseVisualStyleBackColor = false;
             this.BtnOk.Click += new System.EventHandler(this.BtnOk_Click);
@@ -126,7 +152,7 @@ namespace UACSPopupForm
             this.BtnClose.Location = new System.Drawing.Point(227, 487);
             this.BtnClose.Name = "BtnClose";
             this.BtnClose.Size = new System.Drawing.Size(101, 38);
-            this.BtnClose.TabIndex = 15;
+            this.BtnClose.TabIndex = 8;
             this.BtnClose.Text = "取消归堆";
             this.BtnClose.UseVisualStyleBackColor = false;
             this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
@@ -139,7 +165,6 @@ namespace UACSPopupForm
             this.btnStockSelect.Size = new System.Drawing.Size(28, 28);
             this.btnStockSelect.TabIndex = 9;
             this.btnStockSelect.UseVisualStyleBackColor = true;
-            this.btnStockSelect.Visible = false;
             this.btnStockSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // btnClear
@@ -150,7 +175,7 @@ namespace UACSPopupForm
             this.btnClear.Location = new System.Drawing.Point(393, 487);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(101, 38);
-            this.btnClear.TabIndex = 16;
+            this.btnClear.TabIndex = 13;
             this.btnClear.Text = "关闭";
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -322,54 +347,23 @@ namespace UACSPopupForm
             this.label5.TabIndex = 0;
             this.label5.Text = "库位状态：";
             // 
+            // txtToStock
+            // 
+            this.txtToStock.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtToStock.Location = new System.Drawing.Point(228, 340);
+            this.txtToStock.Name = "txtToStock";
+            this.txtToStock.Size = new System.Drawing.Size(184, 29);
+            this.txtToStock.TabIndex = 18;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label1.Location = new System.Drawing.Point(99, 266);
+            this.label1.Location = new System.Drawing.Point(132, 343);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 21);
+            this.label1.Size = new System.Drawing.Size(90, 21);
             this.label1.TabIndex = 17;
-            this.label1.Text = "归堆物格位置：";
-            // 
-            // cmb_AeraNo
-            // 
-            this.cmb_AeraNo.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.cmb_AeraNo.FormattingEnabled = true;
-            this.cmb_AeraNo.Location = new System.Drawing.Point(227, 128);
-            this.cmb_AeraNo.Name = "cmb_AeraNo";
-            this.cmb_AeraNo.Size = new System.Drawing.Size(184, 29);
-            this.cmb_AeraNo.TabIndex = 11;
-            this.cmb_AeraNo.SelectedIndexChanged += new System.EventHandler(this.cmb_AeraNo_SelectedIndexChanged);
-            // 
-            // cmb_GridNo
-            // 
-            this.cmb_GridNo.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.cmb_GridNo.FormattingEnabled = true;
-            this.cmb_GridNo.Location = new System.Drawing.Point(227, 200);
-            this.cmb_GridNo.Name = "cmb_GridNo";
-            this.cmb_GridNo.Size = new System.Drawing.Size(184, 29);
-            this.cmb_GridNo.TabIndex = 12;
-            this.cmb_GridNo.SelectedIndexChanged += new System.EventHandler(this.cmb_GridNo_SelectedIndexChanged);
-            // 
-            // tb_MatCname
-            // 
-            this.tb_MatCname.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_MatCname.Location = new System.Drawing.Point(227, 332);
-            this.tb_MatCname.Name = "tb_MatCname";
-            this.tb_MatCname.Size = new System.Drawing.Size(184, 29);
-            this.tb_MatCname.TabIndex = 13;
-            this.tb_MatCname.TextChanged += new System.EventHandler(this.txtToYard_TextChanged);
-            // 
-            // cmb_LMR
-            // 
-            this.cmb_LMR.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.cmb_LMR.FormattingEnabled = true;
-            this.cmb_LMR.Location = new System.Drawing.Point(227, 263);
-            this.cmb_LMR.Name = "cmb_LMR";
-            this.cmb_LMR.Size = new System.Drawing.Size(184, 29);
-            this.cmb_LMR.TabIndex = 12;
-            this.cmb_LMR.SelectedIndexChanged += new System.EventHandler(this.cmb_GridNo_SelectedIndexChanged);
+            this.label1.Text = "归堆物格：";
             // 
             // FrmYardToYardRequest
             // 
@@ -377,9 +371,7 @@ namespace UACSPopupForm
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(556, 563);
-            this.Controls.Add(this.cmb_LMR);
-            this.Controls.Add(this.cmb_GridNo);
-            this.Controls.Add(this.cmb_AeraNo);
+            this.Controls.Add(this.txtToStock);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label6);
@@ -387,9 +379,11 @@ namespace UACSPopupForm
             this.Controls.Add(this.btnStockSelect);
             this.Controls.Add(this.BtnClose);
             this.Controls.Add(this.BtnOk);
-            this.Controls.Add(this.tb_MatCname);
+            this.Controls.Add(this.txtFromStock);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtBayNo);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtCoilno);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblCraneYardToYard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -408,7 +402,10 @@ namespace UACSPopupForm
 
         private System.Windows.Forms.Label lblCraneYardToYard;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtCoilno;
+        private System.Windows.Forms.TextBox txtBayNo;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtFromStock;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button BtnOk;
         private System.Windows.Forms.Button BtnClose;
@@ -431,10 +428,7 @@ namespace UACSPopupForm
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblCoilStatus;
+        private System.Windows.Forms.TextBox txtToStock;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmb_AeraNo;
-        private System.Windows.Forms.ComboBox cmb_GridNo;
-        private System.Windows.Forms.TextBox tb_MatCname;
-        private System.Windows.Forms.ComboBox cmb_LMR;
     }
 }

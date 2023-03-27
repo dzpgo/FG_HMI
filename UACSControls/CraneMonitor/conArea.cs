@@ -121,7 +121,7 @@ namespace UACSControls
                         else if (theSaddle.AreaDoorSefeValue == 0 && theSaddle.AreaDoorReserveValue == 1)
                             this.BackColor = System.Drawing.Color.Yellow;
                         else
-                            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(199)))), ((int)(((byte)(227)))));  //System.Drawing.Color.MediumAquamarine;
+                            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(206)))), ((int)(((byte)(105)))));  //System.Drawing.Color.MediumAquamarine;
                         //this.BackColor = System.Drawing.Color.FromArgb(53, 253, 220);
                     }
                     else
@@ -133,7 +133,7 @@ namespace UACSControls
                         else if (theSaddle.AreaDoorSefeValue == 0 && theSaddle.AreaDoorReserveValue == 1)
                             this.BackColor = System.Drawing.Color.Yellow;
                         else
-                            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(199)))), ((int)(((byte)(227)))));  //System.Drawing.Color.MediumAquamarine;
+                            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(206)))), ((int)(((byte)(105)))));  //System.Drawing.Color.MediumAquamarine;
                     }
 
                     if (!isCreateLbl)
@@ -141,7 +141,7 @@ namespace UACSControls
                         if (!theSaddle.AreaNo.Contains("WJ") && !theSaddle.AreaNo.Contains("D108") && !theSaddle.AreaNo.Contains("Z68-B"))
                         {
                             lbl.Name = theSaddle.AreaNo;
-                            lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(199)))), ((int)(((byte)(227))))); //Color.MediumAquamarine;
+                            lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(206)))), ((int)(((byte)(105))))); //Color.MediumAquamarine;
                             lbl.Font = new System.Drawing.Font("微软雅黑", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(132)));
                             lbl.Width = 75;
                             lbl.Height = 75;
@@ -270,7 +270,7 @@ namespace UACSControls
                 }
                 else if (theSaddle.AreaType == 3 )
                 {
-                    this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(199)))), ((int)(((byte)(227)))));  //Color.MediumAquamarine;
+                    this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(206)))), ((int)(((byte)(105)))));  //Color.MediumAquamarine;
                     Graphics gr = this.CreateGraphics();
                     if (theSaddle.AreaDoorSefeValue == 1 && theSaddle.AreaDoorReserveValue == 0)
                     {
@@ -371,7 +371,7 @@ namespace UACSControls
                 }
                 else if (theSaddle.AreaType == 6)
                 {
-                    this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(199)))), ((int)(((byte)(227)))));  //Color.MediumAquamarine;
+                    this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(206)))), ((int)(((byte)(105)))));  //Color.MediumAquamarine;
                     Graphics gr = this.CreateGraphics();
                     if (theSaddle.AreaNo.Contains("JQ"))
                     {
@@ -386,7 +386,7 @@ namespace UACSControls
                         if (theSaddle.AreaDoorSefeValue == 0)
                             this.BackColor = System.Drawing.Color.Red;
                         else
-                            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(199)))), ((int)(((byte)(227))))); //System.Drawing.Color.MediumAquamarine;
+                            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(206)))), ((int)(((byte)(105))))); //System.Drawing.Color.MediumAquamarine;
                     }
 
                 }
