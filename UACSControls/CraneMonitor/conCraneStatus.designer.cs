@@ -93,6 +93,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel14.SuspendLayout();
@@ -875,6 +876,11 @@
             this.timer3.Interval = 2000;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
+            // timer4
+            // 
+            this.timer4.Interval = 1000;
+            this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
+            // 
             // conCraneStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -994,5 +1000,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Timer timer4;
     }
 }

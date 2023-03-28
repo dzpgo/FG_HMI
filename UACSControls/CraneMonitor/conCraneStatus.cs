@@ -13,6 +13,8 @@ using Baosight.iSuperframe.Authorization.Interface;
 using ParkClassLibrary;
 using System.Media;
 using UACSPopupForm;
+using System.Reflection;
+using System.Collections;
 
 namespace UACSControls
 {
@@ -42,7 +44,15 @@ namespace UACSControls
 
         Baosight.iSuperframe.TagService.DataCollection<object> inDatas = new Baosight.iSuperframe.TagService.DataCollection<object>();
         private Baosight.iSuperframe.Authorization.Interface.IAuthorization auth = null;
-
+        /// <summary>
+        /// 故障代码
+        /// </summary>
+        private Dictionary<string, string> AlarmCodeDefine = new Dictionary<string, string>();
+        /// <summary>
+        /// 报警按钮闪烁
+        /// </summary>
+        private bool AlarmLamp= false;
+        private bool AlarmTwinkle = false;
         //无动作报警
         public event Closedelegate Closedelegate;
         Thread t_init = null;
@@ -55,6 +65,7 @@ namespace UACSControls
         public conCraneStatus()
         {
             InitializeComponent();
+            LoadingCraneAlarmCodeDefine();
         }
 
 
@@ -202,86 +213,60 @@ namespace UACSControls
                 lbl_HeartBeat.Text = craneStatusBase.ReceiveTime.ToString();
                 //行车指令
                 craneinfo.craneOrderInfo(craneStatusBase.CraneNO.ToString(), txt_CraneOrder, txt_CoilNo, txt_FromStock, txt_ToStock, tb_MAT_REQ_WGT, tb_MAT_ACT_WGT, tb_MAT_CUR_WGT);
+                #region 行车报警
+                listAlarm.Clear();
+                for (int i = 0; i <= 9; i++)
+                {
+                    var TagName_FaultCode = craneNO + "_FaultCode_" + "" + i + "";
 
-                //listAlarm.Clear();
-                //for (int i = 0; i <= 9; i++)
-                //{
-                //    var TagName_FaultCode = craneNO + "_FaultCode_" + "" + i + "";
-
-                //    SetReady(TagName_FaultCode);
-                //    readTags();
-                //    string data = get_value_string(TagName_FaultCode).Trim();
-                //    if (!string.IsNullOrEmpty(data) && !data.Equals("0"))
-                //        listAlarm.Add(Convert.ToInt32(data));
-                //}
-
-                ////if ((!String.IsNullOrEmpty(value.Trim()) || !String.IsNullOrEmpty(valueWMS.Trim())) && (hasValues == true) && (txt_CONTROL_MODE.Text == "等待" || txt_CONTROL_MODE.Text == "自动"))
-                //if (listAlarm.Count > 0 && (txt_CONTROL_MODE.Text == "等待" || txt_CONTROL_MODE.Text == "自动" || txt_CONTROL_MODE.Text == "人工"))
-                //{
-                //    btnShow.Visible = true;
-                //    if (firstTimeShow == false)
-                //    {
-                //        NoDefineCraneAlarm(listAlarm, firstTimeShow);
-                //        firstTimeShow = true;
-                //    }
-                //    if (CraneAlarmGetValues(listAlarm))
-                //    {
-                //        btnShow.BackColor = Color.Red;
-                //    }
-                //    else
-                //    {
-                //        btnShow.BackColor = System.Drawing.SystemColors.Control;
-                //    }
-
-                //}
-                //else
-                //{
-                //    btnShow.BackColor = System.Drawing.SystemColors.Control;
-                //    firstTimeShow = false;
-                //    btnShow.Visible = true;
-                //}
-
+                    SetReady(TagName_FaultCode);
+                    readTags();
+                    string data = get_value_string(TagName_FaultCode).Trim();
+                    if (!string.IsNullOrEmpty(data) && !data.Equals("0"))
+                        listAlarm.Add(Convert.ToInt32(data));
+                }
+                var craneAlarmCount = 0;
+                if (listAlarm.Count > 0 && (txt_CONTROL_MODE.Text == "等待" || txt_CONTROL_MODE.Text == "自动" || txt_CONTROL_MODE.Text == "人工"))
+                {
+                    btnShow.Visible = true;
+                    //if (firstTimeShow == false)
+                    //{
+                    //    NoDefineCraneAlarm(listAlarm, firstTimeShow);
+                    //    firstTimeShow = true;
+                    //}
+                    //if (CraneAlarmGetValues(listAlarm))
+                    if (GetCraneAlarmGetValues(listAlarm))
+                    {
+                        btnShow.BackColor = Color.Red;
+                        craneAlarmCount++;
+                        AlarmLamp = true;
+                        timer4.Interval = 1000;
+                        timer4.Enabled = true;
+                    }
+                    else
+                    {
+                        btnShow.BackColor = System.Drawing.SystemColors.Control;
+                        AlarmLamp = true;
+                        timer4.Enabled = false;
+                    }
+                }
+                else
+                {
+                    btnShow.BackColor = System.Drawing.SystemColors.Control;
+                    //firstTimeShow = false;
+                    btnShow.Visible = true;
+                }
+                #endregion
                 #region 行车故障音频
-                //listCrane.Clear();
-                //if (craneNO == "1" || craneNO == "2" || craneNO == "3" || craneNO == "4")
-                //{
-                //    listCrane.Add("1");
-                //    listCrane.Add("2");
-                //    listCrane.Add("3");
-                //    listCrane.Add("4");
-                //}
-
-                //int craneAlarmCount = 0;
-                //foreach (string item in listCrane)
-                //{
-                //    listAlarm.Clear();
-                //    for (int i = 0; i <= 9; i++)
-                //    {
-                //        var TagName_FaultCode = craneNO + "_FaultCode_" + "" + i + "";
-
-                //        SetReady(TagName_FaultCode);
-                //        readTags();
-                //        string data = get_value_string(TagName_FaultCode).Trim();
-                //        if (!string.IsNullOrEmpty(data) && !data.Equals("0"))
-                //            listAlarm.Add(Convert.ToInt32(data));
-                //    }
-                //    //if ((!String.IsNullOrEmpty(VoiceValue.Trim()) || !String.IsNullOrEmpty(VoiceValueWMS.Trim())) && (VoiceValueMode == "5" || VoiceValueMode == "4"))
-                //    if (listAlarm.Count > 0 && (txt_CONTROL_MODE.Text == "等待" || txt_CONTROL_MODE.Text == "自动"))
-                //    {
-                //        if (CraneAlarmGetValues(listAlarm))
-                //        {
-                //            craneAlarmCount++;
-                //        }
-                //    }
-                //}
-                //if (craneAlarmCount >= 1 && (craneNO == "1" || craneNO == "2" || craneNO == "3" || craneNO == "4"))
-                //{
-                //    //timer1.Enabled = true;
-                //}
-                //else
-                //{
-                //    timer1.Enabled = false;
-                //}
+                if (craneAlarmCount >= 1 && (craneNO == "1" || craneNO == "2" || craneNO == "3" || craneNO == "4"))
+                {
+                    timer1.Interval = 7000;
+                    timer1.Enabled = true;
+                }
+                else
+                {
+                    timer1.Enabled = false;
+                }
                 #endregion
             }
             catch (Exception ex)
@@ -295,20 +280,17 @@ namespace UACSControls
         private void NoDefineCraneAlarm(List<int> list, bool firstTime)
         {
             string alarmTime = DateTime.Now.ToString("yyyyMMddHHmmss");
-            string alarmClass = "";
             try
             {
-                foreach (int item in list)
+                if (firstTime == false)
                 {
-
-                    string sql = @"SELECT * FROM UACS_CRANE_ALARM_CODE_DEFINE WHERE ALARM_CODE = " + item;
-                    using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
+                    foreach (int item in list)
                     {
-                        if (!rdr.Read())
+                        string sql = @"SELECT * FROM UACS_CRANE_ALARM_CODE_DEFINE WHERE ALARM_CODE = " + item;
+                        using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
                         {
-                            if (firstTime == false)
+                            if (!rdr.Read())
                             {
-                                //string sqlInsert = string.Format("INSERT INTO UACS_CRANE_ALARM_CODE_NO_DEFINE(CRANE_NO, ALARM_CODE, ALARM_TIME) VALUES('{0}', '{1}', '{2}')", craneNO, item, alarmTime);
                                 string sqlInsert = string.Format("INSERT INTO UACS_CRANE_ALARM_CODE_DEFINE(ALARM_CODE) VALUES('{0}')", item);
                                 DB2Connect.DBHelper.ExecuteNonQuery(sqlInsert);
                             }
@@ -331,7 +313,6 @@ namespace UACSControls
             {
                 foreach (int item in list)
                 {
-
                     string sql = @"SELECT ALARM_CODE,ALARM_INFO,ALARM_CLASS FROM UACS_CRANE_ALARM_CODE_DEFINE WHERE ALARM_CODE = " + item;
                     using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
                     {
@@ -346,6 +327,62 @@ namespace UACSControls
             catch (Exception er)
             {
                 throw (er);
+            }
+            if (index >= 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 加载故障代码
+        /// </summary>
+        private void LoadingCraneAlarmCodeDefine()
+        {
+            try
+            {
+                AlarmCodeDefine.Clear();
+                string sql = @"SELECT ALARM_CODE,ALARM_INFO,ALARM_CLASS FROM UACS_CRANE_ALARM_CODE_DEFINE ";
+                using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
+                {
+                    while (rdr.Read())
+                    {
+                        AlarmCodeDefine.Add(rdr["ALARM_CODE"].ToString(), rdr["ALARM_INFO"].ToString());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw (ex);
+            }
+        }
+        /// <summary>
+        /// 判断Tag值是否含有故障代码
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        private bool GetCraneAlarmGetValues(List<int> list)
+        {
+            int index = 0;
+            try
+            {
+                foreach (int item in list)
+                {
+                    if (AlarmCodeDefine.ContainsKey(item.ToString()))
+                    {
+                        index++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw (ex);
             }
             if (index >= 1)
             {
@@ -681,6 +718,28 @@ namespace UACSControls
         private void timer3_Tick(object sender, EventArgs e)
         {
             weightFlag = true;
+        }
+
+        /// <summary>
+        /// 报警按钮闪烁  定时器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timer4_Tick(object sender, EventArgs e)
+        {
+            if (AlarmLamp)
+            {
+                if (AlarmTwinkle)
+                {
+                    btnShow.BackColor = Color.Red;
+                    AlarmTwinkle =false;
+                }
+                else
+                {
+                    btnShow.BackColor = System.Drawing.SystemColors.Control;
+                    AlarmTwinkle = true;
+                }
+            }
         }
         #endregion
 

@@ -2217,16 +2217,19 @@ namespace UACSParking
                 sqlText_Laser += " ORDER BY SCAN_NO, REC_TIME ";
 
                 //初始化grid
-                if (dataGridView_LASER.DataSource != null)
+                if (dataGridView_LASER.DataSource != null && dataGridView_LASER.Rows.Count > 0)
                 {
                     dt_Laser.Clear();
                 }
                 else
                 {
-                    dt_Laser.Columns.Add("ROW_INDEX");
-                    dt_Laser.Columns.Add("POINT_X");
-                    dt_Laser.Columns.Add("POINT_Y");
-                    dt_Laser.Columns.Add("POINT_Z");
+                    if (!dt_Laser.Columns.Contains("ROW_INDEX"))
+                    {
+                        dt_Laser.Columns.Add("ROW_INDEX");
+                        dt_Laser.Columns.Add("POINT_X");
+                        dt_Laser.Columns.Add("POINT_Y");
+                        dt_Laser.Columns.Add("POINT_Z");
+                    }
                 }
 
                 using (IDataReader rdr = DBHelper.ExecuteReader(sqlText_Laser))

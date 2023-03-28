@@ -389,7 +389,7 @@ namespace UACSDAL
         /// <summary>
         /// 遥控 = 1
         /// </summary>
-        public const string CRANE_MODE_REMOTE_DESC = "遥控";
+        public const string CRANE_MODE_REMOTE_DESC = "操控";
         /// <summary>
         /// 人工 = 2
         /// </summary>

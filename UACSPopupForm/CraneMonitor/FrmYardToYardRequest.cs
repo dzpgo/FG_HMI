@@ -57,7 +57,7 @@ namespace UACSPopupForm
         void FrmYardToYardRequest_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            lblCraneYardToYard.Text = CraneNo + "人工指令";
+            lblCraneYardToYard.Text = CraneNo + "归堆作业指令";
             if (CraneNo == "4_1" || CraneNo == "4_2" || CraneNo == "6_3")
             {
                 BayNo = "Z62";
@@ -79,7 +79,7 @@ namespace UACSPopupForm
             {
                 BayNo = "999";
             }
-            GetManuOrder(CraneNo);
+            //GetManuOrder(CraneNo);
             //txtBayNo.SelectAll();
             //txtBayNo.Focus();
             BindAeraDefine();
@@ -357,45 +357,6 @@ namespace UACSPopupForm
                     MessageBox.Show(ex.Message);
                 }
             }
-            //if (txtCoilno.Text.Trim() == "" || txtBayNo.Text.Trim() == "" || txtFromStock.Text.Trim() == "")
-            //{
-            //    MessageBox.Show("请输入完整");
-            //    return;
-            //}
-            //bool From_status = GetStockInfo(txtBayNo.Text);
-            //bool To_status = CheckStockInfo(txtFromStock.Text);
-
-            //bool flag = false;
-            //try
-            //{
-            //    if(From_status && To_status)
-            //    {
-            //        //string mat_NO = txtCoilno.Text.Trim();
-            //        //string strFrom = txtBayNo.Text.Trim();
-            //        //string strTo = txtFromStock.Text.Trim();
-
-            //        string sql = @"update UACS_CRANE_MANU_ORDER  set MAT_NO = '" + mat_NO + "',FROM_STOCK = '" + strFrom + "',TO_STOCK = '" + strTo + "',STATUS = 'INIT' ";
-            //        sql += " WHERE CRANE_NO = '" + CraneNo + "'";
-            //        DBHelper.ExecuteNonQuery(sql);
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("请检查库位！");
-            //        return;
-            //    }
-            //}
-            //catch (Exception er)
-            //{
-            //    flag = true;
-            //    MessageBox.Show(er.Message);
-            //}
-
-            //if (!flag)
-            //{
-            //    Thread.Sleep(500);
-            //    this.Close();
-            //}
-
         }
 
         private void btnSelect_Click(object sender, EventArgs e)

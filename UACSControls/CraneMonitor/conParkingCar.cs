@@ -32,8 +32,6 @@ namespace UACSControls
             }
         }
 
-
-
         private SaddleBase mySaddleInfo = new SaddleBase();
         private ParkingBase parkingInfo = new ParkingBase();
 
@@ -59,17 +57,22 @@ namespace UACSControls
                 }
                 else
                 {
-                    FrmParkingDetail frm = new FrmParkingDetail();
-                    frm.PackingInfo = parkingInfo;  
-                    frm.Show();
+                    ShowFrmParkingDetail();
                 }
             }
             catch (Exception ex)
             {
             }
         }
-
-
+        /// <summary>
+        /// 显示停车位详细
+        /// </summary>
+        private void ShowFrmParkingDetail()
+        {
+            FrmParkingDetail frm = new FrmParkingDetail();
+            frm.PackingInfo = parkingInfo;
+            frm.Show();
+        }
 
         public delegate void carRefreshInvoke(ParkingBase theParkingBase, long baySpaceX, long baySpaceY, int panelWidth, int panelHeight, bool xAxisRight, bool yAxisDown);
 
@@ -77,7 +80,6 @@ namespace UACSControls
         {
             try
             {
-
                 parkingInfo = theParkingBase;
                 //取这块小区的大小
                 //double X_Width = theArea.X_End - theArea.X_Start;
@@ -138,6 +140,7 @@ namespace UACSControls
                 this.Location = new Point(Convert.ToInt32(location_X), Convert.ToInt32(location_Y));
 
                 ///5： 无车
+                ///6： 无车
                 ///10：有车到达
                 ///110：激光扫描开始
                 ///120：入库激光扫描完成
@@ -145,46 +148,46 @@ namespace UACSControls
                 ///210：出库激光扫描开始
                 ///220：出库激光扫描完成
                 ///东：E 西：W
-                if (theParkingBase.PackingStatus == 5)
+                if (theParkingBase.PackingStatus == 5 || theParkingBase.PackingStatus == 6)
                 {
                     this.Visible = false;
                 }
-                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "E" && theParkingBase.IsLoaded == 0)
+                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "E" && theParkingBase.IsLoaded == 0)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.EmptyCarBody;
                 }
-                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "W" && theParkingBase.IsLoaded == 0)
+                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "W" && theParkingBase.IsLoaded == 0)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.EmptyCarBody;
                 }
-                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "E" && theParkingBase.IsLoaded == 1)
+                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "E" && theParkingBase.IsLoaded == 1)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.WeightCarBody;
                 }
-                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "W" && theParkingBase.IsLoaded == 1)
+                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "W" && theParkingBase.IsLoaded == 1)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.WeightCarBody;
                 }
-                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "S" && theParkingBase.IsLoaded == 0)
+                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "S" && theParkingBase.IsLoaded == 0)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.EmptyCarBody;
                 }
-                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "N" && theParkingBase.IsLoaded == 0)
+                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "N" && theParkingBase.IsLoaded == 0)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.EmptyCarBody;
                 }
-                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "S" && theParkingBase.IsLoaded == 1)
+                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "S" && theParkingBase.IsLoaded == 1)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.WeightCarBody;
                 }
-                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "N" && theParkingBase.IsLoaded == 1)
+                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "N" && theParkingBase.IsLoaded == 1)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.WeightCarBody;
@@ -198,7 +201,7 @@ namespace UACSControls
                                          "状态：" + theParkingBase.PackingStatusDesc() + "\n" +
                                          "车号："+ theParkingBase.Car_No
                     );
-
+                lb_ShowCar.Text = theParkingBase.Car_No;
             }
             catch (Exception er)
             {
@@ -206,8 +209,14 @@ namespace UACSControls
                 throw;
             }
         }
-
-
-       
+        /// <summary>
+        /// 显示停车位详细 点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lb_ShowCar_Click(object sender, EventArgs e)
+        {
+            ShowFrmParkingDetail();
+        }
     }
 }
