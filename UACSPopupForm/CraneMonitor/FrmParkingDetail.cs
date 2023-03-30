@@ -25,11 +25,14 @@ namespace UACSPopupForm
     {
         private Baosight.iSuperframe.Authorization.Interface.IAuthorization auth;
         private Dictionary<string, string> MatCode = new Dictionary<string, string>();
-        string[] dgvColumnsName = { "ORDER_NO", "ORDER_GROUP_NO", "PLAN_NO", "EXE_SEQ", "ORDER_PRIORITY", "CMD_SEQ" , "CMD_STATUS", "MAT_CODE", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "REQ_WEIGHT", "ACT_WEIGHT", "UPD_TIME", "REC_TIME" };
-        string[] dgvHeaderText = { "指令号", "指令组号", "计划号", "指令顺序", "优先级", "吊运次数","吊运状态", "物料代码", "物料名称", "取料位置", "落料位", "要求重量", "实绩重量", "更新时间", "记录时间" };
-        string[] dgvOderColumnsName = { "ORDER_NO", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "BAY_NO" };
-        string[] dgvOderHeaderText = { "指令号", "物料名称", "取料位", "落料位", "跨别" };
-        
+        string[] dgvColumnsName = {"PLAN_NO", "ORDER_PRIORITY", "CMD_SEQ" , "CMD_STATUS", "MAT_CODE", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "REQ_WEIGHT", "ACT_WEIGHT", "START_TIME", "UPD_TIME", "REC_TIME" };
+        string[] dgvHeaderText = {"计划号", "优先级", "吊运次数","吊运状态", "物料代码", "物料名称", "取料位置", "落料位", "要求重量", "实绩重量","开始时间", "更新时间", "创建时间" };
+        string[] dgvOderColumnsName = { "ORDER_NO", "ORDER_GROUP_NO", "EXE_SEQ", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "BAY_NO" };
+        string[] dgvOderHeaderText = { "指令号", "指令组号", "指令顺序", "物料名称", "取料位", "落料位", "跨别" };
+        /// <summary>
+        /// L3废钢品名信息
+        /// </summary>
+        private List<string> L3MatInfoLists = new List<string> { "厂内中混废", "外购中混废", "矽钢片", "汽车切片打包块", "破碎料", "厂内切头", "外购重废", "渣钢", "渣铁", "炼钢生铁", "边角余料一号", "热压铁块", "厂内矽钢片", "高纯渣钢", "冷却剂" };
         public FrmParkingDetail()
         {
             InitializeComponent();
@@ -45,7 +48,7 @@ namespace UACSPopupForm
         int carIsLoad;
         private void FrmParkingDetail_Load(object sender, EventArgs e)
         {
-
+            L3MatInfoListsInit();
             ManagerHelper.DataGridViewInit(dgvStowageMessage);
             dgvStowageMessage.SelectionMode = DataGridViewSelectionMode.CellSelect;
             CreatDgvHeader(dgvStowageMessage, dgvColumnsName, dgvHeaderText);
@@ -61,6 +64,21 @@ namespace UACSPopupForm
             Refurbish();
             //ShiftStowageMessage();
             this.Deactivate += new EventHandler(frmSaddleDetail_Deactivate);
+        }
+        /// <summary>
+        /// 初始化 L3废钢品名信息
+        /// </summary>
+        private void L3MatInfoListsInit()
+        {
+            L3MatInfoLists.Clear();
+            string sql = @" SELECT MAT_CODE,MAT_CNAME FROM UACS_L3_MAT_INFO ";
+            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
+            {
+                while (rdr.Read())
+                {
+                    L3MatInfoLists.Add(rdr["MAT_CNAME"].ToString());
+                }
+            }
         }
 
         void frmSaddleDetail_Deactivate(object sender, EventArgs e)
@@ -219,15 +237,9 @@ namespace UACSPopupForm
                         if (i > 0)
                         {
                             column1.Width = 130;
-                        }
-                        List<string> ListData = new List<string> { "厂内中混废", "外购中混废", "矽钢片", "汽车切片打包块", "破碎料", "厂内切头", "外购重废", "渣钢", "渣铁", "炼钢生铁", "边角余料一号", "热压铁块", "厂内矽钢片", "高纯渣钢", "冷却剂" };
-                        column1.DataSource = ListData;
+                        }                       
+                        column1.DataSource = L3MatInfoLists;
                         index = dataGridView.Columns.Add(column1);
-
-                        //dataGridView.Columns[index].DefaultCellStyle.BackColor = Color.Yellow;
-                        //dataGridView.Columns[index].DefaultCellStyle.ForeColor = Color.Yellow;
-                        //dataGridView.Columns[index].DefaultCellStyle.SelectionBackColor = Color.Yellow;
-                        //dataGridView.Columns[index].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     }
                     else
                     {
@@ -259,13 +271,17 @@ namespace UACSPopupForm
                         {
                             column.Width = 85;
                         }
+                        if (columnsName[i].Equals("START_TIME"))
+                        {
+                            column.Width = 125;
+                        }
                         if (columnsName[i].Equals("UPD_TIME"))
                         {
-                            column.Width = 120;
+                            column.Width = 125;
                         }
                         if (columnsName[i].Equals("REC_TIME"))
                         {
-                            column.Width = 120;
+                            column.Width = 125;
                         }
                         if (columnsName[i].Equals("MAT_CODE"))
                         {
@@ -289,18 +305,7 @@ namespace UACSPopupForm
             column1.HeaderText = "物料2";
             column1.Width = 130;
             this.dgvStowageMessage.Columns.Add(column1);
-
-            List<string> ListData = new List<string> { "厂内中混废", "外购中混废", "矽钢片", "汽车切片打包块", "破碎料", "厂内切头", "外购重废", "渣钢", "渣铁", "炼钢生铁", "边角余料一号", "热压铁块", "厂内矽钢片", "高纯渣钢", "冷却剂" };
-            ListData.Clear();
-            string sql = @" SELECT MAT_CODE,MAT_CNAME FROM UACS_L3_MAT_INFO ";
-            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
-            {
-                while (rdr.Read())
-                {
-                    ListData.Add(rdr["MAT_CNAME"].ToString());
-                }
-            }
-            column1.DataSource = ListData; //这里需要设置一下combox的itemsource,以便combox根据数据库中对应的值自动显示信息
+            column1.DataSource = L3MatInfoLists; //这里需要设置一下combox的itemsource,以便combox根据数据库中对应的值自动显示信息
 
         }
         /// <summary>
@@ -480,7 +485,7 @@ namespace UACSPopupForm
                 if (!string.IsNullOrEmpty(carNo) && packingNo.Contains('A') && packingNo != "请选择")
                 {
                     //对应指令车辆配载明细
-                    string sqlText_ORDER = @"SELECT A.ORDER_NO,A.ORDER_GROUP_NO,A.EXE_SEQ,A.ORDER_PRIORITY,CMD_SEQ,
+                    string sqlText_ORDER = @"SELECT A.ORDER_NO,A.ORDER_GROUP_NO,A.ORDER_PRIORITY,CMD_SEQ,
                                                     CASE 
                                                     WHEN A.CMD_STATUS = 0 THEN '初始化' 
                                                     WHEN A.CMD_STATUS = 1 THEN '获取指令' 
@@ -495,7 +500,7 @@ namespace UACSPopupForm
                                                     WHEN A.CMD_STATUS = 10 THEN '空载上升到位' 
                                                     ELSE '其他' 
                                                     END AS CMD_STATUS
-                                                    ,A.PLAN_NO,A.MAT_CODE,B.MAT_CNAME ,A.FROM_STOCK_NO,A.TO_STOCK_NO,A.REQ_WEIGHT,A.ACT_WEIGHT,A.UPD_TIME,A.REC_TIME 
+                                                    ,A.PLAN_NO,A.MAT_CODE,B.MAT_CNAME ,A.FROM_STOCK_NO,A.TO_STOCK_NO,A.REQ_WEIGHT,A.ACT_WEIGHT,A.START_TIME,A.UPD_TIME,A.REC_TIME 
                                                     FROM UACS_ORDER_QUEUE AS A ";
                     sqlText_ORDER += " LEFT JOIN UACS_L3_MAT_INFO AS B ON A.MAT_CODE = B.MAT_CODE ";
                     sqlText_ORDER += " WHERE A.CMD_STATUS = '0' AND A.CAR_NO = '{0}' AND A.TO_STOCK_NO = '{1}' ";

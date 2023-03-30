@@ -148,46 +148,51 @@ namespace UACSControls
                 ///210：出库激光扫描开始
                 ///220：出库激光扫描完成
                 ///东：E 西：W
-                if (theParkingBase.PackingStatus == 5 || theParkingBase.PackingStatus == 6)
+                if (theParkingBase.PackingStatus == 5)
                 {
                     this.Visible = false;
                 }
-                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "E" && theParkingBase.IsLoaded == 0)
+                else if (theParkingBase.PackingStatus.Equals(6))
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.EmptyCarBody;
                 }
-                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "W" && theParkingBase.IsLoaded == 0)
+                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "E" && theParkingBase.IsLoaded == 0)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.EmptyCarBody;
                 }
-                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "E" && theParkingBase.IsLoaded == 1)
+                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "W" && theParkingBase.IsLoaded == 0)
+                {
+                    this.Visible = true;
+                    this.BackgroundImage = global::UACSControls.Resource1.EmptyCarBody;
+                }
+                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "E" && theParkingBase.IsLoaded == 1)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.WeightCarBody;
                 }
-                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "W" && theParkingBase.IsLoaded == 1)
+                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "W" && theParkingBase.IsLoaded == 1)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.WeightCarBody;
                 }
-                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "S" && theParkingBase.IsLoaded == 0)
+                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "S" && theParkingBase.IsLoaded == 0)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.EmptyCarBody;
                 }
-                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "N" && theParkingBase.IsLoaded == 0)
+                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "N" && theParkingBase.IsLoaded == 0)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.EmptyCarBody;
                 }
-                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "S" && theParkingBase.IsLoaded == 1)
+                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "S" && theParkingBase.IsLoaded == 1)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.WeightCarBody;
                 }
-                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "N" && theParkingBase.IsLoaded == 1)
+                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "N" && theParkingBase.IsLoaded == 1)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.WeightCarBody;
@@ -201,7 +206,7 @@ namespace UACSControls
                                          "状态：" + theParkingBase.PackingStatusDesc() + "\n" +
                                          "车号："+ theParkingBase.Car_No
                     );
-                lb_ShowCar.Text = theParkingBase.Car_No;
+                lb_ShowCarNo.Text = theParkingBase.Car_No;
             }
             catch (Exception er)
             {
@@ -214,7 +219,7 @@ namespace UACSControls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void lb_ShowCar_Click(object sender, EventArgs e)
+        private void lb_ShowCarNo_Click(object sender, EventArgs e)
         {
             ShowFrmParkingDetail();
         }

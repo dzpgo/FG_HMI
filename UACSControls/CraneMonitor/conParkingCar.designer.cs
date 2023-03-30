@@ -28,24 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lb_ShowCar = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip();
+            this.timer1 = new System.Windows.Forms.Timer();
+            this.lb_ShowCarNo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // lb_ShowCar
+            // lb_ShowCarNo
             // 
-            this.lb_ShowCar.BackColor = System.Drawing.Color.Transparent;
-            this.lb_ShowCar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lb_ShowCar.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold);
-            this.lb_ShowCar.Location = new System.Drawing.Point(0, 0);
-            this.lb_ShowCar.Name = "lb_ShowCar";
-            this.lb_ShowCar.Size = new System.Drawing.Size(85, 262);
-            this.lb_ShowCar.TabIndex = 0;
-            this.lb_ShowCar.Text = "SG06";
-            this.lb_ShowCar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lb_ShowCar.Click += new System.EventHandler(this.lb_ShowCar_Click);
+            this.lb_ShowCarNo.BackColor = System.Drawing.Color.Transparent;
+            this.lb_ShowCarNo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lb_ShowCarNo.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold);
+            this.lb_ShowCarNo.Location = new System.Drawing.Point(0, 0);
+            this.lb_ShowCarNo.Name = "lb_ShowCarNo";
+            this.lb_ShowCarNo.Size = new System.Drawing.Size(85, 262);
+            this.lb_ShowCarNo.TabIndex = 0;
+            this.lb_ShowCarNo.Text = "SG01";
+            this.lb_ShowCarNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lb_ShowCarNo.Click += new System.EventHandler(this.lb_ShowCarNo_Click);
             // 
             // conParkingCar
             // 
@@ -54,7 +53,7 @@
             this.BackColor = System.Drawing.Color.Ivory;
             this.BackgroundImage = global::UACSControls.Resource1.WeightCarBody;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Controls.Add(this.lb_ShowCar);
+            this.Controls.Add(this.lb_ShowCarNo);
             this.DoubleBuffered = true;
             this.Name = "conParkingCar";
             this.Size = new System.Drawing.Size(85, 262);
@@ -66,6 +65,6 @@
 
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label lb_ShowCar;
+        private System.Windows.Forms.Label lb_ShowCarNo;
     }
 }

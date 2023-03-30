@@ -141,46 +141,51 @@ namespace UACSControls
                 ///210：出库激光扫描开始
                 ///220：出库激光扫描完成
                 ///东：E 西：W
-                if (theParkingBase.PackingStatus == 5 || theParkingBase.PackingStatus == 6)
+                if (theParkingBase.PackingStatus == 5)
                 {
                     this.Visible = false;
                 }
-                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "E" && theParkingBase.IsLoaded == 0)
-                {
-                    this.Visible = true;
-                    this.BackgroundImage = global::UACSControls.Resource1.SCarHead;
-                }
-                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "W" && theParkingBase.IsLoaded == 0)
+                else if (theParkingBase.PackingStatus.Equals(6))
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.NCarHead;
                 }
-                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "E" && theParkingBase.IsLoaded == 1)
+                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "E" && theParkingBase.IsLoaded == 0)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.SCarHead;
                 }
-                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "W" && theParkingBase.IsLoaded == 1)
+                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "W" && theParkingBase.IsLoaded == 0)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.NCarHead;
                 }
-                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "S" && theParkingBase.IsLoaded == 0)
+                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "E" && theParkingBase.IsLoaded == 1)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.SCarHead;
                 }
-                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "N" && theParkingBase.IsLoaded == 0)
+                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "W" && theParkingBase.IsLoaded == 1)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.NCarHead;
                 }
-                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "S" && theParkingBase.IsLoaded == 1)
+                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "S" && theParkingBase.IsLoaded == 0)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.SCarHead;
                 }
-                else if ((theParkingBase.PackingStatus != 5 || theParkingBase.PackingStatus != 6) && theParkingBase.HeadPostion == "N" && theParkingBase.IsLoaded == 1)
+                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "N" && theParkingBase.IsLoaded == 0)
+                {
+                    this.Visible = true;
+                    this.BackgroundImage = global::UACSControls.Resource1.NCarHead;
+                }
+                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "S" && theParkingBase.IsLoaded == 1)
+                {
+                    this.Visible = true;
+                    this.BackgroundImage = global::UACSControls.Resource1.SCarHead;
+                }
+                else if (theParkingBase.PackingStatus != 5 && theParkingBase.HeadPostion == "N" && theParkingBase.IsLoaded == 1)
                 {
                     this.Visible = true;
                     this.BackgroundImage = global::UACSControls.Resource1.NCarHead;

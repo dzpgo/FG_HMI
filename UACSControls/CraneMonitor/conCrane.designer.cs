@@ -101,7 +101,7 @@
             this.ToolStrip_YardToTard.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.ToolStrip_YardToTard.Name = "ToolStrip_YardToTard";
             this.ToolStrip_YardToTard.Size = new System.Drawing.Size(238, 38);
-            this.ToolStrip_YardToTard.Text = "人工指令";
+            this.ToolStrip_YardToTard.Text = "归堆指令";
             this.ToolStrip_YardToTard.Click += new System.EventHandler(this.ToolStrip_YardToTard_Click);
             // 
             // ToolStrip_DelCraneOrder

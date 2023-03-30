@@ -68,7 +68,7 @@ namespace UACSPopupForm
             this.lblCraneYardToYard.AutoSize = true;
             this.lblCraneYardToYard.Font = new System.Drawing.Font("微软雅黑", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblCraneYardToYard.ForeColor = System.Drawing.Color.Black;
-            this.lblCraneYardToYard.Location = new System.Drawing.Point(140, 9);
+            this.lblCraneYardToYard.Location = new System.Drawing.Point(172, 25);
             this.lblCraneYardToYard.Name = "lblCraneYardToYard";
             this.lblCraneYardToYard.Size = new System.Drawing.Size(249, 39);
             this.lblCraneYardToYard.TabIndex = 0;
@@ -78,30 +78,30 @@ namespace UACSPopupForm
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label2.Location = new System.Drawing.Point(115, 203);
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.label2.Location = new System.Drawing.Point(96, 208);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 21);
+            this.label2.Size = new System.Drawing.Size(126, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "被归堆物格：";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label3.Location = new System.Drawing.Point(116, 133);
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.label3.Location = new System.Drawing.Point(99, 128);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 21);
+            this.label3.Size = new System.Drawing.Size(126, 25);
             this.label3.TabIndex = 3;
             this.label3.Text = "归堆作业跨：";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label4.Location = new System.Drawing.Point(131, 335);
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.label4.Location = new System.Drawing.Point(114, 364);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 21);
+            this.label4.Size = new System.Drawing.Size(107, 25);
             this.label4.TabIndex = 5;
             this.label4.Text = "归堆物料：";
             // 
@@ -109,10 +109,10 @@ namespace UACSPopupForm
             // 
             this.BtnOk.BackColor = System.Drawing.Color.DodgerBlue;
             this.BtnOk.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnOk.BackgroundImage")));
-            this.BtnOk.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnOk.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.BtnOk.Location = new System.Drawing.Point(61, 487);
             this.BtnOk.Name = "BtnOk";
-            this.BtnOk.Size = new System.Drawing.Size(101, 38);
+            this.BtnOk.Size = new System.Drawing.Size(101, 49);
             this.BtnOk.TabIndex = 14;
             this.BtnOk.Text = "执行归堆";
             this.BtnOk.UseVisualStyleBackColor = false;
@@ -122,10 +122,10 @@ namespace UACSPopupForm
             // 
             this.BtnClose.BackColor = System.Drawing.Color.DodgerBlue;
             this.BtnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnClose.BackgroundImage")));
-            this.BtnClose.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnClose.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.BtnClose.Location = new System.Drawing.Point(227, 487);
             this.BtnClose.Name = "BtnClose";
-            this.BtnClose.Size = new System.Drawing.Size(101, 38);
+            this.BtnClose.Size = new System.Drawing.Size(101, 49);
             this.BtnClose.TabIndex = 15;
             this.BtnClose.Text = "取消归堆";
             this.BtnClose.UseVisualStyleBackColor = false;
@@ -146,10 +146,10 @@ namespace UACSPopupForm
             // 
             this.btnClear.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnClear.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClear.BackgroundImage")));
-            this.btnClear.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnClear.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.btnClear.Location = new System.Drawing.Point(393, 487);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(101, 38);
+            this.btnClear.Size = new System.Drawing.Size(101, 49);
             this.btnClear.TabIndex = 16;
             this.btnClear.Text = "关闭";
             this.btnClear.UseVisualStyleBackColor = false;
@@ -325,49 +325,49 @@ namespace UACSPopupForm
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label1.Location = new System.Drawing.Point(99, 266);
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.label1.Location = new System.Drawing.Point(77, 284);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 21);
+            this.label1.Size = new System.Drawing.Size(145, 25);
             this.label1.TabIndex = 17;
             this.label1.Text = "归堆物格位置：";
             // 
             // cmb_AeraNo
             // 
-            this.cmb_AeraNo.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.cmb_AeraNo.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.cmb_AeraNo.FormattingEnabled = true;
-            this.cmb_AeraNo.Location = new System.Drawing.Point(227, 128);
+            this.cmb_AeraNo.Location = new System.Drawing.Point(227, 125);
             this.cmb_AeraNo.Name = "cmb_AeraNo";
-            this.cmb_AeraNo.Size = new System.Drawing.Size(184, 29);
+            this.cmb_AeraNo.Size = new System.Drawing.Size(184, 33);
             this.cmb_AeraNo.TabIndex = 11;
             this.cmb_AeraNo.SelectedIndexChanged += new System.EventHandler(this.cmb_AeraNo_SelectedIndexChanged);
             // 
             // cmb_GridNo
             // 
-            this.cmb_GridNo.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.cmb_GridNo.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.cmb_GridNo.FormattingEnabled = true;
-            this.cmb_GridNo.Location = new System.Drawing.Point(227, 200);
+            this.cmb_GridNo.Location = new System.Drawing.Point(229, 205);
             this.cmb_GridNo.Name = "cmb_GridNo";
-            this.cmb_GridNo.Size = new System.Drawing.Size(184, 29);
+            this.cmb_GridNo.Size = new System.Drawing.Size(184, 33);
             this.cmb_GridNo.TabIndex = 12;
             this.cmb_GridNo.SelectedIndexChanged += new System.EventHandler(this.cmb_GridNo_SelectedIndexChanged);
             // 
             // tb_MatCname
             // 
-            this.tb_MatCname.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_MatCname.Location = new System.Drawing.Point(227, 332);
+            this.tb_MatCname.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.tb_MatCname.Location = new System.Drawing.Point(227, 361);
             this.tb_MatCname.Name = "tb_MatCname";
-            this.tb_MatCname.Size = new System.Drawing.Size(184, 29);
+            this.tb_MatCname.Size = new System.Drawing.Size(184, 32);
             this.tb_MatCname.TabIndex = 13;
             this.tb_MatCname.TextChanged += new System.EventHandler(this.txtToYard_TextChanged);
             // 
             // cmb_LMR
             // 
-            this.cmb_LMR.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.cmb_LMR.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.cmb_LMR.FormattingEnabled = true;
-            this.cmb_LMR.Location = new System.Drawing.Point(227, 263);
+            this.cmb_LMR.Location = new System.Drawing.Point(228, 281);
             this.cmb_LMR.Name = "cmb_LMR";
-            this.cmb_LMR.Size = new System.Drawing.Size(184, 29);
+            this.cmb_LMR.Size = new System.Drawing.Size(184, 33);
             this.cmb_LMR.TabIndex = 12;
             this.cmb_LMR.SelectedIndexChanged += new System.EventHandler(this.cmb_GridNo_SelectedIndexChanged);
             // 
