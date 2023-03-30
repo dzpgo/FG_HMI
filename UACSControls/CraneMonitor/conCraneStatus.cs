@@ -355,11 +355,8 @@ namespace UACSControls
                     }
                 }
             }
-            catch (Exception ex)
-            {
-
-                throw (ex);
-            }
+            catch (Exception)
+            { }
         }
         /// <summary>
         /// 判断Tag值是否含有故障代码
