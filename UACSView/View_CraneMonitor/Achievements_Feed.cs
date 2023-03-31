@@ -1229,10 +1229,10 @@ namespace UACSView.View_CraneMonitor
                         dt.Rows.Add(dr);
                     }
                 }
-                dr = dt.NewRow();
-                dr["ID"] = "SG99";
-                dr["NAME"] = "SG99";
-                dt.Rows.Add(dr);
+                //dr = dt.NewRow();
+                //dr["ID"] = "SG99";
+                //dr["NAME"] = "SG99";
+                //dt.Rows.Add(dr);
                 //绑定数据
                 cmb_Query_CarNo.ValueMember = "ID";
                 cmb_Query_CarNo.DisplayMember = "NAME";

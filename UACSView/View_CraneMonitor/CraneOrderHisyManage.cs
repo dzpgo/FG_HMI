@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using UACS;
 using Baosight.iSuperframe.Forms;
 using UACSDAL;
+using ParkClassLibrary;
+using System.Xml;
 
 namespace UACSView
 {
@@ -28,6 +30,8 @@ namespace UACSView
         Dictionary<string, string> dicFlagDispat = new Dictionary<string, string>();
         Dictionary<string, string> dicDelFlag = new Dictionary<string, string>();
         Dictionary<string, string> dicOrderType = new Dictionary<string, string>();
+        string[] dgvColumnsName = { "PLAN_NO", "ORDER_NO", "ORDER_GROUP_NO", "EXE_SEQ", "ORDER_TYPE", "BAY_NO", "CRANE_NO", "CAR_NO", "CAR_TYPE", "PLAN_SRC", "ORDER_PRIORITY", "CMD_SEQ", "CMD_STATUS", "MAT_CODE", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "REQ_WEIGHT", "ACT_WEIGHT", "START_TIME", "UPD_TIME", "REC_TIME" };
+        string[] dgvHeaderText = { "计划号", "指令号", "指令组号", "指令顺序","指令类型", "跨别", "行车","料槽号","料槽类型", "计划来源", "优先级", "吊运次数", "吊运状态", "物料代码", "物料名称", "取料位置", "落料位", "要求重量", "实绩重量", "开始时间", "更新时间", "创建时间" };
         public CraneOrderHisyManage()
         {
             InitializeComponent();
@@ -43,20 +47,24 @@ namespace UACSView
         private void CraneOrderHisyManage_Load(object sender, EventArgs e)
         {
             try
-            {
+            {                
                 //设置背景色
                 //this.panel1.BackColor = Color.LightSteelBlue; //UACSDAL.ColorSln.FormBgColor;
                 //this.panel2.BackColor = Color.LightSteelBlue;  //UACSDAL.ColorSln.FormBgColor;
                 //绑定下拉框
-                BindCombox();
+                BindCombox();                
                 //
                 this.dateTimePicker1_recTime.Value = DateTime.Now.AddDays(-1);
 
+                ManagerHelper.DataGridViewInit(dataGridView1);
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
+                CreatDgvHeader(dataGridView1, dgvColumnsName, dgvHeaderText);
+                GetOrderData();
                 //行车指令
-                getCraneOrderData2(true);
-                dataGridView1.DataSource = dt;
+                //getCraneOrderData2(true);
+                //dataGridView1.DataSource = dt;
                 //当前行车指令              
-                dataGridView2.DataSource = getCraneOrderData3(true);
+                //dataGridView2.DataSource = getCraneOrderData3(true);
 
             }
             catch (Exception er)
@@ -78,25 +86,26 @@ namespace UACSView
                 //getCraneOrderData();
                 //dataGridView1.DataSource = dt;
 
-                //当前选中页
-                int index = this.tabControl1.SelectedIndex;
-                if (index == 0)
-                {
-                    this.tabControl1.SelectedTab = this.tabPage1;
-                }
-                else if (index == 1)
-                {
-                    this.tabControl1.SelectedTab = this.tabPage2;
-                }
-                else
-                {
-                    this.tabControl1.SelectedTab = this.tabPage1;
-                }
-                //行车指令
-                getCraneOrderData2(false);
-                dataGridView1.DataSource = dt;
+                ////当前选中页
+                //int index = this.tabControl1.SelectedIndex;
+                //if (index == 0)
+                //{
+                //    this.tabControl1.SelectedTab = this.tabPage1;
+                //}
+                //else if (index == 1)
+                //{
+                //    //this.tabControl1.SelectedTab = this.tabPage2;
+                //}
+                //else
+                //{
+                //    this.tabControl1.SelectedTab = this.tabPage1;
+                //}
+                ////行车指令
+                //getCraneOrderData2(false);
+                //dataGridView1.DataSource = dt;
                 //当前行车指令              
-                dataGridView2.DataSource = getCraneOrderData3(false);
+                //dataGridView2.DataSource = getCraneOrderData3(false);
+                GetOrderData();
             }
             catch (Exception er)
             {
@@ -249,93 +258,171 @@ namespace UACSView
         private void BindCombox()
         {
             CraneOrderImpl craneOrderImpl = new CraneOrderImpl();
-
-            ////绑定跨号
-            //DataTable dtBayNo2 = craneOrderImpl.GetBayNo(true);
-            //bindCombox(this.cbb_AREA_NO, dtBayNo2, true);
-            ////绑定吊运状态
-            //dicCmdStatus = craneOrderImpl.GetCodeValueDicByCodeId("CMD_STATUS", false);
-            //DataTable dtCmdStatus2 = craneOrderImpl.GetCodeValueByCodeId("CMD_STATUS", true);
-            //bindCombox(this.comboBox_cmdStatus, dtCmdStatus2, true);
-            //绑定分配标记
-            //dicFlagDispat = craneOrderImpl.GetCodeValueDicByCodeId("FLAG_DISPAT", false);
-            //绑定执行类型
-            //dicDelFlag = craneOrderImpl.GetCodeValueDicByCodeId("DEL_FLAG", false);
-            //绑定指令类型
-            //dicOrderType = craneOrderImpl.GetCodeValueDicByCodeId("ORDER_TYPE", false);
-
             //绑定行车号
-            DataTable dtCRANE_DEFINE = craneOrderImpl.GetCRANE_DEFINE(true);
-            bindCombox(this.cbb_CRANE_NO, dtCRANE_DEFINE, true);
-            //绑定区域号
-            //DataTable dtAREA_DEFINE = craneOrderImpl.GetAREA_DEFINE(true);
-            //bindCombox(this.cbb_AREA_NO, dtAREA_DEFINE, true);
-            //绑定指令类型
-            DataTable dtORDER_TYPE = craneOrderImpl.GetORDER_TYPE(true);
-            bindCombox(this.cbb_ORDER_TYPE, dtORDER_TYPE, true);
+            //DataTable dtCRANE_DEFINE = craneOrderImpl.GetCRANE_DEFINE(true);
+            //bindCombox(this.cbb_CRANE_NO, dtCRANE_DEFINE, true);
+            BindCmbCRANE_DEFINE();
+            //绑定料槽号
+            BindCmbCar();
+            //料槽车号
+            //DataTable dtORDER_TYPE = craneOrderImpl.GetORDER_TYPE(true);
+            //bindCombox(this.cbb_CarNo, dtORDER_TYPE, true);
 
 
         }
 
         /// <summary>
-        /// 查询数据
+        /// 获取配载信息
         /// </summary>
-        private void getCraneOrderData()
+        /// <param name="theStowageId">配载号</param>
+        /// <param name="carNo">车辆号</param>
+        /// <param name="packingNo">停车位号</param>
+        /// <param name="dgv"></param>
+        /// <returns></returns>
+        public void GetOrderData()
         {
-            string matNo = this.txt_MAT_CODE.Text.Trim();
-            //string bayNo = this.cbb_AREA_NO.SelectedValue.ToString();
-            string cmdStatus = this.cbb_ORDER_TYPE.SelectedValue.ToString();
-            string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");
-            string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");
-            string sqlText = @"SELECT BAY_NO,MAT_NO,ORDER_NO,ORDER_GROUP_NO,ORDER_TYPE,ORDER_PRIORITY,FROM_STOCK_NO, TO_STOCK_NO, CMD_STATUS, FLAG_DISPAT, FLAG_ENABLE, CRANE_NO, REC_TIME, UPD_TIME FROM UACS_CRANE_ORDER ";
-            sqlText += "WHERE MAT_NO LIKE '%{0}%' and REC_TIME > '{1}' and REC_TIME < '{2}' ";
-            sqlText = string.Format(sqlText, matNo, recTime1, recTime2);
-            //if (bayNo != "全部")
-            //{
-            //    sqlText = string.Format("{0} and BAY_NO = '{1}'", sqlText, bayNo);
-            //}
-            if (cmdStatus != "全部")
-            {
-                sqlText = string.Format("{0} and CMD_STATUS = '{1}'", sqlText, cmdStatus);
+            DataTable dtNull = new DataTable();
+            try
+            {                
+                string craneNo = this.cbb_CRANE_NO.SelectedValue.ToString();
+                string carNo = this.cbb_CarNo.SelectedValue.ToString();
+                string planNo = this.txt_PLAN_NO.Text.Trim();
+                string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");
+                string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");
+                //对应指令车辆配载明细
+                string sqlText_ORDER = @"SELECT A.ORDER_NO,A.ORDER_GROUP_NO,A.EXE_SEQ,A.BAY_NO, CASE 
+                                            WHEN A.CRANE_NO = 1 THEN '1号行车' 
+                                            WHEN A.CRANE_NO = 2 THEN '2号行车' 
+                                            WHEN A.CRANE_NO = 3 THEN '3号行车' 
+                                            WHEN A.CRANE_NO = 4 THEN '4号行车' 
+                                            END AS CRANE_NO
+                                            ,A.CAR_NO,
+                                            CASE 
+                                            WHEN A.CAR_TYPE = 1 THEN '社会车' 
+                                            WHEN A.CAR_TYPE = 2 THEN '装料车' 
+                                            ELSE '其他车辆'
+                                            END AS CAR_TYPE
+                                            ,A.ORDER_TYPE,A.PLAN_SRC,A.ORDER_PRIORITY,CMD_SEQ,
+                                            CASE 
+                                            WHEN A.CMD_STATUS = 0 THEN '初始化' 
+                                            WHEN A.CMD_STATUS = 1 THEN '获取指令' 
+                                            WHEN A.CMD_STATUS = 2 THEN '激光扫描' 
+                                            WHEN A.CMD_STATUS = 3 THEN '到取料点上方' 
+                                            WHEN A.CMD_STATUS = 4 THEN '空载下降到位' 
+                                            WHEN A.CMD_STATUS = 5 THEN '有载荷量' 
+                                            WHEN A.CMD_STATUS = 6 THEN '重载上升到位' 
+                                            WHEN A.CMD_STATUS = 7 THEN '到放料点上方' 
+                                            WHEN A.CMD_STATUS = 8 THEN '重载下降到位' 
+                                            WHEN A.CMD_STATUS = 9 THEN '无载荷量' 
+                                            WHEN A.CMD_STATUS = 10 THEN '空载上升到位' 
+                                            ELSE '其他' 
+                                            END AS CMD_STATUS
+                                            ,A.PLAN_NO,A.MAT_CODE,B.MAT_CNAME ,A.FROM_STOCK_NO,A.TO_STOCK_NO,A.REQ_WEIGHT,A.ACT_WEIGHT,A.START_TIME,A.UPD_TIME,A.REC_TIME ";
+                sqlText_ORDER += " FROM UACS_ORDER_QUEUE AS A ";
+                sqlText_ORDER += " LEFT JOIN UACS_L3_MAT_INFO AS B ON A.MAT_CODE = B.MAT_CODE ";
+                sqlText_ORDER += "WHERE 1=1 ";
+                sqlText_ORDER += "AND A.REC_TIME > '{0}' AND A.REC_TIME < '{1}' ";                
+                sqlText_ORDER = string.Format(sqlText_ORDER, recTime1, recTime2);
+                if (!string.IsNullOrEmpty(craneNo) && craneNo != "全部")
+                {
+                    sqlText_ORDER = string.Format("{0} AND A.CRANE_NO = '{1}' ", sqlText_ORDER, craneNo);
+                }
+                if (!string.IsNullOrEmpty(carNo) && carNo != "全部")
+                {
+                    sqlText_ORDER = string.Format("{0} AND A.CAR_NO = '{1}' ", sqlText_ORDER, carNo);
+                }
+                if (!string.IsNullOrEmpty(planNo))
+                {
+                    sqlText_ORDER = string.Format("{0} AND A.PLAN_NO LIKE '%{1}%'", sqlText_ORDER, planNo);
+                }
+                sqlText_ORDER += " ORDER BY A.ORDER_NO DESC,A.REC_TIME DESC ";
+                DataTable dt = new DataTable();
+                using (IDataReader odrIn = DB2Connect.DBHelper.ExecuteReader(sqlText_ORDER))
+                {
+                    dt.Load(odrIn);
+                    dataGridView1.DataSource = dt;
+                    odrIn.Close();
+                }
             }
-            dt = new DataTable();
-            hasSetColumn = false;
-            using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
+            catch (Exception ex)
+            { }
+        }
+
+        /// <summary>
+        /// 获取行车号
+        /// </summary>
+        /// <returns></returns>
+        public void BindCmbCRANE_DEFINE()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("TypeValue");
+            dt.Columns.Add("TypeName");
+            DataRow dr = dt.NewRow();
+            dr = dt.NewRow();
+            dr["TypeValue"] = "全部";
+            dr["TypeName"] = "全部";
+            dt.Rows.Add(dr);
+
+
+            //准备数据
+            string sqlText = @"SELECT CRANE_NO AS TypeValue,CRANE_NO AS TypeName, BAY_NO, CLAMP_TYPE, SEQ_NO, WORK_POS_X_START, WORK_POS_X_END FROM UACSAPP.UACS_CRANE_DEFINE ";
+            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
             {
                 while (rdr.Read())
                 {
-                    DataRow dr = dt.NewRow();
-                    for (int i = 0; i < rdr.FieldCount; i++)
-                    {
-                        if (!hasSetColumn)
-                        {
-                            DataColumn dc = new DataColumn();
-                            dc.ColumnName = rdr.GetName(i);
-                            dt.Columns.Add(dc);
-                        }
-                        dr[i] = rdr[i];
-                    }
-                    hasSetColumn = true;
+                    dr = dt.NewRow();
+                    dr["TypeValue"] = rdr["TypeValue"];
+                    dr["TypeName"] = rdr["TypeName"] + "号行车";
                     dt.Rows.Add(dr);
                 }
             }
-            foreach (DataRow dr in dt.Rows)
+            //绑定数据
+            cbb_CRANE_NO.ValueMember = "TypeValue";
+            cbb_CRANE_NO.DisplayMember = "TypeName";
+            cbb_CRANE_NO.DataSource = dt;
+            //根据text值选中项
+            this.cbb_CRANE_NO.SelectedIndex = 0;
+        }
+
+        /// <summary>
+        /// 绑定槽号
+        /// </summary>
+        /// <param name="ParkNO">停车位号</param>
+        private void BindCmbCar()
+        {
+            try
             {
-                string cmdStatusValue = dr["CMD_STATUS"].ToString();
-                if (dicCmdStatus.ContainsKey(cmdStatusValue))
+                DataTable dt = new DataTable();
+                dt.Columns.Add("ID");
+                dt.Columns.Add("NAME");
+                DataRow dr = dt.NewRow();
+                dr = dt.NewRow();
+                dr["ID"] = "全部";
+                dr["NAME"] = "全部";
+                dt.Rows.Add(dr);
+                //查车辆号
+                string sqlText = @"SELECT FRAME_TYPE_NO FROM UACS_TRUCK_FRAME_DEFINE ";
+                using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
                 {
-                    dr["CMD_STATUS"] = dicCmdStatus[cmdStatusValue];
+                    while (rdr.Read())
+                    {
+                        dr = dt.NewRow();
+                        dr["ID"] = rdr["FRAME_TYPE_NO"].ToString();
+                        dr["NAME"] = rdr["FRAME_TYPE_NO"].ToString();
+                        dt.Rows.Add(dr);
+                    }
                 }
-                string flagDispatValue = dr["FLAG_DISPAT"].ToString();
-                if (dicFlagDispat.ContainsKey(flagDispatValue))
-                {
-                    dr["FLAG_DISPAT"] = dicFlagDispat[flagDispatValue];
-                }
-                string orderTypeValue = dr["ORDER_TYPE"].ToString();
-                if (dicOrderType.ContainsKey(orderTypeValue))
-                {
-                    dr["ORDER_TYPE"] = dicOrderType[orderTypeValue];
-                }
+                //绑定数据
+                cbb_CarNo.ValueMember = "ID";
+                cbb_CarNo.DisplayMember = "NAME";
+                cbb_CarNo.DataSource = dt;
+                //根据text值选中项
+                this.cbb_CarNo.SelectedIndex = 0;
+            }
+            catch (System.Exception)
+            {
+
+                throw;
             }
         }
 
@@ -345,8 +432,8 @@ namespace UACSView
         /// <param name="isLoad">是否是初始化 true=是初始化，false=不是初始化</param>
         private void getCraneOrderData2(bool isLoad)
         {
-            string matNo = this.txt_MAT_CODE.Text.Trim();
-            string orderType = this.cbb_ORDER_TYPE.SelectedValue.ToString();
+            string matNo = this.txt_PLAN_NO.Text.Trim();
+            string orderType = this.cbb_CarNo.SelectedValue.ToString();
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");
             string sqlText = "";
@@ -409,9 +496,9 @@ namespace UACSView
         /// <param name="isLoad">是否是初始化 true=是初始化，false=不是初始化</param>
         private DataTable getCraneOrderData3(bool isLoad)
         {
-            string matNo = this.txt_MAT_CODE.Text.Trim();
+            string matNo = this.txt_PLAN_NO.Text.Trim();
             string craneNo = this.cbb_CRANE_NO.SelectedValue.ToString();
-            string orderType = this.cbb_ORDER_TYPE.SelectedValue.ToString();
+            string orderType = this.cbb_CarNo.SelectedValue.ToString();
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");
             string sqlText = @"SELECT A.ORDER_NO, A.ORDER_GROUP_NO, A.ORDER_TYPE, A.CRANE_NO, A.ORDER_PRIORITY, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.REC_TIME, A.UPD_TIME FROM UACS_ORDER_QUEUE A ";
@@ -486,6 +573,40 @@ namespace UACSView
             {
                 control.SelectedIndex = dt.Rows.Count - 1;
             }
+        }
+
+        private bool CreatDgvHeader(DataGridView dataGridView, string[] columnsName, string[] headerText)
+        {
+            bool isFirst = false;
+            if (!isFirst)
+            {
+                //dataGridView.Columns.Add("Index", "序号");
+                //DataGridViewColumn columnIndex = new DataGridViewTextBoxColumn();
+                //columnIndex.Width = 50;
+                //columnIndex.DataPropertyName = "Index";
+                //columnIndex.Name = "Index";
+                //columnIndex.HeaderText = "序号";
+                //dataGridView.Columns.Add(columnIndex);
+                for (int i = 0; i < headerText.Count(); i++)
+                {
+                    DataGridViewColumn column = new DataGridViewTextBoxColumn();
+                    column.DataPropertyName = columnsName[i];
+                    column.Name = columnsName[i];
+                    column.HeaderText = headerText[i];
+                    column.Width = 125;
+                    if (i > 0)
+                    {
+                        column.Width = 150;
+                    }
+
+                    int index = dataGridView.Columns.Add(column);
+                    dataGridView.Columns[index].SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
+                isFirst = true;
+                return isFirst;
+            }
+            else
+                return isFirst;
         }
         #endregion
 

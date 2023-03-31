@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using Baosight.iSuperframe.Common;
 
 namespace UACSDAL
 {
@@ -201,6 +202,14 @@ namespace UACSDAL
             DataTable dt = new DataTable();
             dt.Columns.Add("TypeValue");
             dt.Columns.Add("TypeName");
+            if (showAll)
+            {
+                DataRow dr2 = dt.NewRow();
+                dr2 = dt.NewRow();
+                dr2["TypeValue"] = "全部";
+                dr2["TypeName"] = "全部";
+                dt.Rows.Add(dr2);
+            }
             //准备数据
             string sqlText = @"SELECT CRANE_NO AS TypeValue,CRANE_NO AS TypeName, BAY_NO, CLAMP_TYPE, SEQ_NO, WORK_POS_X_START, WORK_POS_X_END FROM UACSAPP.UACS_CRANE_DEFINE ";
             using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
@@ -209,14 +218,14 @@ namespace UACSDAL
                 {
                     DataRow dr = dt.NewRow();
                     dr["TypeValue"] = rdr["TypeValue"];
-                    dr["TypeName"] = rdr["TypeName"];
+                    dr["TypeName"] = rdr["TypeName"] + "号行车";
                     dt.Rows.Add(dr);
                 }
             }
-            if (showAll)
-            {
-                dt.Rows.Add("全部", "全部");
-            }
+            //if (showAll)
+            //{
+            //    dt.Rows.Add("全部", "全部");
+            //}
             return dt;
         }
 

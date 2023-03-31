@@ -193,6 +193,8 @@ namespace UACSView.View_CraneMonitor
             //预先加载
             timer_InitializeLoad.Enabled = true;
             timer_InitializeLoad.Interval = 100;
+
+
         }
 
         private void LoadAreaInfo()

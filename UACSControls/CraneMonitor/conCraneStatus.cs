@@ -212,7 +212,7 @@ namespace UACSControls
                 //时间心跳
                 lbl_HeartBeat.Text = craneStatusBase.ReceiveTime.ToString();
                 //行车指令
-                craneinfo.craneOrderInfo(craneStatusBase.CraneNO.ToString(), txt_CraneOrder, txt_CoilNo, txt_FromStock, txt_ToStock, tb_MAT_REQ_WGT, tb_MAT_ACT_WGT, tb_MAT_CUR_WGT);
+                craneinfo.craneOrderInfo(craneStatusBase.CraneNO.ToString(), txt_CraneOrder, txt_CoilNo, txt_FromStock, txt_ToStock, tb_MAT_REQ_WGT, tb_MAT_ACT_WGT, tb_MAT_CUR_WGT, tb_ACT_WEIGHT, tb_CurrentStatus);
                 #region 行车报警
                 listAlarm.Clear();
                 for (int i = 0; i <= 9; i++)

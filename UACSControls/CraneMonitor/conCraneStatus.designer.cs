@@ -89,7 +89,9 @@
             this.tb_Tag_WEIGHT_LOADED = new System.Windows.Forms.TextBox();
             this.panel19 = new System.Windows.Forms.Label();
             this.panel20 = new System.Windows.Forms.Panel();
+            this.tb_ACT_WEIGHT = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.tb_CurrentStatus = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
@@ -147,6 +149,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel18, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel20, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tb_CurrentStatus, 3, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -157,7 +160,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(409, 221);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(464, 235);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // btnMode
@@ -166,9 +169,9 @@
             this.btnMode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnMode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnMode.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnMode.Location = new System.Drawing.Point(84, 183);
+            this.btnMode.Location = new System.Drawing.Point(95, 198);
             this.btnMode.Name = "btnMode";
-            this.btnMode.Size = new System.Drawing.Size(83, 35);
+            this.btnMode.Size = new System.Drawing.Size(96, 34);
             this.btnMode.TabIndex = 17;
             this.btnMode.Text = "模式切换";
             this.btnMode.UseVisualStyleBackColor = false;
@@ -180,9 +183,9 @@
             this.btnStop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnStop.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnStop.Location = new System.Drawing.Point(3, 183);
+            this.btnStop.Location = new System.Drawing.Point(3, 198);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(75, 35);
+            this.btnStop.Size = new System.Drawing.Size(86, 34);
             this.btnStop.TabIndex = 16;
             this.btnStop.Text = "紧停";
             this.btnStop.UseVisualStyleBackColor = false;
@@ -194,9 +197,9 @@
             this.panel15.Controls.Add(this.txt_CONTROL_MODE);
             this.panel15.Controls.Add(this.label13);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel15.Location = new System.Drawing.Point(173, 147);
+            this.panel15.Location = new System.Drawing.Point(197, 159);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(116, 30);
+            this.panel15.Size = new System.Drawing.Size(133, 33);
             this.panel15.TabIndex = 15;
             // 
             // txt_CONTROL_MODE
@@ -206,7 +209,7 @@
             this.txt_CONTROL_MODE.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_CONTROL_MODE.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txt_CONTROL_MODE.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.txt_CONTROL_MODE.Location = new System.Drawing.Point(41, 6);
+            this.txt_CONTROL_MODE.Location = new System.Drawing.Point(58, 7);
             this.txt_CONTROL_MODE.Name = "txt_CONTROL_MODE";
             this.txt_CONTROL_MODE.ReadOnly = true;
             this.txt_CONTROL_MODE.Size = new System.Drawing.Size(76, 19);
@@ -218,7 +221,7 @@
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label13.Location = new System.Drawing.Point(3, 6);
+            this.label13.Location = new System.Drawing.Point(3, 7);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(37, 20);
             this.label13.TabIndex = 4;
@@ -230,9 +233,9 @@
             this.panel14.Controls.Add(this.txt_CRANE_STATUS);
             this.panel14.Controls.Add(this.label11);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(84, 147);
+            this.panel14.Location = new System.Drawing.Point(95, 159);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(83, 30);
+            this.panel14.Size = new System.Drawing.Size(96, 33);
             this.panel14.TabIndex = 14;
             // 
             // txt_CRANE_STATUS
@@ -242,7 +245,7 @@
             this.txt_CRANE_STATUS.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_CRANE_STATUS.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txt_CRANE_STATUS.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.txt_CRANE_STATUS.Location = new System.Drawing.Point(11, 6);
+            this.txt_CRANE_STATUS.Location = new System.Drawing.Point(24, 7);
             this.txt_CRANE_STATUS.Name = "txt_CRANE_STATUS";
             this.txt_CRANE_STATUS.ReadOnly = true;
             this.txt_CRANE_STATUS.Size = new System.Drawing.Size(69, 19);
@@ -254,7 +257,7 @@
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label11.Location = new System.Drawing.Point(-3, 6);
+            this.label11.Location = new System.Drawing.Point(-3, 7);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(37, 20);
             this.label11.TabIndex = 2;
@@ -267,9 +270,9 @@
             this.panel13.Controls.Add(this.label10);
             this.panel13.Controls.Add(this.light_HAS_COIL);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel13.Location = new System.Drawing.Point(3, 147);
+            this.panel13.Location = new System.Drawing.Point(3, 159);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(75, 30);
+            this.panel13.Size = new System.Drawing.Size(86, 33);
             this.panel13.TabIndex = 13;
             // 
             // label10
@@ -277,7 +280,7 @@
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(4, 6);
+            this.label10.Location = new System.Drawing.Point(4, 7);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(37, 20);
             this.label10.TabIndex = 10;
@@ -288,7 +291,7 @@
             this.light_HAS_COIL.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.light_HAS_COIL.BackColor = System.Drawing.Color.Lime;
             this.light_HAS_COIL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.light_HAS_COIL.Location = new System.Drawing.Point(59, 9);
+            this.light_HAS_COIL.Location = new System.Drawing.Point(70, 10);
             this.light_HAS_COIL.Name = "light_HAS_COIL";
             this.light_HAS_COIL.Size = new System.Drawing.Size(14, 14);
             this.light_HAS_COIL.TabIndex = 18;
@@ -299,9 +302,9 @@
             this.panel12.Controls.Add(this.txt_ToStock);
             this.panel12.Controls.Add(this.label12);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(173, 111);
+            this.panel12.Location = new System.Drawing.Point(197, 120);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(116, 30);
+            this.panel12.Size = new System.Drawing.Size(133, 33);
             this.panel12.TabIndex = 12;
             // 
             // txt_ToStock
@@ -310,7 +313,7 @@
             this.txt_ToStock.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txt_ToStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_ToStock.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_ToStock.Location = new System.Drawing.Point(49, 6);
+            this.txt_ToStock.Location = new System.Drawing.Point(66, 7);
             this.txt_ToStock.Name = "txt_ToStock";
             this.txt_ToStock.ReadOnly = true;
             this.txt_ToStock.Size = new System.Drawing.Size(67, 19);
@@ -323,7 +326,7 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.SystemColors.ControlLight;
             this.label12.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.Location = new System.Drawing.Point(-3, 6);
+            this.label12.Location = new System.Drawing.Point(-3, 7);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(51, 20);
             this.label12.TabIndex = 4;
@@ -335,9 +338,9 @@
             this.panel11.Controls.Add(this.txt_ZACT);
             this.panel11.Controls.Add(this.label9);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(84, 111);
+            this.panel11.Location = new System.Drawing.Point(95, 120);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(83, 30);
+            this.panel11.Size = new System.Drawing.Size(96, 33);
             this.panel11.TabIndex = 11;
             // 
             // txt_ZACT
@@ -346,7 +349,7 @@
             this.txt_ZACT.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txt_ZACT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_ZACT.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_ZACT.Location = new System.Drawing.Point(24, 6);
+            this.txt_ZACT.Location = new System.Drawing.Point(37, 7);
             this.txt_ZACT.Name = "txt_ZACT";
             this.txt_ZACT.ReadOnly = true;
             this.txt_ZACT.Size = new System.Drawing.Size(56, 19);
@@ -359,7 +362,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.SystemColors.ControlLight;
             this.label9.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.Location = new System.Drawing.Point(-3, 6);
+            this.label9.Location = new System.Drawing.Point(-3, 7);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(18, 20);
             this.label9.TabIndex = 2;
@@ -371,9 +374,9 @@
             this.panel10.Controls.Add(this.light_ASK_PLAN);
             this.panel10.Controls.Add(this.label8);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(3, 111);
+            this.panel10.Location = new System.Drawing.Point(3, 120);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(75, 30);
+            this.panel10.Size = new System.Drawing.Size(86, 33);
             this.panel10.TabIndex = 10;
             // 
             // light_ASK_PLAN
@@ -381,7 +384,7 @@
             this.light_ASK_PLAN.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.light_ASK_PLAN.BackColor = System.Drawing.Color.Lime;
             this.light_ASK_PLAN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.light_ASK_PLAN.Location = new System.Drawing.Point(59, 9);
+            this.light_ASK_PLAN.Location = new System.Drawing.Point(70, 10);
             this.light_ASK_PLAN.Name = "light_ASK_PLAN";
             this.light_ASK_PLAN.Size = new System.Drawing.Size(14, 14);
             this.light_ASK_PLAN.TabIndex = 19;
@@ -391,7 +394,7 @@
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(4, 6);
+            this.label8.Location = new System.Drawing.Point(4, 7);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 20);
             this.label8.TabIndex = 5;
@@ -403,9 +406,9 @@
             this.panel9.Controls.Add(this.txt_FromStock);
             this.panel9.Controls.Add(this.label6);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(173, 75);
+            this.panel9.Location = new System.Drawing.Point(197, 81);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(116, 30);
+            this.panel9.Size = new System.Drawing.Size(133, 33);
             this.panel9.TabIndex = 9;
             // 
             // txt_FromStock
@@ -414,7 +417,7 @@
             this.txt_FromStock.BackColor = System.Drawing.Color.White;
             this.txt_FromStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_FromStock.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_FromStock.Location = new System.Drawing.Point(49, 6);
+            this.txt_FromStock.Location = new System.Drawing.Point(66, 7);
             this.txt_FromStock.Name = "txt_FromStock";
             this.txt_FromStock.ReadOnly = true;
             this.txt_FromStock.Size = new System.Drawing.Size(67, 19);
@@ -426,7 +429,7 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(-3, 6);
+            this.label6.Location = new System.Drawing.Point(-3, 7);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(51, 20);
             this.label6.TabIndex = 2;
@@ -438,9 +441,9 @@
             this.panel8.Controls.Add(this.txt_YACT);
             this.panel8.Controls.Add(this.label5);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(84, 75);
+            this.panel8.Location = new System.Drawing.Point(95, 81);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(83, 30);
+            this.panel8.Size = new System.Drawing.Size(96, 33);
             this.panel8.TabIndex = 8;
             // 
             // txt_YACT
@@ -449,7 +452,7 @@
             this.txt_YACT.BackColor = System.Drawing.Color.White;
             this.txt_YACT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_YACT.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_YACT.Location = new System.Drawing.Point(24, 6);
+            this.txt_YACT.Location = new System.Drawing.Point(37, 7);
             this.txt_YACT.Name = "txt_YACT";
             this.txt_YACT.ReadOnly = true;
             this.txt_YACT.Size = new System.Drawing.Size(56, 19);
@@ -460,7 +463,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(-3, 6);
+            this.label5.Location = new System.Drawing.Point(-3, 7);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(18, 20);
             this.label5.TabIndex = 2;
@@ -472,9 +475,9 @@
             this.panel7.Controls.Add(this.light_CONTROL_MODE);
             this.panel7.Controls.Add(this.label7);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(3, 75);
+            this.panel7.Location = new System.Drawing.Point(3, 81);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(75, 30);
+            this.panel7.Size = new System.Drawing.Size(86, 33);
             this.panel7.TabIndex = 7;
             // 
             // light_CONTROL_MODE
@@ -482,7 +485,7 @@
             this.light_CONTROL_MODE.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.light_CONTROL_MODE.BackColor = System.Drawing.Color.Lime;
             this.light_CONTROL_MODE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.light_CONTROL_MODE.Location = new System.Drawing.Point(59, 9);
+            this.light_CONTROL_MODE.Location = new System.Drawing.Point(70, 10);
             this.light_CONTROL_MODE.Name = "light_CONTROL_MODE";
             this.light_CONTROL_MODE.Size = new System.Drawing.Size(14, 14);
             this.light_CONTROL_MODE.TabIndex = 20;
@@ -492,7 +495,7 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(4, 6);
+            this.label7.Location = new System.Drawing.Point(4, 7);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(37, 20);
             this.label7.TabIndex = 4;
@@ -504,9 +507,9 @@
             this.panel6.Controls.Add(this.txt_CoilNo);
             this.panel6.Controls.Add(this.label2);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(173, 39);
+            this.panel6.Location = new System.Drawing.Point(197, 42);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(116, 30);
+            this.panel6.Size = new System.Drawing.Size(133, 33);
             this.panel6.TabIndex = 6;
             // 
             // txt_CoilNo
@@ -515,7 +518,7 @@
             this.txt_CoilNo.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txt_CoilNo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_CoilNo.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_CoilNo.Location = new System.Drawing.Point(30, 6);
+            this.txt_CoilNo.Location = new System.Drawing.Point(47, 7);
             this.txt_CoilNo.Name = "txt_CoilNo";
             this.txt_CoilNo.ReadOnly = true;
             this.txt_CoilNo.Size = new System.Drawing.Size(86, 19);
@@ -528,7 +531,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(-3, 6);
+            this.label2.Location = new System.Drawing.Point(-3, 7);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 20);
             this.label2.TabIndex = 0;
@@ -540,9 +543,9 @@
             this.panel5.Controls.Add(this.txt_CraneOrder);
             this.panel5.Controls.Add(this.label1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(173, 3);
+            this.panel5.Location = new System.Drawing.Point(197, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(116, 30);
+            this.panel5.Size = new System.Drawing.Size(133, 33);
             this.panel5.TabIndex = 5;
             // 
             // txt_CraneOrder
@@ -551,7 +554,7 @@
             this.txt_CraneOrder.BackColor = System.Drawing.Color.White;
             this.txt_CraneOrder.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_CraneOrder.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_CraneOrder.Location = new System.Drawing.Point(35, 6);
+            this.txt_CraneOrder.Location = new System.Drawing.Point(52, 7);
             this.txt_CraneOrder.Name = "txt_CraneOrder";
             this.txt_CraneOrder.ReadOnly = true;
             this.txt_CraneOrder.Size = new System.Drawing.Size(81, 19);
@@ -564,11 +567,11 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(-3, 6);
+            this.label1.Location = new System.Drawing.Point(-3, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 20);
+            this.label1.Size = new System.Drawing.Size(51, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "指令";
+            this.label1.Text = "计划号";
             // 
             // plCraneStatus
             // 
@@ -577,7 +580,7 @@
             this.plCraneStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plCraneStatus.Location = new System.Drawing.Point(3, 3);
             this.plCraneStatus.Name = "plCraneStatus";
-            this.plCraneStatus.Size = new System.Drawing.Size(75, 30);
+            this.plCraneStatus.Size = new System.Drawing.Size(86, 33);
             this.plCraneStatus.TabIndex = 1;
             // 
             // lbl_CraneNo
@@ -585,7 +588,7 @@
             this.lbl_CraneNo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_CraneNo.AutoSize = true;
             this.lbl_CraneNo.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbl_CraneNo.Location = new System.Drawing.Point(9, 6);
+            this.lbl_CraneNo.Location = new System.Drawing.Point(9, 7);
             this.lbl_CraneNo.Name = "lbl_CraneNo";
             this.lbl_CraneNo.Size = new System.Drawing.Size(50, 22);
             this.lbl_CraneNo.TabIndex = 0;
@@ -596,9 +599,9 @@
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.lbl_HeartBeat);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(84, 3);
+            this.panel2.Location = new System.Drawing.Point(95, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(83, 30);
+            this.panel2.Size = new System.Drawing.Size(96, 33);
             this.panel2.TabIndex = 2;
             // 
             // lbl_HeartBeat
@@ -607,7 +610,7 @@
             this.lbl_HeartBeat.AutoSize = true;
             this.lbl_HeartBeat.BackColor = System.Drawing.Color.White;
             this.lbl_HeartBeat.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbl_HeartBeat.Location = new System.Drawing.Point(-3, 6);
+            this.lbl_HeartBeat.Location = new System.Drawing.Point(-3, 7);
             this.lbl_HeartBeat.Name = "lbl_HeartBeat";
             this.lbl_HeartBeat.Size = new System.Drawing.Size(81, 20);
             this.lbl_HeartBeat.TabIndex = 1;
@@ -619,9 +622,9 @@
             this.panel3.Controls.Add(this.light_READY);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 39);
+            this.panel3.Location = new System.Drawing.Point(3, 42);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(75, 30);
+            this.panel3.Size = new System.Drawing.Size(86, 33);
             this.panel3.TabIndex = 3;
             // 
             // light_READY
@@ -629,7 +632,7 @@
             this.light_READY.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.light_READY.BackColor = System.Drawing.Color.Lime;
             this.light_READY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.light_READY.Location = new System.Drawing.Point(59, 9);
+            this.light_READY.Location = new System.Drawing.Point(70, 10);
             this.light_READY.Name = "light_READY";
             this.light_READY.Size = new System.Drawing.Size(14, 14);
             this.light_READY.TabIndex = 21;
@@ -639,7 +642,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(4, 6);
+            this.label3.Location = new System.Drawing.Point(4, 7);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 20);
             this.label3.TabIndex = 2;
@@ -651,9 +654,9 @@
             this.panel4.Controls.Add(this.txt_XACT);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(84, 39);
+            this.panel4.Location = new System.Drawing.Point(95, 42);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(83, 30);
+            this.panel4.Size = new System.Drawing.Size(96, 33);
             this.panel4.TabIndex = 4;
             // 
             // txt_XACT
@@ -662,7 +665,7 @@
             this.txt_XACT.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txt_XACT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_XACT.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_XACT.Location = new System.Drawing.Point(24, 6);
+            this.txt_XACT.Location = new System.Drawing.Point(37, 7);
             this.txt_XACT.Name = "txt_XACT";
             this.txt_XACT.ReadOnly = true;
             this.txt_XACT.Size = new System.Drawing.Size(56, 19);
@@ -675,7 +678,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.ControlLight;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(-3, 6);
+            this.label4.Location = new System.Drawing.Point(-3, 7);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(18, 20);
             this.label4.TabIndex = 0;
@@ -686,9 +689,9 @@
             this.btnShow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnShow.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnShow.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.btnShow.Location = new System.Drawing.Point(173, 183);
+            this.btnShow.Location = new System.Drawing.Point(197, 198);
             this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(116, 35);
+            this.btnShow.Size = new System.Drawing.Size(133, 34);
             this.btnShow.TabIndex = 18;
             this.btnShow.Text = "行车报警";
             this.btnShow.UseVisualStyleBackColor = true;
@@ -700,9 +703,9 @@
             this.panel16.Controls.Add(this.tb_MAT_REQ_WGT);
             this.panel16.Controls.Add(this.label15);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(295, 75);
+            this.panel16.Location = new System.Drawing.Point(336, 81);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(111, 30);
+            this.panel16.Size = new System.Drawing.Size(125, 33);
             this.panel16.TabIndex = 11;
             // 
             // tb_MAT_REQ_WGT
@@ -711,7 +714,7 @@
             this.tb_MAT_REQ_WGT.BackColor = System.Drawing.Color.White;
             this.tb_MAT_REQ_WGT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_MAT_REQ_WGT.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_MAT_REQ_WGT.Location = new System.Drawing.Point(60, 6);
+            this.tb_MAT_REQ_WGT.Location = new System.Drawing.Point(74, 7);
             this.tb_MAT_REQ_WGT.Name = "tb_MAT_REQ_WGT";
             this.tb_MAT_REQ_WGT.ReadOnly = true;
             this.tb_MAT_REQ_WGT.Size = new System.Drawing.Size(47, 19);
@@ -724,7 +727,7 @@
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.White;
             this.label15.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label15.Location = new System.Drawing.Point(-3, 6);
+            this.label15.Location = new System.Drawing.Point(-3, 7);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(65, 20);
             this.label15.TabIndex = 2;
@@ -736,9 +739,9 @@
             this.panel17.Controls.Add(this.tb_MAT_ACT_WGT);
             this.panel17.Controls.Add(this.label16);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(295, 111);
+            this.panel17.Location = new System.Drawing.Point(336, 120);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(111, 30);
+            this.panel17.Size = new System.Drawing.Size(125, 33);
             this.panel17.TabIndex = 11;
             // 
             // tb_MAT_ACT_WGT
@@ -747,7 +750,7 @@
             this.tb_MAT_ACT_WGT.BackColor = System.Drawing.SystemColors.ControlLight;
             this.tb_MAT_ACT_WGT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_MAT_ACT_WGT.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_MAT_ACT_WGT.Location = new System.Drawing.Point(60, 6);
+            this.tb_MAT_ACT_WGT.Location = new System.Drawing.Point(74, 7);
             this.tb_MAT_ACT_WGT.Name = "tb_MAT_ACT_WGT";
             this.tb_MAT_ACT_WGT.ReadOnly = true;
             this.tb_MAT_ACT_WGT.Size = new System.Drawing.Size(47, 19);
@@ -760,7 +763,7 @@
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.SystemColors.ControlLight;
             this.label16.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label16.Location = new System.Drawing.Point(-3, 6);
+            this.label16.Location = new System.Drawing.Point(-3, 7);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(65, 20);
             this.label16.TabIndex = 2;
@@ -772,9 +775,9 @@
             this.panel18.Controls.Add(this.tb_MAT_CUR_WGT);
             this.panel18.Controls.Add(this.label17);
             this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel18.Location = new System.Drawing.Point(295, 147);
+            this.panel18.Location = new System.Drawing.Point(336, 159);
             this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(111, 30);
+            this.panel18.Size = new System.Drawing.Size(125, 33);
             this.panel18.TabIndex = 11;
             // 
             // tb_MAT_CUR_WGT
@@ -783,7 +786,7 @@
             this.tb_MAT_CUR_WGT.BackColor = System.Drawing.Color.White;
             this.tb_MAT_CUR_WGT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_MAT_CUR_WGT.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_MAT_CUR_WGT.Location = new System.Drawing.Point(60, 6);
+            this.tb_MAT_CUR_WGT.Location = new System.Drawing.Point(74, 7);
             this.tb_MAT_CUR_WGT.Name = "tb_MAT_CUR_WGT";
             this.tb_MAT_CUR_WGT.ReadOnly = true;
             this.tb_MAT_CUR_WGT.Size = new System.Drawing.Size(47, 19);
@@ -796,7 +799,7 @@
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.White;
             this.label17.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label17.Location = new System.Drawing.Point(-3, 6);
+            this.label17.Location = new System.Drawing.Point(-3, 7);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(65, 20);
             this.label17.TabIndex = 2;
@@ -808,9 +811,9 @@
             this.panel1.Controls.Add(this.tb_Tag_WEIGHT_LOADED);
             this.panel1.Controls.Add(this.panel19);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(295, 39);
+            this.panel1.Location = new System.Drawing.Point(336, 42);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(111, 30);
+            this.panel1.Size = new System.Drawing.Size(125, 33);
             this.panel1.TabIndex = 11;
             // 
             // tb_Tag_WEIGHT_LOADED
@@ -819,7 +822,7 @@
             this.tb_Tag_WEIGHT_LOADED.BackColor = System.Drawing.SystemColors.ControlLight;
             this.tb_Tag_WEIGHT_LOADED.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_Tag_WEIGHT_LOADED.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_Tag_WEIGHT_LOADED.Location = new System.Drawing.Point(60, 6);
+            this.tb_Tag_WEIGHT_LOADED.Location = new System.Drawing.Point(74, 7);
             this.tb_Tag_WEIGHT_LOADED.Name = "tb_Tag_WEIGHT_LOADED";
             this.tb_Tag_WEIGHT_LOADED.ReadOnly = true;
             this.tb_Tag_WEIGHT_LOADED.Size = new System.Drawing.Size(47, 19);
@@ -832,7 +835,7 @@
             this.panel19.AutoSize = true;
             this.panel19.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel19.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.panel19.Location = new System.Drawing.Point(-3, 6);
+            this.panel19.Location = new System.Drawing.Point(-3, 7);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(65, 20);
             this.panel19.TabIndex = 2;
@@ -841,12 +844,26 @@
             // panel20
             // 
             this.panel20.BackColor = System.Drawing.Color.White;
+            this.panel20.Controls.Add(this.tb_ACT_WEIGHT);
             this.panel20.Controls.Add(this.label14);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(295, 3);
+            this.panel20.Location = new System.Drawing.Point(336, 3);
             this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(111, 30);
+            this.panel20.Size = new System.Drawing.Size(125, 33);
             this.panel20.TabIndex = 11;
+            // 
+            // tb_ACT_WEIGHT
+            // 
+            this.tb_ACT_WEIGHT.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.tb_ACT_WEIGHT.BackColor = System.Drawing.Color.White;
+            this.tb_ACT_WEIGHT.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_ACT_WEIGHT.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_ACT_WEIGHT.Location = new System.Drawing.Point(74, 7);
+            this.tb_ACT_WEIGHT.Name = "tb_ACT_WEIGHT";
+            this.tb_ACT_WEIGHT.ReadOnly = true;
+            this.tb_ACT_WEIGHT.Size = new System.Drawing.Size(47, 19);
+            this.tb_ACT_WEIGHT.TabIndex = 4;
+            this.tb_ACT_WEIGHT.Text = "999999";
             // 
             // label14
             // 
@@ -854,11 +871,26 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.White;
             this.label14.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label14.Location = new System.Drawing.Point(25, 5);
+            this.label14.Location = new System.Drawing.Point(-3, 7);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(65, 20);
             this.label14.TabIndex = 2;
-            this.label14.Text = "作业重量";
+            this.label14.Text = "累计总重";
+            // 
+            // tb_CurrentStatus
+            // 
+            this.tb_CurrentStatus.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.tb_CurrentStatus.BackColor = System.Drawing.Color.LightGreen;
+            this.tb_CurrentStatus.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_CurrentStatus.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_CurrentStatus.Location = new System.Drawing.Point(336, 199);
+            this.tb_CurrentStatus.Multiline = true;
+            this.tb_CurrentStatus.Name = "tb_CurrentStatus";
+            this.tb_CurrentStatus.ReadOnly = true;
+            this.tb_CurrentStatus.Size = new System.Drawing.Size(125, 31);
+            this.tb_CurrentStatus.TabIndex = 3;
+            this.tb_CurrentStatus.Text = "行车状态";
+            this.tb_CurrentStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // timer1
             // 
@@ -888,8 +920,9 @@
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "conCraneStatus";
-            this.Size = new System.Drawing.Size(409, 221);
+            this.Size = new System.Drawing.Size(464, 235);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
             this.panel14.ResumeLayout(false);
@@ -1001,5 +1034,7 @@
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Timer timer4;
+        private System.Windows.Forms.TextBox tb_ACT_WEIGHT;
+        private System.Windows.Forms.TextBox tb_CurrentStatus;
     }
 }

@@ -352,12 +352,14 @@ namespace UACSDAL
         /// <param name="tb_MAT_REQ_WGT">要求重量（装车时有效，卸料为0） 单位-KG</param>
         /// <param name="tb_MAT_ACT_WGT">累计作业重量(当放下时累加)</param>
         /// <param name="tb_MAT_CUR_WGT">当次作业重量(当吊起时记录,当放下时清空)</param>
-        public void craneOrderInfo(string craneNo, TextBox txt_CraneOrder, TextBox txt_CoilNo, TextBox txt_FromStock, TextBox txt_ToStock, TextBox tb_MAT_REQ_WGT, TextBox tb_MAT_ACT_WGT, TextBox tb_MAT_CUR_WGT)
+        /// <param name="tb_ACT_WEIGHT">总累计作业重量 单位-KG</param>
+        /// <param name="tb_CurrentStatus">行车当前状态</param>
+        public void craneOrderInfo(string craneNo, TextBox txt_CraneOrder, TextBox txt_CoilNo, TextBox txt_FromStock, TextBox txt_ToStock, TextBox tb_MAT_REQ_WGT, TextBox tb_MAT_ACT_WGT, TextBox tb_MAT_CUR_WGT, TextBox tb_ACT_WEIGHT,TextBox tb_CurrentStatus)
         {
             bool isValue = false;
             try
             {
-
+                var orderNo = "";
                 string sql = string.Format("SELECT A.*,B.MAT_CNAME FROM UACS_CRANE_ORDER_CURRENT AS A LEFT JOIN UACS_L3_MAT_INFO AS B ON A.MAT_CODE = B.MAT_CODE WHERE CRANE_NO = '{0}' ", craneNo);
 
                 using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
@@ -369,10 +371,43 @@ namespace UACSDAL
                         if (rdr["ORDER_NO"] != System.DBNull.Value)
                         {
 
-                            txt_CraneOrder.Text = rdr["ORDER_NO"].ToString();
+                            orderNo = rdr["ORDER_NO"].ToString();
                         }
                         else
-                            txt_CraneOrder.Text = "";
+                            orderNo = "";
+
+                        //指令号
+                        if (rdr["ORDER_TYPE"] != System.DBNull.Value)
+                        {
+                            tb_CurrentStatus.BackColor = Color.LightGreen;
+                            var status = rdr["ORDER_TYPE"].ToString();
+                            if (status.Equals("11"))
+                            {
+                                tb_CurrentStatus.Text = "归堆";
+                            }
+                            else if (status.Equals("21"))
+                            {
+                                tb_CurrentStatus.Text = "装车";
+                            }
+                            else if (status.Equals("41"))
+                            {
+                                tb_CurrentStatus.Text = "清扫";
+                            }
+                            else if (status.Equals("X1"))
+                            {
+                                tb_CurrentStatus.Text = "登车";
+                            }
+                            else
+                            {
+                                tb_CurrentStatus.Text = "无状态";
+                            }
+
+                        }
+                        else
+                        {
+                            tb_CurrentStatus.Text = "";
+                            tb_CurrentStatus.BackColor = SystemColors.ControlLight;
+                        }
 
                         //废钢代码
                         if (rdr["MAT_CODE"] != System.DBNull.Value)
@@ -428,6 +463,33 @@ namespace UACSDAL
 
                         isValue = true;
                     }
+                }
+
+                if (!string.IsNullOrEmpty(orderNo))
+                {
+                    string sqlPlanNo = string.Format("SELECT ORDER_NO,ORDER_GROUP_NO,PLAN_NO,REQ_WEIGHT,CMD_STATUS,ACT_WEIGHT FROM UACS_ORDER_QUEUE WHERE CMD_STATUS = '0' AND PLAN_NO IN (SELECT PLAN_NO FROM UACS_ORDER_QUEUE WHERE ORDER_NO = '{0}')  ", orderNo);
+                    var ActWeight = 0;
+                    using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlPlanNo))
+                    {
+                        while (rdr.Read())
+                        {
+                            //累计作业重量 单位-KG
+                            if (rdr["ACT_WEIGHT"] != System.DBNull.Value)
+                            {
+                                ActWeight += Convert.ToInt32(rdr["ACT_WEIGHT"]);
+                            }
+                            //计划号
+                            if (rdr["PLAN_NO"] != System.DBNull.Value)
+                            {
+
+                                txt_CraneOrder.Text = rdr["PLAN_NO"].ToString();
+                            }
+                            else
+                                txt_CraneOrder.Text = "";
+                        }
+                    }
+                    //计划总累计重量
+                    tb_ACT_WEIGHT.Text = ActWeight.ToString();
                 }
             }
             catch (Exception er)
