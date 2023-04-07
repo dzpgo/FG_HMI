@@ -189,6 +189,12 @@
     <Compile Include="View_CraneMonitor\MaterialCellManage.designer.cs">
       <DependentUpon>MaterialCellManage.cs</DependentUpon>
     </Compile>
+    <Compile Include="View_CraneMonitor\Recondition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\Recondition.Designer.cs">
+      <DependentUpon>Recondition.cs</DependentUpon>
+    </Compile>
     <Compile Include="View_CraneMonitor\RedStockInquiry.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -684,6 +690,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View_CraneMonitor\MaterialCellManage.resx">
       <DependentUpon>MaterialCellManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\Recondition.resx">
+      <DependentUpon>Recondition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View_CraneMonitor\RedStockInquiry.resx">
       <DependentUpon>RedStockInquiry.cs</DependentUpon>

@@ -730,7 +730,8 @@ namespace UACSControls
                 //sql += " WHERE CRANE_NO = '" + craneNO + "'";
                 //DB2Connect.DBHelper.ExecuteNonQuery(sql);
                 //MessageBox.Show(craneNO + "登机1请求开启");
-                HMILogger.WriteLog("登机请求", "登机1：" + craneNO, LogLevel.Info, this.Text);
+                //HMILogger.WriteLog("登机请求", "登机1：" + craneNO, LogLevel.Info, this.Text);
+                ParkClassLibrary.HMILogger.WriteLog("登机请求", "登机1：" + craneNO, LogLevel.Info, this.Text);
             }
             catch (Exception er)
             {
@@ -753,7 +754,8 @@ namespace UACSControls
                 //sql += " WHERE CRANE_NO = '" + craneNO + "'";
                 //DB2Connect.DBHelper.ExecuteNonQuery(sql);
                 //MessageBox.Show(craneNO + "登机2请求开启");
-                HMILogger.WriteLog("登机请求", "登机2：" + craneNO, LogLevel.Info, this.Text);
+                //HMILogger.WriteLog("登机请求", "登机2：" + craneNO, LogLevel.Info, this.Text);
+                ParkClassLibrary.HMILogger.WriteLog("登机请求", "登机2：" + craneNO, LogLevel.Info, this.Text);
             }
             catch (Exception er)
             {
@@ -776,7 +778,8 @@ namespace UACSControls
                 //sql += " WHERE CRANE_NO = '" + craneNO + "'";
                 //DB2Connect.DBHelper.ExecuteNonQuery(sql);
                 //MessageBox.Show(craneNO + "登机请求关闭");
-                HMILogger.WriteLog("登机请求", "登机关闭：" + craneNO, LogLevel.Info, this.Text);
+                //HMILogger.WriteLog("登机请求", "登机关闭：" + craneNO, LogLevel.Info, this.Text);
+                ParkClassLibrary.HMILogger.WriteLog("登机请求", "登机关闭：" + craneNO, LogLevel.Info, this.Text);
             }
             catch (Exception er)
             {

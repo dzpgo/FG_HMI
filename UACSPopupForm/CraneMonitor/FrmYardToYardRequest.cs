@@ -95,6 +95,7 @@ namespace UACSPopupForm
             //       txtToYard.Enabled = false;
             //   }
 
+            this.Deactivate += new EventHandler(frmClose);
         }
 
         /// <summary>
@@ -775,7 +776,21 @@ namespace UACSPopupForm
             //    CheckStockInfo(txtFromStock.Text);
             //}
         }
-
+        /// <summary>
+        /// 关闭窗体
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmClose(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
 
     }
 }

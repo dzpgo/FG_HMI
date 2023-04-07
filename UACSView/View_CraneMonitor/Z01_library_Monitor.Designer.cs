@@ -36,8 +36,18 @@
             this.timerClear = new System.Windows.Forms.Timer(this.components);
             this.timer_ShowXY = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_conCraneStatus2_4 = new System.Windows.Forms.Panel();
+            this.conCraneStatus2_4 = new UACSControls.conCraneStatus();
+            this.panel_conCraneStatus2_1 = new System.Windows.Forms.Panel();
+            this.conCraneStatus2_1 = new UACSControls.conCraneStatus();
+            this.panel_conCraneStatus2_2 = new System.Windows.Forms.Panel();
+            this.conCraneStatus2_2 = new UACSControls.conCraneStatus();
+            this.panel_conCraneStatus2_3 = new System.Windows.Forms.Panel();
+            this.conCraneStatus2_3 = new UACSControls.conCraneStatus();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.bt_Recondition = new System.Windows.Forms.Button();
             this.btnShowXY = new System.Windows.Forms.Button();
             this.btnShowCrane = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -60,27 +70,18 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.timer_InitializeLoad = new System.Windows.Forms.Timer(this.components);
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel_conCraneStatus2_4 = new System.Windows.Forms.Panel();
-            this.conCraneStatus2_1 = new UACSControls.conCraneStatus();
-            this.panel_conCraneStatus2_1 = new System.Windows.Forms.Panel();
-            this.conCraneStatus2_2 = new UACSControls.conCraneStatus();
-            this.panel_conCraneStatus2_2 = new System.Windows.Forms.Panel();
-            this.conCraneStatus2_3 = new UACSControls.conCraneStatus();
-            this.panel_conCraneStatus2_3 = new System.Windows.Forms.Panel();
-            this.conCraneStatus2_4 = new UACSControls.conCraneStatus();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.panel_conCraneStatus2_4.SuspendLayout();
+            this.panel_conCraneStatus2_1.SuspendLayout();
+            this.panel_conCraneStatus2_2.SuspendLayout();
+            this.panel_conCraneStatus2_3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelZ53BayS.SuspendLayout();
             this.panelZ61Bay.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.panel_conCraneStatus2_4.SuspendLayout();
-            this.panel_conCraneStatus2_1.SuspendLayout();
-            this.panel_conCraneStatus2_2.SuspendLayout();
-            this.panel_conCraneStatus2_3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
@@ -137,6 +138,110 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1283, 707);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Silver;
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.Controls.Add(this.panel_conCraneStatus2_4, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel_conCraneStatus2_1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel_conCraneStatus2_2, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel_conCraneStatus2_3, 2, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 479);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1277, 225);
+            this.tableLayoutPanel2.TabIndex = 2;
+            // 
+            // panel_conCraneStatus2_4
+            // 
+            this.panel_conCraneStatus2_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_conCraneStatus2_4.Controls.Add(this.conCraneStatus2_4);
+            this.panel_conCraneStatus2_4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_conCraneStatus2_4.Location = new System.Drawing.Point(960, 3);
+            this.panel_conCraneStatus2_4.Name = "panel_conCraneStatus2_4";
+            this.panel_conCraneStatus2_4.Size = new System.Drawing.Size(314, 219);
+            this.panel_conCraneStatus2_4.TabIndex = 4;
+            // 
+            // conCraneStatus2_4
+            // 
+            this.conCraneStatus2_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.conCraneStatus2_4.CraneNO = "";
+            this.conCraneStatus2_4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.conCraneStatus2_4.Location = new System.Drawing.Point(0, 0);
+            this.conCraneStatus2_4.Margin = new System.Windows.Forms.Padding(4);
+            this.conCraneStatus2_4.Name = "conCraneStatus2_4";
+            this.conCraneStatus2_4.Size = new System.Drawing.Size(312, 217);
+            this.conCraneStatus2_4.TabIndex = 3;
+            // 
+            // panel_conCraneStatus2_1
+            // 
+            this.panel_conCraneStatus2_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_conCraneStatus2_1.Controls.Add(this.conCraneStatus2_1);
+            this.panel_conCraneStatus2_1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_conCraneStatus2_1.Location = new System.Drawing.Point(3, 3);
+            this.panel_conCraneStatus2_1.Name = "panel_conCraneStatus2_1";
+            this.panel_conCraneStatus2_1.Size = new System.Drawing.Size(313, 219);
+            this.panel_conCraneStatus2_1.TabIndex = 5;
+            // 
+            // conCraneStatus2_1
+            // 
+            this.conCraneStatus2_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.conCraneStatus2_1.CraneNO = "";
+            this.conCraneStatus2_1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.conCraneStatus2_1.Location = new System.Drawing.Point(0, 0);
+            this.conCraneStatus2_1.Margin = new System.Windows.Forms.Padding(4);
+            this.conCraneStatus2_1.Name = "conCraneStatus2_1";
+            this.conCraneStatus2_1.Size = new System.Drawing.Size(311, 217);
+            this.conCraneStatus2_1.TabIndex = 1;
+            // 
+            // panel_conCraneStatus2_2
+            // 
+            this.panel_conCraneStatus2_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_conCraneStatus2_2.Controls.Add(this.conCraneStatus2_2);
+            this.panel_conCraneStatus2_2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_conCraneStatus2_2.Location = new System.Drawing.Point(322, 3);
+            this.panel_conCraneStatus2_2.Name = "panel_conCraneStatus2_2";
+            this.panel_conCraneStatus2_2.Size = new System.Drawing.Size(313, 219);
+            this.panel_conCraneStatus2_2.TabIndex = 6;
+            // 
+            // conCraneStatus2_2
+            // 
+            this.conCraneStatus2_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.conCraneStatus2_2.CraneNO = "";
+            this.conCraneStatus2_2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.conCraneStatus2_2.Location = new System.Drawing.Point(0, 0);
+            this.conCraneStatus2_2.Margin = new System.Windows.Forms.Padding(4);
+            this.conCraneStatus2_2.Name = "conCraneStatus2_2";
+            this.conCraneStatus2_2.Size = new System.Drawing.Size(311, 217);
+            this.conCraneStatus2_2.TabIndex = 4;
+            // 
+            // panel_conCraneStatus2_3
+            // 
+            this.panel_conCraneStatus2_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_conCraneStatus2_3.Controls.Add(this.conCraneStatus2_3);
+            this.panel_conCraneStatus2_3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_conCraneStatus2_3.Location = new System.Drawing.Point(641, 3);
+            this.panel_conCraneStatus2_3.Name = "panel_conCraneStatus2_3";
+            this.panel_conCraneStatus2_3.Size = new System.Drawing.Size(313, 219);
+            this.panel_conCraneStatus2_3.TabIndex = 7;
+            // 
+            // conCraneStatus2_3
+            // 
+            this.conCraneStatus2_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.conCraneStatus2_3.CraneNO = "";
+            this.conCraneStatus2_3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.conCraneStatus2_3.Location = new System.Drawing.Point(0, 0);
+            this.conCraneStatus2_3.Margin = new System.Windows.Forms.Padding(4);
+            this.conCraneStatus2_3.Name = "conCraneStatus2_3";
+            this.conCraneStatus2_3.Size = new System.Drawing.Size(311, 217);
+            this.conCraneStatus2_3.TabIndex = 2;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.panel2);
@@ -148,6 +253,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.bt_Recondition);
             this.panel2.Controls.Add(this.btnShowXY);
             this.panel2.Controls.Add(this.btnShowCrane);
             this.panel2.Controls.Add(this.panel5);
@@ -158,6 +264,20 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1277, 64);
             this.panel2.TabIndex = 5;
+            // 
+            // bt_Recondition
+            // 
+            this.bt_Recondition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_Recondition.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bt_Recondition.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_Recondition.ForeColor = System.Drawing.Color.Black;
+            this.bt_Recondition.Location = new System.Drawing.Point(1034, 35);
+            this.bt_Recondition.Name = "bt_Recondition";
+            this.bt_Recondition.Size = new System.Drawing.Size(75, 23);
+            this.bt_Recondition.TabIndex = 29;
+            this.bt_Recondition.Text = "检修";
+            this.bt_Recondition.UseVisualStyleBackColor = true;
+            this.bt_Recondition.Click += new System.EventHandler(this.bt_Recondition_Click);
             // 
             // btnShowXY
             // 
@@ -387,110 +507,6 @@
             // 
             this.timer_InitializeLoad.Tick += new System.EventHandler(this.timer_InitializeLoad_Tick);
             // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Silver;
-            this.tableLayoutPanel2.ColumnCount = 4;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Controls.Add(this.panel_conCraneStatus2_4, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panel_conCraneStatus2_1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panel_conCraneStatus2_2, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panel_conCraneStatus2_3, 2, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 479);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1277, 225);
-            this.tableLayoutPanel2.TabIndex = 2;
-            // 
-            // panel_conCraneStatus2_4
-            // 
-            this.panel_conCraneStatus2_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_conCraneStatus2_4.Controls.Add(this.conCraneStatus2_4);
-            this.panel_conCraneStatus2_4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_conCraneStatus2_4.Location = new System.Drawing.Point(960, 3);
-            this.panel_conCraneStatus2_4.Name = "panel_conCraneStatus2_4";
-            this.panel_conCraneStatus2_4.Size = new System.Drawing.Size(314, 219);
-            this.panel_conCraneStatus2_4.TabIndex = 4;
-            // 
-            // conCraneStatus2_1
-            // 
-            this.conCraneStatus2_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.conCraneStatus2_1.CraneNO = "";
-            this.conCraneStatus2_1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.conCraneStatus2_1.Location = new System.Drawing.Point(0, 0);
-            this.conCraneStatus2_1.Margin = new System.Windows.Forms.Padding(4);
-            this.conCraneStatus2_1.Name = "conCraneStatus2_1";
-            this.conCraneStatus2_1.Size = new System.Drawing.Size(311, 217);
-            this.conCraneStatus2_1.TabIndex = 1;
-            // 
-            // panel_conCraneStatus2_1
-            // 
-            this.panel_conCraneStatus2_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_conCraneStatus2_1.Controls.Add(this.conCraneStatus2_1);
-            this.panel_conCraneStatus2_1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_conCraneStatus2_1.Location = new System.Drawing.Point(3, 3);
-            this.panel_conCraneStatus2_1.Name = "panel_conCraneStatus2_1";
-            this.panel_conCraneStatus2_1.Size = new System.Drawing.Size(313, 219);
-            this.panel_conCraneStatus2_1.TabIndex = 5;
-            // 
-            // conCraneStatus2_2
-            // 
-            this.conCraneStatus2_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.conCraneStatus2_2.CraneNO = "";
-            this.conCraneStatus2_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.conCraneStatus2_2.Location = new System.Drawing.Point(0, 0);
-            this.conCraneStatus2_2.Margin = new System.Windows.Forms.Padding(4);
-            this.conCraneStatus2_2.Name = "conCraneStatus2_2";
-            this.conCraneStatus2_2.Size = new System.Drawing.Size(311, 217);
-            this.conCraneStatus2_2.TabIndex = 4;
-            // 
-            // panel_conCraneStatus2_2
-            // 
-            this.panel_conCraneStatus2_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_conCraneStatus2_2.Controls.Add(this.conCraneStatus2_2);
-            this.panel_conCraneStatus2_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_conCraneStatus2_2.Location = new System.Drawing.Point(322, 3);
-            this.panel_conCraneStatus2_2.Name = "panel_conCraneStatus2_2";
-            this.panel_conCraneStatus2_2.Size = new System.Drawing.Size(313, 219);
-            this.panel_conCraneStatus2_2.TabIndex = 6;
-            // 
-            // conCraneStatus2_3
-            // 
-            this.conCraneStatus2_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.conCraneStatus2_3.CraneNO = "";
-            this.conCraneStatus2_3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.conCraneStatus2_3.Location = new System.Drawing.Point(0, 0);
-            this.conCraneStatus2_3.Margin = new System.Windows.Forms.Padding(4);
-            this.conCraneStatus2_3.Name = "conCraneStatus2_3";
-            this.conCraneStatus2_3.Size = new System.Drawing.Size(311, 217);
-            this.conCraneStatus2_3.TabIndex = 2;
-            // 
-            // panel_conCraneStatus2_3
-            // 
-            this.panel_conCraneStatus2_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_conCraneStatus2_3.Controls.Add(this.conCraneStatus2_3);
-            this.panel_conCraneStatus2_3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_conCraneStatus2_3.Location = new System.Drawing.Point(641, 3);
-            this.panel_conCraneStatus2_3.Name = "panel_conCraneStatus2_3";
-            this.panel_conCraneStatus2_3.Size = new System.Drawing.Size(313, 219);
-            this.panel_conCraneStatus2_3.TabIndex = 7;
-            // 
-            // conCraneStatus2_4
-            // 
-            this.conCraneStatus2_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.conCraneStatus2_4.CraneNO = "";
-            this.conCraneStatus2_4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.conCraneStatus2_4.Location = new System.Drawing.Point(0, 0);
-            this.conCraneStatus2_4.Margin = new System.Windows.Forms.Padding(4);
-            this.conCraneStatus2_4.Name = "conCraneStatus2_4";
-            this.conCraneStatus2_4.Size = new System.Drawing.Size(312, 217);
-            this.conCraneStatus2_4.TabIndex = 3;
-            // 
             // Z01_library_Monitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -503,6 +519,11 @@
             this.TabActivated += new System.EventHandler(this.MyTabActivated);
             this.TabDeactivated += new System.EventHandler(this.MyTabDeactivated);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel_conCraneStatus2_4.ResumeLayout(false);
+            this.panel_conCraneStatus2_1.ResumeLayout(false);
+            this.panel_conCraneStatus2_2.ResumeLayout(false);
+            this.panel_conCraneStatus2_3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -511,11 +532,6 @@
             this.panelZ61Bay.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.panel_conCraneStatus2_4.ResumeLayout(false);
-            this.panel_conCraneStatus2_1.ResumeLayout(false);
-            this.panel_conCraneStatus2_2.ResumeLayout(false);
-            this.panel_conCraneStatus2_3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -562,5 +578,6 @@
         private UACSControls.conCraneStatus conCraneStatus2_2;
         private System.Windows.Forms.Panel panel_conCraneStatus2_3;
         private UACSControls.conCraneStatus conCraneStatus2_3;
+        private System.Windows.Forms.Button bt_Recondition;
     }
 }

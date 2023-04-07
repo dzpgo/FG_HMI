@@ -17,7 +17,6 @@ using UACSDAL;
 using System.Threading;
 using System.Runtime.InteropServices;
 using System.Drawing.Drawing2D;
-using UACS;
 
 namespace UACSView.View_CraneMonitor
 {
@@ -51,6 +50,7 @@ namespace UACSView.View_CraneMonitor
 
         private const string D102ENTRY = "D102-WR";
         private const string YSLEXIT = "YSL-WC";
+        private bool IsRecondition = false;
 
         private List<string> listReCoilUnit = new List<string>();
 
@@ -312,6 +312,44 @@ namespace UACSView.View_CraneMonitor
 
             try
             {
+                if (Crane_1.Equals(1))
+                {
+                    conCrane2_1.BackColor = Color.Tomato;
+                    //conCrane2_1.BackgroundImage = UACSControls.Resource1.行车_Stop;
+                }
+                if (Crane_2.Equals(1))
+                {
+                    conCrane2_2.BackColor = Color.Tomato;
+                    //conCrane2_2.BackgroundImage = UACSControls.Resource1.行车_Stop;
+                }
+                if (Crane_3.Equals(1))
+                {
+                    conCrane2_3.BackColor = Color.Tomato;
+                    //conCrane2_3.BackgroundImage = UACSControls.Resource1.行车_Stop;
+                }
+                if (Crane_4.Equals(1))
+                {
+                    conCrane2_4.BackColor = Color.Tomato;
+                    //conCrane2_4.BackgroundImage = UACSControls.Resource1.行车_Stop;
+                }
+                //检修中按钮变红
+                if (Crane_1.Equals(1) || Crane_2.Equals(1) || Crane_3.Equals(1) || Crane_4.Equals(1))
+                {
+                    if (IsRecondition)
+                    {
+                        bt_Recondition.BackColor = Color.Red;
+                        IsRecondition = false;
+                    }
+                    else
+                    {
+                        bt_Recondition.BackColor = Color.LightSteelBlue;
+                        IsRecondition = true;
+                    }
+                }
+                else
+                {
+                    bt_Recondition.BackColor = Color.LightSteelBlue;
+                }
 
                 //AreaInStockZ12.conInit(panelZ61Bay, constData.bayNo_Z01, SaddleBase.tagServiceName,
                 //       constData.Z01BaySpaceX, constData.Z01BaySpaceY, panelZ61Bay.Width, panelZ61Bay.Height,
@@ -1120,6 +1158,88 @@ namespace UACSView.View_CraneMonitor
 
         }
 
+        #region 检修时更改行车背景颜色
+
+        private int Crane_1 = 0;
+        private int Crane_2 = 0;
+        private int Crane_3 = 0;
+        private int Crane_4 = 0;
+        ///// <summary>
+        ///// 检修
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void btnbtnRecondition_Click(object sender, EventArgs e)
+        //{
+        //    Recondition frm = new Recondition();
+        //    frm.CraneNo = craneNO;
+        //    frm.BayNO = "A";
+        //    frm.ShowDialog();
+        //}
+        /// <summary>
+        /// 更新行车背景颜色
+        /// </summary>
+        /// <param name="CraneNO">行车号</param>
+        public void UpdataCrane(string CraneNO)
+        {
+            if (CraneNO.Equals("1"))
+            {
+                this.conCrane2_1.BackColor = System.Drawing.Color.Tomato;
+                //this.conCrane2_1.BackgroundImage = UACSControls.Resource1.行车_Stop;
+                Crane_1 = 1;
+            }
+            else if (CraneNO.Equals("2"))
+            {
+                this.conCrane2_2.BackColor = System.Drawing.Color.Tomato;
+                //this.conCrane2_2.BackgroundImage = UACSControls.Resource1.行车_Stop;
+                Crane_2 = 1;
+            }
+            else if (CraneNO.Equals("3"))
+            {
+                this.conCrane2_3.BackColor = System.Drawing.Color.Tomato;
+                //this.conCrane2_3.BackgroundImage = UACSControls.Resource1.行车_Stop;
+                Crane_3 = 1;
+            }
+            else if (CraneNO.Equals("4"))
+            {
+                this.conCrane2_4.BackColor = System.Drawing.Color.Tomato;
+                //this.conCrane2_4.BackgroundImage = UACSControls.Resource1.行车_Stop;
+                Crane_4 = 1;
+            }
+        }
+        /// <summary>
+        /// 取消行车背景颜色
+        /// </summary>
+        /// <returns></returns>
+        public void OutCrane(string CraneNO)
+        {
+            if (CraneNO.Equals("1"))
+            {
+                this.conCrane2_1.BackColor = System.Drawing.SystemColors.Control;
+                //this.conCrane2_1.BackgroundImage = UACSControls.Resource1.行车_Run;
+                Crane_1 = 0;
+            }
+            else if (CraneNO.Equals("2"))
+            {
+                this.conCrane2_2.BackColor = System.Drawing.SystemColors.Control;
+                //this.conCrane2_2.BackgroundImage = UACSControls.Resource1.行车_Run;
+                Crane_2 = 0;
+            }
+            else if (CraneNO.Equals("3"))
+            {
+                this.conCrane2_3.BackColor = System.Drawing.SystemColors.Control;
+                //this.conCrane2_3.BackgroundImage = UACSControls.Resource1.行车_Run;
+                Crane_3 = 0;
+            }
+            else if (CraneNO.Equals("4"))
+            {
+                this.conCrane2_4.BackColor = System.Drawing.SystemColors.Control;
+                //this.conCrane2_4.BackgroundImage = UACSControls.Resource1.行车_Run;
+                Crane_4 = 0;
+            }
+        }
+        #endregion
+
         #region 代码弃用
 
         //private void button2_Click(object sender, EventArgs e)
@@ -1453,6 +1573,17 @@ namespace UACSView.View_CraneMonitor
         //    }
         //} 
         #endregion
-
+        /// <summary>
+        /// 检修
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bt_Recondition_Click(object sender, EventArgs e)
+        {
+            Recondition frm = new Recondition(this);
+            //frm.CraneNo = craneNO;
+            frm.BayNO = "A";
+            frm.ShowDialog();
+        }
     }
 }

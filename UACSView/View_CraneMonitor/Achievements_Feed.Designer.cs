@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmb_Query_CarNo = new System.Windows.Forms.ComboBox();
             this.bt_QuerySend = new System.Windows.Forms.Button();
             this.bt_Query = new System.Windows.Forms.Button();
             this.bt_QuerySave = new System.Windows.Forms.Button();
@@ -94,6 +95,7 @@
             this.tbWeight_2 = new System.Windows.Forms.TextBox();
             this.tbMatCode_2 = new System.Windows.Forms.TextBox();
             this.tbWeight_1 = new System.Windows.Forms.TextBox();
+            this.bt_Imitate = new System.Windows.Forms.Button();
             this.bt_Save = new System.Windows.Forms.Button();
             this.bt_Send = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -196,7 +198,6 @@
             this.tb_Feed_MatCodeName_1 = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.tb_Feed_MatCode_1 = new System.Windows.Forms.TextBox();
-            this.cmb_Query_CarNo = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -250,6 +251,15 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "查询面板";
+            // 
+            // cmb_Query_CarNo
+            // 
+            this.cmb_Query_CarNo.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.cmb_Query_CarNo.FormattingEnabled = true;
+            this.cmb_Query_CarNo.Location = new System.Drawing.Point(8, 121);
+            this.cmb_Query_CarNo.Name = "cmb_Query_CarNo";
+            this.cmb_Query_CarNo.Size = new System.Drawing.Size(150, 29);
+            this.cmb_Query_CarNo.TabIndex = 54;
             // 
             // bt_QuerySend
             // 
@@ -449,6 +459,7 @@
             this.panel1.Controls.Add(this.tbWeight_2);
             this.panel1.Controls.Add(this.tbMatCode_2);
             this.panel1.Controls.Add(this.tbWeight_1);
+            this.panel1.Controls.Add(this.bt_Imitate);
             this.panel1.Controls.Add(this.bt_Save);
             this.panel1.Controls.Add(this.bt_Send);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -986,6 +997,21 @@
             this.tbWeight_1.ReadOnly = true;
             this.tbWeight_1.Size = new System.Drawing.Size(120, 29);
             this.tbWeight_1.TabIndex = 107;
+            // 
+            // bt_Imitate
+            // 
+            this.bt_Imitate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_Imitate.BackColor = System.Drawing.Color.White;
+            this.bt_Imitate.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.bt_Imitate.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
+            this.bt_Imitate.ForeColor = System.Drawing.Color.White;
+            this.bt_Imitate.Location = new System.Drawing.Point(899, 9);
+            this.bt_Imitate.Name = "bt_Imitate";
+            this.bt_Imitate.Size = new System.Drawing.Size(80, 40);
+            this.bt_Imitate.TabIndex = 5;
+            this.bt_Imitate.Text = "模拟";
+            this.bt_Imitate.UseVisualStyleBackColor = false;
+            this.bt_Imitate.Click += new System.EventHandler(this.bt_Imitate_Click);
             // 
             // bt_Save
             // 
@@ -2228,15 +2254,6 @@
             this.tb_Feed_MatCode_1.Size = new System.Drawing.Size(120, 29);
             this.tb_Feed_MatCode_1.TabIndex = 106;
             // 
-            // cmb_Query_CarNo
-            // 
-            this.cmb_Query_CarNo.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.cmb_Query_CarNo.FormattingEnabled = true;
-            this.cmb_Query_CarNo.Location = new System.Drawing.Point(8, 121);
-            this.cmb_Query_CarNo.Name = "cmb_Query_CarNo";
-            this.cmb_Query_CarNo.Size = new System.Drawing.Size(150, 29);
-            this.cmb_Query_CarNo.TabIndex = 54;
-            // 
             // Achievements_Feed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2433,5 +2450,6 @@
         private System.Windows.Forms.TextBox tb_Weight_Sum_2;
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.ComboBox cmb_Query_CarNo;
+        private System.Windows.Forms.Button bt_Imitate;
     }
 }

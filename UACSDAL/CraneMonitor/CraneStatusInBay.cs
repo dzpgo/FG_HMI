@@ -375,7 +375,7 @@ namespace UACSDAL
                         }
                         else
                             orderNo = "";
-
+                        bool types = true;
                         //指令号
                         if (rdr["ORDER_TYPE"] != System.DBNull.Value)
                         {
@@ -383,30 +383,52 @@ namespace UACSDAL
                             var status = rdr["ORDER_TYPE"].ToString();
                             if (status.Equals("11"))
                             {
-                                tb_CurrentStatus.Text = "归堆";
+                                tb_CurrentStatus.Text = "归堆中";
                             }
                             else if (status.Equals("21"))
                             {
-                                tb_CurrentStatus.Text = "装车";
+                                tb_CurrentStatus.Text = "装车中";
                             }
                             else if (status.Equals("41"))
                             {
-                                tb_CurrentStatus.Text = "清扫";
+                                tb_CurrentStatus.Text = "清扫中";
                             }
                             else if (status.Equals("X1"))
                             {
-                                tb_CurrentStatus.Text = "登车";
+                                tb_CurrentStatus.Text = "登车中";
+                            }
+                            else if (status.Equals("51"))
+                            {
+                                tb_CurrentStatus.Text = "检修中";
+                            }
+                            else if (status.Equals("99"))
+                            {
+                                tb_CurrentStatus.Text = "空闲";
                             }
                             else
                             {
                                 tb_CurrentStatus.Text = "无状态";
                             }
-
+                            types = false;
                         }
                         else
                         {
-                            tb_CurrentStatus.Text = "";
-                            tb_CurrentStatus.BackColor = SystemColors.ControlLight;
+                            tb_CurrentStatus.Text = "空闲";
+                            //tb_CurrentStatus.BackColor = SystemColors.ControlLight;
+                            tb_CurrentStatus.BackColor = Color.LightGreen;
+                        }
+                        if (types)
+                        {
+                            //指令状态 EMPTY-空闲 ORDER_INIT-执行 COIL_UP_PROCESS-吊起 COIL_DOWN_PROCESS-放下
+                            if (rdr["CMD_STATUS"] != System.DBNull.Value)
+                            {
+                                var status = rdr["CMD_STATUS"].ToString();
+                                if (status.Equals("EMPTY"))
+                                {
+                                    tb_CurrentStatus.Text = "空闲";
+                                    tb_CurrentStatus.BackColor = Color.LightGreen;
+                                }
+                            }
                         }
 
                         //废钢代码

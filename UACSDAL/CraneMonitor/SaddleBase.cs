@@ -400,7 +400,26 @@ namespace UACSDAL
         /// 所在BAY号
         /// </summary>
         public string BAY_NO { get; set; }
-
+        /// <summary>
+        /// 库区详细画面X开始坐标 单位-mm
+        /// </summary>
+        public long X_LIMIT_MIN { get; set; }
+        /// <summary>
+        /// 库区详细画面X结束坐标 单位-mm
+        /// </summary>
+        public long X_LIMIT_MAX { get; set; }
+        /// <summary>
+        /// 库区详细画面Y开始坐标 单位-mm
+        /// </summary>
+        public long Y_LIMIT_MIN { get; set; }
+        /// <summary>
+        /// 库区详细画面Y结束坐标 单位-mm
+        /// </summary>
+        public long Y_LIMIT_MAX { get; set; }
+        /// <summary>
+        /// 料格编号从南到北增大
+        /// </summary>
+        public long GRID_SEQ { get; set; }
 
         public const string tagServiceName = "iplature";
     }

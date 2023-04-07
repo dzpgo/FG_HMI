@@ -22,14 +22,14 @@ namespace UACSControls {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resource1 {
+    public class Resource1 {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resource1() {
+        public Resource1() {
         }
         
         /// <summary>
@@ -209,11 +209,11 @@ namespace UACSControls {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
+
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 行车_Run {
+        public static System.Drawing.Bitmap 行车_Run {
             get {
                 object obj = ResourceManager.GetObject("行车_Run", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -223,7 +223,7 @@ namespace UACSControls {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 行车_Stop {
+        public static System.Drawing.Bitmap 行车_Stop {
             get {
                 object obj = ResourceManager.GetObject("行车_Stop", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));

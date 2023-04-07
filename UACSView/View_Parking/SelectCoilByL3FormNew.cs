@@ -1217,8 +1217,20 @@ namespace UACSView.View_Parking
             cmbScanCar.DisplayMember = "NAME";
             //绑定数据
             cmbScanCar.DataSource = dt;
+            var index = 0;
+            if (!string.IsNullOrEmpty(ParkNO))
+            {
+                if (ParkNO.Equals("A1"))
+                    index = 0;
+                if (ParkNO.Equals("A2"))
+                    index = 1;
+                if (ParkNO.Equals("A3"))
+                    index = 2;
+                if (ParkNO.Equals("A4"))
+                    index = 3;
+            }            
             //设置默认值
-            this.cmbScanCar.SelectedIndex = 0;
+            this.cmbScanCar.SelectedIndex = index;
         }
 
         #endregion

@@ -252,6 +252,7 @@ namespace UACSControls
                 }
                 else
                 {
+                    timer4.Enabled = false;
                     btnShow.BackColor = System.Drawing.SystemColors.Control;
                     //firstTimeShow = false;
                     btnShow.Visible = true;

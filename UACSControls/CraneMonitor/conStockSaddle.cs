@@ -420,23 +420,17 @@ namespace UACSControls
                 Coil_PlasticFlag = false;
                 //待包卷标记
                 Coil_PackFlag = false;
-                width = panelWidth;
-                height = panelHeight;
-                myArea = theArea;
-                MyPanel = panel;
-                //钢卷是否套袋
-                Coil_PlasticFlag = false;
-                //待包卷标记
-                Coil_PackFlag = false;
                 //计算X方向上的比例关系
                 double xScale = Convert.ToDouble(panelWidth - 40) / Convert.ToDouble(X_Width);
                 double location_X = 0;
                 if (xAxisRight == true)
                 {
-                    location_X = Convert.ToDouble((theSaddle.X_START) - theArea.X_Start) * xScale;
+                    //location_X = Convert.ToDouble((theSaddle.X_START) - theArea.X_Start) * xScale;
+                    location_X = Convert.ToDouble((theSaddle.X_LIMIT_MIN) - theArea.X_Start) * xScale;
                 }
                 else
                 {
+                    //location_X = (X_Width - (theSaddle.X_CENTER - theSaddle.X_START)) * xScale;
                     location_X = (X_Width - (theSaddle.X_CENTER - theSaddle.X_START)) * xScale;
                 }
 
@@ -445,11 +439,13 @@ namespace UACSControls
                 double location_Y = 0;
                 if (yAxisDown == true)
                 {
-                    location_Y = (theSaddle.Y_START) * yScale;
+                    //location_Y = (theSaddle.Y_START) * yScale;
+                    location_Y = (theSaddle.Y_LIMIT_MIN) * yScale;
                 }
                 else
                 {
-                    location_Y = (theSaddle.Y_START) * yScale;
+                    //location_Y = (theSaddle.Y_START) * yScale;
+                    location_Y = (theSaddle.Y_LIMIT_MIN) * yScale;
                 }
 
                 Location_X = (int)location_X;
@@ -541,11 +537,14 @@ namespace UACSControls
                 lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter; //文字居中
 
                 double xScale2 = Convert.ToDouble(panelWidth - 29) / Convert.ToDouble(X_Width);
-                lbl.Width = Convert.ToInt32(Convert.ToDouble((theSaddle.X_END) - theSaddle.X_START) * xScale2); //1159
+                //lbl.Width = Convert.ToInt32(Convert.ToDouble((theSaddle.X_END) - theSaddle.X_START) * xScale2); //1159
+                lbl.Width = Convert.ToInt32(Convert.ToDouble((theSaddle.X_LIMIT_MAX) - theSaddle.X_LIMIT_MIN) * xScale2); //1159
                 double yScale2 = Convert.ToDouble(panelHeight + 25) / Convert.ToDouble(Y_Height);
-                lbl.Height = Convert.ToInt32(Convert.ToDouble((theSaddle.Y_END) - theSaddle.Y_START) * yScale2);  //518
+                //lbl.Height = Convert.ToInt32(Convert.ToDouble((theSaddle.Y_END) - theSaddle.Y_START) * yScale2);  //518
+                lbl.Height = Convert.ToInt32(Convert.ToDouble((theSaddle.Y_LIMIT_MAX) - theSaddle.Y_LIMIT_MIN) * yScale2);  //518
                 lbl.ForeColor = Color.Black;
                 lbl.Text = " 料格号：" + theSaddle.GRID_NO + "\n"
+                    + " 料格名：" + theSaddle.GRID_NAME + "\n"
                     + " 物料名：" + theSaddle.MAT_CNAME + "\n"
                     + " 物料代码：" + theSaddle.MAT_CODE + "\n"
                     + " 库存重量：" + theSaddle.MAT_WGT + "\n";

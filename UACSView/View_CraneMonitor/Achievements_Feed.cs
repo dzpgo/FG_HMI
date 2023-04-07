@@ -137,6 +137,60 @@ namespace UACSView.View_CraneMonitor
             Update_UACS_ORDER_QUEUE();
         }
         /// <summary>
+        /// 模拟 模拟实际装料
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bt_Imitate_Click(object sender, EventArgs e)
+        {
+            //把计划装料重量赋值给实际装料重量，完成模拟
+            MessageBoxButtons btn = MessageBoxButtons.OKCancel;
+            DialogResult drmsg = MessageBox.Show("确认是否模拟装料？", "提示", btn, MessageBoxIcon.Asterisk);
+            if (drmsg == DialogResult.OK)
+            {
+                if (!string.IsNullOrEmpty(tbWeight_1.Text.Trim()))
+                {
+                    tb_Feed_Weight_1.Text = tbWeight_1.Text.Trim();
+                }
+                if (!string.IsNullOrEmpty(tbWeight_2.Text.Trim()))
+                {
+                    tb_Feed_Weight_2.Text = tbWeight_2.Text.Trim();
+                }
+                if (!string.IsNullOrEmpty(tbWeight_3.Text.Trim()))
+                {
+                    tb_Feed_Weight_3.Text = tbWeight_3.Text.Trim();
+                }
+                if (!string.IsNullOrEmpty(tbWeight_4.Text.Trim()))
+                {
+                    tb_Feed_Weight_4.Text = tbWeight_4.Text.Trim();
+                }
+                if (!string.IsNullOrEmpty(tbWeight_5.Text.Trim()))
+                {
+                    tb_Feed_Weight_5.Text = tbWeight_5.Text.Trim();
+                }
+                if (!string.IsNullOrEmpty(tbWeight_6.Text.Trim()))
+                {
+                    tb_Feed_Weight_6.Text = tbWeight_6.Text.Trim();
+                }
+                if (!string.IsNullOrEmpty(tbWeight_7.Text.Trim()))
+                {
+                    tb_Feed_Weight_7.Text = tbWeight_7.Text.Trim();
+                }
+                if (!string.IsNullOrEmpty(tbWeight_8.Text.Trim()))
+                {
+                    tb_Feed_Weight_8.Text = tbWeight_8.Text.Trim();
+                }
+                if (!string.IsNullOrEmpty(tbWeight_9.Text.Trim()))
+                {
+                    tb_Feed_Weight_9.Text = tbWeight_9.Text.Trim();
+                }
+                if (!string.IsNullOrEmpty(tbWeight_10.Text.Trim()))
+                {
+                    tb_Feed_Weight_10.Text = tbWeight_10.Text.Trim();
+                }
+            }
+        }
+        /// <summary>
         /// 发送 实绩重量
         /// </summary>
         /// <param name="sender"></param>
@@ -1246,6 +1300,7 @@ namespace UACSView.View_CraneMonitor
                 throw;
             }
         }
+
 
         #endregion
 

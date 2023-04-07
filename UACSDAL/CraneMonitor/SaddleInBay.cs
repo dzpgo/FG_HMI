@@ -167,13 +167,13 @@ namespace UACSDAL
                 var GRID_NO = "";   //料格号
                 var GRID_DIV = -1;  //料格区分 0:全格 1:南北划分 2:田字划分
                 string sql = null;
-                sql = @"SELECT B.AREA_NO,B.AREA_NAME, C.MAT_CNAME,A.GRID_NO,A.GRID_NAME,A.GRID_DIV,A.GRID_TYPE,A.X_START,A.X_END,A.X_CENTER,A.Y_START,A.Y_END,A.Y_CENTER,A.MAT_CODE,A.COMP_CODE,A.MAT_WGT,A.GRID_STATUS,A.GRID_ENABLE,A.YARD_NO,A.BAY_NO ";
+                sql = @"SELECT B.AREA_NO,B.AREA_NAME, C.MAT_CNAME,A.GRID_NO,A.GRID_NAME,A.GRID_DIV,A.GRID_TYPE,A.X_START,A.X_END,A.X_CENTER,A.Y_START,A.Y_END,A.Y_CENTER,A.MAT_CODE,A.COMP_CODE,A.MAT_WGT,A.GRID_STATUS,A.GRID_ENABLE,A.YARD_NO,A.BAY_NO, A.X_LIMIT_MIN, A.X_LIMIT_MAX, A.Y_LIMIT_MIN, A.Y_LIMIT_MAX, A.GRID_SEQ ";
                 sql += "FROM UACS_YARDMAP_GRID_DEFINE A ";
                 sql += "INNER JOIN UACS_YARDMAP_AREA_DEFINE B ON A.AREA_NO = B.AREA_NO ";
                 sql += "LEFT JOIN UACS_L3_MAT_INFO C ON A.MAT_CODE = C.MAT_CODE ";
                 if (!string.IsNullOrEmpty(AreaNo))
                     sql += "WHERE A.AREA_NO = '" + AreaNo + "'";
-
+                sql += " ORDER BY A.GRID_NO ";
                 using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
                 {
                     if (dicSaddles.Count > 0)
@@ -285,6 +285,26 @@ namespace UACSDAL
                         if (rdr["BAY_NO"] != System.DBNull.Value)
                         {
                             theGRID.BAY_NO = Convert.ToString(rdr["BAY_NO"]);
+                        }
+                        if (rdr["X_LIMIT_MIN"] != System.DBNull.Value)
+                        {
+                            theGRID.X_LIMIT_MIN = Convert.ToInt32(rdr["X_LIMIT_MIN"]);
+                        }
+                        if (rdr["X_LIMIT_MAX"] != System.DBNull.Value)
+                        {
+                            theGRID.X_LIMIT_MAX = Convert.ToInt32(rdr["X_LIMIT_MAX"]);
+                        }
+                        if (rdr["Y_LIMIT_MIN"] != System.DBNull.Value)
+                        {
+                            theGRID.Y_LIMIT_MIN = Convert.ToInt32(rdr["Y_LIMIT_MIN"]);
+                        }
+                        if (rdr["Y_LIMIT_MAX"] != System.DBNull.Value)
+                        {
+                            theGRID.Y_LIMIT_MAX = Convert.ToInt32(rdr["Y_LIMIT_MAX"]);
+                        }
+                        if (rdr["GRID_SEQ"] != System.DBNull.Value)
+                        {
+                            theGRID.GRID_SEQ = Convert.ToInt32(rdr["GRID_SEQ"]);
                         }
 
                         dicSaddles[theGRID.GRID_NO] = theGRID;
