@@ -117,6 +117,7 @@
             this.设置避让ToolStripMenuItem.Name = "设置避让ToolStripMenuItem";
             this.设置避让ToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
             this.设置避让ToolStripMenuItem.Text = "设置避让";
+            this.设置避让ToolStripMenuItem.Visible = false;
             // 
             // 避让ToolStripMenuItem
             // 
@@ -148,6 +149,7 @@
             this.登机请求ToolStripMenuItem.Name = "登机请求ToolStripMenuItem";
             this.登机请求ToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
             this.登机请求ToolStripMenuItem.Text = "登机请求";
+            this.登机请求ToolStripMenuItem.Visible = false;
             // 
             // 登机1ToolStripMenuItem
             // 
@@ -155,12 +157,14 @@
             this.登机1ToolStripMenuItem.Size = new System.Drawing.Size(121, 26);
             this.登机1ToolStripMenuItem.Text = "登机1";
             this.登机1ToolStripMenuItem.Click += new System.EventHandler(this.登机1ToolStripMenuItem_Click);
+            this.登机1ToolStripMenuItem.Visible = false;
             // 
             // 登机2ToolStripMenuItem
             // 
             this.登机2ToolStripMenuItem.Name = "登机2ToolStripMenuItem";
             this.登机2ToolStripMenuItem.Size = new System.Drawing.Size(121, 26);
             this.登机2ToolStripMenuItem.Text = "登机2";
+            this.登机2ToolStripMenuItem.Visible = false;
             // 
             // 关闭ToolStripMenuItem1
             // 
@@ -183,6 +187,7 @@
             this.修改卸下位置ToolStripMenuItem.Name = "修改卸下位置ToolStripMenuItem";
             this.修改卸下位置ToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
             this.修改卸下位置ToolStripMenuItem.Text = "修改卸下位置";
+            this.修改卸下位置ToolStripMenuItem.Visible = false;
             // 
             // 开启ToolStripMenuItem
             // 

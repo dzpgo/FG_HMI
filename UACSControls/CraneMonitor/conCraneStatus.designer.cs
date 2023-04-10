@@ -91,11 +91,12 @@
             this.panel20 = new System.Windows.Forms.Panel();
             this.tb_ACT_WEIGHT = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.tb_CurrentStatus = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.timer4 = new System.Windows.Forms.Timer(this.components);
+            this.panel__CurrentStatus = new System.Windows.Forms.Panel();
+            this.tb_CurrentStatus = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel14.SuspendLayout();
@@ -117,6 +118,7 @@
             this.panel18.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel20.SuspendLayout();
+            this.panel__CurrentStatus.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -149,7 +151,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel18, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel20, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tb_CurrentStatus, 3, 5);
+            this.tableLayoutPanel1.Controls.Add(this.panel__CurrentStatus, 3, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -877,21 +879,6 @@
             this.label14.TabIndex = 2;
             this.label14.Text = "累计总重";
             // 
-            // tb_CurrentStatus
-            // 
-            this.tb_CurrentStatus.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.tb_CurrentStatus.BackColor = System.Drawing.Color.LightGreen;
-            this.tb_CurrentStatus.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_CurrentStatus.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_CurrentStatus.Location = new System.Drawing.Point(336, 199);
-            this.tb_CurrentStatus.Multiline = true;
-            this.tb_CurrentStatus.Name = "tb_CurrentStatus";
-            this.tb_CurrentStatus.ReadOnly = true;
-            this.tb_CurrentStatus.Size = new System.Drawing.Size(125, 31);
-            this.tb_CurrentStatus.TabIndex = 3;
-            this.tb_CurrentStatus.Text = "行车状态";
-            this.tb_CurrentStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // timer1
             // 
             this.timer1.Interval = 3000;
@@ -913,6 +900,31 @@
             this.timer4.Interval = 1000;
             this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
             // 
+            // panel__CurrentStatus
+            // 
+            this.panel__CurrentStatus.BackColor = System.Drawing.Color.LightGreen;
+            this.panel__CurrentStatus.Controls.Add(this.tb_CurrentStatus);
+            this.panel__CurrentStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel__CurrentStatus.Location = new System.Drawing.Point(336, 198);
+            this.panel__CurrentStatus.Name = "panel__CurrentStatus";
+            this.panel__CurrentStatus.Size = new System.Drawing.Size(125, 34);
+            this.panel__CurrentStatus.TabIndex = 19;
+            // 
+            // tb_CurrentStatus
+            // 
+            this.tb_CurrentStatus.BackColor = System.Drawing.Color.LightGreen;
+            this.tb_CurrentStatus.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_CurrentStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb_CurrentStatus.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_CurrentStatus.Location = new System.Drawing.Point(0, 0);
+            this.tb_CurrentStatus.Multiline = true;
+            this.tb_CurrentStatus.Name = "tb_CurrentStatus";
+            this.tb_CurrentStatus.ReadOnly = true;
+            this.tb_CurrentStatus.Size = new System.Drawing.Size(125, 34);
+            this.tb_CurrentStatus.TabIndex = 4;
+            this.tb_CurrentStatus.Text = "行车状态";
+            this.tb_CurrentStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // conCraneStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -922,7 +934,6 @@
             this.Name = "conCraneStatus";
             this.Size = new System.Drawing.Size(464, 235);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
             this.panel14.ResumeLayout(false);
@@ -963,6 +974,8 @@
             this.panel1.PerformLayout();
             this.panel20.ResumeLayout(false);
             this.panel20.PerformLayout();
+            this.panel__CurrentStatus.ResumeLayout(false);
+            this.panel__CurrentStatus.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1035,6 +1048,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Timer timer4;
         private System.Windows.Forms.TextBox tb_ACT_WEIGHT;
+        private System.Windows.Forms.Panel panel__CurrentStatus;
         private System.Windows.Forms.TextBox tb_CurrentStatus;
     }
 }

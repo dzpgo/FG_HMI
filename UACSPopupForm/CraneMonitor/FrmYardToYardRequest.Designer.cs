@@ -144,7 +144,7 @@ namespace UACSPopupForm
             // 
             // btnClear
             // 
-            this.btnClear.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnClear.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnClear.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClear.BackgroundImage")));
             this.btnClear.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.btnClear.Location = new System.Drawing.Point(393, 487);
@@ -152,7 +152,7 @@ namespace UACSPopupForm
             this.btnClear.Size = new System.Drawing.Size(101, 49);
             this.btnClear.TabIndex = 16;
             this.btnClear.Text = "关闭";
-            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // label6

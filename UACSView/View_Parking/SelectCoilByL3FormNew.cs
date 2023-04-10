@@ -1418,7 +1418,7 @@ namespace UACSView.View_Parking
                         sb.Append(cbChoiceData);   //计划号
 
                         tagDP.SetData("EV_PARKING_CARARRIVE", sb.ToString());
-                        DialogResult dr = MessageBox.Show("框架车车到位成功，激光扫描开始，请保证车位上方没有行车经过。", "提示", MessageBoxButtons.OK);
+                        DialogResult dr = MessageBox.Show("车到位成功!", "提示", MessageBoxButtons.OK);
                         ParkClassLibrary.HMILogger.WriteLog("车到位", "车到位：" + sb.ToString(), ParkClassLibrary.LogLevel.Info, this.Text);
                         if (dr == DialogResult.OK)
                         {

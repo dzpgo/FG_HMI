@@ -17,9 +17,10 @@ namespace UACSPopupForm
     public partial class FrmYardToYardRequest : Form
     {
         public string CraneNo { get; set; }
-
         private string BayNo = string.Empty;
         private string MatCode = string.Empty; //物料代码
+        //防止弹出信息关闭画面
+        bool isPopupMessage = false;
 
 
         public FrmYardToYardRequest()
@@ -284,6 +285,7 @@ namespace UACSPopupForm
         /// <param name="e"></param>
         private void BtnClose_Click(object sender, EventArgs e)
         {
+            isPopupMessage = true;
             //确认提示
             MessageBoxButtons btn = MessageBoxButtons.OKCancel;
             DialogResult drmsg = MessageBox.Show("确认是否取消归堆？", "提示", btn, MessageBoxIcon.Asterisk);
@@ -296,6 +298,16 @@ namespace UACSPopupForm
                     sql += " WHERE BAY_NO = 'A' AND CRANE_NO = '" + CraneNo + "'";
                     DBHelper.ExecuteNonQuery(sql);
                     ParkClassLibrary.HMILogger.WriteLog("人工指令", "归堆作业指令编辑 - 取消归堆：行车" + CraneNo, ParkClassLibrary.LogLevel.Info, this.Text);
+                    DialogResult dr = MessageBox.Show("已取消归堆，请清空当前行车指令！", "提示", MessageBoxButtons.OK);
+                    if (dr == DialogResult.OK)
+                    {
+                        //this.Close();
+                        //return;
+                    }
+                    else
+                    {
+                        //this.Close();
+                    }
                 }
                 catch (Exception er)
                 {
@@ -309,6 +321,7 @@ namespace UACSPopupForm
                     this.Close();
                 }
             }
+            isPopupMessage = false;
         }
         /// <summary>
         /// 执行归堆
@@ -317,6 +330,7 @@ namespace UACSPopupForm
         /// <param name="e"></param>
         private void BtnOk_Click(object sender, EventArgs e)
         {
+            isPopupMessage = true;
             //确认提示
             MessageBoxButtons btn = MessageBoxButtons.OKCancel;
             DialogResult drmsg = MessageBox.Show("确认是否执行归堆？", "提示", btn, MessageBoxIcon.Asterisk);
@@ -337,19 +351,27 @@ namespace UACSPopupForm
                     MessageBox.Show("请输入完整");
                     return;
                 }
-
                 if (string.IsNullOrEmpty(tb_MatCname.Text.Trim()))
                 {
                     MessageBox.Show("请输入完整");
                     return;
                 }
-
                 try
                 {
                     //var gridNo = cmb_GridNo.SelectedValue.ToString().Remove(0, 3).PadLeft(2, '0');
                     string sql = @"UPDATE UACS_CRANE_MANU_ORDER SET GRID_NO = '" + cmb_AeraNo.SelectedValue.ToString().Trim() + "',MAT_NO = '" + MatCode + "',FROM_STOCK = '" + cmb_AeraNo.Text.Trim() + "-" + cmb_LMR.SelectedValue.ToString() + "',TO_STOCK = '" + cmb_GridNo.SelectedValue.ToString() + "',STATUS = 'INIT' ";
                     sql += " WHERE BAY_NO = 'A' AND CRANE_NO = '" + CraneNo + "'";
-                    DBHelper.ExecuteNonQuery(sql);
+                    DBHelper.ExecuteNonQuery(sql);                    
+                    DialogResult dr = MessageBox.Show("确认执行归堆，请切换自动模式！", "提示", MessageBoxButtons.OK);
+                    if (dr == DialogResult.OK)
+                    {
+                        //this.Close();
+                        //return;
+                    }
+                    else
+                    {
+                        //this.Close();
+                    }
                     ParkClassLibrary.HMILogger.WriteLog("人工指令", "归堆作业指令编辑 - 执行归堆：行车" + CraneNo, ParkClassLibrary.LogLevel.Info, this.Text);
                 }
                 catch (Exception ex)
@@ -358,6 +380,7 @@ namespace UACSPopupForm
                     MessageBox.Show(ex.Message);
                 }
             }
+            isPopupMessage = false;
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
@@ -785,7 +808,10 @@ namespace UACSPopupForm
         {
             try
             {
-                this.Close();
+                if (!isPopupMessage)
+                {
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {
