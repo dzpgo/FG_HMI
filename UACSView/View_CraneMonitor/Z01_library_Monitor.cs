@@ -22,6 +22,7 @@ namespace UACSView.View_CraneMonitor
 {
     public partial class Z01_library_Monitor : FormBase
     {
+        #region 全局变量
         private conAreaModel AreaInStockZ12;
         private List<conCraneStatus> lstConCraneStatusPanel = new List<conCraneStatus>();
         private List<conCrane> listConCraneDisplay = new List<conCrane>();
@@ -62,8 +63,8 @@ namespace UACSView.View_CraneMonitor
         /// 4号行车X坐标
         /// </summary>
         private string CraneA4_X { get; set; }
-
-        private List<string> listReCoilUnit = new List<string>();
+        private List<string> listReCoilUnit = new List<string>(); 
+        #endregion
 
         #region TAG配置
         private TagDataProvider tagDataProvider = new TagDataProvider();
@@ -111,7 +112,6 @@ namespace UACSView.View_CraneMonitor
             //btnCrane_3_WaterStatus.Name = craneNo_1_3;
             
         }
-
         void btnCrane_1_WaterStatus_Click(object sender, EventArgs e)
         {
             //检查
@@ -125,7 +125,6 @@ namespace UACSView.View_CraneMonitor
             SubFrmLetOutWater frm = new SubFrmLetOutWater(btn.Name);
             frm.ShowDialog();
         }
-
         protected override CreateParams CreateParams
         {
             get
@@ -135,6 +134,12 @@ namespace UACSView.View_CraneMonitor
                 return cp;
             }
         }
+
+        /// <summary>
+        /// 初始化加载
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void A_library_Monitor_Load(object sender, EventArgs e)
         {
             tagDataProvider.ServiceName = "iplature";
@@ -209,6 +214,7 @@ namespace UACSView.View_CraneMonitor
             timer_InitializeLoad.Enabled = true;
             timer_InitializeLoad.Interval = 100;
 
+            //检修状态
             GetOrederTypeStatus();
         }
 
