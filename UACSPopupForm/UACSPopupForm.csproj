@@ -70,6 +70,12 @@
     <Compile Include="CraneMonitor\CoilAway.Designer.cs">
       <DependentUpon>CoilAway.cs</DependentUpon>
     </Compile>
+    <Compile Include="CraneMonitor\FrmCorrectionHeight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\FrmCorrectionHeight.Designer.cs">
+      <DependentUpon>FrmCorrectionHeight.cs</DependentUpon>
+    </Compile>
     <Compile Include="CraneMonitor\FrmCraneConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,9 @@
   <ItemGroup>
     <EmbeddedResource Include="CraneMonitor\CoilAway.resx">
       <DependentUpon>CoilAway.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\FrmCorrectionHeight.resx">
+      <DependentUpon>FrmCorrectionHeight.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CraneMonitor\FrmCraneConfig.resx">
       <DependentUpon>FrmCraneConfig.cs</DependentUpon>

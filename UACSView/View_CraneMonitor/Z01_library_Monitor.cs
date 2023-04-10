@@ -26,7 +26,6 @@ namespace UACSView.View_CraneMonitor
         private List<conCraneStatus> lstConCraneStatusPanel = new List<conCraneStatus>();
         private List<conCrane> listConCraneDisplay = new List<conCrane>();
         private List<string> listCraneNo = new List<string>();
-
         private FrmReCoilUnit frmReCoilUnit;
         private FrmMoreStock form;
         private conAreaModel areaModel;
@@ -35,22 +34,34 @@ namespace UACSView.View_CraneMonitor
         private conParkingCarHeadModel parkingCarHeadModel;
         private CraneStatusInBay craneStatusInBay;
         private CraneStatusBase craneStatusBase = new CraneStatusBase();
-
         private static FrmSeekCoil frmSeekCoil;
         private conStockSaddleModel saddleInStock_Z11_Z12;
         private conOffinePackingSaddleModel saddleInStock_Z21;
-
         private bool isShowCurrentBayXY = false;    //是否显示鼠标位置的XY
         private bool tabActived = true;             //是否在当前画面显示
-
         private string craneNo_2_1 = "1";
         private string craneNo_2_2 = "2";
         private string craneNo_2_3 = "3";
         private string craneNo_2_4 = "4";
-
         private const string D102ENTRY = "D102-WR";
         private const string YSLEXIT = "YSL-WC";
         private bool IsRecondition = false;
+        /// <summary>
+        /// 1号行车X坐标
+        /// </summary>
+        private string CraneA1_X { get; set; }
+        /// <summary>
+        /// 2号行车X坐标
+        /// </summary>
+        private string CraneA2_X { get; set; }
+        /// <summary>
+        /// 3号行车X坐标
+        /// </summary>
+        private string CraneA3_X { get; set; }
+        /// <summary>
+        /// 4号行车X坐标
+        /// </summary>
+        private string CraneA4_X { get; set; }
 
         private List<string> listReCoilUnit = new List<string>();
 
@@ -136,10 +147,14 @@ namespace UACSView.View_CraneMonitor
 
             AreaInStockZ12 = new conAreaModel();
             saddleInStock_Z21 = new conOffinePackingSaddleModel();
-
+            
             //btnCrane_1_WaterStatus.Click += btnCrane_1_WaterStatus_Click;
             //btnCrane_2_WaterStatus.Click += btnCrane_1_WaterStatus_Click;
-            //btnCrane_3_WaterStatus.Click += btnCrane_1_WaterStatus_Click;          
+            //btnCrane_3_WaterStatus.Click += btnCrane_1_WaterStatus_Click;
+            CraneA1_X = ""; 
+            CraneA2_X = ""; 
+            CraneA3_X = ""; 
+            CraneA4_X = "";
 
             //行车显示控件配置
 
@@ -194,7 +209,7 @@ namespace UACSView.View_CraneMonitor
             timer_InitializeLoad.Enabled = true;
             timer_InitializeLoad.Interval = 100;
 
-
+            GetOrederTypeStatus();
         }
 
         private void LoadAreaInfo()
@@ -374,6 +389,22 @@ namespace UACSView.View_CraneMonitor
                 {
                     conCraneStatus.RefreshControlInvoke ConCraneStatusPanel_Invoke = new conCraneStatus.RefreshControlInvoke(conCraneStatusPanel.RefreshControl);
                     conCraneStatusPanel.BeginInvoke(ConCraneStatusPanel_Invoke, new Object[] { craneStatusInBay.DicCranePLCStatusBase[conCraneStatusPanel.CraneNO].Clone() });
+                    if (conCraneStatusPanel.CraneNO.Equals("1"))
+                    {
+                        CraneA1_X = conCraneStatusPanel.AX;
+                    }
+                    else if (conCraneStatusPanel.CraneNO.Equals("2"))
+                    {
+                        CraneA2_X = conCraneStatusPanel.AX;
+                    }
+                    else if (conCraneStatusPanel.CraneNO.Equals("3"))
+                    {
+                        CraneA3_X = conCraneStatusPanel.AX;
+                    }
+                    else if (conCraneStatusPanel.CraneNO.Equals("4"))
+                    {
+                        CraneA4_X = conCraneStatusPanel.AX;
+                    }
                 }
                 //--------------------------行车状态控件刷新-------------------------------------------
                 foreach (conCrane conCraneVisual in listConCraneDisplay)
@@ -995,7 +1026,42 @@ namespace UACSView.View_CraneMonitor
             {
             }
         }
-
+        /// <summary>
+        /// 行车检修状态   ORDER_TYPE = 指令类型 11:归堆  21：装车  41：清扫  X1：登车  51：检修  99：空闲
+        /// </summary>
+        private void GetOrederTypeStatus()
+        {
+            string sqlText = @"SELECT CRANE_NO,ORDER_TYPE,CMD_STATUS FROM UACS_CRANE_ORDER_CURRENT WHERE ORDER_TYPE = '51' ORDER BY CRANE_NO ";
+            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
+            {
+                while (rdr.Read())
+                {
+                    if (rdr["CRANE_NO"] != System.DBNull.Value && rdr["ORDER_TYPE"] != System.DBNull.Value)
+                    {
+                        if (rdr["ORDER_TYPE"].ToString().Trim().Equals("51"))
+                        {
+                            if (rdr["CRANE_NO"].ToString().Trim().Equals("1"))
+                            {
+                                Crane_1 = 1;
+                            }
+                            else if (rdr["CRANE_NO"].ToString().Trim().Equals("2"))
+                            {
+                                Crane_2 = 1;
+                            }
+                            else if (rdr["CRANE_NO"].ToString().Trim().Equals("3"))
+                            {
+                                Crane_3 = 1;
+                            }
+                            else if (rdr["CRANE_NO"].ToString().Trim().Equals("4"))
+                            {
+                                Crane_4 = 1;
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
 
         private void GetStatus()
         {
@@ -1583,6 +1649,10 @@ namespace UACSView.View_CraneMonitor
             Recondition frm = new Recondition(this);
             //frm.CraneNo = craneNO;
             frm.BayNO = "A";
+            frm.CraneA1_X = CraneA1_X;
+            frm.CraneA2_X = CraneA2_X;
+            frm.CraneA3_X = CraneA3_X;
+            frm.CraneA4_X = CraneA4_X;
             frm.ShowDialog();
         }
     }

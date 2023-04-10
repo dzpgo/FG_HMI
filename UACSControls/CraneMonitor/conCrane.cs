@@ -15,6 +15,7 @@ using Baosight.iSuperframe.TagService;
 using Microsoft.VisualBasic;
 using ParkClassLibrary;
 using UACS;
+using UACSPopupForm.CraneMonitor;
 
 namespace UACSControls
 {
@@ -336,15 +337,18 @@ namespace UACSControls
             //tagDataProvider.SetData("RESET_CRANE_Z", tagValue);
             //ParkClassLibrary.HMILogger.WriteLog("标高", craneNO + "行车矫正高度为：" + s + "mm", ParkClassLibrary.LogLevel.Info, "主监控");
             //确认提示
-            MessageBoxButtons btn = MessageBoxButtons.OKCancel;
-            DialogResult drmsg = MessageBox.Show("确认是否矫正高度？", "提示", btn, MessageBoxIcon.Asterisk);
-            if (drmsg == DialogResult.OK)
-            {
-                var tagValue = craneNO + ",20";
-                var tag_CraneMode = craneNO + "_DownLoadShortCommand";
-                tagDataProvider.SetData(tag_CraneMode, tagValue);
-                ParkClassLibrary.HMILogger.WriteLog("标高", craneNO + "行车矫正高度为：" + tagValue, ParkClassLibrary.LogLevel.Info, "主监控");
-            }
+            //MessageBoxButtons btn = MessageBoxButtons.OKCancel;
+            //DialogResult drmsg = MessageBox.Show("确认是否矫正高度？", "提示", btn, MessageBoxIcon.Asterisk);
+            //if (drmsg == DialogResult.OK)
+            //{
+            //    var tagValue = craneNO + ",20";
+            //    var tag_CraneMode = craneNO + "_DownLoadShortCommand";
+            //    tagDataProvider.SetData(tag_CraneMode, tagValue);
+            //    ParkClassLibrary.HMILogger.WriteLog("标高", craneNO + "行车矫正高度为：" + tagValue, ParkClassLibrary.LogLevel.Info, "主监控");
+            //}
+            FrmCorrectionHeight frmCorrectionHeight = new FrmCorrectionHeight();
+            frmCorrectionHeight.CraneNo = craneNO;
+            frmCorrectionHeight.Show();
         }
 
         private void 避让ToolStripMenuItem_Click(object sender, EventArgs e)

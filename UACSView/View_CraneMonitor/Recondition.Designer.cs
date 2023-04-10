@@ -29,63 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Recondition));
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnFinish = new System.Windows.Forms.Button();
-            this.btnConfirm = new System.Windows.Forms.Button();
             this.txt_Act_X = new System.Windows.Forms.TextBox();
             this.cmCraneNO = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnFinish = new System.Windows.Forms.Button();
+            this.btnConfirm = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCancel.BackgroundImage")));
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCancel.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCancel.Location = new System.Drawing.Point(267, 197);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 33);
-            this.btnCancel.TabIndex = 97;
-            this.btnCancel.Text = "取消";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnFinish
-            // 
-            this.btnFinish.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFinish.BackgroundImage")));
-            this.btnFinish.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnFinish.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnFinish.Location = new System.Drawing.Point(143, 197);
-            this.btnFinish.Name = "btnFinish";
-            this.btnFinish.Size = new System.Drawing.Size(100, 33);
-            this.btnFinish.TabIndex = 96;
-            this.btnFinish.Text = "检修完成";
-            this.btnFinish.UseVisualStyleBackColor = true;
-            this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
-            // 
-            // btnConfirm
-            // 
-            this.btnConfirm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConfirm.BackgroundImage")));
-            this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnConfirm.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnConfirm.Location = new System.Drawing.Point(16, 197);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(100, 33);
-            this.btnConfirm.TabIndex = 95;
-            this.btnConfirm.Text = "确定";
-            this.btnConfirm.UseVisualStyleBackColor = true;
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // txt_Act_X
             // 
             this.txt_Act_X.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_Act_X.ForeColor = System.Drawing.Color.Silver;
+            this.txt_Act_X.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txt_Act_X.Location = new System.Drawing.Point(145, 130);
             this.txt_Act_X.Name = "txt_Act_X";
             this.txt_Act_X.Size = new System.Drawing.Size(141, 29);
-            this.txt_Act_X.TabIndex = 94;
+            this.txt_Act_X.TabIndex = 2;
             // 
             // cmCraneNO
             // 
@@ -96,7 +57,8 @@
             this.cmCraneNO.Location = new System.Drawing.Point(145, 75);
             this.cmCraneNO.Name = "cmCraneNO";
             this.cmCraneNO.Size = new System.Drawing.Size(141, 30);
-            this.cmCraneNO.TabIndex = 93;
+            this.cmCraneNO.TabIndex = 1;
+            this.cmCraneNO.SelectedIndexChanged += new System.EventHandler(this.cmCraneNO_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -127,6 +89,45 @@
             this.label1.Size = new System.Drawing.Size(90, 46);
             this.label1.TabIndex = 90;
             this.label1.Text = "检修";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCancel.BackgroundImage")));
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancel.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCancel.Location = new System.Drawing.Point(267, 197);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(100, 33);
+            this.btnCancel.TabIndex = 5;
+            this.btnCancel.Text = "取消";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnFinish
+            // 
+            this.btnFinish.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFinish.BackgroundImage")));
+            this.btnFinish.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnFinish.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnFinish.Location = new System.Drawing.Point(143, 197);
+            this.btnFinish.Name = "btnFinish";
+            this.btnFinish.Size = new System.Drawing.Size(100, 33);
+            this.btnFinish.TabIndex = 4;
+            this.btnFinish.Text = "检修完成";
+            this.btnFinish.UseVisualStyleBackColor = true;
+            this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConfirm.BackgroundImage")));
+            this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnConfirm.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnConfirm.Location = new System.Drawing.Point(16, 197);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(100, 33);
+            this.btnConfirm.TabIndex = 3;
+            this.btnConfirm.Text = "确定";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // Recondition
             // 

@@ -106,6 +106,7 @@ namespace UACSControls
         private List<string> listCrane = new List<string>();
         private CraneStatusBase craneStatusBase = new CraneStatusBase();
         public delegate void RefreshControlInvoke(CraneStatusBase theCraneStatusBase);
+        public string AX { get; set; }
 
         #endregion
 
@@ -147,7 +148,7 @@ namespace UACSControls
                 txt_ZACT.Text = craneStatusBase.ZAct.ToString("0,000");
                 //夹钳温度
                 //txt_CraneOrder.Text = craneStatusBase.COIL_TEMPERATURE.ToString() + "°";
-
+                AX = txt_XACT.Text;
                 //当前重量
                 tb_Tag_WEIGHT_LOADED.Text = craneStatusBase.WeightLoaded.ToString();
                 //有卷信号灯

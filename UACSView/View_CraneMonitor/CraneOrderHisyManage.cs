@@ -53,11 +53,11 @@ namespace UACSView
                 //this.panel2.BackColor = Color.LightSteelBlue;  //UACSDAL.ColorSln.FormBgColor;
                 //绑定下拉框
                 BindCombox();                
-                //
-                this.dateTimePicker1_recTime.Value = DateTime.Now.AddDays(-1);
+                //开始日期
+                this.dateTimePicker1_recTime.Value = DateTime.Now;
 
                 ManagerHelper.DataGridViewInit(dataGridView1);
-                dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 CreatDgvHeader(dataGridView1, dgvColumnsName, dgvHeaderText);
                 GetOrderData();
                 //行车指令
