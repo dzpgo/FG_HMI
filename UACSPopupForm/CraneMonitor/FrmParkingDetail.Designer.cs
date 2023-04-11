@@ -249,7 +249,8 @@
             // button1
             // 
             this.button1.BackgroundImage = global::UACSPopupForm.Properties.Resources.bg_btn;
-            this.button1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(990, 569);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 40);
@@ -306,7 +307,8 @@
             // bt_Refurbish
             // 
             this.bt_Refurbish.BackgroundImage = global::UACSPopupForm.Properties.Resources.bg_btn;
-            this.bt_Refurbish.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_Refurbish.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.bt_Refurbish.ForeColor = System.Drawing.Color.White;
             this.bt_Refurbish.Location = new System.Drawing.Point(1081, 569);
             this.bt_Refurbish.Name = "bt_Refurbish";
             this.bt_Refurbish.Size = new System.Drawing.Size(85, 40);
@@ -318,7 +320,8 @@
             // bt_Save
             // 
             this.bt_Save.BackgroundImage = global::UACSPopupForm.Properties.Resources.bg_btn;
-            this.bt_Save.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_Save.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.bt_Save.ForeColor = System.Drawing.Color.White;
             this.bt_Save.Location = new System.Drawing.Point(1172, 569);
             this.bt_Save.Name = "bt_Save";
             this.bt_Save.Size = new System.Drawing.Size(85, 40);

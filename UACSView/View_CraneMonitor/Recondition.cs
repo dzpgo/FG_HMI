@@ -97,6 +97,11 @@ namespace UACSView.View_CraneMonitor
             if (bayNO == "A")
             {
                 dr = dt.NewRow();
+                dr["TypeValue"] = "0";
+                dr["TypeName"] = "请选择行车";
+                dt.Rows.Add(dr);
+
+                dr = dt.NewRow();
                 dr["TypeValue"] = "1";
                 dr["TypeName"] = "1#行车";
                 dt.Rows.Add(dr);
@@ -129,6 +134,11 @@ namespace UACSView.View_CraneMonitor
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             isPopupMessage = true;
+            if (cmCraneNO.SelectedValue.ToString().Trim().Equals("0"))
+            {
+                MessageBox.Show("请选择行车!");
+                return;
+            }
             if (!string.IsNullOrEmpty(cmCraneNO.Text.Trim()) && !string.IsNullOrEmpty(txt_Act_X.Text.Trim())&& Convert.ToInt32(txt_Act_X.Text) > 0 && Convert.ToInt32(txt_Act_X.Text) < 478000)
             {
                 recondition = cmCraneNO.SelectedValue.ToString().Trim() + "_CraneStop";
@@ -174,6 +184,11 @@ namespace UACSView.View_CraneMonitor
             isPopupMessage = true;
             if (cmCraneNO.Text != "")
             {
+                if (cmCraneNO.SelectedValue.ToString().Trim().Equals("0"))
+                {
+                    MessageBox.Show("请选择行车!");
+                    return;
+                }
                 recondition = cmCraneNO.SelectedValue.ToString().Trim() + "_CraneStop";
                 DialogResult dr = MessageBox.Show("确认检修完成？", "操作提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                 if (dr == DialogResult.OK)

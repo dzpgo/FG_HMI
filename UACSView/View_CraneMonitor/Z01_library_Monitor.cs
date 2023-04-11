@@ -17,6 +17,7 @@ using UACSDAL;
 using System.Threading;
 using System.Runtime.InteropServices;
 using System.Drawing.Drawing2D;
+using UACSPopupForm.CraneMonitor;
 
 namespace UACSView.View_CraneMonitor
 {
@@ -47,6 +48,11 @@ namespace UACSView.View_CraneMonitor
         private const string D102ENTRY = "D102-WR";
         private const string YSLEXIT = "YSL-WC";
         private bool IsRecondition = false;
+        /// <summary>
+        /// //清扫按钮背景闪烁
+        /// </summary>
+        private bool isCubicleClean = false;
+        private bool isCubicleCleanRepeat = false;
         /// <summary>
         /// 1号行车X坐标
         /// </summary>
@@ -333,6 +339,7 @@ namespace UACSView.View_CraneMonitor
 
             try
             {
+                #region 行车、检修、清扫闪烁
                 if (Crane_1.Equals(1))
                 {
                     conCrane2_1.BackColor = Color.Tomato;
@@ -353,7 +360,7 @@ namespace UACSView.View_CraneMonitor
                     conCrane2_4.BackColor = Color.Tomato;
                     //conCrane2_4.BackgroundImage = UACSControls.Resource1.行车_Stop;
                 }
-                //检修中按钮变红
+                //检修中按钮变红，清扫中按钮变红
                 if (Crane_1.Equals(1) || Crane_2.Equals(1) || Crane_3.Equals(1) || Crane_4.Equals(1))
                 {
                     if (IsRecondition)
@@ -371,6 +378,27 @@ namespace UACSView.View_CraneMonitor
                 {
                     bt_Recondition.BackColor = Color.LightSteelBlue;
                 }
+
+                if (isCubicleClean)
+                {
+                    if (isCubicleCleanRepeat)
+                    {
+                        bt_CraneClean.BackColor = Color.Red;
+                        isCubicleCleanRepeat = false;
+                    }
+                    else
+                    {
+                        bt_CraneClean.BackColor = Color.LightSteelBlue;
+                        isCubicleCleanRepeat = true;
+                    }
+                }
+                else
+                    bt_CraneClean.BackColor = Color.LightSteelBlue;
+
+
+                #endregion
+
+                //bt_CraneClean.BackColor = Color.LightSteelBlue;
 
                 //AreaInStockZ12.conInit(panelZ61Bay, constData.bayNo_Z01, SaddleBase.tagServiceName,
                 //       constData.Z01BaySpaceX, constData.Z01BaySpaceY, panelZ61Bay.Width, panelZ61Bay.Height,
@@ -623,6 +651,7 @@ namespace UACSView.View_CraneMonitor
 
             }
         }
+        #region 无用
 
         //private void btnSeekCoil_Click(object sender, EventArgs e)
         //{
@@ -718,14 +747,14 @@ namespace UACSView.View_CraneMonitor
             {
                 //WRUnitSaddle();
                 //WCUnitSaddle();
-                if(unitShowCount == 0)
+                if (unitShowCount == 0)
                 {
                     //btnReCoilUnit.BackColor = Color.LightSteelBlue;
                 }
-                else if(unitShowCount > 0)
+                else if (unitShowCount > 0)
                 {
                     //btnReCoilUnit.BackColor = Color.Red;
-                }           
+                }
             }
             catch (Exception er)
             {
@@ -750,8 +779,8 @@ namespace UACSView.View_CraneMonitor
                     string sqlText = @"SELECT A.STOCK_NO STOCK_NO,A.TAG_ISEMPTY TAG_ISEMPTY FROM UACS_LINE_SADDLE_DEFINE A ";
                     //string sqlText = @"SELECT A.STOCK_NO STOCK_NO,A.TAG_ISEMPTY TAG_ISEMPTY,B.COIL_NO COIL_NO, C.STOCK_STATUS STOCK_STATUS 
                     //           FROM UACS_LINE_SADDLE_DEFINE A ";
-                               //LEFT JOIN UACS_LINE_ENTRY_L2INFO B ON B.UNIT_NO= A.UNIT_NO AND B.SADDLE_L2NAME = A.SADDLE_L2NAME
-                               //LEFT JOIN UACS_YARDMAP_STOCK_DEFINE C ON C.STOCK_NO = A.STOCK_NO
+                    //LEFT JOIN UACS_LINE_ENTRY_L2INFO B ON B.UNIT_NO= A.UNIT_NO AND B.SADDLE_L2NAME = A.SADDLE_L2NAME
+                    //LEFT JOIN UACS_YARDMAP_STOCK_DEFINE C ON C.STOCK_NO = A.STOCK_NO
                     sqlText += "WHERE A.STOCK_NO LIKE '%" + unitStock + "%'";
                     using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
                     {
@@ -761,7 +790,7 @@ namespace UACSView.View_CraneMonitor
                             lstAdress.Add(rdr["TAG_ISEMPTY"].ToString().Trim());
                             arrTagAdress = lstAdress.ToArray<string>();
                             readTags();
-                            if(get_value(rdr["TAG_ISEMPTY"].ToString().Trim()) == "1")
+                            if (get_value(rdr["TAG_ISEMPTY"].ToString().Trim()) == "1")
                             //if (rdr["COIL_NO"] != System.DBNull.Value && rdr["STOCK_STATUS"].ToString() == "2")
                             {
                                 count++;
@@ -779,10 +808,10 @@ namespace UACSView.View_CraneMonitor
                     }
                 }
             }
-            catch(Exception er)
+            catch (Exception er)
             {
                 MessageBox.Show(er.ToString());
-            }           
+            }
         }
 
         private void WCUnitSaddle()
@@ -830,7 +859,7 @@ namespace UACSView.View_CraneMonitor
             catch (Exception er)
             {
                 MessageBox.Show(er.ToString());
-            }                    
+            }
         }
 
         //获取状态
@@ -852,8 +881,8 @@ namespace UACSView.View_CraneMonitor
         //        btnD108ToD208.BackColor = Color.Yellow;
         //    }
         //}
-       
-        
+
+
 
         //private void btnTwoCrane_Click(object sender, EventArgs e)
         //{
@@ -1031,13 +1060,15 @@ namespace UACSView.View_CraneMonitor
             catch (Exception er)
             {
             }
-        }
+        } 
+        #endregion
+
         /// <summary>
         /// 行车检修状态   ORDER_TYPE = 指令类型 11:归堆  21：装车  41：清扫  X1：登车  51：检修  99：空闲
         /// </summary>
         private void GetOrederTypeStatus()
         {
-            string sqlText = @"SELECT CRANE_NO,ORDER_TYPE,CMD_STATUS FROM UACS_CRANE_ORDER_CURRENT WHERE ORDER_TYPE = '51' ORDER BY CRANE_NO ";
+            string sqlText = @"SELECT CRANE_NO,ORDER_TYPE,CMD_STATUS FROM UACS_CRANE_ORDER_CURRENT ORDER BY CRANE_NO ";
             using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
             {
                 while (rdr.Read())
@@ -1062,6 +1093,10 @@ namespace UACSView.View_CraneMonitor
                             {
                                 Crane_4 = 1;
                             }
+                        }
+                        if (rdr["ORDER_TYPE"].ToString().Trim().Equals("41"))
+                        {
+                            isCubicleClean = true;
                         }
                     }
                     
@@ -1091,56 +1126,6 @@ namespace UACSView.View_CraneMonitor
                 //btnTwoCrane.Text = "双车收料：开";
                 //btnTwoCrane.BackColor = Color.Yellow;
             }
-            //if (get_value("TWO_CRANE_GO_D102") == "0")
-            //{
-            //    button2.Text = "双车上料：关";
-            //    button2.BackColor = Color.LightSteelBlue;
-            //}
-            //else if (get_value("TWO_CRANE_GO_D102") == "1")
-            //{
-            //    button2.Text = "双车上料：开";
-            //    button2.BackColor = Color.Yellow;
-            //}
-            //if (get_value("TWO_CRANE_GO_YARD") == "0")
-            //{
-            //    button3.Text = "双车备料：关";
-            //    button3.BackColor = Color.LightSteelBlue;
-            //}
-            //else if (get_value("TWO_CRANE_GO_YARD") == "1")
-            //{
-            //    button3.Text = "双车备料：开";
-            //    button3.BackColor = Color.Yellow;
-            //}
-            //if (get_value("TWO_CRANE_GO_WATER_TANK") == "0")
-            //{
-            //    button4.Text = "双车上水槽：关";
-            //    button4.BackColor = Color.LightSteelBlue;
-            //}
-            //else if (get_value("TWO_CRANE_GO_WATER_TANK") == "1")
-            //{
-            //    button4.Text = "双车上水槽：开";
-            //    button4.BackColor = Color.Yellow;
-            //}
-            //if (get_value("TWO_CRANE_GO_COLDCOIL") == "0")
-            //{
-            //    button5.Text = "1-2收冷卷：关";
-            //    button5.BackColor = Color.LightSteelBlue;
-            //}
-            //else if (get_value("TWO_CRANE_GO_COLDCOIL") == "1")
-            //{
-            //    button5.Text = "1-2收冷卷：开";
-            //    button5.BackColor = Color.Yellow;
-            //}
-            //if (get_value("by12") == "1")
-            //{
-            //    button6.Text = "夹钳区域：关";
-            //    button6.BackColor = Color.LightSteelBlue;
-            //}
-            //else if (get_value("by12") == "0")
-            //{
-            //    button6.Text = "夹钳区域：开";
-            //    button6.BackColor = Color.Yellow;
-            //}
         }
 
         private void UpdateMessage()
@@ -1160,6 +1145,7 @@ namespace UACSView.View_CraneMonitor
             }
         }
 
+        #region MyRegion
         private void getMode()
         {
             //string sql1 = @"SELECT SEQ_VALUE FROM UACS_SEQ_CONFIG WHERE SEQ_NAME = '2_1_CLTS_MODE'";
@@ -1228,7 +1214,8 @@ namespace UACSView.View_CraneMonitor
             //    }
             //}
 
-        }
+        } 
+        #endregion
 
         #region 检修时更改行车背景颜色
 
@@ -1310,6 +1297,23 @@ namespace UACSView.View_CraneMonitor
                 Crane_4 = 0;
             }
         }
+        /// <summary>
+        /// 清扫按钮背景变色
+        /// </summary>
+        /// <returns></returns>
+        public void UpdaeCubicleClean(string CraneNO)
+        {
+            isCubicleClean = true;
+        }
+        /// <summary>
+        /// 取消清扫按钮背景变色
+        /// </summary>
+        /// <returns></returns>
+        public void CancelCubicleClean(string CraneNO)
+        {
+            isCubicleClean = false;
+        }
+
         #endregion
 
         #region 代码弃用
@@ -1659,6 +1663,17 @@ namespace UACSView.View_CraneMonitor
             frm.CraneA2_X = CraneA2_X;
             frm.CraneA3_X = CraneA3_X;
             frm.CraneA4_X = CraneA4_X;
+            frm.ShowDialog();
+        }
+        /// <summary>
+        /// 清扫
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bt_CraneClean_Click(object sender, EventArgs e)
+        {
+            FrmCubicleClean frm = new FrmCubicleClean(this);
+            //frm.CraneNo = craneNO;
             frm.ShowDialog();
         }
     }

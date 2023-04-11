@@ -279,6 +279,11 @@ namespace UACSDAL
             {
                 return STATUS_COIL_LIFTED_Desc;
             }
+            //工位清扫= 055
+            else if (craneStatus == STATUS_CUBICLE_CLEAN)
+            {
+                return STATUS_CUBICLE_CLEAN_Desc;
+            }
             //重载起升过程= 060
             else if (craneStatus == STATUS_LIFT_COIL_UP_PHASE)
             {
@@ -425,6 +430,8 @@ namespace UACSDAL
         public const long STATUS_LIFT_COIL_DOWN_PHASE = 40;
         //空载取料= 050
         public const long STATUS_COIL_LIFTED = 50;
+        //工位清扫= 055
+        public const long STATUS_CUBICLE_CLEAN = 55;
         //取料上升过程= 060
         public const long STATUS_LIFT_COIL_UP_PHASE = 60;
         //匹重调磁(重载称重)一一065
@@ -459,6 +466,8 @@ namespace UACSDAL
         public const string STATUS_LIFT_COIL_DOWN_PHASE_Desc = "取料下降";
         //钢卷起吊= 050
         public const string STATUS_COIL_LIFTED_Desc = "空载取料";
+        //工位清扫= 055
+        public const string STATUS_CUBICLE_CLEAN_Desc = "工位清扫";
         //重载起升过程= 060
         public const string STATUS_LIFT_COIL_UP_PHASE_Desc = "取料上升";
         //匹重调磁(重载称重)= 065

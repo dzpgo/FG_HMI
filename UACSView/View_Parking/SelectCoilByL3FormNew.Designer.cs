@@ -34,8 +34,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnQuery = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tbL3_TASK_NO = new System.Windows.Forms.TextBox();
             this.tbCAR_NO = new System.Windows.Forms.TextBox();
             this.tbPLAN_NO = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -126,6 +124,10 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.dtp_StartTime = new System.Windows.Forms.DateTimePicker();
+            this.label33 = new System.Windows.Forms.Label();
+            this.dtp_EndTime = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -169,10 +171,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.dtp_EndTime);
+            this.groupBox2.Controls.Add(this.label33);
+            this.groupBox2.Controls.Add(this.dtp_StartTime);
+            this.groupBox2.Controls.Add(this.label32);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.btnQuery);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.tbL3_TASK_NO);
             this.groupBox2.Controls.Add(this.tbCAR_NO);
             this.groupBox2.Controls.Add(this.tbPLAN_NO);
             this.groupBox2.Controls.Add(this.label6);
@@ -211,25 +215,6 @@
             this.btnQuery.UseVisualStyleBackColor = false;
             this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label7.Location = new System.Drawing.Point(554, 18);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(94, 21);
-            this.label7.TabIndex = 56;
-            this.label7.Text = "配载任务号:";
-            // 
-            // tbL3_TASK_NO
-            // 
-            this.tbL3_TASK_NO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbL3_TASK_NO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbL3_TASK_NO.Location = new System.Drawing.Point(653, 17);
-            this.tbL3_TASK_NO.Name = "tbL3_TASK_NO";
-            this.tbL3_TASK_NO.Size = new System.Drawing.Size(154, 29);
-            this.tbL3_TASK_NO.TabIndex = 4;
-            // 
             // tbCAR_NO
             // 
             this.tbCAR_NO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -252,7 +237,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label6.Location = new System.Drawing.Point(267, 17);
+            this.label6.Location = new System.Drawing.Point(272, 18);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(94, 21);
             this.label6.TabIndex = 54;
@@ -327,7 +312,7 @@
             this.btnTestSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(137)))), ((int)(((byte)(241)))));
             this.btnTestSubmit.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.btnTestSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnTestSubmit.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
+            this.btnTestSubmit.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
             this.btnTestSubmit.ForeColor = System.Drawing.Color.White;
             this.btnTestSubmit.Location = new System.Drawing.Point(1302, 70);
             this.btnTestSubmit.Name = "btnTestSubmit";
@@ -1186,7 +1171,7 @@
             // 
             this.txtDirection.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.txtDirection.FormattingEnabled = true;
-            this.txtDirection.Location = new System.Drawing.Point(366, 52);
+            this.txtDirection.Location = new System.Drawing.Point(371, 50);
             this.txtDirection.Name = "txtDirection";
             this.txtDirection.Size = new System.Drawing.Size(154, 29);
             this.txtDirection.TabIndex = 53;
@@ -1195,7 +1180,7 @@
             // 
             this.cmb_CarNo.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.cmb_CarNo.FormattingEnabled = true;
-            this.cmb_CarNo.Location = new System.Drawing.Point(366, 13);
+            this.cmb_CarNo.Location = new System.Drawing.Point(371, 13);
             this.cmb_CarNo.Name = "cmb_CarNo";
             this.cmb_CarNo.Size = new System.Drawing.Size(154, 29);
             this.cmb_CarNo.TabIndex = 53;
@@ -1248,7 +1233,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label26.Location = new System.Drawing.Point(314, 18);
+            this.label26.Location = new System.Drawing.Point(319, 18);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(46, 21);
             this.label26.TabIndex = 52;
@@ -1281,7 +1266,7 @@
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label29.Location = new System.Drawing.Point(279, 50);
+            this.label29.Location = new System.Drawing.Point(287, 51);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(78, 21);
             this.label29.TabIndex = 52;
@@ -1298,6 +1283,42 @@
             this.label28.TabIndex = 52;
             this.label28.Text = "车辆类型:";
             this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label32.Location = new System.Drawing.Point(569, 18);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(78, 21);
+            this.label32.TabIndex = 57;
+            this.label32.Text = "开始时间:";
+            // 
+            // dtp_StartTime
+            // 
+            this.dtp_StartTime.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.dtp_StartTime.Location = new System.Drawing.Point(653, 16);
+            this.dtp_StartTime.Name = "dtp_StartTime";
+            this.dtp_StartTime.Size = new System.Drawing.Size(154, 29);
+            this.dtp_StartTime.TabIndex = 58;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label33.Location = new System.Drawing.Point(837, 18);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(78, 21);
+            this.label33.TabIndex = 59;
+            this.label33.Text = "结束时间:";
+            // 
+            // dtp_EndTime
+            // 
+            this.dtp_EndTime.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.dtp_EndTime.Location = new System.Drawing.Point(921, 16);
+            this.dtp_EndTime.Name = "dtp_EndTime";
+            this.dtp_EndTime.Size = new System.Drawing.Size(154, 29);
+            this.dtp_EndTime.TabIndex = 60;
             // 
             // SelectCoilByL3FormNew
             // 
@@ -1331,12 +1352,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnQuery;
-        private System.Windows.Forms.TextBox tbL3_TASK_NO;
         private System.Windows.Forms.TextBox tbPLAN_NO;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbCAR_NO;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.TextBox tbWeight_Sum;
@@ -1425,5 +1444,9 @@
         private System.Windows.Forms.ComboBox cmb_CarNo;
         private System.Windows.Forms.ComboBox cmb_ParKingNO;
         private System.Windows.Forms.Button btnTestSubmit;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.DateTimePicker dtp_StartTime;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.DateTimePicker dtp_EndTime;
     }
 }

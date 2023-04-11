@@ -301,7 +301,7 @@ namespace UACSPopupForm
                     DialogResult dr = MessageBox.Show("已取消归堆，请清空当前行车指令！", "提示", MessageBoxButtons.OK);
                     if (dr == DialogResult.OK)
                     {
-                        //this.Close();
+                        this.Close();
                         //return;
                     }
                     else
@@ -365,7 +365,7 @@ namespace UACSPopupForm
                     DialogResult dr = MessageBox.Show("确认执行归堆，请切换自动模式！", "提示", MessageBoxButtons.OK);
                     if (dr == DialogResult.OK)
                     {
-                        //this.Close();
+                        this.Close();
                         //return;
                     }
                     else

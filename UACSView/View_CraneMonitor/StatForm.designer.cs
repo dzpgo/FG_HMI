@@ -28,33 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbb_CRANE_MODE = new System.Windows.Forms.ComboBox();
+            this.cbb_CRANE_NO = new System.Windows.Forms.ComboBox();
             this.btnExport = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.OPER_ID2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CRANE_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CRANE_MODE2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CMD_SEQ2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.OPER_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CRANE_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CRANE_MODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CMD_SEQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PERCENTAGE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OPER_ID2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CRANE_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CRANE_MODE2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CMD_SEQ2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbb_CRANE_NO = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbb_CRANE_MODE = new System.Windows.Forms.ComboBox();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel2.SuspendLayout();
@@ -84,18 +84,36 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "查询条件";
             // 
+            // cbb_CRANE_MODE
+            // 
+            this.cbb_CRANE_MODE.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbb_CRANE_MODE.FormattingEnabled = true;
+            this.cbb_CRANE_MODE.Location = new System.Drawing.Point(724, 32);
+            this.cbb_CRANE_MODE.Name = "cbb_CRANE_MODE";
+            this.cbb_CRANE_MODE.Size = new System.Drawing.Size(120, 29);
+            this.cbb_CRANE_MODE.TabIndex = 35;
+            // 
+            // cbb_CRANE_NO
+            // 
+            this.cbb_CRANE_NO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbb_CRANE_NO.FormattingEnabled = true;
+            this.cbb_CRANE_NO.Location = new System.Drawing.Point(516, 32);
+            this.cbb_CRANE_NO.Name = "cbb_CRANE_NO";
+            this.cbb_CRANE_NO.Size = new System.Drawing.Size(120, 29);
+            this.cbb_CRANE_NO.TabIndex = 35;
+            // 
             // btnExport
             // 
             this.btnExport.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnExport.BackColor = System.Drawing.Color.White;
             this.btnExport.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
-            this.btnExport.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.btnExport.ForeColor = System.Drawing.Color.Black;
+            this.btnExport.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
+            this.btnExport.ForeColor = System.Drawing.SystemColors.Control;
             this.btnExport.Location = new System.Drawing.Point(1006, 27);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(100, 40);
             this.btnExport.TabIndex = 34;
-            this.btnExport.Text = "行车统计导出";
+            this.btnExport.Text = "统计导出";
             this.btnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExport.UseVisualStyleBackColor = false;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
@@ -109,12 +127,30 @@
             this.label2.TabIndex = 23;
             this.label2.Text = "结束：";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(645, 35);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(90, 21);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "操作模式：";
+            // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.Location = new System.Drawing.Point(297, 32);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(150, 29);
             this.dateTimePicker2.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(453, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 21);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "行车号：";
             // 
             // label4
             // 
@@ -130,8 +166,8 @@
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.button1.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.SystemColors.Control;
             this.button1.Location = new System.Drawing.Point(900, 28);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 40);
@@ -153,14 +189,14 @@
             this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OPER_ID2,
@@ -176,6 +212,37 @@
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(550, 618);
             this.dataGridView2.TabIndex = 11;
+            // 
+            // OPER_ID2
+            // 
+            this.OPER_ID2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.OPER_ID2.DataPropertyName = "OPER_ID2";
+            this.OPER_ID2.Frozen = true;
+            this.OPER_ID2.HeaderText = "序号";
+            this.OPER_ID2.Name = "OPER_ID2";
+            this.OPER_ID2.ReadOnly = true;
+            this.OPER_ID2.Width = 127;
+            // 
+            // CRANE_NO2
+            // 
+            this.CRANE_NO2.DataPropertyName = "CRANE_NO2";
+            this.CRANE_NO2.HeaderText = "行车";
+            this.CRANE_NO2.Name = "CRANE_NO2";
+            this.CRANE_NO2.ReadOnly = true;
+            // 
+            // CRANE_MODE2
+            // 
+            this.CRANE_MODE2.DataPropertyName = "CRANE_MODE2";
+            this.CRANE_MODE2.HeaderText = "吊运模式";
+            this.CRANE_MODE2.Name = "CRANE_MODE2";
+            this.CRANE_MODE2.ReadOnly = true;
+            // 
+            // CMD_SEQ2
+            // 
+            this.CMD_SEQ2.DataPropertyName = "CMD_SEQ2";
+            this.CMD_SEQ2.HeaderText = "吊运总数";
+            this.CMD_SEQ2.Name = "CMD_SEQ2";
+            this.CMD_SEQ2.ReadOnly = true;
             // 
             // panel2
             // 
@@ -207,14 +274,14 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OPER_ID,
@@ -231,11 +298,6 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(550, 618);
             this.dataGridView1.TabIndex = 16;
-            // 
-            // saveFileDialog1
-            // 
-            this.saveFileDialog1.FileName = "*.xls";
-            this.saveFileDialog1.Filter = "(*.xls)|*.xls|(*.xlsx)|*.xlsx";
             // 
             // OPER_ID
             // 
@@ -275,72 +337,10 @@
             this.PERCENTAGE.Name = "PERCENTAGE";
             this.PERCENTAGE.ReadOnly = true;
             // 
-            // OPER_ID2
+            // saveFileDialog1
             // 
-            this.OPER_ID2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.OPER_ID2.DataPropertyName = "OPER_ID2";
-            this.OPER_ID2.Frozen = true;
-            this.OPER_ID2.HeaderText = "序号";
-            this.OPER_ID2.Name = "OPER_ID2";
-            this.OPER_ID2.ReadOnly = true;
-            this.OPER_ID2.Width = 127;
-            // 
-            // CRANE_NO2
-            // 
-            this.CRANE_NO2.DataPropertyName = "CRANE_NO2";
-            this.CRANE_NO2.HeaderText = "行车";
-            this.CRANE_NO2.Name = "CRANE_NO2";
-            this.CRANE_NO2.ReadOnly = true;
-            // 
-            // CRANE_MODE2
-            // 
-            this.CRANE_MODE2.DataPropertyName = "CRANE_MODE2";
-            this.CRANE_MODE2.HeaderText = "吊运模式";
-            this.CRANE_MODE2.Name = "CRANE_MODE2";
-            this.CRANE_MODE2.ReadOnly = true;
-            // 
-            // CMD_SEQ2
-            // 
-            this.CMD_SEQ2.DataPropertyName = "CMD_SEQ2";
-            this.CMD_SEQ2.HeaderText = "吊运总数";
-            this.CMD_SEQ2.Name = "CMD_SEQ2";
-            this.CMD_SEQ2.ReadOnly = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(453, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 21);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "行车号：";
-            // 
-            // cbb_CRANE_NO
-            // 
-            this.cbb_CRANE_NO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbb_CRANE_NO.FormattingEnabled = true;
-            this.cbb_CRANE_NO.Location = new System.Drawing.Point(516, 32);
-            this.cbb_CRANE_NO.Name = "cbb_CRANE_NO";
-            this.cbb_CRANE_NO.Size = new System.Drawing.Size(120, 29);
-            this.cbb_CRANE_NO.TabIndex = 35;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(645, 35);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 21);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "操作模式：";
-            // 
-            // cbb_CRANE_MODE
-            // 
-            this.cbb_CRANE_MODE.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbb_CRANE_MODE.FormattingEnabled = true;
-            this.cbb_CRANE_MODE.Location = new System.Drawing.Point(724, 32);
-            this.cbb_CRANE_MODE.Name = "cbb_CRANE_MODE";
-            this.cbb_CRANE_MODE.Size = new System.Drawing.Size(120, 29);
-            this.cbb_CRANE_MODE.TabIndex = 35;
+            this.saveFileDialog1.FileName = "*.xls";
+            this.saveFileDialog1.Filter = "(*.xls)|*.xls|(*.xlsx)|*.xlsx";
             // 
             // StatForm
             // 

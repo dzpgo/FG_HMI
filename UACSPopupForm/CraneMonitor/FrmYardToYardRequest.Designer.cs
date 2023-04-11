@@ -33,10 +33,6 @@ namespace UACSPopupForm
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.BtnOk = new System.Windows.Forms.Button();
-            this.BtnClose = new System.Windows.Forms.Button();
-            this.btnStockSelect = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -58,6 +54,10 @@ namespace UACSPopupForm
             this.cmb_GridNo = new System.Windows.Forms.ComboBox();
             this.tb_MatCname = new System.Windows.Forms.TextBox();
             this.cmb_LMR = new System.Windows.Forms.ComboBox();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnStockSelect = new System.Windows.Forms.Button();
+            this.BtnClose = new System.Windows.Forms.Button();
+            this.BtnOk = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,56 +104,6 @@ namespace UACSPopupForm
             this.label4.Size = new System.Drawing.Size(107, 25);
             this.label4.TabIndex = 5;
             this.label4.Text = "归堆物料：";
-            // 
-            // BtnOk
-            // 
-            this.BtnOk.BackColor = System.Drawing.Color.DodgerBlue;
-            this.BtnOk.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnOk.BackgroundImage")));
-            this.BtnOk.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.BtnOk.Location = new System.Drawing.Point(61, 487);
-            this.BtnOk.Name = "BtnOk";
-            this.BtnOk.Size = new System.Drawing.Size(101, 49);
-            this.BtnOk.TabIndex = 14;
-            this.BtnOk.Text = "执行归堆";
-            this.BtnOk.UseVisualStyleBackColor = false;
-            this.BtnOk.Click += new System.EventHandler(this.BtnOk_Click);
-            // 
-            // BtnClose
-            // 
-            this.BtnClose.BackColor = System.Drawing.Color.DodgerBlue;
-            this.BtnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnClose.BackgroundImage")));
-            this.BtnClose.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.BtnClose.Location = new System.Drawing.Point(227, 487);
-            this.BtnClose.Name = "BtnClose";
-            this.BtnClose.Size = new System.Drawing.Size(101, 49);
-            this.BtnClose.TabIndex = 15;
-            this.BtnClose.Text = "取消归堆";
-            this.BtnClose.UseVisualStyleBackColor = false;
-            this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
-            // 
-            // btnStockSelect
-            // 
-            this.btnStockSelect.BackgroundImage = global::UACSPopupForm.Properties.Resources.bg_btn;
-            this.btnStockSelect.Location = new System.Drawing.Point(418, 130);
-            this.btnStockSelect.Name = "btnStockSelect";
-            this.btnStockSelect.Size = new System.Drawing.Size(28, 28);
-            this.btnStockSelect.TabIndex = 9;
-            this.btnStockSelect.UseVisualStyleBackColor = true;
-            this.btnStockSelect.Visible = false;
-            this.btnStockSelect.Click += new System.EventHandler(this.btnSelect_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnClear.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClear.BackgroundImage")));
-            this.btnClear.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btnClear.Location = new System.Drawing.Point(393, 487);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(101, 49);
-            this.btnClear.TabIndex = 16;
-            this.btnClear.Text = "关闭";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // label6
             // 
@@ -371,6 +321,59 @@ namespace UACSPopupForm
             this.cmb_LMR.TabIndex = 12;
             this.cmb_LMR.SelectedIndexChanged += new System.EventHandler(this.cmb_GridNo_SelectedIndexChanged);
             // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnClear.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClear.BackgroundImage")));
+            this.btnClear.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(393, 487);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(101, 49);
+            this.btnClear.TabIndex = 16;
+            this.btnClear.Text = "关闭";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnStockSelect
+            // 
+            this.btnStockSelect.BackgroundImage = global::UACSPopupForm.Properties.Resources.bg_btn;
+            this.btnStockSelect.Location = new System.Drawing.Point(418, 130);
+            this.btnStockSelect.Name = "btnStockSelect";
+            this.btnStockSelect.Size = new System.Drawing.Size(28, 28);
+            this.btnStockSelect.TabIndex = 9;
+            this.btnStockSelect.UseVisualStyleBackColor = true;
+            this.btnStockSelect.Visible = false;
+            this.btnStockSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
+            // BtnClose
+            // 
+            this.BtnClose.BackColor = System.Drawing.Color.DodgerBlue;
+            this.BtnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnClose.BackgroundImage")));
+            this.BtnClose.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.BtnClose.ForeColor = System.Drawing.Color.White;
+            this.BtnClose.Location = new System.Drawing.Point(227, 487);
+            this.BtnClose.Name = "BtnClose";
+            this.BtnClose.Size = new System.Drawing.Size(101, 49);
+            this.BtnClose.TabIndex = 15;
+            this.BtnClose.Text = "取消归堆";
+            this.BtnClose.UseVisualStyleBackColor = false;
+            this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            // 
+            // BtnOk
+            // 
+            this.BtnOk.BackColor = System.Drawing.Color.DodgerBlue;
+            this.BtnOk.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnOk.BackgroundImage")));
+            this.BtnOk.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.BtnOk.ForeColor = System.Drawing.Color.White;
+            this.BtnOk.Location = new System.Drawing.Point(61, 487);
+            this.BtnOk.Name = "BtnOk";
+            this.BtnOk.Size = new System.Drawing.Size(101, 49);
+            this.BtnOk.TabIndex = 14;
+            this.BtnOk.Text = "执行归堆";
+            this.BtnOk.UseVisualStyleBackColor = false;
+            this.BtnOk.Click += new System.EventHandler(this.BtnOk_Click);
+            // 
             // FrmYardToYardRequest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -392,7 +395,7 @@ namespace UACSPopupForm
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblCraneYardToYard);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrmYardToYardRequest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

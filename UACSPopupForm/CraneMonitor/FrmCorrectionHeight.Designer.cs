@@ -73,7 +73,8 @@
             // 
             this.btnCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCancel.BackgroundImage")));
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCancel.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCancel.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.Location = new System.Drawing.Point(232, 188);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 33);
@@ -86,7 +87,8 @@
             // 
             this.bt_Submit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bt_Submit.BackgroundImage")));
             this.bt_Submit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bt_Submit.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_Submit.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.bt_Submit.ForeColor = System.Drawing.Color.White;
             this.bt_Submit.Location = new System.Drawing.Point(61, 188);
             this.bt_Submit.Name = "bt_Submit";
             this.bt_Submit.Size = new System.Drawing.Size(100, 33);
@@ -133,7 +135,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(384, 242);
-            this.ControlBox = false;
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmCraneNO);
             this.Controls.Add(this.label2);
@@ -142,7 +143,8 @@
             this.Controls.Add(this.txt_Password);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FrmCorrectionHeight";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "矫正高度";

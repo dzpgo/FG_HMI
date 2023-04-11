@@ -47,6 +47,7 @@
             this.conCraneStatus2_3 = new UACSControls.conCraneStatus();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.bt_CraneClean = new System.Windows.Forms.Button();
             this.bt_Recondition = new System.Windows.Forms.Button();
             this.btnShowXY = new System.Windows.Forms.Button();
             this.btnShowCrane = new System.Windows.Forms.Button();
@@ -170,6 +171,7 @@
             // 
             // conCraneStatus2_4
             // 
+            this.conCraneStatus2_4.AX = null;
             this.conCraneStatus2_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.conCraneStatus2_4.CraneNO = "";
             this.conCraneStatus2_4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -191,6 +193,7 @@
             // 
             // conCraneStatus2_1
             // 
+            this.conCraneStatus2_1.AX = null;
             this.conCraneStatus2_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.conCraneStatus2_1.CraneNO = "";
             this.conCraneStatus2_1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -212,6 +215,7 @@
             // 
             // conCraneStatus2_2
             // 
+            this.conCraneStatus2_2.AX = null;
             this.conCraneStatus2_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.conCraneStatus2_2.CraneNO = "";
             this.conCraneStatus2_2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -233,6 +237,7 @@
             // 
             // conCraneStatus2_3
             // 
+            this.conCraneStatus2_3.AX = null;
             this.conCraneStatus2_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.conCraneStatus2_3.CraneNO = "";
             this.conCraneStatus2_3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -253,6 +258,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.bt_CraneClean);
             this.panel2.Controls.Add(this.bt_Recondition);
             this.panel2.Controls.Add(this.btnShowXY);
             this.panel2.Controls.Add(this.btnShowCrane);
@@ -264,6 +270,20 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1277, 64);
             this.panel2.TabIndex = 5;
+            // 
+            // bt_CraneClean
+            // 
+            this.bt_CraneClean.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_CraneClean.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bt_CraneClean.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_CraneClean.ForeColor = System.Drawing.Color.Black;
+            this.bt_CraneClean.Location = new System.Drawing.Point(953, 35);
+            this.bt_CraneClean.Name = "bt_CraneClean";
+            this.bt_CraneClean.Size = new System.Drawing.Size(75, 23);
+            this.bt_CraneClean.TabIndex = 29;
+            this.bt_CraneClean.Text = "清扫";
+            this.bt_CraneClean.UseVisualStyleBackColor = true;
+            this.bt_CraneClean.Click += new System.EventHandler(this.bt_CraneClean_Click);
             // 
             // bt_Recondition
             // 
@@ -579,5 +599,6 @@
         private System.Windows.Forms.Panel panel_conCraneStatus2_3;
         private UACSControls.conCraneStatus conCraneStatus2_3;
         private System.Windows.Forms.Button bt_Recondition;
+        private System.Windows.Forms.Button bt_CraneClean;
     }
 }

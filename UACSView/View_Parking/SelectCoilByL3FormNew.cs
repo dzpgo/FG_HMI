@@ -116,6 +116,8 @@ namespace UACSView.View_Parking
         /// <param name="e"></param>
         private void SelectCoilByL3FormNew_Load(object sender, EventArgs e)
         {
+            this.dtp_StartTime.Value = DateTime.Now;
+            this.dtp_EndTime.Value = DateTime.Now;
             //加载扫描数据
             RefreshHMILaserOutData();
             //加载L3装车要求
@@ -146,23 +148,23 @@ namespace UACSView.View_Parking
             // 查询L3装车要求
             string strPlanNo = "";
             string strTaskNo = "";
-            if (QueryL3StowagePlan(strCarNo, out strPlanNo, out strTaskNo))
+            if (QueryL3StowagePlan(strCarNo, out strPlanNo))
             {
                 tbCAR_NO.Text = strCarNo;
                 tbPLAN_NO.Text = strPlanNo;
-                tbL3_TASK_NO.Text = strTaskNo;
+                //tbL3_TASK_NO.Text = strTaskNo;
 
                 // 根据L3配载计划，查询装车材料信息
-                DataTable dataTable = BindMatStockByL3Stowage2(false, strCarNo, strPlanNo, strTaskNo);
+                DataTable dataTable = BindMatStockByL3Stowage2(false, strCarNo, strPlanNo);
                 this.dataGridView1.DataSource = dataTable;
             }
             else
             {
                 tbCAR_NO.Text = "无";
                 tbPLAN_NO.Text = "无";
-                tbL3_TASK_NO.Text = "无";
+                //tbL3_TASK_NO.Text = "无";
                 // 初始数据
-                DataTable dataTable = BindMatStockByL3Stowage2(true, "", "", "");
+                DataTable dataTable = BindMatStockByL3Stowage2(true, "", "");
                 this.dataGridView1.DataSource = dataTable;
             }
         }
@@ -208,7 +210,7 @@ namespace UACSView.View_Parking
         private void btnQuery_Click(object sender, EventArgs e)
         {
             UpdateDgvRow(false);
-            this.dataGridView1.DataSource = BindMatStockByL3Stowage2(false, tbCAR_NO.Text, tbPLAN_NO.Text, tbL3_TASK_NO.Text);
+            this.dataGridView1.DataSource = BindMatStockByL3Stowage2(false, tbCAR_NO.Text, tbPLAN_NO.Text);
         }
 
         /// <summary>
@@ -442,13 +444,10 @@ namespace UACSView.View_Parking
         /// <param name="strPlanNo">计划号</param>
         /// <param name="strTaskNo">任务号</param>
         /// <returns></returns>
-        private bool QueryL3StowagePlan(string strCarNo, out string strPlanNo, out string strTaskNo)
+        private bool QueryL3StowagePlan(string strCarNo, out string strPlanNo)
         {
             bool bFounded = false;
-
             strPlanNo = "";
-            strTaskNo = "";
-
             // 查询车号对应的L3装车要求号
             string sqlText = @"SELECT * FROM UACS_TRUCK_STOWAGE_L3 where TRUCK_NO like '{0}'";
             sqlText = string.Format(sqlText, strCarNo);
@@ -457,12 +456,9 @@ namespace UACSView.View_Parking
                 if (rdr.Read())
                 {
                     strPlanNo = rdr["L3_PLAN_NO"].ToString();
-                    strTaskNo = rdr["L3_TASK_NO"].ToString();
-
                     bFounded = true;
                 }
             }
-
             return bFounded;
         }
 
@@ -474,64 +470,35 @@ namespace UACSView.View_Parking
         /// <param name="strPlanNo">配载计划号</param>
         /// <param name="strTaskNo">配载任务号</param>
         /// <returns></returns>
-        private DataTable BindMatStockByL3Stowage2(bool isLoad, string strCarNo, string strPlanNo, string strTaskNo)
+        private DataTable BindMatStockByL3Stowage2(bool isLoad, string strCarNo, string strPlanNo)
         {
-            DataTable dtResult = InitDataTable(dataGridView1);
-            //bool bAddedWhere = false;
-            //string subSql = "SELECT MAT_NO FROM UACS_TRUCK_STOWAGE_L3";
-
+            var startTime = this.dtp_StartTime.Value.ToString("yyyyMMdd000000");  //开始时间
+            var endTime = this.dtp_EndTime.Value.ToString("yyyyMMdd235959");  //结束时间
+            DataTable dtResult = InitDataTable(dataGridView1);            
             // 转换
             if (strPlanNo == "无")
                 strPlanNo = "";
-            if (strTaskNo == "无")
-                strTaskNo = "";
             if (strCarNo == "无")
                 strCarNo = "";
-
-            //if (strCarNo.Length == 0 && strPlanNo.Length == 0 && strTaskNo.Length == 0)
-            //    return dtResult;
 
             DataTable tbL3_MAT_OUT_INFO = new DataTable("UACS_L3_MAT_OUT_INFO");
             string sqlText_All = @" SELECT 0 AS CHECK_COLUMN, WORK_SEQ_NO, OPER_FLAG, PLAN_NO, BOF_NO, CAR_NO, MAT_CODE_1, WEIGHT_1, MAT_CODE_2, WEIGHT_2, MAT_CODE_3, WEIGHT_3,
             MAT_CODE_4, WEIGHT_4, MAT_CODE_5, WEIGHT_5, MAT_CODE_6, WEIGHT_6, MAT_CODE_7, WEIGHT_7, MAT_CODE_8, WEIGHT_8, MAT_CODE_9, WEIGHT_9, MAT_CODE_10, 
             WEIGHT_10, PLAN_STATUS, REC_TIME, UPD_TIME, CYCLE_COUNT, MAT_NET_WT, WT_TIME FROM UACSAPP.UACS_L3_MAT_OUT_INFO 
             WHERE 1 = 1 ";
-            if (!isLoad)
+            sqlText_All += " AND REC_TIME >= '{0}' and REC_TIME <= '{1}' ";
+            if (!string.IsNullOrEmpty(strCarNo))
             {
-                if (!string.IsNullOrEmpty(strCarNo))
-                {
-                    sqlText_All += "AND CAR_NO ='" + strCarNo + "'";
-                }
-                if (!string.IsNullOrEmpty(strPlanNo))
-                {
-                    sqlText_All += "AND PLAN_NO ='" + strPlanNo + "'";
-                }
-                if (!string.IsNullOrEmpty(strTaskNo))
-                {
-                    //sqlText_All += "AND L3_PLAN_NO like '%" + strPlanNo + "%'";
-                }
-
-                //按 计划号>流水号>记录时间>更新时间 降序
-                sqlText_All += " order by WORK_SEQ_NO DESC,PLAN_NO DESC,REC_TIME DESC,UPD_TIME DESC ";
+                sqlText_All += "AND CAR_NO ='" + strCarNo + "'";
             }
-            else
+            if (!string.IsNullOrEmpty(strPlanNo))
             {
-                //初次加载时默认查询倒序30条数据（仅初始化时用）
-                sqlText_All = @"SELECT 0 AS CHECK_COLUMN, WORK_SEQ_NO, OPER_FLAG, PLAN_NO, BOF_NO, CAR_NO, MAT_CODE_1, WEIGHT_1, MAT_CODE_2, WEIGHT_2, MAT_CODE_3, WEIGHT_3,
-                                MAT_CODE_4, WEIGHT_4, MAT_CODE_5, WEIGHT_5, MAT_CODE_6, WEIGHT_6, MAT_CODE_7, WEIGHT_7, MAT_CODE_8, WEIGHT_8, MAT_CODE_9, WEIGHT_9, MAT_CODE_10, 
-                                WEIGHT_10, PLAN_STATUS, REC_TIME, UPD_TIME, CYCLE_COUNT, MAT_NET_WT, WT_TIME
-                                FROM (
-                                SELECT ROW_NUMBER() OVER(ORDER BY WORK_SEQ_NO DESC,PLAN_NO DESC,REC_TIME DESC,UPD_TIME DESC) AS ROWNUM,
-                                0 AS CHECK_COLUMN, WORK_SEQ_NO, OPER_FLAG, PLAN_NO, BOF_NO, CAR_NO, MAT_CODE_1, WEIGHT_1, MAT_CODE_2, WEIGHT_2, MAT_CODE_3, WEIGHT_3,
-                                MAT_CODE_4, WEIGHT_4, MAT_CODE_5, WEIGHT_5, MAT_CODE_6, WEIGHT_6, MAT_CODE_7, WEIGHT_7, MAT_CODE_8, WEIGHT_8, MAT_CODE_9, WEIGHT_9, MAT_CODE_10, 
-                                WEIGHT_10, PLAN_STATUS, REC_TIME, UPD_TIME, CYCLE_COUNT, MAT_NET_WT, WT_TIME FROM UACSAPP.UACS_L3_MAT_OUT_INFO 
-                                ) a 
-                                WHERE ROWNUM > 0 and ROWNUM <=30";
+                sqlText_All += "AND PLAN_NO ='" + strPlanNo + "'";
             }
 
-
-
-
+            //按 计划号>流水号>记录时间>更新时间 降序
+            sqlText_All += " ORDER BY WORK_SEQ_NO DESC,PLAN_NO DESC,REC_TIME DESC,UPD_TIME DESC ";
+            sqlText_All = string.Format(sqlText_All, startTime, endTime);
             // 执行
             using (IDataReader rdr = DBHelper.ExecuteReader(sqlText_All))
             {

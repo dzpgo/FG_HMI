@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ParkClassLibrary;
 using Baosight.iSuperframe.TagService;
 using Baosight.iSuperframe.TagService.Controls;
+using System.Reflection;
 
 namespace UACSPopupForm.CraneMonitor
 {
@@ -63,6 +64,10 @@ namespace UACSPopupForm.CraneMonitor
             dt.Columns.Add("TypeName");
             DataRow dr;
             dr = dt.NewRow();
+            dr["TypeValue"] = "0";
+            dr["TypeName"] = "请选择行车";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
             dr["TypeValue"] = "1";
             dr["TypeName"] = "1#行车";
             dt.Rows.Add(dr);
@@ -81,15 +86,15 @@ namespace UACSPopupForm.CraneMonitor
             cmbBox.DataSource = dt;
             cmbBox.DisplayMember = "TypeName";
             cmbBox.ValueMember = "TypeValue";
-            var iindex = 0;
+            var index = 0;
             if (!string.IsNullOrEmpty(CraneNo))
             {
-                if (CraneNo.Equals("1")) { iindex = 0; }
-                else if (CraneNo.Equals("2")) { iindex = 1; }
-                else if (CraneNo.Equals("3")) { iindex = 2; }
-                else if (CraneNo.Equals("4")) { iindex = 3; }
+                if (CraneNo.Equals("1")) { index = 1; }
+                else if (CraneNo.Equals("2")) { index = 2; }
+                else if (CraneNo.Equals("3")) { index = 3; }
+                else if (CraneNo.Equals("4")) { index = 4; }
             }
-            cmbBox.SelectedIndex = iindex;
+            cmbBox.SelectedIndex = index;
         }
         /// <summary>
         /// 确认
@@ -102,6 +107,11 @@ namespace UACSPopupForm.CraneMonitor
             if (string.IsNullOrEmpty(CraneNo))
             {
                 MessageBox.Show("行车错误！");
+                return;
+            }
+            if (cmCraneNO.SelectedValue.ToString().Trim().Equals("0"))
+            {
+                MessageBox.Show("请选择行车!");
                 return;
             }
             MessageBoxButtons btn = MessageBoxButtons.OKCancel;

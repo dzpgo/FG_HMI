@@ -106,7 +106,6 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.parkLaserOut1 = new ParkingControlLibrary.ParkLaserOut();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView_LASER = new System.Windows.Forms.DataGridView();
             this.ROW_INDEX = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -115,12 +114,6 @@
             this.POINT_Z = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tabPanelParkArea = new System.Windows.Forms.TableLayoutPanel();
-            this.parkZ21B6 = new ParkingControlLibrary.ParkingState();
-            this.parkZ21B5 = new ParkingControlLibrary.ParkingState();
-            this.parkZ21B4 = new ParkingControlLibrary.ParkingState();
-            this.parkZ21B1 = new ParkingControlLibrary.ParkingState();
-            this.parkZ21B3 = new ParkingControlLibrary.ParkingState();
-            this.parkZ21B2 = new ParkingControlLibrary.ParkingState();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -139,6 +132,13 @@
             this.btnCarEnter = new System.Windows.Forms.Button();
             this.button_L3Stowage = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.parkZ21B6 = new ParkingControlLibrary.ParkingState();
+            this.parkZ21B5 = new ParkingControlLibrary.ParkingState();
+            this.parkZ21B4 = new ParkingControlLibrary.ParkingState();
+            this.parkZ21B1 = new ParkingControlLibrary.ParkingState();
+            this.parkZ21B3 = new ParkingControlLibrary.ParkingState();
+            this.parkZ21B2 = new ParkingControlLibrary.ParkingState();
+            this.parkLaserOut1 = new ParkingControlLibrary.ParkLaserOut();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -1022,16 +1022,6 @@
             this.tabPage1.Text = "配载图";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // parkLaserOut1
-            // 
-            this.parkLaserOut1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parkLaserOut1.HasCarSize = true;
-            this.parkLaserOut1.Location = new System.Drawing.Point(3, 3);
-            this.parkLaserOut1.Margin = new System.Windows.Forms.Padding(5);
-            this.parkLaserOut1.Name = "parkLaserOut1";
-            this.parkLaserOut1.Size = new System.Drawing.Size(19404, 19378);
-            this.parkLaserOut1.TabIndex = 3;
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.dataGridView_LASER);
@@ -1072,7 +1062,7 @@
             dataGridViewCellStyle12.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dataGridView_LASER.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridView_LASER.RowTemplate.Height = 23;
-            this.dataGridView_LASER.Size = new System.Drawing.Size(19404, 19378);
+            this.dataGridView_LASER.Size = new System.Drawing.Size(19404, 19386);
             this.dataGridView_LASER.TabIndex = 77;
             // 
             // ROW_INDEX
@@ -1150,68 +1140,6 @@
             this.tabPanelParkArea.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tabPanelParkArea.Size = new System.Drawing.Size(1614, 91);
             this.tabPanelParkArea.TabIndex = 74;
-            // 
-            // parkZ21B6
-            // 
-            this.parkZ21B6.BackColor = System.Drawing.SystemColors.Control;
-            this.parkZ21B6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parkZ21B6.Location = new System.Drawing.Point(97, 4);
-            this.parkZ21B6.Margin = new System.Windows.Forms.Padding(4);
-            this.parkZ21B6.Name = "parkZ21B6";
-            this.parkZ21B6.Size = new System.Drawing.Size(213, 83);
-            this.parkZ21B6.TabIndex = 33;
-            // 
-            // parkZ21B5
-            // 
-            this.parkZ21B5.BackColor = System.Drawing.SystemColors.Control;
-            this.parkZ21B5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parkZ21B5.Location = new System.Drawing.Point(328, 4);
-            this.parkZ21B5.Margin = new System.Windows.Forms.Padding(4);
-            this.parkZ21B5.Name = "parkZ21B5";
-            this.parkZ21B5.Size = new System.Drawing.Size(213, 83);
-            this.parkZ21B5.TabIndex = 34;
-            // 
-            // parkZ21B4
-            // 
-            this.parkZ21B4.BackColor = System.Drawing.SystemColors.Control;
-            this.parkZ21B4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parkZ21B4.Location = new System.Drawing.Point(559, 4);
-            this.parkZ21B4.Margin = new System.Windows.Forms.Padding(4);
-            this.parkZ21B4.Name = "parkZ21B4";
-            this.parkZ21B4.Size = new System.Drawing.Size(213, 83);
-            this.parkZ21B4.TabIndex = 35;
-            // 
-            // parkZ21B1
-            // 
-            this.parkZ21B1.BackColor = System.Drawing.SystemColors.Control;
-            this.parkZ21B1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parkZ21B1.Location = new System.Drawing.Point(1239, 4);
-            this.parkZ21B1.Margin = new System.Windows.Forms.Padding(4);
-            this.parkZ21B1.Name = "parkZ21B1";
-            this.parkZ21B1.Size = new System.Drawing.Size(200, 83);
-            this.parkZ21B1.TabIndex = 38;
-            this.parkZ21B1.Visible = false;
-            // 
-            // parkZ21B3
-            // 
-            this.parkZ21B3.BackColor = System.Drawing.SystemColors.Control;
-            this.parkZ21B3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parkZ21B3.Location = new System.Drawing.Point(790, 4);
-            this.parkZ21B3.Margin = new System.Windows.Forms.Padding(4);
-            this.parkZ21B3.Name = "parkZ21B3";
-            this.parkZ21B3.Size = new System.Drawing.Size(213, 83);
-            this.parkZ21B3.TabIndex = 36;
-            // 
-            // parkZ21B2
-            // 
-            this.parkZ21B2.BackColor = System.Drawing.SystemColors.Control;
-            this.parkZ21B2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parkZ21B2.Location = new System.Drawing.Point(1021, 4);
-            this.parkZ21B2.Margin = new System.Windows.Forms.Padding(4);
-            this.parkZ21B2.Name = "parkZ21B2";
-            this.parkZ21B2.Size = new System.Drawing.Size(200, 83);
-            this.parkZ21B2.TabIndex = 37;
-            this.parkZ21B2.Visible = false;
             // 
             // panel4
             // 
@@ -1316,7 +1244,7 @@
             this.btnReissue.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnReissue.BackgroundImage")));
             this.btnReissue.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnReissue.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnReissue.ForeColor = System.Drawing.Color.Black;
+            this.btnReissue.ForeColor = System.Drawing.Color.White;
             this.btnReissue.Location = new System.Drawing.Point(3, 371);
             this.btnReissue.Name = "btnReissue";
             this.btnReissue.Size = new System.Drawing.Size(100, 36);
@@ -1333,7 +1261,7 @@
             this.button2.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(3, 413);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 39);
@@ -1351,7 +1279,7 @@
             this.btnSeleceByMat.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.btnSeleceByMat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSeleceByMat.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSeleceByMat.ForeColor = System.Drawing.Color.Black;
+            this.btnSeleceByMat.ForeColor = System.Drawing.Color.White;
             this.btnSeleceByMat.Location = new System.Drawing.Point(4, 95);
             this.btnSeleceByMat.Name = "btnSeleceByMat";
             this.btnSeleceByMat.Size = new System.Drawing.Size(99, 40);
@@ -1367,8 +1295,8 @@
             this.btnOperateStrat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(137)))), ((int)(((byte)(241)))));
             this.btnOperateStrat.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.btnOperateStrat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnOperateStrat.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnOperateStrat.ForeColor = System.Drawing.Color.Black;
+            this.btnOperateStrat.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnOperateStrat.ForeColor = System.Drawing.Color.White;
             this.btnOperateStrat.Location = new System.Drawing.Point(4, 141);
             this.btnOperateStrat.Name = "btnOperateStrat";
             this.btnOperateStrat.Size = new System.Drawing.Size(99, 40);
@@ -1384,8 +1312,8 @@
             this.btnOperatePause.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(137)))), ((int)(((byte)(241)))));
             this.btnOperatePause.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.btnOperatePause.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnOperatePause.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnOperatePause.ForeColor = System.Drawing.Color.Black;
+            this.btnOperatePause.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
+            this.btnOperatePause.ForeColor = System.Drawing.Color.White;
             this.btnOperatePause.Location = new System.Drawing.Point(4, 187);
             this.btnOperatePause.Name = "btnOperatePause";
             this.btnOperatePause.Size = new System.Drawing.Size(99, 40);
@@ -1401,8 +1329,8 @@
             this.btnCarFrom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(137)))), ((int)(((byte)(241)))));
             this.btnCarFrom.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.btnCarFrom.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCarFrom.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCarFrom.ForeColor = System.Drawing.Color.Black;
+            this.btnCarFrom.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
+            this.btnCarFrom.ForeColor = System.Drawing.Color.White;
             this.btnCarFrom.Location = new System.Drawing.Point(4, 233);
             this.btnCarFrom.Name = "btnCarFrom";
             this.btnCarFrom.Size = new System.Drawing.Size(99, 40);
@@ -1418,8 +1346,8 @@
             this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(137)))), ((int)(((byte)(241)))));
             this.btnRefresh.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRefresh.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnRefresh.ForeColor = System.Drawing.Color.Black;
+            this.btnRefresh.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
+            this.btnRefresh.ForeColor = System.Drawing.Color.White;
             this.btnRefresh.Location = new System.Drawing.Point(4, 279);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(99, 40);
@@ -1436,7 +1364,7 @@
             this.btnWoodenCar.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.btnWoodenCar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnWoodenCar.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnWoodenCar.ForeColor = System.Drawing.Color.Black;
+            this.btnWoodenCar.ForeColor = System.Drawing.Color.White;
             this.btnWoodenCar.Location = new System.Drawing.Point(4, 325);
             this.btnWoodenCar.Name = "btnWoodenCar";
             this.btnWoodenCar.Size = new System.Drawing.Size(99, 40);
@@ -1471,7 +1399,7 @@
             this.btnCarEnter.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.btnCarEnter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCarEnter.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCarEnter.ForeColor = System.Drawing.Color.Black;
+            this.btnCarEnter.ForeColor = System.Drawing.Color.White;
             this.btnCarEnter.Location = new System.Drawing.Point(4, 49);
             this.btnCarEnter.Name = "btnCarEnter";
             this.btnCarEnter.Size = new System.Drawing.Size(99, 40);
@@ -1488,8 +1416,8 @@
             this.button_L3Stowage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(137)))), ((int)(((byte)(241)))));
             this.button_L3Stowage.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.button_L3Stowage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_L3Stowage.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_L3Stowage.ForeColor = System.Drawing.Color.Black;
+            this.button_L3Stowage.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button_L3Stowage.ForeColor = System.Drawing.Color.White;
             this.button_L3Stowage.Location = new System.Drawing.Point(4, 3);
             this.button_L3Stowage.Name = "button_L3Stowage";
             this.button_L3Stowage.Size = new System.Drawing.Size(99, 40);
@@ -1503,6 +1431,78 @@
             // 
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // parkZ21B6
+            // 
+            this.parkZ21B6.BackColor = System.Drawing.SystemColors.Control;
+            this.parkZ21B6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parkZ21B6.Location = new System.Drawing.Point(97, 4);
+            this.parkZ21B6.Margin = new System.Windows.Forms.Padding(4);
+            this.parkZ21B6.Name = "parkZ21B6";
+            this.parkZ21B6.Size = new System.Drawing.Size(213, 83);
+            this.parkZ21B6.TabIndex = 33;
+            // 
+            // parkZ21B5
+            // 
+            this.parkZ21B5.BackColor = System.Drawing.SystemColors.Control;
+            this.parkZ21B5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parkZ21B5.Location = new System.Drawing.Point(328, 4);
+            this.parkZ21B5.Margin = new System.Windows.Forms.Padding(4);
+            this.parkZ21B5.Name = "parkZ21B5";
+            this.parkZ21B5.Size = new System.Drawing.Size(213, 83);
+            this.parkZ21B5.TabIndex = 34;
+            // 
+            // parkZ21B4
+            // 
+            this.parkZ21B4.BackColor = System.Drawing.SystemColors.Control;
+            this.parkZ21B4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parkZ21B4.Location = new System.Drawing.Point(559, 4);
+            this.parkZ21B4.Margin = new System.Windows.Forms.Padding(4);
+            this.parkZ21B4.Name = "parkZ21B4";
+            this.parkZ21B4.Size = new System.Drawing.Size(213, 83);
+            this.parkZ21B4.TabIndex = 35;
+            // 
+            // parkZ21B1
+            // 
+            this.parkZ21B1.BackColor = System.Drawing.SystemColors.Control;
+            this.parkZ21B1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parkZ21B1.Location = new System.Drawing.Point(1239, 4);
+            this.parkZ21B1.Margin = new System.Windows.Forms.Padding(4);
+            this.parkZ21B1.Name = "parkZ21B1";
+            this.parkZ21B1.Size = new System.Drawing.Size(200, 83);
+            this.parkZ21B1.TabIndex = 38;
+            this.parkZ21B1.Visible = false;
+            // 
+            // parkZ21B3
+            // 
+            this.parkZ21B3.BackColor = System.Drawing.SystemColors.Control;
+            this.parkZ21B3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parkZ21B3.Location = new System.Drawing.Point(790, 4);
+            this.parkZ21B3.Margin = new System.Windows.Forms.Padding(4);
+            this.parkZ21B3.Name = "parkZ21B3";
+            this.parkZ21B3.Size = new System.Drawing.Size(213, 83);
+            this.parkZ21B3.TabIndex = 36;
+            // 
+            // parkZ21B2
+            // 
+            this.parkZ21B2.BackColor = System.Drawing.SystemColors.Control;
+            this.parkZ21B2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parkZ21B2.Location = new System.Drawing.Point(1021, 4);
+            this.parkZ21B2.Margin = new System.Windows.Forms.Padding(4);
+            this.parkZ21B2.Name = "parkZ21B2";
+            this.parkZ21B2.Size = new System.Drawing.Size(200, 83);
+            this.parkZ21B2.TabIndex = 37;
+            this.parkZ21B2.Visible = false;
+            // 
+            // parkLaserOut1
+            // 
+            this.parkLaserOut1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parkLaserOut1.HasCarSize = true;
+            this.parkLaserOut1.Location = new System.Drawing.Point(3, 3);
+            this.parkLaserOut1.Margin = new System.Windows.Forms.Padding(5);
+            this.parkLaserOut1.Name = "parkLaserOut1";
+            this.parkLaserOut1.Size = new System.Drawing.Size(19404, 19378);
+            this.parkLaserOut1.TabIndex = 3;
             // 
             // PorductMatManage
             // 

@@ -242,8 +242,8 @@ namespace UACSParking
                 hasCar = true;
                 hasParkSize = false;
                 RefreshHMI();
-                btnOperateStrat.ForeColor = Color.Black;
-                btnOperatePause.ForeColor = Color.Black;
+                btnOperateStrat.ForeColor = Color.White;  //Color.Black;
+                btnOperatePause.ForeColor = Color.White;  //Color.Black;
             }
             //
             isReadTime = false;
@@ -888,6 +888,7 @@ namespace UACSParking
                     string sqlText_ORDER = @"SELECT A.ORDER_NO,A.ORDER_GROUP_NO,A.EXE_SEQ,A.CMD_STATUS,A.PLAN_NO,B.MAT_CNAME,A.FROM_STOCK_NO,A.REQ_WEIGHT,A.ACT_WEIGHT FROM UACS_ORDER_QUEUE AS A ";
                     sqlText_ORDER += " LEFT JOIN UACS_L3_MAT_INFO AS B ON A.MAT_CODE = B.MAT_CODE ";
                     sqlText_ORDER += " WHERE A.CMD_STATUS = '0' AND A.CAR_NO = '{0}' AND A.TO_STOCK_NO = '{1}' ";
+                    sqlText_ORDER += " ORDER BY A.ORDER_PRIORITY,A.ORDER_NO ";
                     sqlText_ORDER = string.Format(sqlText_ORDER, carNo, cbbPacking.Text.Trim());
                     DataGridViewBindingSource(dataGridView2, sqlText_ORDER);
                     //没找到数据，返回
@@ -1877,6 +1878,7 @@ namespace UACSParking
                     string SQLOder = @"SELECT A.ORDER_NO,B.MAT_CNAME,A.FROM_STOCK_NO,A.TO_STOCK_NO,A.BAY_NO FROM UACS_ORDER_QUEUE AS A ";
                     SQLOder += " LEFT JOIN UACS_L3_MAT_INFO AS B ON A.MAT_CODE = B.MAT_CODE ";
                     SQLOder += " WHERE A.CMD_STATUS = '0' AND A.CAR_NO = '{0}' AND A.TO_STOCK_NO = '{1}' ";
+                    SQLOder += " ORDER BY A.ORDER_PRIORITY,A.ORDER_NO ";
                     SQLOder = string.Format(SQLOder, carNo, parkNO);
                     using (IDataReader odrIn = DBHelper.ExecuteReader(SQLOder))
                     {
@@ -2410,7 +2412,7 @@ namespace UACSParking
                         TagDP.SetData("EV_NEW_PARKING_JOB_RESUME", parkNO);
                         ParkClassLibrary.HMILogger.WriteLog(btnOperateStrat.Text, "作业开始：" + cbbPacking.Text, ParkClassLibrary.LogLevel.Info, this.Text);
                         btnOperateStrat.ForeColor = Color.Green;
-                        btnOperatePause.ForeColor = Color.Black;
+                        btnOperatePause.ForeColor = Color.White;   //Color.Black;
                     }
 
                 }
@@ -2448,13 +2450,13 @@ namespace UACSParking
                 }
                 if (ret) //开始
                 {
-                    btnOperateStrat.ForeColor = Color.Black;
+                    btnOperateStrat.ForeColor = Color.White; //Color.Black;
                     btnOperatePause.ForeColor = Color.Orange;
                 }
                 else
                 {
-                    btnOperatePause.ForeColor = Color.Black;
-                    btnOperateStrat.ForeColor = Color.Black;
+                    btnOperatePause.ForeColor = Color.White; //Color.Black;
+                    btnOperateStrat.ForeColor = Color.White; //Color.Black;
                 }
                 return ret;
             }
@@ -2494,7 +2496,7 @@ namespace UACSParking
                         TagDP.SetData("EV_NEW_PARKING_JOB_PAUSE", parkNO);
                         //TagDP.SetData("EV_NEW_PARKING_Z32_CRANE_ALLOW", parkNO);
                         ParkClassLibrary.HMILogger.WriteLog(btnOperatePause.Text, "作业暂停：" + parkNO, ParkClassLibrary.LogLevel.Info, this.Text);
-                        btnOperateStrat.ForeColor = Color.Black;
+                        btnOperateStrat.ForeColor = Color.White; //Color.Black;
                         btnOperatePause.ForeColor = Color.Orange;
                     }
                 }
