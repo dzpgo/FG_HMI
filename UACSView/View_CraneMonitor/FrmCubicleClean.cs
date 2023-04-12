@@ -237,7 +237,7 @@ namespace UACSView.View_CraneMonitor
                 sql += " WHERE BAY_NO = 'A' AND CRANE_NO = '" + cmb_CraneNO.SelectedValue.ToString().Trim() + "' ";
                 DBHelper.ExecuteNonQuery(sql);
                 //清扫按钮闪烁
-                ALM.UpdaeCubicleClean(cmb_CraneNO.SelectedValue.ToString().Trim());
+                //ALM.UpdaeCubicleClean(cmb_CraneNO.SelectedValue.ToString().Trim());
                 HMILogger.WriteLog("清扫", cmb_CraneNO.Text + "清扫，工位：" + cmb_Cubicle.Text, LogLevel.Info, this.Text);
                 UpdateStatus(cmb_CraneNO.SelectedValue.ToString().Trim(), "41");
                 MessageBox.Show("已选择清扫，请切换自动模式！");
@@ -269,7 +269,7 @@ namespace UACSView.View_CraneMonitor
                 sql += " WHERE BAY_NO = 'A' AND CRANE_NO = '" + cmb_CraneNO.SelectedValue.ToString().Trim() + "' ";
                 DBHelper.ExecuteNonQuery(sql);
                 //取消清扫按钮闪烁
-                ALM.CancelCubicleClean(cmb_CraneNO.SelectedValue.ToString().Trim());
+                //ALM.CancelCubicleClean(cmb_CraneNO.SelectedValue.ToString().Trim());
                 HMILogger.WriteLog("清扫完成", cmb_CraneNO.Text + "清扫完成", LogLevel.Info, this.Text);
                 UpdateStatus(cmb_CraneNO.SelectedValue.ToString().Trim(), "99");
                 MessageBox.Show("清扫完成，请清空行车指令！");

@@ -458,11 +458,20 @@ namespace UACSDAL
                         else
                             tb_MAT_ACT_WGT.Text = numberIsNull;
 
-                        //当次作业重量
-                        if (rdr["MAT_CUR_WGT"] != System.DBNull.Value)
+                        ////当次作业重量
+                        //if (rdr["MAT_CUR_WGT"] != System.DBNull.Value)
+                        //{
+
+                        //    tb_MAT_CUR_WGT.Text = rdr["MAT_CUR_WGT"].ToString();
+                        //}
+                        //else
+                        //    tb_MAT_CUR_WGT.Text = numberIsNull;
+
+                        //前吊作业重量
+                        if (rdr["MAT_LAST_WGT"] != System.DBNull.Value)
                         {
 
-                            tb_MAT_CUR_WGT.Text = rdr["MAT_CUR_WGT"].ToString();
+                            tb_MAT_CUR_WGT.Text = rdr["MAT_LAST_WGT"].ToString();
                         }
                         else
                             tb_MAT_CUR_WGT.Text = numberIsNull;
