@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmb_Query_CarNo = new System.Windows.Forms.ComboBox();
@@ -1057,14 +1057,14 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cbChoice,
@@ -1101,14 +1101,14 @@
             this.GWeight_10,
             this.Act_Weight_10,
             this.TO_STOCK_NO});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
@@ -1554,6 +1554,7 @@
             this.tb_Feed_Weight_10.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.tb_Feed_Weight_10.Location = new System.Drawing.Point(16, 795);
             this.tb_Feed_Weight_10.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_Feed_Weight_10.MaxLength = 5;
             this.tb_Feed_Weight_10.Name = "tb_Feed_Weight_10";
             this.tb_Feed_Weight_10.Size = new System.Drawing.Size(120, 29);
             this.tb_Feed_Weight_10.TabIndex = 128;
@@ -1600,6 +1601,7 @@
             this.tb_Feed_Weight_9.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.tb_Feed_Weight_9.Location = new System.Drawing.Point(16, 715);
             this.tb_Feed_Weight_9.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_Feed_Weight_9.MaxLength = 5;
             this.tb_Feed_Weight_9.Name = "tb_Feed_Weight_9";
             this.tb_Feed_Weight_9.Size = new System.Drawing.Size(120, 29);
             this.tb_Feed_Weight_9.TabIndex = 130;
@@ -1634,7 +1636,7 @@
             this.tb_Feed_Weight_1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tb_Feed_Weight_1.Location = new System.Drawing.Point(16, 34);
             this.tb_Feed_Weight_1.Margin = new System.Windows.Forms.Padding(2);
-            this.tb_Feed_Weight_1.Multiline = true;
+            this.tb_Feed_Weight_1.MaxLength = 5;
             this.tb_Feed_Weight_1.Name = "tb_Feed_Weight_1";
             this.tb_Feed_Weight_1.Size = new System.Drawing.Size(120, 29);
             this.tb_Feed_Weight_1.TabIndex = 107;
@@ -1647,6 +1649,7 @@
             this.tb_Feed_Weight_8.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.tb_Feed_Weight_8.Location = new System.Drawing.Point(16, 630);
             this.tb_Feed_Weight_8.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_Feed_Weight_8.MaxLength = 5;
             this.tb_Feed_Weight_8.Name = "tb_Feed_Weight_8";
             this.tb_Feed_Weight_8.Size = new System.Drawing.Size(120, 29);
             this.tb_Feed_Weight_8.TabIndex = 132;
@@ -1681,6 +1684,7 @@
             this.tb_Feed_Weight_2.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.tb_Feed_Weight_2.Location = new System.Drawing.Point(16, 120);
             this.tb_Feed_Weight_2.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_Feed_Weight_2.MaxLength = 5;
             this.tb_Feed_Weight_2.Name = "tb_Feed_Weight_2";
             this.tb_Feed_Weight_2.Size = new System.Drawing.Size(120, 29);
             this.tb_Feed_Weight_2.TabIndex = 108;
@@ -1693,7 +1697,7 @@
             this.tb_Feed_Weight_7.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.tb_Feed_Weight_7.Location = new System.Drawing.Point(16, 545);
             this.tb_Feed_Weight_7.Margin = new System.Windows.Forms.Padding(2);
-            this.tb_Feed_Weight_7.Multiline = true;
+            this.tb_Feed_Weight_7.MaxLength = 5;
             this.tb_Feed_Weight_7.Name = "tb_Feed_Weight_7";
             this.tb_Feed_Weight_7.Size = new System.Drawing.Size(120, 29);
             this.tb_Feed_Weight_7.TabIndex = 134;
@@ -1706,6 +1710,7 @@
             this.tb_Feed_Weight_3.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.tb_Feed_Weight_3.Location = new System.Drawing.Point(16, 206);
             this.tb_Feed_Weight_3.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_Feed_Weight_3.MaxLength = 5;
             this.tb_Feed_Weight_3.Name = "tb_Feed_Weight_3";
             this.tb_Feed_Weight_3.Size = new System.Drawing.Size(120, 29);
             this.tb_Feed_Weight_3.TabIndex = 113;
@@ -1740,6 +1745,7 @@
             this.tb_Feed_Weight_6.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.tb_Feed_Weight_6.Location = new System.Drawing.Point(16, 460);
             this.tb_Feed_Weight_6.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_Feed_Weight_6.MaxLength = 5;
             this.tb_Feed_Weight_6.Name = "tb_Feed_Weight_6";
             this.tb_Feed_Weight_6.Size = new System.Drawing.Size(120, 29);
             this.tb_Feed_Weight_6.TabIndex = 136;
@@ -1752,6 +1758,7 @@
             this.tb_Feed_Weight_4.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.tb_Feed_Weight_4.Location = new System.Drawing.Point(16, 290);
             this.tb_Feed_Weight_4.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_Feed_Weight_4.MaxLength = 5;
             this.tb_Feed_Weight_4.Name = "tb_Feed_Weight_4";
             this.tb_Feed_Weight_4.Size = new System.Drawing.Size(120, 29);
             this.tb_Feed_Weight_4.TabIndex = 111;
@@ -1808,6 +1815,7 @@
             this.tb_Feed_Weight_5.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.tb_Feed_Weight_5.Location = new System.Drawing.Point(16, 375);
             this.tb_Feed_Weight_5.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_Feed_Weight_5.MaxLength = 5;
             this.tb_Feed_Weight_5.Name = "tb_Feed_Weight_5";
             this.tb_Feed_Weight_5.Size = new System.Drawing.Size(120, 29);
             this.tb_Feed_Weight_5.TabIndex = 109;
