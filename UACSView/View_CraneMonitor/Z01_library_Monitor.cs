@@ -379,21 +379,22 @@ namespace UACSView.View_CraneMonitor
                     bt_Recondition.BackColor = Color.LightSteelBlue;
                 }
 
-                if (isCubicleClean)
-                {
-                    if (isCubicleCleanRepeat)
-                    {
-                        bt_CraneClean.BackColor = Color.Red;
-                        isCubicleCleanRepeat = false;
-                    }
-                    else
-                    {
-                        bt_CraneClean.BackColor = Color.LightSteelBlue;
-                        isCubicleCleanRepeat = true;
-                    }
-                }
-                else
-                    bt_CraneClean.BackColor = Color.LightSteelBlue;
+                //清扫按钮变红，闪烁
+                //if (isCubicleClean)
+                //{
+                //    if (isCubicleCleanRepeat)
+                //    {
+                //        bt_CraneClean.BackColor = Color.Red;
+                //        isCubicleCleanRepeat = false;
+                //    }
+                //    else
+                //    {
+                //        bt_CraneClean.BackColor = Color.LightSteelBlue;
+                //        isCubicleCleanRepeat = true;
+                //    }
+                //}
+                //else
+                //    bt_CraneClean.BackColor = Color.LightSteelBlue;
 
 
                 #endregion

@@ -217,7 +217,7 @@ namespace UACSView.View_CraneMonitor
             {
                 if (dataGridView1.SelectedCells.Count != 0)
                 {
-                    ////得到选中行的索引
+                    //得到选中行的索引
                     int intRow = dataGridView1.SelectedCells[0].RowIndex;
                     ////得到列的索引
                     //int intColumn = dataGridView1.SelectedCells[0].ColumnIndex;
@@ -716,7 +716,7 @@ namespace UACSView.View_CraneMonitor
             if (listAlarm.Count > 0)
             {
                 DataTable tbORDER_QUEUE = new DataTable("UACS_ORDER_QUEUE");
-                string SQL_ORDER = @"SELECT ORDER_NO,PLAN_NO,MAT_CODE,CAL_WEIGHT,ACT_WEIGHT,TO_STOCK_NO FROM UACS_ORDER_QUEUE ";
+                string SQL_ORDER = @"SELECT ORDER_NO,PLAN_NO,MAT_CODE,SCRAP_CODE,CAL_WEIGHT,ACT_WEIGHT,TO_STOCK_NO FROM UACS_ORDER_QUEUE ";
                 SQL_ORDER += " WHERE PLAN_NO IN (";
                 foreach (string item in listAlarm)
                 {
@@ -737,43 +737,43 @@ namespace UACSView.View_CraneMonitor
                         {
                             if (L3dataRow["PLAN_NO"].ToString().Equals(OQdataRow["PLAN_NO"].ToString()))
                             {
-                                if (L3dataRow["MAT_CODE_1"].ToString().Equals(OQdataRow["MAT_CODE"].ToString()))
+                                if (L3dataRow["MAT_CODE_1"].ToString().Equals(OQdataRow["SCRAP_CODE"].ToString()))
                                 {
                                     L3dataRow["Act_Weight_1"] = OQdataRow["ACT_WEIGHT"].ToString();
                                 }
-                                else if (L3dataRow["MAT_CODE_2"].ToString().Equals(OQdataRow["MAT_CODE"].ToString()))
+                                else if (L3dataRow["MAT_CODE_2"].ToString().Equals(OQdataRow["SCRAP_CODE"].ToString()))
                                 {
                                     L3dataRow["Act_Weight_2"] = OQdataRow["ACT_WEIGHT"].ToString();
                                 }
-                                else if (L3dataRow["MAT_CODE_3"].ToString().Equals(OQdataRow["MAT_CODE"].ToString()))
+                                else if (L3dataRow["MAT_CODE_3"].ToString().Equals(OQdataRow["SCRAP_CODE"].ToString()))
                                 {
                                     L3dataRow["Act_Weight_3"] = OQdataRow["ACT_WEIGHT"].ToString();
                                 }
-                                else if (L3dataRow["MAT_CODE_4"].ToString().Equals(OQdataRow["MAT_CODE"].ToString()))
+                                else if (L3dataRow["MAT_CODE_4"].ToString().Equals(OQdataRow["SCRAP_CODE"].ToString()))
                                 {
                                     L3dataRow["Act_Weight_4"] = OQdataRow["ACT_WEIGHT"].ToString();
                                 }
-                                else if (L3dataRow["MAT_CODE_5"].ToString().Equals(OQdataRow["MAT_CODE"].ToString()))
+                                else if (L3dataRow["MAT_CODE_5"].ToString().Equals(OQdataRow["SCRAP_CODE"].ToString()))
                                 {
                                     L3dataRow["Act_Weight_5"] = OQdataRow["ACT_WEIGHT"].ToString();
                                 }
-                                else if (L3dataRow["MAT_CODE_6"].ToString().Equals(OQdataRow["MAT_CODE"].ToString()))
+                                else if (L3dataRow["MAT_CODE_6"].ToString().Equals(OQdataRow["SCRAP_CODE"].ToString()))
                                 {
                                     L3dataRow["Act_Weight_6"] = OQdataRow["ACT_WEIGHT"].ToString();
                                 }
-                                else if (L3dataRow["MAT_CODE_7"].ToString().Equals(OQdataRow["MAT_CODE"].ToString()))
+                                else if (L3dataRow["MAT_CODE_7"].ToString().Equals(OQdataRow["SCRAP_CODE"].ToString()))
                                 {
                                     L3dataRow["Act_Weight_7"] = OQdataRow["ACT_WEIGHT"].ToString();
                                 }
-                                else if (L3dataRow["MAT_CODE_8"].ToString().Equals(OQdataRow["MAT_CODE"].ToString()))
+                                else if (L3dataRow["MAT_CODE_8"].ToString().Equals(OQdataRow["SCRAP_CODE"].ToString()))
                                 {
                                     L3dataRow["Act_Weight_8"] = OQdataRow["ACT_WEIGHT"].ToString();
                                 }
-                                else if (L3dataRow["MAT_CODE_9"].ToString().Equals(OQdataRow["MAT_CODE"].ToString()))
+                                else if (L3dataRow["MAT_CODE_9"].ToString().Equals(OQdataRow["SCRAP_CODE"].ToString()))
                                 {
                                     L3dataRow["Act_Weight_9"] = OQdataRow["ACT_WEIGHT"].ToString();
                                 }
-                                else if (L3dataRow["MAT_CODE_10"].ToString().Equals(OQdataRow["MAT_CODE"].ToString()))
+                                else if (L3dataRow["MAT_CODE_10"].ToString().Equals(OQdataRow["SCRAP_CODE"].ToString()))
                                 {
                                     L3dataRow["Act_Weight_10"] = OQdataRow["ACT_WEIGHT"].ToString();
                                 }

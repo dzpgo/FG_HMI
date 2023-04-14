@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PorductMatManage));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label25 = new System.Windows.Forms.Label();
@@ -106,6 +106,7 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.parkLaserOut1 = new ParkingControlLibrary.ParkLaserOut();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView_LASER = new System.Windows.Forms.DataGridView();
             this.ROW_INDEX = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -114,6 +115,12 @@
             this.POINT_Z = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tabPanelParkArea = new System.Windows.Forms.TableLayoutPanel();
+            this.parkZ21B6 = new ParkingControlLibrary.ParkingState();
+            this.parkZ21B5 = new ParkingControlLibrary.ParkingState();
+            this.parkZ21B4 = new ParkingControlLibrary.ParkingState();
+            this.parkZ21B1 = new ParkingControlLibrary.ParkingState();
+            this.parkZ21B3 = new ParkingControlLibrary.ParkingState();
+            this.parkZ21B2 = new ParkingControlLibrary.ParkingState();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -132,13 +139,6 @@
             this.btnCarEnter = new System.Windows.Forms.Button();
             this.button_L3Stowage = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.parkZ21B6 = new ParkingControlLibrary.ParkingState();
-            this.parkZ21B5 = new ParkingControlLibrary.ParkingState();
-            this.parkZ21B4 = new ParkingControlLibrary.ParkingState();
-            this.parkZ21B1 = new ParkingControlLibrary.ParkingState();
-            this.parkZ21B3 = new ParkingControlLibrary.ParkingState();
-            this.parkZ21B2 = new ParkingControlLibrary.ParkingState();
-            this.parkLaserOut1 = new ParkingControlLibrary.ParkLaserOut();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -651,6 +651,7 @@
             // 
             // txtCarNo
             // 
+            this.txtCarNo.BackColor = System.Drawing.SystemColors.Control;
             this.txtCarNo.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtCarNo.Location = new System.Drawing.Point(282, 41);
             this.txtCarNo.Name = "txtCarNo";
@@ -832,14 +833,14 @@
             this.dataGridView2.AllowUserToOrderColumns = true;
             this.dataGridView2.AllowUserToResizeRows = false;
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView2.ColumnHeadersHeight = 29;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ORDER_NO,
@@ -851,14 +852,14 @@
             this.FROM_STOCK_NO,
             this.REQ_WEIGHT,
             this.ACT_WEIGHT});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.EnableHeadersVisualStyles = false;
             this.dataGridView2.Location = new System.Drawing.Point(3, 3);
@@ -866,8 +867,8 @@
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 62;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView2.RowTemplate.Height = 23;
             this.dataGridView2.Size = new System.Drawing.Size(981, 194);
             this.dataGridView2.TabIndex = 24;
@@ -983,9 +984,9 @@
             this.dgvOrder.Name = "dgvOrder";
             this.dgvOrder.ReadOnly = true;
             this.dgvOrder.RowHeadersWidth = 62;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("微软雅黑", 14.25F);
-            this.dgvOrder.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 14.25F);
+            this.dgvOrder.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvOrder.RowTemplate.Height = 23;
             this.dgvOrder.Size = new System.Drawing.Size(975, 166);
             this.dgvOrder.TabIndex = 0;
@@ -1022,6 +1023,16 @@
             this.tabPage1.Text = "配载图";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // parkLaserOut1
+            // 
+            this.parkLaserOut1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parkLaserOut1.HasCarSize = true;
+            this.parkLaserOut1.Location = new System.Drawing.Point(3, 3);
+            this.parkLaserOut1.Margin = new System.Windows.Forms.Padding(5);
+            this.parkLaserOut1.Name = "parkLaserOut1";
+            this.parkLaserOut1.Size = new System.Drawing.Size(19404, 19378);
+            this.parkLaserOut1.TabIndex = 3;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.dataGridView_LASER);
@@ -1039,14 +1050,14 @@
             this.dataGridView_LASER.AllowUserToDeleteRows = false;
             this.dataGridView_LASER.AllowUserToOrderColumns = true;
             this.dataGridView_LASER.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_LASER.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_LASER.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView_LASER.ColumnHeadersHeight = 29;
             this.dataGridView_LASER.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ROW_INDEX,
@@ -1059,10 +1070,10 @@
             this.dataGridView_LASER.Name = "dataGridView_LASER";
             this.dataGridView_LASER.RowHeadersVisible = false;
             this.dataGridView_LASER.RowHeadersWidth = 62;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dataGridView_LASER.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dataGridView_LASER.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView_LASER.RowTemplate.Height = 23;
-            this.dataGridView_LASER.Size = new System.Drawing.Size(19404, 19386);
+            this.dataGridView_LASER.Size = new System.Drawing.Size(19404, 19378);
             this.dataGridView_LASER.TabIndex = 77;
             // 
             // ROW_INDEX
@@ -1140,6 +1151,68 @@
             this.tabPanelParkArea.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tabPanelParkArea.Size = new System.Drawing.Size(1614, 91);
             this.tabPanelParkArea.TabIndex = 74;
+            // 
+            // parkZ21B6
+            // 
+            this.parkZ21B6.BackColor = System.Drawing.SystemColors.Control;
+            this.parkZ21B6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parkZ21B6.Location = new System.Drawing.Point(97, 4);
+            this.parkZ21B6.Margin = new System.Windows.Forms.Padding(4);
+            this.parkZ21B6.Name = "parkZ21B6";
+            this.parkZ21B6.Size = new System.Drawing.Size(213, 83);
+            this.parkZ21B6.TabIndex = 33;
+            // 
+            // parkZ21B5
+            // 
+            this.parkZ21B5.BackColor = System.Drawing.SystemColors.Control;
+            this.parkZ21B5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parkZ21B5.Location = new System.Drawing.Point(328, 4);
+            this.parkZ21B5.Margin = new System.Windows.Forms.Padding(4);
+            this.parkZ21B5.Name = "parkZ21B5";
+            this.parkZ21B5.Size = new System.Drawing.Size(213, 83);
+            this.parkZ21B5.TabIndex = 34;
+            // 
+            // parkZ21B4
+            // 
+            this.parkZ21B4.BackColor = System.Drawing.SystemColors.Control;
+            this.parkZ21B4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parkZ21B4.Location = new System.Drawing.Point(559, 4);
+            this.parkZ21B4.Margin = new System.Windows.Forms.Padding(4);
+            this.parkZ21B4.Name = "parkZ21B4";
+            this.parkZ21B4.Size = new System.Drawing.Size(213, 83);
+            this.parkZ21B4.TabIndex = 35;
+            // 
+            // parkZ21B1
+            // 
+            this.parkZ21B1.BackColor = System.Drawing.SystemColors.Control;
+            this.parkZ21B1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parkZ21B1.Location = new System.Drawing.Point(1239, 4);
+            this.parkZ21B1.Margin = new System.Windows.Forms.Padding(4);
+            this.parkZ21B1.Name = "parkZ21B1";
+            this.parkZ21B1.Size = new System.Drawing.Size(200, 83);
+            this.parkZ21B1.TabIndex = 38;
+            this.parkZ21B1.Visible = false;
+            // 
+            // parkZ21B3
+            // 
+            this.parkZ21B3.BackColor = System.Drawing.SystemColors.Control;
+            this.parkZ21B3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parkZ21B3.Location = new System.Drawing.Point(790, 4);
+            this.parkZ21B3.Margin = new System.Windows.Forms.Padding(4);
+            this.parkZ21B3.Name = "parkZ21B3";
+            this.parkZ21B3.Size = new System.Drawing.Size(213, 83);
+            this.parkZ21B3.TabIndex = 36;
+            // 
+            // parkZ21B2
+            // 
+            this.parkZ21B2.BackColor = System.Drawing.SystemColors.Control;
+            this.parkZ21B2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parkZ21B2.Location = new System.Drawing.Point(1021, 4);
+            this.parkZ21B2.Margin = new System.Windows.Forms.Padding(4);
+            this.parkZ21B2.Name = "parkZ21B2";
+            this.parkZ21B2.Size = new System.Drawing.Size(200, 83);
+            this.parkZ21B2.TabIndex = 37;
+            this.parkZ21B2.Visible = false;
             // 
             // panel4
             // 
@@ -1431,78 +1504,6 @@
             // 
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // parkZ21B6
-            // 
-            this.parkZ21B6.BackColor = System.Drawing.SystemColors.Control;
-            this.parkZ21B6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parkZ21B6.Location = new System.Drawing.Point(97, 4);
-            this.parkZ21B6.Margin = new System.Windows.Forms.Padding(4);
-            this.parkZ21B6.Name = "parkZ21B6";
-            this.parkZ21B6.Size = new System.Drawing.Size(213, 83);
-            this.parkZ21B6.TabIndex = 33;
-            // 
-            // parkZ21B5
-            // 
-            this.parkZ21B5.BackColor = System.Drawing.SystemColors.Control;
-            this.parkZ21B5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parkZ21B5.Location = new System.Drawing.Point(328, 4);
-            this.parkZ21B5.Margin = new System.Windows.Forms.Padding(4);
-            this.parkZ21B5.Name = "parkZ21B5";
-            this.parkZ21B5.Size = new System.Drawing.Size(213, 83);
-            this.parkZ21B5.TabIndex = 34;
-            // 
-            // parkZ21B4
-            // 
-            this.parkZ21B4.BackColor = System.Drawing.SystemColors.Control;
-            this.parkZ21B4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parkZ21B4.Location = new System.Drawing.Point(559, 4);
-            this.parkZ21B4.Margin = new System.Windows.Forms.Padding(4);
-            this.parkZ21B4.Name = "parkZ21B4";
-            this.parkZ21B4.Size = new System.Drawing.Size(213, 83);
-            this.parkZ21B4.TabIndex = 35;
-            // 
-            // parkZ21B1
-            // 
-            this.parkZ21B1.BackColor = System.Drawing.SystemColors.Control;
-            this.parkZ21B1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parkZ21B1.Location = new System.Drawing.Point(1239, 4);
-            this.parkZ21B1.Margin = new System.Windows.Forms.Padding(4);
-            this.parkZ21B1.Name = "parkZ21B1";
-            this.parkZ21B1.Size = new System.Drawing.Size(200, 83);
-            this.parkZ21B1.TabIndex = 38;
-            this.parkZ21B1.Visible = false;
-            // 
-            // parkZ21B3
-            // 
-            this.parkZ21B3.BackColor = System.Drawing.SystemColors.Control;
-            this.parkZ21B3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parkZ21B3.Location = new System.Drawing.Point(790, 4);
-            this.parkZ21B3.Margin = new System.Windows.Forms.Padding(4);
-            this.parkZ21B3.Name = "parkZ21B3";
-            this.parkZ21B3.Size = new System.Drawing.Size(213, 83);
-            this.parkZ21B3.TabIndex = 36;
-            // 
-            // parkZ21B2
-            // 
-            this.parkZ21B2.BackColor = System.Drawing.SystemColors.Control;
-            this.parkZ21B2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parkZ21B2.Location = new System.Drawing.Point(1021, 4);
-            this.parkZ21B2.Margin = new System.Windows.Forms.Padding(4);
-            this.parkZ21B2.Name = "parkZ21B2";
-            this.parkZ21B2.Size = new System.Drawing.Size(200, 83);
-            this.parkZ21B2.TabIndex = 37;
-            this.parkZ21B2.Visible = false;
-            // 
-            // parkLaserOut1
-            // 
-            this.parkLaserOut1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parkLaserOut1.HasCarSize = true;
-            this.parkLaserOut1.Location = new System.Drawing.Point(3, 3);
-            this.parkLaserOut1.Margin = new System.Windows.Forms.Padding(5);
-            this.parkLaserOut1.Name = "parkLaserOut1";
-            this.parkLaserOut1.Size = new System.Drawing.Size(19404, 19378);
-            this.parkLaserOut1.TabIndex = 3;
             // 
             // PorductMatManage
             // 

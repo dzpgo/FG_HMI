@@ -145,6 +145,9 @@
             this.dgvStowageMessage.RowTemplate.Height = 23;
             this.dgvStowageMessage.Size = new System.Drawing.Size(1245, 258);
             this.dgvStowageMessage.TabIndex = 8;
+            this.dgvStowageMessage.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvStowageMessage_CellPainting);
+            this.dgvStowageMessage.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvStowageMessage_CurrentCellDirtyStateChanged);
+            this.dgvStowageMessage.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvStowageMessage_EditingControlShowing);
             // 
             // label1
             // 

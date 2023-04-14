@@ -24,9 +24,11 @@ namespace UACSPopupForm
     public partial class FrmParkingDetail : Form
     {
         private Baosight.iSuperframe.Authorization.Interface.IAuthorization auth;
+        //防止弹出信息关闭画面
+        bool isPopupMessage = false;
         private Dictionary<string, string> MatCode = new Dictionary<string, string>();
-        string[] dgvColumnsName = {"PLAN_NO", "ORDER_PRIORITY", "CMD_SEQ" , "CMD_STATUS", "MAT_CODE", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "REQ_WEIGHT", "ACT_WEIGHT", "START_TIME", "UPD_TIME", "REC_TIME" };
-        string[] dgvHeaderText = {"计划号", "优先级", "吊运次数","吊运状态", "物料代码", "物料名称", "取料位置", "落料位", "要求重量", "实绩重量","开始时间", "更新时间", "创建时间" };
+        string[] dgvColumnsName = { "ORDER_NO", "PLAN_NO", "ORDER_PRIORITY", "CMD_SEQ" , "CMD_STATUS", "MAT_CODE", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "REQ_WEIGHT", "ACT_WEIGHT", "START_TIME", "UPD_TIME", "REC_TIME" };
+        string[] dgvHeaderText = { "指令号", "计划号", "优先级", "吊运次数","吊运状态", "物料代码", "物料名称", "取料位置", "落料位", "要求重量", "实绩重量","开始时间", "更新时间", "创建时间" };
         string[] dgvOderColumnsName = { "ORDER_NO", "ORDER_GROUP_NO", "EXE_SEQ", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "BAY_NO" };
         string[] dgvOderHeaderText = { "指令号", "指令组号", "指令顺序", "物料名称", "取料位", "落料位", "跨别" };
         /// <summary>
@@ -80,12 +82,19 @@ namespace UACSPopupForm
                 }
             }
         }
-
+        /// <summary>
+        /// 关闭窗体
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void frmSaddleDetail_Deactivate(object sender, EventArgs e)
         {
             try
             {
-                this.Close();
+                if (!isPopupMessage)
+                {
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {
@@ -164,6 +173,7 @@ namespace UACSPopupForm
         /// </summary>
         private void Refurbish()
         {
+            isPopupMessage = true;
             lblCarNo.Text = packingInfo.Car_No;
             lblCarStatus.Text = packingInfo.PackingStatusDesc();
             lblPacking.Text = packingInfo.ParkingName;
@@ -217,6 +227,7 @@ namespace UACSPopupForm
                 //return;
             }
             //this.dgvStowageMessage
+            isPopupMessage = false;
         }
         private bool CreatDgvHeader(DataGridView dataGridView, string[] columnsName, string[] headerText)
         {
@@ -287,6 +298,10 @@ namespace UACSPopupForm
                         {
                             column.Visible = false;
                         }
+                        if (columnsName[i].Equals("ORDER_NO"))
+                        {
+                            column.Visible = false;
+                        }
                         index = dataGridView.Columns.Add(column);
                     }
                     dataGridView.Columns[index].SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -326,6 +341,7 @@ namespace UACSPopupForm
         /// <param name="e"></param>
         private void bt_Save_Click(object sender, EventArgs e)
         {
+            isPopupMessage = true;
             if (dgvStowageMessage.DataSource != null && Initial_dgv != null && dgvStowageMessage.Rows.Count > 0 && Initial_dgv.Rows.Count > 0)
             {
                 try
@@ -339,6 +355,9 @@ namespace UACSPopupForm
                         DataTable dt = TotalDT.Clone();
                         var count = 0;
                         var isTrue = false;
+                        var planNo = "";
+                        var orderNo = "";
+                        var ExecuteNonQueryCount = 0;
                         foreach (DataGridViewRow dgr in dgvStowageMessage.Rows)
                         {
                             isTrue = false;
@@ -389,7 +408,7 @@ namespace UACSPopupForm
                             {
                                 DataRow dr = dt.NewRow();
                                 dr["ORDER_NO"] = dgr.Cells["ORDER_NO"].Value.ToString();
-                                dr["ORDER_GROUP_NO"] = dgr.Cells["ORDER_GROUP_NO"].Value.ToString();
+                                //dr["ORDER_GROUP_NO"] = dgr.Cells["ORDER_GROUP_NO"].Value.ToString();
                                 //dr["MAT_CNAME2"] = dgr.Cells["MAT_CNAME2"].Value.ToString();
                                 dr["FROM_STOCK_NO"] = dgr.Cells["FROM_STOCK_NO"].Value.ToString();
                                 dr["TO_STOCK_NO"] = dgr.Cells["TO_STOCK_NO"].Value.ToString();
@@ -398,7 +417,7 @@ namespace UACSPopupForm
 
                                 dr["MAT_CODE"] = dgr.Cells["MAT_CODE"].Value.ToString();
                                 dr["MAT_CNAME"] = dgr.Cells["MAT_CNAME"].Value.ToString();
-                                dr["EXE_SEQ"] = dgr.Cells["EXE_SEQ"].Value.ToString();
+                                //dr["EXE_SEQ"] = dgr.Cells["EXE_SEQ"].Value.ToString();
                                 dr["ORDER_PRIORITY"] = dgr.Cells["ORDER_PRIORITY"].Value.ToString();
                                 dr["CMD_SEQ"] = dgr.Cells["CMD_SEQ"].Value.ToString();
                                 dr["CMD_STATUS"] = dgr.Cells["CMD_STATUS"].Value.ToString().Trim();
@@ -416,6 +435,7 @@ namespace UACSPopupForm
                             DialogResult drmsg2 = MessageBox.Show("保存失败，无数据更改！", "提示", btn, MessageBoxIcon.Warning);
                             return;
                         }
+                        
                         foreach (DataRow dr in dt.Rows)
                         {
                             string ExeSql = @" UPDATE UACS_ORDER_QUEUE SET  ";
@@ -424,6 +444,7 @@ namespace UACSPopupForm
                                 if (keyvalue.Value.Equals(dr["MAT_CNAME"].ToString()))
                                 {
                                     ExeSql += " MAT_CODE = '" + keyvalue.Key + "' ,";
+                                    ExeSql += " COMP_CODE = '" + keyvalue.Key + "' ,";
                                     break;
                                 }
                             }
@@ -431,32 +452,37 @@ namespace UACSPopupForm
                             ExeSql += " ,TO_STOCK_NO = '" + dr["TO_STOCK_NO"].ToString() + "' ";
                             ExeSql += " ,REQ_WEIGHT = '" + dr["REQ_WEIGHT"].ToString() + "' ";
                             ExeSql += " ,ACT_WEIGHT = '" + dr["ACT_WEIGHT"] + "' ";
-                            ExeSql += " ,EXE_SEQ = '" + dr["EXE_SEQ"].ToString() + "' ";
+                            //ExeSql += " ,EXE_SEQ = '" + dr["EXE_SEQ"].ToString() + "' ";
                             ExeSql += " ,ORDER_PRIORITY = '" + dr["ORDER_PRIORITY"].ToString() + "' ";
                             ExeSql += " ,CMD_SEQ = '" + dr["CMD_SEQ"].ToString() + "' ";
                             //ExeSql += " ,CMD_STATUS = '" + dr["CMD_STATUS"] + "' ";
 
                             ExeSql += " WHERE 1=1 ";
                             ExeSql += " AND PLAN_NO = '" + dr["PLAN_NO"] + "'";
-                            ExeSql += " AND ORDER_NO = " + Convert.ToInt32(dr["ORDER_NO"]) + "";
-                            ExeSql += " AND ORDER_GROUP_NO = " + Convert.ToInt32(dr["ORDER_GROUP_NO"]) + " ; ";
+                            ExeSql += " AND ORDER_NO = " + Convert.ToInt32(dr["ORDER_NO"]) + " ";
+                            //ExeSql += " AND ORDER_GROUP_NO = " + Convert.ToInt32(dr["ORDER_GROUP_NO"]) + " ; ";
+                            //planNo = planNo + dr["PLAN_NO"] + ",";
+                            orderNo = orderNo + dr["ORDER_NO"] + ",";
+                            DB2Connect.DBHelper.ExecuteNonQuery(ExeSql);
                         }
 
                         //DB2Connect.DBHelper.ExecuteNonQuery(sql);
-                        ParkClassLibrary.HMILogger.WriteLog("停车位详细", "保存", ParkClassLibrary.LogLevel.Info, this.Text);
+                        ParkClassLibrary.HMILogger.WriteLog("停车位详细", "指令号：" + orderNo, ParkClassLibrary.LogLevel.Info, this.Text);
                         Refurbish(); //刷新页面
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     MessageBoxButtons btn = MessageBoxButtons.OK;
                     DialogResult drmsg = MessageBox.Show("保存失败，无数据更改！", "提示", btn, MessageBoxIcon.Warning);
                 }
             }
+            isPopupMessage = false;
         }
 
         private void GetMAT_Code()
         {
+            isPopupMessage = true;
             MatCode.Clear();
             string sql = @" SELECT MAT_CODE,MAT_CNAME FROM UACS_L3_MAT_INFO ";
             using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
@@ -466,7 +492,7 @@ namespace UACSPopupForm
                     MatCode.Add(rdr["MAT_CODE"].ToString(), rdr["MAT_CNAME"].ToString());
                 }
             }
-            
+            isPopupMessage = false;
         }
 
         /// <summary>
@@ -536,8 +562,7 @@ namespace UACSPopupForm
             catch (Exception ex)
             { }
         }
-
-       
+               
 
         public DataTable GetDgvToTable(DataGridView dgv)
         {
@@ -562,5 +587,127 @@ namespace UACSPopupForm
             }
             return dt;
         }
+        /// <summary>
+        /// 单元格内容发生更改时触发
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvStowageMessage_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            var dgv = dgvStowageMessage.DataSource;
+            var inidgv = Initial_dgv;
+
+            //得到选中行的索引
+            int intRow = dgvStowageMessage.SelectedCells[0].RowIndex;
+            //得到列的索引
+            int intColumn = dgvStowageMessage.SelectedCells[0].ColumnIndex;
+            //var sss = dgvStowageMessage.Rows[intRow].Cells["cbChoice"].Value.ToString();
+            //dgvStowageMessage.Rows[intRow].Cells["cbChoice"].Value = 1;
+            //var dddd = dgvStowageMessage.Rows[intRow].Cells["cbChoice"].Value.ToString();
+            //得到选中行某列的值
+            string str = dgvStowageMessage.CurrentRow.Cells[2].Value.ToString();
+            var data1 = dgvStowageMessage.Rows[intRow].Cells[intColumn].Value.ToString();
+            var data2 = Initial_dgv.Rows[intRow].ItemArray[intColumn];
+
+            if (data2.Equals(data1))
+            {
+                //dgvStowageMessage.Rows[intRow].Cells[intColumn].Style.ForeColor = Color.Red;
+                dgvStowageMessage.Rows[intRow].Cells[intColumn].Style.BackColor = System.Drawing.SystemColors.Window;
+            }
+            else
+            {
+                //DataGridViewCell aa = dgvStowageMessage.Rows[intRow].Cells[intColumn];
+                //aa.Style.ForeColor = Color.Red;
+                //aa.Style.BackColor = Color.LightGreen;
+                //dgvStowageMessage.Rows[intRow].Cells[intColumn].Style.ForeColor = Color.Red;
+                dgvStowageMessage.Rows[intRow].Cells[intColumn].Style.BackColor = Color.LightGreen;
+                
+
+            }
+
+        }
+
+        /// <summary>
+        /// 不处于编辑模式时绘制单元格。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvStowageMessage_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            isPopupMessage = true;
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                if (this.dgvStowageMessage.Rows[e.RowIndex].Cells[e.ColumnIndex] is DataGridViewComboBoxCell)
+                {
+                    var cell = this.dgvStowageMessage.Rows[e.RowIndex].Cells[e.ColumnIndex] as DataGridViewComboBoxCell;
+                    var foreColor = cell.Style.ForeColor.Name == "0" ? Color.Black : cell.Style.ForeColor;
+
+                    e.Paint(e.ClipBounds, DataGridViewPaintParts.Border);
+                    e.Paint(e.ClipBounds, DataGridViewPaintParts.ContentBackground);
+
+                    using (Brush forebrush = new SolidBrush(foreColor))
+                    using (Brush backbrush = new SolidBrush(cell.Style.BackColor))
+                    using (StringFormat format = new StringFormat())
+                    {
+                        Rectangle rect = new Rectangle(e.CellBounds.X + 1, e.CellBounds.Y + 1, e.CellBounds.Width - 19, e.CellBounds.Height - 3);
+                        format.LineAlignment = StringAlignment.Center;
+
+                        e.Graphics.FillRectangle(backbrush, rect);
+                        e.Graphics.DrawString(cell.FormattedValue.ToString(), e.CellStyle.Font, forebrush, rect, format);
+                    }
+                    e.Paint(e.ClipBounds, DataGridViewPaintParts.ErrorIcon);
+                    e.Paint(e.ClipBounds, DataGridViewPaintParts.Focus);
+                    e.Handled = true;
+                }
+            }
+            isPopupMessage = false;
+        }
+        /// <summary>
+        /// 在编辑模式下绘制单元格。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvStowageMessage_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            //DataGridViewColumnCollection columnCollection = dgvStowageMessage.Columns;
+            //DataGridViewColumn firstVisibleColumn = columnCollection.GetFirstColumn(DataGridViewElementStates.Visible);
+            //var displayIndex = firstVisibleColumn.DisplayIndex;
+            //var addX = this.dgvStowageMessage.CurrentCellAddress.X;
+            //if (this.dgvStowageMessage.CurrentCellAddress.X == combo.DisplayIndex)
+            //{
+                //ComboBox cb = e.Control as ComboBox;
+                //if (cb != null)
+                //{
+                //    cb.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                //    cb.DrawMode = DrawMode.OwnerDrawFixed;
+                //    cb.DrawItem -= this.cb_DrawItem;
+                //    cb.DrawItem += this.cb_DrawItem;
+                //}
+            //}
+        }
+        // 手动绘制组合框.
+        private void cb_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+
+            // Non-sourced vs sourced examples.
+            string value = cb.Items[e.Index].ToString();
+            // string value = (cb.DataSource as DataTable).Rows[e.Index].ItemArray[SourceColumnIndex];
+
+            if (e.Index >= 0)
+            {
+                using (Brush forebrush = new SolidBrush(cb.ForeColor))
+                using (Brush backbrush = new SolidBrush(cb.BackColor))
+                {
+                    e.Graphics.FillRectangle(backbrush, e.Bounds);
+                    e.DrawBackground();
+                    e.DrawFocusRectangle();
+                    e.Graphics.DrawString(value, e.Font, forebrush, e.Bounds);
+                }
+            }
+        }
+
+        
     }
 }
