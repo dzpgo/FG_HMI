@@ -1037,10 +1037,10 @@ namespace UACSView.View_Parking
                         dt.Rows.Add(dr);
                     }
                 }
-                dr = dt.NewRow();
-                dr["ID"] = "SG99";
-                dr["NAME"] = "SG99";
-                dt.Rows.Add(dr);
+                //dr = dt.NewRow();
+                //dr["ID"] = "SG99";
+                //dr["NAME"] = "SG99";
+                //dt.Rows.Add(dr);
                 //绑定数据
                 cmb_CarNo.ValueMember = "ID";
                 cmb_CarNo.DisplayMember = "NAME";

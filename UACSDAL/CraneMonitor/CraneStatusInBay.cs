@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using System.Windows.Forms;
 using System.Drawing;
+using UACSDAL.CraneMonitor;
 
 namespace UACSDAL
 {
@@ -104,6 +105,59 @@ namespace UACSDAL
                     // 夹钳温度
                     lstAdress.Add(tag_Head + CraneStatusBase.ADRESS_CRANE_COIL_TEMPERATURE);
 
+                    #region 红绿灯
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_1);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_1);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_2);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_2);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_3);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_3);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_4);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_4);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_5);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_5);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_6);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_6);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_7);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_7);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_8);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_8);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_9);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_9);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_10);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_10);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_11);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_11);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_12);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_12);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_13);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_13);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_14);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_14);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_15);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_15);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_16);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_16);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_17);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_17);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_18);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_18);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_19);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_19);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_20);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_20);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_21);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_21);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_22);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_22);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_23);
+                    lstAdress.Add(TrafficLightBase.AREA_SAFE_23);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_24);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_25);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_26);
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_27); 
+                    #endregion
+
                 }
                 arrTagAdress = lstAdress.ToArray<string>();
             }
@@ -165,8 +219,35 @@ namespace UACSDAL
             }
         }
 
+        private Dictionary<string, TrafficLightBase> dicTrafficLightBase = new Dictionary<string, TrafficLightBase>();
 
-       
+        public Dictionary<string, TrafficLightBase> DicTrafficLightBase
+        {
+            get { return dicTrafficLightBase; }
+        }
+
+        /// <summary>
+        /// 红绿灯Tag
+        /// </summary>
+        /// <param name="list"></param>
+        public void getAllTrafficLight(List<TrafficLightBase> list)
+        {
+            try
+            {
+                readTags();
+                foreach (TrafficLightBase Light in list)
+                {
+                    TrafficLightBase trafficLightBase = getTrafficLightBaseFromTags(Light);
+                    dicTrafficLightBase[trafficLightBase.AreaNo] = trafficLightBase;
+                }
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+
 
         private void readTags()
         {
@@ -239,6 +320,164 @@ namespace UACSDAL
             {
             }
             return craneBase;
+        }
+
+        private TrafficLightBase getTrafficLightBaseFromTags(TrafficLightBase theTraffic)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(theTraffic.AreaNo))
+                {
+                    string tag_Head =  "1_";
+                    // 准备好
+                    var Ready = get_value_x(tag_Head + CraneStatusBase.ADRESS_READY);
+                    var A2 = get_value_x("AreaReserve2");
+                    var A3 = get_value_x("AreaReserve3");
+                    var A4 = get_value_x("AreaReserve4");
+                    var A5 = get_value_x("AreaReserve5");
+                    var A6 = get_value_x("AreaReserve6");
+                    var A7 = get_value_x("AreaReserve7");
+                    var A8 = get_value_x("AreaReserve8");
+
+                    if (theTraffic.AreaNo.Equals("A1"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_1);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_1);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A2"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_2);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_2);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A3"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_3);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_3);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A4"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_4);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_4);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A5"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_5);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_5);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A6"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_6);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_6);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A7"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_7);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_7);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A8"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_8);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_8);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A9"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_9);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_9);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A10"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_10);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_10);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A11"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_11);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_11);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A12"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_12);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_12);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A13"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_13);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_13);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A14"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_14);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_14);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A15"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_15);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_15);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A16"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_16);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_16);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A17"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_17);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_17);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A18"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_18);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_18);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A19"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_19);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_19);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A20"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_20);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_20);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A21"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_21);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_21);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A22"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_22);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_22);
+                    }
+                    else if (theTraffic.AreaNo.Equals("A23"))
+                    {
+                        theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_23);
+                        theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_23);
+                    }
+                    //工位
+                    if (theTraffic.AreaNo.Equals("T1"))
+                    {
+                        theTraffic.AreaReserveCubicle = get_value_x(TrafficLightBase.AREA_RESERVE_24);
+                    }
+                    else if (theTraffic.AreaNo.Equals("T2"))
+                    {
+                        theTraffic.AreaReserveCubicle = get_value_x(TrafficLightBase.AREA_RESERVE_25);
+                    }
+                    else if (theTraffic.AreaNo.Equals("T3"))
+                    {
+                        theTraffic.AreaReserveCubicle = get_value_x(TrafficLightBase.AREA_RESERVE_26);
+                    }
+                    else if (theTraffic.AreaNo.Equals("T4"))
+                    {
+                        theTraffic.AreaReserveCubicle = get_value_x(TrafficLightBase.AREA_RESERVE_27);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return theTraffic;
         }
 
         private long get_value_x(string tagName)
@@ -391,11 +630,11 @@ namespace UACSDAL
                             }
                             else if (status.Equals("41"))
                             {
-                                tb_CurrentStatus.Text = "清扫中";
+                                tb_CurrentStatus.Text = "工位清扫";
                             }
                             else if (status.Equals("X1"))
                             {
-                                tb_CurrentStatus.Text = "登车中";
+                                tb_CurrentStatus.Text = "回登车位";
                             }
                             else if (status.Equals("51"))
                             {

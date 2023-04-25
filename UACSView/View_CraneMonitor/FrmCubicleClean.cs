@@ -185,7 +185,7 @@ namespace UACSView.View_CraneMonitor
                 this.cmb_MatCode.DisplayMember = "TypeName";
                 this.cmb_MatCode.DataSource = dt;
                 //根据text值选中项
-                this.cmb_MatCode.SelectedIndex = 0;
+                this.cmb_MatCode.SelectedIndex = 2;
             }
             catch (Exception)
             {
@@ -230,7 +230,7 @@ namespace UACSView.View_CraneMonitor
                 MessageBox.Show("请选择物料!");
                 return;
             }
-            DialogResult dr = MessageBox.Show("是否开始清扫？", "操作提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+            DialogResult dr = MessageBox.Show("请确认料槽车已经离开工位,是否开始清扫？", "操作提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
             if (dr == DialogResult.OK)
             {
                 string sql = @"UPDATE UACS_CRANE_MANU_ORDER_CLEAN SET MAT_NO = '" + cmb_MatCode.SelectedValue.ToString().Trim() + "', FROM_STOCK = '" + cmb_Cubicle.SelectedValue.ToString().Trim() + "', TO_STOCK = '" + cmb_Cubicle.SelectedValue.ToString().Trim() + "', STATUS = 'INIT' ";

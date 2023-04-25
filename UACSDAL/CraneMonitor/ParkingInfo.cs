@@ -47,16 +47,8 @@ namespace UACSDAL
 
         public void GetParkingMessage()
         {
-            //string Park = (bayNo == "A"? "Z03%" : "Z04%");
-            //string Park;
-            //if(bayNo.Contains("Z2"))
-            //{
-            //    Park = bayNo.Substring(0, 3) ;
-            //}
             try
-            {
-                //string sql = string.Format("select A.*,B.* from UACS_PARKING_STATUS A left join UACS_YARDMAP_PARKINGSITE B on A.PARKING_NO = B.ID where A.PARKING_NO like '{0}%' and B.YARD_NO is not null and B.PARKING_TYPE = '0'", bayNo);
-                //string sql = string.Format("select A.*,B.* from UACS_PARKING_STATUS A left join UACS_YARDMAP_PARKINGSITE B on A.PARKING_NO = B.ID where A.PARKING_NO like '"+Park+"' and B.PARKING_TYPE = '0'");                
+            {           
                 string sql = string.Format("select A.*,B.* from UACS_PARKING_WORK_STATUS A left join UACS_YARDMAP_PARKINGSITE B on A.PARKING_NO = B.ID where A.BAY_NO ='" + bayNo + "'and B.YARD_NO is not null and B.PARKING_TYPE = '0'");
                 using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
                 {

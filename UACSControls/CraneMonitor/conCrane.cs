@@ -13,7 +13,6 @@ using Baosight.iSuperframe.Common;
 using Baosight.iSuperframe.Authorization.Interface;
 using Baosight.iSuperframe.TagService;
 using Microsoft.VisualBasic;
-using ParkClassLibrary;
 using UACS;
 using UACSPopupForm.CraneMonitor;
 
@@ -294,6 +293,34 @@ namespace UACSControls
             }
             else
             {
+                #region 判断是否需要清空归堆指令和清扫工位指令
+                if (CreateManuOrder.isDelCraneManuOrder(craneNO))
+                {
+                    string error = null;
+                    if (CreateManuOrder.DelCraneManuOrder(craneNO, out error))
+                    {
+                        ParkClassLibrary.HMILogger.WriteLog("清空指令-归堆指令", craneNO + "行车-清空归堆指令", ParkClassLibrary.LogLevel.Info, this.Text);
+                    }
+                    else
+                    {
+                        //MessageBox.Show(error);
+                    }
+
+                }
+                if (CreateManuOrder.isDelCraneManuOrderClean(craneNO))
+                {
+                    string error = null;
+                    if (CreateManuOrder.DelCraneManuOrderClean(craneNO, out error))
+                    {
+                        ParkClassLibrary.HMILogger.WriteLog("清空指令-清扫工位指令", craneNO + "行车-清空清扫工位指令", ParkClassLibrary.LogLevel.Info, this.Text);
+                    }
+                    else
+                    {
+                        //MessageBox.Show(error);
+                    }
+                } 
+                #endregion
+
                 if (CreateManuOrder.isDelNotAutoCraneOrder(craneNO))
                 {
                     MessageBox.Show(craneNO + "指令已清空");

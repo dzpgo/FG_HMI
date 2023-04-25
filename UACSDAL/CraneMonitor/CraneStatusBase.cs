@@ -586,7 +586,6 @@ namespace UACSDAL
         /// </summary>
         public const string ADRESS_CRANE_COIL_TEMPERATURE = "COIL_TEMPERATURE";
 
-
         //--------------------------------------------------行车控制模式----------------------------------------------------------------
         /// <summary>
         /// 要求停车 = 100

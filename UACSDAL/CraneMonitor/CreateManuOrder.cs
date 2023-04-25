@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Baosight.iSuperframe.Common;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
@@ -20,7 +21,7 @@ namespace UACSDAL
         /// <param name="_bayNo">跨号</param>
         /// <param name="_dgv">dgv</param>
         /// <param name="_flagUnit">出入口区分(1 出口  0 入口)</param>
-        public  void GetSaddleMessageInDgv(string _unitNo, string _bayNo, System.Windows.Forms.DataGridView _dgv, int _flagUnit)
+        public void GetSaddleMessageInDgv(string _unitNo, string _bayNo, System.Windows.Forms.DataGridView _dgv, int _flagUnit)
         {
             // 标记
             bool hasSetColumn = false;
@@ -113,7 +114,7 @@ namespace UACSDAL
         /// <param name="_bayNo"></param>
         /// <param name="_craneNo"></param>
         /// <returns></returns>
-        public bool isDelManuOrder(string _bayNo,string _craneNo)
+        public bool isDelManuOrder(string _bayNo, string _craneNo)
         {
             try
             {
@@ -142,7 +143,7 @@ namespace UACSDAL
         /// <param name="_bayNo"></param>
         /// <param name="_craneNo"></param>
         /// <returns></returns>
-        public bool isUpdateManuOrder(string _fromStock,string _coilNo,string _toStock,string _bayNo,string _craneNo)
+        public bool isUpdateManuOrder(string _fromStock, string _coilNo, string _toStock, string _bayNo, string _craneNo)
         {
             try
             {
@@ -171,12 +172,12 @@ namespace UACSDAL
         /// <param name="_txtCoilNo"></param>
         /// <param name="_txtStatus"></param>
         /// <param name="_craneNo"></param>
-        public void GetCraneOrder(System.Windows.Forms.TextBox _txtUpStock, System.Windows.Forms.TextBox _txtDownStock, System.Windows.Forms.TextBox _txtCoilNo, System.Windows.Forms.TextBox _txtStatus,string _craneNo)
+        public void GetCraneOrder(System.Windows.Forms.TextBox _txtUpStock, System.Windows.Forms.TextBox _txtDownStock, System.Windows.Forms.TextBox _txtCoilNo, System.Windows.Forms.TextBox _txtStatus, string _craneNo)
         {
             try
             {
                 string sql = @"SELECT FROM_STOCK,COIL_NO,TO_STOCK,STATUS FROM UACS_CRANE_MANU_ORDER ";
-                sql += " WHERE CRANE_NO = '"+_craneNo+ "'";
+                sql += " WHERE CRANE_NO = '" + _craneNo + "'";
 
                 using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
                 {
@@ -203,7 +204,7 @@ namespace UACSDAL
             }
             catch (Exception er)
             {
-                
+
                 throw;
             }
         }
@@ -339,7 +340,7 @@ namespace UACSDAL
             }
             catch (Exception er)
 
-            {                
+            {
                 return false;
             }
             return true;
@@ -459,7 +460,7 @@ namespace UACSDAL
         /// <param name="_Direction">方向</param>
         /// <param name="_type">类别</param>
         /// <returns></returns>
-        public static bool SetCraneEvadeRequest(string _craneNo, string _senderCraneNo, string _reqEvadeX, string _Direction,string _type,out string error)
+        public static bool SetCraneEvadeRequest(string _craneNo, string _senderCraneNo, string _reqEvadeX, string _Direction, string _type, out string error)
         {
             error = null;
             try
@@ -473,7 +474,7 @@ namespace UACSDAL
             {
                 error = er.Message;
                 return false;
-            }   
+            }
             return true;
         }
 
@@ -483,7 +484,7 @@ namespace UACSDAL
         /// <param name="_craneNo">行车号</param>
         /// <param name="error">错误</param>
         /// <returns></returns>
-        public static bool ClearCraneEvadeRequest(string _craneNo,out string error)
+        public static bool ClearCraneEvadeRequest(string _craneNo, out string error)
         {
             error = null;
             try
@@ -499,6 +500,94 @@ namespace UACSDAL
                 return false;
             }
             return true;
+        }
+
+        /// <summary>
+        /// 是否清空归堆作业指令
+        /// </summary>
+        /// <param name="craneNo"></param>
+        /// <returns></returns>
+        public static bool isDelCraneManuOrder(string craneNo)
+        {
+            string sql = " SELECT BAY_NO,GRID_NO,CRANE_NO,MAT_NO,FROM_STOCK,TO_STOCK,STATUS FROM UACS_CRANE_MANU_ORDER ";
+            sql += " WHERE STATUS = 'INIT' ";
+            sql += " AND CRANE_NO = '" + craneNo + "' ";
+            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
+            {
+                while (rdr.Read())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        /// <summary>
+        /// 清空归堆作业指令
+        /// </summary>
+        /// <param name="carneNo"></param>
+        /// <param name="error"></param>
+        /// <returns></returns>
+        public static bool DelCraneManuOrder(string carneNo, out string error)
+        {
+            error = null;
+            try
+            {
+                string sql = @"UPDATE UACS_CRANE_MANU_ORDER SET GRID_NO = null,MAT_NO = null,FROM_STOCK = null,TO_STOCK = null,STATUS = 'EMPTY' ";
+                sql += " WHERE BAY_NO = 'A' AND CRANE_NO = '" + carneNo + "'";
+                var enq = DB2Connect.DBHelper.ExecuteNonQuery(sql);
+                if (enq > 0)
+                    return true;
+            }
+            catch (Exception er)
+            {
+                error = er.Message;
+                return false;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 是否清空清扫工位指令
+        /// </summary>
+        /// <param name="craneNo"></param>
+        /// <returns></returns>
+        public static bool isDelCraneManuOrderClean(string craneNo)
+        {
+            string sql = " SELECT BAY_NO,CRANE_NO,MAT_NO,FROM_STOCK,TO_STOCK,CAR_NO,PLAN_NO,STATUS,PLAN_UP_Z,PLAN_DOWN_Z FROM UACS_CRANE_MANU_ORDER_CLEAN  ";
+            sql += " WHERE STATUS = 'INIT' ";
+            sql += " AND CRANE_NO = '" + craneNo + "' ";
+            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
+            {
+                while (rdr.Read())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        /// <summary>
+        /// 清空清扫工位指令
+        /// </summary>
+        /// <param name="carneNo"></param>
+        /// <param name="error"></param>
+        /// <returns></returns>
+        public static bool DelCraneManuOrderClean(string carneNo, out string error)
+        {
+            error = null;
+            try
+            {
+                string sql = @"UPDATE UACS_CRANE_MANU_ORDER_CLEAN SET MAT_NO = null, FROM_STOCK = null, TO_STOCK = null, CAR_NO = null, PLAN_NO = null, STATUS = 'EMPTY' ";
+                sql += " WHERE BAY_NO = 'A' AND CRANE_NO = '" + carneNo + "'";
+                var enq = DB2Connect.DBHelper.ExecuteNonQuery(sql);
+                if (enq > 0)
+                    return true;
+            }
+            catch (Exception er)
+            {
+                error = er.Message;
+                return false;
+            }
+            return false;
         }
     }
 }

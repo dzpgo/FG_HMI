@@ -79,21 +79,21 @@ namespace UACSPopupForm
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.label2.Location = new System.Drawing.Point(96, 208);
+            this.label2.Location = new System.Drawing.Point(76, 208);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 25);
+            this.label2.Size = new System.Drawing.Size(145, 25);
             this.label2.TabIndex = 1;
-            this.label2.Text = "被归堆物格：";
+            this.label2.Text = "归堆放料位置：";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.label3.Location = new System.Drawing.Point(99, 128);
+            this.label3.Location = new System.Drawing.Point(114, 128);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 25);
+            this.label3.Size = new System.Drawing.Size(107, 25);
             this.label3.TabIndex = 3;
-            this.label3.Text = "归堆作业跨：";
+            this.label3.Text = "归堆料格：";
             // 
             // label4
             // 
@@ -280,7 +280,7 @@ namespace UACSPopupForm
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(145, 25);
             this.label1.TabIndex = 17;
-            this.label1.Text = "归堆物格位置：";
+            this.label1.Text = "归堆取料位置：";
             // 
             // cmb_AeraNo
             // 

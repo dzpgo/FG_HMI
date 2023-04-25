@@ -91,6 +91,7 @@
     <Compile Include="CraneMonitorModel\conParkingCarHeadModel.cs" />
     <Compile Include="CraneMonitorModel\conParkingCarModel.cs" />
     <Compile Include="CraneMonitorModel\conStockSaddleModel.cs" />
+    <Compile Include="CraneMonitorModel\conTrafficLightModel.cs" />
     <Compile Include="CraneMonitorModel\conUnitSaddleModel.cs" />
     <Compile Include="CraneMonitor\conArea.cs">
       <SubType>UserControl</SubType>
@@ -151,6 +152,12 @@
     </Compile>
     <Compile Include="CraneMonitor\conStockSaddle.designer.cs">
       <DependentUpon>conStockSaddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneMonitor\conTrafficLight2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\conTrafficLight2.Designer.cs">
+      <DependentUpon>conTrafficLight2.cs</DependentUpon>
     </Compile>
     <Compile Include="CraneMonitor\conTruckStowage.cs">
       <SubType>UserControl</SubType>
@@ -400,6 +407,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CraneMonitor\conStockSaddle.resx">
       <DependentUpon>conStockSaddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\conTrafficLight2.resx">
+      <DependentUpon>conTrafficLight2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CraneMonitor\conTruckStowage.resx">
       <DependentUpon>conTruckStowage.cs</DependentUpon>

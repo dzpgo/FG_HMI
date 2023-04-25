@@ -38,13 +38,9 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_conCraneStatus2_4 = new System.Windows.Forms.Panel();
-            this.conCraneStatus2_4 = new UACSControls.conCraneStatus();
             this.panel_conCraneStatus2_1 = new System.Windows.Forms.Panel();
-            this.conCraneStatus2_1 = new UACSControls.conCraneStatus();
             this.panel_conCraneStatus2_2 = new System.Windows.Forms.Panel();
-            this.conCraneStatus2_2 = new UACSControls.conCraneStatus();
             this.panel_conCraneStatus2_3 = new System.Windows.Forms.Panel();
-            this.conCraneStatus2_3 = new UACSControls.conCraneStatus();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.bt_CraneClean = new System.Windows.Forms.Button();
@@ -61,16 +57,47 @@
             this.txtY = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtX = new System.Windows.Forms.Label();
-            this.conCrane2_4 = new UACSControls.conCrane();
-            this.conCrane2_3 = new UACSControls.conCrane();
-            this.conCrane2_2 = new UACSControls.conCrane();
-            this.conCrane2_1 = new UACSControls.conCrane();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.timer_InitializeLoad = new System.Windows.Forms.Timer(this.components);
+            this.conCraneStatus2_4 = new UACSControls.conCraneStatus();
+            this.conCraneStatus2_1 = new UACSControls.conCraneStatus();
+            this.conCraneStatus2_2 = new UACSControls.conCraneStatus();
+            this.conCraneStatus2_3 = new UACSControls.conCraneStatus();
+            this.conTrafficLight2_Cubicle_4 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_Cubicle_3 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_Cubicle_2 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_Cubicle_1 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_23 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_22 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_21 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_20 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_19 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_18 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_17 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_16 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_15 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_14 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_13 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_12 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_11 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_10 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_9 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_8 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_7 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_6 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_5 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_4 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_3 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_2 = new UACSControls.conTrafficLight2();
+            this.conTrafficLight2_1 = new UACSControls.conTrafficLight2();
+            this.conCrane2_4 = new UACSControls.conCrane();
+            this.conCrane2_3 = new UACSControls.conCrane();
+            this.conCrane2_2 = new UACSControls.conCrane();
+            this.conCrane2_1 = new UACSControls.conCrane();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel_conCraneStatus2_4.SuspendLayout();
@@ -169,18 +196,6 @@
             this.panel_conCraneStatus2_4.Size = new System.Drawing.Size(314, 219);
             this.panel_conCraneStatus2_4.TabIndex = 4;
             // 
-            // conCraneStatus2_4
-            // 
-            this.conCraneStatus2_4.AX = null;
-            this.conCraneStatus2_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.conCraneStatus2_4.CraneNO = "";
-            this.conCraneStatus2_4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.conCraneStatus2_4.Location = new System.Drawing.Point(0, 0);
-            this.conCraneStatus2_4.Margin = new System.Windows.Forms.Padding(4);
-            this.conCraneStatus2_4.Name = "conCraneStatus2_4";
-            this.conCraneStatus2_4.Size = new System.Drawing.Size(312, 217);
-            this.conCraneStatus2_4.TabIndex = 3;
-            // 
             // panel_conCraneStatus2_1
             // 
             this.panel_conCraneStatus2_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -190,18 +205,6 @@
             this.panel_conCraneStatus2_1.Name = "panel_conCraneStatus2_1";
             this.panel_conCraneStatus2_1.Size = new System.Drawing.Size(313, 219);
             this.panel_conCraneStatus2_1.TabIndex = 5;
-            // 
-            // conCraneStatus2_1
-            // 
-            this.conCraneStatus2_1.AX = null;
-            this.conCraneStatus2_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.conCraneStatus2_1.CraneNO = "";
-            this.conCraneStatus2_1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.conCraneStatus2_1.Location = new System.Drawing.Point(0, 0);
-            this.conCraneStatus2_1.Margin = new System.Windows.Forms.Padding(4);
-            this.conCraneStatus2_1.Name = "conCraneStatus2_1";
-            this.conCraneStatus2_1.Size = new System.Drawing.Size(311, 217);
-            this.conCraneStatus2_1.TabIndex = 1;
             // 
             // panel_conCraneStatus2_2
             // 
@@ -213,18 +216,6 @@
             this.panel_conCraneStatus2_2.Size = new System.Drawing.Size(313, 219);
             this.panel_conCraneStatus2_2.TabIndex = 6;
             // 
-            // conCraneStatus2_2
-            // 
-            this.conCraneStatus2_2.AX = null;
-            this.conCraneStatus2_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.conCraneStatus2_2.CraneNO = "";
-            this.conCraneStatus2_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.conCraneStatus2_2.Location = new System.Drawing.Point(0, 0);
-            this.conCraneStatus2_2.Margin = new System.Windows.Forms.Padding(4);
-            this.conCraneStatus2_2.Name = "conCraneStatus2_2";
-            this.conCraneStatus2_2.Size = new System.Drawing.Size(311, 217);
-            this.conCraneStatus2_2.TabIndex = 4;
-            // 
             // panel_conCraneStatus2_3
             // 
             this.panel_conCraneStatus2_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -234,18 +225,6 @@
             this.panel_conCraneStatus2_3.Name = "panel_conCraneStatus2_3";
             this.panel_conCraneStatus2_3.Size = new System.Drawing.Size(313, 219);
             this.panel_conCraneStatus2_3.TabIndex = 7;
-            // 
-            // conCraneStatus2_3
-            // 
-            this.conCraneStatus2_3.AX = null;
-            this.conCraneStatus2_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.conCraneStatus2_3.CraneNO = "";
-            this.conCraneStatus2_3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.conCraneStatus2_3.Location = new System.Drawing.Point(0, 0);
-            this.conCraneStatus2_3.Margin = new System.Windows.Forms.Padding(4);
-            this.conCraneStatus2_3.Name = "conCraneStatus2_3";
-            this.conCraneStatus2_3.Size = new System.Drawing.Size(311, 217);
-            this.conCraneStatus2_3.TabIndex = 2;
             // 
             // panel1
             // 
@@ -277,7 +256,7 @@
             this.bt_CraneClean.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bt_CraneClean.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bt_CraneClean.ForeColor = System.Drawing.Color.Black;
-            this.bt_CraneClean.Location = new System.Drawing.Point(953, 35);
+            this.bt_CraneClean.Location = new System.Drawing.Point(1034, 35);
             this.bt_CraneClean.Name = "bt_CraneClean";
             this.bt_CraneClean.Size = new System.Drawing.Size(75, 23);
             this.bt_CraneClean.TabIndex = 29;
@@ -291,7 +270,7 @@
             this.bt_Recondition.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bt_Recondition.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bt_Recondition.ForeColor = System.Drawing.Color.Black;
-            this.bt_Recondition.Location = new System.Drawing.Point(1034, 35);
+            this.bt_Recondition.Location = new System.Drawing.Point(1115, 35);
             this.bt_Recondition.Name = "bt_Recondition";
             this.bt_Recondition.Size = new System.Drawing.Size(75, 23);
             this.bt_Recondition.TabIndex = 29;
@@ -305,12 +284,13 @@
             this.btnShowXY.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnShowXY.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnShowXY.ForeColor = System.Drawing.Color.Black;
-            this.btnShowXY.Location = new System.Drawing.Point(1115, 35);
+            this.btnShowXY.Location = new System.Drawing.Point(953, 35);
             this.btnShowXY.Name = "btnShowXY";
             this.btnShowXY.Size = new System.Drawing.Size(75, 23);
             this.btnShowXY.TabIndex = 29;
             this.btnShowXY.Text = "显示XY";
             this.btnShowXY.UseVisualStyleBackColor = true;
+            this.btnShowXY.Visible = false;
             this.btnShowXY.Click += new System.EventHandler(this.btnShowXY_Click);
             // 
             // btnShowCrane
@@ -374,6 +354,33 @@
             // 
             this.panelZ61Bay.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panelZ61Bay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_Cubicle_4);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_Cubicle_3);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_Cubicle_2);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_Cubicle_1);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_23);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_22);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_21);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_20);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_19);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_18);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_17);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_16);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_15);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_14);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_13);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_12);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_11);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_10);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_9);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_8);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_7);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_6);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_5);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_4);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_3);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_2);
+            this.panelZ61Bay.Controls.Add(this.conTrafficLight2_1);
             this.panelZ61Bay.Controls.Add(this.panel4);
             this.panelZ61Bay.Controls.Add(this.conCrane2_4);
             this.panelZ61Bay.Controls.Add(this.conCrane2_3);
@@ -399,6 +406,7 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(100, 66);
             this.panel4.TabIndex = 18;
+            this.panel4.Visible = false;
             // 
             // label2
             // 
@@ -448,6 +456,363 @@
             this.txtX.TabIndex = 14;
             this.txtX.Text = "999999";
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(0, 0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 0;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(0, 0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 0;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(0, 0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 0;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(0, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 0;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(0, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 0;
+            // 
+            // timer_InitializeLoad
+            // 
+            this.timer_InitializeLoad.Tick += new System.EventHandler(this.timer_InitializeLoad_Tick);
+            // 
+            // conCraneStatus2_4
+            // 
+            this.conCraneStatus2_4.AX = null;
+            this.conCraneStatus2_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.conCraneStatus2_4.CraneNO = "";
+            this.conCraneStatus2_4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.conCraneStatus2_4.Location = new System.Drawing.Point(0, 0);
+            this.conCraneStatus2_4.Margin = new System.Windows.Forms.Padding(4);
+            this.conCraneStatus2_4.Name = "conCraneStatus2_4";
+            this.conCraneStatus2_4.Size = new System.Drawing.Size(312, 217);
+            this.conCraneStatus2_4.TabIndex = 3;
+            // 
+            // conCraneStatus2_1
+            // 
+            this.conCraneStatus2_1.AX = null;
+            this.conCraneStatus2_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.conCraneStatus2_1.CraneNO = "";
+            this.conCraneStatus2_1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.conCraneStatus2_1.Location = new System.Drawing.Point(0, 0);
+            this.conCraneStatus2_1.Margin = new System.Windows.Forms.Padding(4);
+            this.conCraneStatus2_1.Name = "conCraneStatus2_1";
+            this.conCraneStatus2_1.Size = new System.Drawing.Size(311, 217);
+            this.conCraneStatus2_1.TabIndex = 1;
+            // 
+            // conCraneStatus2_2
+            // 
+            this.conCraneStatus2_2.AX = null;
+            this.conCraneStatus2_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.conCraneStatus2_2.CraneNO = "";
+            this.conCraneStatus2_2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.conCraneStatus2_2.Location = new System.Drawing.Point(0, 0);
+            this.conCraneStatus2_2.Margin = new System.Windows.Forms.Padding(4);
+            this.conCraneStatus2_2.Name = "conCraneStatus2_2";
+            this.conCraneStatus2_2.Size = new System.Drawing.Size(311, 217);
+            this.conCraneStatus2_2.TabIndex = 4;
+            // 
+            // conCraneStatus2_3
+            // 
+            this.conCraneStatus2_3.AX = null;
+            this.conCraneStatus2_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.conCraneStatus2_3.CraneNO = "";
+            this.conCraneStatus2_3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.conCraneStatus2_3.Location = new System.Drawing.Point(0, 0);
+            this.conCraneStatus2_3.Margin = new System.Windows.Forms.Padding(4);
+            this.conCraneStatus2_3.Name = "conCraneStatus2_3";
+            this.conCraneStatus2_3.Size = new System.Drawing.Size(311, 217);
+            this.conCraneStatus2_3.TabIndex = 2;
+            // 
+            // conTrafficLight2_Cubicle_4
+            // 
+            this.conTrafficLight2_Cubicle_4.AreaNO = "";
+            this.conTrafficLight2_Cubicle_4.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_Cubicle_4.CraneNO = "";
+            this.conTrafficLight2_Cubicle_4.Location = new System.Drawing.Point(83, 10);
+            this.conTrafficLight2_Cubicle_4.Name = "conTrafficLight2_Cubicle_4";
+            this.conTrafficLight2_Cubicle_4.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_Cubicle_4.TabIndex = 19;
+            // 
+            // conTrafficLight2_Cubicle_3
+            // 
+            this.conTrafficLight2_Cubicle_3.AreaNO = "";
+            this.conTrafficLight2_Cubicle_3.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_Cubicle_3.CraneNO = "";
+            this.conTrafficLight2_Cubicle_3.Location = new System.Drawing.Point(57, 10);
+            this.conTrafficLight2_Cubicle_3.Name = "conTrafficLight2_Cubicle_3";
+            this.conTrafficLight2_Cubicle_3.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_Cubicle_3.TabIndex = 19;
+            // 
+            // conTrafficLight2_Cubicle_2
+            // 
+            this.conTrafficLight2_Cubicle_2.AreaNO = "";
+            this.conTrafficLight2_Cubicle_2.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_Cubicle_2.CraneNO = "";
+            this.conTrafficLight2_Cubicle_2.Location = new System.Drawing.Point(31, 10);
+            this.conTrafficLight2_Cubicle_2.Name = "conTrafficLight2_Cubicle_2";
+            this.conTrafficLight2_Cubicle_2.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_Cubicle_2.TabIndex = 19;
+            // 
+            // conTrafficLight2_Cubicle_1
+            // 
+            this.conTrafficLight2_Cubicle_1.AreaNO = "";
+            this.conTrafficLight2_Cubicle_1.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_Cubicle_1.CraneNO = "";
+            this.conTrafficLight2_Cubicle_1.Location = new System.Drawing.Point(5, 10);
+            this.conTrafficLight2_Cubicle_1.Name = "conTrafficLight2_Cubicle_1";
+            this.conTrafficLight2_Cubicle_1.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_Cubicle_1.TabIndex = 19;
+            // 
+            // conTrafficLight2_23
+            // 
+            this.conTrafficLight2_23.AreaNO = "";
+            this.conTrafficLight2_23.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_23.CraneNO = "";
+            this.conTrafficLight2_23.Location = new System.Drawing.Point(288, 62);
+            this.conTrafficLight2_23.Name = "conTrafficLight2_23";
+            this.conTrafficLight2_23.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_23.TabIndex = 19;
+            // 
+            // conTrafficLight2_22
+            // 
+            this.conTrafficLight2_22.AreaNO = "";
+            this.conTrafficLight2_22.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_22.CraneNO = "";
+            this.conTrafficLight2_22.Location = new System.Drawing.Point(265, 62);
+            this.conTrafficLight2_22.Name = "conTrafficLight2_22";
+            this.conTrafficLight2_22.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_22.TabIndex = 19;
+            // 
+            // conTrafficLight2_21
+            // 
+            this.conTrafficLight2_21.AreaNO = "";
+            this.conTrafficLight2_21.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_21.CraneNO = "";
+            this.conTrafficLight2_21.Location = new System.Drawing.Point(239, 62);
+            this.conTrafficLight2_21.Name = "conTrafficLight2_21";
+            this.conTrafficLight2_21.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_21.TabIndex = 19;
+            // 
+            // conTrafficLight2_20
+            // 
+            this.conTrafficLight2_20.AreaNO = "";
+            this.conTrafficLight2_20.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_20.CraneNO = "";
+            this.conTrafficLight2_20.Location = new System.Drawing.Point(213, 62);
+            this.conTrafficLight2_20.Name = "conTrafficLight2_20";
+            this.conTrafficLight2_20.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_20.TabIndex = 19;
+            // 
+            // conTrafficLight2_19
+            // 
+            this.conTrafficLight2_19.AreaNO = "";
+            this.conTrafficLight2_19.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_19.CraneNO = "";
+            this.conTrafficLight2_19.Location = new System.Drawing.Point(187, 62);
+            this.conTrafficLight2_19.Name = "conTrafficLight2_19";
+            this.conTrafficLight2_19.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_19.TabIndex = 19;
+            // 
+            // conTrafficLight2_18
+            // 
+            this.conTrafficLight2_18.AreaNO = "";
+            this.conTrafficLight2_18.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_18.CraneNO = "";
+            this.conTrafficLight2_18.Location = new System.Drawing.Point(161, 62);
+            this.conTrafficLight2_18.Name = "conTrafficLight2_18";
+            this.conTrafficLight2_18.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_18.TabIndex = 19;
+            // 
+            // conTrafficLight2_17
+            // 
+            this.conTrafficLight2_17.AreaNO = "";
+            this.conTrafficLight2_17.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_17.CraneNO = "";
+            this.conTrafficLight2_17.Location = new System.Drawing.Point(135, 62);
+            this.conTrafficLight2_17.Name = "conTrafficLight2_17";
+            this.conTrafficLight2_17.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_17.TabIndex = 19;
+            // 
+            // conTrafficLight2_16
+            // 
+            this.conTrafficLight2_16.AreaNO = "";
+            this.conTrafficLight2_16.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_16.CraneNO = "";
+            this.conTrafficLight2_16.Location = new System.Drawing.Point(109, 62);
+            this.conTrafficLight2_16.Name = "conTrafficLight2_16";
+            this.conTrafficLight2_16.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_16.TabIndex = 19;
+            // 
+            // conTrafficLight2_15
+            // 
+            this.conTrafficLight2_15.AreaNO = "";
+            this.conTrafficLight2_15.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_15.CraneNO = "";
+            this.conTrafficLight2_15.Location = new System.Drawing.Point(83, 62);
+            this.conTrafficLight2_15.Name = "conTrafficLight2_15";
+            this.conTrafficLight2_15.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_15.TabIndex = 19;
+            // 
+            // conTrafficLight2_14
+            // 
+            this.conTrafficLight2_14.AreaNO = "";
+            this.conTrafficLight2_14.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_14.CraneNO = "";
+            this.conTrafficLight2_14.Location = new System.Drawing.Point(57, 62);
+            this.conTrafficLight2_14.Name = "conTrafficLight2_14";
+            this.conTrafficLight2_14.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_14.TabIndex = 19;
+            // 
+            // conTrafficLight2_13
+            // 
+            this.conTrafficLight2_13.AreaNO = "";
+            this.conTrafficLight2_13.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_13.CraneNO = "";
+            this.conTrafficLight2_13.Location = new System.Drawing.Point(31, 62);
+            this.conTrafficLight2_13.Name = "conTrafficLight2_13";
+            this.conTrafficLight2_13.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_13.TabIndex = 19;
+            // 
+            // conTrafficLight2_12
+            // 
+            this.conTrafficLight2_12.AreaNO = "";
+            this.conTrafficLight2_12.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_12.CraneNO = "";
+            this.conTrafficLight2_12.Location = new System.Drawing.Point(5, 62);
+            this.conTrafficLight2_12.Name = "conTrafficLight2_12";
+            this.conTrafficLight2_12.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_12.TabIndex = 19;
+            // 
+            // conTrafficLight2_11
+            // 
+            this.conTrafficLight2_11.AreaNO = "";
+            this.conTrafficLight2_11.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_11.CraneNO = "";
+            this.conTrafficLight2_11.Location = new System.Drawing.Point(265, 36);
+            this.conTrafficLight2_11.Name = "conTrafficLight2_11";
+            this.conTrafficLight2_11.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_11.TabIndex = 19;
+            // 
+            // conTrafficLight2_10
+            // 
+            this.conTrafficLight2_10.AreaNO = "";
+            this.conTrafficLight2_10.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_10.CraneNO = "";
+            this.conTrafficLight2_10.Location = new System.Drawing.Point(239, 36);
+            this.conTrafficLight2_10.Name = "conTrafficLight2_10";
+            this.conTrafficLight2_10.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_10.TabIndex = 19;
+            // 
+            // conTrafficLight2_9
+            // 
+            this.conTrafficLight2_9.AreaNO = "";
+            this.conTrafficLight2_9.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_9.CraneNO = "";
+            this.conTrafficLight2_9.Location = new System.Drawing.Point(213, 36);
+            this.conTrafficLight2_9.Name = "conTrafficLight2_9";
+            this.conTrafficLight2_9.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_9.TabIndex = 19;
+            // 
+            // conTrafficLight2_8
+            // 
+            this.conTrafficLight2_8.AreaNO = "";
+            this.conTrafficLight2_8.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_8.CraneNO = "";
+            this.conTrafficLight2_8.Location = new System.Drawing.Point(187, 36);
+            this.conTrafficLight2_8.Name = "conTrafficLight2_8";
+            this.conTrafficLight2_8.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_8.TabIndex = 19;
+            // 
+            // conTrafficLight2_7
+            // 
+            this.conTrafficLight2_7.AreaNO = "";
+            this.conTrafficLight2_7.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_7.CraneNO = "";
+            this.conTrafficLight2_7.Location = new System.Drawing.Point(161, 36);
+            this.conTrafficLight2_7.Name = "conTrafficLight2_7";
+            this.conTrafficLight2_7.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_7.TabIndex = 19;
+            // 
+            // conTrafficLight2_6
+            // 
+            this.conTrafficLight2_6.AreaNO = "";
+            this.conTrafficLight2_6.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_6.CraneNO = "";
+            this.conTrafficLight2_6.Location = new System.Drawing.Point(135, 36);
+            this.conTrafficLight2_6.Name = "conTrafficLight2_6";
+            this.conTrafficLight2_6.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_6.TabIndex = 19;
+            // 
+            // conTrafficLight2_5
+            // 
+            this.conTrafficLight2_5.AreaNO = "";
+            this.conTrafficLight2_5.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_5.CraneNO = "";
+            this.conTrafficLight2_5.Location = new System.Drawing.Point(109, 36);
+            this.conTrafficLight2_5.Name = "conTrafficLight2_5";
+            this.conTrafficLight2_5.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_5.TabIndex = 19;
+            // 
+            // conTrafficLight2_4
+            // 
+            this.conTrafficLight2_4.AreaNO = "";
+            this.conTrafficLight2_4.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_4.CraneNO = "";
+            this.conTrafficLight2_4.Location = new System.Drawing.Point(83, 36);
+            this.conTrafficLight2_4.Name = "conTrafficLight2_4";
+            this.conTrafficLight2_4.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_4.TabIndex = 19;
+            // 
+            // conTrafficLight2_3
+            // 
+            this.conTrafficLight2_3.AreaNO = "";
+            this.conTrafficLight2_3.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_3.CraneNO = "";
+            this.conTrafficLight2_3.Location = new System.Drawing.Point(57, 36);
+            this.conTrafficLight2_3.Name = "conTrafficLight2_3";
+            this.conTrafficLight2_3.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_3.TabIndex = 19;
+            // 
+            // conTrafficLight2_2
+            // 
+            this.conTrafficLight2_2.AreaNO = "";
+            this.conTrafficLight2_2.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_2.CraneNO = "";
+            this.conTrafficLight2_2.Location = new System.Drawing.Point(31, 36);
+            this.conTrafficLight2_2.Name = "conTrafficLight2_2";
+            this.conTrafficLight2_2.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_2.TabIndex = 19;
+            // 
+            // conTrafficLight2_1
+            // 
+            this.conTrafficLight2_1.AreaNO = "";
+            this.conTrafficLight2_1.BackColor = System.Drawing.Color.Transparent;
+            this.conTrafficLight2_1.CraneNO = "";
+            this.conTrafficLight2_1.Location = new System.Drawing.Point(5, 36);
+            this.conTrafficLight2_1.Name = "conTrafficLight2_1";
+            this.conTrafficLight2_1.Size = new System.Drawing.Size(20, 20);
+            this.conTrafficLight2_1.TabIndex = 19;
+            // 
             // conCrane2_4
             // 
             this.conCrane2_4.BackColor = System.Drawing.SystemColors.Control;
@@ -487,45 +852,6 @@
             this.conCrane2_1.Name = "conCrane2_1";
             this.conCrane2_1.Size = new System.Drawing.Size(47, 408);
             this.conCrane2_1.TabIndex = 1;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(0, 0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 0;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(0, 0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 0;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(0, 0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 0;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(0, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 0;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 0;
-            // 
-            // timer_InitializeLoad
-            // 
-            this.timer_InitializeLoad.Tick += new System.EventHandler(this.timer_InitializeLoad_Tick);
             // 
             // Z01_library_Monitor
             // 
@@ -600,5 +926,32 @@
         private UACSControls.conCraneStatus conCraneStatus2_3;
         private System.Windows.Forms.Button bt_Recondition;
         private System.Windows.Forms.Button bt_CraneClean;
+        private UACSControls.conTrafficLight2 conTrafficLight2_2;
+        private UACSControls.conTrafficLight2 conTrafficLight2_1;
+        private UACSControls.conTrafficLight2 conTrafficLight2_4;
+        private UACSControls.conTrafficLight2 conTrafficLight2_3;
+        private UACSControls.conTrafficLight2 conTrafficLight2_23;
+        private UACSControls.conTrafficLight2 conTrafficLight2_22;
+        private UACSControls.conTrafficLight2 conTrafficLight2_21;
+        private UACSControls.conTrafficLight2 conTrafficLight2_20;
+        private UACSControls.conTrafficLight2 conTrafficLight2_19;
+        private UACSControls.conTrafficLight2 conTrafficLight2_18;
+        private UACSControls.conTrafficLight2 conTrafficLight2_17;
+        private UACSControls.conTrafficLight2 conTrafficLight2_16;
+        private UACSControls.conTrafficLight2 conTrafficLight2_15;
+        private UACSControls.conTrafficLight2 conTrafficLight2_14;
+        private UACSControls.conTrafficLight2 conTrafficLight2_13;
+        private UACSControls.conTrafficLight2 conTrafficLight2_12;
+        private UACSControls.conTrafficLight2 conTrafficLight2_11;
+        private UACSControls.conTrafficLight2 conTrafficLight2_10;
+        private UACSControls.conTrafficLight2 conTrafficLight2_9;
+        private UACSControls.conTrafficLight2 conTrafficLight2_8;
+        private UACSControls.conTrafficLight2 conTrafficLight2_7;
+        private UACSControls.conTrafficLight2 conTrafficLight2_6;
+        private UACSControls.conTrafficLight2 conTrafficLight2_5;
+        private UACSControls.conTrafficLight2 conTrafficLight2_Cubicle_4;
+        private UACSControls.conTrafficLight2 conTrafficLight2_Cubicle_3;
+        private UACSControls.conTrafficLight2 conTrafficLight2_Cubicle_2;
+        private UACSControls.conTrafficLight2 conTrafficLight2_Cubicle_1;
     }
 }

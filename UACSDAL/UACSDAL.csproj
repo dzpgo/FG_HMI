@@ -94,6 +94,8 @@
     <Compile Include="CraneMonitor\GRIDBase.cs" />
     <Compile Include="CraneMonitor\SaddleBase.cs" />
     <Compile Include="CraneMonitor\SaddleInBay.cs" />
+    <Compile Include="CraneMonitor\TrafficLightBase.cs" />
+    <Compile Include="CraneMonitor\TrafficLightInfo.cs" />
     <Compile Include="CraneMonitor\TruckStowage.cs" />
     <Compile Include="CraneMonitor\ViewHelper.cs" />
     <Compile Include="UnitSaddle\Saddle.cs" />

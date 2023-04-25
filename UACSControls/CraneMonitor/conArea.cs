@@ -199,6 +199,10 @@ namespace UACSControls
                         //lbl.Location = new Point(this.Width / 2, this.Height / 2);
                         lbl.Location = new Point(this.Width / 2 - 30, this.Height / 2);
 
+                        //lbl.Text = "●";
+                        //lbl.ForeColor = Color.Red;
+                        
+                        //lbl.Image = null;
 
                         //lbl.Width = 75;
                         //lbl.Height = 90;
