@@ -248,138 +248,161 @@ namespace UACSView.View_CraneMonitor
             {
                 conTrafficLight2_1.InitTagDataProvide(constData.tagServiceName);
                 conTrafficLight2_1.AreaNO = item.AreaNo;
+                conTrafficLight2_1.AreaReserve = item.AreaReserve;
                 conTrafficLight2_1.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_1);
             }
             if (item.AreaNo.Equals("A2"))
             {
                 conTrafficLight2_2.AreaNO = item.AreaNo;
+                conTrafficLight2_2.AreaReserve = item.AreaReserve;
                 conTrafficLight2_2.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_2);
             }
             if (item.AreaNo.Equals("A3"))
             {
                 conTrafficLight2_3.AreaNO = item.AreaNo;
+                conTrafficLight2_3.AreaReserve = item.AreaReserve;
                 conTrafficLight2_3.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_3);
             }
             if (item.AreaNo.Equals("A4"))
             {
                 conTrafficLight2_4.AreaNO = item.AreaNo;
+                conTrafficLight2_4.AreaReserve = item.AreaReserve;
                 conTrafficLight2_4.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_4);
             }
             if (item.AreaNo.Equals("A5"))
             {
                 conTrafficLight2_5.AreaNO = item.AreaNo;
+                conTrafficLight2_5.AreaReserve = item.AreaReserve;
                 conTrafficLight2_5.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_5);
             }
             if (item.AreaNo.Equals("A6"))
             {
                 conTrafficLight2_6.AreaNO = item.AreaNo;
+                conTrafficLight2_6.AreaReserve = item.AreaReserve;
                 conTrafficLight2_6.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_6);
             }
             if (item.AreaNo.Equals("A7"))
             {
                 conTrafficLight2_7.AreaNO = item.AreaNo;
+                conTrafficLight2_7.AreaReserve = item.AreaReserve;
                 conTrafficLight2_7.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_7);
             }
             if (item.AreaNo.Equals("A8"))
             {
                 conTrafficLight2_8.AreaNO = item.AreaNo;
+                conTrafficLight2_8.AreaReserve = item.AreaReserve;
                 conTrafficLight2_8.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_8);
             }
             if (item.AreaNo.Equals("A9"))
             {
                 conTrafficLight2_9.AreaNO = item.AreaNo;
+                conTrafficLight2_9.AreaReserve = item.AreaReserve;
                 conTrafficLight2_9.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_9);
             }
             if (item.AreaNo.Equals("A10"))
             {
                 conTrafficLight2_10.AreaNO = item.AreaNo;
+                conTrafficLight2_10.AreaReserve = item.AreaReserve;
                 conTrafficLight2_10.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_10);
             }
             if (item.AreaNo.Equals("A11"))
             {
                 conTrafficLight2_11.AreaNO = item.AreaNo;
+                conTrafficLight2_11.AreaReserve = item.AreaReserve;
                 conTrafficLight2_11.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_11);
             }
             if (item.AreaNo.Equals("A12"))
             {
                 conTrafficLight2_12.AreaNO = item.AreaNo;
+                conTrafficLight2_12.AreaReserve = item.AreaReserve;
                 conTrafficLight2_12.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_12);
             }
             if (item.AreaNo.Equals("A13"))
             {
                 conTrafficLight2_13.AreaNO = item.AreaNo;
+                conTrafficLight2_13.AreaReserve = item.AreaReserve;
                 conTrafficLight2_13.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_13);
             }
             if (item.AreaNo.Equals("A14"))
             {
                 conTrafficLight2_14.AreaNO = item.AreaNo;
+                conTrafficLight2_14.AreaReserve = item.AreaReserve;
                 conTrafficLight2_14.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_14);
             }
             if (item.AreaNo.Equals("A15"))
             {
                 conTrafficLight2_15.AreaNO = item.AreaNo;
+                conTrafficLight2_15.AreaReserve = item.AreaReserve;
                 conTrafficLight2_15.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_15);
             }
             if (item.AreaNo.Equals("A16"))
             {
                 conTrafficLight2_16.AreaNO = item.AreaNo;
+                conTrafficLight2_16.AreaReserve = item.AreaReserve;
                 conTrafficLight2_16.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_16);
             }
             if (item.AreaNo.Equals("A17"))
             {
                 conTrafficLight2_17.AreaNO = item.AreaNo;
+                conTrafficLight2_17.AreaReserve = item.AreaReserve;
                 conTrafficLight2_17.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_17);
             }
             if (item.AreaNo.Equals("A18"))
             {
                 conTrafficLight2_18.AreaNO = item.AreaNo;
+                conTrafficLight2_18.AreaReserve = item.AreaReserve;
                 conTrafficLight2_18.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_18);
             }
             if (item.AreaNo.Equals("A19"))
             {
                 conTrafficLight2_19.AreaNO = item.AreaNo;
+                conTrafficLight2_19.AreaReserve = item.AreaReserve;
                 conTrafficLight2_19.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_19);
             }
             if (item.AreaNo.Equals("A20"))
             {
                 conTrafficLight2_20.AreaNO = item.AreaNo;
+                conTrafficLight2_20.AreaReserve = item.AreaReserve;
                 conTrafficLight2_20.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_20);
             }
             if (item.AreaNo.Equals("A21"))
             {
                 conTrafficLight2_21.AreaNO = item.AreaNo;
+                conTrafficLight2_21.AreaReserve = item.AreaReserve;
                 conTrafficLight2_21.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_21);
             }
             if (item.AreaNo.Equals("A22"))
             {
                 conTrafficLight2_22.AreaNO = item.AreaNo;
+                conTrafficLight2_22.AreaReserve = item.AreaReserve;
                 conTrafficLight2_22.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_22);
             }
             if (item.AreaNo.Equals("A23"))
             {
                 conTrafficLight2_23.AreaNO = item.AreaNo;
+                conTrafficLight2_23.AreaReserve = item.AreaReserve;
                 conTrafficLight2_23.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_23);
             }
@@ -388,24 +411,28 @@ namespace UACSView.View_CraneMonitor
             if (item.AreaNo.Equals("T1"))
             {
                 conTrafficLight2_Cubicle_1.AreaNO = item.AreaNo;
+                conTrafficLight2_Cubicle_1.AreaReserve = item.AreaReserve;
                 conTrafficLight2_Cubicle_1.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_Cubicle_1);
             }
             if (item.AreaNo.Equals("T2"))
             {
                 conTrafficLight2_Cubicle_2.AreaNO = item.AreaNo;
+                conTrafficLight2_Cubicle_2.AreaReserve = item.AreaReserve;
                 conTrafficLight2_Cubicle_2.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_Cubicle_2);
             }
             if (item.AreaNo.Equals("T3"))
             {
                 conTrafficLight2_Cubicle_3.AreaNO = item.AreaNo;
+                conTrafficLight2_Cubicle_3.AreaReserve = item.AreaReserve;
                 conTrafficLight2_Cubicle_3.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_Cubicle_3);
             }
             if (item.AreaNo.Equals("T4"))
             {
                 conTrafficLight2_Cubicle_4.AreaNO = item.AreaNo;
+                conTrafficLight2_Cubicle_4.AreaReserve = item.AreaReserve;
                 conTrafficLight2_Cubicle_4.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_Cubicle_4);
             }

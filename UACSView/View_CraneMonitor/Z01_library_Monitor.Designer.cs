@@ -546,6 +546,7 @@
             // conTrafficLight2_Cubicle_4
             // 
             this.conTrafficLight2_Cubicle_4.AreaNO = "";
+            this.conTrafficLight2_Cubicle_4.AreaReserve = null;
             this.conTrafficLight2_Cubicle_4.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_Cubicle_4.CraneNO = "";
             this.conTrafficLight2_Cubicle_4.Location = new System.Drawing.Point(83, 10);
@@ -556,6 +557,7 @@
             // conTrafficLight2_Cubicle_3
             // 
             this.conTrafficLight2_Cubicle_3.AreaNO = "";
+            this.conTrafficLight2_Cubicle_3.AreaReserve = null;
             this.conTrafficLight2_Cubicle_3.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_Cubicle_3.CraneNO = "";
             this.conTrafficLight2_Cubicle_3.Location = new System.Drawing.Point(57, 10);
@@ -566,6 +568,7 @@
             // conTrafficLight2_Cubicle_2
             // 
             this.conTrafficLight2_Cubicle_2.AreaNO = "";
+            this.conTrafficLight2_Cubicle_2.AreaReserve = null;
             this.conTrafficLight2_Cubicle_2.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_Cubicle_2.CraneNO = "";
             this.conTrafficLight2_Cubicle_2.Location = new System.Drawing.Point(31, 10);
@@ -576,6 +579,7 @@
             // conTrafficLight2_Cubicle_1
             // 
             this.conTrafficLight2_Cubicle_1.AreaNO = "";
+            this.conTrafficLight2_Cubicle_1.AreaReserve = null;
             this.conTrafficLight2_Cubicle_1.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_Cubicle_1.CraneNO = "";
             this.conTrafficLight2_Cubicle_1.Location = new System.Drawing.Point(5, 10);
@@ -586,6 +590,7 @@
             // conTrafficLight2_23
             // 
             this.conTrafficLight2_23.AreaNO = "";
+            this.conTrafficLight2_23.AreaReserve = null;
             this.conTrafficLight2_23.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_23.CraneNO = "";
             this.conTrafficLight2_23.Location = new System.Drawing.Point(288, 62);
@@ -596,6 +601,7 @@
             // conTrafficLight2_22
             // 
             this.conTrafficLight2_22.AreaNO = "";
+            this.conTrafficLight2_22.AreaReserve = null;
             this.conTrafficLight2_22.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_22.CraneNO = "";
             this.conTrafficLight2_22.Location = new System.Drawing.Point(265, 62);
@@ -606,6 +612,7 @@
             // conTrafficLight2_21
             // 
             this.conTrafficLight2_21.AreaNO = "";
+            this.conTrafficLight2_21.AreaReserve = null;
             this.conTrafficLight2_21.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_21.CraneNO = "";
             this.conTrafficLight2_21.Location = new System.Drawing.Point(239, 62);
@@ -616,6 +623,7 @@
             // conTrafficLight2_20
             // 
             this.conTrafficLight2_20.AreaNO = "";
+            this.conTrafficLight2_20.AreaReserve = null;
             this.conTrafficLight2_20.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_20.CraneNO = "";
             this.conTrafficLight2_20.Location = new System.Drawing.Point(213, 62);
@@ -626,6 +634,7 @@
             // conTrafficLight2_19
             // 
             this.conTrafficLight2_19.AreaNO = "";
+            this.conTrafficLight2_19.AreaReserve = null;
             this.conTrafficLight2_19.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_19.CraneNO = "";
             this.conTrafficLight2_19.Location = new System.Drawing.Point(187, 62);
@@ -636,6 +645,7 @@
             // conTrafficLight2_18
             // 
             this.conTrafficLight2_18.AreaNO = "";
+            this.conTrafficLight2_18.AreaReserve = null;
             this.conTrafficLight2_18.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_18.CraneNO = "";
             this.conTrafficLight2_18.Location = new System.Drawing.Point(161, 62);
@@ -646,6 +656,7 @@
             // conTrafficLight2_17
             // 
             this.conTrafficLight2_17.AreaNO = "";
+            this.conTrafficLight2_17.AreaReserve = null;
             this.conTrafficLight2_17.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_17.CraneNO = "";
             this.conTrafficLight2_17.Location = new System.Drawing.Point(135, 62);
@@ -656,6 +667,7 @@
             // conTrafficLight2_16
             // 
             this.conTrafficLight2_16.AreaNO = "";
+            this.conTrafficLight2_16.AreaReserve = null;
             this.conTrafficLight2_16.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_16.CraneNO = "";
             this.conTrafficLight2_16.Location = new System.Drawing.Point(109, 62);
@@ -666,6 +678,7 @@
             // conTrafficLight2_15
             // 
             this.conTrafficLight2_15.AreaNO = "";
+            this.conTrafficLight2_15.AreaReserve = null;
             this.conTrafficLight2_15.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_15.CraneNO = "";
             this.conTrafficLight2_15.Location = new System.Drawing.Point(83, 62);
@@ -676,6 +689,7 @@
             // conTrafficLight2_14
             // 
             this.conTrafficLight2_14.AreaNO = "";
+            this.conTrafficLight2_14.AreaReserve = null;
             this.conTrafficLight2_14.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_14.CraneNO = "";
             this.conTrafficLight2_14.Location = new System.Drawing.Point(57, 62);
@@ -686,6 +700,7 @@
             // conTrafficLight2_13
             // 
             this.conTrafficLight2_13.AreaNO = "";
+            this.conTrafficLight2_13.AreaReserve = null;
             this.conTrafficLight2_13.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_13.CraneNO = "";
             this.conTrafficLight2_13.Location = new System.Drawing.Point(31, 62);
@@ -696,6 +711,7 @@
             // conTrafficLight2_12
             // 
             this.conTrafficLight2_12.AreaNO = "";
+            this.conTrafficLight2_12.AreaReserve = null;
             this.conTrafficLight2_12.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_12.CraneNO = "";
             this.conTrafficLight2_12.Location = new System.Drawing.Point(5, 62);
@@ -706,6 +722,7 @@
             // conTrafficLight2_11
             // 
             this.conTrafficLight2_11.AreaNO = "";
+            this.conTrafficLight2_11.AreaReserve = null;
             this.conTrafficLight2_11.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_11.CraneNO = "";
             this.conTrafficLight2_11.Location = new System.Drawing.Point(265, 36);
@@ -716,6 +733,7 @@
             // conTrafficLight2_10
             // 
             this.conTrafficLight2_10.AreaNO = "";
+            this.conTrafficLight2_10.AreaReserve = null;
             this.conTrafficLight2_10.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_10.CraneNO = "";
             this.conTrafficLight2_10.Location = new System.Drawing.Point(239, 36);
@@ -726,6 +744,7 @@
             // conTrafficLight2_9
             // 
             this.conTrafficLight2_9.AreaNO = "";
+            this.conTrafficLight2_9.AreaReserve = null;
             this.conTrafficLight2_9.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_9.CraneNO = "";
             this.conTrafficLight2_9.Location = new System.Drawing.Point(213, 36);
@@ -736,6 +755,7 @@
             // conTrafficLight2_8
             // 
             this.conTrafficLight2_8.AreaNO = "";
+            this.conTrafficLight2_8.AreaReserve = null;
             this.conTrafficLight2_8.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_8.CraneNO = "";
             this.conTrafficLight2_8.Location = new System.Drawing.Point(187, 36);
@@ -746,6 +766,7 @@
             // conTrafficLight2_7
             // 
             this.conTrafficLight2_7.AreaNO = "";
+            this.conTrafficLight2_7.AreaReserve = null;
             this.conTrafficLight2_7.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_7.CraneNO = "";
             this.conTrafficLight2_7.Location = new System.Drawing.Point(161, 36);
@@ -756,6 +777,7 @@
             // conTrafficLight2_6
             // 
             this.conTrafficLight2_6.AreaNO = "";
+            this.conTrafficLight2_6.AreaReserve = null;
             this.conTrafficLight2_6.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_6.CraneNO = "";
             this.conTrafficLight2_6.Location = new System.Drawing.Point(135, 36);
@@ -766,6 +788,7 @@
             // conTrafficLight2_5
             // 
             this.conTrafficLight2_5.AreaNO = "";
+            this.conTrafficLight2_5.AreaReserve = null;
             this.conTrafficLight2_5.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_5.CraneNO = "";
             this.conTrafficLight2_5.Location = new System.Drawing.Point(109, 36);
@@ -776,6 +799,7 @@
             // conTrafficLight2_4
             // 
             this.conTrafficLight2_4.AreaNO = "";
+            this.conTrafficLight2_4.AreaReserve = null;
             this.conTrafficLight2_4.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_4.CraneNO = "";
             this.conTrafficLight2_4.Location = new System.Drawing.Point(83, 36);
@@ -786,6 +810,7 @@
             // conTrafficLight2_3
             // 
             this.conTrafficLight2_3.AreaNO = "";
+            this.conTrafficLight2_3.AreaReserve = null;
             this.conTrafficLight2_3.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_3.CraneNO = "";
             this.conTrafficLight2_3.Location = new System.Drawing.Point(57, 36);
@@ -796,6 +821,7 @@
             // conTrafficLight2_2
             // 
             this.conTrafficLight2_2.AreaNO = "";
+            this.conTrafficLight2_2.AreaReserve = null;
             this.conTrafficLight2_2.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_2.CraneNO = "";
             this.conTrafficLight2_2.Location = new System.Drawing.Point(31, 36);
@@ -806,6 +832,7 @@
             // conTrafficLight2_1
             // 
             this.conTrafficLight2_1.AreaNO = "";
+            this.conTrafficLight2_1.AreaReserve = null;
             this.conTrafficLight2_1.BackColor = System.Drawing.Color.Transparent;
             this.conTrafficLight2_1.CraneNO = "";
             this.conTrafficLight2_1.Location = new System.Drawing.Point(5, 36);

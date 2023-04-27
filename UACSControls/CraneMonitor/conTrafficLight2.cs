@@ -17,6 +17,7 @@ using UACS;
 using UACSPopupForm.CraneMonitor;
 using UACSDAL.CraneMonitor;
 using System.Drawing.Drawing2D;
+using System.Windows.Markup;
 
 namespace UACSControls
 {
@@ -43,6 +44,8 @@ namespace UACSControls
         public conTrafficLight2()
         {
             InitializeComponent();
+            tagDP.ServiceName = "iplature";
+            tagDP.AutoRegist = true;
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
             SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲   
@@ -94,6 +97,9 @@ namespace UACSControls
 
         private string areaNO = string.Empty;
         public string AreaNO { get => areaNO; set => areaNO = value; }
+        //private long areaReserve = 0;
+        //public long AreaReserve { get => areaReserve; set => areaReserve = value; }
+        public long? AreaReserve = null;
         private string craneNO = string.Empty;
         //step2
         public string CraneNO
@@ -106,7 +112,7 @@ namespace UACSControls
             }
         }
 
-
+        
 
         public delegate void RefreshControlInvoke(TrafficLightBase theParkingBase, long baySpaceX, long baySpaceY, int panelWidth, int panelHeight, bool xAxisRight, bool yAxisDown, Panel panel);
         /// <summary>
@@ -121,6 +127,7 @@ namespace UACSControls
         /// <param name="yAxisDown"></param>
         public void RefreshControl(TrafficLightBase theTrafficLightBase, long baySpaceX, long baySpaceY, int panelWidth, int panelHeight, bool xAxisRight, bool yAxisDown, Panel panel)
         {
+            AreaReserve = theTrafficLightBase.AreaReserve;
             this.Width = 25;
             this.Height = 25;
             //计算X方向上的比例关系
@@ -167,6 +174,143 @@ namespace UACSControls
             CurrentColor = ChangeColor == true ? SurroundColor : DarkColor;
             this.Invalidate();
 
+        }
+        //点击
+        private void conTrafficLight2_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(AreaNO))
+            {
+                MessageBox.Show("选择该跨区红绿灯错误！");
+                return;
+            }
+            //确认提示
+            MessageBoxButtons btn = MessageBoxButtons.OKCancel;
+            DialogResult drmsg = MessageBox.Show("确定进行信号转换？", "提示", btn, MessageBoxIcon.Asterisk);
+            if (drmsg == DialogResult.OK)
+            {
+                var areaNo = string.Empty;
+                var areaReserve = 10;
+                if (AreaNO.Contains("A"))
+                {
+                    string[] words = AreaNO.Split('A');
+                    areaNo = words[1];
+                }
+                else if (AreaNO.Contains("T"))
+                {
+                    //AreaNO.Equals("T1")
+                    string[] words = AreaNO.Split('T');
+                    areaNo = words[1].Equals("1") ? Convert.ToString(24) : words[1].Equals("2") ? Convert.ToString(25) : words[1].Equals("3") ? Convert.ToString(26) : Convert.ToString(27);
+                }
+                else
+                {
+
+                }
+                if (AreaReserve == 1)
+                {
+                    areaReserve = 10;
+                }
+                else if (AreaReserve == 0)
+                {
+                    areaReserve = 9;
+                }
+                var Data = areaNo + "," + areaReserve;
+                var RLD = areaReserve.Equals(9) ? "红灯" : "绿灯";
+                var MSG = areaNo + "跨," + RLD;
+                tagDP.SetData("EV_SAFE_PLC_A_US01", Data);
+                //DialogResult dr = MessageBox.Show("切换红绿灯！", "提示", MessageBoxButtons.OK);
+                ParkClassLibrary.HMILogger.WriteLog("进行信号转换", "信号转换：" + MSG, ParkClassLibrary.LogLevel.Info, this.Text);
+            }
+
+        }
+
+        private void conTrafficLight2_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
+            }
+        }
+        /// <summary>
+        /// 切换绿灯
+        /// 1：整个料格封红；      2：整个料格解封；
+        /// 3：取消光电开关功能；  4：光电开关投入使用；
+        /// 5：料格前部封红；      6：料格前部解封；
+        /// 7：料格后部封红；      8：料格后部解封；
+        /// 9：红灯；             10：绿灯；
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GreenLight_Click(object sender, EventArgs e)
+        {
+            var areaNo = string.Empty;
+            var areaReserve = 10;
+            if (AreaNO.Contains("A"))
+            {
+                string[] words = AreaNO.Split('A');
+                areaNo = words[1];
+            }
+            else if (AreaNO.Contains("T"))
+            {
+                //AreaNO.Equals("T1")
+                string[] words = AreaNO.Split('T');
+                areaNo = words[1].Equals("1") ? Convert.ToString(24) : words[1].Equals("2") ? Convert.ToString(25) : words[1].Equals("3") ? Convert.ToString(26) : Convert.ToString(27);
+            }
+            var Data = areaNo + "," + areaReserve;
+            //发送Tag
+            tagDP.SetData("EV_SAFE_PLC_A_US01", Data);
+
+            var MSG = areaNo + "跨,绿灯. 功能代码：" + areaReserve;
+            if (Convert.ToInt32(areaNo) <= 23)
+            {
+                MSG = areaNo + "跨,绿灯. 功能代码：" + areaReserve;
+            }
+            else
+            {
+                var msgs = areaNo.Equals("24") ? 1 : areaNo.Equals("25") ? 2 : areaNo.Equals("26") ? 3 : 4;
+                MSG = msgs + "#工位,绿灯. 功能代码：" + areaReserve;
+            }
+            ParkClassLibrary.HMILogger.WriteLog("进行信号转换", "信号转换：" + MSG, ParkClassLibrary.LogLevel.Info, this.Text);
+        }
+        /// <summary>
+        /// 切换红灯
+        /// 1：整个料格封红；      2：整个料格解封；
+        /// 3：取消光电开关功能；  4：光电开关投入使用；
+        /// 5：料格前部封红；      6：料格前部解封；
+        /// 7：料格后部封红；      8：料格后部解封；
+        /// 9：红灯；             10：绿灯；
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RedLight_Click(object sender, EventArgs e)
+        {
+            var areaNo = string.Empty;
+            var areaReserve = 9;
+            if (AreaNO.Contains("A"))
+            {
+                string[] words = AreaNO.Split('A');
+                areaNo = words[1];
+            }
+            else if (AreaNO.Contains("T"))
+            {
+                //AreaNO.Equals("T1")
+                string[] words = AreaNO.Split('T');
+                areaNo = words[1].Equals("1") ? Convert.ToString(24) : words[1].Equals("2") ? Convert.ToString(25) : words[1].Equals("3") ? Convert.ToString(26) : Convert.ToString(27);
+            }
+            var Data = areaNo + "," + areaReserve;            
+            //发送Tag
+            tagDP.SetData("EV_SAFE_PLC_A_US01", Data);
+
+            var MSG = areaNo + "跨,红灯. 功能代码：" + areaReserve;
+            if (Convert.ToInt32(areaNo) <= 23)
+            {
+                MSG = areaNo + "跨,红灯. 功能代码："+ areaReserve;
+            }
+            else
+            {
+                var msgs = areaNo.Equals("24") ? 1 : areaNo.Equals("25") ? 2 : areaNo.Equals("26") ? 3 : 4;
+                MSG = msgs + "#工位,红灯. 功能代码：" + areaReserve;
+            }
+            ParkClassLibrary.HMILogger.WriteLog("进行信号转换", "信号转换：" + MSG, ParkClassLibrary.LogLevel.Info, this.Text);
         }
     }
 }
