@@ -203,5 +203,9 @@ namespace UACSDAL
             get { return tAreaNo; }
             set { tAreaNo = value; }
         }
+        /// <summary>
+        /// 红绿灯 （1：红灯  0：绿灯）
+        /// </summary>
+        public long AreaReserve { get; set; }
     }
 }

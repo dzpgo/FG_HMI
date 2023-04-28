@@ -91,7 +91,7 @@ namespace UACSControls
                 //设置鞍座控件的宽度
                 this.Width = Convert.ToInt32((theSaddle.X_End - theSaddle.X_Start) * xScale);
                 //设置鞍座控件的高度
-                if(theSaddle.AreaNo=="Z73-F" || theSaddle.AreaNo == "Z73-H")
+                if (theSaddle.AreaNo == "Z73-F" || theSaddle.AreaNo == "Z73-H")
                 {
                     this.Height = Convert.ToInt32((theSaddle.Y_End - 0) * yScale);
                 }
@@ -105,7 +105,7 @@ namespace UACSControls
                 if (this.Width < 1)
                 {
                     this.Visible = false;
-                }               
+                }
                 if (theSaddle.AreaType == 0)
                 {
                     int saddleNum = areaInfo.getAreaSaddleNum(areaBase.AreaNo);
@@ -121,8 +121,11 @@ namespace UACSControls
                         else if (theSaddle.AreaDoorSefeValue == 0 && theSaddle.AreaDoorReserveValue == 1)
                             this.BackColor = System.Drawing.Color.Yellow;
                         else
-                            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(199)))), ((int)(((byte)(227)))));  //System.Drawing.Color.MediumAquamarine;
-                        //this.BackColor = System.Drawing.Color.FromArgb(53, 253, 220);
+                        {
+                            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(206)))), ((int)(((byte)(105)))));
+                            //this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(199)))), ((int)(((byte)(227)))));  //System.Drawing.Color.MediumAquamarine;
+                            //this.BackColor = System.Drawing.Color.FromArgb(53, 253, 220);
+                        }
                     }
                     else
                     {
@@ -133,7 +136,16 @@ namespace UACSControls
                         else if (theSaddle.AreaDoorSefeValue == 0 && theSaddle.AreaDoorReserveValue == 1)
                             this.BackColor = System.Drawing.Color.Yellow;
                         else
-                            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(199)))), ((int)(((byte)(227)))));  //System.Drawing.Color.MediumAquamarine;
+                        {
+                            if (theSaddle.AreaReserve == 1)
+                            {
+                                this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(206)))), ((int)(((byte)(105)))));
+                            }
+                            else
+                            {
+                                this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(199)))), ((int)(((byte)(227)))));  //System.Drawing.Color.MediumAquamarine;
+                            }
+                        }
                     }
 
                     if (!isCreateLbl)
@@ -141,6 +153,7 @@ namespace UACSControls
                         if (!theSaddle.AreaNo.Contains("WJ") && !theSaddle.AreaNo.Contains("D108") && !theSaddle.AreaNo.Contains("Z68-B"))
                         {
                             lbl.Name = theSaddle.AreaNo;
+                            //lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(206)))), ((int)(((byte)(105)))));
                             lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(199)))), ((int)(((byte)(227))))); //Color.MediumAquamarine;
                             lbl.Font = new System.Drawing.Font("微软雅黑", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(132)));
                             lbl.Width = 75;
@@ -179,7 +192,7 @@ namespace UACSControls
                         //}
 
                         isCreateLbl = true;
-                      
+
                     }
                     if (panel.Width < 1400)
                     {
@@ -201,7 +214,7 @@ namespace UACSControls
 
                         //lbl.Text = "●";
                         //lbl.ForeColor = Color.Red;
-                        
+
                         //lbl.Image = null;
 
                         //lbl.Width = 75;
@@ -239,7 +252,7 @@ namespace UACSControls
                         {
                             lbl.Location = new Point(this.Width / 2 - 30, 30);
                         }
-                        else if((areaBase.AreaNo == "Z62-A"))
+                        else if ((areaBase.AreaNo == "Z62-A"))
                         {
                             lbl.Location = new Point(this.Width / 2 - 30, this.Height * 16967 / 39000 + 100);
                         }
@@ -253,7 +266,7 @@ namespace UACSControls
                         }
                         else if ((areaBase.AreaNo == "Z01-9"))
                         {
-                            lbl.Location = new Point(this.Width / 2 - 30, this.Height /2 -20);
+                            lbl.Location = new Point(this.Width / 2 - 30, this.Height / 2 - 20);
                         }
                         else if ((areaBase.AreaNo == "Z01-7"))
                         {
@@ -272,8 +285,9 @@ namespace UACSControls
                         this.SendToBack();
                     }
                 }
-                else if (theSaddle.AreaType == 3 )
+                else if (theSaddle.AreaType == 3)
                 {
+                    //this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(206)))), ((int)(((byte)(105)))));
                     this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(199)))), ((int)(((byte)(227)))));  //Color.MediumAquamarine;
                     Graphics gr = this.CreateGraphics();
                     if (theSaddle.AreaDoorSefeValue == 1 && theSaddle.AreaDoorReserveValue == 0)
@@ -321,12 +335,12 @@ namespace UACSControls
                         else if (theSaddle.AreaDoorSefeValue == 0 && theSaddle.AreaDoorReserveValue == 1)
                             this.BackColor = System.Drawing.Color.Yellow;
                         else
-                            this.BackColor = System.Drawing.Color.MediumPurple;                      
+                            this.BackColor = System.Drawing.Color.MediumPurple;
                     }
                     if (areaBase.AreaNo == "D108-WC")
                     {
                         this.SendToBack();
-                    }                   
+                    }
                 }
                 //入口
                 else if (theSaddle.AreaType == 5)
@@ -349,7 +363,7 @@ namespace UACSControls
                 else if (theSaddle.AreaType == 1)
                 {
                     this.BackColor = Color.CadetBlue;
-                    if(theSaddle.AreaNo.Contains("XFQ"))
+                    if (theSaddle.AreaNo.Contains("XFQ"))
                     {
                         if (theSaddle.AreaDoorSefeValue == 1 && theSaddle.AreaDoorReserveValue == 0)
                             this.BackColor = System.Drawing.Color.Red;
@@ -371,10 +385,11 @@ namespace UACSControls
                         else
                             this.BackColor = System.Drawing.Color.CadetBlue;
                     }
-                    
+
                 }
                 else if (theSaddle.AreaType == 6)
                 {
+                    //this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(206)))), ((int)(((byte)(105)))));
                     this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(199)))), ((int)(((byte)(227)))));  //Color.MediumAquamarine;
                     Graphics gr = this.CreateGraphics();
                     if (theSaddle.AreaNo.Contains("JQ"))
@@ -390,22 +405,25 @@ namespace UACSControls
                         if (theSaddle.AreaDoorSefeValue == 0)
                             this.BackColor = System.Drawing.Color.Red;
                         else
+                        {
+                            //this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(206)))), ((int)(((byte)(105)))));
                             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(199)))), ((int)(((byte)(227))))); //System.Drawing.Color.MediumAquamarine;
+                        }
                     }
 
                 }
                 else
                 {
                     //this.BackColor = Color.Beige;
-                    if(theSaddle.AreaNo.Contains("MC"))
+                    if (theSaddle.AreaNo.Contains("MC"))
                     {
                         this.BackColor = Color.SpringGreen;
                     }
                     else
                     {
-                        this.BackColor = Color.MediumSlateBlue;                        
+                        this.BackColor = Color.MediumSlateBlue;
                     }
-                    
+
                 }
             }
             catch (Exception ex)
@@ -416,7 +434,7 @@ namespace UACSControls
         }
         public delegate void EventHandler_Saddle_Selected(AreaBase theSaddleInfo);
         public event EventHandler_Saddle_Selected Saddle_Selected;
-    
+
         private void conArea_Paint(object sender, PaintEventArgs e)
         {
             try
@@ -427,11 +445,11 @@ namespace UACSControls
 
                 if (areaBase.AreaType == 0)
                 {
-                     
+
                     if (areaBase.AreaNo == "Z31-8")
                     {
                         gr.DrawString(areaBase.Area_Name,
-                               new Font("微软雅黑", 14, FontStyle.Bold), Brushes.Black, new Point(this.Width / 2 - 30, 20));                       
+                               new Font("微软雅黑", 14, FontStyle.Bold), Brushes.Black, new Point(this.Width / 2 - 30, 20));
                         //Z06 - A
                         Point p1 = new Point(0, 0);
                         Point p2 = new Point(this.Width, 0);
@@ -444,7 +462,7 @@ namespace UACSControls
 
                         //Brush bush = new SolidBrush(Color.LightSteelBlue);
                         //gr.FillRectangle(bush, 0, this.Height - (this.Height * 2650 / 21615), this.Width * 37870 / 48370, this.Height * 2650 / 21615);                    
-                    }                   
+                    }
                     else if (areaBase.AreaNo == "Z23-H")
                     {
                         gr.DrawString(areaBase.Area_Name,
@@ -480,7 +498,7 @@ namespace UACSControls
                     //{
                     //    gr.DrawString(areaBase.Area_Name,
                     //           new Font("微软雅黑", 12, FontStyle.Bold), Brushes.Black, new Point(this.Width / 2 - 30, 20));
-              
+
                     //    //Point p1 = new Point(0, this.Height);
                     //    //Point p2 = new Point(this.Width * 7993 / 26760, this.Height);
                     //    //Point p3 = new Point(this.Width * 7993 / 26760, this.Height * 13747 / 21867);
@@ -505,7 +523,7 @@ namespace UACSControls
                         Point p5 = new Point(this.Width * 43251 / 79211, 0);
                         Point p6 = new Point(0, 0);
                         Point p7 = new Point(0, this.Height);
-                        Point[] points = { p1, p2, p3, p4, p5, p6, p7};
+                        Point[] points = { p1, p2, p3, p4, p5, p6, p7 };
                         gr.DrawPolygon(p, points);
 
                         Brush bush1 = new SolidBrush(Color.LightSteelBlue);
@@ -530,7 +548,7 @@ namespace UACSControls
                     }
                     else if (areaBase.AreaNo.Contains("Z68-B"))
                     {
-                        gr.DrawString(areaBase.Area_Name ,
+                        gr.DrawString(areaBase.Area_Name,
                            new Font("微软雅黑", 12, FontStyle.Bold), Brushes.Black, new Point(3, 3), new StringFormat(StringFormatFlags.DirectionVertical));
                         Rectangle rec = new Rectangle(new Point(0, 0), new Size(this.Width, this.Height));
                         gr.DrawRectangle(p, rec);
@@ -560,7 +578,7 @@ namespace UACSControls
                            new Font("微软雅黑", 9, FontStyle.Bold), Brushes.Black, new Point(2, 3));
                         Rectangle rec = new Rectangle(new Point(0, 0), new Size(this.Width, this.Height));
                         gr.DrawRectangle(p, rec);
-                    }                   
+                    }
                     else
                     {
                         gr.DrawString(areaBase.Area_Name,
@@ -572,12 +590,12 @@ namespace UACSControls
                 }
                 else if (areaBase.AreaType == 1)
                 {
-                    if(areaBase.AreaNo.Contains("WT"))
+                    if (areaBase.AreaNo.Contains("WT"))
                     {
                         e.Graphics.DrawString(areaBase.Area_Name, new Font("微软雅黑", 12, FontStyle.Bold),
                         new SolidBrush(Color.Black), new Point(this.Width / 2 - 20, 0));
                     }
-                    else if(areaBase.AreaNo.Contains("XFQ"))
+                    else if (areaBase.AreaNo.Contains("XFQ"))
                     {
                         e.Graphics.DrawString(areaBase.Area_Name, new Font("微软雅黑", 12, FontStyle.Bold),
                         new SolidBrush(Color.Black), new Point(0, 0));
@@ -585,12 +603,12 @@ namespace UACSControls
                     else
                     {
                         e.Graphics.DrawString(areaBase.Area_Name, new Font("微软雅黑", 12, FontStyle.Regular), new SolidBrush(Color.Black), 1, this.Height - 70, new StringFormat(StringFormatFlags.DirectionVertical));
-                    }                                      
+                    }
                 }
                 else if (areaBase.AreaType == 4 || areaBase.AreaType == 5)
                 {
-                    
-                    if(areaBase.AreaNo.Contains("MC1"))
+
+                    if (areaBase.AreaNo.Contains("MC1"))
                     {
                         if (areaBase.AreaNo.Contains("Z23-MC1"))
                         {
@@ -601,20 +619,20 @@ namespace UACSControls
                         {
                             gr.DrawString(areaBase.Area_Name,
                             new Font("微软雅黑", 8F, FontStyle.Bold), Brushes.Black, new Point(0, 10));
-                        }                                                                       
+                        }
                     }
-                    else if(areaBase.AreaNo.Contains("MC1"))
+                    else if (areaBase.AreaNo.Contains("MC1"))
                     {
 
-                    }                                                             
+                    }
                     else
-                    {                      
+                    {
                         e.Graphics.DrawString(areaBase.Area_Name, new Font("微软雅黑", 12, FontStyle.Bold),
                         new SolidBrush(Color.Black), new Point(0, 0));
                         Rectangle rec = new Rectangle(new Point(0, 0), new Size(this.Width, this.Height));
                         gr.DrawRectangle(new Pen(Color.White, 2), rec);
                     }
-                    
+
                 }
                 else if (areaBase.AreaType == 3)
                 {
@@ -686,7 +704,7 @@ namespace UACSControls
                     }
                 }
             }
-            if(count >= 1)
+            if (count >= 1)
             {
                 return false;
             }
@@ -714,7 +732,7 @@ namespace UACSControls
                 {
                     auth.OpenForm("03 D102机组入口");
                 }
-            }                                
+            }
             if (areaBase.AreaNo.IndexOf("Z01-XFQ") > -1 && areaBase.AreaType == 3)
             {
                 MessageBoxButtons btn = MessageBoxButtons.OKCancel;

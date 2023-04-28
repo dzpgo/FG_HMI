@@ -44,8 +44,7 @@ namespace UACSControls
         public conTrafficLight2()
         {
             InitializeComponent();
-            tagDP.ServiceName = "iplature";
-            tagDP.AutoRegist = true;
+            
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
             SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲   
@@ -178,6 +177,8 @@ namespace UACSControls
         //点击
         private void conTrafficLight2_Click(object sender, EventArgs e)
         {
+            tagDP.ServiceName = "iplature";
+            tagDP.AutoRegist = true;
             if (string.IsNullOrEmpty(AreaNO))
             {
                 MessageBox.Show("选择该跨区红绿灯错误！");
@@ -242,6 +243,8 @@ namespace UACSControls
         /// <param name="e"></param>
         private void GreenLight_Click(object sender, EventArgs e)
         {
+            tagDP.ServiceName = "iplature";
+            tagDP.AutoRegist = true;
             var areaNo = string.Empty;
             var areaReserve = 10;
             if (AreaNO.Contains("A"))
@@ -283,6 +286,8 @@ namespace UACSControls
         /// <param name="e"></param>
         private void RedLight_Click(object sender, EventArgs e)
         {
+            tagDP.ServiceName = "iplature";
+            tagDP.AutoRegist = true;
             var areaNo = string.Empty;
             var areaReserve = 9;
             if (AreaNO.Contains("A"))
