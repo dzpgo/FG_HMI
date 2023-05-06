@@ -697,11 +697,11 @@ namespace UACSParking
                     //停车位号
                     sqlSRSCAR += " AND PARKING_NO = '" + cbbPacking.Text.Trim() + "' ";
                 }
-                if (!string.IsNullOrEmpty(txtLaserCount.Text.Trim()))
-                {
-                    //扫描次数
-                    sqlSRSCAR += " AND SCAN_COUNT = '" + txtLaserCount.Text.Trim() + "' ";
-                }
+                //if (!string.IsNullOrEmpty(txtLaserCount.Text.Trim()))
+                //{
+                //    //扫描次数
+                //    sqlSRSCAR += " AND SCAN_COUNT = '" + txtLaserCount.Text.Trim() + "' ";
+                //}
                 sqlSRSCAR += " ORDER BY SCAN_NO, REC_TIME ";
 
                 using (IDataReader rdr = DBHelper.ExecuteReader(sqlSRSCAR))
@@ -923,45 +923,6 @@ namespace UACSParking
             }
             dt.Clear();
 
-            //if (this.cbbPacking.SelectedValue == null)
-            //{
-            //    return;
-            //}
-
-
-            //string pickNo = this.cbbPacking.SelectedValue.ToString();
-
-            //发货(根据库位状态和封锁标记只查出可吊的钢卷)
-            //string sqlText = @"SELECT 0 AS CHECK_COLUMN, A.COIL_NO, A.PICK_NO as PLAN_NO,A.DESTINATION, G.BAY_NO, C.STOCK_NO, B.WEIGHT, B.WIDTH, B.INDIA, B.OUTDIA, ";
-            //sqlText += "B.PACK_FLAG, B.SLEEVE_WIDTH, B.COIL_OPEN_DIRECTION, B.NEXT_UNIT_NO, B.STEEL_GRANDID, J.X_CENTER, J.Y_CENTER, J.Z_CENTER ,";
-            //sqlText += "B.ACT_WEIGHT, B.ACT_WIDTH FROM UACS_PLAN_L3PICK A ";
-            //sqlText += "LEFT JOIN UACS_YARDMAP_COIL B ON A.COIL_NO = B.COIL_NO ";
-            //sqlText += "LEFT JOIN UACS_YARDMAP_STOCK_DEFINE C ON C.MAT_NO = A.COIL_NO AND C.STOCK_STATUS = 2 AND C.LOCK_FLAG = 0 ";
-            //sqlText += "LEFT JOIN UACS_YARDMAP_SADDLE_STOCK I ON I.STOCK_NO = C.STOCK_NO ";
-            //sqlText += "LEFT JOIN UACS_YARDMAP_SADDLE_DEFINE J ON J.SADDLE_NO = I.SADDLE_NO ";
-            //sqlText += "LEFT JOIN UACS_YARDMAP_SADDLE_STOCK D ON C.STOCK_NO = D.STOCK_NO ";
-            //sqlText += "LEFT JOIN UACS_YARDMAP_SADDLE_DEFINE E ON D.SADDLE_NO = E.SADDLE_NO ";
-            //sqlText += "LEFT JOIN UACS_YARDMAP_ROWCOL_DEFINE F ON E.COL_ROW_NO = F.COL_ROW_NO ";
-            //sqlText += "LEFT JOIN UACS_YARDMAP_AREA_DEFINE G ON F.AREA_NO = G.AREA_NO ";
-
-            //string sqlText = @"SELECT 0 AS CHECK_COLUMN, C.MAT_NO AS COIL_NO, A.PICK_NO as PLAN_NO, A.DESTINATION, C.BAY_NO, C.STOCK_NO, B.WEIGHT, B.WIDTH, B.INDIA, B.OUTDIA, ";
-            //sqlText += "B.PACK_FLAG, B.SLEEVE_WIDTH, B.COIL_OPEN_DIRECTION, B.NEXT_UNIT_NO, B.STEEL_GRANDID, C.X_CENTER, C.Y_CENTER, C.Z_CENTER ,";
-            //sqlText += "B.ACT_WEIGHT, B.ACT_WIDTH FROM UACS_YARDMAP_STOCK_DEFINE C ";
-            //sqlText += "LEFT JOIN UACS_YARDMAP_COIL B ON C.MAT_NO = B.COIL_NO ";
-            //sqlText += "LEFT JOIN  UACS_PLAN_L3PICK A ON C.MAT_NO = A.COIL_NO ";
-            //sqlText += "WHERE  C.BAY_NO  like '" + packing.Substring(0, 3) + "%' ";
-            //sqlText += "AND C.STOCK_STATUS = 2 AND C.LOCK_FLAG = 0 AND C.MAT_NO IS NOT NULL";
-            //sqlText += " order by C.STOCK_NO DESC";
-
-            //dataGridView1.Columns["PACK_FLAG"].Visible = false; xx
-            //dataGridView1.Columns["SLEEVE_WIDTH"].Visible = false; xxx
-            //dataGridView1.Columns["COIL_OPEN_DIRECTION"].Visible = false; xxx
-            //dataGridView1.Columns["NEXT_UNIT_NO"].Visible = false; xxx
-            //dataGridView1.Columns["STEEL_GRANDID"].Visible = false;   xx
-            //dataGridView1.Columns["ACT_WEIGHT"].Visible = false;
-            //dataGridView1.Columns["ACT_WIDTH"].Visible = false;
-            //dataGridView1.Columns["DESTINATION"].Visible = false; xx
-
             string sqlText_All = @"  SELECT 0 AS CHECK_COLUMN, C.MAT_NO AS COIL_NO, A.PICK_NO as PLAN_NO,  C.BAY_NO, C.STOCK_NO, B.WEIGHT, B.WIDTH, B.INDIA, B.OUTDIA,";
             sqlText_All += "    D.X_CENTER, D.Y_CENTER, C.Z_CENTER ,";
             sqlText_All += " B.ACT_WEIGHT, B.ACT_WIDTH FROM UACS_YARDMAP_STOCK_DEFINE C ";
@@ -1039,17 +1000,6 @@ namespace UACSParking
             //    }
             // } 
             #endregion
-
-            //this.dataGridView1.DataSource = dt;
-            //隐藏列
-            //dataGridView1.Columns["PACK_FLAG"].Visible = false;
-            //dataGridView1.Columns["SLEEVE_WIDTH"].Visible = false;
-            //dataGridView1.Columns["COIL_OPEN_DIRECTION"].Visible = false;
-            //dataGridView1.Columns["NEXT_UNIT_NO"].Visible = false;
-            //dataGridView1.Columns["STEEL_GRANDID"].Visible = false;
-            //dataGridView1.Columns["ACT_WEIGHT"].Visible = false;
-            //dataGridView1.Columns["ACT_WIDTH"].Visible = false;
-            //dataGridView1.Columns["DESTINATION"].Visible = false; 
         }
         /// <summary>
         /// 设置table的列
@@ -1712,43 +1662,7 @@ namespace UACSParking
             }
             return ret;
         }
-        ///// <summary>
-        ///// 用于DataGridView初始化一般属性
-        ///// </summary>
-        ///// <param name="dataGridView"></param>
-        ///// <returns></returns>
-        //public static string DataGridViewInit(DataGridView dataGridView)
-        //{
-        //    dataGridView.ReadOnly = true;
-        //    //foreach (DataGridViewColumn c in dataGridView.Columns)
-        //    //    if (c.Index != 0) c.ReadOnly = true;
-        //    //列标题属性
-        //    dataGridView.AutoGenerateColumns = false;
-        //    dataGridView.EnableHeadersVisualStyles = false;
-        //    dataGridView.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-        //    dataGridView.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.SkyBlue;//标题背景颜色
 
-        //    //设置列高
-        //    dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-        //    dataGridView.ColumnHeadersHeight = 35;
-        //    //设置标题内容居中显示;  
-        //    dataGridView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        //    dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-
-
-        //    dataGridView.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-        //    dataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        //    //设置行属性
-        //    dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        //    dataGridView.RowHeadersVisible = false;  //隐藏行标题
-        //    //禁止用户改变DataGridView1所有行的行高  
-        //    dataGridView.AllowUserToResizeRows = false;
-        //    dataGridView.RowTemplate.Height = 30;
-
-        //    dataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
-        //    dataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-        //    return "";
-        //}
         public static bool DataGridViewBindingSource(DataGridView dataGridView, string sql)
         {
             DataTable dt = new DataTable();
@@ -2211,11 +2125,11 @@ namespace UACSParking
                     //停车位号
                     sqlText_Laser += " AND  PARKING_NO = '" + cbbPacking.Text.Trim() + "' ";
                 }
-                if (!string.IsNullOrEmpty(theCount))
-                {
-                    //扫描次数
-                    sqlText_Laser += " AND  SCAN_COUNT = '" + theCount + "' ";
-                }
+                //if (!string.IsNullOrEmpty(theCount))
+                //{
+                //    //扫描次数
+                //    sqlText_Laser += " AND  SCAN_COUNT = '" + theCount + "' ";
+                //}
                 sqlText_Laser += " ORDER BY SCAN_NO, REC_TIME ";
 
                 //初始化grid
@@ -2729,6 +2643,34 @@ namespace UACSParking
                             laserStatus = laserStatus.Substring(index + 2);
                         }
                         txtLaserStatus.Text = laserStatus;
+                        if (laserStatus.Equals("5"))
+                        {
+                            txtLaserStatus.Text = "无车";
+                        }
+                        else if (laserStatus.Equals("10"))
+                        {
+                            txtLaserStatus.Text = "有车到达";
+                        }
+                        else if (laserStatus.Equals("110"))
+                        {
+                            txtLaserStatus.Text = "激光扫描开始";
+                        }
+                        else if (laserStatus.Equals("120"))
+                        {
+                            txtLaserStatus.Text = "入库激光扫描完成";
+                        }
+                        else if (laserStatus.Equals("130"))
+                        {
+                            txtLaserStatus.Text = "入库手持扫描完成";
+                        }
+                        else if (laserStatus.Equals("210"))
+                        {
+                            txtLaserStatus.Text = "出库激光扫描开始";
+                        }
+                        else if (laserStatus.Equals("220"))
+                        {
+                            txtLaserStatus.Text = "出库激光扫描完成";
+                        }
                     }
 
                 }

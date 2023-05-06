@@ -207,5 +207,10 @@ namespace UACSDAL
         /// 红绿灯 （1：红灯  0：绿灯）
         /// </summary>
         public long AreaReserve { get; set; }
+
+        /// <summary>
+        /// 车辆预定 （1：有车进入不安全  0：安全）
+        /// </summary>
+        public long AreaSafe { get; set; }
     }
 }

@@ -93,12 +93,12 @@ namespace UACSView.View_CraneMonitor
             string work_seqNo = this.textWORK_SEQ_NO.Text.Trim();        //计划号
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");  //开始时间
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");  //结束时间
-            string sqlText = @"SELECT A.OPER_ID, A.ORDER_NO, A.ORDER_TYPE, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.MAT_TYPE, A.MAT_REQ_WGT, A.MAT_CUR_WGT, A.HAS_COIL_WGT, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.STOCK_NO, A.CMD_STATUS, A.CMD_SEQ, A.PLAN_X, A.PLAN_Y, A.ACT_X, A.ACT_Y, A.CRANE_MODE, A.REC_TIME FROM UACSAPP.UACS_ORDER_OPER A ";
+            string sqlText = @"SELECT A.OPER_ID, A.ORDER_NO, A.ORDER_TYPE, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.MAT_TYPE, A.MAT_REQ_WGT, A.MAT_CUR_WGT, A.HAS_COIL_WGT, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.STOCK_NO, A.CMD_STATUS, A.CMD_SEQ, A.PLAN_X, A.PLAN_Y, A.ACT_X, A.ACT_Y, A.CRANE_MODE, A.REC_TIME, A.CRANE_NO FROM UACSAPP.UACS_ORDER_OPER A ";
             sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE ";
             sqlText += "WHERE A.REC_TIME > '{0}' and A.REC_TIME < '{1}' ";
             sqlText = string.Format(sqlText, recTime1, recTime2);
-            if (!isLoad)
-            {
+            //if (!isLoad)
+            //{
                 if (!string.IsNullOrEmpty(work_seqNo))
                 {
                     sqlText = string.Format("{0} and A.MAT_CODE LIKE '%{1}%' ", sqlText, work_seqNo);
@@ -113,18 +113,18 @@ namespace UACSView.View_CraneMonitor
                 }
                 //按 NO>流水号>记录时间>更新时间 降序
                 sqlText += " ORDER BY A.OPER_ID DESC,A.ORDER_NO DESC,A.REC_TIME DESC ";
-            }
-            else
-            {
-                //初次加载时默认查询倒序30条数据（仅初始化时用）
-                sqlText = @"SELECT OPER_ID,ORDER_NO,ORDER_TYPE,BAY_NO,MAT_CODE,MAT_CNAME,MAT_TYPE,MAT_REQ_WGT,MAT_CUR_WGT,HAS_COIL_WGT,FROM_STOCK_NO,TO_STOCK_NO,STOCK_NO,CMD_STATUS,CMD_SEQ,PLAN_X,PLAN_Y,ACT_X,ACT_Y,CRANE_MODE,REC_TIME 
-                            FROM (
-                            SELECT ROW_NUMBER() OVER(ORDER BY A.OPER_ID DESC,A.ORDER_NO DESC,A.REC_TIME DESC) AS ROWNUM,
-                            A.OPER_ID, A.ORDER_NO, A.ORDER_TYPE, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.MAT_TYPE, A.MAT_REQ_WGT, A.MAT_CUR_WGT, A.HAS_COIL_WGT, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.STOCK_NO, A.CMD_STATUS, A.CMD_SEQ, A.PLAN_X, A.PLAN_Y, A.ACT_X, A.ACT_Y, A.CRANE_MODE, A.REC_TIME FROM UACSAPP.UACS_ORDER_OPER A 
-                            LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE 
-                            ) a 
-                            WHERE ROWNUM > 0 and ROWNUM <=30";
-            }
+            //}
+            //else
+            //{
+            //    //初次加载时默认查询倒序30条数据（仅初始化时用）
+            //    sqlText = @"SELECT OPER_ID,ORDER_NO,ORDER_TYPE,BAY_NO,MAT_CODE,MAT_CNAME,MAT_TYPE,MAT_REQ_WGT,MAT_CUR_WGT,HAS_COIL_WGT,FROM_STOCK_NO,TO_STOCK_NO,STOCK_NO,CMD_STATUS,CMD_SEQ,PLAN_X,PLAN_Y,ACT_X,ACT_Y,CRANE_MODE,REC_TIME 
+            //                FROM (
+            //                SELECT ROW_NUMBER() OVER(ORDER BY A.OPER_ID DESC,A.ORDER_NO DESC,A.REC_TIME DESC) AS ROWNUM,
+            //                A.OPER_ID, A.ORDER_NO, A.ORDER_TYPE, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.MAT_TYPE, A.MAT_REQ_WGT, A.MAT_CUR_WGT, A.HAS_COIL_WGT, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.STOCK_NO, A.CMD_STATUS, A.CMD_SEQ, A.PLAN_X, A.PLAN_Y, A.ACT_X, A.ACT_Y, A.CRANE_MODE, A.REC_TIME FROM UACSAPP.UACS_ORDER_OPER A 
+            //                LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE 
+            //                ) a 
+            //                WHERE ROWNUM > 0 and ROWNUM <=30";
+            //}
 
             DataTable dataTable = new DataTable();
             hasSetColumn = false;

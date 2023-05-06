@@ -145,6 +145,13 @@ namespace UACSControls
                             {
                                 this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(199)))), ((int)(((byte)(227)))));  //System.Drawing.Color.MediumAquamarine;
                             }
+                            //if (theSaddle.AreaNo.Contains("A"))
+                            //{
+                            //    if (theSaddle.AreaSafe == 1)
+                            //    {
+                            //        this.BackColor = System.Drawing.Color.Tomato;
+                            //    }
+                            //}                            
                         }
                     }
 

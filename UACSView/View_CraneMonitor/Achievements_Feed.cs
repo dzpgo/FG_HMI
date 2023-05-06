@@ -792,6 +792,7 @@ namespace UACSView.View_CraneMonitor
                     dtResult.Rows.Add(
                     0, /*cbChoice*/
                     dataRow["PLAN_NO"].ToString(),
+                    dataRow["BOF_NO"].ToString(),
                     dataRow["CAR_NO"].ToString(),
                     dataRow["MAT_CODE_1"].ToString(),
                     dataRow["WEIGHT_1"].ToString(),

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmb_Query_CarNo = new System.Windows.Forms.ComboBox();
@@ -100,40 +100,6 @@
             this.bt_Send = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.cbChoice = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.GPlanNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GCarNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GMatCode_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GWeight_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Act_Weight_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GMatCode_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GWeight_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Act_Weight_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GMatCode_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GWeight_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Act_Weight_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GMatCode_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GWeight_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Act_Weight_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GMatCode_5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GWeight_5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Act_Weight_5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GMatCode_6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GWeight_6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Act_Weight_6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GMatCode_7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GWeight_7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Act_Weight_7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GMatCode_8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GWeight_8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Act_Weight_8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GMatCode_9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GWeight_9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Act_Weight_9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GMatCode_10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GWeight_10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Act_Weight_10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TO_STOCK_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tb_Feed_Weight_10 = new System.Windows.Forms.TextBox();
@@ -198,6 +164,41 @@
             this.tb_Feed_MatCodeName_1 = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.tb_Feed_MatCode_1 = new System.Windows.Forms.TextBox();
+            this.cbChoice = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.GPlanNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BOF_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GCarNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GMatCode_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GWeight_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Act_Weight_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GMatCode_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GWeight_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Act_Weight_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GMatCode_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GWeight_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Act_Weight_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GMatCode_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GWeight_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Act_Weight_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GMatCode_5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GWeight_5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Act_Weight_5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GMatCode_6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GWeight_6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Act_Weight_6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GMatCode_7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GWeight_7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Act_Weight_7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GMatCode_8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GWeight_8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Act_Weight_8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GMatCode_9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GWeight_9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Act_Weight_9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GMatCode_10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GWeight_10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Act_Weight_10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TO_STOCK_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -1057,18 +1058,19 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cbChoice,
             this.GPlanNO,
+            this.BOF_NO,
             this.GCarNo,
             this.GMatCode_1,
             this.GWeight_1,
@@ -1101,14 +1103,14 @@
             this.GWeight_10,
             this.Act_Weight_10,
             this.TO_STOCK_NO});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
@@ -1121,350 +1123,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1212, 723);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // cbChoice
-            // 
-            this.cbChoice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cbChoice.DataPropertyName = "cbChoice";
-            this.cbChoice.FalseValue = "0";
-            this.cbChoice.Frozen = true;
-            this.cbChoice.HeaderText = "选择";
-            this.cbChoice.MinimumWidth = 8;
-            this.cbChoice.Name = "cbChoice";
-            this.cbChoice.ReadOnly = true;
-            this.cbChoice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.cbChoice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.cbChoice.TrueValue = "1";
-            this.cbChoice.Width = 54;
-            // 
-            // GPlanNO
-            // 
-            this.GPlanNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GPlanNO.DataPropertyName = "GPlanNO";
-            this.GPlanNO.Frozen = true;
-            this.GPlanNO.HeaderText = "计划号";
-            this.GPlanNO.MinimumWidth = 8;
-            this.GPlanNO.Name = "GPlanNO";
-            this.GPlanNO.ReadOnly = true;
-            this.GPlanNO.Width = 66;
-            // 
-            // GCarNo
-            // 
-            this.GCarNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GCarNo.DataPropertyName = "GCarNo";
-            this.GCarNo.Frozen = true;
-            this.GCarNo.HeaderText = "料槽车号";
-            this.GCarNo.MinimumWidth = 8;
-            this.GCarNo.Name = "GCarNo";
-            this.GCarNo.ReadOnly = true;
-            this.GCarNo.Width = 78;
-            // 
-            // GMatCode_1
-            // 
-            this.GMatCode_1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GMatCode_1.DataPropertyName = "GMatCode_1";
-            this.GMatCode_1.HeaderText = "物料1";
-            this.GMatCode_1.MinimumWidth = 8;
-            this.GMatCode_1.Name = "GMatCode_1";
-            this.GMatCode_1.ReadOnly = true;
-            this.GMatCode_1.Width = 60;
-            // 
-            // GWeight_1
-            // 
-            this.GWeight_1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GWeight_1.DataPropertyName = "GWeight_1";
-            this.GWeight_1.HeaderText = "重量1";
-            this.GWeight_1.MinimumWidth = 8;
-            this.GWeight_1.Name = "GWeight_1";
-            this.GWeight_1.ReadOnly = true;
-            this.GWeight_1.Width = 60;
-            // 
-            // Act_Weight_1
-            // 
-            this.Act_Weight_1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Act_Weight_1.DataPropertyName = "Act_Weight_1";
-            this.Act_Weight_1.HeaderText = "实绩重量1";
-            this.Act_Weight_1.MinimumWidth = 8;
-            this.Act_Weight_1.Name = "Act_Weight_1";
-            this.Act_Weight_1.ReadOnly = true;
-            this.Act_Weight_1.Width = 84;
-            // 
-            // GMatCode_2
-            // 
-            this.GMatCode_2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GMatCode_2.DataPropertyName = "GMatCode_2";
-            this.GMatCode_2.HeaderText = "物料2";
-            this.GMatCode_2.MinimumWidth = 8;
-            this.GMatCode_2.Name = "GMatCode_2";
-            this.GMatCode_2.ReadOnly = true;
-            this.GMatCode_2.Width = 60;
-            // 
-            // GWeight_2
-            // 
-            this.GWeight_2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GWeight_2.DataPropertyName = "GWeight_2";
-            this.GWeight_2.HeaderText = "重量2";
-            this.GWeight_2.MinimumWidth = 8;
-            this.GWeight_2.Name = "GWeight_2";
-            this.GWeight_2.ReadOnly = true;
-            this.GWeight_2.Width = 60;
-            // 
-            // Act_Weight_2
-            // 
-            this.Act_Weight_2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Act_Weight_2.DataPropertyName = "Act_Weight_2";
-            this.Act_Weight_2.HeaderText = "实绩重量2";
-            this.Act_Weight_2.MinimumWidth = 8;
-            this.Act_Weight_2.Name = "Act_Weight_2";
-            this.Act_Weight_2.ReadOnly = true;
-            this.Act_Weight_2.Width = 84;
-            // 
-            // GMatCode_3
-            // 
-            this.GMatCode_3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GMatCode_3.DataPropertyName = "GMatCode_3";
-            this.GMatCode_3.HeaderText = "物料3";
-            this.GMatCode_3.MinimumWidth = 8;
-            this.GMatCode_3.Name = "GMatCode_3";
-            this.GMatCode_3.ReadOnly = true;
-            this.GMatCode_3.Width = 60;
-            // 
-            // GWeight_3
-            // 
-            this.GWeight_3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GWeight_3.DataPropertyName = "GWeight_3";
-            this.GWeight_3.HeaderText = "重量3";
-            this.GWeight_3.MinimumWidth = 8;
-            this.GWeight_3.Name = "GWeight_3";
-            this.GWeight_3.ReadOnly = true;
-            this.GWeight_3.Width = 60;
-            // 
-            // Act_Weight_3
-            // 
-            this.Act_Weight_3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Act_Weight_3.DataPropertyName = "Act_Weight_3";
-            this.Act_Weight_3.HeaderText = "实绩重量3";
-            this.Act_Weight_3.MinimumWidth = 8;
-            this.Act_Weight_3.Name = "Act_Weight_3";
-            this.Act_Weight_3.ReadOnly = true;
-            this.Act_Weight_3.Width = 84;
-            // 
-            // GMatCode_4
-            // 
-            this.GMatCode_4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GMatCode_4.DataPropertyName = "GMatCode_4";
-            this.GMatCode_4.HeaderText = "物料4";
-            this.GMatCode_4.MinimumWidth = 8;
-            this.GMatCode_4.Name = "GMatCode_4";
-            this.GMatCode_4.ReadOnly = true;
-            this.GMatCode_4.Width = 60;
-            // 
-            // GWeight_4
-            // 
-            this.GWeight_4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GWeight_4.DataPropertyName = "GWeight_4";
-            this.GWeight_4.HeaderText = "重量4";
-            this.GWeight_4.MinimumWidth = 8;
-            this.GWeight_4.Name = "GWeight_4";
-            this.GWeight_4.ReadOnly = true;
-            this.GWeight_4.Width = 60;
-            // 
-            // Act_Weight_4
-            // 
-            this.Act_Weight_4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Act_Weight_4.DataPropertyName = "Act_Weight_4";
-            this.Act_Weight_4.HeaderText = "实绩重量4";
-            this.Act_Weight_4.MinimumWidth = 8;
-            this.Act_Weight_4.Name = "Act_Weight_4";
-            this.Act_Weight_4.ReadOnly = true;
-            this.Act_Weight_4.Width = 84;
-            // 
-            // GMatCode_5
-            // 
-            this.GMatCode_5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GMatCode_5.DataPropertyName = "GMatCode_5";
-            this.GMatCode_5.HeaderText = "物料5";
-            this.GMatCode_5.MinimumWidth = 8;
-            this.GMatCode_5.Name = "GMatCode_5";
-            this.GMatCode_5.ReadOnly = true;
-            this.GMatCode_5.Width = 60;
-            // 
-            // GWeight_5
-            // 
-            this.GWeight_5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GWeight_5.DataPropertyName = "GWeight_5";
-            this.GWeight_5.HeaderText = "重量5";
-            this.GWeight_5.MinimumWidth = 8;
-            this.GWeight_5.Name = "GWeight_5";
-            this.GWeight_5.ReadOnly = true;
-            this.GWeight_5.Width = 60;
-            // 
-            // Act_Weight_5
-            // 
-            this.Act_Weight_5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Act_Weight_5.DataPropertyName = "Act_Weight_5";
-            this.Act_Weight_5.HeaderText = "实绩重量5";
-            this.Act_Weight_5.MinimumWidth = 8;
-            this.Act_Weight_5.Name = "Act_Weight_5";
-            this.Act_Weight_5.ReadOnly = true;
-            this.Act_Weight_5.Width = 84;
-            // 
-            // GMatCode_6
-            // 
-            this.GMatCode_6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GMatCode_6.DataPropertyName = "GMatCode_6";
-            this.GMatCode_6.HeaderText = "物料6";
-            this.GMatCode_6.MinimumWidth = 8;
-            this.GMatCode_6.Name = "GMatCode_6";
-            this.GMatCode_6.ReadOnly = true;
-            this.GMatCode_6.Width = 60;
-            // 
-            // GWeight_6
-            // 
-            this.GWeight_6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GWeight_6.DataPropertyName = "GWeight_6";
-            this.GWeight_6.HeaderText = "重量6";
-            this.GWeight_6.MinimumWidth = 8;
-            this.GWeight_6.Name = "GWeight_6";
-            this.GWeight_6.ReadOnly = true;
-            this.GWeight_6.Width = 60;
-            // 
-            // Act_Weight_6
-            // 
-            this.Act_Weight_6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Act_Weight_6.DataPropertyName = "Act_Weight_6";
-            this.Act_Weight_6.HeaderText = "实绩重量6";
-            this.Act_Weight_6.MinimumWidth = 8;
-            this.Act_Weight_6.Name = "Act_Weight_6";
-            this.Act_Weight_6.ReadOnly = true;
-            this.Act_Weight_6.Width = 84;
-            // 
-            // GMatCode_7
-            // 
-            this.GMatCode_7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GMatCode_7.DataPropertyName = "GMatCode_7";
-            this.GMatCode_7.HeaderText = "物料7";
-            this.GMatCode_7.MinimumWidth = 8;
-            this.GMatCode_7.Name = "GMatCode_7";
-            this.GMatCode_7.ReadOnly = true;
-            this.GMatCode_7.Width = 60;
-            // 
-            // GWeight_7
-            // 
-            this.GWeight_7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GWeight_7.DataPropertyName = "GWeight_7";
-            this.GWeight_7.HeaderText = "重量7";
-            this.GWeight_7.MinimumWidth = 8;
-            this.GWeight_7.Name = "GWeight_7";
-            this.GWeight_7.ReadOnly = true;
-            this.GWeight_7.Width = 60;
-            // 
-            // Act_Weight_7
-            // 
-            this.Act_Weight_7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Act_Weight_7.DataPropertyName = "Act_Weight_7";
-            this.Act_Weight_7.HeaderText = "实绩重量7";
-            this.Act_Weight_7.MinimumWidth = 8;
-            this.Act_Weight_7.Name = "Act_Weight_7";
-            this.Act_Weight_7.ReadOnly = true;
-            this.Act_Weight_7.Width = 84;
-            // 
-            // GMatCode_8
-            // 
-            this.GMatCode_8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GMatCode_8.DataPropertyName = "GMatCode_8";
-            this.GMatCode_8.HeaderText = "物料8";
-            this.GMatCode_8.MinimumWidth = 8;
-            this.GMatCode_8.Name = "GMatCode_8";
-            this.GMatCode_8.ReadOnly = true;
-            this.GMatCode_8.Width = 60;
-            // 
-            // GWeight_8
-            // 
-            this.GWeight_8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GWeight_8.DataPropertyName = "GWeight_8";
-            this.GWeight_8.HeaderText = "重量8";
-            this.GWeight_8.MinimumWidth = 8;
-            this.GWeight_8.Name = "GWeight_8";
-            this.GWeight_8.ReadOnly = true;
-            this.GWeight_8.Width = 60;
-            // 
-            // Act_Weight_8
-            // 
-            this.Act_Weight_8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Act_Weight_8.DataPropertyName = "Act_Weight_8";
-            this.Act_Weight_8.HeaderText = "实绩重量8";
-            this.Act_Weight_8.MinimumWidth = 8;
-            this.Act_Weight_8.Name = "Act_Weight_8";
-            this.Act_Weight_8.ReadOnly = true;
-            this.Act_Weight_8.Width = 84;
-            // 
-            // GMatCode_9
-            // 
-            this.GMatCode_9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GMatCode_9.DataPropertyName = "GMatCode_9";
-            this.GMatCode_9.HeaderText = "物料9";
-            this.GMatCode_9.MinimumWidth = 8;
-            this.GMatCode_9.Name = "GMatCode_9";
-            this.GMatCode_9.ReadOnly = true;
-            this.GMatCode_9.Width = 60;
-            // 
-            // GWeight_9
-            // 
-            this.GWeight_9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GWeight_9.DataPropertyName = "GWeight_9";
-            this.GWeight_9.HeaderText = "重量9";
-            this.GWeight_9.MinimumWidth = 8;
-            this.GWeight_9.Name = "GWeight_9";
-            this.GWeight_9.ReadOnly = true;
-            this.GWeight_9.Width = 60;
-            // 
-            // Act_Weight_9
-            // 
-            this.Act_Weight_9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Act_Weight_9.DataPropertyName = "Act_Weight_9";
-            this.Act_Weight_9.HeaderText = "实绩重量9";
-            this.Act_Weight_9.MinimumWidth = 8;
-            this.Act_Weight_9.Name = "Act_Weight_9";
-            this.Act_Weight_9.ReadOnly = true;
-            this.Act_Weight_9.Width = 84;
-            // 
-            // GMatCode_10
-            // 
-            this.GMatCode_10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GMatCode_10.DataPropertyName = "GMatCode_10";
-            this.GMatCode_10.HeaderText = "物料10";
-            this.GMatCode_10.MinimumWidth = 8;
-            this.GMatCode_10.Name = "GMatCode_10";
-            this.GMatCode_10.ReadOnly = true;
-            this.GMatCode_10.Width = 66;
-            // 
-            // GWeight_10
-            // 
-            this.GWeight_10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GWeight_10.DataPropertyName = "GWeight_10";
-            this.GWeight_10.HeaderText = "重量10";
-            this.GWeight_10.MinimumWidth = 8;
-            this.GWeight_10.Name = "GWeight_10";
-            this.GWeight_10.ReadOnly = true;
-            this.GWeight_10.Width = 66;
-            // 
-            // Act_Weight_10
-            // 
-            this.Act_Weight_10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Act_Weight_10.DataPropertyName = "Act_Weight_10";
-            this.Act_Weight_10.HeaderText = "实绩重量10";
-            this.Act_Weight_10.MinimumWidth = 8;
-            this.Act_Weight_10.Name = "Act_Weight_10";
-            this.Act_Weight_10.ReadOnly = true;
-            this.Act_Weight_10.Width = 90;
-            // 
-            // TO_STOCK_NO
-            // 
-            this.TO_STOCK_NO.DataPropertyName = "TO_STOCK_NO";
-            this.TO_STOCK_NO.HeaderText = "落料位";
-            this.TO_STOCK_NO.Name = "TO_STOCK_NO";
-            this.TO_STOCK_NO.ReadOnly = true;
             // 
             // groupBox3
             // 
@@ -2262,6 +1920,361 @@
             this.tb_Feed_MatCode_1.Size = new System.Drawing.Size(120, 29);
             this.tb_Feed_MatCode_1.TabIndex = 106;
             // 
+            // cbChoice
+            // 
+            this.cbChoice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cbChoice.DataPropertyName = "cbChoice";
+            this.cbChoice.FalseValue = "0";
+            this.cbChoice.Frozen = true;
+            this.cbChoice.HeaderText = "选择";
+            this.cbChoice.MinimumWidth = 8;
+            this.cbChoice.Name = "cbChoice";
+            this.cbChoice.ReadOnly = true;
+            this.cbChoice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cbChoice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.cbChoice.TrueValue = "1";
+            this.cbChoice.Width = 54;
+            // 
+            // GPlanNO
+            // 
+            this.GPlanNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GPlanNO.DataPropertyName = "GPlanNO";
+            this.GPlanNO.Frozen = true;
+            this.GPlanNO.HeaderText = "计划号";
+            this.GPlanNO.MinimumWidth = 8;
+            this.GPlanNO.Name = "GPlanNO";
+            this.GPlanNO.ReadOnly = true;
+            this.GPlanNO.Width = 66;
+            // 
+            // BOF_NO
+            // 
+            this.BOF_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BOF_NO.DataPropertyName = "BOF_NO";
+            this.BOF_NO.Frozen = true;
+            this.BOF_NO.HeaderText = "炉号";
+            this.BOF_NO.MinimumWidth = 8;
+            this.BOF_NO.Name = "BOF_NO";
+            this.BOF_NO.ReadOnly = true;
+            this.BOF_NO.Width = 54;
+            // 
+            // GCarNo
+            // 
+            this.GCarNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GCarNo.DataPropertyName = "GCarNo";
+            this.GCarNo.Frozen = true;
+            this.GCarNo.HeaderText = "料槽车号";
+            this.GCarNo.MinimumWidth = 8;
+            this.GCarNo.Name = "GCarNo";
+            this.GCarNo.ReadOnly = true;
+            this.GCarNo.Width = 78;
+            // 
+            // GMatCode_1
+            // 
+            this.GMatCode_1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GMatCode_1.DataPropertyName = "GMatCode_1";
+            this.GMatCode_1.HeaderText = "物料1";
+            this.GMatCode_1.MinimumWidth = 8;
+            this.GMatCode_1.Name = "GMatCode_1";
+            this.GMatCode_1.ReadOnly = true;
+            this.GMatCode_1.Width = 60;
+            // 
+            // GWeight_1
+            // 
+            this.GWeight_1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GWeight_1.DataPropertyName = "GWeight_1";
+            this.GWeight_1.HeaderText = "重量1";
+            this.GWeight_1.MinimumWidth = 8;
+            this.GWeight_1.Name = "GWeight_1";
+            this.GWeight_1.ReadOnly = true;
+            this.GWeight_1.Width = 60;
+            // 
+            // Act_Weight_1
+            // 
+            this.Act_Weight_1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Act_Weight_1.DataPropertyName = "Act_Weight_1";
+            this.Act_Weight_1.HeaderText = "实绩重量1";
+            this.Act_Weight_1.MinimumWidth = 8;
+            this.Act_Weight_1.Name = "Act_Weight_1";
+            this.Act_Weight_1.ReadOnly = true;
+            this.Act_Weight_1.Width = 84;
+            // 
+            // GMatCode_2
+            // 
+            this.GMatCode_2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GMatCode_2.DataPropertyName = "GMatCode_2";
+            this.GMatCode_2.HeaderText = "物料2";
+            this.GMatCode_2.MinimumWidth = 8;
+            this.GMatCode_2.Name = "GMatCode_2";
+            this.GMatCode_2.ReadOnly = true;
+            this.GMatCode_2.Width = 60;
+            // 
+            // GWeight_2
+            // 
+            this.GWeight_2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GWeight_2.DataPropertyName = "GWeight_2";
+            this.GWeight_2.HeaderText = "重量2";
+            this.GWeight_2.MinimumWidth = 8;
+            this.GWeight_2.Name = "GWeight_2";
+            this.GWeight_2.ReadOnly = true;
+            this.GWeight_2.Width = 60;
+            // 
+            // Act_Weight_2
+            // 
+            this.Act_Weight_2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Act_Weight_2.DataPropertyName = "Act_Weight_2";
+            this.Act_Weight_2.HeaderText = "实绩重量2";
+            this.Act_Weight_2.MinimumWidth = 8;
+            this.Act_Weight_2.Name = "Act_Weight_2";
+            this.Act_Weight_2.ReadOnly = true;
+            this.Act_Weight_2.Width = 84;
+            // 
+            // GMatCode_3
+            // 
+            this.GMatCode_3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GMatCode_3.DataPropertyName = "GMatCode_3";
+            this.GMatCode_3.HeaderText = "物料3";
+            this.GMatCode_3.MinimumWidth = 8;
+            this.GMatCode_3.Name = "GMatCode_3";
+            this.GMatCode_3.ReadOnly = true;
+            this.GMatCode_3.Width = 60;
+            // 
+            // GWeight_3
+            // 
+            this.GWeight_3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GWeight_3.DataPropertyName = "GWeight_3";
+            this.GWeight_3.HeaderText = "重量3";
+            this.GWeight_3.MinimumWidth = 8;
+            this.GWeight_3.Name = "GWeight_3";
+            this.GWeight_3.ReadOnly = true;
+            this.GWeight_3.Width = 60;
+            // 
+            // Act_Weight_3
+            // 
+            this.Act_Weight_3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Act_Weight_3.DataPropertyName = "Act_Weight_3";
+            this.Act_Weight_3.HeaderText = "实绩重量3";
+            this.Act_Weight_3.MinimumWidth = 8;
+            this.Act_Weight_3.Name = "Act_Weight_3";
+            this.Act_Weight_3.ReadOnly = true;
+            this.Act_Weight_3.Width = 84;
+            // 
+            // GMatCode_4
+            // 
+            this.GMatCode_4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GMatCode_4.DataPropertyName = "GMatCode_4";
+            this.GMatCode_4.HeaderText = "物料4";
+            this.GMatCode_4.MinimumWidth = 8;
+            this.GMatCode_4.Name = "GMatCode_4";
+            this.GMatCode_4.ReadOnly = true;
+            this.GMatCode_4.Width = 60;
+            // 
+            // GWeight_4
+            // 
+            this.GWeight_4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GWeight_4.DataPropertyName = "GWeight_4";
+            this.GWeight_4.HeaderText = "重量4";
+            this.GWeight_4.MinimumWidth = 8;
+            this.GWeight_4.Name = "GWeight_4";
+            this.GWeight_4.ReadOnly = true;
+            this.GWeight_4.Width = 60;
+            // 
+            // Act_Weight_4
+            // 
+            this.Act_Weight_4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Act_Weight_4.DataPropertyName = "Act_Weight_4";
+            this.Act_Weight_4.HeaderText = "实绩重量4";
+            this.Act_Weight_4.MinimumWidth = 8;
+            this.Act_Weight_4.Name = "Act_Weight_4";
+            this.Act_Weight_4.ReadOnly = true;
+            this.Act_Weight_4.Width = 84;
+            // 
+            // GMatCode_5
+            // 
+            this.GMatCode_5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GMatCode_5.DataPropertyName = "GMatCode_5";
+            this.GMatCode_5.HeaderText = "物料5";
+            this.GMatCode_5.MinimumWidth = 8;
+            this.GMatCode_5.Name = "GMatCode_5";
+            this.GMatCode_5.ReadOnly = true;
+            this.GMatCode_5.Width = 60;
+            // 
+            // GWeight_5
+            // 
+            this.GWeight_5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GWeight_5.DataPropertyName = "GWeight_5";
+            this.GWeight_5.HeaderText = "重量5";
+            this.GWeight_5.MinimumWidth = 8;
+            this.GWeight_5.Name = "GWeight_5";
+            this.GWeight_5.ReadOnly = true;
+            this.GWeight_5.Width = 60;
+            // 
+            // Act_Weight_5
+            // 
+            this.Act_Weight_5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Act_Weight_5.DataPropertyName = "Act_Weight_5";
+            this.Act_Weight_5.HeaderText = "实绩重量5";
+            this.Act_Weight_5.MinimumWidth = 8;
+            this.Act_Weight_5.Name = "Act_Weight_5";
+            this.Act_Weight_5.ReadOnly = true;
+            this.Act_Weight_5.Width = 84;
+            // 
+            // GMatCode_6
+            // 
+            this.GMatCode_6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GMatCode_6.DataPropertyName = "GMatCode_6";
+            this.GMatCode_6.HeaderText = "物料6";
+            this.GMatCode_6.MinimumWidth = 8;
+            this.GMatCode_6.Name = "GMatCode_6";
+            this.GMatCode_6.ReadOnly = true;
+            this.GMatCode_6.Width = 60;
+            // 
+            // GWeight_6
+            // 
+            this.GWeight_6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GWeight_6.DataPropertyName = "GWeight_6";
+            this.GWeight_6.HeaderText = "重量6";
+            this.GWeight_6.MinimumWidth = 8;
+            this.GWeight_6.Name = "GWeight_6";
+            this.GWeight_6.ReadOnly = true;
+            this.GWeight_6.Width = 60;
+            // 
+            // Act_Weight_6
+            // 
+            this.Act_Weight_6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Act_Weight_6.DataPropertyName = "Act_Weight_6";
+            this.Act_Weight_6.HeaderText = "实绩重量6";
+            this.Act_Weight_6.MinimumWidth = 8;
+            this.Act_Weight_6.Name = "Act_Weight_6";
+            this.Act_Weight_6.ReadOnly = true;
+            this.Act_Weight_6.Width = 84;
+            // 
+            // GMatCode_7
+            // 
+            this.GMatCode_7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GMatCode_7.DataPropertyName = "GMatCode_7";
+            this.GMatCode_7.HeaderText = "物料7";
+            this.GMatCode_7.MinimumWidth = 8;
+            this.GMatCode_7.Name = "GMatCode_7";
+            this.GMatCode_7.ReadOnly = true;
+            this.GMatCode_7.Width = 60;
+            // 
+            // GWeight_7
+            // 
+            this.GWeight_7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GWeight_7.DataPropertyName = "GWeight_7";
+            this.GWeight_7.HeaderText = "重量7";
+            this.GWeight_7.MinimumWidth = 8;
+            this.GWeight_7.Name = "GWeight_7";
+            this.GWeight_7.ReadOnly = true;
+            this.GWeight_7.Width = 60;
+            // 
+            // Act_Weight_7
+            // 
+            this.Act_Weight_7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Act_Weight_7.DataPropertyName = "Act_Weight_7";
+            this.Act_Weight_7.HeaderText = "实绩重量7";
+            this.Act_Weight_7.MinimumWidth = 8;
+            this.Act_Weight_7.Name = "Act_Weight_7";
+            this.Act_Weight_7.ReadOnly = true;
+            this.Act_Weight_7.Width = 84;
+            // 
+            // GMatCode_8
+            // 
+            this.GMatCode_8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GMatCode_8.DataPropertyName = "GMatCode_8";
+            this.GMatCode_8.HeaderText = "物料8";
+            this.GMatCode_8.MinimumWidth = 8;
+            this.GMatCode_8.Name = "GMatCode_8";
+            this.GMatCode_8.ReadOnly = true;
+            this.GMatCode_8.Width = 60;
+            // 
+            // GWeight_8
+            // 
+            this.GWeight_8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GWeight_8.DataPropertyName = "GWeight_8";
+            this.GWeight_8.HeaderText = "重量8";
+            this.GWeight_8.MinimumWidth = 8;
+            this.GWeight_8.Name = "GWeight_8";
+            this.GWeight_8.ReadOnly = true;
+            this.GWeight_8.Width = 60;
+            // 
+            // Act_Weight_8
+            // 
+            this.Act_Weight_8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Act_Weight_8.DataPropertyName = "Act_Weight_8";
+            this.Act_Weight_8.HeaderText = "实绩重量8";
+            this.Act_Weight_8.MinimumWidth = 8;
+            this.Act_Weight_8.Name = "Act_Weight_8";
+            this.Act_Weight_8.ReadOnly = true;
+            this.Act_Weight_8.Width = 84;
+            // 
+            // GMatCode_9
+            // 
+            this.GMatCode_9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GMatCode_9.DataPropertyName = "GMatCode_9";
+            this.GMatCode_9.HeaderText = "物料9";
+            this.GMatCode_9.MinimumWidth = 8;
+            this.GMatCode_9.Name = "GMatCode_9";
+            this.GMatCode_9.ReadOnly = true;
+            this.GMatCode_9.Width = 60;
+            // 
+            // GWeight_9
+            // 
+            this.GWeight_9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GWeight_9.DataPropertyName = "GWeight_9";
+            this.GWeight_9.HeaderText = "重量9";
+            this.GWeight_9.MinimumWidth = 8;
+            this.GWeight_9.Name = "GWeight_9";
+            this.GWeight_9.ReadOnly = true;
+            this.GWeight_9.Width = 60;
+            // 
+            // Act_Weight_9
+            // 
+            this.Act_Weight_9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Act_Weight_9.DataPropertyName = "Act_Weight_9";
+            this.Act_Weight_9.HeaderText = "实绩重量9";
+            this.Act_Weight_9.MinimumWidth = 8;
+            this.Act_Weight_9.Name = "Act_Weight_9";
+            this.Act_Weight_9.ReadOnly = true;
+            this.Act_Weight_9.Width = 84;
+            // 
+            // GMatCode_10
+            // 
+            this.GMatCode_10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GMatCode_10.DataPropertyName = "GMatCode_10";
+            this.GMatCode_10.HeaderText = "物料10";
+            this.GMatCode_10.MinimumWidth = 8;
+            this.GMatCode_10.Name = "GMatCode_10";
+            this.GMatCode_10.ReadOnly = true;
+            this.GMatCode_10.Width = 66;
+            // 
+            // GWeight_10
+            // 
+            this.GWeight_10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GWeight_10.DataPropertyName = "GWeight_10";
+            this.GWeight_10.HeaderText = "重量10";
+            this.GWeight_10.MinimumWidth = 8;
+            this.GWeight_10.Name = "GWeight_10";
+            this.GWeight_10.ReadOnly = true;
+            this.GWeight_10.Width = 66;
+            // 
+            // Act_Weight_10
+            // 
+            this.Act_Weight_10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Act_Weight_10.DataPropertyName = "Act_Weight_10";
+            this.Act_Weight_10.HeaderText = "实绩重量10";
+            this.Act_Weight_10.MinimumWidth = 8;
+            this.Act_Weight_10.Name = "Act_Weight_10";
+            this.Act_Weight_10.ReadOnly = true;
+            this.Act_Weight_10.Width = 90;
+            // 
+            // TO_STOCK_NO
+            // 
+            this.TO_STOCK_NO.DataPropertyName = "TO_STOCK_NO";
+            this.TO_STOCK_NO.HeaderText = "落料位";
+            this.TO_STOCK_NO.Name = "TO_STOCK_NO";
+            this.TO_STOCK_NO.ReadOnly = true;
+            // 
             // Achievements_Feed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2421,8 +2434,13 @@
         private System.Windows.Forms.TextBox tb_Feed_MatCodeName_4;
         private System.Windows.Forms.TextBox tb_Feed_MatCodeName_3;
         private System.Windows.Forms.TextBox tb_Feed_MatCodeName_2;
+        private System.Windows.Forms.TextBox tb_Weight_Sum_2;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.ComboBox cmb_Query_CarNo;
+        private System.Windows.Forms.Button bt_Imitate;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cbChoice;
         private System.Windows.Forms.DataGridViewTextBoxColumn GPlanNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BOF_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn GCarNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_1;
         private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_1;
@@ -2455,9 +2473,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Act_Weight_10;
         private System.Windows.Forms.DataGridViewTextBoxColumn TO_STOCK_NO;
-        private System.Windows.Forms.TextBox tb_Weight_Sum_2;
-        private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.ComboBox cmb_Query_CarNo;
-        private System.Windows.Forms.Button bt_Imitate;
     }
 }

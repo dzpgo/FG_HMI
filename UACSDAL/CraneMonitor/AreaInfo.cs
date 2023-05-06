@@ -441,6 +441,7 @@ namespace UACSDAL
                         string[] words = item.AreaNo.Split('A');
                         var areaNo = words[1];
                         TagNamelist.Add("AreaReserve" + areaNo);
+                        TagNamelist.Add("AreaSafe" + areaNo);
                     }
                     else if (item.AreaNo.Equals("T1"))
                     {
@@ -545,93 +546,117 @@ namespace UACSDAL
                     if (item.AreaNo.Equals("A1"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_1);
-                    }else if (item.AreaNo.Equals("A2"))
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_1);
+                    }
+                    else if (item.AreaNo.Equals("A2"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_2);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_2);
                     }
                     else if (item.AreaNo.Equals("A3"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_3);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_3);
                     }
                     else if (item.AreaNo.Equals("A4"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_4);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_4);
                     }
                     else if (item.AreaNo.Equals("A5"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_5);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_5);
                     }
                     else if (item.AreaNo.Equals("A6"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_6);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_6);
                     }
                     else if (item.AreaNo.Equals("A7"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_7);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_7);
                     }
                     else if (item.AreaNo.Equals("A8"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_8);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_8);
                     }
                     else if (item.AreaNo.Equals("A9"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_9);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_9);
                     }
                     else if (item.AreaNo.Equals("A10"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_10);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_10);
                     }
                     else if (item.AreaNo.Equals("A11"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_11);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_11);
                     }
                     else if (item.AreaNo.Equals("A12"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_12);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_12);
                     }
                     else if (item.AreaNo.Equals("A13"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_13);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_13);
                     }
                     else if (item.AreaNo.Equals("A14"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_14);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_14);
                     }
                     else if (item.AreaNo.Equals("A15"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_15);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_15);
                     }
                     else if (item.AreaNo.Equals("A16"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_16);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_16);
                     }
                     else if (item.AreaNo.Equals("A17"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_17);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_17);
                     }
                     else if (item.AreaNo.Equals("A18"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_18);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_18);
                     }
                     else if (item.AreaNo.Equals("A19"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_19);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_19);
                     }
                     else if (item.AreaNo.Equals("A20"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_20);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_20);
                     }
                     else if (item.AreaNo.Equals("A21"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_21);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_21);
                     }
                     else if (item.AreaNo.Equals("A22"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_22);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_22);
                     }
                     else if (item.AreaNo.Equals("A23"))
                     {
                         item.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_23);
+                        item.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_23);
                     }
                     else if (item.AreaNo.Equals("T1"))
                     {

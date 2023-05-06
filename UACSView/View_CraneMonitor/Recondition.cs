@@ -206,6 +206,7 @@ namespace UACSView.View_CraneMonitor
                     //}
                     #endregion
                     UpdateStatus(cmCraneNO.SelectedValue.ToString().Trim(), "99");
+                    this.Close();
                 }
                 else
                 {
