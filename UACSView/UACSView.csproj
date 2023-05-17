@@ -195,6 +195,12 @@
     <Compile Include="View_CraneMonitor\MaterialCellManage.designer.cs">
       <DependentUpon>MaterialCellManage.cs</DependentUpon>
     </Compile>
+    <Compile Include="View_CraneMonitor\Coolant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\Coolant.Designer.cs">
+      <DependentUpon>Coolant.cs</DependentUpon>
+    </Compile>
     <Compile Include="View_CraneMonitor\Recondition.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -699,6 +705,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View_CraneMonitor\MaterialCellManage.resx">
       <DependentUpon>MaterialCellManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\Coolant.resx">
+      <DependentUpon>Coolant.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View_CraneMonitor\Recondition.resx">
       <DependentUpon>Recondition.cs</DependentUpon>

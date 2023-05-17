@@ -47,9 +47,11 @@
             this.conCraneStatus2_3 = new UACSControls.conCraneStatus();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.bt_Coolant = new System.Windows.Forms.Button();
             this.bt_CraneClean = new System.Windows.Forms.Button();
             this.bt_Recondition = new System.Windows.Forms.Button();
             this.btnShowXY = new System.Windows.Forms.Button();
+            this.bt_StockPercentage = new System.Windows.Forms.Button();
             this.btnShowCrane = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -118,7 +120,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(1025, 5);
+            this.label4.Location = new System.Drawing.Point(1228, 5);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(246, 17);
             this.label4.TabIndex = 16;
@@ -163,7 +165,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 231F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1283, 707);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1486, 774);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -179,11 +181,11 @@
             this.tableLayoutPanel2.Controls.Add(this.panel_conCraneStatus2_2, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel_conCraneStatus2_3, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 479);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 546);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1277, 225);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1480, 225);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // panel_conCraneStatus2_4
@@ -191,9 +193,9 @@
             this.panel_conCraneStatus2_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_conCraneStatus2_4.Controls.Add(this.conCraneStatus2_4);
             this.panel_conCraneStatus2_4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_conCraneStatus2_4.Location = new System.Drawing.Point(960, 3);
+            this.panel_conCraneStatus2_4.Location = new System.Drawing.Point(1113, 3);
             this.panel_conCraneStatus2_4.Name = "panel_conCraneStatus2_4";
-            this.panel_conCraneStatus2_4.Size = new System.Drawing.Size(314, 219);
+            this.panel_conCraneStatus2_4.Size = new System.Drawing.Size(364, 219);
             this.panel_conCraneStatus2_4.TabIndex = 4;
             // 
             // conCraneStatus2_4
@@ -205,7 +207,7 @@
             this.conCraneStatus2_4.Location = new System.Drawing.Point(0, 0);
             this.conCraneStatus2_4.Margin = new System.Windows.Forms.Padding(4);
             this.conCraneStatus2_4.Name = "conCraneStatus2_4";
-            this.conCraneStatus2_4.Size = new System.Drawing.Size(312, 217);
+            this.conCraneStatus2_4.Size = new System.Drawing.Size(362, 217);
             this.conCraneStatus2_4.TabIndex = 3;
             // 
             // panel_conCraneStatus2_1
@@ -215,7 +217,7 @@
             this.panel_conCraneStatus2_1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_conCraneStatus2_1.Location = new System.Drawing.Point(3, 3);
             this.panel_conCraneStatus2_1.Name = "panel_conCraneStatus2_1";
-            this.panel_conCraneStatus2_1.Size = new System.Drawing.Size(313, 219);
+            this.panel_conCraneStatus2_1.Size = new System.Drawing.Size(364, 219);
             this.panel_conCraneStatus2_1.TabIndex = 5;
             // 
             // conCraneStatus2_1
@@ -227,7 +229,7 @@
             this.conCraneStatus2_1.Location = new System.Drawing.Point(0, 0);
             this.conCraneStatus2_1.Margin = new System.Windows.Forms.Padding(4);
             this.conCraneStatus2_1.Name = "conCraneStatus2_1";
-            this.conCraneStatus2_1.Size = new System.Drawing.Size(311, 217);
+            this.conCraneStatus2_1.Size = new System.Drawing.Size(362, 217);
             this.conCraneStatus2_1.TabIndex = 1;
             // 
             // panel_conCraneStatus2_2
@@ -235,9 +237,9 @@
             this.panel_conCraneStatus2_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_conCraneStatus2_2.Controls.Add(this.conCraneStatus2_2);
             this.panel_conCraneStatus2_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_conCraneStatus2_2.Location = new System.Drawing.Point(322, 3);
+            this.panel_conCraneStatus2_2.Location = new System.Drawing.Point(373, 3);
             this.panel_conCraneStatus2_2.Name = "panel_conCraneStatus2_2";
-            this.panel_conCraneStatus2_2.Size = new System.Drawing.Size(313, 219);
+            this.panel_conCraneStatus2_2.Size = new System.Drawing.Size(364, 219);
             this.panel_conCraneStatus2_2.TabIndex = 6;
             // 
             // conCraneStatus2_2
@@ -249,7 +251,7 @@
             this.conCraneStatus2_2.Location = new System.Drawing.Point(0, 0);
             this.conCraneStatus2_2.Margin = new System.Windows.Forms.Padding(4);
             this.conCraneStatus2_2.Name = "conCraneStatus2_2";
-            this.conCraneStatus2_2.Size = new System.Drawing.Size(311, 217);
+            this.conCraneStatus2_2.Size = new System.Drawing.Size(362, 217);
             this.conCraneStatus2_2.TabIndex = 4;
             // 
             // panel_conCraneStatus2_3
@@ -257,9 +259,9 @@
             this.panel_conCraneStatus2_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_conCraneStatus2_3.Controls.Add(this.conCraneStatus2_3);
             this.panel_conCraneStatus2_3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_conCraneStatus2_3.Location = new System.Drawing.Point(641, 3);
+            this.panel_conCraneStatus2_3.Location = new System.Drawing.Point(743, 3);
             this.panel_conCraneStatus2_3.Name = "panel_conCraneStatus2_3";
-            this.panel_conCraneStatus2_3.Size = new System.Drawing.Size(313, 219);
+            this.panel_conCraneStatus2_3.Size = new System.Drawing.Size(364, 219);
             this.panel_conCraneStatus2_3.TabIndex = 7;
             // 
             // conCraneStatus2_3
@@ -271,7 +273,7 @@
             this.conCraneStatus2_3.Location = new System.Drawing.Point(0, 0);
             this.conCraneStatus2_3.Margin = new System.Windows.Forms.Padding(4);
             this.conCraneStatus2_3.Name = "conCraneStatus2_3";
-            this.conCraneStatus2_3.Size = new System.Drawing.Size(311, 217);
+            this.conCraneStatus2_3.Size = new System.Drawing.Size(362, 217);
             this.conCraneStatus2_3.TabIndex = 2;
             // 
             // panel1
@@ -280,14 +282,16 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1277, 64);
+            this.panel1.Size = new System.Drawing.Size(1480, 64);
             this.panel1.TabIndex = 3;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.bt_Coolant);
             this.panel2.Controls.Add(this.bt_CraneClean);
             this.panel2.Controls.Add(this.bt_Recondition);
             this.panel2.Controls.Add(this.btnShowXY);
+            this.panel2.Controls.Add(this.bt_StockPercentage);
             this.panel2.Controls.Add(this.btnShowCrane);
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.label4);
@@ -295,8 +299,22 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1277, 64);
+            this.panel2.Size = new System.Drawing.Size(1480, 64);
             this.panel2.TabIndex = 5;
+            // 
+            // bt_Coolant
+            // 
+            this.bt_Coolant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_Coolant.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bt_Coolant.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_Coolant.ForeColor = System.Drawing.Color.Black;
+            this.bt_Coolant.Location = new System.Drawing.Point(1140, 33);
+            this.bt_Coolant.Name = "bt_Coolant";
+            this.bt_Coolant.Size = new System.Drawing.Size(75, 23);
+            this.bt_Coolant.TabIndex = 29;
+            this.bt_Coolant.Text = "装冷却剂";
+            this.bt_Coolant.UseVisualStyleBackColor = true;
+            this.bt_Coolant.Click += new System.EventHandler(this.bt_Coolant_Click);
             // 
             // bt_CraneClean
             // 
@@ -304,7 +322,7 @@
             this.bt_CraneClean.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bt_CraneClean.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bt_CraneClean.ForeColor = System.Drawing.Color.Black;
-            this.bt_CraneClean.Location = new System.Drawing.Point(1034, 35);
+            this.bt_CraneClean.Location = new System.Drawing.Point(978, 33);
             this.bt_CraneClean.Name = "bt_CraneClean";
             this.bt_CraneClean.Size = new System.Drawing.Size(75, 23);
             this.bt_CraneClean.TabIndex = 29;
@@ -318,7 +336,7 @@
             this.bt_Recondition.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bt_Recondition.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bt_Recondition.ForeColor = System.Drawing.Color.Black;
-            this.bt_Recondition.Location = new System.Drawing.Point(1115, 35);
+            this.bt_Recondition.Location = new System.Drawing.Point(1059, 33);
             this.bt_Recondition.Name = "bt_Recondition";
             this.bt_Recondition.Size = new System.Drawing.Size(75, 23);
             this.bt_Recondition.TabIndex = 29;
@@ -332,14 +350,27 @@
             this.btnShowXY.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnShowXY.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnShowXY.ForeColor = System.Drawing.Color.Black;
-            this.btnShowXY.Location = new System.Drawing.Point(953, 35);
+            this.btnShowXY.Location = new System.Drawing.Point(1302, 33);
             this.btnShowXY.Name = "btnShowXY";
             this.btnShowXY.Size = new System.Drawing.Size(75, 23);
             this.btnShowXY.TabIndex = 29;
             this.btnShowXY.Text = "显示XY";
             this.btnShowXY.UseVisualStyleBackColor = true;
-            this.btnShowXY.Visible = false;
             this.btnShowXY.Click += new System.EventHandler(this.btnShowXY_Click);
+            // 
+            // bt_StockPercentage
+            // 
+            this.bt_StockPercentage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_StockPercentage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bt_StockPercentage.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_StockPercentage.ForeColor = System.Drawing.Color.Black;
+            this.bt_StockPercentage.Location = new System.Drawing.Point(1383, 33);
+            this.bt_StockPercentage.Name = "bt_StockPercentage";
+            this.bt_StockPercentage.Size = new System.Drawing.Size(88, 23);
+            this.bt_StockPercentage.TabIndex = 18;
+            this.bt_StockPercentage.Text = "显示库存比";
+            this.bt_StockPercentage.UseVisualStyleBackColor = true;
+            this.bt_StockPercentage.Click += new System.EventHandler(this.bt_StockPercentage_Click);
             // 
             // btnShowCrane
             // 
@@ -347,7 +378,7 @@
             this.btnShowCrane.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnShowCrane.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnShowCrane.ForeColor = System.Drawing.Color.Black;
-            this.btnShowCrane.Location = new System.Drawing.Point(1196, 35);
+            this.btnShowCrane.Location = new System.Drawing.Point(1221, 33);
             this.btnShowCrane.Name = "btnShowCrane";
             this.btnShowCrane.Size = new System.Drawing.Size(75, 23);
             this.btnShowCrane.TabIndex = 18;
@@ -370,7 +401,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(537, 6);
+            this.label1.Location = new System.Drawing.Point(639, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(262, 42);
             this.label1.TabIndex = 3;
@@ -383,7 +414,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 73);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1277, 400);
+            this.panel3.Size = new System.Drawing.Size(1480, 467);
             this.panel3.TabIndex = 4;
             // 
             // panelZ53BayS
@@ -395,7 +426,7 @@
             this.panelZ53BayS.Controls.Add(this.panelZ61Bay);
             this.panelZ53BayS.Location = new System.Drawing.Point(6, 6);
             this.panelZ53BayS.Name = "panelZ53BayS";
-            this.panelZ53BayS.Size = new System.Drawing.Size(1265, 388);
+            this.panelZ53BayS.Size = new System.Drawing.Size(1468, 455);
             this.panelZ53BayS.TabIndex = 0;
             // 
             // panelZ61Bay
@@ -437,7 +468,7 @@
             this.panelZ61Bay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelZ61Bay.Location = new System.Drawing.Point(0, 0);
             this.panelZ61Bay.Name = "panelZ61Bay";
-            this.panelZ61Bay.Size = new System.Drawing.Size(1265, 388);
+            this.panelZ61Bay.Size = new System.Drawing.Size(1468, 455);
             this.panelZ61Bay.TabIndex = 6;
             this.panelZ61Bay.Paint += new System.Windows.Forms.PaintEventHandler(this.panelZ11_Z22Bay_Paint);
             // 
@@ -720,7 +751,7 @@
             this.panel4.Controls.Add(this.txtY);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.txtX);
-            this.panel4.Location = new System.Drawing.Point(1166, 322);
+            this.panel4.Location = new System.Drawing.Point(1369, 389);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(100, 66);
             this.panel4.TabIndex = 18;
@@ -857,7 +888,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1283, 707);
+            this.ClientSize = new System.Drawing.Size(1486, 774);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Z01_library_Monitor";
@@ -953,5 +984,7 @@
         private UACSControls.conTrafficLight2 conTrafficLight2_Cubicle_3;
         private UACSControls.conTrafficLight2 conTrafficLight2_Cubicle_2;
         private UACSControls.conTrafficLight2 conTrafficLight2_Cubicle_1;
+        private System.Windows.Forms.Button bt_Coolant;
+        private System.Windows.Forms.Button bt_StockPercentage;
     }
 }

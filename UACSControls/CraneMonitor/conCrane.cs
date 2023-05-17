@@ -293,7 +293,7 @@ namespace UACSControls
             }
             else
             {
-                #region 判断是否需要清空归堆指令和清扫工位指令
+                #region 判断是否需要清空归堆指令、清扫工位指令、装冷却剂指令
                 if (CreateManuOrder.isDelCraneManuOrder(craneNO))
                 {
                     string error = null;
@@ -318,7 +318,19 @@ namespace UACSControls
                     {
                         //MessageBox.Show(error);
                     }
-                } 
+                }
+                if (CreateManuOrder.isDelCraneManuOrderCoolant(craneNO))
+                {
+                    string error = null;
+                    if (CreateManuOrder.DelCraneManuOrderCoolant(craneNO, out error))
+                    {
+                        ParkClassLibrary.HMILogger.WriteLog("清空指令-装冷却剂指令", craneNO + "行车-清空装冷却剂指令", ParkClassLibrary.LogLevel.Info, this.Text);
+                    }
+                    else
+                    {
+                        //MessageBox.Show(error);
+                    }
+                }
                 #endregion
 
                 if (CreateManuOrder.isDelNotAutoCraneOrder(craneNO))

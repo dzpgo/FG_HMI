@@ -66,7 +66,7 @@ namespace UACSDAL
         public const long Z42BaySpaceX = 234000;
         public const long Z42BaySpaceY = 42000;
 
-        public const long Z01BaySpaceX = 448000;
+        public const long Z01BaySpaceX = 450000;
         public const long Z01BaySpaceY = 33000;
 
         public const bool xAxisRight = false;

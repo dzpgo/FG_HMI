@@ -450,6 +450,7 @@ namespace UACSView.View_CraneMonitor
                 panelZ61Bay.Height,
                 constData.xBxisleft,
                 constData.yBxisDown,
+                StockPercentage,
                  AreaInfo.AreaType.AllType);
         }
 
@@ -878,13 +879,14 @@ namespace UACSView.View_CraneMonitor
 
                 timer_ShowXY.Enabled = true;
                 timer_ShowXY.Interval = 1000;
+                panel4.Visible = true;
             }
             else
             {
                 isShowCurrentBayXY = false;
                 btnShowXY.Text = "显示XY";
                 timer_ShowXY.Enabled = false;
-
+                panel4.Visible = false;
             }
         }
         #region 无用
@@ -1911,6 +1913,43 @@ namespace UACSView.View_CraneMonitor
             FrmCubicleClean frm = new FrmCubicleClean(this);
             //frm.CraneNo = craneNO;
             frm.ShowDialog();
+        }
+
+        /// <summary>
+        /// 装冷却剂
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bt_Coolant_Click(object sender, EventArgs e)
+        {
+            Coolant frm = new Coolant(this);
+            //frm.CraneNo = craneNO;
+            frm.BayNO = "A";
+            frm.ShowDialog();
+        }
+        /// <summary>
+        /// 库存百分比
+        /// </summary>
+        private bool StockPercentage =false;
+        /// <summary>
+        /// 显示库存百分比
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bt_StockPercentage_Click(object sender, EventArgs e)
+        {
+            if (StockPercentage)
+            {
+                StockPercentage = false;
+                bt_StockPercentage.Text = "显示库存比";
+            }
+            else
+            {
+                StockPercentage = true;
+                bt_StockPercentage.Text = "隐藏库存比";                
+            }
+            //刷新
+            LoadAreaInfo();
         }
     }
 }

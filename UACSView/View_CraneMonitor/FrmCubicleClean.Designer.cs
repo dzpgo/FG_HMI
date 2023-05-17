@@ -39,6 +39,9 @@
             this.bt_Confirm = new System.Windows.Forms.Button();
             this.cmb_MatCode = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.txt_Height = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cmb_Cubicle
@@ -100,11 +103,11 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancel.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(277, 267);
+            this.btnCancel.Location = new System.Drawing.Point(276, 315);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 33);
-            this.btnCancel.TabIndex = 6;
-            this.btnCancel.Text = "取消";
+            this.btnCancel.TabIndex = 7;
+            this.btnCancel.Text = "关闭窗体";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -114,11 +117,11 @@
             this.btnFinish.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnFinish.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.btnFinish.ForeColor = System.Drawing.Color.White;
-            this.btnFinish.Location = new System.Drawing.Point(153, 267);
+            this.btnFinish.Location = new System.Drawing.Point(152, 315);
             this.btnFinish.Name = "btnFinish";
             this.btnFinish.Size = new System.Drawing.Size(100, 33);
-            this.btnFinish.TabIndex = 5;
-            this.btnFinish.Text = "清扫完成";
+            this.btnFinish.TabIndex = 6;
+            this.btnFinish.Text = "结束清扫";
             this.btnFinish.UseVisualStyleBackColor = true;
             this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
             // 
@@ -128,11 +131,11 @@
             this.bt_Confirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bt_Confirm.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.bt_Confirm.ForeColor = System.Drawing.Color.White;
-            this.bt_Confirm.Location = new System.Drawing.Point(26, 267);
+            this.bt_Confirm.Location = new System.Drawing.Point(25, 315);
             this.bt_Confirm.Name = "bt_Confirm";
             this.bt_Confirm.Size = new System.Drawing.Size(100, 33);
-            this.bt_Confirm.TabIndex = 4;
-            this.bt_Confirm.Text = "确定";
+            this.bt_Confirm.TabIndex = 5;
+            this.bt_Confirm.Text = "开始清扫";
             this.bt_Confirm.UseVisualStyleBackColor = true;
             this.bt_Confirm.Click += new System.EventHandler(this.bt_Confirm_Click);
             // 
@@ -146,6 +149,7 @@
             this.cmb_MatCode.Name = "cmb_MatCode";
             this.cmb_MatCode.Size = new System.Drawing.Size(141, 30);
             this.cmb_MatCode.TabIndex = 3;
+            this.cmb_MatCode.SelectedIndexChanged += new System.EventHandler(this.cmb_MatCode_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -157,12 +161,48 @@
             this.label4.TabIndex = 110;
             this.label4.Text = "物料：";
             // 
+            // txt_Height
+            // 
+            this.txt_Height.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_Height.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
+            this.txt_Height.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txt_Height.Location = new System.Drawing.Point(137, 249);
+            this.txt_Height.Multiline = true;
+            this.txt_Height.Name = "txt_Height";
+            this.txt_Height.ReadOnly = true;
+            this.txt_Height.Size = new System.Drawing.Size(141, 31);
+            this.txt_Height.TabIndex = 4;
+            this.txt_Height.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Height_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.Location = new System.Drawing.Point(82, 253);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 20);
+            this.label5.TabIndex = 112;
+            this.label5.Text = "高度：";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Location = new System.Drawing.Point(284, 260);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(37, 20);
+            this.label6.TabIndex = 112;
+            this.label6.Text = "毫米";
+            // 
             // FrmCubicleClean
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(403, 322);
+            this.ClientSize = new System.Drawing.Size(403, 364);
+            this.Controls.Add(this.txt_Height);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.cmb_MatCode);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCancel);
@@ -196,5 +236,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmb_MatCode;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txt_Height;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

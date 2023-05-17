@@ -188,6 +188,7 @@ namespace UACSView.View_CraneMonitor
                 panelZ73Bay.Height,
                 constData.xBxisleft,
                 constData.yBxisDown,
+                false,
                  AreaInfo.AreaType.AllType);
         }
 
@@ -382,7 +383,7 @@ namespace UACSView.View_CraneMonitor
                 
                 AreaInStockZ12.conInit(panelZ73Bay, constData.bayNo_Z73, SaddleBase.tagServiceName,
                        constData.Z73BaySpaceX, constData.Z73BaySpaceY, panelZ73Bay.Width, panelZ73Bay.Height,
-                       constData.xBxisleft, constData.yBxisDown, AreaInfo.AreaType.StockArea);
+                       constData.xBxisleft, constData.yBxisDown,false, AreaInfo.AreaType.StockArea);
                 //-------------------------行车排水状态------------------------------------------
                 //getWaterStatus("3_4");
                 //getWaterStatus("3_5");

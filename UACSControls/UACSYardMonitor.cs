@@ -427,7 +427,7 @@ namespace UACSControls
                 craneStatusInBay.getAllPLCStatusInBay(craneStatusInBay.lstCraneNO);
                 AreaInStockZ12.conInit(pnlYard, bayNO, SaddleBase.tagServiceName,
                    constData.Z42BaySpaceX, constData.Z42BaySpaceY, pnlYard.Width, pnlYard.Height,
-                   xAxisRight, yAxisDown, AreaInfo.AreaType.StockArea);
+                   xAxisRight, yAxisDown,false, AreaInfo.AreaType.StockArea);
                 //--------------------------行车指令控件刷新------------------------------------------
                 foreach (conCraneStatus conCraneStatusPanel in lstConCraneStatusPanel)
                 {
@@ -597,6 +597,7 @@ namespace UACSControls
                 pnlYard.Height,
                 xAxisRight,
                 yAxisDown,
+                false,
                 AreaInfo.AreaType.AllType);
         }
         /// <summary>

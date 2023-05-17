@@ -358,6 +358,29 @@ namespace UACSDAL
             }
 
         }
+        /// <summary>
+        /// 获取库存重量 库图GRID定义表
+        /// </summary>
+        /// <returns></returns>
+        public DataTable getGridData()
+        {
+            DataTable dt = new DataTable();
+            Dictionary<string,string> list = new Dictionary<string, string>();
+            try
+            {
+                var sql = "SELECT GRID_NO, GRID_NAME, GRID_DIV, GRID_STATUS, MAT_WGT, MAT_WGTTOTAL FROM UACS_YARDMAP_GRID_DEFINE";
+                using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
+                {
+                    dt.Load(rdr);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return dt;
+        }
         private string areaNo = string.Empty;
         public string AreaNo
         {
@@ -890,5 +913,5 @@ namespace UACSDAL
             }
             return ret;
         }
-    }
+    }    
 }

@@ -166,26 +166,40 @@ namespace UACSView.View_CraneMonitor
                 dt.Columns.Add("TypeValue");
                 dt.Columns.Add("TypeName");
                 DataRow dr = dt.NewRow();
-                dr = dt.NewRow();
-                dr["TypeValue"] = "0";
-                dr["TypeName"] = "请选择物料";
+                //dr = dt.NewRow();
+                //dr["TypeValue"] = "0";
+                //dr["TypeName"] = "请选择物料";
+                //dt.Rows.Add(dr);
+                //string sqlText = @"SELECT MAT_CODE, BASE_RESOURCE, MAT_CNAME, MAT_TYPE, MAT_MODE, MAT_PRIORITY FROM UACSAPP.UACS_L3_MAT_INFO ORDER BY MAT_PRIORITY ";
+                //using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
+                //{
+                //    while (rdr.Read())
+                //    {
+                //        dr = dt.NewRow();
+                //        dr["TypeValue"] = rdr["MAT_CODE"].ToString();
+                //        dr["TypeName"] = rdr["MAT_CNAME"].ToString();
+                //        dt.Rows.Add(dr);
+                //    }
+                //}
+
+                dr["TypeValue"] = "LCNZH";
+                dr["TypeName"] = "厂内中混废";
                 dt.Rows.Add(dr);
-                string sqlText = @"SELECT MAT_CODE, BASE_RESOURCE, MAT_CNAME, MAT_TYPE, MAT_MODE, MAT_PRIORITY FROM UACSAPP.UACS_L3_MAT_INFO ORDER BY MAT_PRIORITY ";
-                using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
-                {
-                    while (rdr.Read())
-                    {
-                        dr = dt.NewRow();
-                        dr["TypeValue"] = rdr["MAT_CODE"].ToString();
-                        dr["TypeName"] = rdr["MAT_CNAME"].ToString();
-                        dt.Rows.Add(dr);
-                    }
-                }
+
+                dr = dt.NewRow();
+                dr["TypeValue"] = "LWGZH";
+                dr["TypeName"] = "外购中混废";
+                dt.Rows.Add(dr);
+
+                dr = dt.NewRow();
+                dr["TypeValue"] = "LWGPY";
+                dr["TypeName"] = "破碎料压块";
+                dt.Rows.Add(dr);
                 this.cmb_MatCode.ValueMember = "TypeValue";
                 this.cmb_MatCode.DisplayMember = "TypeName";
                 this.cmb_MatCode.DataSource = dt;
                 //根据text值选中项
-                this.cmb_MatCode.SelectedIndex = 2;
+                this.cmb_MatCode.SelectedIndex = 0;
             }
             catch (Exception)
             {
@@ -230,10 +244,15 @@ namespace UACSView.View_CraneMonitor
                 MessageBox.Show("请选择物料!");
                 return;
             }
+            if (string.IsNullOrEmpty(txt_Height.Text.Trim()))
+            {
+                MessageBox.Show("重量信息不正确!");
+                return;
+            }
             DialogResult dr = MessageBox.Show("请确认料槽车已经离开工位,是否开始清扫？", "操作提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
             if (dr == DialogResult.OK)
             {
-                string sql = @"UPDATE UACS_CRANE_MANU_ORDER_CLEAN SET MAT_NO = '" + cmb_MatCode.SelectedValue.ToString().Trim() + "', FROM_STOCK = '" + cmb_Cubicle.SelectedValue.ToString().Trim() + "', TO_STOCK = '" + cmb_Cubicle.SelectedValue.ToString().Trim() + "', STATUS = 'INIT' ";
+                string sql = @"UPDATE UACS_CRANE_MANU_ORDER_CLEAN SET MAT_NO = '" + cmb_MatCode.SelectedValue.ToString().Trim() + "', FROM_STOCK = '" + cmb_Cubicle.SelectedValue.ToString().Trim() + "', TO_STOCK = '" + cmb_Cubicle.SelectedValue.ToString().Trim() + "',PLAN_UP_Z = '"+ txt_Height.Text.Trim()+"', STATUS = 'INIT' ";
                 sql += " WHERE BAY_NO = 'A' AND CRANE_NO = '" + cmb_CraneNO.SelectedValue.ToString().Trim() + "' ";
                 DBHelper.ExecuteNonQuery(sql);
                 //清扫按钮闪烁
@@ -323,7 +342,37 @@ namespace UACSView.View_CraneMonitor
             catch (Exception ex)
             {
             }
-        } 
+        }
         #endregion
+
+        private void cmb_MatCode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var matCode = cmb_MatCode.SelectedValue.ToString().Trim();
+            if (matCode.Equals("LCNZH"))
+            {
+                txt_Height.Text = "400";
+            } 
+            else if (matCode.Equals("LWGZH")) 
+            {
+                txt_Height.Text = "800";
+            }
+            else if (matCode.Equals("LWGPY"))
+            {
+                txt_Height.Text = "1000";
+            }
+            else
+            {
+                txt_Height.Text = "400";
+            }
+        }
+
+        private void txt_Height_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //如果输入的不是退格和数字，则屏蔽输入
+            if (!(e.KeyChar == '\b' || (e.KeyChar >= '0' && e.KeyChar <= '9')))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
