@@ -41,21 +41,23 @@
             // 
             // txt_Password
             // 
-            this.txt_Password.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txt_Password.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_Password.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
             this.txt_Password.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txt_Password.Location = new System.Drawing.Point(141, 128);
+            this.txt_Password.Location = new System.Drawing.Point(200, 343);
+            this.txt_Password.Multiline = true;
             this.txt_Password.Name = "txt_Password";
             this.txt_Password.PasswordChar = '*';
-            this.txt_Password.Size = new System.Drawing.Size(141, 29);
+            this.txt_Password.Size = new System.Drawing.Size(184, 32);
             this.txt_Password.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label3.Location = new System.Drawing.Point(77, 131);
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.label3.Location = new System.Drawing.Point(125, 350);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 21);
+            this.label3.Size = new System.Drawing.Size(69, 25);
             this.label3.TabIndex = 100;
             this.label3.Text = "密码：";
             // 
@@ -63,7 +65,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 26.25F);
-            this.label1.Location = new System.Drawing.Point(117, 9);
+            this.label1.Location = new System.Drawing.Point(192, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(160, 46);
             this.label1.TabIndex = 98;
@@ -75,11 +77,11 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancel.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(232, 188);
+            this.btnCancel.Location = new System.Drawing.Point(393, 487);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 33);
+            this.btnCancel.Size = new System.Drawing.Size(101, 49);
             this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "取消";
+            this.btnCancel.Text = "关闭窗体";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -89,9 +91,9 @@
             this.bt_Submit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bt_Submit.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.bt_Submit.ForeColor = System.Drawing.Color.White;
-            this.bt_Submit.Location = new System.Drawing.Point(61, 188);
+            this.bt_Submit.Location = new System.Drawing.Point(61, 487);
             this.bt_Submit.Name = "bt_Submit";
-            this.bt_Submit.Size = new System.Drawing.Size(100, 33);
+            this.bt_Submit.Size = new System.Drawing.Size(101, 49);
             this.bt_Submit.TabIndex = 2;
             this.bt_Submit.Text = "确定";
             this.bt_Submit.UseVisualStyleBackColor = true;
@@ -102,20 +104,20 @@
             this.cmCraneNO.BackColor = System.Drawing.SystemColors.Window;
             this.cmCraneNO.Enabled = false;
             this.cmCraneNO.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cmCraneNO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmCraneNO.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
             this.cmCraneNO.FormattingEnabled = true;
-            this.cmCraneNO.Location = new System.Drawing.Point(141, 78);
+            this.cmCraneNO.Location = new System.Drawing.Point(200, 186);
             this.cmCraneNO.Name = "cmCraneNO";
-            this.cmCraneNO.Size = new System.Drawing.Size(141, 30);
+            this.cmCraneNO.Size = new System.Drawing.Size(184, 34);
             this.cmCraneNO.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label2.Location = new System.Drawing.Point(61, 81);
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.label2.Location = new System.Drawing.Point(106, 191);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 21);
+            this.label2.Size = new System.Drawing.Size(88, 25);
             this.label2.TabIndex = 106;
             this.label2.Text = "行车号：";
             // 
@@ -123,7 +125,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.label4.Location = new System.Drawing.Point(160, 165);
+            this.label4.Location = new System.Drawing.Point(234, 408);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 20);
             this.label4.TabIndex = 107;
@@ -134,7 +136,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(384, 242);
+            this.ClientSize = new System.Drawing.Size(556, 563);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmCraneNO);
             this.Controls.Add(this.label2);

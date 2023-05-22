@@ -42,7 +42,9 @@
             this.登机1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.登机2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关闭ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.SuctionAndReplenishment = new System.Windows.Forms.ToolStripMenuItem();
             this.矫正高度ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ReturnToBoarding = new System.Windows.Forms.ToolStripMenuItem();
             this.修改卸下位置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.开启ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关闭ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,7 +87,9 @@
             this.设置避让ToolStripMenuItem,
             this.登车ToolStripMenuItem,
             this.登机请求ToolStripMenuItem,
+            this.SuctionAndReplenishment,
             this.矫正高度ToolStripMenuItem,
+            this.ReturnToBoarding,
             this.修改卸下位置ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(175, 186);
@@ -173,6 +177,14 @@
             this.关闭ToolStripMenuItem1.Text = "关闭";
             this.关闭ToolStripMenuItem1.Click += new System.EventHandler(this.关闭ToolStripMenuItem1_Click);
             // 
+            // 吸料补料
+            // 
+            this.SuctionAndReplenishment.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
+            this.SuctionAndReplenishment.Name = "SuctionAndReplenishment";
+            this.SuctionAndReplenishment.Size = new System.Drawing.Size(174, 26);
+            this.SuctionAndReplenishment.Text = "吸料补料";
+            this.SuctionAndReplenishment.Click += new System.EventHandler(this.SuctionAndReplenishment_Click);
+            // 
             // 矫正高度ToolStripMenuItem
             // 
             this.矫正高度ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
@@ -180,6 +192,14 @@
             this.矫正高度ToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
             this.矫正高度ToolStripMenuItem.Text = "矫正高度";
             this.矫正高度ToolStripMenuItem.Click += new System.EventHandler(this.矫正高度ToolStripMenuItem_Click);
+            // 
+            // 回登机平台
+            // 
+            this.ReturnToBoarding.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
+            this.ReturnToBoarding.Name = "ReturnToBoarding";
+            this.ReturnToBoarding.Size = new System.Drawing.Size(174, 26);
+            this.ReturnToBoarding.Text = "回登机平台";
+            this.ReturnToBoarding.Click += new System.EventHandler(this.ReturnToBoarding_Click);
             // 
             // 修改卸下位置ToolStripMenuItem
             // 
@@ -228,7 +248,9 @@
         private System.Windows.Forms.ToolStripMenuItem 避让ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 取消ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 登车ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SuctionAndReplenishment;
         private System.Windows.Forms.ToolStripMenuItem 矫正高度ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ReturnToBoarding;
         //private System.Windows.Forms.ToolStripMenuItem 高度ToolStripMenuItem;
         //private System.Windows.Forms.ToolStripMenuItem 角度ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 登机请求ToolStripMenuItem;

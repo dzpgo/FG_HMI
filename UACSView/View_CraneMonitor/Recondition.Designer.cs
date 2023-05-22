@@ -44,10 +44,10 @@
             this.txt_Act_X.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_Act_X.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
             this.txt_Act_X.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txt_Act_X.Location = new System.Drawing.Point(145, 130);
+            this.txt_Act_X.Location = new System.Drawing.Point(195, 310);
             this.txt_Act_X.Multiline = true;
             this.txt_Act_X.Name = "txt_Act_X";
-            this.txt_Act_X.Size = new System.Drawing.Size(141, 29);
+            this.txt_Act_X.Size = new System.Drawing.Size(184, 32);
             this.txt_Act_X.TabIndex = 2;
             this.txt_Act_X.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Act_X_KeyPress);
             // 
@@ -55,31 +55,31 @@
             // 
             this.cmCraneNO.BackColor = System.Drawing.SystemColors.Window;
             this.cmCraneNO.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cmCraneNO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmCraneNO.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
             this.cmCraneNO.FormattingEnabled = true;
-            this.cmCraneNO.Location = new System.Drawing.Point(145, 75);
+            this.cmCraneNO.Location = new System.Drawing.Point(195, 176);
             this.cmCraneNO.Name = "cmCraneNO";
-            this.cmCraneNO.Size = new System.Drawing.Size(141, 30);
+            this.cmCraneNO.Size = new System.Drawing.Size(184, 34);
             this.cmCraneNO.TabIndex = 1;
             this.cmCraneNO.SelectedIndexChanged += new System.EventHandler(this.cmCraneNO_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(74, 139);
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.label3.Location = new System.Drawing.Point(108, 317);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 20);
+            this.label3.Size = new System.Drawing.Size(81, 25);
             this.label3.TabIndex = 92;
             this.label3.Text = "X坐标：";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(74, 79);
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.label2.Location = new System.Drawing.Point(101, 179);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 20);
+            this.label2.Size = new System.Drawing.Size(88, 25);
             this.label2.TabIndex = 91;
             this.label2.Text = "行车号：";
             // 
@@ -87,7 +87,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 26.25F);
-            this.label1.Location = new System.Drawing.Point(149, 9);
+            this.label1.Location = new System.Drawing.Point(219, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 46);
             this.label1.TabIndex = 90;
@@ -99,9 +99,9 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancel.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(267, 197);
+            this.btnCancel.Location = new System.Drawing.Point(393, 487);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 33);
+            this.btnCancel.Size = new System.Drawing.Size(101, 49);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "关闭窗体";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -113,9 +113,9 @@
             this.btnFinish.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnFinish.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.btnFinish.ForeColor = System.Drawing.Color.White;
-            this.btnFinish.Location = new System.Drawing.Point(143, 197);
+            this.btnFinish.Location = new System.Drawing.Point(227, 487);
             this.btnFinish.Name = "btnFinish";
-            this.btnFinish.Size = new System.Drawing.Size(100, 33);
+            this.btnFinish.Size = new System.Drawing.Size(101, 49);
             this.btnFinish.TabIndex = 4;
             this.btnFinish.Text = "结束检修";
             this.btnFinish.UseVisualStyleBackColor = true;
@@ -127,9 +127,9 @@
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirm.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.btnConfirm.ForeColor = System.Drawing.Color.White;
-            this.btnConfirm.Location = new System.Drawing.Point(16, 197);
+            this.btnConfirm.Location = new System.Drawing.Point(61, 487);
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(100, 33);
+            this.btnConfirm.Size = new System.Drawing.Size(101, 49);
             this.btnConfirm.TabIndex = 3;
             this.btnConfirm.Text = "开始检修";
             this.btnConfirm.UseVisualStyleBackColor = true;
@@ -140,7 +140,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(384, 242);
+            this.ClientSize = new System.Drawing.Size(556, 563);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnFinish);
             this.Controls.Add(this.btnConfirm);

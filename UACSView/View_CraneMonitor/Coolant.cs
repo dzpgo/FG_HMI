@@ -190,6 +190,7 @@ namespace UACSView.View_CraneMonitor
             {
                 UpdateStatusInit(cmCraneNO.SelectedValue.ToString().Trim(), txt_MatWeight.Text.ToString().Trim(), cmb_FromStock.SelectedValue.ToString().Trim(), "INIT");
                 HMILogger.WriteLog("装冷却剂", cmCraneNO.Text + "开始装冷却剂：" + txt_MatWeight.Text, LogLevel.Info, this.Text);
+                UpdateStatus(cmCraneNO.SelectedValue.ToString().Trim(), "42");
                 this.Close();
             }
             else
@@ -216,6 +217,7 @@ namespace UACSView.View_CraneMonitor
             {
                 UpdateStatusEmpty(cmCraneNO.SelectedValue.ToString().Trim());
                 HMILogger.WriteLog("装冷却剂", cmCraneNO.Text + "结束装冷却剂：" + txt_MatWeight.Text, LogLevel.Info, this.Text);
+                UpdateStatus(cmCraneNO.SelectedValue.ToString().Trim(), "99");
                 this.Close();
             }
             else
@@ -223,6 +225,22 @@ namespace UACSView.View_CraneMonitor
                 return;
             }
             isPopupMessage = false;
+        }
+        /// <summary>
+        /// 更新行车状态
+        /// </summary>
+        /// <param name="craneNo">行车</param>
+        /// <param name="oederType">状态</param>
+        private void UpdateStatus(string craneNo, string oederType)
+        {
+            try
+            {
+                string ExeSql = @" UPDATE UACS_CRANE_ORDER_CURRENT SET ORDER_TYPE = '" + oederType + "' WHERE CRANE_NO = '" + craneNo + "' ";
+                DB2Connect.DBHelper.ExecuteNonQuery(ExeSql);
+            }
+            catch (Exception)
+            {
+            }
         }
         /// <summary>
         /// 取消 关闭窗口

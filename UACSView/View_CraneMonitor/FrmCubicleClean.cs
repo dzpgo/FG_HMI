@@ -297,7 +297,7 @@ namespace UACSView.View_CraneMonitor
             isPopupMessage = false;
         }
         /// <summary>
-        /// 更新行车检修状态
+        /// 更新行车状态
         /// </summary>
         /// <param name="craneNo">行车</param>
         /// <param name="oederType">状态</param>

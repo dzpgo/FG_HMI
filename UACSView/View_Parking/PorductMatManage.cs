@@ -381,7 +381,7 @@ namespace UACSParking
             try
             {
                 string AreaNo = cmbArea.SelectedValue.ToString().Trim();
-                string sqlText = @"SELECT DISTINCT PARKING_NO as TypeValue,PAKRING_NAME as TypeName FROM UACS_PARKING_INFO_DEFINE WHERE YARD_NO = '" + AreaNo + "'";
+                string sqlText = @"SELECT DISTINCT PARKING_NO as TypeValue,PAKRING_NAME as TypeName FROM UACS_PARKING_INFO_DEFINE WHERE YARD_NO = '" + AreaNo + "' AND PARKING_TYPE = '3' ";
                 //string sqlText = @"SELECT DISTINCT ID as TypeValue,NAME as TypeName FROM UACS_PARKING_INFO_DEFINE WHERE YARD_NO = '" + AreaNo + "'";
                 using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
                 {
@@ -429,7 +429,7 @@ namespace UACSParking
 
                 }
                 //string sqlText = @"SELECT DISTINCT ID as TypeValue,NAME as TypeName FROM UACS_PARKING_INFO_DEFINE ";
-                string sqlText = @"SELECT DISTINCT PARKING_NO as TypeValue,PAKRING_NAME as TypeName FROM UACS_PARKING_INFO_DEFINE ";
+                string sqlText = @"SELECT DISTINCT PARKING_NO as TypeValue,PAKRING_NAME as TypeName FROM UACS_PARKING_INFO_DEFINE WHERE PARKING_TYPE = '3' ";
                 using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
                 {
                     while (rdr.Read())

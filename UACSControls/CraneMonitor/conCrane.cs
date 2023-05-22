@@ -293,7 +293,7 @@ namespace UACSControls
             }
             else
             {
-                #region 判断是否需要清空归堆指令、清扫工位指令、装冷却剂指令
+                #region 判断是否需要清空归堆指令、清扫工位指令、装冷却剂指令、吸料补料
                 if (CreateManuOrder.isDelCraneManuOrder(craneNO))
                 {
                     string error = null;
@@ -325,6 +325,18 @@ namespace UACSControls
                     if (CreateManuOrder.DelCraneManuOrderCoolant(craneNO, out error))
                     {
                         ParkClassLibrary.HMILogger.WriteLog("清空指令-装冷却剂指令", craneNO + "行车-清空装冷却剂指令", ParkClassLibrary.LogLevel.Info, this.Text);
+                    }
+                    else
+                    {
+                        //MessageBox.Show(error);
+                    }
+                }
+                if (CreateManuOrder.isDelCraneManuOrderInout(craneNO))
+                {
+                    string error = null;
+                    if (CreateManuOrder.DelCraneManuOrderInout(craneNO, out error))
+                    {
+                        ParkClassLibrary.HMILogger.WriteLog("清空指令-吸料补料指令", craneNO + "行车-清空吸料补料指令", ParkClassLibrary.LogLevel.Info, this.Text);
                     }
                     else
                     {
@@ -388,6 +400,55 @@ namespace UACSControls
             FrmCorrectionHeight frmCorrectionHeight = new FrmCorrectionHeight();
             frmCorrectionHeight.CraneNo = craneNO;
             frmCorrectionHeight.Show();
+        }
+        /// <summary>
+        /// 吸料补料
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SuctionAndReplenishment_Click(object sender, EventArgs e)
+        {
+            SuctionAndReplenishment form = new SuctionAndReplenishment();
+            form.CraneNo = craneNO;
+            form.Show();
+
+
+
+            //DialogResult ret = MessageBox.Show("确定要" + craneNO + "行车回登车位吗？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            //if (ret == DialogResult.Cancel)
+            //{
+            //    return;
+            //}
+
+            //tagDP.ServiceName = "iplature";
+            //tagDP.AutoRegist = true;
+            //TagValues.Clear();
+            //TagValues.Add(craneNO + "_GGGGG", null);
+            //tagDP.Attach(TagValues);
+            //tagDP.SetData(craneNO + "_GGGGG", "1");
+            //HMILogger.WriteLog("登车", "行车登机：" + craneNO, LogLevel.Info, this.Text);
+        }
+        /// <summary>
+        /// 回登机平台
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ReturnToBoarding_Click(object sender, EventArgs e)
+        {
+
+            DialogResult ret = MessageBox.Show("确定要" + craneNO + "行车回登车位吗？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (ret == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            tagDP.ServiceName = "iplature";
+            tagDP.AutoRegist = true;
+            TagValues.Clear();
+            TagValues.Add(craneNO + "_GGGGG", null);
+            tagDP.Attach(TagValues);
+            tagDP.SetData(craneNO + "_GGGGG", "1");
+            HMILogger.WriteLog("登车", "行车登机：" + craneNO, LogLevel.Info, this.Text);
         }
 
         private void 避让ToolStripMenuItem_Click(object sender, EventArgs e)

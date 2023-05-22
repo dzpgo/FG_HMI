@@ -634,5 +634,50 @@ namespace UACSDAL
             }
             return false;
         }
+
+        /// <summary>
+        /// 是否清空吸料补料指令
+        /// </summary>
+        /// <param name="craneNo"></param>
+        /// <returns></returns>
+        public static bool isDelCraneManuOrderInout(string craneNo)
+        {
+            string sql = "SELECT BAY_NO, CRANE_NO, MAT_NO, MAT_WEIGHT, FROM_STOCK, TO_STOCK, CAR_NO, STATUS, X_MIN, X_MAX, Y_MIN, Y_MAX, X_CENTER, Y_CENTER FROM UACSAPP.UACS_CRANE_MANU_ORDER_INOUT ";
+            sql += " WHERE STATUS = 'INIT' ";
+            sql += " AND CRANE_NO = '" + craneNo + "' ";
+            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
+            {
+                while (rdr.Read())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        /// <summary>
+        /// 清空吸料补料指令
+        /// </summary>
+        /// <param name="carneNo"></param>
+        /// <param name="error"></param>
+        /// <returns></returns>
+        public static bool DelCraneManuOrderInout(string carneNo, out string error)
+        {
+            error = null;
+            try
+            {
+                string sql = @"UPDATE UACS_CRANE_MANU_ORDER_INOUT SET MAT_WEIGHT = null, FROM_STOCK = null, TO_STOCK = null, STATUS = 'EMPTY' ";
+                sql += " WHERE BAY_NO = 'A' AND CRANE_NO = '" + carneNo + "'";
+                var enq = DB2Connect.DBHelper.ExecuteNonQuery(sql);
+                if (enq > 0)
+                    return true;
+            }
+            catch (Exception er)
+            {
+                error = er.Message;
+                return false;
+            }
+            return false;
+        }
+
     }
 }
