@@ -1,13 +1,9 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using UACSDAL;
+using UACSView.View_CraneMonitor;
 
 namespace UACSControls
 {
@@ -183,7 +179,7 @@ namespace UACSControls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnUpdata_Click(object sender, EventArgs e)
+        public void btnUpdata_Click(object sender, EventArgs e)
         {
             if (areaBase.AreaNo.Contains("Z01"))
             {
@@ -193,6 +189,13 @@ namespace UACSControls
             {
                 stockSaddleModel.conInit(panel2, areaBase, constData.tagServiceName, panel2.Width, panel2.Height, constData.xBxisleft, constData.yBxisDown, 999);
             }
+        }
+        /// <summary>
+        /// 刷新
+        /// </summary>
+        public void RefreshData()
+        {
+            stockSaddleModel.conInit(panel2, areaBase, constData.tagServiceName, panel2.Width, panel2.Height, constData.xBxisleft, constData.yBxisDown, 999);
         }
 
         private void btnKillStock_Click(object sender, EventArgs e)
@@ -378,6 +381,13 @@ namespace UACSControls
             btnUpdata_Click(sender, e);
             stockSaddleModel.isGRID_DIV = false;
             stockSaddleModel.grid_DIV = string.Empty;
+        }
+
+        private void bt_YardmapGrid_Click(object sender, EventArgs e)
+        {
+            FrmSaddleShowYardmapGrid frm = new FrmSaddleShowYardmapGrid();
+            frm.AreaNo = areaBase.AreaNo;
+            frm.Show();
         }
         //画图对象
         //Graphics g;

@@ -429,7 +429,7 @@ namespace UACSControls
             //HMILogger.WriteLog("登车", "行车登机：" + craneNO, LogLevel.Info, this.Text);
         }
         /// <summary>
-        /// 回登机平台
+        /// 回登车位
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

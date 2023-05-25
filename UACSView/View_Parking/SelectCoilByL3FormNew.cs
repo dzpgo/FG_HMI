@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 using Baosight.iSuperframe.Forms;
 using Baosight.iSuperframe.TagService;
-
 using ParkingControlLibrary;
 using ParkClassLibrary;
 using UACSParking;

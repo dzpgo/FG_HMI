@@ -193,12 +193,12 @@
             this.矫正高度ToolStripMenuItem.Text = "矫正高度";
             this.矫正高度ToolStripMenuItem.Click += new System.EventHandler(this.矫正高度ToolStripMenuItem_Click);
             // 
-            // 回登机平台
+            // 回登车位
             // 
             this.ReturnToBoarding.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.ReturnToBoarding.Name = "ReturnToBoarding";
             this.ReturnToBoarding.Size = new System.Drawing.Size(174, 26);
-            this.ReturnToBoarding.Text = "回登机平台";
+            this.ReturnToBoarding.Text = "回登车位";
             this.ReturnToBoarding.Click += new System.EventHandler(this.ReturnToBoarding_Click);
             // 
             // 修改卸下位置ToolStripMenuItem

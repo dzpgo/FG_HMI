@@ -100,67 +100,7 @@ namespace UACSControls
             { }
         }
 
-        //public bool conInit(Panel _theBayPanel, string _theBayNO, string _theTagServiceName, long _baySpaceX, long _baySpaceY, int _panelWidth, int _panelHeight, bool _xAxisRight, bool _yAxisDown, string _coilNo = null)
-        //{
-        //    try
-        //    {
-        //        bool isLoadUserControl = false;
-        //        bayPanel = _theBayPanel;
-        //        bayNO = _theBayNO;
-        //        tagServiceName = _theTagServiceName;
-
-        //        baySpaceX = _baySpaceX;
-        //        baySpaceY = _baySpaceY;
-        //        panelWidth = _panelWidth;
-        //        panelHeight = _panelHeight;
-        //        xAxisRight = _xAxisRight;
-        //        yAxisDown = _yAxisDown;
-
-        //        CoilNo = _coilNo;
-
-        //        theSaddlsInfoInBay.conInit(_theBayNO, _theTagServiceName);
-
-        //        refreshControl(_theBayNO);
-
-        //        return isLoadUserControl;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return false;
-        //    }
-
-        //}
-
         private Dictionary<string, conStockSaddle> dicSaddleVisual = new Dictionary<string, conStockSaddle>();
-
-        //public void refreshControl()
-        //{
-
-        //    //取这块小区的大小
-        //    double X_Width = theAreaBase.X_End - theAreaBase.X_Start;
-        //    double Y_Height = theAreaBase.Y_End - theAreaBase.Y_Start;
-
-        //    theSaddlsInfoInBay.getSaddleInfo();
-        //    foreach (SaddleBase theSaddleInfo in theSaddlsInfoInBay.DicSaddles.Values)
-        //    {
-        //        conStockSaddle theSaddleVisual = new conStockSaddle();               
-        //        if (dicSaddleVisual.ContainsKey(theSaddleInfo.SaddleNo))
-        //        {
-        //            theSaddleVisual = dicSaddleVisual[theSaddleInfo.SaddleNo];
-        //        }
-        //        else
-        //        {                
-        //            theSaddleVisual = new conStockSaddle();
-        //            theSaddleVisual.conInit();
-        //            bayPanel.Controls.Add(theSaddleVisual);
-        //        }
-        //        conStockSaddle.saddlesRefreshInvoke theInvoke = new conStockSaddle.saddlesRefreshInvoke(theSaddleVisual.refreshControl);
-        //        theSaddleVisual.BeginInvoke(theInvoke, new Object[] { theSaddleInfo, X_Width, Y_Height, theAreaBase, panelWidth, panelHeight, xAxisRight, yAxisDown, bayPanel, list });           
-        //        theSaddleVisual.Saddle_Selected -= new conStockSaddle.EventHandler_Saddle_Selected(theSaddleVisual_Saddle_Selected);
-        //        theSaddleVisual.Saddle_Selected += new conStockSaddle.EventHandler_Saddle_Selected(theSaddleVisual_Saddle_Selected);
-        //        dicSaddleVisual[theSaddleInfo.SaddleNo] = theSaddleVisual;
-        //    }
-        //}
 
         /// <summary>
         /// 数据刷新

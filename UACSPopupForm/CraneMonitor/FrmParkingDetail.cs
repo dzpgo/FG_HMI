@@ -451,6 +451,7 @@ namespace UACSPopupForm
                             ExeSql += " FROM_STOCK_NO = '" + dr["FROM_STOCK_NO"].ToString() + "' ";
                             ExeSql += " ,TO_STOCK_NO = '" + dr["TO_STOCK_NO"].ToString() + "' ";
                             ExeSql += " ,REQ_WEIGHT = '" + dr["REQ_WEIGHT"].ToString() + "' ";
+                            ExeSql += " ,CAL_WEIGHT = '" + dr["REQ_WEIGHT"].ToString() + "' ";
                             ExeSql += " ,ACT_WEIGHT = '" + dr["ACT_WEIGHT"] + "' ";
                             //ExeSql += " ,EXE_SEQ = '" + dr["EXE_SEQ"].ToString() + "' ";
                             ExeSql += " ,ORDER_PRIORITY = '" + dr["ORDER_PRIORITY"].ToString() + "' ";

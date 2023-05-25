@@ -165,6 +165,12 @@
     <Compile Include="View_CraneMonitor\FrmCubicleClean.Designer.cs">
       <DependentUpon>FrmCubicleClean.cs</DependentUpon>
     </Compile>
+    <Compile Include="View_CraneMonitor\FrmYardToCarStrategy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\FrmYardToCarStrategy.Designer.cs">
+      <DependentUpon>FrmYardToCarStrategy.cs</DependentUpon>
+    </Compile>
     <Compile Include="View_CraneMonitor\Frm_02StatusCoil_Yard2Yard_Plan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -684,6 +690,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View_CraneMonitor\FrmPDAUser.resx">
       <DependentUpon>FrmPDAUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\FrmYardToCarStrategy.resx">
+      <DependentUpon>FrmYardToCarStrategy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View_CraneMonitor\FrmYardToYardStraegy.resx">
       <DependentUpon>FrmYardToYardStraegy.cs</DependentUpon>

@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using UACSDAL;
 using UACSPopupForm;
-using UACS;
 
 namespace UACSControls
 {
@@ -35,6 +32,7 @@ namespace UACSControls
         private Label lblRowNo = new Label();
         private Label lblColNo = new Label();
         private Label lbl = new Label();
+        private ComboBox Cmb = new ComboBox();
 
         private int Location_X;
         private int Location_Y;
@@ -122,6 +120,8 @@ namespace UACSControls
                 }
             }
         }
+
+        #region 弃用
         //public void refreshControl(SaddleBase theSaddle, double X_Width, double Y_Height, AreaBase theArea, int panelWidth, int panelHeight, bool xAxisRight, bool yAxisDown, Panel panel, List<int> list = null)
         //{
         //    try
@@ -289,7 +289,7 @@ namespace UACSControls
 
         //        toolTip1.IsBalloon = true;
         //        toolTip1.ReshowDelay = 0;
-                
+
         //        toolTip1.SetToolTip(this.panel1, "材料号：" + theSaddle.Mat_No + "\r"
         //                            + "库位：    " + theSaddle.SaddleNo.ToString()
         //                            + "\r" + theSaddle.Row_No.ToString() + "行" + "-" + theSaddle.Col_No.ToString() + "列，" + "\r"
@@ -404,6 +404,7 @@ namespace UACSControls
         //        throw;
         //    }
         //}
+        #endregion
 
         public void refreshControl(SaddleBase theSaddle, double X_Width, double Y_Height, AreaBase theArea, int panelWidth, int panelHeight, bool xAxisRight, bool yAxisDown, Panel panel, List<int> list = null)
         {
@@ -543,12 +544,14 @@ namespace UACSControls
                 //lbl.Height = Convert.ToInt32(Convert.ToDouble((theSaddle.Y_END) - theSaddle.Y_START) * yScale2);  //518
                 lbl.Height = Convert.ToInt32(Convert.ToDouble((theSaddle.Y_LIMIT_MAX) - theSaddle.Y_LIMIT_MIN) * yScale2);  //518
                 lbl.ForeColor = Color.Black;
+                var status = theSaddle.GRID_STATUS.Equals("1") ? "已启用" : "未启用";
                 lbl.Text = " 料格号：" + theSaddle.GRID_NO + "\n"
                     + " 料格名：" + theSaddle.GRID_NAME + "\n"
                     + " 物料名：" + theSaddle.MAT_CNAME + "\n"
                     + " 物料代码：" + theSaddle.MAT_CODE + "\n"
-                    + " 库存重量：" + theSaddle.MAT_WGT + "\n";
-
+                    + " 库存重量：" + theSaddle.MAT_WGT + "\n"
+                    + " 料格状态：" + status + "\n";
+                
                 //+ lblRuler + "\n"
                 //+ lblCol;
                 //lbl.Click += conArea_Click;
@@ -557,7 +560,7 @@ namespace UACSControls
 
                 panel.Controls.Add(lbl);
                 lbl.Location = new Point(Convert.ToInt32(location_X + 11), Convert.ToInt32(location_Y));
-
+                Cmb.Location = new Point(Convert.ToInt32(location_X + 11), Convert.ToInt32(location_Y));
                 location_x = location_X;
                 location_y = location_Y;
             }

@@ -1,17 +1,9 @@
 ﻿using Baosight.iSuperframe.TagService;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ParkClassLibrary;
 using UACSDAL;
-using UACSView.CLTSHMI;
-using UACSParking;
 
 namespace UACSView.View_CraneMonitor
 {
@@ -84,6 +76,7 @@ namespace UACSView.View_CraneMonitor
             TagValues.Add(recondition, null);
             tagDP.Attach(TagValues);
             BindCraneNO(cmCraneNO);
+            BindToStock(cmb_ToStock);
             BindFromStock(cmb_FromStock);
             //ReconditionCraneX();
             this.Deactivate += new EventHandler(frmClose);
@@ -128,6 +121,32 @@ namespace UACSView.View_CraneMonitor
                 dt.Rows.Add(dr);
             }
             //var index = Convert.ToInt32(CraneNo) -1;
+            cmbBox.DataSource = dt;
+            cmbBox.DisplayMember = "TypeName";
+            cmbBox.ValueMember = "TypeValue";
+            cmbBox.SelectedIndex = 0;
+        }
+        /// <summary>
+        /// 绑定放料位置
+        /// </summary>
+        /// <param name="cmbBox"></param>
+        private void BindToStock(ComboBox cmbBox)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("TypeValue");
+            dt.Columns.Add("TypeName");
+            DataRow dr;
+            string sqlText = @"SELECT PARKING_NO, PAKRING_NAME, PARKING_TYPE FROM UACS_PARKING_INFO_DEFINE WHERE PARKING_TYPE = '1' AND BAY_NO = 'A'";
+            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
+            {
+                while (rdr.Read())
+                {
+                    dr = dt.NewRow();
+                    dr["TypeValue"] = rdr["PARKING_NO"].ToString();
+                    dr["TypeName"] = rdr["PAKRING_NAME"].ToString();
+                    dt.Rows.Add(dr);
+                }
+            }
             cmbBox.DataSource = dt;
             cmbBox.DisplayMember = "TypeName";
             cmbBox.ValueMember = "TypeValue";
@@ -185,10 +204,20 @@ namespace UACSView.View_CraneMonitor
                 MessageBox.Show("请输入正确重量!");
                 return;
             }
+            if (string.IsNullOrEmpty(cmb_FromStock.SelectedValue.ToString().Trim()))
+            {
+                MessageBox.Show("请选择取料位置!");
+                return;
+            }
+            if (string.IsNullOrEmpty(cmb_ToStock.SelectedValue.ToString().Trim()))
+            {
+                MessageBox.Show("请选择放料位置!");
+                return;
+            }
             DialogResult dr = MessageBox.Show("是否开始装冷却剂？", "操作提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
             if (dr == DialogResult.OK)
             {
-                UpdateStatusInit(cmCraneNO.SelectedValue.ToString().Trim(), txt_MatWeight.Text.ToString().Trim(), cmb_FromStock.SelectedValue.ToString().Trim(), "INIT");
+                UpdateStatusInit(cmCraneNO.SelectedValue.ToString().Trim(), txt_MatWeight.Text.ToString().Trim(), cmb_FromStock.SelectedValue.ToString().Trim(), cmb_ToStock.SelectedValue.ToString().Trim(), "INIT");
                 HMILogger.WriteLog("装冷却剂", cmCraneNO.Text + "开始装冷却剂：" + txt_MatWeight.Text, LogLevel.Info, this.Text);
                 UpdateStatus(cmCraneNO.SelectedValue.ToString().Trim(), "42");
                 this.Close();
@@ -258,13 +287,14 @@ namespace UACSView.View_CraneMonitor
         /// </summary>
         /// <param name="craneNo">行车号</param>
         /// <param name="MatWeight">重量</param>
-        /// <param name="FromStock">料堆位置</param>
+        /// <param name="FromStock">取料位置</param>
+        /// <param name="ToStock">放料位置</param>
         /// <param name="Status">状态 空：EMPTY 初始化：INIT</param>
-        private void UpdateStatusInit(string craneNo, string MatWeight,string FromStock,string Status)
+        private void UpdateStatusInit(string craneNo, string MatWeight,string FromStock,string ToStock, string Status)
         {
             try
             {
-                string ExeSql = @"UPDATE UACS_CRANE_MANU_ORDER_LBC19 SET MAT_WEIGHT = '" + MatWeight + "' ,FROM_STOCK = '" + FromStock + "' ,STATUS = '" + Status + "' WHERE CRANE_NO = '" + craneNo + "'";
+                string ExeSql = @"UPDATE UACS_CRANE_MANU_ORDER_LBC19 SET MAT_WEIGHT = '" + MatWeight + "' ,FROM_STOCK = '" + FromStock + "' ,TO_STOCK = '" + ToStock + "' ,STATUS = '" + Status + "' WHERE CRANE_NO = '" + craneNo + "'";
                 DB2Connect.DBHelper.ExecuteNonQuery(ExeSql);
             }
             catch (Exception)
