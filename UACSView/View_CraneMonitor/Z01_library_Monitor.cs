@@ -1927,6 +1927,28 @@ namespace UACSView.View_CraneMonitor
             frm.BayNO = "A";
             frm.ShowDialog();
         }
+
+        /// <summary>
+        /// 多车协同
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bt_YardToCarStrategy_Click(object sender, EventArgs e)
+        {
+            FrmYardToCarStrategyMini frm = new FrmYardToCarStrategyMini();
+            frm.ShowDialog();
+        }
+
+        /// <summary>
+        /// 取料规则
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bt_FromStockRule_Click(object sender, EventArgs e)
+        {
+            FrmFromStockRule frm = new FrmFromStockRule();
+            frm.ShowDialog();
+        }
         /// <summary>
         /// 库存百分比
         /// </summary>
@@ -1950,6 +1972,6 @@ namespace UACSView.View_CraneMonitor
             }
             //刷新
             LoadAreaInfo();
-        }
+        }       
     }
 }

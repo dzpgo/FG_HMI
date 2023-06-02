@@ -271,14 +271,6 @@ namespace UACSControls
                                 }
                             }
                         }
-
-                        if (theSaddle.AreaNo.Equals("A1") || theSaddle.AreaNo.Equals("A2") || theSaddle.AreaNo.Equals("A3"))
-                        {
-                            var test = "";
-                        }
-
-                        //if (theSaddle.AreaNo.Equals("A1") || theSaddle.AreaNo.Equals("A2") || theSaddle.AreaNo.Equals("A3"))
-                        //{
                         // -------------  1  ---------------
                         lbl.AutoSize = false;
                         var height1 = Convert.ToInt32((theSaddle.Y_End - theSaddle.Y_Start) * yScale);
@@ -299,7 +291,6 @@ namespace UACSControls
                         this.lbl.Location = new Point(Convert.ToInt32(2), Convert.ToInt32(dd));
                         this.lbl.Height = Convert.ToInt32((Percentage * height1) / 100);
                         this.lbl.Text = PercentageName;
-                        //this.lbl.BackColor = System.Drawing.Color.FromArgb(70, Color.LightGreen);
                         this.lbl.BackColor = System.Drawing.Color.FromArgb(25, Color.Blue);
                         // -------------  2  ---------------
                         this.lbl2.AutoSize = false;
@@ -313,7 +304,6 @@ namespace UACSControls
                             PercentageName2 = "0%";
                             Percentage2 = (int)(100 - Percentage2);
                             lbl2.TextAlign = ContentAlignment.BottomCenter;
-                            //this.lbl2.TextAlign = ContentAlignment.TopCenter;
                         }
                         else if (percentageNum2 < 10 && percentageNum2 > 0)
                         {
@@ -327,11 +317,7 @@ namespace UACSControls
                         }
                         this.lbl2.Height = (int)((Percentage2 * height2) / 100);
                         this.lbl2.Text = PercentageName2;
-                        //this.lbl2.BackColor = System.Drawing.Color.FromArgb(70, ((int)(((byte)(244)))), ((int)(((byte)(206)))), ((int)(((byte)(105)))));
                         this.lbl2.BackColor = Color.Transparent;
-                        //this.lbl2.BackColor = Color.Red;
-                        //}
-
 
                         if (areaBase.AreaNo == "Z23-A" || areaBase.AreaNo == "Z23-B" || areaBase.AreaNo == "Z23-C" || areaBase.AreaNo == "Z21-I" || areaBase.AreaNo == "Z21-J")
                         {

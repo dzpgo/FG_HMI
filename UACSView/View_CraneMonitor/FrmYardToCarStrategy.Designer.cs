@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmYardToCarStrategy));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_Confirm_1 = new System.Windows.Forms.Button();
             this.cmb_FlagEnabled_1_4 = new System.Windows.Forms.ComboBox();
             this.cmb_FlagEnabled_1_3 = new System.Windows.Forms.ComboBox();
             this.cmb_FlagEnabled_1_2 = new System.Windows.Forms.ComboBox();
@@ -81,7 +80,6 @@
             this.txt_CraneNo_1_2 = new System.Windows.Forms.TextBox();
             this.txt_CraneNo_1_1 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_Confirm_2 = new System.Windows.Forms.Button();
             this.cmb_FlagEnabled_2_4 = new System.Windows.Forms.ComboBox();
             this.cmb_FlagEnabled_2_3 = new System.Windows.Forms.ComboBox();
             this.cmb_FlagEnabled_2_2 = new System.Windows.Forms.ComboBox();
@@ -131,7 +129,6 @@
             this.txt_CraneNo_2_2 = new System.Windows.Forms.TextBox();
             this.txt_CraneNo_2_1 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btn_Confirm_3 = new System.Windows.Forms.Button();
             this.cmb_FlagEnabled_3_4 = new System.Windows.Forms.ComboBox();
             this.cmb_FlagEnabled_3_3 = new System.Windows.Forms.ComboBox();
             this.cmb_FlagEnabled_3_2 = new System.Windows.Forms.ComboBox();
@@ -181,7 +178,6 @@
             this.txt_CraneNo_3_2 = new System.Windows.Forms.TextBox();
             this.txt_CraneNo_3_1 = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btn_Confirm_4 = new System.Windows.Forms.Button();
             this.cmb_FlagEnabled_4_4 = new System.Windows.Forms.ComboBox();
             this.cmb_FlagEnabled_4_3 = new System.Windows.Forms.ComboBox();
             this.cmb_FlagEnabled_4_2 = new System.Windows.Forms.ComboBox();
@@ -231,9 +227,13 @@
             this.txt_CraneNo_4_2 = new System.Windows.Forms.TextBox();
             this.txt_CraneNo_4_1 = new System.Windows.Forms.TextBox();
             this.bt_Refresh_1 = new System.Windows.Forms.Button();
+            this.btn_Confirm_1 = new System.Windows.Forms.Button();
             this.bt_Refresh_2 = new System.Windows.Forms.Button();
+            this.btn_Confirm_2 = new System.Windows.Forms.Button();
             this.bt_Refresh_3 = new System.Windows.Forms.Button();
+            this.btn_Confirm_3 = new System.Windows.Forms.Button();
             this.bt_Refresh_4 = new System.Windows.Forms.Button();
+            this.btn_Confirm_4 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -319,21 +319,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "1#行车";
-            // 
-            // btn_Confirm_1
-            // 
-            this.btn_Confirm_1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Confirm_1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Confirm_1.BackgroundImage")));
-            this.btn_Confirm_1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_Confirm_1.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btn_Confirm_1.ForeColor = System.Drawing.Color.White;
-            this.btn_Confirm_1.Location = new System.Drawing.Point(1571, 153);
-            this.btn_Confirm_1.Name = "btn_Confirm_1";
-            this.btn_Confirm_1.Size = new System.Drawing.Size(101, 49);
-            this.btn_Confirm_1.TabIndex = 94;
-            this.btn_Confirm_1.Text = "保存";
-            this.btn_Confirm_1.UseVisualStyleBackColor = true;
-            this.btn_Confirm_1.Click += new System.EventHandler(this.btn_Confirm_1_Click);
             // 
             // cmb_FlagEnabled_1_4
             // 
@@ -927,21 +912,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "2#行车";
             // 
-            // btn_Confirm_2
-            // 
-            this.btn_Confirm_2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Confirm_2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Confirm_2.BackgroundImage")));
-            this.btn_Confirm_2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_Confirm_2.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btn_Confirm_2.ForeColor = System.Drawing.Color.White;
-            this.btn_Confirm_2.Location = new System.Drawing.Point(1572, 149);
-            this.btn_Confirm_2.Name = "btn_Confirm_2";
-            this.btn_Confirm_2.Size = new System.Drawing.Size(101, 49);
-            this.btn_Confirm_2.TabIndex = 143;
-            this.btn_Confirm_2.Text = "保存";
-            this.btn_Confirm_2.UseVisualStyleBackColor = true;
-            this.btn_Confirm_2.Click += new System.EventHandler(this.btn_Confirm_2_Click);
-            // 
             // cmb_FlagEnabled_2_4
             // 
             this.cmb_FlagEnabled_2_4.BackColor = System.Drawing.SystemColors.Window;
@@ -1533,21 +1503,6 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "3#行车";
-            // 
-            // btn_Confirm_3
-            // 
-            this.btn_Confirm_3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Confirm_3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Confirm_3.BackgroundImage")));
-            this.btn_Confirm_3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_Confirm_3.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btn_Confirm_3.ForeColor = System.Drawing.Color.White;
-            this.btn_Confirm_3.Location = new System.Drawing.Point(1572, 149);
-            this.btn_Confirm_3.Name = "btn_Confirm_3";
-            this.btn_Confirm_3.Size = new System.Drawing.Size(101, 49);
-            this.btn_Confirm_3.TabIndex = 143;
-            this.btn_Confirm_3.Text = "保存";
-            this.btn_Confirm_3.UseVisualStyleBackColor = true;
-            this.btn_Confirm_3.Click += new System.EventHandler(this.btn_Confirm_3_Click);
             // 
             // cmb_FlagEnabled_3_4
             // 
@@ -2141,21 +2096,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "4#行车";
             // 
-            // btn_Confirm_4
-            // 
-            this.btn_Confirm_4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Confirm_4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Confirm_4.BackgroundImage")));
-            this.btn_Confirm_4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_Confirm_4.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btn_Confirm_4.ForeColor = System.Drawing.Color.White;
-            this.btn_Confirm_4.Location = new System.Drawing.Point(1572, 150);
-            this.btn_Confirm_4.Name = "btn_Confirm_4";
-            this.btn_Confirm_4.Size = new System.Drawing.Size(101, 49);
-            this.btn_Confirm_4.TabIndex = 143;
-            this.btn_Confirm_4.Text = "保存";
-            this.btn_Confirm_4.UseVisualStyleBackColor = true;
-            this.btn_Confirm_4.Click += new System.EventHandler(this.btn_Confirm_4_Click);
-            // 
             // cmb_FlagEnabled_4_4
             // 
             this.cmb_FlagEnabled_4_4.BackColor = System.Drawing.SystemColors.Window;
@@ -2703,6 +2643,21 @@
             this.bt_Refresh_1.UseVisualStyleBackColor = true;
             this.bt_Refresh_1.Click += new System.EventHandler(this.bt_Refresh_1_Click);
             // 
+            // btn_Confirm_1
+            // 
+            this.btn_Confirm_1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Confirm_1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Confirm_1.BackgroundImage")));
+            this.btn_Confirm_1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Confirm_1.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.btn_Confirm_1.ForeColor = System.Drawing.Color.White;
+            this.btn_Confirm_1.Location = new System.Drawing.Point(1571, 153);
+            this.btn_Confirm_1.Name = "btn_Confirm_1";
+            this.btn_Confirm_1.Size = new System.Drawing.Size(101, 49);
+            this.btn_Confirm_1.TabIndex = 94;
+            this.btn_Confirm_1.Text = "保存";
+            this.btn_Confirm_1.UseVisualStyleBackColor = true;
+            this.btn_Confirm_1.Click += new System.EventHandler(this.btn_Confirm_1_Click);
+            // 
             // bt_Refresh_2
             // 
             this.bt_Refresh_2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -2717,6 +2672,21 @@
             this.bt_Refresh_2.Text = "刷新";
             this.bt_Refresh_2.UseVisualStyleBackColor = true;
             this.bt_Refresh_2.Click += new System.EventHandler(this.bt_Refresh_2_Click);
+            // 
+            // btn_Confirm_2
+            // 
+            this.btn_Confirm_2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Confirm_2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Confirm_2.BackgroundImage")));
+            this.btn_Confirm_2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Confirm_2.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.btn_Confirm_2.ForeColor = System.Drawing.Color.White;
+            this.btn_Confirm_2.Location = new System.Drawing.Point(1572, 149);
+            this.btn_Confirm_2.Name = "btn_Confirm_2";
+            this.btn_Confirm_2.Size = new System.Drawing.Size(101, 49);
+            this.btn_Confirm_2.TabIndex = 143;
+            this.btn_Confirm_2.Text = "保存";
+            this.btn_Confirm_2.UseVisualStyleBackColor = true;
+            this.btn_Confirm_2.Click += new System.EventHandler(this.btn_Confirm_2_Click);
             // 
             // bt_Refresh_3
             // 
@@ -2733,6 +2703,21 @@
             this.bt_Refresh_3.UseVisualStyleBackColor = true;
             this.bt_Refresh_3.Click += new System.EventHandler(this.bt_Refresh_3_Click);
             // 
+            // btn_Confirm_3
+            // 
+            this.btn_Confirm_3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Confirm_3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Confirm_3.BackgroundImage")));
+            this.btn_Confirm_3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Confirm_3.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.btn_Confirm_3.ForeColor = System.Drawing.Color.White;
+            this.btn_Confirm_3.Location = new System.Drawing.Point(1572, 149);
+            this.btn_Confirm_3.Name = "btn_Confirm_3";
+            this.btn_Confirm_3.Size = new System.Drawing.Size(101, 49);
+            this.btn_Confirm_3.TabIndex = 143;
+            this.btn_Confirm_3.Text = "保存";
+            this.btn_Confirm_3.UseVisualStyleBackColor = true;
+            this.btn_Confirm_3.Click += new System.EventHandler(this.btn_Confirm_3_Click);
+            // 
             // bt_Refresh_4
             // 
             this.bt_Refresh_4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -2747,6 +2732,21 @@
             this.bt_Refresh_4.Text = "刷新";
             this.bt_Refresh_4.UseVisualStyleBackColor = true;
             this.bt_Refresh_4.Click += new System.EventHandler(this.bt_Refresh_4_Click);
+            // 
+            // btn_Confirm_4
+            // 
+            this.btn_Confirm_4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Confirm_4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Confirm_4.BackgroundImage")));
+            this.btn_Confirm_4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Confirm_4.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.btn_Confirm_4.ForeColor = System.Drawing.Color.White;
+            this.btn_Confirm_4.Location = new System.Drawing.Point(1572, 150);
+            this.btn_Confirm_4.Name = "btn_Confirm_4";
+            this.btn_Confirm_4.Size = new System.Drawing.Size(101, 49);
+            this.btn_Confirm_4.TabIndex = 143;
+            this.btn_Confirm_4.Text = "保存";
+            this.btn_Confirm_4.UseVisualStyleBackColor = true;
+            this.btn_Confirm_4.Click += new System.EventHandler(this.btn_Confirm_4_Click);
             // 
             // FrmYardToCarStrategy
             // 

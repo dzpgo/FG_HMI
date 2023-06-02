@@ -100,6 +100,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.timer_InitializeLoad = new System.Windows.Forms.Timer(this.components);
+            this.bt_FromStockRule = new System.Windows.Forms.Button();
+            this.bt_YardToCarStrategy = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel_conCraneStatus2_4.SuspendLayout();
@@ -288,6 +290,8 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.bt_Coolant);
+            this.panel2.Controls.Add(this.bt_YardToCarStrategy);
+            this.panel2.Controls.Add(this.bt_FromStockRule);
             this.panel2.Controls.Add(this.bt_CraneClean);
             this.panel2.Controls.Add(this.bt_Recondition);
             this.panel2.Controls.Add(this.btnShowXY);
@@ -308,7 +312,7 @@
             this.bt_Coolant.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bt_Coolant.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bt_Coolant.ForeColor = System.Drawing.Color.Black;
-            this.bt_Coolant.Location = new System.Drawing.Point(1140, 33);
+            this.bt_Coolant.Location = new System.Drawing.Point(978, 33);
             this.bt_Coolant.Name = "bt_Coolant";
             this.bt_Coolant.Size = new System.Drawing.Size(75, 23);
             this.bt_Coolant.TabIndex = 29;
@@ -322,7 +326,7 @@
             this.bt_CraneClean.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bt_CraneClean.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bt_CraneClean.ForeColor = System.Drawing.Color.Black;
-            this.bt_CraneClean.Location = new System.Drawing.Point(978, 33);
+            this.bt_CraneClean.Location = new System.Drawing.Point(816, 33);
             this.bt_CraneClean.Name = "bt_CraneClean";
             this.bt_CraneClean.Size = new System.Drawing.Size(75, 23);
             this.bt_CraneClean.TabIndex = 29;
@@ -336,7 +340,7 @@
             this.bt_Recondition.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bt_Recondition.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bt_Recondition.ForeColor = System.Drawing.Color.Black;
-            this.bt_Recondition.Location = new System.Drawing.Point(1059, 33);
+            this.bt_Recondition.Location = new System.Drawing.Point(897, 33);
             this.bt_Recondition.Name = "bt_Recondition";
             this.bt_Recondition.Size = new System.Drawing.Size(75, 23);
             this.bt_Recondition.TabIndex = 29;
@@ -884,6 +888,34 @@
             // 
             this.timer_InitializeLoad.Tick += new System.EventHandler(this.timer_InitializeLoad_Tick);
             // 
+            // bt_FromStockRule
+            // 
+            this.bt_FromStockRule.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_FromStockRule.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bt_FromStockRule.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_FromStockRule.ForeColor = System.Drawing.Color.Black;
+            this.bt_FromStockRule.Location = new System.Drawing.Point(1140, 33);
+            this.bt_FromStockRule.Name = "bt_FromStockRule";
+            this.bt_FromStockRule.Size = new System.Drawing.Size(75, 23);
+            this.bt_FromStockRule.TabIndex = 29;
+            this.bt_FromStockRule.Text = "取料规则";
+            this.bt_FromStockRule.UseVisualStyleBackColor = true;
+            this.bt_FromStockRule.Click += new System.EventHandler(this.bt_FromStockRule_Click);
+            // 
+            // bt_YardToCarStrategy
+            // 
+            this.bt_YardToCarStrategy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_YardToCarStrategy.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bt_YardToCarStrategy.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_YardToCarStrategy.ForeColor = System.Drawing.Color.Black;
+            this.bt_YardToCarStrategy.Location = new System.Drawing.Point(1059, 33);
+            this.bt_YardToCarStrategy.Name = "bt_YardToCarStrategy";
+            this.bt_YardToCarStrategy.Size = new System.Drawing.Size(75, 23);
+            this.bt_YardToCarStrategy.TabIndex = 29;
+            this.bt_YardToCarStrategy.Text = "多车协同";
+            this.bt_YardToCarStrategy.UseVisualStyleBackColor = true;
+            this.bt_YardToCarStrategy.Click += new System.EventHandler(this.bt_YardToCarStrategy_Click);
+            // 
             // Z01_library_Monitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -986,5 +1018,7 @@
         private UACSControls.conTrafficLight2 conTrafficLight2_Cubicle_1;
         private System.Windows.Forms.Button bt_Coolant;
         private System.Windows.Forms.Button bt_StockPercentage;
+        private System.Windows.Forms.Button bt_YardToCarStrategy;
+        private System.Windows.Forms.Button bt_FromStockRule;
     }
 }

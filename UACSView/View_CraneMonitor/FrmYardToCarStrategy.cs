@@ -16,7 +16,7 @@ namespace UACSView.View_CraneMonitor
     public partial class FrmYardToCarStrategy : FormBase
     {
         #region 全局变量
-        private DataTable dtSource = new DataTable(); 
+        DataTable dtSource = new DataTable(); 
         #endregion
         #region 初始化
         public FrmYardToCarStrategy()

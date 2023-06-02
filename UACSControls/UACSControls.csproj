@@ -153,6 +153,12 @@
     <Compile Include="CraneMonitor\conStockSaddle.designer.cs">
       <DependentUpon>conStockSaddle.cs</DependentUpon>
     </Compile>
+    <Compile Include="CraneMonitor\conSwitchButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\conSwitchButton.Designer.cs">
+      <DependentUpon>conSwitchButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="CraneMonitor\conTrafficLight2.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -219,6 +225,12 @@
     <Compile Include="CraneMonitor\InitForm.designer.cs">
       <DependentUpon>InitForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CraneMonitor\PageControlTest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CraneMonitor\PageControlTest.Designer.cs">
+      <DependentUpon>PageControlTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAddTask.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,6 +278,12 @@
     </Compile>
     <Compile Include="OffLinePacking.Designer.cs">
       <DependentUpon>OffLinePacking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\ucPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\ucPage.Designer.cs">
+      <DependentUpon>ucPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -414,6 +432,9 @@
     <EmbeddedResource Include="CraneMonitor\conStockSaddle.resx">
       <DependentUpon>conStockSaddle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\conSwitchButton.resx">
+      <DependentUpon>conSwitchButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CraneMonitor\conTrafficLight2.resx">
       <DependentUpon>conTrafficLight2.cs</DependentUpon>
     </EmbeddedResource>
@@ -448,6 +469,9 @@
     <EmbeddedResource Include="CraneMonitor\InitForm.resx">
       <DependentUpon>InitForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CraneMonitor\PageControlTest.resx">
+      <DependentUpon>PageControlTest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAddTask.resx">
       <DependentUpon>FrmAddTask.cs</DependentUpon>
     </EmbeddedResource>
@@ -471,6 +495,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OffLinePacking.resx">
       <DependentUpon>OffLinePacking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\ucPage.resx">
+      <DependentUpon>ucPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -702,6 +729,12 @@
       <Project>{3958eb30-fe44-4bd0-ba55-58805e56c17e}</Project>
       <Name>UACSPopupForm</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btncheckon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btncheckoff1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -117,26 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="imgNormalCoil" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imgNormalCoil.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="imgBigCoil" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imgBigCoil.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="baosight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\baosight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="imgUnknownCoil" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imgUnknownCoil.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bg_btn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bg_btn.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btncheckoff" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btncheckoff1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btncheckon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btncheckon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

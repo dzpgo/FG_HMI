@@ -54,18 +54,25 @@ namespace UACSView
                 //绑定下拉框
                 BindCombox();                
                 //开始日期
-                this.dateTimePicker1_recTime.Value = DateTime.Now;
+                this.dtp_StartTime.Value = DateTime.Now;
 
                 ManagerHelper.DataGridViewInit(dataGridView1);
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 CreatDgvHeader(dataGridView1, dgvColumnsName, dgvHeaderText);
-                GetOrderData();
+                //GetOrderData();
                 //行车指令
                 //getCraneOrderData2(true);
                 //dataGridView1.DataSource = dt;
                 //当前行车指令              
                 //dataGridView2.DataSource = getCraneOrderData3(true);
 
+                this.ucPageDemo.CurrentPage = 1;
+                this.ucPageDemo.PageSize = Convert.ToInt32(this.ucPageDemo.CboPageSize.Text);
+                this.ucPageDemo.TotalPages = 1;
+                this.ucPageDemo.ClickPageButtonEvent += ucPageDemo_ClickPageButtonEvent;
+                this.ucPageDemo.ChangedPageSizeEvent += ucPageDemo_ChangedPageSizeEvent;
+                this.ucPageDemo.JumpPageEvent += ucPageDemo_JumpPageEvent;
+                InitDataGridViewCtrl();
             }
             catch (Exception er)
             {
@@ -105,12 +112,33 @@ namespace UACSView
                 //dataGridView1.DataSource = dt;
                 //当前行车指令              
                 //dataGridView2.DataSource = getCraneOrderData3(false);
-                GetOrderData();
+                //GetOrderData();
+                InitDataGridViewCtrl();
             }
             catch (Exception er)
             {
                 MessageBox.Show(er.Message);
             }
+        }
+
+        private void bt_TodayTime_Click(object sender, EventArgs e)
+        {
+            GetToDayTime();
+        }
+
+        private void bt_MonthlyTime_Click(object sender, EventArgs e)
+        {
+            GetMonthlyTime();
+        }
+
+        private void bt_QuarterlyTime_Click(object sender, EventArgs e)
+        {
+            GetQuarterlyTime();
+        }
+
+        private void bt_AnnualTime_Click(object sender, EventArgs e)
+        {
+            GetAnnualTime();
         }
 
         /// <summary>
@@ -287,8 +315,8 @@ namespace UACSView
                 string craneNo = this.cbb_CRANE_NO.SelectedValue.ToString();
                 string carNo = this.cbb_CarNo.SelectedValue.ToString();
                 string planNo = this.txt_PLAN_NO.Text.Trim();
-                string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");
-                string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");
+                string recTime1 = this.dtp_StartTime.Value.ToString("yyyyMMdd000000");
+                string recTime2 = this.dtp_EndTime.Value.ToString("yyyyMMdd235959");
                 //对应指令车辆配载明细
                 string sqlText_ORDER = @"SELECT A.ORDER_NO,A.ORDER_GROUP_NO,A.EXE_SEQ,A.BAY_NO, CASE 
                                             WHEN A.CRANE_NO = 1 THEN '1号行车' 
@@ -363,8 +391,6 @@ namespace UACSView
             dr["TypeValue"] = "全部";
             dr["TypeName"] = "全部";
             dt.Rows.Add(dr);
-
-
             //准备数据
             string sqlText = @"SELECT CRANE_NO AS TypeValue,CRANE_NO AS TypeName, BAY_NO, CLAMP_TYPE, SEQ_NO, WORK_POS_X_START, WORK_POS_X_END FROM UACSAPP.UACS_CRANE_DEFINE ";
             using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
@@ -428,138 +454,6 @@ namespace UACSView
         }
 
         /// <summary>
-        /// 查询指令数据
-        /// </summary>
-        /// <param name="isLoad">是否是初始化 true=是初始化，false=不是初始化</param>
-        private void getCraneOrderData2(bool isLoad)
-        {
-            string matNo = this.txt_PLAN_NO.Text.Trim();
-            string orderType = this.cbb_CarNo.SelectedValue.ToString();
-            string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");
-            string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");
-            string sqlText = "";
-            if (!isLoad)
-            {
-                sqlText = @"SELECT A.ORDER_NO, A.ORDER_GROUP_NO, A.ORDER_TYPE, A.ORDER_PRIORITY, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.REC_TIME, A.UPD_TIME FROM UACSAPP.UACS_ORDER_DATA A ";
-                sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE ";
-                sqlText += "WHERE 1=1 ";
-                sqlText += "AND A.REC_TIME > '{0}' AND A.REC_TIME < '{1}' ";
-                sqlText = string.Format(sqlText, recTime1, recTime2);
-                if (!string.IsNullOrEmpty(matNo))
-                {
-                    sqlText = string.Format("{0} AND A.MAT_CODE LIKE '%{1}%' ", sqlText, matNo);
-                }
-                if (orderType != "全部")
-                {
-                    sqlText = string.Format("{0} AND A.ORDER_TYPE = '{1}' ", sqlText, orderType);
-                }
-                //按 NO>流水号>记录时间>更新时间 降序
-                sqlText += " ORDER BY A.ORDER_NO DESC,A.REC_TIME DESC,A.UPD_TIME DESC ";
-            }
-            else
-            {
-                //初次加载时默认查询倒序30条数据（仅初始化时用）
-                sqlText = @"SELECT ORDER_NO,ORDER_GROUP_NO,ORDER_TYPE,ORDER_PRIORITY,BAY_NO,MAT_CODE,MAT_CNAME,FROM_STOCK_NO,TO_STOCK_NO,REC_TIME,UPD_TIME 
-                            FROM (
-                            SELECT ROW_NUMBER() OVER(ORDER BY A.ORDER_NO DESC,A.REC_TIME DESC,A.UPD_TIME DESC) AS ROWNUM,
-                            A.ORDER_NO, A.ORDER_GROUP_NO, A.ORDER_TYPE, A.ORDER_PRIORITY, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.REC_TIME, A.UPD_TIME  FROM UACSAPP.UACS_ORDER_DATA A 
-                            LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE 
-                            ) a 
-                            WHERE ROWNUM > 0 and ROWNUM <=30";
-            }
-
-            dt = new DataTable();
-            hasSetColumn = false;
-            using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
-            {
-                while (rdr.Read())
-                {
-                    DataRow dr = dt.NewRow();
-                    for (int i = 0; i < rdr.FieldCount; i++)
-                    {
-                        if (!hasSetColumn)
-                        {
-                            DataColumn dc = new DataColumn();
-                            dc.ColumnName = rdr.GetName(i);
-                            dt.Columns.Add(dc);
-                        }
-                        dr[i] = rdr[i];
-                    }
-                    hasSetColumn = true;
-                    dt.Rows.Add(dr);
-                }
-            }
-        }
-
-        /// <summary>
-        /// 查询当前指令数据
-        /// </summary>
-        /// <param name="isLoad">是否是初始化 true=是初始化，false=不是初始化</param>
-        private DataTable getCraneOrderData3(bool isLoad)
-        {
-            string matNo = this.txt_PLAN_NO.Text.Trim();
-            string craneNo = this.cbb_CRANE_NO.SelectedValue.ToString();
-            string orderType = this.cbb_CarNo.SelectedValue.ToString();
-            string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");
-            string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");
-            string sqlText = @"SELECT A.ORDER_NO, A.ORDER_GROUP_NO, A.ORDER_TYPE, A.CRANE_NO, A.ORDER_PRIORITY, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.REC_TIME, A.UPD_TIME FROM UACS_ORDER_QUEUE A ";
-            sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE ";
-            sqlText += "WHERE A.REC_TIME > '{0}' and A.REC_TIME < '{1}' ";
-            sqlText = string.Format(sqlText, recTime1, recTime2);
-            if (!isLoad)
-            {
-                if (!string.IsNullOrEmpty(matNo))
-                {
-                    sqlText = string.Format("{0} and A.MAT_CODE LIKE '%{1}%' ", sqlText, matNo);
-                }
-                if (orderType != "全部")
-                {
-                    sqlText = string.Format("{0} and A.ORDER_TYPE = '{1}' ", sqlText, orderType);
-                }
-                if (craneNo != "全部")
-                {
-                    sqlText = string.Format("{0} and A.CRANE_NO = '{1}' ", sqlText, craneNo);
-                }
-                //按 NO>流水号>记录时间>更新时间 降序
-                sqlText += " ORDER BY A.ORDER_NO DESC,A.REC_TIME DESC,A.UPD_TIME DESC ";
-            }
-            else
-            {
-                //初次加载时默认查询倒序30条数据（仅初始化时用）
-                sqlText = @"SELECT ORDER_NO, ORDER_GROUP_NO, ORDER_TYPE, CRANE_NO, ORDER_PRIORITY, BAY_NO, MAT_CODE, MAT_CNAME, FROM_STOCK_NO, TO_STOCK_NO, REC_TIME, UPD_TIME 
-                            FROM (
-                            SELECT ROW_NUMBER() OVER(ORDER BY A.ORDER_NO DESC,A.REC_TIME DESC,A.UPD_TIME DESC) AS ROWNUM,
-                            A.ORDER_NO, A.ORDER_GROUP_NO, A.ORDER_TYPE, A.CRANE_NO, A.ORDER_PRIORITY, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.REC_TIME, A.UPD_TIME FROM UACS_ORDER_QUEUE A 
-                            LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE 
-                            ) a 
-                            WHERE ROWNUM > 0 and ROWNUM <=30 ";
-            }
-
-            DataTable dtdata = new DataTable();
-            hasSetColumn = false;
-            using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
-            {
-                while (rdr.Read())
-                {
-                    DataRow dr = dtdata.NewRow();
-                    for (int i = 0; i < rdr.FieldCount; i++)
-                    {
-                        if (!hasSetColumn)
-                        {
-                            DataColumn dc = new DataColumn();
-                            dc.ColumnName = rdr.GetName(i);
-                            dtdata.Columns.Add(dc);
-                        }
-                        dr[i] = rdr[i];
-                    }
-                    hasSetColumn = true;
-                    dtdata.Rows.Add(dr);
-                }
-            }
-            return dtdata;
-        }
-
-        /// <summary>
         /// 绑定下拉框
         /// </summary>
         /// <param name="control">下拉框控件</param>
@@ -611,5 +505,213 @@ namespace UACSView
         }
         #endregion
 
+
+
+
+
+
+        /// <summary>
+        /// 页数跳转
+        /// </summary>
+        /// <param name="jumpPage">跳转页</param>
+        void ucPageDemo_JumpPageEvent(int jumpPage)
+        {
+            if (jumpPage <= this.ucPageDemo.TotalPages)
+            {
+                if (jumpPage > 0)
+                {
+                    this.ucPageDemo.JumpPageCtrl.Text = string.Empty;
+                    this.ucPageDemo.JumpPageCtrl.Text = jumpPage.ToString();
+                    this.ShowDatas(jumpPage);
+                }
+                else
+                {
+                    jumpPage = 1;
+                    this.ucPageDemo.JumpPageCtrl.Text = string.Empty;
+                    this.ucPageDemo.JumpPageCtrl.Text = jumpPage.ToString();
+                    this.ShowDatas(jumpPage);
+                }
+            }
+            else
+            {
+                this.ucPageDemo.JumpPageCtrl.Text = string.Empty;
+                MessageBox.Show(@"超出当前最大页数", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        /// <summary>
+        /// 改变每页展示数据长度
+        /// </summary>
+        void ucPageDemo_ChangedPageSizeEvent()
+        {
+            this.ShowDatas(1);
+        }
+        /// <summary>
+        /// 页数改变按钮(最前页,最后页,上一页,下一页)
+        /// </summary>
+        /// <param name="current"></param>
+        void ucPageDemo_ClickPageButtonEvent(int current)
+        {
+            this.ShowDatas(current);
+        }
+
+        /// <summary>
+        /// 初始化DataGridView控件
+        /// </summary>
+        private void InitDataGridViewCtrl()
+        {
+            this.ShowDatas(1);
+        }
+        /// <summary>
+        /// 数据展示
+        /// </summary>
+        /// <param name="currentPage">当前页</param>
+        private void ShowDatas(int currentPage)
+        {
+
+            DataTable dtNull = new DataTable();
+            try
+            {
+                string craneNo = this.cbb_CRANE_NO.SelectedValue.ToString();
+                string carNo = this.cbb_CarNo.SelectedValue.ToString();
+                string planNo = this.txt_PLAN_NO.Text.Trim();
+                string recTime1 = this.dtp_StartTime.Value.ToString("yyyyMMdd000000");
+                string recTime2 = this.dtp_EndTime.Value.ToString("yyyyMMdd235959");
+                //对应指令车辆配载明细
+                string sqlText_ORDER = "SELECT * FROM (SELECT COUNT(1) OVER () AS TotalRows,ROW_NUMBER() OVER () AS ROWNUM,tab.* FROM ( ";
+                sqlText_ORDER += @"SELECT A.ORDER_NO,A.ORDER_GROUP_NO,A.EXE_SEQ,A.BAY_NO, CASE 
+                                            WHEN A.CRANE_NO = 1 THEN '1号行车' 
+                                            WHEN A.CRANE_NO = 2 THEN '2号行车' 
+                                            WHEN A.CRANE_NO = 3 THEN '3号行车' 
+                                            WHEN A.CRANE_NO = 4 THEN '4号行车' 
+                                            END AS CRANE_NO
+                                            ,A.CAR_NO,
+                                            CASE 
+                                            WHEN A.CAR_TYPE = 1 THEN '社会车' 
+                                            WHEN A.CAR_TYPE = 2 THEN '装料车' 
+                                            ELSE '其他车辆'
+                                            END AS CAR_TYPE
+                                            ,A.ORDER_TYPE,A.PLAN_SRC,A.ORDER_PRIORITY,CMD_SEQ,
+                                            CASE 
+                                            WHEN A.CMD_STATUS = 0 THEN '初始化' 
+                                            WHEN A.CMD_STATUS = 1 THEN '获取指令' 
+                                            WHEN A.CMD_STATUS = 2 THEN '激光扫描' 
+                                            WHEN A.CMD_STATUS = 3 THEN '到取料点上方' 
+                                            WHEN A.CMD_STATUS = 4 THEN '空载下降到位' 
+                                            WHEN A.CMD_STATUS = 5 THEN '有载荷量' 
+                                            WHEN A.CMD_STATUS = 6 THEN '重载上升到位' 
+                                            WHEN A.CMD_STATUS = 7 THEN '到放料点上方' 
+                                            WHEN A.CMD_STATUS = 8 THEN '重载下降到位' 
+                                            WHEN A.CMD_STATUS = 9 THEN '无载荷量' 
+                                            WHEN A.CMD_STATUS = 10 THEN '空载上升到位' 
+                                            ELSE '其他' 
+                                            END AS CMD_STATUS
+                                            ,C.BOF_NO,A.PLAN_NO,A.MAT_CODE,B.MAT_CNAME ,A.FROM_STOCK_NO,A.TO_STOCK_NO,A.REQ_WEIGHT,A.ACT_WEIGHT,A.START_TIME,A.UPD_TIME,A.REC_TIME ";
+                sqlText_ORDER += " FROM UACS_ORDER_QUEUE AS A ";
+                sqlText_ORDER += " LEFT JOIN UACS_L3_MAT_INFO AS B ON A.MAT_CODE = B.MAT_CODE ";
+                sqlText_ORDER += " LEFT JOIN UACS_L3_MAT_OUT_INFO AS C ON C.PLAN_NO = A.PLAN_NO ";
+                sqlText_ORDER += "WHERE 1=1 ";
+                sqlText_ORDER += "AND A.REC_TIME > '{0}' AND A.REC_TIME < '{1}' ";
+                sqlText_ORDER = string.Format(sqlText_ORDER, recTime1, recTime2);
+
+                
+
+                if (!string.IsNullOrEmpty(craneNo) && craneNo != "全部")
+                {
+                    sqlText_ORDER = string.Format("{0} AND A.CRANE_NO = '{1}' ", sqlText_ORDER, craneNo);
+                }
+                if (!string.IsNullOrEmpty(carNo) && carNo != "全部")
+                {
+                    sqlText_ORDER = string.Format("{0} AND A.CAR_NO = '{1}' ", sqlText_ORDER, carNo);
+                }
+                if (!string.IsNullOrEmpty(planNo))
+                {
+                    sqlText_ORDER = string.Format("{0} AND A.PLAN_NO LIKE '%{1}%'", sqlText_ORDER, planNo);
+                }
+                sqlText_ORDER += " ORDER BY A.ORDER_NO DESC,A.REC_TIME DESC ";
+                sqlText_ORDER += " ) tab ) WHERE ROWNUM BETWEEN ((" + currentPage + " - 1) * " + this.ucPageDemo.PageSize + ") + 1 AND " + currentPage + " *  " + this.ucPageDemo.PageSize;
+                DataTable dtResult = new DataTable();
+                using (IDataReader odrIn = DB2Connect.DBHelper.ExecuteReader(sqlText_ORDER))
+                {
+                    dtResult.Load(odrIn);
+                    //dataGridView1.DataSource = dt;
+                    //odrIn.Close();
+                }
+            
+
+            //DataTable dtResult = null; // DataBaseAccessOperate.GetDataTable(sql);
+            int totalPages = 0;
+            int totalRows = 0;
+            if (null == dtResult || dtResult.Rows.Count == 0)
+            {
+                this.ucPageDemo.PageInfo.Text = string.Format("第{0}/{1}页", "1", "1");
+                this.ucPageDemo.TotalRows.Text = @"0";
+                this.ucPageDemo.CurrentPage = 1;
+                this.ucPageDemo.TotalPages = 1;
+            }
+            else
+            {
+                totalRows = Convert.ToInt32(dtResult.Rows[0]["TotalRows"].ToString());
+                totalPages = totalRows % this.ucPageDemo.PageSize == 0 ? totalRows / this.ucPageDemo.PageSize : (totalRows / this.ucPageDemo.PageSize) + 1;
+                this.ucPageDemo.PageInfo.Text = string.Format("第{0}/{1}页", currentPage, totalPages);
+                this.ucPageDemo.TotalRows.Text = totalRows.ToString();
+                this.ucPageDemo.CurrentPage = currentPage;
+                this.ucPageDemo.TotalPages = totalPages;
+            }
+            this.dataGridView1.DataSource = dtResult;
+            }
+            catch (Exception ex)
+            { }
+        }
+
+        #region 日期查询        
+        /// <summary>
+        /// 当天
+        /// </summary>
+        private void GetToDayTime()
+        {
+            this.dtp_StartTime.Value = DateTime.Now;
+            this.dtp_EndTime.Value = DateTime.Now;
+            //查询
+            InitDataGridViewCtrl();
+        }
+        /// <summary>
+        /// 月度
+        /// </summary>
+        private void GetMonthlyTime()
+        {
+            var day1 = DateTime.Now.ToString("yyyy-MM-01");
+            //控件设置值
+            this.dtp_StartTime.Value = Convert.ToDateTime(day1);
+            //查询
+            InitDataGridViewCtrl();
+        }
+        /// <summary>
+        /// 当前季度
+        /// </summary>
+        private void GetQuarterlyTime()
+        {
+            //季度第一天
+            var day1 = DateTime.Now.AddMonths(0 - (DateTime.Now.Month - 1) % 3).ToString("yyyy-MM-01");
+            //季度最后一天
+            var lastday = DateTime.Parse(DateTime.Now.AddMonths(3 - (DateTime.Now.Month - 1) % 3).ToString("yyyy-MM-01")).AddDays(-1).ToShortDateString();
+            //控件设置值
+            this.dtp_StartTime.Value = Convert.ToDateTime(day1);
+            //查询
+            InitDataGridViewCtrl();
+        }
+        /// <summary>
+        /// 年度
+        /// </summary>
+        private void GetAnnualTime()
+        {
+            var day1 = DateTime.Now.ToString("yyyy-01-01");
+            //控件设置值
+            this.dtp_StartTime.Value = Convert.ToDateTime(day1);
+            //查询
+            InitDataGridViewCtrl();
+        }
+        #endregion
+
+        
     }
 }

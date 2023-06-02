@@ -32,9 +32,13 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dtp_EndTime = new System.Windows.Forms.DateTimePicker();
+            this.label33 = new System.Windows.Forms.Label();
+            this.dtp_StartTime = new System.Windows.Forms.DateTimePicker();
+            this.label32 = new System.Windows.Forms.Label();
+            this.cmb_PlanStatus = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnQuery = new System.Windows.Forms.Button();
-            this.tbCAR_NO = new System.Windows.Forms.TextBox();
             this.tbPLAN_NO = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -88,6 +92,7 @@
             this.cbChoice = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.GPlanNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GCarNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PLAN_STATUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GMatCode_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GWeight_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GMatCode_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -124,10 +129,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.dtp_StartTime = new System.Windows.Forms.DateTimePicker();
-            this.label33 = new System.Windows.Forms.Label();
-            this.dtp_EndTime = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -175,9 +176,9 @@
             this.groupBox2.Controls.Add(this.label33);
             this.groupBox2.Controls.Add(this.dtp_StartTime);
             this.groupBox2.Controls.Add(this.label32);
+            this.groupBox2.Controls.Add(this.cmb_PlanStatus);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.btnQuery);
-            this.groupBox2.Controls.Add(this.tbCAR_NO);
             this.groupBox2.Controls.Add(this.tbPLAN_NO);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Location = new System.Drawing.Point(3, 0);
@@ -187,6 +188,52 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "查询";
             // 
+            // dtp_EndTime
+            // 
+            this.dtp_EndTime.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.dtp_EndTime.Location = new System.Drawing.Point(921, 16);
+            this.dtp_EndTime.Name = "dtp_EndTime";
+            this.dtp_EndTime.Size = new System.Drawing.Size(154, 29);
+            this.dtp_EndTime.TabIndex = 60;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label33.Location = new System.Drawing.Point(837, 18);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(78, 21);
+            this.label33.TabIndex = 59;
+            this.label33.Text = "结束时间:";
+            // 
+            // dtp_StartTime
+            // 
+            this.dtp_StartTime.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.dtp_StartTime.Location = new System.Drawing.Point(653, 16);
+            this.dtp_StartTime.Name = "dtp_StartTime";
+            this.dtp_StartTime.Size = new System.Drawing.Size(154, 29);
+            this.dtp_StartTime.TabIndex = 58;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label32.Location = new System.Drawing.Point(569, 18);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(78, 21);
+            this.label32.TabIndex = 57;
+            this.label32.Text = "开始时间:";
+            // 
+            // cmb_PlanStatus
+            // 
+            this.cmb_PlanStatus.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.cmb_PlanStatus.FormattingEnabled = true;
+            this.cmb_PlanStatus.Location = new System.Drawing.Point(96, 15);
+            this.cmb_PlanStatus.Name = "cmb_PlanStatus";
+            this.cmb_PlanStatus.Size = new System.Drawing.Size(154, 29);
+            this.cmb_PlanStatus.TabIndex = 2;
+            this.cmb_PlanStatus.SelectedIndexChanged += new System.EventHandler(this.cmb_CarNo_SelectedIndexChanged);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -195,7 +242,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 21);
             this.label4.TabIndex = 52;
-            this.label4.Text = "配载车号:";
+            this.label4.Text = "计划状态:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnQuery
@@ -215,15 +262,6 @@
             this.btnQuery.UseVisualStyleBackColor = false;
             this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
             // 
-            // tbCAR_NO
-            // 
-            this.tbCAR_NO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbCAR_NO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbCAR_NO.Location = new System.Drawing.Point(99, 16);
-            this.tbCAR_NO.Name = "tbCAR_NO";
-            this.tbCAR_NO.Size = new System.Drawing.Size(154, 29);
-            this.tbCAR_NO.TabIndex = 2;
-            // 
             // tbPLAN_NO
             // 
             this.tbPLAN_NO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -239,9 +277,9 @@
             this.label6.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.label6.Location = new System.Drawing.Point(272, 18);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(94, 21);
+            this.label6.Size = new System.Drawing.Size(62, 21);
             this.label6.TabIndex = 54;
-            this.label6.Text = "配载计划号:";
+            this.label6.Text = "计划号:";
             // 
             // panel5
             // 
@@ -836,6 +874,7 @@
             this.cbChoice,
             this.GPlanNO,
             this.GCarNo,
+            this.PLAN_STATUS,
             this.GMatCode_1,
             this.GWeight_1,
             this.GMatCode_2,
@@ -867,6 +906,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(1420, 599);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
             // 
             // cbChoice
             // 
@@ -904,6 +944,16 @@
             this.GCarNo.Name = "GCarNo";
             this.GCarNo.ReadOnly = true;
             this.GCarNo.Width = 78;
+            // 
+            // PLAN_STATUS
+            // 
+            this.PLAN_STATUS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PLAN_STATUS.DataPropertyName = "PLAN_STATUS";
+            this.PLAN_STATUS.Frozen = true;
+            this.PLAN_STATUS.HeaderText = "计划状态";
+            this.PLAN_STATUS.MinimumWidth = 8;
+            this.PLAN_STATUS.Name = "PLAN_STATUS";
+            this.PLAN_STATUS.Width = 78;
             // 
             // GMatCode_1
             // 
@@ -1233,11 +1283,11 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label26.Location = new System.Drawing.Point(319, 18);
+            this.label26.Location = new System.Drawing.Point(287, 16);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(46, 21);
+            this.label26.Size = new System.Drawing.Size(78, 21);
             this.label26.TabIndex = 52;
-            this.label26.Text = "车号:";
+            this.label26.Text = "料槽车号:";
             this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label30
@@ -1284,42 +1334,6 @@
             this.label28.Text = "车辆类型:";
             this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label32.Location = new System.Drawing.Point(569, 18);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(78, 21);
-            this.label32.TabIndex = 57;
-            this.label32.Text = "开始时间:";
-            // 
-            // dtp_StartTime
-            // 
-            this.dtp_StartTime.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.dtp_StartTime.Location = new System.Drawing.Point(653, 16);
-            this.dtp_StartTime.Name = "dtp_StartTime";
-            this.dtp_StartTime.Size = new System.Drawing.Size(154, 29);
-            this.dtp_StartTime.TabIndex = 58;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label33.Location = new System.Drawing.Point(837, 18);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(78, 21);
-            this.label33.TabIndex = 59;
-            this.label33.Text = "结束时间:";
-            // 
-            // dtp_EndTime
-            // 
-            this.dtp_EndTime.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.dtp_EndTime.Location = new System.Drawing.Point(921, 16);
-            this.dtp_EndTime.Name = "dtp_EndTime";
-            this.dtp_EndTime.Size = new System.Drawing.Size(154, 29);
-            this.dtp_EndTime.TabIndex = 60;
-            // 
             // SelectCoilByL3FormNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1354,7 +1368,6 @@
         private System.Windows.Forms.Button btnQuery;
         private System.Windows.Forms.TextBox tbPLAN_NO;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox tbCAR_NO;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btnSubmit;
@@ -1401,29 +1414,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn cbChoice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GPlanNO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GCarNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_10;
         private System.Windows.Forms.TextBox tbMatCode_1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label31;
@@ -1448,5 +1438,30 @@
         private System.Windows.Forms.DateTimePicker dtp_StartTime;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.DateTimePicker dtp_EndTime;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn cbChoice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GPlanNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GCarNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PLAN_STATUS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_10;
+        private System.Windows.Forms.ComboBox cmb_PlanStatus;
     }
 }

@@ -90,7 +90,7 @@ namespace ParkClassLibrary
             dataGridView.AllowUserToResizeRows = false;
             dataGridView.RowTemplate.Height = 30;
 
-            dataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridView.BackgroundColor = System.Drawing.Color.White;
             dataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
         }
        public static int JudgeIntNull(object item)

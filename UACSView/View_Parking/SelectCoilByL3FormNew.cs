@@ -128,11 +128,13 @@ namespace UACSView.View_Parking
             //绑定车辆类型
             BindCmbCarType();
             //绑定车头方向
-            BindCarDrection();            
+            BindCarDrection();
             //绑定装料模式
             BindCmbWordMode();
             //绑定扫描行车
             BindCmbScanCar();
+            //绑定计划状态
+            BindPlanStatus();
 
             //窗体大小
             this.Size = new Size(1440, 950);
@@ -149,7 +151,7 @@ namespace UACSView.View_Parking
             string strTaskNo = "";
             if (QueryL3StowagePlan(strCarNo, out strPlanNo))
             {
-                tbCAR_NO.Text = strCarNo;
+                //tbCAR_NO.Text = strCarNo;
                 tbPLAN_NO.Text = strPlanNo;
                 //tbL3_TASK_NO.Text = strTaskNo;
 
@@ -159,8 +161,8 @@ namespace UACSView.View_Parking
             }
             else
             {
-                tbCAR_NO.Text = "无";
-                tbPLAN_NO.Text = "无";
+                //tbCAR_NO.Text = "无";
+                tbPLAN_NO.Text = "";
                 //tbL3_TASK_NO.Text = "无";
                 // 初始数据
                 DataTable dataTable = BindMatStockByL3Stowage2(true, "", "");
@@ -209,7 +211,7 @@ namespace UACSView.View_Parking
         private void btnQuery_Click(object sender, EventArgs e)
         {
             UpdateDgvRow(false);
-            this.dataGridView1.DataSource = BindMatStockByL3Stowage2(false, tbCAR_NO.Text, tbPLAN_NO.Text);
+            this.dataGridView1.DataSource = BindMatStockByL3Stowage2(false, cmb_PlanStatus.SelectedValue.ToString(), tbPLAN_NO.Text);
         }
 
         /// <summary>
@@ -465,30 +467,39 @@ namespace UACSView.View_Parking
         /// 绑定材料位置信息
         /// </summary>
         /// <param name="isLoad">是否是初始化 true=是初始化，false=不是初始化</param>
-        /// <param name="strCarNo">配置车号</param>
+        /// <param name="strPlanStatus">配置车号</param>
         /// <param name="strPlanNo">配载计划号</param>
         /// <param name="strTaskNo">配载任务号</param>
         /// <returns></returns>
-        private DataTable BindMatStockByL3Stowage2(bool isLoad, string strCarNo, string strPlanNo)
+        private DataTable BindMatStockByL3Stowage2(bool isLoad, string strPlanStatus, string strPlanNo)
         {
             var startTime = this.dtp_StartTime.Value.ToString("yyyyMMdd000000");  //开始时间
             var endTime = this.dtp_EndTime.Value.ToString("yyyyMMdd235959");  //结束时间
-            DataTable dtResult = InitDataTable(dataGridView1);            
+            DataTable dtResult = InitDataTable(dataGridView1);
             // 转换
             if (strPlanNo == "无")
                 strPlanNo = "";
-            if (strCarNo == "无")
-                strCarNo = "";
+            if (strPlanStatus == "全部" || strPlanStatus == "0")
+                strPlanStatus = "";
 
             DataTable tbL3_MAT_OUT_INFO = new DataTable("UACS_L3_MAT_OUT_INFO");
-            string sqlText_All = @" SELECT 0 AS CHECK_COLUMN, WORK_SEQ_NO, OPER_FLAG, PLAN_NO, BOF_NO, CAR_NO, MAT_CODE_1, WEIGHT_1, MAT_CODE_2, WEIGHT_2, MAT_CODE_3, WEIGHT_3,
-            MAT_CODE_4, WEIGHT_4, MAT_CODE_5, WEIGHT_5, MAT_CODE_6, WEIGHT_6, MAT_CODE_7, WEIGHT_7, MAT_CODE_8, WEIGHT_8, MAT_CODE_9, WEIGHT_9, MAT_CODE_10, 
-            WEIGHT_10, PLAN_STATUS, REC_TIME, UPD_TIME, CYCLE_COUNT, MAT_NET_WT, WT_TIME FROM UACSAPP.UACS_L3_MAT_OUT_INFO 
-            WHERE 1 = 1 ";
+            string sqlText_All = @"SELECT 0 AS CHECK_COLUMN, WORK_SEQ_NO, OPER_FLAG, PLAN_NO, BOF_NO, CAR_NO, MAT_CODE_1, WEIGHT_1, MAT_CODE_2, WEIGHT_2, MAT_CODE_3, WEIGHT_3,
+                                    MAT_CODE_4, WEIGHT_4, MAT_CODE_5, WEIGHT_5, MAT_CODE_6, WEIGHT_6, MAT_CODE_7, WEIGHT_7, MAT_CODE_8, WEIGHT_8, MAT_CODE_9, WEIGHT_9, MAT_CODE_10, 
+                                    WEIGHT_10, 
+                                    CASE PLAN_STATUS
+                                    WHEN 1 THEN '未执行'
+                                    WHEN 2 THEN '执行中'
+                                    WHEN 3 THEN '计划完成'
+                                    WHEN 4 THEN '卸料开始'
+                                    WHEN 5 THEN '卸料完成'
+                                    ELSE '未知'
+                                    END AS PLAN_STATUS, 
+                                    REC_TIME, UPD_TIME, CYCLE_COUNT, MAT_NET_WT, WT_TIME FROM UACSAPP.UACS_L3_MAT_OUT_INFO 
+                                    WHERE 1 = 1 ";
             sqlText_All += " AND REC_TIME >= '{0}' and REC_TIME <= '{1}' ";
-            if (!string.IsNullOrEmpty(strCarNo))
+            if (!string.IsNullOrEmpty(strPlanStatus))
             {
-                sqlText_All += "AND CAR_NO ='" + strCarNo + "'";
+                sqlText_All += "AND PLAN_STATUS ='" + strPlanStatus + "'";
             }
             if (!string.IsNullOrEmpty(strPlanNo))
             {
@@ -531,6 +542,7 @@ namespace UACSView.View_Parking
                     0, /*cbChoice*/
                     dataRow["PLAN_NO"].ToString(),
                     dataRow["CAR_NO"].ToString(),
+                    dataRow["PLAN_STATUS"].ToString(),
                     dataRow["MAT_CODE_1"].ToString(),
                     dataRow["WEIGHT_1"].ToString(),
                     dataRow["MAT_CODE_2"].ToString(),
@@ -684,7 +696,7 @@ namespace UACSView.View_Parking
                 if (string.IsNullOrEmpty(GMatCode_9))
                     tbMatCode_9.Text = "";
                 if (string.IsNullOrEmpty(GMatCode_10))
-                    tbMatCode_10.Text = ""; 
+                    tbMatCode_10.Text = "";
                 #endregion
 
                 #endregion
@@ -1004,7 +1016,10 @@ namespace UACSView.View_Parking
                 dt.Columns.Add("ID");
                 dt.Columns.Add("NAME");
                 DataRow dr = dt.NewRow();
-                int IndexID = 0;
+                dr = dt.NewRow();
+                dr["ID"] = "0";
+                dr["NAME"] = "空";
+                dt.Rows.Add(dr);
                 var HopperNo = ""; //料槽号（车号）
                 if (!string.IsNullOrEmpty(ParkNO))
                 {
@@ -1128,13 +1143,13 @@ namespace UACSView.View_Parking
             dt.Columns.Add(dc2);
             DataRow dr1 = dt.NewRow();
             dr1["ID"] = "1";
-            dr1["NAME"] = "模式一";
+            dr1["NAME"] = "正常装料";
             DataRow dr2 = dt.NewRow();
             dr2["ID"] = "2";
-            dr2["NAME"] = "模式二";
+            dr2["NAME"] = "油桶压块";
             DataRow dr3 = dt.NewRow();
             dr3["ID"] = "3";
-            dr3["NAME"] = "模式三";
+            dr3["NAME"] = "生铁模式";
             DataRow dr4 = dt.NewRow();
             dr4["ID"] = "4";
             dr4["NAME"] = "模式四";
@@ -1194,11 +1209,48 @@ namespace UACSView.View_Parking
                     index = 2;
                 if (ParkNO.Equals("A4"))
                     index = 3;
-            }            
+            }
             //设置默认值
             this.cmbScanCar.SelectedIndex = index;
         }
-
+        /// <summary>
+        /// 绑定计划状态
+        /// </summary>
+        private void BindPlanStatus()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("TypeValue");
+            dt.Columns.Add("TypeName");
+            DataRow dr;
+            dr = dt.NewRow();
+            dr["TypeValue"] = "0";
+            dr["TypeName"] = "全部";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["TypeValue"] = "1";
+            dr["TypeName"] = "未执行";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["TypeValue"] = "2";
+            dr["TypeName"] = "执行中";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["TypeValue"] = "3";
+            dr["TypeName"] = "计划完成";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["TypeValue"] = "4";
+            dr["TypeName"] = "卸料开始";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["TypeValue"] = "5";
+            dr["TypeName"] = "卸料完成";
+            dt.Rows.Add(dr);
+            this.cmb_PlanStatus.DataSource = dt;
+            this.cmb_PlanStatus.DisplayMember = "TypeName";
+            this.cmb_PlanStatus.ValueMember = "TypeValue";
+            this.cmb_PlanStatus.SelectedIndex = 0;
+        }
         #endregion
 
         #region 值发生更改时触发事件
@@ -1282,7 +1334,12 @@ namespace UACSView.View_Parking
             }
             if (cmb_CarNo.Text.Length < 4)
             {
-                MessageBox.Show("请输入四位以上的车牌号！", "提示");
+                MessageBox.Show("请输入四位以上的料槽号！", "提示");
+                return;
+            }
+            if (cmb_CarNo.Text.Equals("空") || cmb_CarNo.SelectedValue.ToString().Equals("0"))
+            {
+                MessageBox.Show("提交失败，料槽号为空！", "提示");
                 return;
             }
             var cbChoiceData = string.Empty;
@@ -1312,7 +1369,7 @@ namespace UACSView.View_Parking
                     MessageBox.Show("请先选择计划！！", "提示");
                     return;
                 }
-            } 
+            }
             #endregion
 
             //确认提示
@@ -1402,6 +1459,45 @@ namespace UACSView.View_Parking
                 else
                     MessageBox.Show("不存在该出库类型！");
 
+            }
+        }
+
+        /// <summary>
+        /// 重新绘制背景颜色
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                var planStatus = this.dataGridView1.Rows[e.RowIndex].Cells["PLAN_STATUS"].Value.ToString().Trim();
+                if (string.IsNullOrEmpty(planStatus))
+                    return;
+                if (planStatus.Equals("未执行"))
+                {
+                    dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGoldenrodYellow;
+                }
+                else if (planStatus.Equals("执行中"))
+                {
+                    //dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Yellow;
+                }
+                else if (planStatus.Equals("计划完成"))
+                {
+                    //dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
+                }
+                else if (planStatus.Equals("卸料开始"))
+                {
+                    //dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Yellow;
+                }
+                else if (planStatus.Equals("卸料完成"))
+                {
+                    //dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
+                }
+                else
+                {
+                    //dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
+                }
             }
         }
     }

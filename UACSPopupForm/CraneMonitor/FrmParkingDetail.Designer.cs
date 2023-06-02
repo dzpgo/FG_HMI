@@ -45,13 +45,13 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lblCarType = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.lb_REQ_WEIGHT = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.lb_ACT_WEIGHT = new System.Windows.Forms.Label();
             this.bt_Refurbish = new System.Windows.Forms.Button();
             this.bt_Save = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.plParking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCraneOder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStowageMessage)).BeginInit();
@@ -75,7 +75,7 @@
             this.dgvCraneOder.AllowUserToAddRows = false;
             this.dgvCraneOder.AllowUserToDeleteRows = false;
             this.dgvCraneOder.AllowUserToResizeRows = false;
-            this.dgvCraneOder.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvCraneOder.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -119,7 +119,7 @@
             this.dgvStowageMessage.AllowUserToAddRows = false;
             this.dgvStowageMessage.AllowUserToDeleteRows = false;
             this.dgvStowageMessage.AllowUserToResizeRows = false;
-            this.dgvStowageMessage.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvStowageMessage.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightBlue;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -249,20 +249,6 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "车辆类型：";
             // 
-            // button1
-            // 
-            this.button1.BackgroundImage = global::UACSPopupForm.Properties.Resources.bg_btn;
-            this.button1.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(990, 569);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 40);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "详情";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -332,6 +318,20 @@
             this.bt_Save.Text = "保存";
             this.bt_Save.UseVisualStyleBackColor = true;
             this.bt_Save.Click += new System.EventHandler(this.bt_Save_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::UACSPopupForm.Properties.Resources.bg_btn;
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(990, 569);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(85, 40);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "详情";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmParkingDetail
             // 

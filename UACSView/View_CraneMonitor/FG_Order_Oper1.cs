@@ -325,6 +325,7 @@ namespace UACSView.View_CraneMonitor
         }
         #endregion
 
+        #region 日期查询
         /// <summary>
         /// 当前季度
         /// </summary>
@@ -376,7 +377,7 @@ namespace UACSView.View_CraneMonitor
                     dataGridView1.Rows.RemoveAt(0);
                 }
             }
-            
+
         }
 
         /// <summary>
@@ -402,6 +403,7 @@ namespace UACSView.View_CraneMonitor
                     dataGridView1.Rows.RemoveAt(0);
                 }
             }
-        }
+        } 
+        #endregion
     }
 }
