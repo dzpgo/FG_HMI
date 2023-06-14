@@ -555,7 +555,7 @@ namespace UACSPopupForm
                                                     WHEN A.CMD_STATUS = 0 THEN '初始化' 
                                                     WHEN A.CMD_STATUS = 1 THEN '获取指令' 
                                                     WHEN A.CMD_STATUS = 2 THEN '激光扫描' 
-                                                    WHEN A.CMD_STATUS = 3 THEN '到取料点上方' 
+                                                    WHEN A.CMD_STATUS = 3 THEN '计划暂停'
                                                     WHEN A.CMD_STATUS = 4 THEN '空载下降到位' 
                                                     WHEN A.CMD_STATUS = 5 THEN '有载荷量' 
                                                     WHEN A.CMD_STATUS = 6 THEN '重载上升到位' 
