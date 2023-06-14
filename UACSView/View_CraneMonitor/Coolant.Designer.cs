@@ -50,6 +50,7 @@
             this.txt_MatWeight.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
             this.txt_MatWeight.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txt_MatWeight.Location = new System.Drawing.Point(190, 382);
+            this.txt_MatWeight.MaxLength = 5;
             this.txt_MatWeight.Multiline = true;
             this.txt_MatWeight.Name = "txt_MatWeight";
             this.txt_MatWeight.Size = new System.Drawing.Size(184, 32);

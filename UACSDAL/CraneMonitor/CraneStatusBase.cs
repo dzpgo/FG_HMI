@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace UACSDAL
 {
@@ -236,7 +233,34 @@ namespace UACSDAL
             get { return cOIL_TEMPERATURE; }
             set { cOIL_TEMPERATURE = value; }
         }
+        private long eV_PLAN_FINISH;
+        /// <summary>
+        /// 工位装料计划完成（1:完成 0：未完成）
+        /// </summary>
+        public long EV_PLAN_FINISH { get => eV_PLAN_FINISH; set => eV_PLAN_FINISH = value; }
 
+
+        ///// <summary>
+        ///// A1工位装料计划完成（1:完成 0：未完成）
+        ///// </summary>
+        //public long EV_PLAN_FINISH_A1 { get => eV_PLAN_FINISH_A1; set => eV_PLAN_FINISH_A1 = value; }
+        ///// <summary>
+        ///// A2工位装料计划完成（1:完成 0：未完成）
+        ///// </summary>
+        //public long EV_PLAN_FINISH_A2 { get => eV_PLAN_FINISH_A2; set => eV_PLAN_FINISH_A2 = value; }
+        ///// <summary>
+        ///// A3工位装料计划完成（1:完成 0：未完成）
+        ///// </summary>
+        //public long EV_PLAN_FINISH_A3 { get => eV_PLAN_FINISH_A3; set => eV_PLAN_FINISH_A3 = value; }
+        ///// <summary>
+        ///// A4工位装料计划完成（1:完成 0：未完成）
+        ///// </summary>
+        //public long EV_PLAN_FINISH_A4 { get => eV_PLAN_FINISH_A4; set => eV_PLAN_FINISH_A4 = value; }
+
+        //private long eV_PLAN_FINISH_A1;
+        //private long eV_PLAN_FINISH_A2;
+        //private long eV_PLAN_FINISH_A3;
+        //private long eV_PLAN_FINISH_A4;
 
         /// <summary>
         /// 行车状态描述
@@ -585,6 +609,28 @@ namespace UACSDAL
         /// 夹钳温度
         /// </summary>
         public const string ADRESS_CRANE_COIL_TEMPERATURE = "COIL_TEMPERATURE";
+
+        /// <summary>
+        /// A1工位装料计划完成（1:完成 0：未完成）
+        /// </summary>
+        public const string ADRESS_PLAN_FINISH = "EV_PLAN_FINISH";
+
+        ///// <summary>
+        ///// A1工位装料计划完成（1:完成 0：未完成）
+        ///// </summary>
+        //public const string PLAN_FINISH_A1 = "EV_PLAN_FINISH_A1";
+        ///// <summary>
+        ///// A2工位装料计划完成（1:完成 0：未完成）
+        ///// </summary>
+        //public const string PLAN_FINISH_A2 = "EV_PLAN_FINISH_A2";
+        ///// <summary>
+        ///// A3工位装料计划完成（1:完成 0：未完成）
+        ///// </summary>
+        //public const string PLAN_FINISH_A3 = "EV_PLAN_FINISH_A3";
+        ///// <summary>
+        ///// A4工位装料计划完成（1:完成 0：未完成）
+        ///// </summary>
+        //public const string PLAN_FINISH_A4 = "EV_PLAN_FINISH_A4";
 
         //--------------------------------------------------行车控制模式----------------------------------------------------------------
         /// <summary>

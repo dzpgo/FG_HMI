@@ -168,6 +168,7 @@
             this.GPlanNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BOF_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GCarNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PLAN_STATUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GMatCode_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GWeight_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Act_Weight_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -199,6 +200,8 @@
             this.GWeight_10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Act_Weight_10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TO_STOCK_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label60 = new System.Windows.Forms.Label();
+            this.cmb_PlanStatus = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -234,6 +237,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.groupBox1.Controls.Add(this.cmb_PlanStatus);
             this.groupBox1.Controls.Add(this.cmb_Query_CarNo);
             this.groupBox1.Controls.Add(this.bt_QuerySend);
             this.groupBox1.Controls.Add(this.bt_Query);
@@ -243,6 +247,7 @@
             this.groupBox1.Controls.Add(this.dtp_StartTime);
             this.groupBox1.Controls.Add(this.tb_Query_PlanNo);
             this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label60);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -268,7 +273,7 @@
             this.bt_QuerySend.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.bt_QuerySend.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
             this.bt_QuerySend.ForeColor = System.Drawing.Color.White;
-            this.bt_QuerySend.Location = new System.Drawing.Point(80, 361);
+            this.bt_QuerySend.Location = new System.Drawing.Point(83, 438);
             this.bt_QuerySend.Name = "bt_QuerySend";
             this.bt_QuerySend.Size = new System.Drawing.Size(80, 40);
             this.bt_QuerySend.TabIndex = 3;
@@ -282,7 +287,7 @@
             this.bt_Query.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.bt_Query.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
             this.bt_Query.ForeColor = System.Drawing.Color.White;
-            this.bt_Query.Location = new System.Drawing.Point(80, 307);
+            this.bt_Query.Location = new System.Drawing.Point(83, 384);
             this.bt_Query.Name = "bt_Query";
             this.bt_Query.Size = new System.Drawing.Size(80, 40);
             this.bt_Query.TabIndex = 3;
@@ -296,7 +301,7 @@
             this.bt_QuerySave.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.bt_QuerySave.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
             this.bt_QuerySave.ForeColor = System.Drawing.Color.White;
-            this.bt_QuerySave.Location = new System.Drawing.Point(0, 361);
+            this.bt_QuerySave.Location = new System.Drawing.Point(3, 438);
             this.bt_QuerySave.Name = "bt_QuerySave";
             this.bt_QuerySave.Size = new System.Drawing.Size(80, 40);
             this.bt_QuerySave.TabIndex = 3;
@@ -310,7 +315,7 @@
             this.bt_Resetting.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.bt_Resetting.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
             this.bt_Resetting.ForeColor = System.Drawing.Color.White;
-            this.bt_Resetting.Location = new System.Drawing.Point(0, 307);
+            this.bt_Resetting.Location = new System.Drawing.Point(3, 384);
             this.bt_Resetting.Name = "bt_Resetting";
             this.bt_Resetting.Size = new System.Drawing.Size(80, 40);
             this.bt_Resetting.TabIndex = 3;
@@ -321,7 +326,7 @@
             // dtp_EndTime
             // 
             this.dtp_EndTime.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.dtp_EndTime.Location = new System.Drawing.Point(6, 256);
+            this.dtp_EndTime.Location = new System.Drawing.Point(9, 333);
             this.dtp_EndTime.Name = "dtp_EndTime";
             this.dtp_EndTime.Size = new System.Drawing.Size(150, 29);
             this.dtp_EndTime.TabIndex = 2;
@@ -329,7 +334,7 @@
             // dtp_StartTime
             // 
             this.dtp_StartTime.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.dtp_StartTime.Location = new System.Drawing.Point(6, 190);
+            this.dtp_StartTime.Location = new System.Drawing.Point(9, 267);
             this.dtp_StartTime.Name = "dtp_StartTime";
             this.dtp_StartTime.Size = new System.Drawing.Size(150, 29);
             this.dtp_StartTime.TabIndex = 2;
@@ -347,7 +352,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label4.Location = new System.Drawing.Point(6, 232);
+            this.label4.Location = new System.Drawing.Point(9, 309);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 21);
             this.label4.TabIndex = 0;
@@ -357,7 +362,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label3.Location = new System.Drawing.Point(6, 165);
+            this.label3.Location = new System.Drawing.Point(9, 242);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 21);
             this.label3.TabIndex = 0;
@@ -1072,6 +1077,7 @@
             this.GPlanNO,
             this.BOF_NO,
             this.GCarNo,
+            this.PLAN_STATUS,
             this.GMatCode_1,
             this.GWeight_1,
             this.Act_Weight_1,
@@ -1123,6 +1129,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(1212, 723);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
             // 
             // groupBox3
             // 
@@ -1968,6 +1975,17 @@
             this.GCarNo.ReadOnly = true;
             this.GCarNo.Width = 78;
             // 
+            // PLAN_STATUS
+            // 
+            this.PLAN_STATUS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PLAN_STATUS.DataPropertyName = "PLAN_STATUS";
+            this.PLAN_STATUS.Frozen = true;
+            this.PLAN_STATUS.HeaderText = "状态";
+            this.PLAN_STATUS.MinimumWidth = 8;
+            this.PLAN_STATUS.Name = "PLAN_STATUS";
+            this.PLAN_STATUS.ReadOnly = true;
+            this.PLAN_STATUS.Width = 54;
+            // 
             // GMatCode_1
             // 
             this.GMatCode_1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -2275,6 +2293,25 @@
             this.TO_STOCK_NO.Name = "TO_STOCK_NO";
             this.TO_STOCK_NO.ReadOnly = true;
             // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label60.Location = new System.Drawing.Point(9, 168);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(42, 21);
+            this.label60.TabIndex = 0;
+            this.label60.Text = "状态";
+            // 
+            // cmb_PlanStatus
+            // 
+            this.cmb_PlanStatus.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.cmb_PlanStatus.FormattingEnabled = true;
+            this.cmb_PlanStatus.Location = new System.Drawing.Point(8, 192);
+            this.cmb_PlanStatus.Name = "cmb_PlanStatus";
+            this.cmb_PlanStatus.Size = new System.Drawing.Size(150, 29);
+            this.cmb_PlanStatus.TabIndex = 54;
+            // 
             // Achievements_Feed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2442,6 +2479,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GPlanNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn BOF_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn GCarNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PLAN_STATUS;
         private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_1;
         private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Act_Weight_1;
@@ -2473,5 +2511,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Act_Weight_10;
         private System.Windows.Forms.DataGridViewTextBoxColumn TO_STOCK_NO;
+        private System.Windows.Forms.ComboBox cmb_PlanStatus;
+        private System.Windows.Forms.Label label60;
     }
 }

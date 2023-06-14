@@ -1,19 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using UACSDAL;
 using Baosight.iSuperframe.Authorization.Interface;
 using Baosight.iSuperframe.Common;
-using System.Security.AccessControl;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
-using System.Collections;
-using System.Diagnostics;
-using System.Text.RegularExpressions;
 using ParkClassLibrary;
 
 namespace UACSPopupForm
@@ -23,12 +16,16 @@ namespace UACSPopupForm
     /// </summary>
     public partial class FrmParkingDetail : Form
     {
+        /// <summary>
+        /// Tag
+        /// </summary>
+        private Baosight.iSuperframe.TagService.Controls.TagDataProvider tagDP = new Baosight.iSuperframe.TagService.Controls.TagDataProvider();
         private Baosight.iSuperframe.Authorization.Interface.IAuthorization auth;
         //防止弹出信息关闭画面
         bool isPopupMessage = false;
         private Dictionary<string, string> MatCode = new Dictionary<string, string>();
-        string[] dgvColumnsName = { "ORDER_NO", "PLAN_NO", "ORDER_PRIORITY", "CMD_SEQ" , "CMD_STATUS", "MAT_CODE", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "REQ_WEIGHT", "ACT_WEIGHT", "START_TIME", "UPD_TIME", "REC_TIME" };
-        string[] dgvHeaderText = { "指令号", "计划号", "优先级", "吊运次数","吊运状态", "物料代码", "物料名称", "取料位置", "落料位", "要求重量", "实绩重量","开始时间", "更新时间", "创建时间" };
+        string[] dgvColumnsName = { "BTN_UP", "ORDER_NO", "PLAN_NO", "ORDER_PRIORITY", "CMD_SEQ" , "CMD_STATUS", "MAT_CODE", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "REQ_WEIGHT", "ACT_WEIGHT", "START_TIME", "UPD_TIME", "REC_TIME" };
+        string[] dgvHeaderText = { "按钮", "指令号", "计划号", "优先级",  "吊运次数","吊运状态", "物料代码", "物料名称", "取料位置", "落料位", "要求重量", "实绩重量","开始时间", "更新时间", "创建时间" };
         string[] dgvOderColumnsName = { "ORDER_NO", "ORDER_GROUP_NO", "EXE_SEQ", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "BAY_NO" };
         string[] dgvOderHeaderText = { "指令号", "指令组号", "指令顺序", "物料名称", "取料位", "落料位", "跨别" };
         /// <summary>
@@ -38,6 +35,8 @@ namespace UACSPopupForm
         public FrmParkingDetail()
         {
             InitializeComponent();
+            tagDP.ServiceName = "iplature";
+            tagDP.AutoRegist = true;
         }
         //private DataTable initial_dgv;
         public DataTable Initial_dgv = new DataTable();
@@ -93,7 +92,7 @@ namespace UACSPopupForm
             {
                 if (!isPopupMessage)
                 {
-                    this.Close();
+                    //this.Close();
                 }
             }
             catch (Exception ex)
@@ -252,13 +251,51 @@ namespace UACSPopupForm
                         column1.DataSource = L3MatInfoLists;
                         index = dataGridView.Columns.Add(column1);
                     }
+                    else if (columnsName[i].Equals("REQ_WEIGHT") || columnsName[i].Equals("ACT_WEIGHT"))
+                    {
+                        DataGridViewTextBoxColumn targetColumn = new DataGridViewTextBoxColumn();                        
+                        targetColumn.DataPropertyName = columnsName[i];
+                        targetColumn.Name = columnsName[i];
+                        targetColumn.HeaderText = headerText[i];
+                        targetColumn.MaxInputLength = 5;
+                        if (columnsName[i].Equals("REQ_WEIGHT"))
+                        {
+                            targetColumn.ReadOnly = false;
+                        }
+                        else if (columnsName[i].Equals("ACT_WEIGHT"))
+                        {
+                            targetColumn.ReadOnly = false;
+                        }
+                        else
+                        {
+                            targetColumn.ReadOnly = true;
+                        }
+                        index = dataGridView.Columns.Add(targetColumn);
+                    }
+                    else if (columnsName[i].Equals("BTN_UP"))
+                    {
+                        //在datagridview中添加第一个button按钮
+                        DataGridViewButtonColumn btn1 = new DataGridViewButtonColumn();
+                        btn1.Name = "btn_UP";
+                        btn1.HeaderText = "排序";
+                        btn1.DefaultCellStyle.NullValue = "";
+                        btn1.Width = 46;
+                        index = dataGridView.Columns.Add(btn1);
+
+                        //在datagridview中添加第二个button按钮
+                        //DataGridViewButtonColumn btn2 = new DataGridViewButtonColumn();
+                        //btn2.Name = "Button2";
+                        //btn2.HeaderText = "按钮2";
+                        //btn2.DefaultCellStyle.NullValue = "按钮2";
+                        //index = dataGridView.Columns.Add(btn2);
+                    }
                     else
                     {
                         DataGridViewColumn column = new DataGridViewTextBoxColumn();
                         column.DataPropertyName = columnsName[i];
                         column.Name = columnsName[i];
                         column.HeaderText = headerText[i];
-                        if(columnsName[i].Equals("FROM_STOCK_NO"))
+                        if (columnsName[i].Equals("FROM_STOCK_NO"))
                         {
                             column.ReadOnly = false;
                         }
@@ -266,21 +303,21 @@ namespace UACSPopupForm
                         {
                             column.ReadOnly = false;
                         }
-                        else if (columnsName[i].Equals("REQ_WEIGHT"))
-                        {
-                            column.ReadOnly = false;
-                        }
-                        else if (columnsName[i].Equals("ACT_WEIGHT"))
-                        {
-                            column.ReadOnly = false;
-                        }
-                        else
-                        {
-                            column.ReadOnly = true;
-                        }                        
+                        //else if (columnsName[i].Equals("REQ_WEIGHT"))
+                        //{
+                        //    column.ReadOnly = false;
+                        //}
+                        //else if (columnsName[i].Equals("ACT_WEIGHT"))
+                        //{
+                        //    column.ReadOnly = false;
+                        //}
+                        //else
+                        //{
+                        //    column.ReadOnly = true;
+                        //}                        
                         if (i > 0)
                         {
-                            column.Width = 85;
+                            column.Width = 80;
                         }
                         if (columnsName[i].Equals("START_TIME"))
                         {
@@ -303,6 +340,7 @@ namespace UACSPopupForm
                             column.Visible = false;
                         }
                         index = dataGridView.Columns.Add(column);
+                        
                     }
                     dataGridView.Columns[index].SortMode = DataGridViewColumnSortMode.NotSortable;
                 }
@@ -331,7 +369,7 @@ namespace UACSPopupForm
         private void bt_Refurbish_Click(object sender, EventArgs e)
         {
             Refurbish();
-            ParkClassLibrary.HMILogger.WriteLog("停车位详细", "刷新", ParkClassLibrary.LogLevel.Info, this.Text);
+            //ParkClassLibrary.HMILogger.WriteLog("停车位详细", "刷新", ParkClassLibrary.LogLevel.Info, this.Text);
         }
 
         /// <summary>
@@ -595,9 +633,6 @@ namespace UACSPopupForm
         /// <param name="e"></param>
         private void dgvStowageMessage_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
-            var dgv = dgvStowageMessage.DataSource;
-            var inidgv = Initial_dgv;
-
             //得到选中行的索引
             int intRow = dgvStowageMessage.SelectedCells[0].RowIndex;
             //得到列的索引
@@ -609,7 +644,6 @@ namespace UACSPopupForm
             string str = dgvStowageMessage.CurrentRow.Cells[2].Value.ToString();
             var data1 = dgvStowageMessage.Rows[intRow].Cells[intColumn].Value.ToString();
             var data2 = Initial_dgv.Rows[intRow].ItemArray[intColumn];
-
             if (data2.Equals(data1))
             {
                 //dgvStowageMessage.Rows[intRow].Cells[intColumn].Style.ForeColor = Color.Red;
@@ -626,6 +660,19 @@ namespace UACSPopupForm
 
             }
 
+        }
+
+        /// <summary>
+        /// 在编辑模式下绘制单元格。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvStowageMessage_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (this.dgvStowageMessage.CurrentCell.ColumnIndex == 10 || this.dgvStowageMessage.CurrentCell.ColumnIndex == 11)
+            {
+                e.Control.KeyPress += new KeyPressEventHandler(dgvStowageMessage_KeyPress);
+            }
         }
 
         /// <summary>
@@ -660,33 +707,17 @@ namespace UACSPopupForm
                     e.Paint(e.ClipBounds, DataGridViewPaintParts.Focus);
                     e.Handled = true;
                 }
+
+                if (dgvStowageMessage.Columns[e.ColumnIndex].Name == "btn_UP" && e.RowIndex >= 0)
+                {
+                    e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                    e.Graphics.DrawImage(global::UACSPopupForm.Properties.Resources.up_btn, e.CellBounds);
+                    e.Handled = true;
+                }
             }
             isPopupMessage = false;
         }
-        /// <summary>
-        /// 在编辑模式下绘制单元格。
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dgvStowageMessage_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            //DataGridViewColumnCollection columnCollection = dgvStowageMessage.Columns;
-            //DataGridViewColumn firstVisibleColumn = columnCollection.GetFirstColumn(DataGridViewElementStates.Visible);
-            //var displayIndex = firstVisibleColumn.DisplayIndex;
-            //var addX = this.dgvStowageMessage.CurrentCellAddress.X;
-            //if (this.dgvStowageMessage.CurrentCellAddress.X == combo.DisplayIndex)
-            //{
-                //ComboBox cb = e.Control as ComboBox;
-                //if (cb != null)
-                //{
-                //    cb.DropDownStyle = ComboBoxStyle.DropDownList;
 
-                //    cb.DrawMode = DrawMode.OwnerDrawFixed;
-                //    cb.DrawItem -= this.cb_DrawItem;
-                //    cb.DrawItem += this.cb_DrawItem;
-                //}
-            //}
-        }
         // 手动绘制组合框.
         private void cb_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -709,6 +740,113 @@ namespace UACSPopupForm
             }
         }
 
-        
+        /// <summary>
+        /// 如果输入的不是退格和数字，则屏蔽输入
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvStowageMessage_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //如果输入的不是退格和数字，则屏蔽输入
+            if (!(e.KeyChar == '\b' || (e.KeyChar >= '0' && e.KeyChar <= '9')))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void dgvStowageMessage_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvStowageMessage.Columns[e.ColumnIndex].Name == "btn_UP" && e.RowIndex >= 0)
+            {
+                try
+                {
+                    // 处理第一个按钮的点击事件
+                    //得到选中行的索引
+                    int intRow = dgvStowageMessage.SelectedCells[0].RowIndex;
+                    if (intRow > 0)
+                    {
+                        //得到列的索引
+                        int intColumn = dgvStowageMessage.SelectedCells[0].ColumnIndex;
+                        var mini = Convert.ToInt32(dgvStowageMessage.Rows[intRow - 1].Cells["ORDER_PRIORITY"].Value.ToString());
+                        var max = Convert.ToInt32(dgvStowageMessage.Rows[intRow].Cells["ORDER_PRIORITY"].Value.ToString());
+                        var orderno1 = dgvStowageMessage.Rows[intRow - 1].Cells["ORDER_NO"].Value.ToString();
+                        var orderno2 = dgvStowageMessage.Rows[intRow].Cells["ORDER_NO"].Value.ToString();
+                        var planno = dgvStowageMessage.Rows[intRow].Cells["PLAN_NO"].Value.ToString();
+                        var matcname = dgvStowageMessage.Rows[intRow].Cells["MAT_CNAME"].Value.ToString();
+                        if (max > mini)
+                        {
+                            var ExeSql = @"UPDATE UACS_ORDER_QUEUE SET ORDER_PRIORITY = '" + max + "' WHERE ORDER_NO = '" + orderno1 + "' AND PLAN_NO = '" + planno + "'; ";
+                            ExeSql += "UPDATE UACS_ORDER_QUEUE SET ORDER_PRIORITY = '" + mini + "' WHERE ORDER_NO = '" + orderno2 + "' AND PLAN_NO = '" + planno + "'; ";
+                            DB2Connect.DBHelper.ExecuteNonQuery(ExeSql);
+                            //刷新
+                            Refurbish();
+                            ParkClassLibrary.HMILogger.WriteLog("停车位详细", "更改优先级，计划号：" + planno + "，指令号：" + orderno2 + "，物料：" + matcname + "，优先级：" + mini + "，旧优先级：" + max, ParkClassLibrary.LogLevel.Info, this.Text);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ParkClassLibrary.HMILogger.WriteLog("停车位详细", "更改优先级错误："+ ex.Message.ToString().Trim(), ParkClassLibrary.LogLevel.Info, this.Text);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 提交实绩
+        /// </summary>
+        private void bt_Send_Click(object sender, EventArgs e)
+        {
+            Send_Tag();
+        }
+
+        /// <summary>
+        /// 发送实绩
+        /// </summary>
+        private void Send_Tag()
+        {            
+            //确认提示
+            MessageBoxButtons btn = MessageBoxButtons.OKCancel;
+            DialogResult drmsg = MessageBox.Show("确认是否发送实绩？", "提示", btn, MessageBoxIcon.Asterisk);
+            if (drmsg == DialogResult.OK)
+            {
+                if (dgvStowageMessage.Rows.Count > 0)
+                {
+                    //计划号，料槽号，工位号，废钢种类数量，废钢代码1#重量，废钢代码2#重量，废钢代码3#重量，废钢代码4#重量，废钢代码5#重量......
+                    //Tag发送的数据
+                    var Data = "";
+                    //计划号
+                    string sPlanNO = dgvStowageMessage.CurrentRow.Cells["PLAN_NO"].Value.ToString();
+                    //料槽车号
+                    string sCarNo = !string.IsNullOrEmpty(lblCarNo.Text.ToString().Trim()) ? lblCarNo.Text.ToString().Trim() : "";
+                    //停车位号（落料位）
+                    string sToStockNo = dgvStowageMessage.CurrentRow.Cells["TO_STOCK_NO"].Value.ToString();
+                    //废钢种类数量
+                    var count = dgvStowageMessage.Rows.Count;
+                    Data += sPlanNO + "," + sCarNo + "," + sToStockNo + "," + count;
+
+
+                    foreach (DataGridViewRow dgr in dgvStowageMessage.Rows)
+                    {
+                        var sMatCode = "";
+                        var sActWeight = "";
+                        if (!string.IsNullOrEmpty(dgr.Cells["MAT_CODE"].Value.ToString()))
+                        {
+                            //要求重量
+                            sMatCode =  dgr.Cells["MAT_CODE"].Value.ToString();
+                        }
+                        if (!string.IsNullOrEmpty(dgr.Cells["ACT_WEIGHT"].Value.ToString()))
+                        {
+                            //累计重量
+                            sActWeight = dgr.Cells["ACT_WEIGHT"].Value.ToString();
+                        }
+                        Data += "," + sMatCode + "#" + sActWeight;
+                    }
+
+                    tagDP.SetData("EV_L3MSG_SND_BHKI02", Data);
+                    DialogResult dr = MessageBox.Show("停车位详细实绩发送成功！", "提示", MessageBoxButtons.OK);
+                    ParkClassLibrary.HMILogger.WriteLog("停车位详细实绩发送", "实绩发送：" + Data, ParkClassLibrary.LogLevel.Info, this.Text);
+                }                
+            }
+        }
     }
 }

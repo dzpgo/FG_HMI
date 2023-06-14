@@ -117,6 +117,7 @@ namespace UACSView.View_Parking
         {
             this.dtp_StartTime.Value = DateTime.Now;
             this.dtp_EndTime.Value = DateTime.Now;
+            
             //加载扫描数据
             RefreshHMILaserOutData();
             //加载L3装车要求
@@ -154,7 +155,6 @@ namespace UACSView.View_Parking
                 //tbCAR_NO.Text = strCarNo;
                 tbPLAN_NO.Text = strPlanNo;
                 //tbL3_TASK_NO.Text = strTaskNo;
-
                 // 根据L3配载计划，查询装车材料信息
                 DataTable dataTable = BindMatStockByL3Stowage2(false, strCarNo, strPlanNo);
                 this.dataGridView1.DataSource = dataTable;
@@ -165,7 +165,7 @@ namespace UACSView.View_Parking
                 tbPLAN_NO.Text = "";
                 //tbL3_TASK_NO.Text = "无";
                 // 初始数据
-                DataTable dataTable = BindMatStockByL3Stowage2(true, "", "");
+                DataTable dataTable = BindMatStockByL3Stowage2(true, "1", "");
                 this.dataGridView1.DataSource = dataTable;
             }
         }
@@ -1238,18 +1238,18 @@ namespace UACSView.View_Parking
             dr["TypeValue"] = "3";
             dr["TypeName"] = "计划完成";
             dt.Rows.Add(dr);
-            dr = dt.NewRow();
-            dr["TypeValue"] = "4";
-            dr["TypeName"] = "卸料开始";
-            dt.Rows.Add(dr);
-            dr = dt.NewRow();
-            dr["TypeValue"] = "5";
-            dr["TypeName"] = "卸料完成";
-            dt.Rows.Add(dr);
+            //dr = dt.NewRow();
+            //dr["TypeValue"] = "4";
+            //dr["TypeName"] = "卸料开始";
+            //dt.Rows.Add(dr);
+            //dr = dt.NewRow();
+            //dr["TypeValue"] = "5";
+            //dr["TypeName"] = "卸料完成";
+            //dt.Rows.Add(dr);
             this.cmb_PlanStatus.DataSource = dt;
             this.cmb_PlanStatus.DisplayMember = "TypeName";
             this.cmb_PlanStatus.ValueMember = "TypeValue";
-            this.cmb_PlanStatus.SelectedIndex = 0;
+            this.cmb_PlanStatus.SelectedIndex = 1;
         }
         #endregion
 
@@ -1476,11 +1476,11 @@ namespace UACSView.View_Parking
                     return;
                 if (planStatus.Equals("未执行"))
                 {
-                    dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGoldenrodYellow;
+                    dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(206)))), ((int)(((byte)(105)))));
                 }
                 else if (planStatus.Equals("执行中"))
                 {
-                    //dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Yellow;
+                    dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Tomato;
                 }
                 else if (planStatus.Equals("计划完成"))
                 {

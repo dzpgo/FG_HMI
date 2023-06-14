@@ -217,6 +217,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UnitMonitor\FrmUnitRotateRequest.resx">
       <DependentUpon>FrmUnitRotateRequest.cs</DependentUpon>
@@ -234,6 +235,9 @@
       <Project>{d3f6ff21-68b2-40e4-9d1c-603eb926c87c}</Project>
       <Name>UACSDAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up_btn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -104,6 +104,8 @@ namespace UACSDAL
                     lstAdress.Add(tag_Head + CraneStatusBase.ADRESS_PLAN_DOWN_Z);
                     // 夹钳温度
                     lstAdress.Add(tag_Head + CraneStatusBase.ADRESS_CRANE_COIL_TEMPERATURE);
+                    // 工位装料计划完成（1:完成 0：未完成）
+                    lstAdress.Add(CraneStatusBase.ADRESS_PLAN_FINISH + "_A" + theCranNO);
 
                     #region 红绿灯
                     lstAdress.Add(TrafficLightBase.AREA_RESERVE_1);
@@ -155,9 +157,8 @@ namespace UACSDAL
                     lstAdress.Add(TrafficLightBase.AREA_RESERVE_24);
                     lstAdress.Add(TrafficLightBase.AREA_RESERVE_25);
                     lstAdress.Add(TrafficLightBase.AREA_RESERVE_26);
-                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_27); 
+                    lstAdress.Add(TrafficLightBase.AREA_RESERVE_27);
                     #endregion
-
                 }
                 arrTagAdress = lstAdress.ToArray<string>();
             }
@@ -315,6 +316,10 @@ namespace UACSDAL
                 craneBase.PlanDownZ = get_value_real(tag_Head + CraneStatusBase.ADRESS_PLAN_DOWN_Z);
                 // 夹钳温度
                 craneBase.COIL_TEMPERATURE = get_value_x(tag_Head + CraneStatusBase.ADRESS_CRANE_COIL_TEMPERATURE);
+
+                string tag_HeadA =  "_A" + craneBase.CraneNO;
+                //工位装料计划完成（1:完成 0：未完成）
+                craneBase.EV_PLAN_FINISH = get_value_x(CraneStatusBase.ADRESS_PLAN_FINISH + tag_HeadA);
             }
             catch (Exception ex)
             {

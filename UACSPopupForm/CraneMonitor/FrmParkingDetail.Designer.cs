@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
             this.plParking = new System.Windows.Forms.Panel();
             this.dgvCraneOder = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,6 +52,7 @@
             this.bt_Refurbish = new System.Windows.Forms.Button();
             this.bt_Save = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.bt_Send = new System.Windows.Forms.Button();
             this.plParking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCraneOder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStowageMessage)).BeginInit();
@@ -76,23 +77,23 @@
             this.dgvCraneOder.AllowUserToDeleteRows = false;
             this.dgvCraneOder.AllowUserToResizeRows = false;
             this.dgvCraneOder.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCraneOder.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCraneOder.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
             this.dgvCraneOder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCraneOder.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCraneOder.DefaultCellStyle = dataGridViewCellStyle26;
             this.dgvCraneOder.EnableHeadersVisualStyles = false;
             this.dgvCraneOder.Location = new System.Drawing.Point(12, 322);
             this.dgvCraneOder.Name = "dgvCraneOder";
@@ -120,23 +121,23 @@
             this.dgvStowageMessage.AllowUserToDeleteRows = false;
             this.dgvStowageMessage.AllowUserToResizeRows = false;
             this.dgvStowageMessage.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStowageMessage.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStowageMessage.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.dgvStowageMessage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvStowageMessage.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvStowageMessage.DefaultCellStyle = dataGridViewCellStyle28;
             this.dgvStowageMessage.EnableHeadersVisualStyles = false;
             this.dgvStowageMessage.Location = new System.Drawing.Point(12, 28);
             this.dgvStowageMessage.Name = "dgvStowageMessage";
@@ -145,6 +146,7 @@
             this.dgvStowageMessage.RowTemplate.Height = 23;
             this.dgvStowageMessage.Size = new System.Drawing.Size(1245, 258);
             this.dgvStowageMessage.TabIndex = 8;
+            this.dgvStowageMessage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStowageMessage_CellContentClick);
             this.dgvStowageMessage.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvStowageMessage_CellPainting);
             this.dgvStowageMessage.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvStowageMessage_CurrentCellDirtyStateChanged);
             this.dgvStowageMessage.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvStowageMessage_EditingControlShowing);
@@ -188,7 +190,7 @@
             this.lblCarNo.AutoSize = true;
             this.lblCarNo.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblCarNo.ForeColor = System.Drawing.Color.Black;
-            this.lblCarNo.Location = new System.Drawing.Point(228, 579);
+            this.lblCarNo.Location = new System.Drawing.Point(212, 579);
             this.lblCarNo.Name = "lblCarNo";
             this.lblCarNo.Size = new System.Drawing.Size(70, 22);
             this.lblCarNo.TabIndex = 4;
@@ -199,7 +201,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(173, 579);
+            this.label6.Location = new System.Drawing.Point(157, 579);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 22);
             this.label6.TabIndex = 3;
@@ -210,7 +212,7 @@
             this.lblCarStatus.AutoSize = true;
             this.lblCarStatus.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblCarStatus.ForeColor = System.Drawing.Color.Black;
-            this.lblCarStatus.Location = new System.Drawing.Point(560, 579);
+            this.lblCarStatus.Location = new System.Drawing.Point(506, 579);
             this.lblCarStatus.Name = "lblCarStatus";
             this.lblCarStatus.Size = new System.Drawing.Size(70, 22);
             this.lblCarStatus.TabIndex = 6;
@@ -221,7 +223,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(503, 579);
+            this.label8.Location = new System.Drawing.Point(449, 579);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 22);
             this.label8.TabIndex = 5;
@@ -232,7 +234,7 @@
             this.lblCarType.AutoSize = true;
             this.lblCarType.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblCarType.ForeColor = System.Drawing.Color.Black;
-            this.lblCarType.Location = new System.Drawing.Point(411, 579);
+            this.lblCarType.Location = new System.Drawing.Point(376, 579);
             this.lblCarType.Name = "lblCarType";
             this.lblCarType.Size = new System.Drawing.Size(70, 22);
             this.lblCarType.TabIndex = 8;
@@ -243,7 +245,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(322, 579);
+            this.label5.Location = new System.Drawing.Point(287, 579);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 22);
             this.label5.TabIndex = 7;
@@ -254,7 +256,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(650, 579);
+            this.label4.Location = new System.Drawing.Point(577, 579);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(90, 22);
             this.label4.TabIndex = 5;
@@ -265,7 +267,7 @@
             this.lb_REQ_WEIGHT.AutoSize = true;
             this.lb_REQ_WEIGHT.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lb_REQ_WEIGHT.ForeColor = System.Drawing.Color.Black;
-            this.lb_REQ_WEIGHT.Location = new System.Drawing.Point(732, 579);
+            this.lb_REQ_WEIGHT.Location = new System.Drawing.Point(659, 579);
             this.lb_REQ_WEIGHT.Name = "lb_REQ_WEIGHT";
             this.lb_REQ_WEIGHT.Size = new System.Drawing.Size(70, 22);
             this.lb_REQ_WEIGHT.TabIndex = 6;
@@ -276,7 +278,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(816, 579);
+            this.label9.Location = new System.Drawing.Point(730, 579);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 22);
             this.label9.TabIndex = 5;
@@ -287,7 +289,7 @@
             this.lb_ACT_WEIGHT.AutoSize = true;
             this.lb_ACT_WEIGHT.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lb_ACT_WEIGHT.ForeColor = System.Drawing.Color.Black;
-            this.lb_ACT_WEIGHT.Location = new System.Drawing.Point(901, 579);
+            this.lb_ACT_WEIGHT.Location = new System.Drawing.Point(815, 579);
             this.lb_ACT_WEIGHT.Name = "lb_ACT_WEIGHT";
             this.lb_ACT_WEIGHT.Size = new System.Drawing.Size(70, 22);
             this.lb_ACT_WEIGHT.TabIndex = 6;
@@ -324,7 +326,7 @@
             this.button1.BackgroundImage = global::UACSPopupForm.Properties.Resources.bg_btn;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(990, 569);
+            this.button1.Location = new System.Drawing.Point(851, 569);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 40);
             this.button1.TabIndex = 9;
@@ -332,6 +334,19 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // bt_Send
+            // 
+            this.bt_Send.BackgroundImage = global::UACSPopupForm.Properties.Resources.bg_btn;
+            this.bt_Send.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.bt_Send.ForeColor = System.Drawing.Color.White;
+            this.bt_Send.Location = new System.Drawing.Point(942, 569);
+            this.bt_Send.Name = "bt_Send";
+            this.bt_Send.Size = new System.Drawing.Size(85, 40);
+            this.bt_Send.TabIndex = 9;
+            this.bt_Send.Text = "发送";
+            this.bt_Send.UseVisualStyleBackColor = true;
+            this.bt_Send.Click += new System.EventHandler(this.bt_Send_Click);
             // 
             // FrmParkingDetail
             // 
@@ -341,6 +356,7 @@
             this.ClientSize = new System.Drawing.Size(1269, 619);
             this.Controls.Add(this.bt_Refurbish);
             this.Controls.Add(this.bt_Save);
+            this.Controls.Add(this.bt_Send);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblCarType);
             this.Controls.Add(this.label5);
@@ -393,6 +409,7 @@
         private System.Windows.Forms.Label lb_ACT_WEIGHT;
         private System.Windows.Forms.Button bt_Refurbish;
         private System.Windows.Forms.Button bt_Save;
+        private System.Windows.Forms.Button bt_Send;
         // private Sunisoft.IrisSkin.SkinEngine skinEngine1;
     }
 }

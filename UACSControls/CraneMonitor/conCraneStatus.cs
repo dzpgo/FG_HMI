@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using UACSDAL;
 using System.Threading;
@@ -13,8 +11,8 @@ using Baosight.iSuperframe.Authorization.Interface;
 using ParkClassLibrary;
 using System.Media;
 using UACSPopupForm;
-using System.Reflection;
-using System.Collections;
+using Baosight.iSuperframe.Authorization;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace UACSControls
 {
@@ -98,7 +96,10 @@ namespace UACSControls
         bool communicate_PLC_OK = true;
         int messagebox = 0;
         int messagebox3 = 0;
-
+        int messagebox5 = 0; 
+        int messagebox6 = 0; 
+        int messagebox7 = 0;
+        int messagebox8 = 0;
         /// <summary>
         /// 存解析出来的报警代码
         /// </summary>
@@ -169,6 +170,60 @@ namespace UACSControls
                     heatBeatCounter = 0;
                     communicate_PLC_OK = true;
                     messagebox = 0;
+                }
+                if (!string.IsNullOrEmpty(craneStatusBase.EV_PLAN_FINISH.ToString()) && craneStatusBase.EV_PLAN_FINISH == 1)
+                {                   
+                    if (craneStatusBase.CraneNO == "1")
+                    {
+                        messagebox5 += 1;
+                        if (messagebox5 == 1)
+                        {
+                            this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString())));
+                        }                      
+                    }
+                    else if (craneStatusBase.CraneNO == "2")
+                    {
+                        messagebox6 += 1;
+                        if (messagebox6 == 1)
+                        {
+                            this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString())));
+                        }
+                    }
+                    else if (craneStatusBase.CraneNO == "3")
+                    {
+                        messagebox7 += 1;
+                        if (messagebox7 == 1)
+                        {
+                            this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString())));
+                        }
+                    }
+                    else if ( craneStatusBase.CraneNO == "4")
+                    {
+                        messagebox8 += 1;
+                        if (messagebox8 == 1)
+                        {
+                            this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString())));
+                        }
+                    }
+                }
+                else
+                {
+                    if (craneStatusBase.CraneNO == "1")
+                    {
+                        messagebox5 = 0;
+                    }
+                    else if (craneStatusBase.CraneNO == "2")
+                    {
+                        messagebox6 = 0;
+                    }
+                    else if (craneStatusBase.CraneNO == "3")
+                    {
+                        messagebox7 = 0;
+                    }
+                    else if (craneStatusBase.CraneNO == "4")
+                    {
+                        messagebox8 = 0;
+                    }
                 }
 
                 if (heatBeatCounter >= 20 && communicate_PLC_OK == true)
@@ -439,6 +494,64 @@ namespace UACSControls
             box.MesssageBoxFlag = 3;
             box.MesssageBoxInfo = "【" + CraneNO + "】行车载荷异常\r\n 人工或遥控起落卷时请盘库，确认库位信息！";
             box.ShowDialog();
+        }
+        private void myform(string cranmeNo)
+        {
+            FrmPlanCompletionBox myForm = new FrmPlanCompletionBox();
+            myForm.CranmeNo = cranmeNo;
+            myForm.Show();
+        }
+
+        /// <summary>
+        /// 计划完成提示弹窗
+        /// </summary>
+        /// <param name="cranmeNo">行车号</param>
+        /// <param name="orderNo">计划号</param>
+        private void OpenForm(string cranmeNo, string orderNo)
+        {
+            // 检查窗体是否已经打开
+            bool isOpen = false;
+            foreach (System.Windows.Forms.Form form in System.Windows.Forms.Application.OpenForms)
+            {
+                if (form is FrmPlanCompletionBox myForm && myForm.CranmeNo == cranmeNo && myForm.OrderNo == orderNo)
+                {
+                    isOpen = true;
+                    form.Activate();
+                    break;
+                }
+            }
+
+            // 如果窗体未打开，则打开它
+            if (!isOpen)
+            {
+                FrmPlanCompletionBox myForm = new FrmPlanCompletionBox(cranmeNo, orderNo);
+                myForm.Show();
+            }
+        }
+        /// <summary>
+        /// 计划已完成提醒
+        /// </summary>
+        private void showPlanCompletionBox(string cranmeNo)
+        {
+            // 检查窗体是否已经打开
+            bool isOpen = false;
+            foreach (System.Windows.Forms.Form form in System.Windows.Forms.Application.OpenForms)
+            {
+                if (form.GetType() == typeof(FrmPlanCompletionBox))
+                {
+                    isOpen = true;
+                    form.Activate();
+                    break;
+                }
+            }
+
+            // 如果窗体未打开，则打开它
+            if (!isOpen)
+            {
+                FrmPlanCompletionBox myForm = new FrmPlanCompletionBox();
+                myForm.CranmeNo = cranmeNo;
+                myForm.Show();
+            }
         }
 
         /// <summary>

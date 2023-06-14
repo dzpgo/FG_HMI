@@ -1,26 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using UACS;
 using Baosight.iSuperframe.Forms;
 using UACSDAL;
-using System.Windows.Forms.VisualStyles;
-using Baosight.iSuperframe.Common;
-using System.Xml;
-using Microsoft.Office.Interop.Outlook;
-using System.Windows.Markup;
-using System.Windows.Documents;
 //using Microsoft.Office.Interop.Excel;
 
 namespace UACSView.View_CraneMonitor
 {
     /// <summary>
-    /// 装料实际查询
+    /// 装料实绩查询
     /// </summary>
     public partial class Achievements_Feed : FormBase
     {
@@ -36,7 +26,7 @@ namespace UACSView.View_CraneMonitor
             tagDP.ServiceName = "iplature";
             tagDP.AutoRegist = true;
             SetNull();
-            dataGridView1.DataSource =  BindMatStockByL3Stowage(tb_Query_PlanNo.Text, cmb_Query_CarNo.Text);
+            dataGridView1.DataSource =  BindMatStockByL3Stowage(tb_Query_PlanNo.Text, cmb_Query_CarNo.Text, "1");
         }
 
         #region 初始化
@@ -52,6 +42,8 @@ namespace UACSView.View_CraneMonitor
             this.dtp_EndTime.Value = DateTime.Now;
             //绑定槽号
             BindCmbCar();
+            //绑定计划状态
+            BindPlanStatus();
         }
 
         /// <summary>
@@ -92,7 +84,7 @@ namespace UACSView.View_CraneMonitor
         private void bt_Query_Click(object sender, EventArgs e)
         {
             SetNull();
-            dataGridView1.DataSource = BindMatStockByL3Stowage(tb_Query_PlanNo.Text, cmb_Query_CarNo.Text);
+            dataGridView1.DataSource = BindMatStockByL3Stowage(tb_Query_PlanNo.Text, cmb_Query_CarNo.Text, cmb_PlanStatus.SelectedValue.ToString());
             
         }
         /// <summary>
@@ -107,7 +99,7 @@ namespace UACSView.View_CraneMonitor
             this.dtp_StartTime.Value = DateTime.Now;
             this.dtp_EndTime.Value = DateTime.Now;
             SetNull();
-            dataGridView1.DataSource = BindMatStockByL3Stowage(tb_Query_PlanNo.Text, cmb_Query_CarNo.Text);
+            dataGridView1.DataSource = BindMatStockByL3Stowage(tb_Query_PlanNo.Text, cmb_Query_CarNo.Text, cmb_PlanStatus.SelectedValue.ToString());
         }
         /// <summary>
         /// 查询保存 实绩重量
@@ -308,14 +300,20 @@ namespace UACSView.View_CraneMonitor
                     }
                     //更改料槽车号
                     string gCarNo = dataGridView1.CurrentRow.Cells["GCarNo"].Value.ToString();
+                    var carno2 = gCarNo;
                     if (!gCarNo.Equals(tb_CarNo.Text.Trim()))
                     {
                         var sql2 = @"UPDATE UACS_L3_MAT_OUT_INFO SET CAR_NO = '" + tb_CarNo.Text.Trim() + "' WHERE PLAN_NO = '" + gPlanNO + "'; ";
                         var data = DB2Connect.DBHelper.ExecuteNonQuery(sql2);
                         if (data > 0)
+                        {
                             dataGridView1.CurrentRow.Cells["GCarNo"].Value = tb_CarNo.Text.Trim();
+                            carno2 = tb_CarNo.Text.Trim();
+                        }
                     }
-                    ParkClassLibrary.HMILogger.WriteLog("装料实绩查询", "装料实绩保存", ParkClassLibrary.LogLevel.Info, this.Text);
+
+                    var LogText = "计划号："+ gPlanNO + ", 料槽号：" + carno2 + ", "+ gMatCode_1+"#" + tb_Feed_Weight_1.Text.Trim() + ", " + gMatCode_2 + "#" + tb_Feed_Weight_2.Text.Trim() + ", " + gMatCode_3 + "#" + tb_Feed_Weight_3.Text.Trim() + ", " + gMatCode_4 + "#" + tb_Feed_Weight_4.Text.Trim() + ",  " + gMatCode_5 + "#" + tb_Feed_Weight_5.Text.Trim() + ", " + gMatCode_6 + "#" + tb_Feed_Weight_6.Text.Trim() + ", " + gMatCode_7 + "#" + tb_Feed_Weight_7.Text.Trim() + ",  " + gMatCode_8 + "#" + tb_Feed_Weight_8.Text.Trim() + ", " + gMatCode_9 + "#" + tb_Feed_Weight_9.Text.Trim() + ", " + gMatCode_10 + "#" + tb_Feed_Weight_10.Text.Trim();
+                    ParkClassLibrary.HMILogger.WriteLog("装料实绩查询", "装料实绩保存, "+ LogText, ParkClassLibrary.LogLevel.Info, this.Text);
                     //刷新
                     RefreshGridView();
                 }
@@ -646,7 +644,7 @@ namespace UACSView.View_CraneMonitor
             {
                 e.Handled = true;
             }
-        } 
+        }
         #endregion
         #endregion
 
@@ -656,27 +654,43 @@ namespace UACSView.View_CraneMonitor
         /// </summary>
         /// <param name="PlanNo">计划号</param>
         /// <param name="CarNo">行车号</param>
+        /// <param name="PlanStatus">计划状态</param>
         /// <returns></returns>
-        private DataTable BindMatStockByL3Stowage(string PlanNo, string CarNo)
+        private DataTable BindMatStockByL3Stowage(string PlanNo, string CarNo,string PlanStatus)
         {
+            if (PlanStatus == "全部" || PlanStatus == "0")
+                PlanStatus = "";
             DataTable dtResult = InitDataTable(dataGridView1);            
             string startTime = this.dtp_StartTime.Value.ToString("yyyyMMdd000000");  //开始时间
             string endTime = this.dtp_EndTime.Value.ToString("yyyyMMdd235959");  //结束时间
             DataTable tbL3_MAT_OUT_INFO = new DataTable("UACS_L3_MAT_OUT_INFO");
             string sqlText_All = @" SELECT 0 AS CHECK_COLUMN, WORK_SEQ_NO, OPER_FLAG, PLAN_NO, BOF_NO, CAR_NO, MAT_CODE_1, WEIGHT_1, MAT_CODE_2, WEIGHT_2, MAT_CODE_3, WEIGHT_3, 
             MAT_CODE_4, WEIGHT_4, MAT_CODE_5, WEIGHT_5, MAT_CODE_6, WEIGHT_6, MAT_CODE_7, WEIGHT_7, MAT_CODE_8, WEIGHT_8, MAT_CODE_9, WEIGHT_9, MAT_CODE_10, 
-            WEIGHT_10, PLAN_STATUS, REC_TIME, UPD_TIME, CYCLE_COUNT, MAT_NET_WT, WT_TIME, 
+            WEIGHT_10, 
+            CASE PLAN_STATUS
+                WHEN 1 THEN '未执行'
+                WHEN 2 THEN '执行中'
+                WHEN 3 THEN '计划完成'
+                WHEN 4 THEN '卸料开始'
+                WHEN 5 THEN '卸料完成'
+                ELSE '未知'
+                END AS PLAN_STATUS, 
+            REC_TIME, UPD_TIME, CYCLE_COUNT, MAT_NET_WT, WT_TIME, 
             '0' AS Act_Weight_1, '0' AS Act_Weight_2, '0' AS Act_Weight_3, '0' AS Act_Weight_4, '0' AS Act_Weight_5, '0' AS Act_Weight_6, '0' AS Act_Weight_7, '0' AS Act_Weight_8, '0' AS Act_Weight_9, '0' AS Act_Weight_10, '' AS TO_STOCK_NO 
             FROM UACSAPP.UACS_L3_MAT_OUT_INFO 
             WHERE 1 = 1 ";
             sqlText_All += " AND REC_TIME >= '{0}' and REC_TIME <= '{1}' ";
             if (!string.IsNullOrEmpty(CarNo) && !CarNo.Equals("无"))
             {
-                sqlText_All += "AND CAR_NO ='" + CarNo + "'";
+                sqlText_All += "AND CAR_NO ='" + CarNo + "' ";
             }
             if (!string.IsNullOrEmpty(PlanNo))
             {
-                sqlText_All += "AND PLAN_NO ='" + PlanNo + "'";
+                sqlText_All += "AND PLAN_NO ='" + PlanNo + "' ";
+            }
+            if (!string.IsNullOrEmpty(PlanStatus))
+            {
+                sqlText_All += "AND PLAN_STATUS ='" + PlanStatus + "' ";
             }
             //按 计划号>流水号>记录时间>更新时间 降序
             sqlText_All += " order by WORK_SEQ_NO DESC,PLAN_NO DESC,REC_TIME DESC,UPD_TIME DESC ";
@@ -794,6 +808,7 @@ namespace UACSView.View_CraneMonitor
                     dataRow["PLAN_NO"].ToString(),
                     dataRow["BOF_NO"].ToString(),
                     dataRow["CAR_NO"].ToString(),
+                    dataRow["PLAN_STATUS"].ToString(),
                     dataRow["MAT_CODE_1"].ToString(),
                     dataRow["WEIGHT_1"].ToString(),
                     dataRow["Act_Weight_1"].ToString(),
@@ -823,7 +838,7 @@ namespace UACSView.View_CraneMonitor
                     dataRow["Act_Weight_9"].ToString(),
                     dataRow["MAT_CODE_10"].ToString(),
                     dataRow["WEIGHT_10"].ToString(),
-                    dataRow["Act_Weight_10"].ToString(),
+                    dataRow["Act_Weight_10"].ToString(),                    
                     dataRow["TO_STOCK_NO"].ToString()
                     );
 
@@ -1302,6 +1317,46 @@ namespace UACSView.View_CraneMonitor
             }
         }
 
+        /// <summary>
+        /// 绑定计划状态
+        /// </summary>
+        private void BindPlanStatus()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("TypeValue");
+            dt.Columns.Add("TypeName");
+            DataRow dr;
+            dr = dt.NewRow();
+            dr["TypeValue"] = "0";
+            dr["TypeName"] = "全部";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["TypeValue"] = "1";
+            dr["TypeName"] = "未执行";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["TypeValue"] = "2";
+            dr["TypeName"] = "执行中";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["TypeValue"] = "3";
+            dr["TypeName"] = "计划完成";
+            dt.Rows.Add(dr);
+            //dr = dt.NewRow();
+            //dr["TypeValue"] = "4";
+            //dr["TypeName"] = "卸料开始";
+            //dt.Rows.Add(dr);
+            //dr = dt.NewRow();
+            //dr["TypeValue"] = "5";
+            //dr["TypeName"] = "卸料完成";
+            //dt.Rows.Add(dr);
+            this.cmb_PlanStatus.DataSource = dt;
+            this.cmb_PlanStatus.DisplayMember = "TypeName";
+            this.cmb_PlanStatus.ValueMember = "TypeValue";
+            this.cmb_PlanStatus.SelectedIndex = 1;
+        }
+
+
 
         #endregion
 
@@ -1555,6 +1610,38 @@ namespace UACSView.View_CraneMonitor
 
         #endregion
 
-
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                var planStatus = this.dataGridView1.Rows[e.RowIndex].Cells["PLAN_STATUS"].Value.ToString().Trim();
+                if (string.IsNullOrEmpty(planStatus))
+                    return;
+                if (planStatus.Equals("未执行"))
+                {
+                    dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(206)))), ((int)(((byte)(105)))));
+                }
+                else if (planStatus.Equals("执行中"))
+                {
+                    dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Tomato;
+                }
+                else if (planStatus.Equals("计划完成"))
+                {
+                    //dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
+                }
+                else if (planStatus.Equals("卸料开始"))
+                {
+                    //dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Yellow;
+                }
+                else if (planStatus.Equals("卸料完成"))
+                {
+                    //dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
+                }
+                else
+                {
+                    //dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
+                }
+            }
+        }
     }
 }
