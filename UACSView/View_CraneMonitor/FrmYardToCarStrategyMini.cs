@@ -35,7 +35,7 @@ namespace UACSView.View_CraneMonitor
             try
             {
                 dtSource.Clear();
-                var sqlText = @"SELECT ID, CRANE_NO, PARKING_NO, GRID_START, GRID_END, FLAG_MY_DYUTY, FLAG_ENABLED, SEQ, X_DIR, Y_DIR FROM UACSAPP.UACS_ORDER_YARD_TO_CAR_STRATEGY ORDER BY ID ASC ";
+                var sqlText = @"SELECT ID, CRANE_NO, PARKING_NO, GRID_START, GRID_END, FLAG_MY_DYUTY, FLAG_ENABLED, SEQ, X_DIR, Y_DIR, FLAG_DIFFENT FROM UACSAPP.UACS_ORDER_YARD_TO_CAR_STRATEGY ORDER BY ID ASC ";
                 using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
                 {
                     dtSource.Load(rdr);
@@ -47,11 +47,13 @@ namespace UACSView.View_CraneMonitor
                         var craneNo = dr["CRANE_NO"].ToString();
                         var id = dr["id"].ToString();
                         var flagEnabled = dr["FLAG_ENABLED"].ToString();
+                        var flagDiffent = dr["FLAG_DIFFENT"].ToString();
+                        var parkingNo = dr["PARKING_NO"].ToString();
                         if (craneNo.Equals("1"))
                         {
                             if (id.Equals("1"))
                             {
-                                sb_A1_1.Checked = flagEnabled.Equals("1") ? true : false;
+                                sb_A1_1.Checked = flagEnabled.Equals("1") ? true : false;                                
                             }
                             if (id.Equals("2"))
                             {
@@ -64,7 +66,7 @@ namespace UACSView.View_CraneMonitor
                             if (id.Equals("4"))
                             {
                                 sb_A4_1.Checked = flagEnabled.Equals("1") ? true : false;
-                            }
+                            }                            
                         }
                         if (craneNo.Equals("2"))
                         {
@@ -123,6 +125,23 @@ namespace UACSView.View_CraneMonitor
                                 sb_A1_4.Checked = flagEnabled.Equals("1") ? true : false;
                             }
                         }
+
+                        if (parkingNo.Equals("A1"))
+                        {
+                            sb_FlagDiffent_A1.Checked = flagDiffent.Equals("1") ? true : false;
+                        }
+                        else if (parkingNo.Equals("A2"))
+                        {
+                            sb_FlagDiffent_A2.Checked = flagDiffent.Equals("1") ? true : false;
+                        }
+                        else if (parkingNo.Equals("A3"))
+                        {
+                            sb_FlagDiffent_A3.Checked = flagDiffent.Equals("1") ? true : false;
+                        }
+                        else if (parkingNo.Equals("A4"))
+                        {
+                            sb_FlagDiffent_A4.Checked = flagDiffent.Equals("1") ? true : false;
+                        }
                     }
                 }
             }
@@ -173,7 +192,12 @@ namespace UACSView.View_CraneMonitor
                             UPDATE UACS_ORDER_YARD_TO_CAR_STRATEGY SET FLAG_ENABLED = 1 WHERE ID = 13;
                             UPDATE UACS_ORDER_YARD_TO_CAR_STRATEGY SET FLAG_ENABLED = 0 WHERE ID = 14;
                             UPDATE UACS_ORDER_YARD_TO_CAR_STRATEGY SET FLAG_ENABLED = 0 WHERE ID = 15;
-                            UPDATE UACS_ORDER_YARD_TO_CAR_STRATEGY SET FLAG_ENABLED = 0 WHERE ID = 16;";
+                            UPDATE UACS_ORDER_YARD_TO_CAR_STRATEGY SET FLAG_ENABLED = 0 WHERE ID = 16;
+
+                            UPDATE UACS_ORDER_YARD_TO_CAR_STRATEGY SET FLAG_DIFFENT = 0 WHERE PARKING_NO = 'A1';
+                            UPDATE UACS_ORDER_YARD_TO_CAR_STRATEGY SET FLAG_DIFFENT = 0 WHERE PARKING_NO = 'A2';
+                            UPDATE UACS_ORDER_YARD_TO_CAR_STRATEGY SET FLAG_DIFFENT = 0 WHERE PARKING_NO = 'A3';
+                            UPDATE UACS_ORDER_YARD_TO_CAR_STRATEGY SET FLAG_DIFFENT = 0 WHERE PARKING_NO = 'A4';";
                     if (!string.IsNullOrEmpty(sqlText))
                     {
                         DB2Connect.DBHelper.ExecuteNonQuery(sqlText);
@@ -327,6 +351,56 @@ namespace UACSView.View_CraneMonitor
         private void sb_A4_4_Click(object sender, EventArgs e)
         {
             UpdataList("4", sb_A1_4.Checked, sb_A2_4.Checked, sb_A3_4.Checked, sb_A4_4.Checked, 16, 15, 14, 13);
+        }
+        #endregion
+
+        #region 装不同料
+        private void sb_FlagDiffent_A1_Click(object sender, EventArgs e)
+        {
+            UpdataFlagDiffent("A1", sb_FlagDiffent_A1.Checked);
+        }
+
+        private void sb_FlagDiffent_A2_Click(object sender, EventArgs e)
+        {
+            UpdataFlagDiffent("A2", sb_FlagDiffent_A2.Checked);
+        }
+
+        private void sb_FlagDiffent_A3_Click(object sender, EventArgs e)
+        {
+            UpdataFlagDiffent("A3", sb_FlagDiffent_A3.Checked);
+        }
+
+        private void sb_FlagDiffent_A4_Click(object sender, EventArgs e)
+        {
+            UpdataFlagDiffent("A4", sb_FlagDiffent_A4.Checked);
+        }
+
+        /// <summary>
+        /// 装不同料
+        /// </summary>
+        /// <param name="parkingNo">工位</param>
+        /// <param name="flagDiffent">装不同料标志 1：启用 0：关闭</param>
+        private void UpdataFlagDiffent(string parkingNo, bool flagDiffent)
+        {
+            try
+            {
+                var sqlText = @"UPDATE UACS_ORDER_YARD_TO_CAR_STRATEGY SET FLAG_DIFFENT = " + (flagDiffent ? 1 : 0) + " WHERE PARKING_NO = '" + parkingNo + "';";
+                if (!string.IsNullOrEmpty(sqlText))
+                {
+                    DB2Connect.DBHelper.ExecuteNonQuery(sqlText);
+                    HMILogger.WriteLog("多车协同", "装不同料, 工位：" + parkingNo + " ，标志：" + (flagDiffent ? "启用" : "关闭"), LogLevel.Info, this.Text);
+                    //刷新
+                    GetToCarStrategy();
+                }
+                else
+                {
+                    MessageBox.Show("没有数据更新!");
+                }
+            }
+            catch (Exception ex)
+            {
+                HMILogger.WriteLog("多车协同", "装不同料错误信息：" + ex.Message.ToString().Trim() + " ,工位：" + parkingNo + " ,标志：" + (flagDiffent ? "启用" : "关闭"), LogLevel.Info, this.Text);
+            }
         } 
         #endregion
     }

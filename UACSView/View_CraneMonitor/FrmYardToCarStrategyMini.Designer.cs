@@ -58,6 +58,11 @@
             this.bt_Cancel = new System.Windows.Forms.Button();
             this.bt_RestoreDefault = new System.Windows.Forms.Button();
             this.bt_Refresh = new System.Windows.Forms.Button();
+            this.sb_FlagDiffent_A1 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.sb_FlagDiffent_A2 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.sb_FlagDiffent_A3 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.sb_FlagDiffent_A4 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // sb_A1_1
@@ -66,7 +71,7 @@
             this.sb_A1_1.Checked = false;
             this.sb_A1_1.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
             this.sb_A1_1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sb_A1_1.Location = new System.Drawing.Point(96, 116);
+            this.sb_A1_1.Location = new System.Drawing.Point(95, 170);
             this.sb_A1_1.Name = "sb_A1_1";
             this.sb_A1_1.Size = new System.Drawing.Size(87, 27);
             this.sb_A1_1.TabIndex = 0;
@@ -76,7 +81,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.label1.Location = new System.Drawing.Point(13, 81);
+            this.label1.Location = new System.Drawing.Point(12, 135);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 25);
             this.label1.TabIndex = 94;
@@ -86,7 +91,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(121, 34);
+            this.label5.Location = new System.Drawing.Point(121, 105);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 30);
             this.label5.TabIndex = 94;
@@ -96,7 +101,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(235, 34);
+            this.label6.Location = new System.Drawing.Point(235, 105);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 30);
             this.label6.TabIndex = 94;
@@ -106,7 +111,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(356, 34);
+            this.label7.Location = new System.Drawing.Point(356, 105);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 30);
             this.label7.TabIndex = 94;
@@ -116,7 +121,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(473, 34);
+            this.label8.Location = new System.Drawing.Point(473, 105);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 30);
             this.label8.TabIndex = 94;
@@ -126,7 +131,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold);
-            this.label9.Location = new System.Drawing.Point(13, 116);
+            this.label9.Location = new System.Drawing.Point(12, 170);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(41, 30);
             this.label9.TabIndex = 94;
@@ -136,7 +141,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(13, 204);
+            this.label10.Location = new System.Drawing.Point(12, 247);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 30);
             this.label10.TabIndex = 94;
@@ -146,7 +151,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold);
-            this.label11.Location = new System.Drawing.Point(13, 299);
+            this.label11.Location = new System.Drawing.Point(12, 324);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(41, 30);
             this.label11.TabIndex = 94;
@@ -156,7 +161,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold);
-            this.label12.Location = new System.Drawing.Point(13, 394);
+            this.label12.Location = new System.Drawing.Point(12, 398);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(41, 30);
             this.label12.TabIndex = 94;
@@ -168,7 +173,7 @@
             this.sb_A1_2.Checked = false;
             this.sb_A1_2.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
             this.sb_A1_2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sb_A1_2.Location = new System.Drawing.Point(96, 207);
+            this.sb_A1_2.Location = new System.Drawing.Point(95, 250);
             this.sb_A1_2.Name = "sb_A1_2";
             this.sb_A1_2.Size = new System.Drawing.Size(87, 27);
             this.sb_A1_2.TabIndex = 0;
@@ -180,7 +185,7 @@
             this.sb_A1_3.Checked = false;
             this.sb_A1_3.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
             this.sb_A1_3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sb_A1_3.Location = new System.Drawing.Point(96, 302);
+            this.sb_A1_3.Location = new System.Drawing.Point(95, 327);
             this.sb_A1_3.Name = "sb_A1_3";
             this.sb_A1_3.Size = new System.Drawing.Size(87, 27);
             this.sb_A1_3.TabIndex = 0;
@@ -192,7 +197,7 @@
             this.sb_A1_4.Checked = false;
             this.sb_A1_4.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
             this.sb_A1_4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sb_A1_4.Location = new System.Drawing.Point(96, 397);
+            this.sb_A1_4.Location = new System.Drawing.Point(95, 401);
             this.sb_A1_4.Name = "sb_A1_4";
             this.sb_A1_4.Size = new System.Drawing.Size(87, 27);
             this.sb_A1_4.TabIndex = 0;
@@ -204,7 +209,7 @@
             this.sb_A2_1.Checked = false;
             this.sb_A2_1.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
             this.sb_A2_1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sb_A2_1.Location = new System.Drawing.Point(215, 116);
+            this.sb_A2_1.Location = new System.Drawing.Point(214, 170);
             this.sb_A2_1.Name = "sb_A2_1";
             this.sb_A2_1.Size = new System.Drawing.Size(87, 27);
             this.sb_A2_1.TabIndex = 0;
@@ -216,7 +221,7 @@
             this.sb_A2_2.Checked = false;
             this.sb_A2_2.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
             this.sb_A2_2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sb_A2_2.Location = new System.Drawing.Point(215, 207);
+            this.sb_A2_2.Location = new System.Drawing.Point(214, 250);
             this.sb_A2_2.Name = "sb_A2_2";
             this.sb_A2_2.Size = new System.Drawing.Size(87, 27);
             this.sb_A2_2.TabIndex = 0;
@@ -228,7 +233,7 @@
             this.sb_A2_3.Checked = false;
             this.sb_A2_3.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
             this.sb_A2_3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sb_A2_3.Location = new System.Drawing.Point(215, 302);
+            this.sb_A2_3.Location = new System.Drawing.Point(214, 327);
             this.sb_A2_3.Name = "sb_A2_3";
             this.sb_A2_3.Size = new System.Drawing.Size(87, 27);
             this.sb_A2_3.TabIndex = 0;
@@ -240,7 +245,7 @@
             this.sb_A2_4.Checked = false;
             this.sb_A2_4.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
             this.sb_A2_4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sb_A2_4.Location = new System.Drawing.Point(215, 397);
+            this.sb_A2_4.Location = new System.Drawing.Point(214, 401);
             this.sb_A2_4.Name = "sb_A2_4";
             this.sb_A2_4.Size = new System.Drawing.Size(87, 27);
             this.sb_A2_4.TabIndex = 0;
@@ -252,7 +257,7 @@
             this.sb_A3_1.Checked = false;
             this.sb_A3_1.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
             this.sb_A3_1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sb_A3_1.Location = new System.Drawing.Point(333, 116);
+            this.sb_A3_1.Location = new System.Drawing.Point(332, 170);
             this.sb_A3_1.Name = "sb_A3_1";
             this.sb_A3_1.Size = new System.Drawing.Size(87, 27);
             this.sb_A3_1.TabIndex = 0;
@@ -264,7 +269,7 @@
             this.sb_A3_2.Checked = false;
             this.sb_A3_2.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
             this.sb_A3_2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sb_A3_2.Location = new System.Drawing.Point(333, 207);
+            this.sb_A3_2.Location = new System.Drawing.Point(332, 250);
             this.sb_A3_2.Name = "sb_A3_2";
             this.sb_A3_2.Size = new System.Drawing.Size(87, 27);
             this.sb_A3_2.TabIndex = 0;
@@ -276,7 +281,7 @@
             this.sb_A3_3.Checked = false;
             this.sb_A3_3.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
             this.sb_A3_3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sb_A3_3.Location = new System.Drawing.Point(333, 302);
+            this.sb_A3_3.Location = new System.Drawing.Point(332, 327);
             this.sb_A3_3.Name = "sb_A3_3";
             this.sb_A3_3.Size = new System.Drawing.Size(87, 27);
             this.sb_A3_3.TabIndex = 0;
@@ -288,7 +293,7 @@
             this.sb_A3_4.Checked = false;
             this.sb_A3_4.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
             this.sb_A3_4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sb_A3_4.Location = new System.Drawing.Point(333, 397);
+            this.sb_A3_4.Location = new System.Drawing.Point(332, 401);
             this.sb_A3_4.Name = "sb_A3_4";
             this.sb_A3_4.Size = new System.Drawing.Size(87, 27);
             this.sb_A3_4.TabIndex = 0;
@@ -300,7 +305,7 @@
             this.sb_A4_1.Checked = false;
             this.sb_A4_1.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
             this.sb_A4_1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sb_A4_1.Location = new System.Drawing.Point(450, 116);
+            this.sb_A4_1.Location = new System.Drawing.Point(449, 170);
             this.sb_A4_1.Name = "sb_A4_1";
             this.sb_A4_1.Size = new System.Drawing.Size(87, 27);
             this.sb_A4_1.TabIndex = 0;
@@ -312,7 +317,7 @@
             this.sb_A4_2.Checked = false;
             this.sb_A4_2.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
             this.sb_A4_2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sb_A4_2.Location = new System.Drawing.Point(450, 207);
+            this.sb_A4_2.Location = new System.Drawing.Point(449, 250);
             this.sb_A4_2.Name = "sb_A4_2";
             this.sb_A4_2.Size = new System.Drawing.Size(87, 27);
             this.sb_A4_2.TabIndex = 0;
@@ -324,7 +329,7 @@
             this.sb_A4_3.Checked = false;
             this.sb_A4_3.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
             this.sb_A4_3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sb_A4_3.Location = new System.Drawing.Point(450, 302);
+            this.sb_A4_3.Location = new System.Drawing.Point(449, 327);
             this.sb_A4_3.Name = "sb_A4_3";
             this.sb_A4_3.Size = new System.Drawing.Size(87, 27);
             this.sb_A4_3.TabIndex = 0;
@@ -336,7 +341,7 @@
             this.sb_A4_4.Checked = false;
             this.sb_A4_4.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
             this.sb_A4_4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sb_A4_4.Location = new System.Drawing.Point(450, 397);
+            this.sb_A4_4.Location = new System.Drawing.Point(449, 401);
             this.sb_A4_4.Name = "sb_A4_4";
             this.sb_A4_4.Size = new System.Drawing.Size(87, 27);
             this.sb_A4_4.TabIndex = 0;
@@ -346,7 +351,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.label2.Location = new System.Drawing.Point(56, 39);
+            this.label2.Location = new System.Drawing.Point(56, 110);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 25);
             this.label2.TabIndex = 94;
@@ -394,6 +399,64 @@
             this.bt_Refresh.UseVisualStyleBackColor = true;
             this.bt_Refresh.Click += new System.EventHandler(this.bt_Refresh_Click);
             // 
+            // sb_FlagDiffent_A1
+            // 
+            this.sb_FlagDiffent_A1.BackColor = System.Drawing.Color.Transparent;
+            this.sb_FlagDiffent_A1.Checked = false;
+            this.sb_FlagDiffent_A1.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_FlagDiffent_A1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.sb_FlagDiffent_A1.Location = new System.Drawing.Point(95, 48);
+            this.sb_FlagDiffent_A1.Name = "sb_FlagDiffent_A1";
+            this.sb_FlagDiffent_A1.Size = new System.Drawing.Size(87, 27);
+            this.sb_FlagDiffent_A1.TabIndex = 0;
+            this.sb_FlagDiffent_A1.Click += new System.EventHandler(this.sb_FlagDiffent_A1_Click);
+            // 
+            // sb_FlagDiffent_A2
+            // 
+            this.sb_FlagDiffent_A2.BackColor = System.Drawing.Color.Transparent;
+            this.sb_FlagDiffent_A2.Checked = false;
+            this.sb_FlagDiffent_A2.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_FlagDiffent_A2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.sb_FlagDiffent_A2.Location = new System.Drawing.Point(214, 48);
+            this.sb_FlagDiffent_A2.Name = "sb_FlagDiffent_A2";
+            this.sb_FlagDiffent_A2.Size = new System.Drawing.Size(87, 27);
+            this.sb_FlagDiffent_A2.TabIndex = 0;
+            this.sb_FlagDiffent_A2.Click += new System.EventHandler(this.sb_FlagDiffent_A2_Click);
+            // 
+            // sb_FlagDiffent_A3
+            // 
+            this.sb_FlagDiffent_A3.BackColor = System.Drawing.Color.Transparent;
+            this.sb_FlagDiffent_A3.Checked = false;
+            this.sb_FlagDiffent_A3.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_FlagDiffent_A3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.sb_FlagDiffent_A3.Location = new System.Drawing.Point(332, 48);
+            this.sb_FlagDiffent_A3.Name = "sb_FlagDiffent_A3";
+            this.sb_FlagDiffent_A3.Size = new System.Drawing.Size(87, 27);
+            this.sb_FlagDiffent_A3.TabIndex = 0;
+            this.sb_FlagDiffent_A3.Click += new System.EventHandler(this.sb_FlagDiffent_A3_Click);
+            // 
+            // sb_FlagDiffent_A4
+            // 
+            this.sb_FlagDiffent_A4.BackColor = System.Drawing.Color.Transparent;
+            this.sb_FlagDiffent_A4.Checked = false;
+            this.sb_FlagDiffent_A4.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_FlagDiffent_A4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.sb_FlagDiffent_A4.Location = new System.Drawing.Point(449, 48);
+            this.sb_FlagDiffent_A4.Name = "sb_FlagDiffent_A4";
+            this.sb_FlagDiffent_A4.Size = new System.Drawing.Size(87, 27);
+            this.sb_FlagDiffent_A4.TabIndex = 0;
+            this.sb_FlagDiffent_A4.Click += new System.EventHandler(this.sb_FlagDiffent_A4_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.label3.Location = new System.Drawing.Point(-1, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(88, 25);
+            this.label3.TabIndex = 94;
+            this.label3.Text = "装不同料";
+            // 
             // FrmYardToCarStrategyMini
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -411,23 +474,28 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.sb_A4_4);
             this.Controls.Add(this.sb_A4_3);
             this.Controls.Add(this.sb_A4_2);
+            this.Controls.Add(this.sb_FlagDiffent_A4);
             this.Controls.Add(this.sb_A4_1);
             this.Controls.Add(this.sb_A3_4);
             this.Controls.Add(this.sb_A3_3);
             this.Controls.Add(this.sb_A3_2);
+            this.Controls.Add(this.sb_FlagDiffent_A3);
             this.Controls.Add(this.sb_A3_1);
             this.Controls.Add(this.sb_A2_4);
             this.Controls.Add(this.sb_A2_3);
             this.Controls.Add(this.sb_A2_2);
+            this.Controls.Add(this.sb_FlagDiffent_A2);
             this.Controls.Add(this.sb_A2_1);
             this.Controls.Add(this.sb_A1_4);
             this.Controls.Add(this.sb_A1_3);
             this.Controls.Add(this.sb_A1_2);
+            this.Controls.Add(this.sb_FlagDiffent_A1);
             this.Controls.Add(this.sb_A1_1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -471,5 +539,10 @@
         private System.Windows.Forms.Button bt_Cancel;
         private System.Windows.Forms.Button bt_RestoreDefault;
         private System.Windows.Forms.Button bt_Refresh;
+        private UACSControls.CraneMonitor.conSwitchButton sb_FlagDiffent_A1;
+        private UACSControls.CraneMonitor.conSwitchButton sb_FlagDiffent_A2;
+        private UACSControls.CraneMonitor.conSwitchButton sb_FlagDiffent_A3;
+        private UACSControls.CraneMonitor.conSwitchButton sb_FlagDiffent_A4;
+        private System.Windows.Forms.Label label3;
     }
 }
