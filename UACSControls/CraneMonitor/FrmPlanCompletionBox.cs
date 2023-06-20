@@ -11,6 +11,8 @@ namespace UACSControls
     /// </summary>
     public partial class FrmPlanCompletionBox : Form
     {
+        //防止弹出信息关闭画面
+        bool isPopupMessage = false;
         private string cranmeNo;
         private string orderNo;
         /// <summary>
@@ -62,6 +64,7 @@ namespace UACSControls
             label2.Text = "A"+ CranmeNo + " 工位计划完成了";
             //加载数据
             GetOrderQueue();
+            this.Deactivate += new EventHandler(FrmPlanCompletionBox_Deactivate);
         }
 
         /// <summary>
@@ -69,15 +72,23 @@ namespace UACSControls
         /// </summary>
         private void GetOrderQueue()
         {
-            var sqlText = @"SELECT ORDER_NO,CRANE_NO,CAR_NO,TO_STOCK_NO FROM UACS_ORDER_QUEUE WHERE ORDER_NO = '"+ OrderNo + "' AND CRANE_NO = '"+ CranmeNo + "';";
-            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
+            isPopupMessage = true;
+            try
             {
-                while (rdr.Read())
+                var sqlText = @"SELECT ORDER_NO,CRANE_NO,CAR_NO,TO_STOCK_NO FROM UACS_ORDER_QUEUE WHERE ORDER_NO = '" + OrderNo + "' AND CRANE_NO = '" + CranmeNo + "';";
+                using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
                 {
-                    CarNo = rdr["CAR_NO"].ToString();
-                    ToStockNo = rdr["TO_STOCK_NO"].ToString();
+                    while (rdr.Read())
+                    {
+                        CarNo = rdr["CAR_NO"].ToString();
+                        ToStockNo = rdr["TO_STOCK_NO"].ToString();
+                    }
                 }
             }
+            catch (Exception)
+            {
+            }
+            isPopupMessage = false;
         }
 
         /// <summary>
@@ -89,9 +100,28 @@ namespace UACSControls
         {
             this.Close();
         }
+        /// <summary>
+        /// 关闭窗体
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void FrmPlanCompletionBox_Deactivate(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!isPopupMessage)
+                {
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            isPopupMessage = true;
             ParkingBase parkingInfo = new ParkingBase();
             parkingInfo.Car_No = CarNo;
             parkingInfo.ParkingName = ToStockNo;
@@ -102,6 +132,7 @@ namespace UACSControls
             frm.PackingInfo = parkingInfo;
             frm.Show();
             this.Close();
+            isPopupMessage = false;
         }
     }
 }

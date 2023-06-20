@@ -38,7 +38,8 @@ namespace UACSPopupForm
             InitializeComponent();
             tagDP.ServiceName = "iplature";
             tagDP.AutoRegist = true;
-            InitializeTimer();
+            //定时关闭窗体
+            //InitializeTimer();
         }
         //private DataTable initial_dgv;
         public DataTable Initial_dgv = new DataTable();
@@ -107,7 +108,7 @@ namespace UACSPopupForm
             {
                 if (!isPopupMessage)
                 {
-                    //this.Close();
+                    this.Close();
                 }
             }
             catch (Exception ex)
