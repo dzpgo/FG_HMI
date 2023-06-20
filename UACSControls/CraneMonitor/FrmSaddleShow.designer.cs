@@ -37,6 +37,7 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnTianZi = new System.Windows.Forms.Button();
+            this.bt_YardmapGrid = new System.Windows.Forms.Button();
             this.btnAll = new System.Windows.Forms.Button();
             this.btnNS = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -51,8 +52,9 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.bt_YardmapGrid = new System.Windows.Forms.Button();
             this.coilPicture1 = new UACS.CoilPicture();
+            this.bt_Unblocking = new System.Windows.Forms.Button();
+            this.bt_Seal = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelSaddle.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -120,6 +122,8 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnTianZi);
+            this.panel1.Controls.Add(this.bt_Seal);
+            this.panel1.Controls.Add(this.bt_Unblocking);
             this.panel1.Controls.Add(this.bt_YardmapGrid);
             this.panel1.Controls.Add(this.btnAll);
             this.panel1.Controls.Add(this.btnNS);
@@ -153,6 +157,20 @@
             this.btnTianZi.UseVisualStyleBackColor = false;
             this.btnTianZi.Click += new System.EventHandler(this.btnTianZi_Click);
             // 
+            // bt_YardmapGrid
+            // 
+            this.bt_YardmapGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_YardmapGrid.BackColor = System.Drawing.Color.AliceBlue;
+            this.bt_YardmapGrid.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bt_YardmapGrid.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_YardmapGrid.Location = new System.Drawing.Point(502, 12);
+            this.bt_YardmapGrid.Name = "bt_YardmapGrid";
+            this.bt_YardmapGrid.Size = new System.Drawing.Size(116, 36);
+            this.bt_YardmapGrid.TabIndex = 22;
+            this.bt_YardmapGrid.Text = "修改信息";
+            this.bt_YardmapGrid.UseVisualStyleBackColor = false;
+            this.bt_YardmapGrid.Click += new System.EventHandler(this.bt_YardmapGrid_Click);
+            // 
             // btnAll
             // 
             this.btnAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -185,7 +203,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(362, 24);
+            this.label6.Location = new System.Drawing.Point(208, 23);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 17);
             this.label6.TabIndex = 21;
@@ -195,7 +213,7 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.Yellow;
-            this.panel8.Location = new System.Drawing.Point(335, 12);
+            this.panel8.Location = new System.Drawing.Point(181, 11);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(20, 33);
             this.panel8.TabIndex = 20;
@@ -205,7 +223,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(256, 24);
+            this.label4.Location = new System.Drawing.Point(153, 24);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 17);
             this.label4.TabIndex = 16;
@@ -215,7 +233,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Red;
-            this.panel4.Location = new System.Drawing.Point(232, 12);
+            this.panel4.Location = new System.Drawing.Point(129, 12);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(20, 33);
             this.panel4.TabIndex = 15;
@@ -225,7 +243,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(142, 24);
+            this.label3.Location = new System.Drawing.Point(100, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 17);
             this.label3.TabIndex = 14;
@@ -235,7 +253,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Black;
-            this.panel3.Location = new System.Drawing.Point(118, 12);
+            this.panel3.Location = new System.Drawing.Point(76, 11);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(20, 33);
             this.panel3.TabIndex = 13;
@@ -294,20 +312,6 @@
             this.timer1.Interval = 2000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // bt_YardmapGrid
-            // 
-            this.bt_YardmapGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bt_YardmapGrid.BackColor = System.Drawing.Color.AliceBlue;
-            this.bt_YardmapGrid.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bt_YardmapGrid.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bt_YardmapGrid.Location = new System.Drawing.Point(502, 12);
-            this.bt_YardmapGrid.Name = "bt_YardmapGrid";
-            this.bt_YardmapGrid.Size = new System.Drawing.Size(116, 36);
-            this.bt_YardmapGrid.TabIndex = 22;
-            this.bt_YardmapGrid.Text = "修改信息";
-            this.bt_YardmapGrid.UseVisualStyleBackColor = false;
-            this.bt_YardmapGrid.Click += new System.EventHandler(this.bt_YardmapGrid_Click);
-            // 
             // coilPicture1
             // 
             this.coilPicture1.ButtonDImage = ((System.Drawing.Image)(resources.GetObject("coilPicture1.ButtonDImage")));
@@ -334,6 +338,34 @@
             this.coilPicture1.Unit_no = null;
             this.coilPicture1.UpEnable = true;
             this.coilPicture1.UpVisiable = true;
+            // 
+            // bt_Unblocking
+            // 
+            this.bt_Unblocking.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_Unblocking.BackColor = System.Drawing.Color.AliceBlue;
+            this.bt_Unblocking.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bt_Unblocking.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_Unblocking.Location = new System.Drawing.Point(380, 12);
+            this.bt_Unblocking.Name = "bt_Unblocking";
+            this.bt_Unblocking.Size = new System.Drawing.Size(116, 36);
+            this.bt_Unblocking.TabIndex = 22;
+            this.bt_Unblocking.Text = "料格解封";
+            this.bt_Unblocking.UseVisualStyleBackColor = false;
+            this.bt_Unblocking.Click += new System.EventHandler(this.bt_Unblocking_Click);
+            // 
+            // bt_Seal
+            // 
+            this.bt_Seal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_Seal.BackColor = System.Drawing.Color.AliceBlue;
+            this.bt_Seal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bt_Seal.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_Seal.Location = new System.Drawing.Point(258, 12);
+            this.bt_Seal.Name = "bt_Seal";
+            this.bt_Seal.Size = new System.Drawing.Size(116, 36);
+            this.bt_Seal.TabIndex = 22;
+            this.bt_Seal.Text = "料格封红";
+            this.bt_Seal.UseVisualStyleBackColor = false;
+            this.bt_Seal.Click += new System.EventHandler(this.bt_Seal_Click);
             // 
             // FrmSaddleShow
             // 
@@ -383,6 +415,8 @@
         private System.Windows.Forms.Button btnAll;
         private System.Windows.Forms.Button btnNS;
         private System.Windows.Forms.Button bt_YardmapGrid;
+        private System.Windows.Forms.Button bt_Seal;
+        private System.Windows.Forms.Button bt_Unblocking;
         // private Sunisoft.IrisSkin.SkinEngine skinEngine1;
     }
 }

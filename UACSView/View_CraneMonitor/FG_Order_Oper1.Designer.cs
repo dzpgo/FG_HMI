@@ -34,10 +34,33 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tb_OrderNo = new System.Windows.Forms.Panel();
+            this.bt_OrderNo = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbb_CRANE_MODE = new System.Windows.Forms.ComboBox();
+            this.cbb_BAY_NO = new System.Windows.Forms.ComboBox();
+            this.dateTimePicker2_recTime = new System.Windows.Forms.DateTimePicker();
+            this.textWORK_SEQ_NO = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dateTimePicker1_recTime = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.btnQuery = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ucPageDemo = new UACSControls.Page.ucPage();
             this.OPER_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ROWNUM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalRows = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORDER_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CRANE_MODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CRANE_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ORDER_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ORDER_TYPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BAY_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MAT_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,28 +79,12 @@
             this.CMD_STATUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CMD_SEQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.REC_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.cbb_CRANE_MODE = new System.Windows.Forms.ComboBox();
-            this.cbb_BAY_NO = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker2_recTime = new System.Windows.Forms.DateTimePicker();
-            this.textWORK_SEQ_NO = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePicker1_recTime = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.btnQuery = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.tb_OrderNo.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -88,7 +95,7 @@
             this.groupBox2.Controls.Add(this.panel2);
             this.groupBox2.Location = new System.Drawing.Point(-2, 97);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1286, 520);
+            this.groupBox2.Size = new System.Drawing.Size(1393, 625);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             // 
@@ -98,7 +105,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 17);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1280, 500);
+            this.panel2.Size = new System.Drawing.Size(1387, 605);
             this.panel2.TabIndex = 3;
             // 
             // dataGridView1
@@ -119,9 +126,11 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OPER_ID,
+            this.ROWNUM,
+            this.TotalRows,
+            this.ORDER_NO,
             this.CRANE_MODE,
             this.CRANE_NO,
-            this.ORDER_NO,
             this.ORDER_TYPE,
             this.BAY_NO,
             this.MAT_CODE,
@@ -166,8 +175,267 @@
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1280, 500);
+            this.dataGridView1.Size = new System.Drawing.Size(1387, 605);
             this.dataGridView1.TabIndex = 2;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.tb_OrderNo);
+            this.groupBox1.Location = new System.Drawing.Point(-2, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1396, 94);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            // 
+            // tb_OrderNo
+            // 
+            this.tb_OrderNo.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.tb_OrderNo.Controls.Add(this.bt_OrderNo);
+            this.tb_OrderNo.Controls.Add(this.label3);
+            this.tb_OrderNo.Controls.Add(this.cbb_CRANE_MODE);
+            this.tb_OrderNo.Controls.Add(this.cbb_BAY_NO);
+            this.tb_OrderNo.Controls.Add(this.dateTimePicker2_recTime);
+            this.tb_OrderNo.Controls.Add(this.textWORK_SEQ_NO);
+            this.tb_OrderNo.Controls.Add(this.label6);
+            this.tb_OrderNo.Controls.Add(this.dateTimePicker1_recTime);
+            this.tb_OrderNo.Controls.Add(this.label7);
+            this.tb_OrderNo.Controls.Add(this.label2);
+            this.tb_OrderNo.Controls.Add(this.label1);
+            this.tb_OrderNo.Controls.Add(this.label4);
+            this.tb_OrderNo.Controls.Add(this.button3);
+            this.tb_OrderNo.Controls.Add(this.button2);
+            this.tb_OrderNo.Controls.Add(this.button1);
+            this.tb_OrderNo.Controls.Add(this.button4);
+            this.tb_OrderNo.Controls.Add(this.btnQuery);
+            this.tb_OrderNo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb_OrderNo.Location = new System.Drawing.Point(3, 17);
+            this.tb_OrderNo.Name = "tb_OrderNo";
+            this.tb_OrderNo.Size = new System.Drawing.Size(1390, 74);
+            this.tb_OrderNo.TabIndex = 14;
+            // 
+            // bt_OrderNo
+            // 
+            this.bt_OrderNo.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_OrderNo.Location = new System.Drawing.Point(442, 42);
+            this.bt_OrderNo.Name = "bt_OrderNo";
+            this.bt_OrderNo.Size = new System.Drawing.Size(121, 29);
+            this.bt_OrderNo.TabIndex = 9;
+            this.bt_OrderNo.WordWrap = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(374, 46);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 21);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "指令号:";
+            // 
+            // cbb_CRANE_MODE
+            // 
+            this.cbb_CRANE_MODE.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbb_CRANE_MODE.FormattingEnabled = true;
+            this.cbb_CRANE_MODE.Location = new System.Drawing.Point(443, 5);
+            this.cbb_CRANE_MODE.Name = "cbb_CRANE_MODE";
+            this.cbb_CRANE_MODE.Size = new System.Drawing.Size(120, 29);
+            this.cbb_CRANE_MODE.TabIndex = 7;
+            // 
+            // cbb_BAY_NO
+            // 
+            this.cbb_BAY_NO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbb_BAY_NO.FormattingEnabled = true;
+            this.cbb_BAY_NO.Location = new System.Drawing.Point(669, 5);
+            this.cbb_BAY_NO.Name = "cbb_BAY_NO";
+            this.cbb_BAY_NO.Size = new System.Drawing.Size(120, 29);
+            this.cbb_BAY_NO.TabIndex = 8;
+            // 
+            // dateTimePicker2_recTime
+            // 
+            this.dateTimePicker2_recTime.CustomFormat = "yyyy/MM/dd";
+            this.dateTimePicker2_recTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dateTimePicker2_recTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2_recTime.Location = new System.Drawing.Point(210, 7);
+            this.dateTimePicker2_recTime.Name = "dateTimePicker2_recTime";
+            this.dateTimePicker2_recTime.Size = new System.Drawing.Size(122, 29);
+            this.dateTimePicker2_recTime.TabIndex = 6;
+            // 
+            // textWORK_SEQ_NO
+            // 
+            this.textWORK_SEQ_NO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textWORK_SEQ_NO.Location = new System.Drawing.Point(668, 38);
+            this.textWORK_SEQ_NO.Name = "textWORK_SEQ_NO";
+            this.textWORK_SEQ_NO.Size = new System.Drawing.Size(121, 29);
+            this.textWORK_SEQ_NO.TabIndex = 10;
+            this.textWORK_SEQ_NO.WordWrap = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Location = new System.Drawing.Point(6, 11);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 21);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "日期:";
+            // 
+            // dateTimePicker1_recTime
+            // 
+            this.dateTimePicker1_recTime.CustomFormat = "yyyy/MM/dd";
+            this.dateTimePicker1_recTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dateTimePicker1_recTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1_recTime.Location = new System.Drawing.Point(58, 7);
+            this.dateTimePicker1_recTime.Name = "dateTimePicker1_recTime";
+            this.dateTimePicker1_recTime.Size = new System.Drawing.Size(121, 29);
+            this.dateTimePicker1_recTime.TabIndex = 5;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label7.Location = new System.Drawing.Point(185, 11);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(19, 20);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "~";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(359, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 21);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "操作模式:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(617, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 21);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "跨号:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(585, 42);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 21);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "物料编号:";
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.button3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(260, 42);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(72, 29);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "月度";
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(144, 42);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(72, 29);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "季度";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(35, 42);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(72, 29);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "年度";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button4
+            // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.BackColor = System.Drawing.Color.White;
+            this.button4.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.button4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(1214, 11);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(80, 40);
+            this.button4.TabIndex = 13;
+            this.button4.Text = "导出";
+            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Visible = false;
+            // 
+            // btnQuery
+            // 
+            this.btnQuery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnQuery.BackColor = System.Drawing.Color.White;
+            this.btnQuery.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.btnQuery.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuery.ForeColor = System.Drawing.Color.White;
+            this.btnQuery.Location = new System.Drawing.Point(1300, 11);
+            this.btnQuery.Name = "btnQuery";
+            this.btnQuery.Size = new System.Drawing.Size(80, 40);
+            this.btnQuery.TabIndex = 1;
+            this.btnQuery.Text = "查询";
+            this.btnQuery.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnQuery.UseVisualStyleBackColor = false;
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.ucPageDemo);
+            this.groupBox3.Location = new System.Drawing.Point(1, 721);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1390, 45);
+            this.groupBox3.TabIndex = 3;
+            this.groupBox3.TabStop = false;
+            // 
+            // ucPageDemo
+            // 
+            this.ucPageDemo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucPageDemo.CurrentPage = 0;
+            this.ucPageDemo.Location = new System.Drawing.Point(3, 12);
+            this.ucPageDemo.Name = "ucPageDemo";
+            this.ucPageDemo.PageSize = 0;
+            this.ucPageDemo.Size = new System.Drawing.Size(1381, 31);
+            this.ucPageDemo.TabIndex = 0;
+            this.ucPageDemo.TotalPages = 0;
             // 
             // OPER_ID
             // 
@@ -180,25 +448,23 @@
             this.OPER_ID.ReadOnly = true;
             this.OPER_ID.Width = 83;
             // 
-            // CRANE_MODE
+            // ROWNUM
             // 
-            this.CRANE_MODE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CRANE_MODE.DataPropertyName = "CRANE_MODE";
-            this.CRANE_MODE.Frozen = true;
-            this.CRANE_MODE.HeaderText = "操作模式";
-            this.CRANE_MODE.MinimumWidth = 8;
-            this.CRANE_MODE.Name = "CRANE_MODE";
-            this.CRANE_MODE.ReadOnly = true;
-            this.CRANE_MODE.Width = 99;
+            this.ROWNUM.DataPropertyName = "ROWNUM";
+            this.ROWNUM.HeaderText = "ID";
+            this.ROWNUM.Name = "ROWNUM";
+            this.ROWNUM.ReadOnly = true;
+            this.ROWNUM.Visible = false;
+            this.ROWNUM.Width = 52;
             // 
-            // CRANE_NO
+            // TotalRows
             // 
-            this.CRANE_NO.DataPropertyName = "CRANE_NO";
-            this.CRANE_NO.Frozen = true;
-            this.CRANE_NO.HeaderText = "行车号";
-            this.CRANE_NO.Name = "CRANE_NO";
-            this.CRANE_NO.ReadOnly = true;
-            this.CRANE_NO.Width = 83;
+            this.TotalRows.DataPropertyName = "TotalRows";
+            this.TotalRows.HeaderText = "总数";
+            this.TotalRows.Name = "TotalRows";
+            this.TotalRows.ReadOnly = true;
+            this.TotalRows.Visible = false;
+            this.TotalRows.Width = 67;
             // 
             // ORDER_NO
             // 
@@ -209,6 +475,24 @@
             this.ORDER_NO.Name = "ORDER_NO";
             this.ORDER_NO.ReadOnly = true;
             this.ORDER_NO.Width = 83;
+            // 
+            // CRANE_MODE
+            // 
+            this.CRANE_MODE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CRANE_MODE.DataPropertyName = "CRANE_MODE";
+            this.CRANE_MODE.HeaderText = "操作模式";
+            this.CRANE_MODE.MinimumWidth = 8;
+            this.CRANE_MODE.Name = "CRANE_MODE";
+            this.CRANE_MODE.ReadOnly = true;
+            this.CRANE_MODE.Width = 99;
+            // 
+            // CRANE_NO
+            // 
+            this.CRANE_NO.DataPropertyName = "CRANE_NO";
+            this.CRANE_NO.HeaderText = "行车号";
+            this.CRANE_NO.Name = "CRANE_NO";
+            this.CRANE_NO.ReadOnly = true;
+            this.CRANE_NO.Width = 83;
             // 
             // ORDER_TYPE
             // 
@@ -391,226 +675,13 @@
             this.REC_TIME.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.REC_TIME.Width = 80;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.panel1);
-            this.groupBox1.Location = new System.Drawing.Point(-2, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1286, 94);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panel1.Controls.Add(this.cbb_CRANE_MODE);
-            this.panel1.Controls.Add(this.cbb_BAY_NO);
-            this.panel1.Controls.Add(this.dateTimePicker2_recTime);
-            this.panel1.Controls.Add(this.textWORK_SEQ_NO);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.dateTimePicker1_recTime);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.btnQuery);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 17);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1280, 74);
-            this.panel1.TabIndex = 14;
-            // 
-            // cbb_CRANE_MODE
-            // 
-            this.cbb_CRANE_MODE.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbb_CRANE_MODE.FormattingEnabled = true;
-            this.cbb_CRANE_MODE.Location = new System.Drawing.Point(443, 5);
-            this.cbb_CRANE_MODE.Name = "cbb_CRANE_MODE";
-            this.cbb_CRANE_MODE.Size = new System.Drawing.Size(120, 29);
-            this.cbb_CRANE_MODE.TabIndex = 16;
-            // 
-            // cbb_BAY_NO
-            // 
-            this.cbb_BAY_NO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbb_BAY_NO.FormattingEnabled = true;
-            this.cbb_BAY_NO.Location = new System.Drawing.Point(636, 5);
-            this.cbb_BAY_NO.Name = "cbb_BAY_NO";
-            this.cbb_BAY_NO.Size = new System.Drawing.Size(120, 29);
-            this.cbb_BAY_NO.TabIndex = 16;
-            // 
-            // dateTimePicker2_recTime
-            // 
-            this.dateTimePicker2_recTime.CustomFormat = "yyyy/MM/dd";
-            this.dateTimePicker2_recTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dateTimePicker2_recTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2_recTime.Location = new System.Drawing.Point(210, 7);
-            this.dateTimePicker2_recTime.Name = "dateTimePicker2_recTime";
-            this.dateTimePicker2_recTime.Size = new System.Drawing.Size(122, 29);
-            this.dateTimePicker2_recTime.TabIndex = 12;
-            // 
-            // textWORK_SEQ_NO
-            // 
-            this.textWORK_SEQ_NO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textWORK_SEQ_NO.Location = new System.Drawing.Point(442, 41);
-            this.textWORK_SEQ_NO.Name = "textWORK_SEQ_NO";
-            this.textWORK_SEQ_NO.Size = new System.Drawing.Size(121, 29);
-            this.textWORK_SEQ_NO.TabIndex = 8;
-            this.textWORK_SEQ_NO.WordWrap = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(6, 11);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 21);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "日期:";
-            // 
-            // dateTimePicker1_recTime
-            // 
-            this.dateTimePicker1_recTime.CustomFormat = "yyyy/MM/dd";
-            this.dateTimePicker1_recTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dateTimePicker1_recTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1_recTime.Location = new System.Drawing.Point(58, 7);
-            this.dateTimePicker1_recTime.Name = "dateTimePicker1_recTime";
-            this.dateTimePicker1_recTime.Size = new System.Drawing.Size(121, 29);
-            this.dateTimePicker1_recTime.TabIndex = 10;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(185, 11);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(19, 20);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "~";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(359, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 21);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "操作模式:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(584, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 21);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "跨号:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(359, 45);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 21);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "物料编号:";
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
-            this.button3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(260, 42);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(72, 29);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "月度";
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
-            this.button2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(144, 42);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(72, 29);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "季度";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
-            this.button1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(35, 42);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 29);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "年度";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button4
-            // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
-            this.button4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(1104, 11);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(80, 40);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "导出";
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Visible = false;
-            // 
-            // btnQuery
-            // 
-            this.btnQuery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnQuery.BackColor = System.Drawing.Color.White;
-            this.btnQuery.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
-            this.btnQuery.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuery.ForeColor = System.Drawing.Color.White;
-            this.btnQuery.Location = new System.Drawing.Point(1190, 11);
-            this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(80, 40);
-            this.btnQuery.TabIndex = 13;
-            this.btnQuery.Text = "查询";
-            this.btnQuery.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnQuery.UseVisualStyleBackColor = false;
-            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
-            // 
             // FG_Order_Oper1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1283, 616);
+            this.ClientSize = new System.Drawing.Size(1393, 771);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -621,8 +692,9 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.tb_OrderNo.ResumeLayout(false);
+            this.tb_OrderNo.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -632,7 +704,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel tb_OrderNo;
         private System.Windows.Forms.ComboBox cbb_CRANE_MODE;
         private System.Windows.Forms.ComboBox cbb_BAY_NO;
         private System.Windows.Forms.DateTimePicker dateTimePicker2_recTime;
@@ -648,10 +720,16 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnQuery;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private UACSControls.Page.ucPage ucPageDemo;
+        private System.Windows.Forms.TextBox bt_OrderNo;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn OPER_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ROWNUM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalRows;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ORDER_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn CRANE_MODE;
         private System.Windows.Forms.DataGridViewTextBoxColumn CRANE_NO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ORDER_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn ORDER_TYPE;
         private System.Windows.Forms.DataGridViewTextBoxColumn BAY_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CODE;

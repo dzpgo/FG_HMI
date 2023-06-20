@@ -57,7 +57,7 @@
             // 
             this.lblPage.AutoSize = true;
             this.lblPage.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblPage.Location = new System.Drawing.Point(84, 10);
+            this.lblPage.Location = new System.Drawing.Point(89, 10);
             this.lblPage.Name = "lblPage";
             this.lblPage.Size = new System.Drawing.Size(52, 12);
             this.lblPage.TabIndex = 1;
@@ -76,7 +76,7 @@
             // btnNext
             // 
             this.btnNext.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnNext.Location = new System.Drawing.Point(152, 5);
+            this.btnNext.Location = new System.Drawing.Point(191, 5);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(27, 23);
             this.btnNext.TabIndex = 3;
@@ -86,7 +86,7 @@
             // btnLast
             // 
             this.btnLast.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnLast.Location = new System.Drawing.Point(185, 5);
+            this.btnLast.Location = new System.Drawing.Point(224, 5);
             this.btnLast.Name = "btnLast";
             this.btnLast.Size = new System.Drawing.Size(27, 23);
             this.btnLast.TabIndex = 4;
@@ -97,7 +97,7 @@
             // 
             this.cboPageSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cboPageSize.FormattingEnabled = true;
-            this.cboPageSize.Location = new System.Drawing.Point(426, 7);
+            this.cboPageSize.Location = new System.Drawing.Point(543, 7);
             this.cboPageSize.Name = "cboPageSize";
             this.cboPageSize.Size = new System.Drawing.Size(46, 20);
             this.cboPageSize.TabIndex = 5;
@@ -107,7 +107,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(393, 10);
+            this.label1.Location = new System.Drawing.Point(510, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 12);
             this.label1.TabIndex = 6;
@@ -118,7 +118,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(476, 10);
+            this.label2.Location = new System.Drawing.Point(593, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(18, 12);
             this.label2.TabIndex = 7;
@@ -129,7 +129,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(511, 10);
+            this.label3.Location = new System.Drawing.Point(628, 10);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(18, 12);
             this.label3.TabIndex = 8;
@@ -140,7 +140,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(568, 10);
+            this.label4.Location = new System.Drawing.Point(709, 10);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(18, 12);
             this.label4.TabIndex = 9;
@@ -151,7 +151,7 @@
             this.lblTotalRows.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalRows.AutoSize = true;
             this.lblTotalRows.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblTotalRows.Location = new System.Drawing.Point(535, 10);
+            this.lblTotalRows.Location = new System.Drawing.Point(652, 10);
             this.lblTotalRows.Name = "lblTotalRows";
             this.lblTotalRows.Size = new System.Drawing.Size(12, 12);
             this.lblTotalRows.TabIndex = 10;
@@ -161,7 +161,7 @@
             // 
             this.txtJumpPage.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtJumpPage.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.txtJumpPage.Location = new System.Drawing.Point(218, 5);
+            this.txtJumpPage.Location = new System.Drawing.Point(257, 5);
             this.txtJumpPage.Multiline = true;
             this.txtJumpPage.Name = "txtJumpPage";
             this.txtJumpPage.Size = new System.Drawing.Size(40, 21);
@@ -172,7 +172,7 @@
             // btnJump
             // 
             this.btnJump.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnJump.Location = new System.Drawing.Point(264, 5);
+            this.btnJump.Location = new System.Drawing.Point(303, 5);
             this.btnJump.Name = "btnJump";
             this.btnJump.Size = new System.Drawing.Size(50, 23);
             this.btnJump.TabIndex = 4;
@@ -198,7 +198,7 @@
             this.Controls.Add(this.lblPage);
             this.Controls.Add(this.btnFrist);
             this.Name = "ucPage";
-            this.Size = new System.Drawing.Size(599, 31);
+            this.Size = new System.Drawing.Size(740, 31);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -348,116 +348,139 @@ namespace UACSDAL
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_1);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_1);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_1);
                     }
                     else if (theTraffic.AreaNo.Equals("A2"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_2);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_2);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_2);
                     }
                     else if (theTraffic.AreaNo.Equals("A3"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_3);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_3);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_3);
                     }
                     else if (theTraffic.AreaNo.Equals("A4"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_4);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_4);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_4);
                     }
                     else if (theTraffic.AreaNo.Equals("A5"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_5);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_5);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_5);
                     }
                     else if (theTraffic.AreaNo.Equals("A6"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_6);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_6);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_6);
                     }
                     else if (theTraffic.AreaNo.Equals("A7"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_7);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_7);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_7);
                     }
                     else if (theTraffic.AreaNo.Equals("A8"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_8);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_8);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_8);
                     }
                     else if (theTraffic.AreaNo.Equals("A9"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_9);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_9);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_9);
                     }
                     else if (theTraffic.AreaNo.Equals("A10"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_10);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_10);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_10);
                     }
                     else if (theTraffic.AreaNo.Equals("A11"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_11);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_11);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_11);
                     }
                     else if (theTraffic.AreaNo.Equals("A12"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_12);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_12);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_12);
                     }
                     else if (theTraffic.AreaNo.Equals("A13"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_13);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_13);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_13);
                     }
                     else if (theTraffic.AreaNo.Equals("A14"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_14);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_14);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_14);
                     }
                     else if (theTraffic.AreaNo.Equals("A15"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_15);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_15);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_15);
                     }
                     else if (theTraffic.AreaNo.Equals("A16"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_16);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_16);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_16);
                     }
                     else if (theTraffic.AreaNo.Equals("A17"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_17);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_17);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_17);
                     }
                     else if (theTraffic.AreaNo.Equals("A18"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_18);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_18);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_18);
                     }
                     else if (theTraffic.AreaNo.Equals("A19"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_19);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_19);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_19);
                     }
                     else if (theTraffic.AreaNo.Equals("A20"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_20);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_20);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_20);
                     }
                     else if (theTraffic.AreaNo.Equals("A21"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_21);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_21);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_21);
                     }
                     else if (theTraffic.AreaNo.Equals("A22"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_22);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_22);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_22);
                     }
                     else if (theTraffic.AreaNo.Equals("A23"))
                     {
                         theTraffic.AreaReserve = get_value_x(TrafficLightBase.AREA_RESERVE_23);
                         theTraffic.AreaSafe = get_value_x(TrafficLightBase.AREA_SAFE_23);
+                        theTraffic.AreaGratStatus = get_value_x(TrafficLightBase.AREA_GRATSTATUS_23);
                     }
                     //工位
                     if (theTraffic.AreaNo.Equals("T1"))

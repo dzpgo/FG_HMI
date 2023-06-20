@@ -970,5 +970,12 @@ namespace UACSControls
             frm.CraneNo = craneNO;
             frm.ShowDialog();
         }
+
+        private void 修改取料位置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmChangeFromStock frm = new FrmChangeFromStock();
+            frm.CraneNo = craneNO;
+            frm.ShowDialog();
+        }
     }
 }

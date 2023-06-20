@@ -9,9 +9,11 @@ namespace UACSControls
 {
     public partial class FrmSaddleShow : Form
     {
+        private Timer timer;
         public FrmSaddleShow()
         {
             InitializeComponent();
+            InitializeTimer();
             this.Load += FrmSaddleShow_Load;
         }
 
@@ -119,11 +121,24 @@ namespace UACSControls
             set { areaBase = value; }
         }
         conStockSaddleModel stockSaddleModel = null;
+        private void InitializeTimer()
+        {
+            timer = new Timer();
+            timer.Interval = 600000; // 设置定时器的间隔（单位：毫秒）600000 = 十分钟
+            timer.Tick += Timer_Tick; // 注册定时器的Tick事件处理方法
+            timer.Start(); // 启动定时器
+        }
 
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // 在定时器Tick事件中执行关闭窗体的操作
+            Close();
+        }
 
 
         void FrmSaddleShow_Load(object sender, EventArgs e)
         {
+            
             //窗体固定大小
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
 
@@ -137,6 +152,9 @@ namespace UACSControls
                 tagDataProvider.ServiceName = tagServiceName;
                 SetReady();
             }
+            inDatas.Clear();
+            inDatas.Add("EV_PITCH_ON_ORDER_CLTS", null);
+            TagDP.Attach(inDatas);
             this.Shown += FrmSaddleShow_Shown;
             //GDIPant();
 
@@ -388,6 +406,55 @@ namespace UACSControls
             FrmSaddleShowYardmapGrid frm = new FrmSaddleShowYardmapGrid();
             frm.AreaNo = areaBase.AreaNo;
             frm.Show();
+        }
+
+        /// <summary>
+        /// 整个料格封红
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bt_Seal_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                tagDP.ServiceName = "iplature";
+                tagDP.AutoRegist = true;
+                var areaNo = areaBase.AreaNo.Split('A');
+                var Data = areaNo[1] + "," + 1;
+                //发送Tag
+                //tagDataProvider.SetData("EV_SAFE_PLC_A_US01", Data);
+                tagDP.SetData("EV_SAFE_PLC_A_US01", Data);
+                ParkClassLibrary.HMILogger.WriteLog("库区详细画面", "料格封红：" + 1, ParkClassLibrary.LogLevel.Info, this.Text);
+                MessageBox.Show("封红成功!");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("封红失败!");
+            }
+        }
+        /// <summary>
+        /// 整个料格解封
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bt_Unblocking_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                tagDP.ServiceName = "iplature";
+                tagDP.AutoRegist = true;
+                var areaNo = areaBase.AreaNo.Split('A');
+                var Data = areaNo[1] + "," + 2;
+                //发送Tag
+                //tagDataProvider.SetData("EV_SAFE_PLC_A_US01", Data);
+                tagDP.SetData("EV_SAFE_PLC_A_US01", Data);
+                ParkClassLibrary.HMILogger.WriteLog("库区详细画面", "料格解封：" + 2, ParkClassLibrary.LogLevel.Info, this.Text);
+                MessageBox.Show("解封成功!");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("解封失败!");
+            }
         }
         //画图对象
         //Graphics g;

@@ -1,25 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Baosight.iSuperframe.Forms;
 using Baosight.iSuperframe.Common;
 using Baosight.iSuperframe.Authorization.Interface;
 using Baosight.iSuperframe.TagService.Controls;
-using Baosight.iSuperframe.TagService.Interface;
 using Baosight.iSuperframe.TagService;
 using UACSControls;
 using UACSDAL;
 using System.Threading;
 using System.Runtime.InteropServices;
 using System.Drawing.Drawing2D;
-using UACSPopupForm.CraneMonitor;
 using UACSControls.CraneMonitorModel;
-using UACSDAL.CraneMonitor;
+using UACSControls.CraneMonitor;
 
 namespace UACSView.View_CraneMonitor
 {
@@ -44,6 +40,8 @@ namespace UACSView.View_CraneMonitor
         private conTrafficLightModel trfficLightModel;
         private List<conTrafficLight2> listconTrafficLightDisplay = new List<conTrafficLight2>();
         private List<TrafficLightBase> listTrafficLightBase = new List<TrafficLightBase>();
+        private List<conSwitchButton> listGratStatusDisplay2 = new List<conSwitchButton>();
+        private Dictionary<string, string> SafePlcStatusList = new Dictionary<string, string>();
         //private List<TrafficLightBase> listTrafficLightBase;
         private bool isShowCurrentBayXY = false;    //是否显示鼠标位置的XY
         private bool tabActived = true;             //是否在当前画面显示
@@ -251,6 +249,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_1.AreaReserve = item.AreaReserve;
                 conTrafficLight2_1.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_1);
+
+                consb_CarDetection_1.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_1.AreaNO = item.AreaNo;
+                consb_CarDetection_1.AreaReserve = item.AreaReserve;
+                consb_CarDetection_1.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_1);
             }
             if (item.AreaNo.Equals("A2"))
             {
@@ -258,6 +262,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_2.AreaReserve = item.AreaReserve;
                 conTrafficLight2_2.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_2);
+
+                consb_CarDetection_2.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_2.AreaNO = item.AreaNo;
+                consb_CarDetection_2.AreaReserve = item.AreaReserve;
+                consb_CarDetection_2.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_2);
             }
             if (item.AreaNo.Equals("A3"))
             {
@@ -265,6 +275,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_3.AreaReserve = item.AreaReserve;
                 conTrafficLight2_3.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_3);
+
+                consb_CarDetection_3.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_3.AreaNO = item.AreaNo;
+                consb_CarDetection_3.AreaReserve = item.AreaReserve;
+                consb_CarDetection_3.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_3);
             }
             if (item.AreaNo.Equals("A4"))
             {
@@ -272,6 +288,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_4.AreaReserve = item.AreaReserve;
                 conTrafficLight2_4.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_4);
+
+                consb_CarDetection_4.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_4.AreaNO = item.AreaNo;
+                consb_CarDetection_4.AreaReserve = item.AreaReserve;
+                consb_CarDetection_4.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_4);
             }
             if (item.AreaNo.Equals("A5"))
             {
@@ -279,6 +301,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_5.AreaReserve = item.AreaReserve;
                 conTrafficLight2_5.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_5);
+
+                consb_CarDetection_5.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_5.AreaNO = item.AreaNo;
+                consb_CarDetection_5.AreaReserve = item.AreaReserve;
+                consb_CarDetection_5.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_5);
             }
             if (item.AreaNo.Equals("A6"))
             {
@@ -286,6 +314,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_6.AreaReserve = item.AreaReserve;
                 conTrafficLight2_6.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_6);
+
+                consb_CarDetection_6.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_6.AreaNO = item.AreaNo;
+                consb_CarDetection_6.AreaReserve = item.AreaReserve;
+                consb_CarDetection_6.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_6);
             }
             if (item.AreaNo.Equals("A7"))
             {
@@ -293,6 +327,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_7.AreaReserve = item.AreaReserve;
                 conTrafficLight2_7.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_7);
+
+                consb_CarDetection_7.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_7.AreaNO = item.AreaNo;
+                consb_CarDetection_7.AreaReserve = item.AreaReserve;
+                consb_CarDetection_7.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_7);
             }
             if (item.AreaNo.Equals("A8"))
             {
@@ -300,6 +340,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_8.AreaReserve = item.AreaReserve;
                 conTrafficLight2_8.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_8);
+
+                consb_CarDetection_8.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_8.AreaNO = item.AreaNo;
+                consb_CarDetection_8.AreaReserve = item.AreaReserve;
+                consb_CarDetection_8.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_8);
             }
             if (item.AreaNo.Equals("A9"))
             {
@@ -307,6 +353,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_9.AreaReserve = item.AreaReserve;
                 conTrafficLight2_9.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_9);
+
+                consb_CarDetection_9.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_9.AreaNO = item.AreaNo;
+                consb_CarDetection_9.AreaReserve = item.AreaReserve;
+                consb_CarDetection_9.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_9);
             }
             if (item.AreaNo.Equals("A10"))
             {
@@ -314,6 +366,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_10.AreaReserve = item.AreaReserve;
                 conTrafficLight2_10.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_10);
+
+                consb_CarDetection_10.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_10.AreaNO = item.AreaNo;
+                consb_CarDetection_10.AreaReserve = item.AreaReserve;
+                consb_CarDetection_10.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_10);
             }
             if (item.AreaNo.Equals("A11"))
             {
@@ -321,6 +379,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_11.AreaReserve = item.AreaReserve;
                 conTrafficLight2_11.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_11);
+
+                consb_CarDetection_11.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_11.AreaNO = item.AreaNo;
+                consb_CarDetection_11.AreaReserve = item.AreaReserve;
+                consb_CarDetection_11.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_11);
             }
             if (item.AreaNo.Equals("A12"))
             {
@@ -328,6 +392,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_12.AreaReserve = item.AreaReserve;
                 conTrafficLight2_12.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_12);
+
+                consb_CarDetection_12.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_12.AreaNO = item.AreaNo;
+                consb_CarDetection_12.AreaReserve = item.AreaReserve;
+                consb_CarDetection_12.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_12);
             }
             if (item.AreaNo.Equals("A13"))
             {
@@ -335,6 +405,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_13.AreaReserve = item.AreaReserve;
                 conTrafficLight2_13.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_13);
+
+                consb_CarDetection_13.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_13.AreaNO = item.AreaNo;
+                consb_CarDetection_13.AreaReserve = item.AreaReserve;
+                consb_CarDetection_13.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_13);
             }
             if (item.AreaNo.Equals("A14"))
             {
@@ -342,6 +418,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_14.AreaReserve = item.AreaReserve;
                 conTrafficLight2_14.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_14);
+
+                consb_CarDetection_14.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_14.AreaNO = item.AreaNo;
+                consb_CarDetection_14.AreaReserve = item.AreaReserve;
+                consb_CarDetection_14.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_14);
             }
             if (item.AreaNo.Equals("A15"))
             {
@@ -349,6 +431,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_15.AreaReserve = item.AreaReserve;
                 conTrafficLight2_15.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_15);
+
+                consb_CarDetection_15.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_15.AreaNO = item.AreaNo;
+                consb_CarDetection_15.AreaReserve = item.AreaReserve;
+                consb_CarDetection_15.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_15);
             }
             if (item.AreaNo.Equals("A16"))
             {
@@ -356,6 +444,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_16.AreaReserve = item.AreaReserve;
                 conTrafficLight2_16.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_16);
+
+                consb_CarDetection_16.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_16.AreaNO = item.AreaNo;
+                consb_CarDetection_16.AreaReserve = item.AreaReserve;
+                consb_CarDetection_16.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_16);
             }
             if (item.AreaNo.Equals("A17"))
             {
@@ -363,6 +457,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_17.AreaReserve = item.AreaReserve;
                 conTrafficLight2_17.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_17);
+
+                consb_CarDetection_17.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_17.AreaNO = item.AreaNo;
+                consb_CarDetection_17.AreaReserve = item.AreaReserve;
+                consb_CarDetection_17.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_17);
             }
             if (item.AreaNo.Equals("A18"))
             {
@@ -370,6 +470,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_18.AreaReserve = item.AreaReserve;
                 conTrafficLight2_18.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_18);
+
+                consb_CarDetection_18.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_18.AreaNO = item.AreaNo;
+                consb_CarDetection_18.AreaReserve = item.AreaReserve;
+                consb_CarDetection_18.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_18);
             }
             if (item.AreaNo.Equals("A19"))
             {
@@ -377,6 +483,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_19.AreaReserve = item.AreaReserve;
                 conTrafficLight2_19.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_19);
+
+                consb_CarDetection_19.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_19.AreaNO = item.AreaNo;
+                consb_CarDetection_19.AreaReserve = item.AreaReserve;
+                consb_CarDetection_19.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_19);
             }
             if (item.AreaNo.Equals("A20"))
             {
@@ -384,6 +496,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_20.AreaReserve = item.AreaReserve;
                 conTrafficLight2_20.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_20);
+
+                consb_CarDetection_20.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_20.AreaNO = item.AreaNo;
+                consb_CarDetection_20.AreaReserve = item.AreaReserve;
+                consb_CarDetection_20.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_20);
             }
             if (item.AreaNo.Equals("A21"))
             {
@@ -391,6 +509,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_21.AreaReserve = item.AreaReserve;
                 conTrafficLight2_21.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_21);
+
+                consb_CarDetection_21.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_21.AreaNO = item.AreaNo;
+                consb_CarDetection_21.AreaReserve = item.AreaReserve;
+                consb_CarDetection_21.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_21);
             }
             if (item.AreaNo.Equals("A22"))
             {
@@ -398,6 +522,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_22.AreaReserve = item.AreaReserve;
                 conTrafficLight2_22.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_22);
+
+                consb_CarDetection_22.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_22.AreaNO = item.AreaNo;
+                consb_CarDetection_22.AreaReserve = item.AreaReserve;
+                consb_CarDetection_22.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_22);
             }
             if (item.AreaNo.Equals("A23"))
             {
@@ -405,6 +535,12 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_23.AreaReserve = item.AreaReserve;
                 conTrafficLight2_23.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_23);
+
+                consb_CarDetection_23.InitTagDataProvide(constData.tagServiceName);
+                consb_CarDetection_23.AreaNO = item.AreaNo;
+                consb_CarDetection_23.AreaReserve = item.AreaReserve;
+                consb_CarDetection_23.craneTrafficLightBase = item;
+                listGratStatusDisplay2.Add(consb_CarDetection_23);
             }
 
             //工位红绿灯
@@ -693,6 +829,26 @@ namespace UACSView.View_CraneMonitor
                          panelZ61Bay
                     });
                 }
+
+                //--------------------------光栅状态控件刷新-------------------------------------------
+                //光栅状态
+                GetSafePlcStatusInfo();
+                foreach (conSwitchButton conCraneVisual in listGratStatusDisplay2)
+                {
+                    conSwitchButton.RefreshControlInvoke ConCraneVisual_Invoke = new conSwitchButton.RefreshControlInvoke(conCraneVisual.RefreshControl);
+                    conCraneVisual.BeginInvoke(ConCraneVisual_Invoke, new Object[]
+                    {    craneStatusInBay.DicTrafficLightBase[conCraneVisual.AreaNO].Clone(),
+                         SafePlcStatusList,
+                        //conCraneVisual.craneTrafficLightBase,
+                         constData.Z01BaySpaceX,
+                         constData.Z01BaySpaceY,
+                         panelZ61Bay.Width,
+                         panelZ61Bay.Height,
+                         constData.xBxisleft,
+                         constData.yBxisDown,
+                         panelZ61Bay
+                    });
+                }
             }
             catch (Exception er)
             {
@@ -954,6 +1110,28 @@ namespace UACSView.View_CraneMonitor
             catch (Exception er)
             {
                 MessageBox.Show(er.Message, er.StackTrace);
+            }
+        }
+
+        /// <summary>
+        /// 安全PLC状态表
+        /// </summary>
+        private void GetSafePlcStatusInfo()
+        {
+            try
+            {
+                SafePlcStatusList.Clear();
+                string sql = @"SELECT SAFE_ID,SAFE_VALUE,YARD_NO,REC_TIME,RASTER_MODE,RASTER_STATUS FROM UACS_SAFE_PLC_STATUS WHERE YARD_NO = 'A';";
+                using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sql))
+                {
+                    while (rdr.Read())
+                    {
+                        SafePlcStatusList.Add(rdr["SAFE_ID"].ToString(), rdr["RASTER_MODE"].ToString());
+                    }
+                }
+            }
+            catch (Exception)
+            {
             }
         }
 
@@ -1972,6 +2150,138 @@ namespace UACSView.View_CraneMonitor
             }
             //刷新
             LoadAreaInfo();
-        }       
+        }
+
+        #region 光栅模式
+        private void consb_CarDetection_1_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_1, "1", consb_CarDetection_1.Checked);
+        }
+
+        private void consb_CarDetection_2_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_2, "2", consb_CarDetection_2.Checked);
+        }
+
+        private void consb_CarDetection_3_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_3, "3", consb_CarDetection_3.Checked);
+        }
+
+        private void consb_CarDetection_4_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_4, "4", consb_CarDetection_4.Checked);
+        }
+
+        private void consb_CarDetection_5_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_5, "5", consb_CarDetection_5.Checked);
+        }
+
+        private void consb_CarDetection_6_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_6, "6", consb_CarDetection_6.Checked);
+        }
+
+        private void consb_CarDetection_7_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_7, "7", consb_CarDetection_7.Checked);
+        }
+
+        private void consb_CarDetection_8_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_8, "8", consb_CarDetection_8.Checked);
+        }
+
+        private void consb_CarDetection_9_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_9, "9", consb_CarDetection_9.Checked);
+        }
+
+        private void consb_CarDetection_10_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_10, "10", consb_CarDetection_10.Checked);
+        }
+
+        private void consb_CarDetection_11_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_11, "11", consb_CarDetection_11.Checked);
+        }
+
+        private void consb_CarDetection_12_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_12, "12", consb_CarDetection_12.Checked);
+        }
+
+        private void consb_CarDetection_13_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_13, "13", consb_CarDetection_13.Checked);
+        }
+
+        private void consb_CarDetection_14_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_14, "14", consb_CarDetection_14.Checked);
+        }
+
+        private void consb_CarDetection_15_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_15, "15", consb_CarDetection_15.Checked);
+        }
+
+        private void consb_CarDetection_16_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_16, "16", consb_CarDetection_16.Checked);
+        }
+
+        private void consb_CarDetection_17_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_17, "17", consb_CarDetection_17.Checked);
+        }
+
+        private void consb_CarDetection_18_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_18, "18", consb_CarDetection_18.Checked);
+        }
+
+        private void consb_CarDetection_19_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_19, "19", consb_CarDetection_19.Checked);
+        }
+
+        private void consb_CarDetection_20_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_20, "20", consb_CarDetection_20.Checked);
+        }
+
+        private void consb_CarDetection_21_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_21, "21", consb_CarDetection_21.Checked);
+        }
+
+        private void consb_CarDetection_22_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_22, "22", consb_CarDetection_22.Checked);
+        }
+
+        private void consb_CarDetection_23_Click(object sender, EventArgs e)
+        {
+            UpdataSafePlcStatus(consb_CarDetection_23, "23", consb_CarDetection_23.Checked);
+        }
+
+        private void UpdataSafePlcStatus(conSwitchButton sb, string areaNO, bool Ischecked)
+        {
+            try
+            {
+                var Data = areaNO + "," + (Ischecked ? 4 : 3);
+                //发送Tag
+                tagDataProvider.SetData("EV_SAFE_PLC_A_US01", Data);
+                ParkClassLibrary.HMILogger.WriteLog("主监控画面", "光栅模式：" + (Ischecked ? "投用" : "取消") + " ，跨区：A" + areaNO, ParkClassLibrary.LogLevel.Info, this.Text);
+            }
+            catch (Exception)
+            {
+                ParkClassLibrary.HMILogger.WriteLog("主监控画面", " 光栅失败 ， 光栅模式：" + (Ischecked ? "投用" : "取消") + " ，跨区：A" + areaNO, ParkClassLibrary.LogLevel.Info, this.Text);
+            }
+        } 
+        #endregion
     }
 }

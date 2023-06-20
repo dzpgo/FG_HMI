@@ -243,6 +243,12 @@
     <Compile Include="FrmAddTask.designer.cs">
       <DependentUpon>FrmAddTask.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmChangeFromStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChangeFromStock.Designer.cs">
+      <DependentUpon>FrmChangeFromStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmChangeToStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -483,6 +489,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAddTask.resx">
       <DependentUpon>FrmAddTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmChangeFromStock.resx">
+      <DependentUpon>FrmChangeFromStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmChangeToStock.resx">
       <DependentUpon>FrmChangeToStock.cs</DependentUpon>

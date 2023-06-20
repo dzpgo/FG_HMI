@@ -279,12 +279,16 @@ namespace UACSView.View_CraneMonitor
 
         private void sb_A3_1_Click(object sender, EventArgs e)
         {
-            UpdataList("1", sb_A1_1.Checked, sb_A2_1.Checked, sb_A3_1.Checked, sb_A4_1.Checked, 1, 2, 3, 4);
+            sb_A3_1.Checked = false;
+            MessageBox.Show("开启失败，1#车无法帮助3#车作业!");
+            //UpdataList("1", sb_A1_1.Checked, sb_A2_1.Checked, sb_A3_1.Checked, sb_A4_1.Checked, 1, 2, 3, 4);
         }
 
         private void sb_A4_1_Click(object sender, EventArgs e)
         {
-            UpdataList("1", sb_A1_1.Checked, sb_A2_1.Checked, sb_A3_1.Checked, sb_A4_1.Checked, 1, 2, 3, 4);
+            sb_A4_1.Checked = false;
+            MessageBox.Show("开启失败，1#车无法帮助4#车作业!");
+            //UpdataList("1", sb_A1_1.Checked, sb_A2_1.Checked, sb_A3_1.Checked, sb_A4_1.Checked, 1, 2, 3, 4);
         } 
         #endregion
 
@@ -306,14 +310,18 @@ namespace UACSView.View_CraneMonitor
 
         private void sb_A4_2_Click(object sender, EventArgs e)
         {
-            UpdataList("2", sb_A1_2.Checked, sb_A2_2.Checked, sb_A3_2.Checked, sb_A4_2.Checked, 6, 5, 7, 8);
+            sb_A4_2.Checked = false;
+            MessageBox.Show("开启失败，2#车无法帮助4#车作业!");
+            //UpdataList("2", sb_A1_2.Checked, sb_A2_2.Checked, sb_A3_2.Checked, sb_A4_2.Checked, 6, 5, 7, 8);
         } 
         #endregion
 
         #region 3#号车
         private void sb_A1_3_Click(object sender, EventArgs e)
         {
-            UpdataList("3", sb_A1_3.Checked, sb_A2_3.Checked, sb_A3_3.Checked, sb_A4_3.Checked, 12, 10, 9, 11);
+            sb_A1_3.Checked = false;
+            MessageBox.Show("开启失败，3#车无法帮助1#车作业!");
+            //UpdataList("3", sb_A1_3.Checked, sb_A2_3.Checked, sb_A3_3.Checked, sb_A4_3.Checked, 12, 10, 9, 11);
         }
 
         private void sb_A2_3_Click(object sender, EventArgs e)
@@ -335,12 +343,16 @@ namespace UACSView.View_CraneMonitor
         #region 4#号车
         private void sb_A1_4_Click(object sender, EventArgs e)
         {
-            UpdataList("4", sb_A1_4.Checked, sb_A2_4.Checked, sb_A3_4.Checked, sb_A4_4.Checked, 16, 15, 14, 13);
+            sb_A1_4.Checked = false;
+            MessageBox.Show("开启失败，4#车无法帮助1#车作业!");
+            //UpdataList("4", sb_A1_4.Checked, sb_A2_4.Checked, sb_A3_4.Checked, sb_A4_4.Checked, 16, 15, 14, 13);
         }
 
         private void sb_A2_4_Click(object sender, EventArgs e)
         {
-            UpdataList("4", sb_A1_4.Checked, sb_A2_4.Checked, sb_A3_4.Checked, sb_A4_4.Checked, 16, 15, 14, 13);
+            sb_A2_4.Checked = false;
+            MessageBox.Show("开启失败，4#车无法帮助2#车作业!");
+            //UpdataList("4", sb_A1_4.Checked, sb_A2_4.Checked, sb_A3_4.Checked, sb_A4_4.Checked, 16, 15, 14, 13);
         }
 
         private void sb_A3_4_Click(object sender, EventArgs e)

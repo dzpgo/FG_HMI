@@ -67,9 +67,11 @@
             // 
             // sb_A1_1
             // 
+            this.sb_A1_1.AreaNO = "";
             this.sb_A1_1.BackColor = System.Drawing.Color.Transparent;
             this.sb_A1_1.Checked = false;
             this.sb_A1_1.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_A1_1.CraneNO = "";
             this.sb_A1_1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_A1_1.Location = new System.Drawing.Point(95, 170);
             this.sb_A1_1.Name = "sb_A1_1";
@@ -169,9 +171,11 @@
             // 
             // sb_A1_2
             // 
+            this.sb_A1_2.AreaNO = "";
             this.sb_A1_2.BackColor = System.Drawing.Color.Transparent;
             this.sb_A1_2.Checked = false;
             this.sb_A1_2.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_A1_2.CraneNO = "";
             this.sb_A1_2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_A1_2.Location = new System.Drawing.Point(95, 250);
             this.sb_A1_2.Name = "sb_A1_2";
@@ -181,9 +185,11 @@
             // 
             // sb_A1_3
             // 
-            this.sb_A1_3.BackColor = System.Drawing.Color.Transparent;
+            this.sb_A1_3.AreaNO = "";
+            this.sb_A1_3.BackColor = System.Drawing.Color.Tomato;
             this.sb_A1_3.Checked = false;
             this.sb_A1_3.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_A1_3.CraneNO = "";
             this.sb_A1_3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_A1_3.Location = new System.Drawing.Point(95, 327);
             this.sb_A1_3.Name = "sb_A1_3";
@@ -193,9 +199,11 @@
             // 
             // sb_A1_4
             // 
-            this.sb_A1_4.BackColor = System.Drawing.Color.Transparent;
+            this.sb_A1_4.AreaNO = "";
+            this.sb_A1_4.BackColor = System.Drawing.Color.Tomato;
             this.sb_A1_4.Checked = false;
             this.sb_A1_4.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_A1_4.CraneNO = "";
             this.sb_A1_4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_A1_4.Location = new System.Drawing.Point(95, 401);
             this.sb_A1_4.Name = "sb_A1_4";
@@ -205,9 +213,11 @@
             // 
             // sb_A2_1
             // 
+            this.sb_A2_1.AreaNO = "";
             this.sb_A2_1.BackColor = System.Drawing.Color.Transparent;
             this.sb_A2_1.Checked = false;
             this.sb_A2_1.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_A2_1.CraneNO = "";
             this.sb_A2_1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_A2_1.Location = new System.Drawing.Point(214, 170);
             this.sb_A2_1.Name = "sb_A2_1";
@@ -217,9 +227,11 @@
             // 
             // sb_A2_2
             // 
+            this.sb_A2_2.AreaNO = "";
             this.sb_A2_2.BackColor = System.Drawing.Color.Transparent;
             this.sb_A2_2.Checked = false;
             this.sb_A2_2.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_A2_2.CraneNO = "";
             this.sb_A2_2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_A2_2.Location = new System.Drawing.Point(214, 250);
             this.sb_A2_2.Name = "sb_A2_2";
@@ -229,9 +241,11 @@
             // 
             // sb_A2_3
             // 
+            this.sb_A2_3.AreaNO = "";
             this.sb_A2_3.BackColor = System.Drawing.Color.Transparent;
             this.sb_A2_3.Checked = false;
             this.sb_A2_3.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_A2_3.CraneNO = "";
             this.sb_A2_3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_A2_3.Location = new System.Drawing.Point(214, 327);
             this.sb_A2_3.Name = "sb_A2_3";
@@ -241,9 +255,11 @@
             // 
             // sb_A2_4
             // 
-            this.sb_A2_4.BackColor = System.Drawing.Color.Transparent;
+            this.sb_A2_4.AreaNO = "";
+            this.sb_A2_4.BackColor = System.Drawing.Color.Tomato;
             this.sb_A2_4.Checked = false;
             this.sb_A2_4.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_A2_4.CraneNO = "";
             this.sb_A2_4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_A2_4.Location = new System.Drawing.Point(214, 401);
             this.sb_A2_4.Name = "sb_A2_4";
@@ -253,9 +269,11 @@
             // 
             // sb_A3_1
             // 
-            this.sb_A3_1.BackColor = System.Drawing.Color.Transparent;
+            this.sb_A3_1.AreaNO = "";
+            this.sb_A3_1.BackColor = System.Drawing.Color.Tomato;
             this.sb_A3_1.Checked = false;
             this.sb_A3_1.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_A3_1.CraneNO = "";
             this.sb_A3_1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_A3_1.Location = new System.Drawing.Point(332, 170);
             this.sb_A3_1.Name = "sb_A3_1";
@@ -265,9 +283,11 @@
             // 
             // sb_A3_2
             // 
+            this.sb_A3_2.AreaNO = "";
             this.sb_A3_2.BackColor = System.Drawing.Color.Transparent;
             this.sb_A3_2.Checked = false;
             this.sb_A3_2.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_A3_2.CraneNO = "";
             this.sb_A3_2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_A3_2.Location = new System.Drawing.Point(332, 250);
             this.sb_A3_2.Name = "sb_A3_2";
@@ -277,9 +297,11 @@
             // 
             // sb_A3_3
             // 
+            this.sb_A3_3.AreaNO = "";
             this.sb_A3_3.BackColor = System.Drawing.Color.Transparent;
             this.sb_A3_3.Checked = false;
             this.sb_A3_3.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_A3_3.CraneNO = "";
             this.sb_A3_3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_A3_3.Location = new System.Drawing.Point(332, 327);
             this.sb_A3_3.Name = "sb_A3_3";
@@ -289,9 +311,11 @@
             // 
             // sb_A3_4
             // 
+            this.sb_A3_4.AreaNO = "";
             this.sb_A3_4.BackColor = System.Drawing.Color.Transparent;
             this.sb_A3_4.Checked = false;
             this.sb_A3_4.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_A3_4.CraneNO = "";
             this.sb_A3_4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_A3_4.Location = new System.Drawing.Point(332, 401);
             this.sb_A3_4.Name = "sb_A3_4";
@@ -301,9 +325,11 @@
             // 
             // sb_A4_1
             // 
-            this.sb_A4_1.BackColor = System.Drawing.Color.Transparent;
+            this.sb_A4_1.AreaNO = "";
+            this.sb_A4_1.BackColor = System.Drawing.Color.Tomato;
             this.sb_A4_1.Checked = false;
             this.sb_A4_1.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_A4_1.CraneNO = "";
             this.sb_A4_1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_A4_1.Location = new System.Drawing.Point(449, 170);
             this.sb_A4_1.Name = "sb_A4_1";
@@ -313,9 +339,11 @@
             // 
             // sb_A4_2
             // 
-            this.sb_A4_2.BackColor = System.Drawing.Color.Transparent;
+            this.sb_A4_2.AreaNO = "";
+            this.sb_A4_2.BackColor = System.Drawing.Color.Tomato;
             this.sb_A4_2.Checked = false;
             this.sb_A4_2.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_A4_2.CraneNO = "";
             this.sb_A4_2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_A4_2.Location = new System.Drawing.Point(449, 250);
             this.sb_A4_2.Name = "sb_A4_2";
@@ -325,9 +353,11 @@
             // 
             // sb_A4_3
             // 
+            this.sb_A4_3.AreaNO = "";
             this.sb_A4_3.BackColor = System.Drawing.Color.Transparent;
             this.sb_A4_3.Checked = false;
             this.sb_A4_3.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_A4_3.CraneNO = "";
             this.sb_A4_3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_A4_3.Location = new System.Drawing.Point(449, 327);
             this.sb_A4_3.Name = "sb_A4_3";
@@ -337,9 +367,11 @@
             // 
             // sb_A4_4
             // 
+            this.sb_A4_4.AreaNO = "";
             this.sb_A4_4.BackColor = System.Drawing.Color.Transparent;
             this.sb_A4_4.Checked = false;
             this.sb_A4_4.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_A4_4.CraneNO = "";
             this.sb_A4_4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_A4_4.Location = new System.Drawing.Point(449, 401);
             this.sb_A4_4.Name = "sb_A4_4";
@@ -401,9 +433,11 @@
             // 
             // sb_FlagDiffent_A1
             // 
+            this.sb_FlagDiffent_A1.AreaNO = "";
             this.sb_FlagDiffent_A1.BackColor = System.Drawing.Color.Transparent;
             this.sb_FlagDiffent_A1.Checked = false;
             this.sb_FlagDiffent_A1.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_FlagDiffent_A1.CraneNO = "";
             this.sb_FlagDiffent_A1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_FlagDiffent_A1.Location = new System.Drawing.Point(95, 48);
             this.sb_FlagDiffent_A1.Name = "sb_FlagDiffent_A1";
@@ -413,9 +447,11 @@
             // 
             // sb_FlagDiffent_A2
             // 
+            this.sb_FlagDiffent_A2.AreaNO = "";
             this.sb_FlagDiffent_A2.BackColor = System.Drawing.Color.Transparent;
             this.sb_FlagDiffent_A2.Checked = false;
             this.sb_FlagDiffent_A2.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_FlagDiffent_A2.CraneNO = "";
             this.sb_FlagDiffent_A2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_FlagDiffent_A2.Location = new System.Drawing.Point(214, 48);
             this.sb_FlagDiffent_A2.Name = "sb_FlagDiffent_A2";
@@ -425,9 +461,11 @@
             // 
             // sb_FlagDiffent_A3
             // 
+            this.sb_FlagDiffent_A3.AreaNO = "";
             this.sb_FlagDiffent_A3.BackColor = System.Drawing.Color.Transparent;
             this.sb_FlagDiffent_A3.Checked = false;
             this.sb_FlagDiffent_A3.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_FlagDiffent_A3.CraneNO = "";
             this.sb_FlagDiffent_A3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_FlagDiffent_A3.Location = new System.Drawing.Point(332, 48);
             this.sb_FlagDiffent_A3.Name = "sb_FlagDiffent_A3";
@@ -437,9 +475,11 @@
             // 
             // sb_FlagDiffent_A4
             // 
+            this.sb_FlagDiffent_A4.AreaNO = "";
             this.sb_FlagDiffent_A4.BackColor = System.Drawing.Color.Transparent;
             this.sb_FlagDiffent_A4.Checked = false;
             this.sb_FlagDiffent_A4.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.sb_FlagDiffent_A4.CraneNO = "";
             this.sb_FlagDiffent_A4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sb_FlagDiffent_A4.Location = new System.Drawing.Point(449, 48);
             this.sb_FlagDiffent_A4.Name = "sb_FlagDiffent_A4";

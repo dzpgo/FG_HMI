@@ -96,10 +96,10 @@ namespace UACSControls
         bool communicate_PLC_OK = true;
         int messagebox = 0;
         int messagebox3 = 0;
-        int messagebox5 = 0; 
-        int messagebox6 = 0; 
-        int messagebox7 = 0;
-        int messagebox8 = 0;
+        long messagebox5 = 0;
+        long messagebox6 = 0;
+        long messagebox7 = 0;
+        long messagebox8 = 0;
         /// <summary>
         /// 存解析出来的报警代码
         /// </summary>
@@ -271,10 +271,9 @@ namespace UACSControls
                 craneinfo.craneOrderInfo(craneStatusBase.CraneNO.ToString(), txt_CraneOrder, txt_CoilNo, txt_FromStock, txt_ToStock, tb_MAT_REQ_WGT, tb_MAT_ACT_WGT, tb_MAT_CUR_WGT, tb_ACT_WEIGHT, tb_CurrentStatus);
                 #region 行车报警
                 listAlarm.Clear();
-                for (int i = 0; i <= 9; i++)
+                for (int i = 0; i <= 19; i++)
                 {
                     var TagName_FaultCode = craneNO + "_FaultCode_" + "" + i + "";
-
                     SetReady(TagName_FaultCode);
                     readTags();
                     string data = get_value_string(TagName_FaultCode).Trim();
@@ -495,13 +494,6 @@ namespace UACSControls
             box.MesssageBoxInfo = "【" + CraneNO + "】行车载荷异常\r\n 人工或遥控起落卷时请盘库，确认库位信息！";
             box.ShowDialog();
         }
-        private void myform(string cranmeNo)
-        {
-            FrmPlanCompletionBox myForm = new FrmPlanCompletionBox();
-            myForm.CranmeNo = cranmeNo;
-            myForm.Show();
-        }
-
         /// <summary>
         /// 计划完成提示弹窗
         /// </summary>

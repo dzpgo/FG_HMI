@@ -1,31 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using UACSDAL;
-using UACSPopupForm;
-using ParkClassLibrary;
-using Baosight.iSuperframe.Common;
-using Baosight.iSuperframe.Authorization.Interface;
 using Baosight.iSuperframe.TagService;
-using Microsoft.VisualBasic;
-using UACS;
-using UACSPopupForm.CraneMonitor;
-using UACSDAL.CraneMonitor;
 using System.Drawing.Drawing2D;
-using System.Windows.Markup;
 
 namespace UACSControls
 {
     public partial class conTrafficLight2 : UserControl
     {
-        private Baosight.iSuperframe.Authorization.Interface.IAuthorization auth = null;
         private Baosight.iSuperframe.TagService.Controls.TagDataProvider tagDataProvider = new Baosight.iSuperframe.TagService.Controls.TagDataProvider();
-        Baosight.iSuperframe.TagService.DataCollection<object> TagValues = new DataCollection<object>();
         private Baosight.iSuperframe.TagService.Controls.TagDataProvider tagDP = new Baosight.iSuperframe.TagService.Controls.TagDataProvider();
         /// <summary>
         /// 中心颜色
@@ -77,9 +61,6 @@ namespace UACSControls
                 return parms;
             }
         }
-        private Label lblCraneNo = new Label();
-        private bool isCraneLbl = false;
-        private CraneStatusBase cranePLCStatusBase = new CraneStatusBase();
         public TrafficLightBase craneTrafficLightBase = new TrafficLightBase();
 
         //step1
@@ -173,55 +154,6 @@ namespace UACSControls
                 ChangeColor = theTrafficLightBase.AreaReserveCubicle == 1 ? true : false;
             CurrentColor = ChangeColor == true ? SurroundColor : DarkColor;
             this.Invalidate();
-
-        }
-        //点击
-        private void conTrafficLight2_Click(object sender, EventArgs e)
-        {
-            tagDP.ServiceName = "iplature";
-            tagDP.AutoRegist = true;
-            if (string.IsNullOrEmpty(AreaNO))
-            {
-                MessageBox.Show("选择该跨区红绿灯错误！");
-                return;
-            }
-            //确认提示
-            MessageBoxButtons btn = MessageBoxButtons.OKCancel;
-            DialogResult drmsg = MessageBox.Show("确定进行信号转换？", "提示", btn, MessageBoxIcon.Asterisk);
-            if (drmsg == DialogResult.OK)
-            {
-                var areaNo = string.Empty;
-                var areaReserve = 10;
-                if (AreaNO.Contains("A"))
-                {
-                    string[] words = AreaNO.Split('A');
-                    areaNo = words[1];
-                }
-                else if (AreaNO.Contains("T"))
-                {
-                    //AreaNO.Equals("T1")
-                    string[] words = AreaNO.Split('T');
-                    areaNo = words[1].Equals("1") ? Convert.ToString(24) : words[1].Equals("2") ? Convert.ToString(25) : words[1].Equals("3") ? Convert.ToString(26) : Convert.ToString(27);
-                }
-                else
-                {
-
-                }
-                if (AreaReserve == 1)
-                {
-                    areaReserve = 10;
-                }
-                else if (AreaReserve == 0)
-                {
-                    areaReserve = 9;
-                }
-                var Data = areaNo + "," + areaReserve;
-                var RLD = areaReserve.Equals(9) ? "红灯" : "绿灯";
-                var MSG = areaNo + "跨," + RLD;
-                tagDP.SetData("EV_SAFE_PLC_A_US01", Data);
-                //DialogResult dr = MessageBox.Show("切换红绿灯！", "提示", MessageBoxButtons.OK);
-                ParkClassLibrary.HMILogger.WriteLog("进行信号转换", "信号转换：" + MSG, ParkClassLibrary.LogLevel.Info, this.Text);
-            }
 
         }
 

@@ -15,6 +15,7 @@ namespace UACSControls
         private Baosight.iSuperframe.Authorization.Interface.IAuthorization auth;
         private Label lbl = new Label();
         private Label lbl2 = new Label();
+        private GroupBox gb1  = new GroupBox();
         private AreaInfo areaInfo = new AreaInfo();
         private AreaBase areaBase = new AreaBase();
         private AreaRowInfo rowInfo = new AreaRowInfo();
@@ -116,7 +117,6 @@ namespace UACSControls
                     //}
                 }
 
-
                 //当控件的宽小于1时 不显示控件
                 if (this.Width < 1)
                 {
@@ -161,13 +161,13 @@ namespace UACSControls
                             {
                                 this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(199)))), ((int)(((byte)(227)))));  //System.Drawing.Color.MediumAquamarine;
                             }
-                            //if (theSaddle.AreaNo.Contains("A"))
-                            //{
-                            //    if (theSaddle.AreaSafe == 1)
-                            //    {
-                            //        this.BackColor = System.Drawing.Color.Tomato;
-                            //    }
-                            //}
+                            if (theSaddle.AreaNo.Contains("A"))
+                            {
+                                if (theSaddle.AreaSafe == 1)
+                                {
+                                    this.BackColor = System.Drawing.Color.Tomato;
+                                }
+                            }
                         }
                     }
 
@@ -238,9 +238,7 @@ namespace UACSControls
                     }
                     else
                     {
-
-
-                        lbl.Width = Convert.ToInt32((theSaddle.X_End - theSaddle.X_Start) * xScale);
+                        //lbl.Width = Convert.ToInt32((theSaddle.X_End - theSaddle.X_Start) * xScale);
                         //lbl.Height = 20;                       
 
                         var matWgt = string.Empty;
@@ -267,6 +265,7 @@ namespace UACSControls
                                 }
                             }
                         }
+
                         // -------------  1  ---------------
                         lbl.AutoSize = false;
                         var height1 = Convert.ToInt32((theSaddle.Y_End - theSaddle.Y_Start) * yScale);
@@ -283,14 +282,15 @@ namespace UACSControls
                             PercentageName = "100%";
                         }
                         var height = (int)((percentageNum * height1) / 100);
-                        var dd = height + (this.Location.Y - 30);
-                        this.lbl.Location = new Point(Convert.ToInt32(2), Convert.ToInt32(dd));
+                        var dd = height + (this.Location.Y - 75);
+                        this.lbl.Location = new Point(0, Convert.ToInt32(dd));
                         this.lbl.Height = Convert.ToInt32((Percentage * height1) / 100);
                         this.lbl.Text = PercentageName;
+                        this.lbl.Width = Convert.ToInt32((theSaddle.X_End - theSaddle.X_Start) * xScale) - 3;
                         this.lbl.BackColor = System.Drawing.Color.FromArgb(25, Color.Blue);
                         // -------------  2  ---------------
                         this.lbl2.AutoSize = false;
-                        this.lbl2.Width = Convert.ToInt32((theSaddle.X_End - theSaddle.X_Start) * xScale);
+                        this.lbl2.Width = Convert.ToInt32((theSaddle.X_End - theSaddle.X_Start) * xScale) - 3;
                         var height2 = Convert.ToInt32((theSaddle.Y_End - theSaddle.Y_Start) * yScale);
                         var Percentage2 = (int)((Inventory / TotalInventory) * 100);
                         var percentageNum2 = (int)(100 - Percentage2);
@@ -311,6 +311,7 @@ namespace UACSControls
                             PercentageName2 = "0%";
                             this.lbl2.TextAlign = ContentAlignment.BottomCenter;
                         }
+                        //this.lbl2.Location = new Point(0, Convert.ToInt32(dd));
                         this.lbl2.Height = (int)((Percentage2 * height2) / 100);
                         this.lbl2.Text = PercentageName2;
                         this.lbl2.BackColor = Color.Transparent;
@@ -341,21 +342,9 @@ namespace UACSControls
                         }
                         else
                         {
-                            //lbl.Location = new Point(this.Width / 2 - 30, this.Height / 2 - 40);
-
-
-                            //var x1 = Convert.ToDouble(theTrafficLightBase.X_Start) * xScale;
-                            //var x2 = Convert.ToDouble(theTrafficLightBase.X_End) * xScale;
-                            //var x3 = x1 + this.Width;
-                            //var x4 = x2 - x3;
-                            //var x5 = x4 / 2;
-                            //location_X = x1 + x5;
-
 
                         }
-
                     }
-
 
                     if (StockPercentage)
                     {
@@ -367,7 +356,6 @@ namespace UACSControls
                         lbl.Visible = false;
                         lbl2.Visible = false;
                     }
-
                     if (areaBase.AreaNo == "Z01-1" || areaBase.AreaNo == "Z01-7" || areaBase.AreaNo == "Z01-9" || areaBase.AreaNo == "Z01-TA")
                     {
                         this.SendToBack();
@@ -499,6 +487,25 @@ namespace UACSControls
                         }
                     }
 
+                }
+                else if (theSaddle.AreaType == 7)
+                {
+                    if (areaBase.AreaNo.Contains("Z1"))
+                    {
+                        gb1.Dock = System.Windows.Forms.DockStyle.Fill;
+                        gb1.Margin = new System.Windows.Forms.Padding(4);
+                        gb1.Name = theSaddle.AreaNo;
+                        gb1.Padding = new System.Windows.Forms.Padding(4);
+                        gb1.Size = new System.Drawing.Size(569, 130);
+                        gb1.TabIndex = 1;
+                        gb1.TabStop = false;
+                        gb1.Text = "光栅车辆检测";
+                        gb1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(199)))), ((int)(((byte)(227)))));
+                        _conArea.Controls.Add(gb1);
+                        gb1.Location = new Point(Convert.ToInt32(location_X), Convert.ToInt32(location_Y));
+                        //_conArea.Controls.Add(gb1);
+
+                    }
                 }
                 else
                 {
@@ -735,6 +742,19 @@ namespace UACSControls
                         new SolidBrush(Color.Black), 0, 0, new StringFormat(StringFormatFlags.DirectionVertical));
                     Rectangle rec = new Rectangle(new Point(0, 0), new Size(this.Width, this.Height));
                     gr.DrawRectangle(new Pen(Color.White, 2), rec);
+                }
+                else if (areaBase.AreaType == 7)
+                {
+                    //e.Graphics.DrawString(areaBase.Area_Name, new Font("微软雅黑", 9, FontStyle.Bold),
+                    //    new SolidBrush(Color.Black), 0, 0, new StringFormat(StringFormatFlags.DirectionVertical));
+                    //Rectangle rec = new Rectangle(new Point(0, 0), new Size(this.Width, this.Height));
+                    //gr.DrawRectangle(new Pen(Color.White, 2), rec);
+
+                    gr.DrawString(areaBase.Area_Name,
+                               new Font("微软雅黑", 12, FontStyle.Bold), Brushes.Black, new Point(this.Width / 2 - 20, 20));
+                    //        //创建矩形对象                左上角度座标                 宽   高  
+                    Rectangle rec = new Rectangle(new Point(0, 0), new Size(this.Width, this.Height));
+                    gr.DrawRectangle(p, rec);
                 }
             }
             catch (Exception er)

@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using UACS;
 using Baosight.iSuperframe.Forms;
 using UACSDAL;
-using System.Windows.Forms.VisualStyles;
 
 namespace UACSView.View_CraneMonitor
 {
@@ -41,8 +34,16 @@ namespace UACSView.View_CraneMonitor
                 //
                 this.dateTimePicker1_recTime.Value = DateTime.Now.AddDays(-1);
 
+                this.ucPageDemo.CurrentPage = 1;
+                this.ucPageDemo.PageSize = Convert.ToInt32(this.ucPageDemo.CboPageSize.Text);
+                this.ucPageDemo.TotalPages = 1;
+                this.ucPageDemo.ClickPageButtonEvent += ucPageDemo_ClickPageButtonEvent;
+                this.ucPageDemo.ChangedPageSizeEvent += ucPageDemo_ChangedPageSizeEvent;
+                this.ucPageDemo.JumpPageEvent += ucPageDemo_JumpPageEvent;
+
                 //加载初始化数据
-                dataGridView1.DataSource = getCraneOrderData(true);
+                //dataGridView1.DataSource = getCraneOrderData(1);
+                getCraneOrderData(1);
             }
             catch (Exception er)
             {
@@ -58,7 +59,7 @@ namespace UACSView.View_CraneMonitor
         {
             try
             {
-                dataGridView1.DataSource = getCraneOrderData(false);
+                getCraneOrderData(1);
             }
             catch (Exception er)
             {
@@ -86,46 +87,38 @@ namespace UACSView.View_CraneMonitor
         /// 查询数据
         /// </summary>
         /// <param name="isLoad">是否是初始化 true=是初始化，false=不是初始化</param>
-        private DataTable getCraneOrderData(bool isLoad)
+        private void getCraneOrderData(int currentPage)
         {
             string bayNo = this.cbb_BAY_NO.SelectedValue.ToString();  //跨号
             string craneMode = this.cbb_CRANE_MODE.SelectedValue.ToString();  //行车模式
             string work_seqNo = this.textWORK_SEQ_NO.Text.Trim();        //计划号
+            
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");  //开始时间
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");  //结束时间
-            string sqlText = @"SELECT A.OPER_ID, A.ORDER_NO, A.ORDER_TYPE, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.MAT_TYPE, A.MAT_REQ_WGT, A.MAT_CUR_WGT, A.HAS_COIL_WGT, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.STOCK_NO, A.CMD_STATUS, A.CMD_SEQ, A.PLAN_X, A.PLAN_Y, A.ACT_X, A.ACT_Y, A.CRANE_MODE, A.REC_TIME, A.CRANE_NO FROM UACSAPP.UACS_ORDER_OPER A ";
+            string sqlText = @"SELECT * FROM (SELECT COUNT(1) OVER () AS TotalRows,ROW_NUMBER() OVER () AS ROWNUM,tab.* FROM ( ";
+            sqlText += "SELECT A.OPER_ID, A.ORDER_NO, A.ORDER_TYPE, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.MAT_TYPE, A.MAT_REQ_WGT, A.MAT_CUR_WGT, A.HAS_COIL_WGT, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.STOCK_NO, A.CMD_STATUS, A.CMD_SEQ, A.PLAN_X, A.PLAN_Y, A.ACT_X, A.ACT_Y, A.CRANE_MODE, A.REC_TIME, A.CRANE_NO FROM UACSAPP.UACS_ORDER_OPER A ";
             sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE ";
             sqlText += "WHERE A.REC_TIME > '{0}' and A.REC_TIME < '{1}' ";
             sqlText = string.Format(sqlText, recTime1, recTime2);
-            //if (!isLoad)
-            //{
-                if (!string.IsNullOrEmpty(work_seqNo))
-                {
-                    sqlText = string.Format("{0} and A.MAT_CODE LIKE '%{1}%' ", sqlText, work_seqNo);
-                }
-                if (bayNo != "全部")
-                {
-                    sqlText = string.Format("{0} and A.BAY_NO = '{1}' ", sqlText, bayNo);
-                }
-                if (craneMode != "全部")
-                {
-                    sqlText = string.Format("{0} and A.CRANE_MODE = '{1}' ", sqlText, craneMode);
-                }
-                //按 NO>流水号>记录时间>更新时间 降序
-                sqlText += " ORDER BY A.OPER_ID DESC,A.ORDER_NO DESC,A.REC_TIME DESC ";
-            //}
-            //else
-            //{
-            //    //初次加载时默认查询倒序30条数据（仅初始化时用）
-            //    sqlText = @"SELECT OPER_ID,ORDER_NO,ORDER_TYPE,BAY_NO,MAT_CODE,MAT_CNAME,MAT_TYPE,MAT_REQ_WGT,MAT_CUR_WGT,HAS_COIL_WGT,FROM_STOCK_NO,TO_STOCK_NO,STOCK_NO,CMD_STATUS,CMD_SEQ,PLAN_X,PLAN_Y,ACT_X,ACT_Y,CRANE_MODE,REC_TIME 
-            //                FROM (
-            //                SELECT ROW_NUMBER() OVER(ORDER BY A.OPER_ID DESC,A.ORDER_NO DESC,A.REC_TIME DESC) AS ROWNUM,
-            //                A.OPER_ID, A.ORDER_NO, A.ORDER_TYPE, A.BAY_NO, A.MAT_CODE, C.MAT_CNAME, A.MAT_TYPE, A.MAT_REQ_WGT, A.MAT_CUR_WGT, A.HAS_COIL_WGT, A.FROM_STOCK_NO, A.TO_STOCK_NO, A.STOCK_NO, A.CMD_STATUS, A.CMD_SEQ, A.PLAN_X, A.PLAN_Y, A.ACT_X, A.ACT_Y, A.CRANE_MODE, A.REC_TIME FROM UACSAPP.UACS_ORDER_OPER A 
-            //                LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_CODE 
-            //                ) a 
-            //                WHERE ROWNUM > 0 and ROWNUM <=30";
-            //}
-
+            if (!string.IsNullOrEmpty(work_seqNo))
+            {
+                sqlText = string.Format("{0} and A.MAT_CODE LIKE '%{1}%' ", sqlText, work_seqNo);
+            }
+            if (bayNo != "全部")
+            {
+                sqlText = string.Format("{0} and A.BAY_NO = '{1}' ", sqlText, bayNo);
+            }
+            if (craneMode != "全部")
+            {
+                sqlText = string.Format("{0} and A.CRANE_MODE = '{1}' ", sqlText, craneMode);
+            }
+            if (!string.IsNullOrEmpty(bt_OrderNo.Text.Trim()))
+            {
+                sqlText = string.Format("{0} and A.ORDER_NO = '{1}' ", sqlText, bt_OrderNo.Text.Trim());
+            }
+            //按 NO>流水号>记录时间>更新时间 降序
+            sqlText += " ORDER BY A.OPER_ID DESC,A.ORDER_NO DESC,A.REC_TIME DESC ";
+            sqlText += " ) tab ) WHERE ROWNUM BETWEEN ((" + currentPage + " - 1) * " + this.ucPageDemo.PageSize + ") + 1 AND " + currentPage + " *  " + this.ucPageDemo.PageSize;
             DataTable dataTable = new DataTable();
             hasSetColumn = false;
             using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
@@ -249,7 +242,88 @@ namespace UACSView.View_CraneMonitor
                     dataTable.Rows.Add(dr);
                 }
             }
-            return dataTable;
+            dataGridView1.DataSource = GetDataPage(dataTable, currentPage);
+        }
+
+
+        /// <summary>
+        /// 数据分页
+        /// </summary>
+        /// <param name="dtResult"></param>
+        /// <returns></returns>
+        private DataTable GetDataPage(DataTable dtResult, int currentPage)
+        {
+            int totalPages = 0;
+            int totalRows = 0;
+            if (null == dtResult || dtResult.Rows.Count == 0)
+            {
+                this.ucPageDemo.PageInfo.Text = string.Format("第{0}/{1}页", "1", "1");
+                this.ucPageDemo.TotalRows.Text = @"0";
+                this.ucPageDemo.CurrentPage = 1;
+                this.ucPageDemo.TotalPages = 1;
+            }
+            else
+            {
+                totalRows = Convert.ToInt32(dtResult.Rows[0]["TotalRows"].ToString());
+                totalPages = totalRows % this.ucPageDemo.PageSize == 0 ? totalRows / this.ucPageDemo.PageSize : (totalRows / this.ucPageDemo.PageSize) + 1;
+                this.ucPageDemo.PageInfo.Text = string.Format("第{0}/{1}页", currentPage, totalPages);
+                this.ucPageDemo.TotalRows.Text = totalRows.ToString();
+                this.ucPageDemo.CurrentPage = currentPage;
+                this.ucPageDemo.TotalPages = totalPages;
+            }
+            return dtResult;
+        }
+
+        /// <summary>
+        /// 页数跳转
+        /// </summary>
+        /// <param name="jumpPage">跳转页</param>
+        void ucPageDemo_JumpPageEvent(int jumpPage)
+        {
+            if (jumpPage <= this.ucPageDemo.TotalPages)
+            {
+                if (jumpPage > 0)
+                {
+                    this.ucPageDemo.JumpPageCtrl.Text = string.Empty;
+                    this.ucPageDemo.JumpPageCtrl.Text = jumpPage.ToString();
+                    this.getCraneOrderData(jumpPage);
+                }
+                else
+                {
+                    jumpPage = 1;
+                    this.ucPageDemo.JumpPageCtrl.Text = string.Empty;
+                    this.ucPageDemo.JumpPageCtrl.Text = jumpPage.ToString();
+                    this.getCraneOrderData(jumpPage);
+                }
+            }
+            else
+            {
+                this.ucPageDemo.JumpPageCtrl.Text = string.Empty;
+                MessageBox.Show(@"超出当前最大页数", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        /// <summary>
+        /// 改变每页展示数据长度
+        /// </summary>
+        void ucPageDemo_ChangedPageSizeEvent()
+        {
+            this.getCraneOrderData(1);
+        }
+        /// <summary>
+        /// 页数改变按钮(最前页,最后页,上一页,下一页)
+        /// </summary>
+        /// <param name="current"></param>
+        void ucPageDemo_ClickPageButtonEvent(int current)
+        {
+            this.getCraneOrderData(current);
+        }
+
+        /// <summary>
+        /// 初始化DataGridView控件
+        /// </summary>
+        private void InitDataGridViewCtrl()
+        {
+            this.getCraneOrderData(1);
         }
 
         /// <summary>
@@ -340,18 +414,19 @@ namespace UACSView.View_CraneMonitor
             //控件设置值
             this.dateTimePicker1_recTime.Value = Convert.ToDateTime(day1);
             //查询
-            DataTable dataTable = getCraneOrderData(false);
-            if (dataTable.Rows.Count > 0)
-            {
-                dataGridView1.DataSource = dataTable;
-            }
-            else
-            {
-                while (dataGridView1.Rows.Count != 0)
-                {
-                    dataGridView1.Rows.RemoveAt(0);
-                }
-            }
+            getCraneOrderData(1);
+            //DataTable dataTable = getCraneOrderData(1);
+            //if (dataTable.Rows.Count > 0)
+            //{
+            //    dataGridView1.DataSource = dataTable;
+            //}
+            //else
+            //{
+            //    while (dataGridView1.Rows.Count != 0)
+            //    {
+            //        dataGridView1.Rows.RemoveAt(0);
+            //    }
+            //}
         }
 
         /// <summary>
@@ -365,18 +440,19 @@ namespace UACSView.View_CraneMonitor
             //控件设置值
             this.dateTimePicker1_recTime.Value = Convert.ToDateTime(day1);
             //查询
-            DataTable dataTable = getCraneOrderData(false);
-            if (dataTable.Rows.Count > 0)
-            {
-                dataGridView1.DataSource = dataTable;
-            }
-            else
-            {
-                while (dataGridView1.Rows.Count != 0)
-                {
-                    dataGridView1.Rows.RemoveAt(0);
-                }
-            }
+            getCraneOrderData(1);
+            //DataTable dataTable = getCraneOrderData(1);
+            //if (dataTable.Rows.Count > 0)
+            //{
+            //    dataGridView1.DataSource = dataTable;
+            //}
+            //else
+            //{
+            //    while (dataGridView1.Rows.Count != 0)
+            //    {
+            //        dataGridView1.Rows.RemoveAt(0);
+            //    }
+            //}
 
         }
 
@@ -391,19 +467,20 @@ namespace UACSView.View_CraneMonitor
             //控件设置值
             this.dateTimePicker1_recTime.Value = Convert.ToDateTime(day1);
             //查询
-            DataTable dataTable = getCraneOrderData(false);
-            if (dataTable.Rows.Count > 0)
-            {
-                dataGridView1.DataSource = dataTable;
-            }
-            else
-            {
-                while (dataGridView1.Rows.Count != 0)
-                {
-                    dataGridView1.Rows.RemoveAt(0);
-                }
-            }
-        } 
+            getCraneOrderData(1);
+            //DataTable dataTable = getCraneOrderData(1);
+            //if (dataTable.Rows.Count > 0)
+            //{
+            //    dataGridView1.DataSource = dataTable;
+            //}
+            //else
+            //{
+            //    while (dataGridView1.Rows.Count != 0)
+            //    {
+            //        dataGridView1.Rows.RemoveAt(0);
+            //    }
+            //}
+        }
         #endregion
     }
 }

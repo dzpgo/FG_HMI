@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using UACS;
 using Baosight.iSuperframe.Forms;
 using UACSDAL;
 using ParkClassLibrary;
-using System.Xml;
 
 namespace UACSView
 {
@@ -31,7 +26,7 @@ namespace UACSView
         Dictionary<string, string> dicDelFlag = new Dictionary<string, string>();
         Dictionary<string, string> dicOrderType = new Dictionary<string, string>();
         string[] dgvColumnsName = { "PLAN_NO", "ORDER_NO", "ORDER_GROUP_NO", "EXE_SEQ", "ORDER_TYPE", "BOF_NO", "BAY_NO", "CRANE_NO", "CAR_NO", "CAR_TYPE", "PLAN_SRC", "ORDER_PRIORITY", "CMD_SEQ", "CMD_STATUS", "MAT_CODE", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "REQ_WEIGHT", "ACT_WEIGHT", "START_TIME", "UPD_TIME", "REC_TIME" };
-        string[] dgvHeaderText = { "计划号", "指令号", "指令组号", "指令顺序","指令类型","炉号", "跨别", "行车","料槽号","料槽类型", "计划来源", "优先级", "吊运次数", "吊运状态", "物料代码", "物料名称", "取料位置", "落料位", "要求重量", "实绩重量", "开始时间", "更新时间", "创建时间" };
+        string[] dgvHeaderText = { "计划号", "指令号", "指令组号", "指令顺序", "指令类型", "炉号", "跨别", "行车", "料槽号", "料槽类型", "计划来源", "优先级", "吊运次数", "吊运状态", "物料代码", "物料名称", "取料位置", "落料位", "要求重量", "实绩重量", "开始时间", "更新时间", "创建时间" };
         public CraneOrderHisyManage()
         {
             InitializeComponent();
@@ -47,12 +42,12 @@ namespace UACSView
         private void CraneOrderHisyManage_Load(object sender, EventArgs e)
         {
             try
-            {                
+            {
                 //设置背景色
                 //this.panel1.BackColor = Color.LightSteelBlue; //UACSDAL.ColorSln.FormBgColor;
                 //this.panel2.BackColor = Color.LightSteelBlue;  //UACSDAL.ColorSln.FormBgColor;
                 //绑定下拉框
-                BindCombox();                
+                BindCombox();
                 //开始日期
                 this.dtp_StartTime.Value = DateTime.Now;
 
@@ -307,11 +302,11 @@ namespace UACSView
         /// <param name="packingNo">停车位号</param>
         /// <param name="dgv"></param>
         /// <returns></returns>
-        public void GetOrderData()
+        public void GetOrderData(int currentPage)
         {
             DataTable dtNull = new DataTable();
             try
-            {                
+            {
                 string craneNo = this.cbb_CRANE_NO.SelectedValue.ToString();
                 string carNo = this.cbb_CarNo.SelectedValue.ToString();
                 string planNo = this.txt_PLAN_NO.Text.Trim();
@@ -350,7 +345,7 @@ namespace UACSView
                 sqlText_ORDER += " LEFT JOIN UACS_L3_MAT_INFO AS B ON A.MAT_CODE = B.MAT_CODE ";
                 sqlText_ORDER += " LEFT JOIN UACS_L3_MAT_OUT_INFO AS C ON C.PLAN_NO = A.PLAN_NO ";
                 sqlText_ORDER += "WHERE 1=1 ";
-                sqlText_ORDER += "AND A.REC_TIME > '{0}' AND A.REC_TIME < '{1}' ";                
+                sqlText_ORDER += "AND A.REC_TIME > '{0}' AND A.REC_TIME < '{1}' ";
                 sqlText_ORDER = string.Format(sqlText_ORDER, recTime1, recTime2);
                 if (!string.IsNullOrEmpty(craneNo) && craneNo != "全部")
                 {
@@ -459,7 +454,7 @@ namespace UACSView
         /// <param name="control">下拉框控件</param>
         /// <param name="dt">数据源</param>
         /// <param name="showLastIndex">是否显示最后一条（通常用于查询条件中全部）</param>
-        private void bindCombox(ComboBox control,DataTable dt, bool showLastIndex)
+        private void bindCombox(ComboBox control, DataTable dt, bool showLastIndex)
         {
             control.DataSource = dt;
             control.DisplayMember = "TypeName";
@@ -613,7 +608,7 @@ namespace UACSView
                 sqlText_ORDER += "AND A.REC_TIME > '{0}' AND A.REC_TIME < '{1}' ";
                 sqlText_ORDER = string.Format(sqlText_ORDER, recTime1, recTime2);
 
-                
+
 
                 if (!string.IsNullOrEmpty(craneNo) && craneNo != "全部")
                 {
@@ -636,28 +631,28 @@ namespace UACSView
                     //dataGridView1.DataSource = dt;
                     //odrIn.Close();
                 }
-            
 
-            //DataTable dtResult = null; // DataBaseAccessOperate.GetDataTable(sql);
-            int totalPages = 0;
-            int totalRows = 0;
-            if (null == dtResult || dtResult.Rows.Count == 0)
-            {
-                this.ucPageDemo.PageInfo.Text = string.Format("第{0}/{1}页", "1", "1");
-                this.ucPageDemo.TotalRows.Text = @"0";
-                this.ucPageDemo.CurrentPage = 1;
-                this.ucPageDemo.TotalPages = 1;
-            }
-            else
-            {
-                totalRows = Convert.ToInt32(dtResult.Rows[0]["TotalRows"].ToString());
-                totalPages = totalRows % this.ucPageDemo.PageSize == 0 ? totalRows / this.ucPageDemo.PageSize : (totalRows / this.ucPageDemo.PageSize) + 1;
-                this.ucPageDemo.PageInfo.Text = string.Format("第{0}/{1}页", currentPage, totalPages);
-                this.ucPageDemo.TotalRows.Text = totalRows.ToString();
-                this.ucPageDemo.CurrentPage = currentPage;
-                this.ucPageDemo.TotalPages = totalPages;
-            }
-            this.dataGridView1.DataSource = dtResult;
+
+                //DataTable dtResult = null; // DataBaseAccessOperate.GetDataTable(sql);
+                int totalPages = 0;
+                int totalRows = 0;
+                if (null == dtResult || dtResult.Rows.Count == 0)
+                {
+                    this.ucPageDemo.PageInfo.Text = string.Format("第{0}/{1}页", "1", "1");
+                    this.ucPageDemo.TotalRows.Text = @"0";
+                    this.ucPageDemo.CurrentPage = 1;
+                    this.ucPageDemo.TotalPages = 1;
+                }
+                else
+                {
+                    totalRows = Convert.ToInt32(dtResult.Rows[0]["TotalRows"].ToString());
+                    totalPages = totalRows % this.ucPageDemo.PageSize == 0 ? totalRows / this.ucPageDemo.PageSize : (totalRows / this.ucPageDemo.PageSize) + 1;
+                    this.ucPageDemo.PageInfo.Text = string.Format("第{0}/{1}页", currentPage, totalPages);
+                    this.ucPageDemo.TotalRows.Text = totalRows.ToString();
+                    this.ucPageDemo.CurrentPage = currentPage;
+                    this.ucPageDemo.TotalPages = totalPages;
+                }
+                this.dataGridView1.DataSource = dtResult;
             }
             catch (Exception ex)
             { }
@@ -712,6 +707,6 @@ namespace UACSView
         }
         #endregion
 
-        
+
     }
 }

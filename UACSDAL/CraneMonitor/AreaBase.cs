@@ -209,5 +209,10 @@ namespace UACSDAL
         /// 车辆预定 （1：有车进入不安全  0：安全）
         /// </summary>
         public long AreaSafe { get; set; }
+
+        /// <summary>
+        /// 1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public long AreaGratStatus { get; set; }
     }
 }

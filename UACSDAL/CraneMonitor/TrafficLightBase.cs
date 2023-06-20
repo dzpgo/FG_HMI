@@ -149,7 +149,10 @@ namespace UACSDAL
         /// 卸料车辆红绿灯 （1：有车进入不安全  0：安全）
         /// </summary>
         public long AreaSafe { get; set; }
-
+        /// <summary>
+        /// 1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public long AreaGratStatus { get; set; }
 
 
 
@@ -346,7 +349,7 @@ namespace UACSDAL
         public const string AREA_SAFE_20 = "AreaSafe20";
         /// <summary>
         /// 21#预定状态（1：有车进入不安全  0：安全）
-        /// </#预定状态（1：有车进入不安全  0：安全）>
+        /// <summary>
         public const string AREA_SAFE_21 = "AreaSafe21";
         /// <summary>
         /// 22#预定状态（1：有车进入不安全  0：安全）
@@ -357,6 +360,98 @@ namespace UACSDAL
         /// </summary>
         public const string AREA_SAFE_23 = "AreaSafe23";
 
-
+        //--------------------------------------------------卸料车预定红绿灯状态----------------------------------------------------------------
+        /// <summary>
+        /// 1#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_1 = "GratStatus1";
+        /// <summary>
+        /// 2#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_2 = "GratStatus2";
+        /// <summary>
+        /// 3#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_3 = "GratStatus3";
+        /// <summary>
+        /// 4#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_4 = "GratStatus4";
+        /// <summary>
+        /// 5#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_5 = "GratStatus5";
+        /// <summary>
+        /// 6#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_6 = "GratStatus6";
+        /// <summary>
+        /// 7#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_7 = "GratStatus7";
+        /// <summary>
+        /// 8#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_8 = "GratStatus8";
+        /// <summary>
+        /// 9#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_9 = "GratStatus9";
+        /// <summary>
+        /// 10#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_10 = "GratStatus10";
+        /// <summary>
+        /// 11#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_11 = "GratStatus11";
+        /// <summary>
+        /// 12#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_12 = "GratStatus12";
+        /// <summary>
+        /// 13#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_13 = "GratStatus13";
+        /// <summary>
+        /// 14#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_14 = "GratStatus14";
+        /// <summary>
+        /// 15#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_15 = "GratStatus15";
+        /// <summary>
+        /// 16#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_16 = "GratStatus16";
+        /// <summary>
+        /// 17#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_17 = "GratStatus17";
+        /// <summary>
+        /// 18#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_18 = "GratStatus18";
+        /// <summary>
+        /// 19#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_19 = "GratStatus19";
+        /// <summary>
+        /// 20#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_20 = "GratStatus20";
+        /// <summary>
+        /// 21#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// <summary>
+        public const string AREA_GRATSTATUS_21 = "GratStatus21";
+        /// <summary>
+        /// 22#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_22 = "GratStatus22";
+        /// <summary>
+        /// 23#1:整个料格封红；2：整个料格解封；3：取消光电开关功能；4：光电开关投入使用；
+        /// </summary>
+        public const string AREA_GRATSTATUS_23 = "GratStatus23";
     }
 }

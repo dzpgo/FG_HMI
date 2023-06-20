@@ -64,10 +64,9 @@ namespace UACSPopupForm
                 tagDataProvider.ServiceName = "iplature";
                 lblCraneNo.Text = Crane_No + " 报警";
                 listAlarm.Clear();
-                for (int i = 0; i <= 9; i++)
+                for (int i = 0; i <= 19; i++)
                 {
                     TagName_FaultCode = Crane_No + "_FaultCode_" + "" + i + "";
-
                     SetReady(TagName_FaultCode);
                     readTags();
                     string data = get_value_string(TagName_FaultCode).Trim();

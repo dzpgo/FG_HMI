@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
 using System.Linq;
+using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using UACSDAL;
-using Baosight.iSuperframe.Authorization.Interface;
-using Baosight.iSuperframe.Common;
 using ParkClassLibrary;
+using Baosight.iSuperframe.Common;
+using Baosight.iSuperframe.Authorization.Interface;
 
 namespace UACSPopupForm
 {
@@ -23,6 +23,7 @@ namespace UACSPopupForm
         private Baosight.iSuperframe.Authorization.Interface.IAuthorization auth;
         //防止弹出信息关闭画面
         bool isPopupMessage = false;
+        private Timer timer;
         private Dictionary<string, string> MatCode = new Dictionary<string, string>();
         string[] dgvColumnsName = { "BTN_UP", "ORDER_NO", "PLAN_NO", "ORDER_PRIORITY", "CMD_SEQ" , "CMD_STATUS", "MAT_CODE", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "REQ_WEIGHT", "ACT_WEIGHT", "START_TIME", "UPD_TIME", "REC_TIME" };
         string[] dgvHeaderText = { "按钮", "指令号", "计划号", "优先级",  "吊运次数","吊运状态", "物料代码", "物料名称", "取料位置", "落料位", "要求重量", "实绩重量","开始时间", "更新时间", "创建时间" };
@@ -37,6 +38,7 @@ namespace UACSPopupForm
             InitializeComponent();
             tagDP.ServiceName = "iplature";
             tagDP.AutoRegist = true;
+            InitializeTimer();
         }
         //private DataTable initial_dgv;
         public DataTable Initial_dgv = new DataTable();
@@ -80,6 +82,19 @@ namespace UACSPopupForm
                     L3MatInfoLists.Add(rdr["MAT_CNAME"].ToString());
                 }
             }
+        }
+        private void InitializeTimer()
+        {
+            timer = new Timer();
+            timer.Interval = 600000; // 设置定时器的间隔（单位：毫秒）600000 = 十分钟
+            timer.Tick += Timer_Tick; // 注册定时器的Tick事件处理方法
+            timer.Start(); // 启动定时器
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // 在定时器Tick事件中执行关闭窗体的操作
+            Close();
         }
         /// <summary>
         /// 关闭窗体

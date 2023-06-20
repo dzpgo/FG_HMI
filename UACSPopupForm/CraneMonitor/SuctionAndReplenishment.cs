@@ -54,6 +54,7 @@ namespace UACSPopupForm
             //this.Rdb_Suction.Checked = true;
             BindFromStock(cmb_FromStock);
             BindToStock(cmb_ToStock);
+            BindMatCode(cbb_MatCode);
             //ReconditionCraneX();
             this.Deactivate += new EventHandler(frmClose);
         } 
@@ -138,6 +139,58 @@ namespace UACSPopupForm
                 throw;
             }
         }
+
+        /// <summary>
+        /// 放料位置
+        /// </summary>
+        /// <param name="cmbBox"></param>
+        private void BindMatCode(ComboBox cmbBox)
+        {
+            try
+            {
+                Dictionary<string, string> myDictionary = new Dictionary<string, string>();
+                DataTable dt = new DataTable();
+                dt.Columns.Add("ID");
+                dt.Columns.Add("NAME");
+                DataRow dr = dt.NewRow();
+                dr = dt.NewRow();
+                dr["ID"] = "无";
+                dr["NAME"] = "无";
+                dt.Rows.Add(dr);
+                //查区域号 
+                string sqlText = @"SELECT MAT_CODE,MAT_CNAME FROM UACS_L3_MAT_INFO ORDER BY MAT_CODE DESC ";
+                using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
+                {
+                    while (rdr.Read())
+                    {
+                        //myDictionary.Add(rdr["MAT_CODE"].ToString(), rdr["MAT_CNAME"].ToString());
+                        dr = dt.NewRow();
+                        dr["ID"] = rdr["MAT_CODE"].ToString();
+                        dr["NAME"] = rdr["MAT_CNAME"].ToString();
+                        dt.Rows.Add(dr);
+                    }
+                }
+                //var dicSort = from objDic in myDictionary orderby objDic.Value ascending select objDic;  //排序
+                //foreach (KeyValuePair<string, string> keyvalue in dicSort)
+                //{
+                //    dr = dt.NewRow();
+                //    dr["ID"] = keyvalue.Key;
+                //    dr["NAME"] = keyvalue.Value.ToString();
+                //    dt.Rows.Add(dr);
+                //}
+                //绑定数据
+                cmbBox.ValueMember = "ID";
+                cmbBox.DisplayMember = "NAME";
+                cmbBox.DataSource = dt;
+                //根据text值选中项
+                cmbBox.SelectedIndex = 1;
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
         #endregion
 
         #region 按钮点击
@@ -179,7 +232,7 @@ namespace UACSPopupForm
                     fromStock = cmb_ToStock.Text.Trim() + "-0";
                     toStock = cmb_FromStock.Text.Trim();
                 }                
-                UpdateStatusInit(craneNo, fromStock, toStock, txt_MatWeight.Text.ToString().Trim(), "INIT");//INIT
+                UpdateStatusInit(craneNo, fromStock, toStock, txt_MatWeight.Text.ToString().Trim(), "INIT", cbb_MatCode.SelectedValue.ToString().Trim());//INIT
                 ParkClassLibrary.HMILogger.WriteLog("吸料补料", craneNo + "开始吸料补料：" + txt_MatWeight.Text, LogLevel.Info, this.Text);
                 UpdateStatus(craneNo, "43");
                 this.Close();
@@ -247,11 +300,11 @@ namespace UACSPopupForm
         /// <param name="ToStock">跨位</param>
         /// <param name="MatWeight">重量</param>
         /// <param name="Status">状态 空：EMPTY 初始化：INIT</param>
-        private void UpdateStatusInit(string craneNo,string FromStock, string ToStock, string MatWeight, string Status)
+        private void UpdateStatusInit(string craneNo,string FromStock, string ToStock, string MatWeight, string Status, string MatCode)
         {
             try
             {
-                string ExeSql = @"UPDATE UACS_CRANE_MANU_ORDER_INOUT SET MAT_WEIGHT = '" + MatWeight + "' ,FROM_STOCK = '" + FromStock + "',TO_STOCK = '" + ToStock + "' ,STATUS = '" + Status + "' WHERE CRANE_NO = '" + craneNo + "'";
+                string ExeSql = @"UPDATE UACS_CRANE_MANU_ORDER_INOUT SET MAT_WEIGHT = '" + MatWeight + "' ,MAT_NO = '"+ MatCode + "'  ,FROM_STOCK = '" + FromStock + "',TO_STOCK = '" + ToStock + "' ,STATUS = '" + Status + "' WHERE CRANE_NO = '" + craneNo + "'";
                 DB2Connect.DBHelper.ExecuteNonQuery(ExeSql);
             }
             catch (Exception)
@@ -266,7 +319,7 @@ namespace UACSPopupForm
         {
             try
             {
-                string ExeSql = @"UPDATE UACS_CRANE_MANU_ORDER_INOUT SET MAT_WEIGHT = null, FROM_STOCK = null, TO_STOCK = null, STATUS = 'EMPTY' ";
+                string ExeSql = @"UPDATE UACS_CRANE_MANU_ORDER_INOUT SET MAT_WEIGHT = null, MAT_NO = null, FROM_STOCK = null, TO_STOCK = null, STATUS = 'EMPTY' ";
                 ExeSql += " WHERE BAY_NO = 'A' AND CRANE_NO = '" + craneNo + "'";
                 DB2Connect.DBHelper.ExecuteNonQuery(ExeSql);
             }

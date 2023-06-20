@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
@@ -26,7 +21,6 @@ namespace UACSControls
         private const int AW_SLIDE = 0x40000;//应用滑动类型动画结果,默认为迁移转变动画类型,当应用AW_CENTER标记时,这个标记就被忽视
         private const int AW_BLEND = 0x80000;//应用淡入淡出结果
 
-
         private int messsageBoxFlag;
         /// <summary>
         ///  1  机组有请求没锁定
@@ -38,7 +32,6 @@ namespace UACSControls
             set { messsageBoxFlag = value; }
         }
 
-
         private string messsageBoxInfo;
         /// <summary>
         /// 弹出信息
@@ -48,11 +41,25 @@ namespace UACSControls
             get { return messsageBoxInfo; }
             set { messsageBoxInfo = value; }
         }
-        
-        
+        private Timer timer;
+        private void InitializeTimer()
+        {
+            timer = new Timer();
+            timer.Interval = 300000; // 设置定时器的间隔（单位：毫秒）
+            timer.Tick += Timer_Tick; // 注册定时器的Tick事件处理方法
+            timer.Start(); // 启动定时器
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // 在定时器Tick事件中执行关闭窗体的操作
+            Close();
+        }
+
         public FormMessageBox()
         {
             InitializeComponent();
+            InitializeTimer();
             this.Load += FormMessageBox_Load;
            // textBox1.Text = messageBoxInfo;
         }

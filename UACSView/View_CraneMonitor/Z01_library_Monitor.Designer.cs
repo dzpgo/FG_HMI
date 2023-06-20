@@ -38,16 +38,14 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_conCraneStatus2_4 = new System.Windows.Forms.Panel();
-            this.conCraneStatus2_4 = new UACSControls.conCraneStatus();
             this.panel_conCraneStatus2_1 = new System.Windows.Forms.Panel();
-            this.conCraneStatus2_1 = new UACSControls.conCraneStatus();
             this.panel_conCraneStatus2_2 = new System.Windows.Forms.Panel();
-            this.conCraneStatus2_2 = new UACSControls.conCraneStatus();
             this.panel_conCraneStatus2_3 = new System.Windows.Forms.Panel();
-            this.conCraneStatus2_3 = new UACSControls.conCraneStatus();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.bt_Coolant = new System.Windows.Forms.Button();
+            this.bt_YardToCarStrategy = new System.Windows.Forms.Button();
+            this.bt_FromStockRule = new System.Windows.Forms.Button();
             this.bt_CraneClean = new System.Windows.Forms.Button();
             this.bt_Recondition = new System.Windows.Forms.Button();
             this.btnShowXY = new System.Windows.Forms.Button();
@@ -58,6 +56,44 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelZ53BayS = new System.Windows.Forms.Panel();
             this.panelZ61Bay = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtY = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtX = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.timer_InitializeLoad = new System.Windows.Forms.Timer(this.components);
+            this.conCraneStatus2_4 = new UACSControls.conCraneStatus();
+            this.conCraneStatus2_1 = new UACSControls.conCraneStatus();
+            this.conCraneStatus2_2 = new UACSControls.conCraneStatus();
+            this.conCraneStatus2_3 = new UACSControls.conCraneStatus();
+            this.consb_CarDetection_20 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_19 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_14 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_9 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_18 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_13 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_8 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_4 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_23 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_17 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_12 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_7 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_3 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_21 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_22 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_15 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_16 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_10 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_11 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_5 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_6 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_1 = new UACSControls.CraneMonitor.conSwitchButton();
+            this.consb_CarDetection_2 = new UACSControls.CraneMonitor.conSwitchButton();
             this.conTrafficLight2_Cubicle_4 = new UACSControls.conTrafficLight2();
             this.conTrafficLight2_Cubicle_3 = new UACSControls.conTrafficLight2();
             this.conTrafficLight2_Cubicle_2 = new UACSControls.conTrafficLight2();
@@ -85,23 +121,10 @@
             this.conTrafficLight2_3 = new UACSControls.conTrafficLight2();
             this.conTrafficLight2_2 = new UACSControls.conTrafficLight2();
             this.conTrafficLight2_1 = new UACSControls.conTrafficLight2();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtY = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtX = new System.Windows.Forms.Label();
             this.conCrane2_4 = new UACSControls.conCrane();
             this.conCrane2_3 = new UACSControls.conCrane();
             this.conCrane2_2 = new UACSControls.conCrane();
             this.conCrane2_1 = new UACSControls.conCrane();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.timer_InitializeLoad = new System.Windows.Forms.Timer(this.components);
-            this.bt_FromStockRule = new System.Windows.Forms.Button();
-            this.bt_YardToCarStrategy = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel_conCraneStatus2_4.SuspendLayout();
@@ -200,18 +223,6 @@
             this.panel_conCraneStatus2_4.Size = new System.Drawing.Size(364, 219);
             this.panel_conCraneStatus2_4.TabIndex = 4;
             // 
-            // conCraneStatus2_4
-            // 
-            this.conCraneStatus2_4.AX = null;
-            this.conCraneStatus2_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.conCraneStatus2_4.CraneNO = "";
-            this.conCraneStatus2_4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.conCraneStatus2_4.Location = new System.Drawing.Point(0, 0);
-            this.conCraneStatus2_4.Margin = new System.Windows.Forms.Padding(4);
-            this.conCraneStatus2_4.Name = "conCraneStatus2_4";
-            this.conCraneStatus2_4.Size = new System.Drawing.Size(362, 217);
-            this.conCraneStatus2_4.TabIndex = 3;
-            // 
             // panel_conCraneStatus2_1
             // 
             this.panel_conCraneStatus2_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -221,18 +232,6 @@
             this.panel_conCraneStatus2_1.Name = "panel_conCraneStatus2_1";
             this.panel_conCraneStatus2_1.Size = new System.Drawing.Size(364, 219);
             this.panel_conCraneStatus2_1.TabIndex = 5;
-            // 
-            // conCraneStatus2_1
-            // 
-            this.conCraneStatus2_1.AX = null;
-            this.conCraneStatus2_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.conCraneStatus2_1.CraneNO = "";
-            this.conCraneStatus2_1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.conCraneStatus2_1.Location = new System.Drawing.Point(0, 0);
-            this.conCraneStatus2_1.Margin = new System.Windows.Forms.Padding(4);
-            this.conCraneStatus2_1.Name = "conCraneStatus2_1";
-            this.conCraneStatus2_1.Size = new System.Drawing.Size(362, 217);
-            this.conCraneStatus2_1.TabIndex = 1;
             // 
             // panel_conCraneStatus2_2
             // 
@@ -244,18 +243,6 @@
             this.panel_conCraneStatus2_2.Size = new System.Drawing.Size(364, 219);
             this.panel_conCraneStatus2_2.TabIndex = 6;
             // 
-            // conCraneStatus2_2
-            // 
-            this.conCraneStatus2_2.AX = null;
-            this.conCraneStatus2_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.conCraneStatus2_2.CraneNO = "";
-            this.conCraneStatus2_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.conCraneStatus2_2.Location = new System.Drawing.Point(0, 0);
-            this.conCraneStatus2_2.Margin = new System.Windows.Forms.Padding(4);
-            this.conCraneStatus2_2.Name = "conCraneStatus2_2";
-            this.conCraneStatus2_2.Size = new System.Drawing.Size(362, 217);
-            this.conCraneStatus2_2.TabIndex = 4;
-            // 
             // panel_conCraneStatus2_3
             // 
             this.panel_conCraneStatus2_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -265,18 +252,6 @@
             this.panel_conCraneStatus2_3.Name = "panel_conCraneStatus2_3";
             this.panel_conCraneStatus2_3.Size = new System.Drawing.Size(364, 219);
             this.panel_conCraneStatus2_3.TabIndex = 7;
-            // 
-            // conCraneStatus2_3
-            // 
-            this.conCraneStatus2_3.AX = null;
-            this.conCraneStatus2_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.conCraneStatus2_3.CraneNO = "";
-            this.conCraneStatus2_3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.conCraneStatus2_3.Location = new System.Drawing.Point(0, 0);
-            this.conCraneStatus2_3.Margin = new System.Windows.Forms.Padding(4);
-            this.conCraneStatus2_3.Name = "conCraneStatus2_3";
-            this.conCraneStatus2_3.Size = new System.Drawing.Size(362, 217);
-            this.conCraneStatus2_3.TabIndex = 2;
             // 
             // panel1
             // 
@@ -319,6 +294,34 @@
             this.bt_Coolant.Text = "装冷却剂";
             this.bt_Coolant.UseVisualStyleBackColor = true;
             this.bt_Coolant.Click += new System.EventHandler(this.bt_Coolant_Click);
+            // 
+            // bt_YardToCarStrategy
+            // 
+            this.bt_YardToCarStrategy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_YardToCarStrategy.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bt_YardToCarStrategy.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_YardToCarStrategy.ForeColor = System.Drawing.Color.Black;
+            this.bt_YardToCarStrategy.Location = new System.Drawing.Point(1059, 33);
+            this.bt_YardToCarStrategy.Name = "bt_YardToCarStrategy";
+            this.bt_YardToCarStrategy.Size = new System.Drawing.Size(75, 23);
+            this.bt_YardToCarStrategy.TabIndex = 29;
+            this.bt_YardToCarStrategy.Text = "多车协同";
+            this.bt_YardToCarStrategy.UseVisualStyleBackColor = true;
+            this.bt_YardToCarStrategy.Click += new System.EventHandler(this.bt_YardToCarStrategy_Click);
+            // 
+            // bt_FromStockRule
+            // 
+            this.bt_FromStockRule.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_FromStockRule.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bt_FromStockRule.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_FromStockRule.ForeColor = System.Drawing.Color.Black;
+            this.bt_FromStockRule.Location = new System.Drawing.Point(1140, 33);
+            this.bt_FromStockRule.Name = "bt_FromStockRule";
+            this.bt_FromStockRule.Size = new System.Drawing.Size(75, 23);
+            this.bt_FromStockRule.TabIndex = 29;
+            this.bt_FromStockRule.Text = "取料规则";
+            this.bt_FromStockRule.UseVisualStyleBackColor = true;
+            this.bt_FromStockRule.Click += new System.EventHandler(this.bt_FromStockRule_Click);
             // 
             // bt_CraneClean
             // 
@@ -437,6 +440,29 @@
             // 
             this.panelZ61Bay.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panelZ61Bay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_20);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_19);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_14);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_9);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_18);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_13);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_8);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_4);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_23);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_17);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_12);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_7);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_3);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_21);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_22);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_15);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_16);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_10);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_11);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_5);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_6);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_1);
+            this.panelZ61Bay.Controls.Add(this.consb_CarDetection_2);
             this.panelZ61Bay.Controls.Add(this.conTrafficLight2_Cubicle_4);
             this.panelZ61Bay.Controls.Add(this.conTrafficLight2_Cubicle_3);
             this.panelZ61Bay.Controls.Add(this.conTrafficLight2_Cubicle_2);
@@ -475,6 +501,478 @@
             this.panelZ61Bay.Size = new System.Drawing.Size(1468, 455);
             this.panelZ61Bay.TabIndex = 6;
             this.panelZ61Bay.Paint += new System.Windows.Forms.PaintEventHandler(this.panelZ11_Z22Bay_Paint);
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel4.Controls.Add(this.label2);
+            this.panel4.Controls.Add(this.txtY);
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.txtX);
+            this.panel4.Location = new System.Drawing.Point(1367, 323);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(100, 66);
+            this.panel4.TabIndex = 18;
+            this.panel4.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(13, 5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(19, 17);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "X:";
+            // 
+            // txtY
+            // 
+            this.txtY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtY.AutoSize = true;
+            this.txtY.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtY.ForeColor = System.Drawing.Color.White;
+            this.txtY.Location = new System.Drawing.Point(36, 37);
+            this.txtY.Name = "txtY";
+            this.txtY.Size = new System.Drawing.Size(50, 17);
+            this.txtY.TabIndex = 15;
+            this.txtY.Text = "999999";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(13, 37);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(19, 17);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Y:";
+            // 
+            // txtX
+            // 
+            this.txtX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtX.AutoSize = true;
+            this.txtX.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtX.ForeColor = System.Drawing.Color.White;
+            this.txtX.Location = new System.Drawing.Point(36, 5);
+            this.txtX.Name = "txtX";
+            this.txtX.Size = new System.Drawing.Size(50, 17);
+            this.txtX.TabIndex = 14;
+            this.txtX.Text = "999999";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(0, 0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 0;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(0, 0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 0;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(0, 0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 0;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(0, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 0;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(0, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 0;
+            // 
+            // timer_InitializeLoad
+            // 
+            this.timer_InitializeLoad.Tick += new System.EventHandler(this.timer_InitializeLoad_Tick);
+            // 
+            // conCraneStatus2_4
+            // 
+            this.conCraneStatus2_4.AX = null;
+            this.conCraneStatus2_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.conCraneStatus2_4.CraneNO = "";
+            this.conCraneStatus2_4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.conCraneStatus2_4.Location = new System.Drawing.Point(0, 0);
+            this.conCraneStatus2_4.Margin = new System.Windows.Forms.Padding(4);
+            this.conCraneStatus2_4.Name = "conCraneStatus2_4";
+            this.conCraneStatus2_4.Size = new System.Drawing.Size(362, 217);
+            this.conCraneStatus2_4.TabIndex = 3;
+            // 
+            // conCraneStatus2_1
+            // 
+            this.conCraneStatus2_1.AX = null;
+            this.conCraneStatus2_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.conCraneStatus2_1.CraneNO = "";
+            this.conCraneStatus2_1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.conCraneStatus2_1.Location = new System.Drawing.Point(0, 0);
+            this.conCraneStatus2_1.Margin = new System.Windows.Forms.Padding(4);
+            this.conCraneStatus2_1.Name = "conCraneStatus2_1";
+            this.conCraneStatus2_1.Size = new System.Drawing.Size(362, 217);
+            this.conCraneStatus2_1.TabIndex = 1;
+            // 
+            // conCraneStatus2_2
+            // 
+            this.conCraneStatus2_2.AX = null;
+            this.conCraneStatus2_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.conCraneStatus2_2.CraneNO = "";
+            this.conCraneStatus2_2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.conCraneStatus2_2.Location = new System.Drawing.Point(0, 0);
+            this.conCraneStatus2_2.Margin = new System.Windows.Forms.Padding(4);
+            this.conCraneStatus2_2.Name = "conCraneStatus2_2";
+            this.conCraneStatus2_2.Size = new System.Drawing.Size(362, 217);
+            this.conCraneStatus2_2.TabIndex = 4;
+            // 
+            // conCraneStatus2_3
+            // 
+            this.conCraneStatus2_3.AX = null;
+            this.conCraneStatus2_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.conCraneStatus2_3.CraneNO = "";
+            this.conCraneStatus2_3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.conCraneStatus2_3.Location = new System.Drawing.Point(0, 0);
+            this.conCraneStatus2_3.Margin = new System.Windows.Forms.Padding(4);
+            this.conCraneStatus2_3.Name = "conCraneStatus2_3";
+            this.conCraneStatus2_3.Size = new System.Drawing.Size(362, 217);
+            this.conCraneStatus2_3.TabIndex = 2;
+            // 
+            // consb_CarDetection_20
+            // 
+            this.consb_CarDetection_20.AreaNO = "";
+            this.consb_CarDetection_20.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_20.Checked = false;
+            this.consb_CarDetection_20.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_20.CraneNO = "";
+            this.consb_CarDetection_20.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_20.Location = new System.Drawing.Point(213, 160);
+            this.consb_CarDetection_20.Name = "consb_CarDetection_20";
+            this.consb_CarDetection_20.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_20.TabIndex = 20;
+            this.consb_CarDetection_20.Click += new System.EventHandler(this.consb_CarDetection_20_Click);
+            // 
+            // consb_CarDetection_19
+            // 
+            this.consb_CarDetection_19.AreaNO = "";
+            this.consb_CarDetection_19.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_19.Checked = false;
+            this.consb_CarDetection_19.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_19.CraneNO = "";
+            this.consb_CarDetection_19.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_19.Location = new System.Drawing.Point(173, 160);
+            this.consb_CarDetection_19.Name = "consb_CarDetection_19";
+            this.consb_CarDetection_19.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_19.TabIndex = 20;
+            this.consb_CarDetection_19.Click += new System.EventHandler(this.consb_CarDetection_19_Click);
+            // 
+            // consb_CarDetection_14
+            // 
+            this.consb_CarDetection_14.AreaNO = "";
+            this.consb_CarDetection_14.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_14.Checked = false;
+            this.consb_CarDetection_14.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_14.CraneNO = "";
+            this.consb_CarDetection_14.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_14.Location = new System.Drawing.Point(173, 136);
+            this.consb_CarDetection_14.Name = "consb_CarDetection_14";
+            this.consb_CarDetection_14.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_14.TabIndex = 20;
+            this.consb_CarDetection_14.Click += new System.EventHandler(this.consb_CarDetection_14_Click);
+            // 
+            // consb_CarDetection_9
+            // 
+            this.consb_CarDetection_9.AreaNO = "";
+            this.consb_CarDetection_9.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_9.Checked = false;
+            this.consb_CarDetection_9.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_9.CraneNO = "";
+            this.consb_CarDetection_9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_9.Location = new System.Drawing.Point(173, 112);
+            this.consb_CarDetection_9.Name = "consb_CarDetection_9";
+            this.consb_CarDetection_9.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_9.TabIndex = 20;
+            this.consb_CarDetection_9.Click += new System.EventHandler(this.consb_CarDetection_9_Click);
+            // 
+            // consb_CarDetection_18
+            // 
+            this.consb_CarDetection_18.AreaNO = "";
+            this.consb_CarDetection_18.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_18.Checked = false;
+            this.consb_CarDetection_18.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_18.CraneNO = "";
+            this.consb_CarDetection_18.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_18.Location = new System.Drawing.Point(131, 160);
+            this.consb_CarDetection_18.Name = "consb_CarDetection_18";
+            this.consb_CarDetection_18.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_18.TabIndex = 20;
+            this.consb_CarDetection_18.Click += new System.EventHandler(this.consb_CarDetection_18_Click);
+            // 
+            // consb_CarDetection_13
+            // 
+            this.consb_CarDetection_13.AreaNO = "";
+            this.consb_CarDetection_13.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_13.Checked = false;
+            this.consb_CarDetection_13.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_13.CraneNO = "";
+            this.consb_CarDetection_13.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_13.Location = new System.Drawing.Point(131, 136);
+            this.consb_CarDetection_13.Name = "consb_CarDetection_13";
+            this.consb_CarDetection_13.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_13.TabIndex = 20;
+            this.consb_CarDetection_13.Click += new System.EventHandler(this.consb_CarDetection_13_Click);
+            // 
+            // consb_CarDetection_8
+            // 
+            this.consb_CarDetection_8.AreaNO = "";
+            this.consb_CarDetection_8.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_8.Checked = false;
+            this.consb_CarDetection_8.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_8.CraneNO = "";
+            this.consb_CarDetection_8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_8.Location = new System.Drawing.Point(131, 112);
+            this.consb_CarDetection_8.Name = "consb_CarDetection_8";
+            this.consb_CarDetection_8.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_8.TabIndex = 20;
+            this.consb_CarDetection_8.Click += new System.EventHandler(this.consb_CarDetection_8_Click);
+            // 
+            // consb_CarDetection_4
+            // 
+            this.consb_CarDetection_4.AreaNO = "";
+            this.consb_CarDetection_4.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_4.Checked = false;
+            this.consb_CarDetection_4.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_4.CraneNO = "";
+            this.consb_CarDetection_4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_4.Location = new System.Drawing.Point(131, 88);
+            this.consb_CarDetection_4.Name = "consb_CarDetection_4";
+            this.consb_CarDetection_4.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_4.TabIndex = 20;
+            this.consb_CarDetection_4.Click += new System.EventHandler(this.consb_CarDetection_4_Click);
+            // 
+            // consb_CarDetection_23
+            // 
+            this.consb_CarDetection_23.AreaNO = "";
+            this.consb_CarDetection_23.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_23.Checked = false;
+            this.consb_CarDetection_23.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_23.CraneNO = "";
+            this.consb_CarDetection_23.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_23.Location = new System.Drawing.Point(89, 184);
+            this.consb_CarDetection_23.Name = "consb_CarDetection_23";
+            this.consb_CarDetection_23.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_23.TabIndex = 20;
+            this.consb_CarDetection_23.Click += new System.EventHandler(this.consb_CarDetection_23_Click);
+            // 
+            // consb_CarDetection_17
+            // 
+            this.consb_CarDetection_17.AreaNO = "";
+            this.consb_CarDetection_17.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_17.Checked = false;
+            this.consb_CarDetection_17.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_17.CraneNO = "";
+            this.consb_CarDetection_17.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_17.Location = new System.Drawing.Point(89, 160);
+            this.consb_CarDetection_17.Name = "consb_CarDetection_17";
+            this.consb_CarDetection_17.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_17.TabIndex = 20;
+            this.consb_CarDetection_17.Click += new System.EventHandler(this.consb_CarDetection_17_Click);
+            // 
+            // consb_CarDetection_12
+            // 
+            this.consb_CarDetection_12.AreaNO = "";
+            this.consb_CarDetection_12.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_12.Checked = false;
+            this.consb_CarDetection_12.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_12.CraneNO = "";
+            this.consb_CarDetection_12.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_12.Location = new System.Drawing.Point(89, 136);
+            this.consb_CarDetection_12.Name = "consb_CarDetection_12";
+            this.consb_CarDetection_12.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_12.TabIndex = 20;
+            this.consb_CarDetection_12.Click += new System.EventHandler(this.consb_CarDetection_12_Click);
+            // 
+            // consb_CarDetection_7
+            // 
+            this.consb_CarDetection_7.AreaNO = "";
+            this.consb_CarDetection_7.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_7.Checked = false;
+            this.consb_CarDetection_7.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_7.CraneNO = "";
+            this.consb_CarDetection_7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_7.Location = new System.Drawing.Point(89, 112);
+            this.consb_CarDetection_7.Name = "consb_CarDetection_7";
+            this.consb_CarDetection_7.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_7.TabIndex = 20;
+            this.consb_CarDetection_7.Click += new System.EventHandler(this.consb_CarDetection_7_Click);
+            // 
+            // consb_CarDetection_3
+            // 
+            this.consb_CarDetection_3.AreaNO = "";
+            this.consb_CarDetection_3.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_3.Checked = false;
+            this.consb_CarDetection_3.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_3.CraneNO = "";
+            this.consb_CarDetection_3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_3.Location = new System.Drawing.Point(89, 88);
+            this.consb_CarDetection_3.Name = "consb_CarDetection_3";
+            this.consb_CarDetection_3.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_3.TabIndex = 20;
+            this.consb_CarDetection_3.Click += new System.EventHandler(this.consb_CarDetection_3_Click);
+            // 
+            // consb_CarDetection_21
+            // 
+            this.consb_CarDetection_21.AreaNO = "";
+            this.consb_CarDetection_21.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_21.Checked = false;
+            this.consb_CarDetection_21.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_21.CraneNO = "";
+            this.consb_CarDetection_21.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_21.Location = new System.Drawing.Point(5, 184);
+            this.consb_CarDetection_21.Name = "consb_CarDetection_21";
+            this.consb_CarDetection_21.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_21.TabIndex = 20;
+            this.consb_CarDetection_21.Click += new System.EventHandler(this.consb_CarDetection_21_Click);
+            // 
+            // consb_CarDetection_22
+            // 
+            this.consb_CarDetection_22.AreaNO = "";
+            this.consb_CarDetection_22.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_22.Checked = false;
+            this.consb_CarDetection_22.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_22.CraneNO = "";
+            this.consb_CarDetection_22.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_22.Location = new System.Drawing.Point(47, 184);
+            this.consb_CarDetection_22.Name = "consb_CarDetection_22";
+            this.consb_CarDetection_22.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_22.TabIndex = 20;
+            this.consb_CarDetection_22.Click += new System.EventHandler(this.consb_CarDetection_22_Click);
+            // 
+            // consb_CarDetection_15
+            // 
+            this.consb_CarDetection_15.AreaNO = "";
+            this.consb_CarDetection_15.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_15.Checked = false;
+            this.consb_CarDetection_15.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_15.CraneNO = "";
+            this.consb_CarDetection_15.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_15.Location = new System.Drawing.Point(5, 160);
+            this.consb_CarDetection_15.Name = "consb_CarDetection_15";
+            this.consb_CarDetection_15.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_15.TabIndex = 20;
+            this.consb_CarDetection_15.Click += new System.EventHandler(this.consb_CarDetection_15_Click);
+            // 
+            // consb_CarDetection_16
+            // 
+            this.consb_CarDetection_16.AreaNO = "";
+            this.consb_CarDetection_16.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_16.Checked = false;
+            this.consb_CarDetection_16.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_16.CraneNO = "";
+            this.consb_CarDetection_16.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_16.Location = new System.Drawing.Point(47, 160);
+            this.consb_CarDetection_16.Name = "consb_CarDetection_16";
+            this.consb_CarDetection_16.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_16.TabIndex = 20;
+            this.consb_CarDetection_16.Click += new System.EventHandler(this.consb_CarDetection_16_Click);
+            // 
+            // consb_CarDetection_10
+            // 
+            this.consb_CarDetection_10.AreaNO = "";
+            this.consb_CarDetection_10.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_10.Checked = false;
+            this.consb_CarDetection_10.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_10.CraneNO = "";
+            this.consb_CarDetection_10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_10.Location = new System.Drawing.Point(5, 136);
+            this.consb_CarDetection_10.Name = "consb_CarDetection_10";
+            this.consb_CarDetection_10.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_10.TabIndex = 20;
+            this.consb_CarDetection_10.Click += new System.EventHandler(this.consb_CarDetection_10_Click);
+            // 
+            // consb_CarDetection_11
+            // 
+            this.consb_CarDetection_11.AreaNO = "";
+            this.consb_CarDetection_11.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_11.Checked = false;
+            this.consb_CarDetection_11.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_11.CraneNO = "";
+            this.consb_CarDetection_11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_11.Location = new System.Drawing.Point(47, 136);
+            this.consb_CarDetection_11.Name = "consb_CarDetection_11";
+            this.consb_CarDetection_11.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_11.TabIndex = 20;
+            this.consb_CarDetection_11.Click += new System.EventHandler(this.consb_CarDetection_11_Click);
+            // 
+            // consb_CarDetection_5
+            // 
+            this.consb_CarDetection_5.AreaNO = "";
+            this.consb_CarDetection_5.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_5.Checked = false;
+            this.consb_CarDetection_5.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_5.CraneNO = "";
+            this.consb_CarDetection_5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_5.Location = new System.Drawing.Point(5, 112);
+            this.consb_CarDetection_5.Name = "consb_CarDetection_5";
+            this.consb_CarDetection_5.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_5.TabIndex = 20;
+            this.consb_CarDetection_5.Click += new System.EventHandler(this.consb_CarDetection_5_Click);
+            // 
+            // consb_CarDetection_6
+            // 
+            this.consb_CarDetection_6.AreaNO = "";
+            this.consb_CarDetection_6.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_6.Checked = false;
+            this.consb_CarDetection_6.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_6.CraneNO = "";
+            this.consb_CarDetection_6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_6.Location = new System.Drawing.Point(47, 112);
+            this.consb_CarDetection_6.Name = "consb_CarDetection_6";
+            this.consb_CarDetection_6.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_6.TabIndex = 20;
+            this.consb_CarDetection_6.Click += new System.EventHandler(this.consb_CarDetection_6_Click);
+            // 
+            // consb_CarDetection_1
+            // 
+            this.consb_CarDetection_1.AreaNO = "";
+            this.consb_CarDetection_1.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_1.Checked = false;
+            this.consb_CarDetection_1.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_1.CraneNO = "";
+            this.consb_CarDetection_1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_1.Location = new System.Drawing.Point(5, 88);
+            this.consb_CarDetection_1.Name = "consb_CarDetection_1";
+            this.consb_CarDetection_1.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_1.TabIndex = 20;
+            this.consb_CarDetection_1.Click += new System.EventHandler(this.consb_CarDetection_1_Click);
+            // 
+            // consb_CarDetection_2
+            // 
+            this.consb_CarDetection_2.AreaNO = "";
+            this.consb_CarDetection_2.BackColor = System.Drawing.Color.Transparent;
+            this.consb_CarDetection_2.Checked = false;
+            this.consb_CarDetection_2.CheckStyleX = UACSControls.CraneMonitor.CheckStyle.style1;
+            this.consb_CarDetection_2.CraneNO = "";
+            this.consb_CarDetection_2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consb_CarDetection_2.Location = new System.Drawing.Point(47, 88);
+            this.consb_CarDetection_2.Name = "consb_CarDetection_2";
+            this.consb_CarDetection_2.Size = new System.Drawing.Size(36, 18);
+            this.consb_CarDetection_2.TabIndex = 20;
+            this.consb_CarDetection_2.Click += new System.EventHandler(this.consb_CarDetection_2_Click);
             // 
             // conTrafficLight2_Cubicle_4
             // 
@@ -746,69 +1244,6 @@
             this.conTrafficLight2_1.Size = new System.Drawing.Size(20, 20);
             this.conTrafficLight2_1.TabIndex = 19;
             // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel4.Controls.Add(this.label2);
-            this.panel4.Controls.Add(this.txtY);
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Controls.Add(this.txtX);
-            this.panel4.Location = new System.Drawing.Point(1369, 389);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(100, 66);
-            this.panel4.TabIndex = 18;
-            this.panel4.Visible = false;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(13, 5);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(19, 17);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "X:";
-            // 
-            // txtY
-            // 
-            this.txtY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtY.AutoSize = true;
-            this.txtY.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtY.ForeColor = System.Drawing.Color.White;
-            this.txtY.Location = new System.Drawing.Point(36, 37);
-            this.txtY.Name = "txtY";
-            this.txtY.Size = new System.Drawing.Size(50, 17);
-            this.txtY.TabIndex = 15;
-            this.txtY.Text = "999999";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(13, 37);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(19, 17);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Y:";
-            // 
-            // txtX
-            // 
-            this.txtX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtX.AutoSize = true;
-            this.txtX.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtX.ForeColor = System.Drawing.Color.White;
-            this.txtX.Location = new System.Drawing.Point(36, 5);
-            this.txtX.Name = "txtX";
-            this.txtX.Size = new System.Drawing.Size(50, 17);
-            this.txtX.TabIndex = 14;
-            this.txtX.Text = "999999";
-            // 
             // conCrane2_4
             // 
             this.conCrane2_4.BackColor = System.Drawing.SystemColors.Control;
@@ -848,73 +1283,6 @@
             this.conCrane2_1.Name = "conCrane2_1";
             this.conCrane2_1.Size = new System.Drawing.Size(47, 408);
             this.conCrane2_1.TabIndex = 1;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(0, 0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 0;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(0, 0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 0;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(0, 0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 0;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(0, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 0;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 0;
-            // 
-            // timer_InitializeLoad
-            // 
-            this.timer_InitializeLoad.Tick += new System.EventHandler(this.timer_InitializeLoad_Tick);
-            // 
-            // bt_FromStockRule
-            // 
-            this.bt_FromStockRule.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bt_FromStockRule.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bt_FromStockRule.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bt_FromStockRule.ForeColor = System.Drawing.Color.Black;
-            this.bt_FromStockRule.Location = new System.Drawing.Point(1140, 33);
-            this.bt_FromStockRule.Name = "bt_FromStockRule";
-            this.bt_FromStockRule.Size = new System.Drawing.Size(75, 23);
-            this.bt_FromStockRule.TabIndex = 29;
-            this.bt_FromStockRule.Text = "取料规则";
-            this.bt_FromStockRule.UseVisualStyleBackColor = true;
-            this.bt_FromStockRule.Click += new System.EventHandler(this.bt_FromStockRule_Click);
-            // 
-            // bt_YardToCarStrategy
-            // 
-            this.bt_YardToCarStrategy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bt_YardToCarStrategy.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bt_YardToCarStrategy.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bt_YardToCarStrategy.ForeColor = System.Drawing.Color.Black;
-            this.bt_YardToCarStrategy.Location = new System.Drawing.Point(1059, 33);
-            this.bt_YardToCarStrategy.Name = "bt_YardToCarStrategy";
-            this.bt_YardToCarStrategy.Size = new System.Drawing.Size(75, 23);
-            this.bt_YardToCarStrategy.TabIndex = 29;
-            this.bt_YardToCarStrategy.Text = "多车协同";
-            this.bt_YardToCarStrategy.UseVisualStyleBackColor = true;
-            this.bt_YardToCarStrategy.Click += new System.EventHandler(this.bt_YardToCarStrategy_Click);
             // 
             // Z01_library_Monitor
             // 
@@ -1020,5 +1388,28 @@
         private System.Windows.Forms.Button bt_StockPercentage;
         private System.Windows.Forms.Button bt_YardToCarStrategy;
         private System.Windows.Forms.Button bt_FromStockRule;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_20;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_19;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_14;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_9;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_18;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_13;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_8;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_4;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_23;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_17;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_12;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_7;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_3;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_21;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_22;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_15;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_16;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_10;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_11;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_5;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_6;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_1;
+        private UACSControls.CraneMonitor.conSwitchButton consb_CarDetection_2;
     }
 }

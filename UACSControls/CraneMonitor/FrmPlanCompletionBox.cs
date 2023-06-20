@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UACSDAL;
 using UACSPopupForm;
-using UACSView.View_CraneMonitor;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace UACSControls
 {
+    /// <summary>
+    /// 计划完成提醒
+    /// </summary>
     public partial class FrmPlanCompletionBox : Form
     {
         private string cranmeNo;
@@ -29,9 +24,24 @@ namespace UACSControls
         public string CarNo;
         public string ToStockNo;
         public conCraneStatus ALM;
+        private Timer timer;
         public FrmPlanCompletionBox()
         {
             InitializeComponent();
+            InitializeTimer();
+        }
+        private void InitializeTimer()
+        {
+            timer = new Timer();
+            timer.Interval = 300000; // 设置定时器的间隔（单位：毫秒）
+            timer.Tick += Timer_Tick; // 注册定时器的Tick事件处理方法
+            timer.Start(); // 启动定时器
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // 在定时器Tick事件中执行关闭窗体的操作
+            Close();
         }
         /// <summary>
         /// 添加一个构造函数
