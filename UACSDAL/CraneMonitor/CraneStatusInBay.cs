@@ -107,6 +107,31 @@ namespace UACSDAL
                     // 工位装料计划完成（1:完成 0：未完成）
                     lstAdress.Add(CraneStatusBase.ADRESS_PLAN_FINISH + "_A" + theCranNO);
 
+
+                    #region 报警
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_0);
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_1);
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_2);
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_3);
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_4);
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_5);
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_6);
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_7);
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_8);
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_9);
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_10);
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_11);
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_12);
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_13);
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_14);
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_15);
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_16);
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_17);
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_18);
+                    lstAdress.Add(tag_Head + CraneStatusBase.FAULT_CODE_19);
+                    #endregion
+
+
                     #region 红绿灯
                     lstAdress.Add(TrafficLightBase.AREA_RESERVE_1);
                     lstAdress.Add(TrafficLightBase.AREA_SAFE_1);
@@ -320,6 +345,29 @@ namespace UACSDAL
                 string tag_HeadA =  "_A" + craneBase.CraneNO;
                 //工位装料计划完成（1:完成 0：未完成）
                 craneBase.EV_PLAN_FINISH = get_value_x(CraneStatusBase.ADRESS_PLAN_FINISH + tag_HeadA);
+
+                #region 报警信息
+                craneBase.FaultCode_0 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_0);
+                craneBase.FaultCode_1 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_1);
+                craneBase.FaultCode_2 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_2);
+                craneBase.FaultCode_3 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_3);
+                craneBase.FaultCode_4 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_4);
+                craneBase.FaultCode_5 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_5);
+                craneBase.FaultCode_6 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_6);
+                craneBase.FaultCode_7 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_7);
+                craneBase.FaultCode_8 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_8);
+                craneBase.FaultCode_9 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_9);
+                craneBase.FaultCode_10 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_10);
+                craneBase.FaultCode_11 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_11);
+                craneBase.FaultCode_12 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_12);
+                craneBase.FaultCode_13 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_13);
+                craneBase.FaultCode_14 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_14);
+                craneBase.FaultCode_15 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_15);
+                craneBase.FaultCode_16 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_16);
+                craneBase.FaultCode_17 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_17);
+                craneBase.FaultCode_18 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_18);
+                craneBase.FaultCode_19 = get_value_x(tag_Head + CraneStatusBase.FAULT_CODE_19);
+                #endregion
             }
             catch (Exception ex)
             {

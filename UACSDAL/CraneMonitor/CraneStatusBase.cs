@@ -239,6 +239,28 @@ namespace UACSDAL
         /// </summary>
         public long EV_PLAN_FINISH { get => eV_PLAN_FINISH; set => eV_PLAN_FINISH = value; }
 
+        #region 报警信息
+        public long FaultCode_0 { get; set; }
+        public long FaultCode_1 { get; set; }
+        public long FaultCode_2 { get; set; }
+        public long FaultCode_3 { get; set; }
+        public long FaultCode_4 { get; set; }
+        public long FaultCode_5 { get; set; }
+        public long FaultCode_6 { get; set; }
+        public long FaultCode_7 { get; set; }
+        public long FaultCode_8 { get; set; }
+        public long FaultCode_9 { get; set; }
+        public long FaultCode_10 { get; set; }
+        public long FaultCode_11 { get; set; }
+        public long FaultCode_12 { get; set; }
+        public long FaultCode_13 { get; set; }
+        public long FaultCode_14 { get; set; }
+        public long FaultCode_15 { get; set; }
+        public long FaultCode_16 { get; set; }
+        public long FaultCode_17 { get; set; }
+        public long FaultCode_18 { get; set; }
+        public long FaultCode_19 { get; set; }
+        #endregion
 
         ///// <summary>
         ///// A1工位装料计划完成（1:完成 0：未完成）
@@ -653,5 +675,88 @@ namespace UACSDAL
         /// 手动 = 500
         /// </summary>
         public const long SHORT_CMD_CANCEL_COMPUTER_AUTO = 500;
+
+        //--------------------------------------------------行车报警状态----------------------------------------------------------------
+        /// <summary>
+        /// 0 报警
+        /// </summary>
+        public const string FAULT_CODE_0 = "FaultCode_0";
+        /// <summary>
+        /// 1 报警
+        /// </summary>
+        public const string FAULT_CODE_1 = "FaultCode_1";
+        /// <summary>
+        /// 2 报警
+        /// </summary>
+        public const string FAULT_CODE_2 = "FaultCode_2";
+        /// <summary>
+        /// 3 报警
+        /// </summary>
+        public const string FAULT_CODE_3 = "FaultCode_3";
+        /// <summary>
+        /// 4 报警
+        /// </summary>
+        public const string FAULT_CODE_4 = "FaultCode_4";
+        /// <summary>
+        /// 5 报警
+        /// </summary>
+        public const string FAULT_CODE_5 = "FaultCode_5";
+        /// <summary>
+        /// 6 报警
+        /// </summary>
+        public const string FAULT_CODE_6 = "FaultCode_6";
+        /// <summary>
+        /// 7 报警
+        /// </summary>
+        public const string FAULT_CODE_7 = "FaultCode_7";
+        /// <summary>
+        /// 8 报警
+        /// </summary>
+        public const string FAULT_CODE_8 = "FaultCode_8";
+        /// <summary>
+        /// 9 报警
+        /// </summary>
+        public const string FAULT_CODE_9 = "FaultCode_9";
+        /// <summary>
+        /// 10 报警
+        /// </summary>
+        public const string FAULT_CODE_10 = "FaultCode_10";
+        /// <summary>
+        /// 11 报警
+        /// </summary>
+        public const string FAULT_CODE_11 = "FaultCode_11";
+        /// <summary>
+        /// 12 报警
+        /// </summary>
+        public const string FAULT_CODE_12 = "FaultCode_12";
+        /// <summary>
+        /// 13 报警
+        /// </summary>
+        public const string FAULT_CODE_13 = "FaultCode_13";
+        /// <summary>
+        /// 14 报警
+        /// </summary>
+        public const string FAULT_CODE_14 = "FaultCode_14";
+        /// <summary>
+        /// 15 报警
+        /// </summary>
+        public const string FAULT_CODE_15 = "FaultCode_15";
+        /// <summary>
+        /// 16 报警
+        /// </summary>
+        public const string FAULT_CODE_16 = "FaultCode_16";
+        /// <summary>
+        /// 17 报警
+        /// </summary>
+        public const string FAULT_CODE_17 = "FaultCode_17";
+        /// <summary>
+        /// 18 报警
+        /// </summary>
+        public const string FAULT_CODE_18 = "FaultCode_18";
+        /// <summary>
+        /// 19 报警
+        /// </summary>
+        public const string FAULT_CODE_19 = "FaultCode_19";
+        
     }
 }

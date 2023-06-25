@@ -63,17 +63,18 @@ namespace UACSPopupForm
             {
                 tagDataProvider.ServiceName = "iplature";
                 lblCraneNo.Text = Crane_No + " 报警";
-                listAlarm.Clear();
-                for (int i = 0; i <= 19; i++)
-                {
-                    TagName_FaultCode = Crane_No + "_FaultCode_" + "" + i + "";
-                    SetReady(TagName_FaultCode);
-                    readTags();
-                    string data = get_value_string(TagName_FaultCode).Trim();
-                    if (!string.IsNullOrEmpty(data) && !data.Equals("0"))
-                        listAlarm.Add(Convert.ToInt32(data));
-                }
-                GetDgvMessage(listAlarm);
+                //listAlarm.Clear();
+                //for (int i = 0; i <= 19; i++)
+                //{
+                //    TagName_FaultCode = Crane_No + "_FaultCode_" + "" + i + "";
+                //    SetReady(TagName_FaultCode);
+                //    readTags();
+                //    string data = get_value_string(TagName_FaultCode).Trim();
+                //    if (!string.IsNullOrEmpty(data) && !data.Equals("0"))
+                //        listAlarm.Add(Convert.ToInt32(data));
+                //}
+                //GetDgvMessage(listAlarm);
+                this.Invoke(new MethodInvoker(() => this.GetFaultCode(Crane_No)));
 
                 #region 弃用（旧）
                 //tagDataProvider.ServiceName = "iplature";
@@ -126,6 +127,20 @@ namespace UACSPopupForm
 
         }
 
+        private void GetFaultCode(string Crane_No)
+        {
+            listAlarm.Clear();
+            for (int i = 0; i <= 19; i++)
+            {
+                TagName_FaultCode = Crane_No + "_FaultCode_" + "" + i + "";
+                SetReady(TagName_FaultCode);
+                readTags();
+                string data = get_value_string(TagName_FaultCode).Trim();
+                if (!string.IsNullOrEmpty(data) && !data.Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(data));
+            }
+            GetDgvMessage(listAlarm);
+        }
 
         private void GetDgvMessage(List<int> list)
         {

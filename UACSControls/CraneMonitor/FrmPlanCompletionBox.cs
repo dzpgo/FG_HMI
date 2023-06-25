@@ -71,10 +71,10 @@ namespace UACSControls
         /// 获取指令数据
         /// </summary>
         private void GetOrderQueue()
-        {
-            isPopupMessage = true;
+        {            
             try
             {
+                isPopupMessage = true;
                 var sqlText = @"SELECT ORDER_NO,CRANE_NO,CAR_NO,TO_STOCK_NO FROM UACS_ORDER_QUEUE WHERE ORDER_NO = '" + OrderNo + "' AND CRANE_NO = '" + CranmeNo + "';";
                 using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
                 {
@@ -84,11 +84,12 @@ namespace UACSControls
                         ToStockNo = rdr["TO_STOCK_NO"].ToString();
                     }
                 }
+                isPopupMessage = false;
             }
             catch (Exception)
             {
-            }
-            isPopupMessage = false;
+                isPopupMessage = false;
+            }            
         }
 
         /// <summary>
@@ -114,7 +115,7 @@ namespace UACSControls
                     this.Close();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -131,8 +132,8 @@ namespace UACSControls
             FrmParkingDetail frm = new FrmParkingDetail();
             frm.PackingInfo = parkingInfo;
             frm.Show();
-            this.Close();
             isPopupMessage = false;
+            //this.Close();            
         }
     }
 }

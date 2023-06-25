@@ -13,6 +13,7 @@ using System.Media;
 using UACSPopupForm;
 using Baosight.iSuperframe.Authorization;
 using static System.Net.Mime.MediaTypeNames;
+using System.Windows.Markup;
 
 namespace UACSControls
 {
@@ -63,6 +64,7 @@ namespace UACSControls
         public conCraneStatus()
         {
             InitializeComponent();
+            //this.Invoke(new MethodInvoker(() => this.LoadingCraneAlarmCodeDefine()));
             LoadingCraneAlarmCodeDefine();
         }
 
@@ -172,14 +174,14 @@ namespace UACSControls
                     messagebox = 0;
                 }
                 if (!string.IsNullOrEmpty(craneStatusBase.EV_PLAN_FINISH.ToString()) && craneStatusBase.EV_PLAN_FINISH == 1)
-                {                   
+                {
                     if (craneStatusBase.CraneNO == "1")
                     {
                         messagebox5 += 1;
                         if (messagebox5 == 1)
                         {
                             this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString())));
-                        }                      
+                        }
                     }
                     else if (craneStatusBase.CraneNO == "2")
                     {
@@ -197,7 +199,7 @@ namespace UACSControls
                             this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString())));
                         }
                     }
-                    else if ( craneStatusBase.CraneNO == "4")
+                    else if (craneStatusBase.CraneNO == "4")
                     {
                         messagebox8 += 1;
                         if (messagebox8 == 1)
@@ -269,60 +271,61 @@ namespace UACSControls
                 lbl_HeartBeat.Text = craneStatusBase.ReceiveTime.ToString();
                 //行车指令
                 craneinfo.craneOrderInfo(craneStatusBase.CraneNO.ToString(), txt_CraneOrder, txt_CoilNo, txt_FromStock, txt_ToStock, tb_MAT_REQ_WGT, tb_MAT_ACT_WGT, tb_MAT_CUR_WGT, tb_ACT_WEIGHT, tb_CurrentStatus);
+               
                 #region 行车报警
-                listAlarm.Clear();
-                for (int i = 0; i <= 19; i++)
-                {
-                    var TagName_FaultCode = craneNO + "_FaultCode_" + "" + i + "";
-                    SetReady(TagName_FaultCode);
-                    readTags();
-                    string data = get_value_string(TagName_FaultCode).Trim();
-                    if (!string.IsNullOrEmpty(data) && !data.Equals("0"))
-                        listAlarm.Add(Convert.ToInt32(data));
-                }
-                var craneAlarmCount = 0;
-                if (listAlarm.Count > 0 && (txt_CONTROL_MODE.Text == "等待" || txt_CONTROL_MODE.Text == "自动" || txt_CONTROL_MODE.Text == "人工"))
-                {
-                    btnShow.Visible = true;
-                    //if (firstTimeShow == false)
-                    //{
-                    //    NoDefineCraneAlarm(listAlarm, firstTimeShow);
-                    //    firstTimeShow = true;
-                    //}
-                    //if (CraneAlarmGetValues(listAlarm))
-                    if (GetCraneAlarmGetValues(listAlarm))
-                    {
-                        btnShow.BackColor = Color.Red;
-                        craneAlarmCount++;
-                        AlarmLamp = true;
-                        timer4.Interval = 1000;
-                        timer4.Enabled = true;
-                    }
-                    else
-                    {
-                        btnShow.BackColor = System.Drawing.SystemColors.Control;
-                        AlarmLamp = true;
-                        timer4.Enabled = false;
-                    }
-                }
-                else
-                {
-                    timer4.Enabled = false;
-                    btnShow.BackColor = System.Drawing.SystemColors.Control;
-                    //firstTimeShow = false;
-                    btnShow.Visible = true;
-                }
+                listAlarm.Clear();                
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_0.ToString()) && !craneStatusBase.FaultCode_0.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_0));
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_1.ToString()) && !craneStatusBase.FaultCode_1.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_1));
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_2.ToString()) && !craneStatusBase.FaultCode_2.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_2));
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_3.ToString()) && !craneStatusBase.FaultCode_3.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_3));
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_4.ToString()) && !craneStatusBase.FaultCode_4.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_4));
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_5.ToString()) && !craneStatusBase.FaultCode_5.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_5));
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_6.ToString()) && !craneStatusBase.FaultCode_6.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_6));
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_7.ToString()) && !craneStatusBase.FaultCode_7.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_7));
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_8.ToString()) && !craneStatusBase.FaultCode_8.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_8));
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_9.ToString()) && !craneStatusBase.FaultCode_9.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_9));
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_10.ToString()) && !craneStatusBase.FaultCode_10.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_10));
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_11.ToString()) && !craneStatusBase.FaultCode_11.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_11));
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_12.ToString()) && !craneStatusBase.FaultCode_12.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_12));
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_13.ToString()) && !craneStatusBase.FaultCode_13.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_13));
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_14.ToString()) && !craneStatusBase.FaultCode_14.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_14));
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_15.ToString()) && !craneStatusBase.FaultCode_15.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_15));
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_16.ToString()) && !craneStatusBase.FaultCode_16.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_16));
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_17.ToString()) && !craneStatusBase.FaultCode_17.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_17));
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_18.ToString()) && !craneStatusBase.FaultCode_18.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_18));
+                if (!string.IsNullOrEmpty(craneStatusBase.FaultCode_19.ToString()) && !craneStatusBase.FaultCode_19.ToString().Equals("0"))
+                    listAlarm.Add(Convert.ToInt32(craneStatusBase.FaultCode_19));
+                this.Invoke(new MethodInvoker(() => this.GetFaultCode(craneNO)));
                 #endregion
                 #region 行车故障音频
-                if (craneAlarmCount >= 1 && (craneNO == "1" || craneNO == "2" || craneNO == "3" || craneNO == "4"))
-                {
-                    timer1.Interval = 7000;
-                    timer1.Enabled = true;
-                }
-                else
-                {
-                    timer1.Enabled = false;
-                }
+                //if (craneAlarmCount >= 1 && (craneNO == "1" || craneNO == "2" || craneNO == "3" || craneNO == "4"))
+                //{
+                //    timer1.Interval = 7000;
+                //    timer1.Enabled = true;
+                //}
+                //else
+                //{
+                //    timer1.Enabled = false;
+                //}
                 #endregion
             }
             catch (Exception ex)
@@ -432,10 +435,8 @@ namespace UACSControls
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                throw (ex);
             }
             if (index >= 1)
             {
@@ -467,6 +468,125 @@ namespace UACSControls
             }
             catch (Exception ex)
             { }
+        }
+
+        /// <summary>
+        /// 计划完成提醒
+        /// </summary>
+        /// <param name="CraneNO"></param>
+        /// <param name="OrderID"></param>
+        private void GetFrmPlanCompletionBox()
+        {
+            if (!string.IsNullOrEmpty(craneStatusBase.EV_PLAN_FINISH.ToString()) && craneStatusBase.EV_PLAN_FINISH == 1)
+            {
+                if (craneStatusBase.CraneNO == "1")
+                {
+                    messagebox5 += 1;
+                    if (messagebox5 == 1)
+                    {
+                        this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString())));
+                    }
+                }
+                else if (craneStatusBase.CraneNO == "2")
+                {
+                    messagebox6 += 1;
+                    if (messagebox6 == 1)
+                    {
+                        this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString())));
+                    }
+                }
+                else if (craneStatusBase.CraneNO == "3")
+                {
+                    messagebox7 += 1;
+                    if (messagebox7 == 1)
+                    {
+                        this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString())));
+                    }
+                }
+                else if (craneStatusBase.CraneNO == "4")
+                {
+                    messagebox8 += 1;
+                    if (messagebox8 == 1)
+                    {
+                        this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString())));
+                    }
+                }
+            }
+            else
+            {
+                if (craneStatusBase.CraneNO == "1")
+                {
+                    messagebox5 = 0;
+                }
+                else if (craneStatusBase.CraneNO == "2")
+                {
+                    messagebox6 = 0;
+                }
+                else if (craneStatusBase.CraneNO == "3")
+                {
+                    messagebox7 = 0;
+                }
+                else if (craneStatusBase.CraneNO == "4")
+                {
+                    messagebox8 = 0;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 行车报警
+        /// </summary>
+        /// <param name="cranmeNo"></param>
+        private void GetFaultCode(string cranmeNo)
+        {
+            #region 行车报警
+            //listAlarm.Clear();
+            //for (int i = 0; i <= 9; i++)
+            //{
+            //    var TagName_FaultCode = craneNO + "_FaultCode_" + "" + i + "";
+            //    SetReady(TagName_FaultCode);
+            //    readTags();
+            //    string data = get_value_string(TagName_FaultCode).Trim();
+            //    if (!string.IsNullOrEmpty(data) && !data.Equals("0"))
+            //        listAlarm.Add(Convert.ToInt32(data));
+            //}
+            var craneAlarmCount = 0;
+            if (listAlarm.Count > 0 && (txt_CONTROL_MODE.Text == "等待" || txt_CONTROL_MODE.Text == "自动" || txt_CONTROL_MODE.Text == "人工"))
+            {
+                btnShow.Visible = true;
+                if (GetCraneAlarmGetValues(listAlarm))
+                {
+                    btnShow.BackColor = Color.Red;
+                    craneAlarmCount++;
+                    AlarmLamp = true;
+                    timer4.Interval = 1000;
+                    timer4.Enabled = true;
+                }
+                else
+                {
+                    btnShow.BackColor = System.Drawing.SystemColors.Control;
+                    AlarmLamp = true;
+                    timer4.Enabled = false;
+                }
+            }
+            else
+            {
+                timer4.Enabled = false;
+                btnShow.BackColor = System.Drawing.SystemColors.Control;
+                btnShow.Visible = true;
+            }
+            #endregion
+            #region 行车故障音频
+            if (craneAlarmCount >= 1 && (craneNO == "1" || craneNO == "2" || craneNO == "3" || craneNO == "4"))
+            {
+                timer1.Interval = 10000;
+                timer1.Enabled = true;
+            }
+            else
+            {
+                timer1.Enabled = false;
+            }
+            #endregion
         }
 
         #endregion
