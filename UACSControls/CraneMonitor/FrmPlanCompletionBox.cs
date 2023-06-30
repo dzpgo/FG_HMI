@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using System.Windows.Markup;
 using UACSDAL;
 using UACSPopupForm;
 
@@ -11,6 +12,7 @@ namespace UACSControls
     /// </summary>
     public partial class FrmPlanCompletionBox : Form
     {
+        private Baosight.iSuperframe.TagService.Controls.TagDataProvider tagDP = new Baosight.iSuperframe.TagService.Controls.TagDataProvider();
         //防止弹出信息关闭画面
         bool isPopupMessage = false;
         private string cranmeNo;
@@ -25,17 +27,26 @@ namespace UACSControls
         public string OrderNo { get => orderNo; set => orderNo = value; }
         public string CarNo;
         public string ToStockNo;
+        private string EV_PLAN_FINISH = "EV_PLAN_FINISH";
+        private string EV_PLAN_FINISH_A1 = "EV_PLAN_FINISH_A1";
+        private string EV_PLAN_FINISH_A2 = "EV_PLAN_FINISH_A2";
+        private string EV_PLAN_FINISH_A3 = "EV_PLAN_FINISH_A3";
+        private string EV_PLAN_FINISH_A4 = "EV_PLAN_FINISH_A4";
+        private string EV_PLAN_FINISH_A5 = "EV_PLAN_FINISH_A5";
+        private string EV_PLAN_FINISH_A6 = "EV_PLAN_FINISH_A6";
         public conCraneStatus ALM;
         private Timer timer;
         public FrmPlanCompletionBox()
         {
             InitializeComponent();
+            tagDP.ServiceName = "iplature";
+            tagDP.AutoRegist = true;
             InitializeTimer();
         }
         private void InitializeTimer()
         {
             timer = new Timer();
-            timer.Interval = 300000; // 设置定时器的间隔（单位：毫秒）
+            timer.Interval = 60000; // 设置定时器的间隔（单位：毫秒）
             timer.Tick += Timer_Tick; // 注册定时器的Tick事件处理方法
             timer.Start(); // 启动定时器
         }
@@ -53,15 +64,15 @@ namespace UACSControls
         {
             ALM = form;
         }
-        public FrmPlanCompletionBox(string cranmeNo1,string orderNo1) : this()
+        public FrmPlanCompletionBox(string cranmeNo1, string orderNo1) : this()
         {
             CranmeNo = cranmeNo1;
             OrderNo = orderNo1;
         }
         private void FrmPlanCompletionBox_Load(object sender, EventArgs e)
         {
-            label1.Text = CranmeNo+ "#行车提醒";
-            label2.Text = "A"+ CranmeNo + " 工位计划完成了";
+            label1.Text = CranmeNo + "#行车提醒";
+            label2.Text = "A" + CranmeNo + " 工位计划完成了";
             //加载数据
             GetOrderQueue();
             this.Deactivate += new EventHandler(FrmPlanCompletionBox_Deactivate);
@@ -71,7 +82,7 @@ namespace UACSControls
         /// 获取指令数据
         /// </summary>
         private void GetOrderQueue()
-        {            
+        {
             try
             {
                 isPopupMessage = true;
@@ -89,9 +100,34 @@ namespace UACSControls
             catch (Exception)
             {
                 isPopupMessage = false;
-            }            
+            }
         }
 
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            isPopupMessage = true;
+            ParkingBase parkingInfo = new ParkingBase();
+            parkingInfo.Car_No = CarNo;
+            parkingInfo.ParkingName = ToStockNo;
+            parkingInfo.STOWAGE_ID = 0;
+            parkingInfo.IsLoaded = 1;
+            parkingInfo.PackingStatus = 10;
+            FrmParkingDetail frm = new FrmParkingDetail();
+            frm.PackingInfo = parkingInfo;
+            frm.Show();
+            isPopupMessage = false;
+            //this.Close();            
+        }
+        /// <summary>
+        /// 窗体关闭前触发
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmPlanCompletionBox_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var tagName = EV_PLAN_FINISH + "_A" + CranmeNo;
+            tagDP.SetData(tagName, "0");
+        }
         /// <summary>
         /// 关闭窗体
         /// </summary>
@@ -99,6 +135,7 @@ namespace UACSControls
         /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
+
             this.Close();
         }
         /// <summary>
@@ -118,22 +155,6 @@ namespace UACSControls
             catch (Exception)
             {
             }
-        }
-
-        private void btnConfirm_Click(object sender, EventArgs e)
-        {
-            isPopupMessage = true;
-            ParkingBase parkingInfo = new ParkingBase();
-            parkingInfo.Car_No = CarNo;
-            parkingInfo.ParkingName = ToStockNo;
-            parkingInfo.STOWAGE_ID = 0;
-            parkingInfo.IsLoaded = 1;
-            parkingInfo.PackingStatus = 10;
-            FrmParkingDetail frm = new FrmParkingDetail();
-            frm.PackingInfo = parkingInfo;
-            frm.Show();
-            isPopupMessage = false;
-            //this.Close();            
         }
     }
 }

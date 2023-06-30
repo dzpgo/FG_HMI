@@ -129,6 +129,7 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+            this.bt_Delete = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -178,6 +179,7 @@
             this.groupBox2.Controls.Add(this.label32);
             this.groupBox2.Controls.Add(this.cmb_PlanStatus);
             this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.bt_Delete);
             this.groupBox2.Controls.Add(this.btnQuery);
             this.groupBox2.Controls.Add(this.tbPLAN_NO);
             this.groupBox2.Controls.Add(this.label6);
@@ -1334,6 +1336,23 @@
             this.label28.Text = "车辆类型:";
             this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // bt_Delete
+            // 
+            this.bt_Delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_Delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(137)))), ((int)(((byte)(241)))));
+            this.bt_Delete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bt_Delete.BackgroundImage")));
+            this.bt_Delete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bt_Delete.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_Delete.ForeColor = System.Drawing.Color.White;
+            this.bt_Delete.Location = new System.Drawing.Point(1108, 18);
+            this.bt_Delete.Name = "bt_Delete";
+            this.bt_Delete.Size = new System.Drawing.Size(100, 40);
+            this.bt_Delete.TabIndex = 5;
+            this.bt_Delete.Text = "删除";
+            this.bt_Delete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_Delete.UseVisualStyleBackColor = false;
+            this.bt_Delete.Click += new System.EventHandler(this.bt_Delete_Click);
+            // 
             // SelectCoilByL3FormNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1463,5 +1482,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_10;
         private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_10;
         private System.Windows.Forms.ComboBox cmb_PlanStatus;
+        private System.Windows.Forms.Button bt_Delete;
     }
 }

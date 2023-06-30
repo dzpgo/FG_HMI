@@ -14,6 +14,8 @@ using UACSParking;
 using IBM.Data.DB2;
 using UACSDAL;
 using System.Xml;
+using static UACSDAL.CraneOrderConfig;
+using System.Net.NetworkInformation;
 
 namespace UACSView.View_Parking
 {
@@ -210,8 +212,68 @@ namespace UACSView.View_Parking
         /// <param name="e"></param>
         private void btnQuery_Click(object sender, EventArgs e)
         {
+            GetQuery();
+        }
+        /// <summary>
+        /// 查询数据
+        /// </summary>
+        private void GetQuery()
+        {
             UpdateDgvRow(false);
             this.dataGridView1.DataSource = BindMatStockByL3Stowage2(false, cmb_PlanStatus.SelectedValue.ToString(), tbPLAN_NO.Text);
+        }
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bt_Delete_Click(object sender, EventArgs e)
+        {
+            var cbChoiceData = string.Empty;
+            try
+            {                
+                if (dataGridView1.SelectedCells.Count <= 0)
+                {
+                    MessageBox.Show("请先选择计划！！", "提示");
+                    this.Close();
+                    return;
+                }
+                else
+                {
+                    // 选中行
+                    foreach (DataGridViewRow dgvRow in dataGridView1.Rows)
+                    {
+                        if (!string.IsNullOrEmpty(dgvRow.Cells["cbChoice"].Value.ToString()))
+                        {
+                            var isChoice = dgvRow.Cells["cbChoice"].Value.ToString();
+                            if (isChoice.Equals("1"))
+                            {
+                                cbChoiceData = dgvRow.Cells["GPlanNO"].Value.ToString();
+                            }
+                        }
+                    }
+
+                    if (string.IsNullOrEmpty(cbChoiceData))
+                    {
+                        MessageBox.Show("请先选择计划！！", "提示");
+                        return;
+                    }
+                    //确认提示
+                    MessageBoxButtons btn = MessageBoxButtons.OKCancel;
+                    DialogResult drmsg = MessageBox.Show("确认是否删除？此操作执行后无法更改！", "提示", btn, MessageBoxIcon.Asterisk);
+                    if (drmsg == DialogResult.OK)
+                    {
+                        var sqlText = @"DELETE FROM UACS_L3_MAT_OUT_INFO WHERE PLAN_NO = '" + cbChoiceData + "'";
+                        DB2Connect.DBHelper.ExecuteNonQuery(sqlText);
+                        ParkClassLibrary.HMILogger.WriteLog("车到位", "删除计划，计划号：" + cbChoiceData, ParkClassLibrary.LogLevel.Warn, this.Text);
+                        GetQuery();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("删除失败！");
+            }
         }
 
         /// <summary>
@@ -1500,5 +1562,6 @@ namespace UACSView.View_Parking
                 }
             }
         }
+
     }
 }

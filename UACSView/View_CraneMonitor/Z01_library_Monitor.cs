@@ -695,26 +695,29 @@ namespace UACSView.View_CraneMonitor
             try
             {
                 #region 行车、检修、清扫闪烁
-                if (Crane_1.Equals(1))
-                {
-                    conCrane2_1.BackColor = Color.Tomato;
-                    //conCrane2_1.BackgroundImage = UACSControls.Resource1.行车_Stop;
-                }
-                if (Crane_2.Equals(1))
-                {
-                    conCrane2_2.BackColor = Color.Tomato;
-                    //conCrane2_2.BackgroundImage = UACSControls.Resource1.行车_Stop;
-                }
-                if (Crane_3.Equals(1))
-                {
-                    conCrane2_3.BackColor = Color.Tomato;
-                    //conCrane2_3.BackgroundImage = UACSControls.Resource1.行车_Stop;
-                }
-                if (Crane_4.Equals(1))
-                {
-                    conCrane2_4.BackColor = Color.Tomato;
-                    //conCrane2_4.BackgroundImage = UACSControls.Resource1.行车_Stop;
-                }
+                //if (Crane_1.Equals(1))
+                //{
+                //    conCrane2_1.BackColor = Color.Tomato;
+                //    //conCrane2_1.BackgroundImage = UACSControls.Resource1.行车_Stop;
+                //}
+                //if (Crane_2.Equals(1))
+                //{
+                //    conCrane2_2.BackColor = Color.Tomato;
+                //    //conCrane2_2.BackgroundImage = UACSControls.Resource1.行车_Stop;
+                //}
+                //if (Crane_3.Equals(1))
+                //{
+                //    conCrane2_3.BackColor = Color.Tomato;
+                //    //conCrane2_3.BackgroundImage = UACSControls.Resource1.行车_Stop;
+                //}
+                //if (Crane_4.Equals(1))
+                //{
+                //    conCrane2_4.BackColor = Color.Tomato;
+                //    //conCrane2_4.BackgroundImage = UACSControls.Resource1.行车_Stop;
+                //}
+
+                //检修状态
+                GetOrederTypeStatus();               
                 //检修中按钮变红，清扫中按钮变红
                 if (Crane_1.Equals(1) || Crane_2.Equals(1) || Crane_3.Equals(1) || Crane_4.Equals(1))
                 {
@@ -778,7 +781,14 @@ namespace UACSView.View_CraneMonitor
                 foreach (conCraneStatus conCraneStatusPanel in lstConCraneStatusPanel)
                 {
                     conCraneStatus.RefreshControlInvoke ConCraneStatusPanel_Invoke = new conCraneStatus.RefreshControlInvoke(conCraneStatusPanel.RefreshControl);
-                    conCraneStatusPanel.BeginInvoke(ConCraneStatusPanel_Invoke, new Object[] { craneStatusInBay.DicCranePLCStatusBase[conCraneStatusPanel.CraneNO].Clone() });
+                    conCraneStatusPanel.BeginInvoke(ConCraneStatusPanel_Invoke, new Object[] 
+                    { 
+                        craneStatusInBay.DicCranePLCStatusBase[conCraneStatusPanel.CraneNO].Clone(),
+                        Crane_1, 
+                        Crane_2, 
+                        Crane_3, 
+                        Crane_4
+                    });
                     if (conCraneStatusPanel.CraneNO.Equals("1"))
                     {
                         CraneA1_X = conCraneStatusPanel.AX;
@@ -1484,39 +1494,75 @@ namespace UACSView.View_CraneMonitor
         /// </summary>
         private void GetOrederTypeStatus()
         {
-            string sqlText = @"SELECT CRANE_NO,ORDER_TYPE,CMD_STATUS FROM UACS_CRANE_ORDER_CURRENT ORDER BY CRANE_NO ";
-            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
+            try
             {
-                while (rdr.Read())
+                string sqlText = @"SELECT CRANE_NO,ORDER_TYPE,CMD_STATUS FROM UACS_CRANE_ORDER_CURRENT ORDER BY CRANE_NO ";
+                using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
                 {
-                    if (rdr["CRANE_NO"] != System.DBNull.Value && rdr["ORDER_TYPE"] != System.DBNull.Value)
+                    while (rdr.Read())
                     {
-                        if (rdr["ORDER_TYPE"].ToString().Trim().Equals("51"))
+                        if (rdr["CRANE_NO"] != System.DBNull.Value && rdr["ORDER_TYPE"] != System.DBNull.Value)
                         {
-                            if (rdr["CRANE_NO"].ToString().Trim().Equals("1"))
+                            #region 检修
+                            if (rdr["ORDER_TYPE"].ToString().Equals("51"))
                             {
-                                Crane_1 = 1;
+                                if (rdr["CRANE_NO"].ToString().Equals("1"))
+                                {
+                                    this.conCrane2_1.BackColor = System.Drawing.Color.Tomato;
+                                    Crane_1 = 1;
+                                }
+                                else if (rdr["CRANE_NO"].ToString().Equals("2"))
+                                {
+                                    this.conCrane2_2.BackColor = System.Drawing.Color.Tomato;
+                                    Crane_2 = 1;
+                                }
+                                else if (rdr["CRANE_NO"].ToString().Equals("3"))
+                                {
+                                    this.conCrane2_3.BackColor = System.Drawing.Color.Tomato;
+                                    Crane_3 = 1;
+                                }
+                                else if (rdr["CRANE_NO"].ToString().Equals("4"))
+                                {
+                                    this.conCrane2_4.BackColor = System.Drawing.Color.Tomato;
+                                    Crane_4 = 1;
+                                }
                             }
-                            else if (rdr["CRANE_NO"].ToString().Trim().Equals("2"))
+                            else
                             {
-                                Crane_2 = 1;
+                                if (rdr["CRANE_NO"].ToString().Equals("1"))
+                                {
+                                    this.conCrane2_1.BackColor = System.Drawing.SystemColors.Control;
+                                    Crane_1 = 0;
+                                }
+                                else if (rdr["CRANE_NO"].ToString().Equals("2"))
+                                {
+                                    this.conCrane2_2.BackColor = System.Drawing.SystemColors.Control;
+                                    Crane_2 = 0;
+                                }
+                                else if (rdr["CRANE_NO"].ToString().Trim().Equals("3"))
+                                {
+                                    this.conCrane2_3.BackColor = System.Drawing.SystemColors.Control;
+                                    Crane_3 = 0;
+                                }
+                                else if (rdr["CRANE_NO"].ToString().Equals("4"))
+                                {
+                                    this.conCrane2_4.BackColor = System.Drawing.SystemColors.Control;
+                                    Crane_4 = 0;
+                                }
                             }
-                            else if (rdr["CRANE_NO"].ToString().Trim().Equals("3"))
+                            #endregion
+                            //清扫
+                            if (rdr["ORDER_TYPE"].ToString().Equals("41"))
                             {
-                                Crane_3 = 1;
-                            }
-                            else if (rdr["CRANE_NO"].ToString().Trim().Equals("4"))
-                            {
-                                Crane_4 = 1;
+                                isCubicleClean = true;
                             }
                         }
-                        if (rdr["ORDER_TYPE"].ToString().Trim().Equals("41"))
-                        {
-                            isCubicleClean = true;
-                        }
+
                     }
-                    
                 }
+            }
+            catch (Exception)
+            {
             }
         }
 
@@ -1682,6 +1728,7 @@ namespace UACSView.View_CraneMonitor
                 Crane_4 = 1;
             }
         }
+
         /// <summary>
         /// 取消行车背景颜色
         /// </summary>

@@ -16,6 +16,7 @@ namespace UACSControls
         private Label lbl = new Label();
         private Label lbl2 = new Label();
         private GroupBox gb1  = new GroupBox();
+        private GroupBox gb2 = new GroupBox();
         private AreaInfo areaInfo = new AreaInfo();
         private AreaBase areaBase = new AreaBase();
         private AreaRowInfo rowInfo = new AreaRowInfo();
@@ -503,8 +504,20 @@ namespace UACSControls
                         gb1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(199)))), ((int)(((byte)(227)))));
                         _conArea.Controls.Add(gb1);
                         gb1.Location = new Point(Convert.ToInt32(location_X), Convert.ToInt32(location_Y));
-                        //_conArea.Controls.Add(gb1);
-
+                    }
+                    if (areaBase.AreaNo.Contains("Z2"))
+                    {
+                        gb2.Dock = System.Windows.Forms.DockStyle.Fill;
+                        gb2.Margin = new System.Windows.Forms.Padding(4);
+                        gb2.Name = theSaddle.AreaNo;
+                        gb2.Padding = new System.Windows.Forms.Padding(4);
+                        gb2.Size = new System.Drawing.Size(569, 130);
+                        gb2.TabIndex = 1;
+                        gb2.TabStop = false;
+                        gb2.Text = "红绿灯";
+                        gb2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(199)))), ((int)(((byte)(227)))));
+                        _conArea.Controls.Add(gb2);
+                        gb2.Location = new Point(Convert.ToInt32(location_X), Convert.ToInt32(location_Y));
                     }
                 }
                 else
@@ -745,11 +758,6 @@ namespace UACSControls
                 }
                 else if (areaBase.AreaType == 7)
                 {
-                    //e.Graphics.DrawString(areaBase.Area_Name, new Font("微软雅黑", 9, FontStyle.Bold),
-                    //    new SolidBrush(Color.Black), 0, 0, new StringFormat(StringFormatFlags.DirectionVertical));
-                    //Rectangle rec = new Rectangle(new Point(0, 0), new Size(this.Width, this.Height));
-                    //gr.DrawRectangle(new Pen(Color.White, 2), rec);
-
                     gr.DrawString(areaBase.Area_Name,
                                new Font("微软雅黑", 12, FontStyle.Bold), Brushes.Black, new Point(this.Width / 2 - 20, 20));
                     //        //创建矩形对象                左上角度座标                 宽   高  

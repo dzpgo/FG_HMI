@@ -1643,5 +1643,6 @@ namespace UACSView.View_CraneMonitor
                 }
             }
         }
+
     }
 }

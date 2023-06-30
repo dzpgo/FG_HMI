@@ -115,6 +115,7 @@
             this.Name = "FrmPlanCompletionBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "计划完成提醒";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPlanCompletionBox_FormClosing);
             this.Load += new System.EventHandler(this.FrmPlanCompletionBox_Load);
             this.ResumeLayout(false);
 

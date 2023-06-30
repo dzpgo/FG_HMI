@@ -14,6 +14,7 @@ using UACSPopupForm;
 using Baosight.iSuperframe.Authorization;
 using static System.Net.Mime.MediaTypeNames;
 using System.Windows.Markup;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace UACSControls
 {
@@ -108,7 +109,7 @@ namespace UACSControls
         private List<int> listAlarm = new List<int>();
         private List<string> listCrane = new List<string>();
         private CraneStatusBase craneStatusBase = new CraneStatusBase();
-        public delegate void RefreshControlInvoke(CraneStatusBase theCraneStatusBase);
+        public delegate void RefreshControlInvoke(CraneStatusBase theCraneStatusBase, int Crane_1, int Crane_2, int Crane_3, int Crane_4);
         public string AX { get; set; }
 
         #endregion
@@ -118,7 +119,7 @@ namespace UACSControls
         /// 刷新行车状态Tag值
         /// </summary>
         /// <param name="theCraneStatusBase">Tag值</param>
-        public void RefreshControl(CraneStatusBase theCraneStatusBase)
+        public void RefreshControl(CraneStatusBase theCraneStatusBase, int Crane_1, int Crane_2, int Crane_3, int Crane_4)
         {
             try
             {
@@ -141,6 +142,14 @@ namespace UACSControls
                 }
                 //控制模式
                 txt_CONTROL_MODE.Text = craneStatusBase.CraneModeDesc();
+                if (txt_CONTROL_MODE.Text.Equals("未知"))
+                {
+                    //检修中按钮变红
+                    if (Crane_1.Equals(1) && craneStatusBase.CraneNO.ToString().Equals("1")) { txt_CONTROL_MODE.Text = "检修"; }
+                    else if (Crane_2.Equals(1) && craneStatusBase.CraneNO.ToString().Equals("2")) { txt_CONTROL_MODE.Text = "检修"; }
+                    else if (Crane_3.Equals(1) && craneStatusBase.CraneNO.ToString().Equals("3")) { txt_CONTROL_MODE.Text = "检修"; }
+                    else if (Crane_4.Equals(1) && craneStatusBase.CraneNO.ToString().Equals("4")) { txt_CONTROL_MODE.Text = "检修"; }
+                }
                 //请求指令信号灯
                 refresh_Textbox_Light(light_ASK_PLAN, craneStatusBase.AskPlan);
                 //x
@@ -180,7 +189,7 @@ namespace UACSControls
                         messagebox5 += 1;
                         if (messagebox5 == 1)
                         {
-                            this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString())));
+                            this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString(), false)));
                         }
                     }
                     else if (craneStatusBase.CraneNO == "2")
@@ -188,7 +197,7 @@ namespace UACSControls
                         messagebox6 += 1;
                         if (messagebox6 == 1)
                         {
-                            this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString())));
+                            this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString(), false)));
                         }
                     }
                     else if (craneStatusBase.CraneNO == "3")
@@ -196,7 +205,7 @@ namespace UACSControls
                         messagebox7 += 1;
                         if (messagebox7 == 1)
                         {
-                            this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString())));
+                            this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString(), false)));
                         }
                     }
                     else if (craneStatusBase.CraneNO == "4")
@@ -204,7 +213,7 @@ namespace UACSControls
                         messagebox8 += 1;
                         if (messagebox8 == 1)
                         {
-                            this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString())));
+                            this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString(), false)));
                         }
                     }
                 }
@@ -213,18 +222,22 @@ namespace UACSControls
                     if (craneStatusBase.CraneNO == "1")
                     {
                         messagebox5 = 0;
+                        this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString(), true)));
                     }
                     else if (craneStatusBase.CraneNO == "2")
                     {
                         messagebox6 = 0;
+                        this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString(), true)));
                     }
                     else if (craneStatusBase.CraneNO == "3")
                     {
                         messagebox7 = 0;
+                        this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString(), true)));
                     }
                     else if (craneStatusBase.CraneNO == "4")
                     {
                         messagebox8 = 0;
+                        this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString(), true)));
                     }
                 }
 
@@ -471,69 +484,6 @@ namespace UACSControls
         }
 
         /// <summary>
-        /// 计划完成提醒
-        /// </summary>
-        /// <param name="CraneNO"></param>
-        /// <param name="OrderID"></param>
-        private void GetFrmPlanCompletionBox()
-        {
-            if (!string.IsNullOrEmpty(craneStatusBase.EV_PLAN_FINISH.ToString()) && craneStatusBase.EV_PLAN_FINISH == 1)
-            {
-                if (craneStatusBase.CraneNO == "1")
-                {
-                    messagebox5 += 1;
-                    if (messagebox5 == 1)
-                    {
-                        this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString())));
-                    }
-                }
-                else if (craneStatusBase.CraneNO == "2")
-                {
-                    messagebox6 += 1;
-                    if (messagebox6 == 1)
-                    {
-                        this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString())));
-                    }
-                }
-                else if (craneStatusBase.CraneNO == "3")
-                {
-                    messagebox7 += 1;
-                    if (messagebox7 == 1)
-                    {
-                        this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString())));
-                    }
-                }
-                else if (craneStatusBase.CraneNO == "4")
-                {
-                    messagebox8 += 1;
-                    if (messagebox8 == 1)
-                    {
-                        this.Invoke(new MethodInvoker(() => this.OpenForm(craneStatusBase.CraneNO.ToString(), craneStatusBase.OrderID.ToString())));
-                    }
-                }
-            }
-            else
-            {
-                if (craneStatusBase.CraneNO == "1")
-                {
-                    messagebox5 = 0;
-                }
-                else if (craneStatusBase.CraneNO == "2")
-                {
-                    messagebox6 = 0;
-                }
-                else if (craneStatusBase.CraneNO == "3")
-                {
-                    messagebox7 = 0;
-                }
-                else if (craneStatusBase.CraneNO == "4")
-                {
-                    messagebox8 = 0;
-                }
-            }
-        }
-
-        /// <summary>
         /// 行车报警
         /// </summary>
         /// <param name="cranmeNo"></param>
@@ -619,7 +569,7 @@ namespace UACSControls
         /// </summary>
         /// <param name="cranmeNo">行车号</param>
         /// <param name="orderNo">计划号</param>
-        private void OpenForm(string cranmeNo, string orderNo)
+        private void OpenForm(string cranmeNo, string orderNo,bool IsClose)
         {
             // 检查窗体是否已经打开
             bool isOpen = false;
@@ -629,12 +579,16 @@ namespace UACSControls
                 {
                     isOpen = true;
                     form.Activate();
+                    if (IsClose)
+                    {
+                        form.Close();
+                    }
                     break;
                 }
             }
 
             // 如果窗体未打开，则打开它
-            if (!isOpen)
+            if (!isOpen && !IsClose)
             {
                 FrmPlanCompletionBox myForm = new FrmPlanCompletionBox(cranmeNo, orderNo);
                 myForm.Show();

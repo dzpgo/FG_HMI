@@ -136,7 +136,7 @@ namespace UACSControls
                 //location_Y = Convert.ToDouble(theTrafficLightBase.Y_Start) * yScale;
                 //location_Y = (Convert.ToDouble(theTrafficLightBase.Y_End) - 2000) * yScale;
                 //location_Y = (Convert.ToDouble(theTrafficLightBase.Y_End) - 700) * yScale;
-                location_Y = Convert.ToDouble(theTrafficLightBase.Y_End) * yScale;
+                location_Y = (Convert.ToDouble(theTrafficLightBase.Y_End) + 1500) * yScale;
             }
             else
             {
