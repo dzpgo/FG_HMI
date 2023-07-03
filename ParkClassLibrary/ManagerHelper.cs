@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace ParkClassLibrary
 {
-   public class ManagerHelper
+    public class ManagerHelper
     {
         #region iPlature配置
         private static Baosight.iSuperframe.TagService.Controls.TagDataProvider tagDP = null;
@@ -72,7 +66,7 @@ namespace ParkClassLibrary
             dataGridView.AutoGenerateColumns = false;
             dataGridView.EnableHeadersVisualStyles = false;
             dataGridView.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridView.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.SkyBlue;//标题背景颜色
+            dataGridView.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightBlue;//标题背景颜色
             //设置列高
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridView.ColumnHeadersHeight = 35;

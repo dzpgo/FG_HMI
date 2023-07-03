@@ -1,21 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Baosight.iSuperframe.Forms;
 using Baosight.iSuperframe.TagService;
-using ParkingControlLibrary;
-using ParkClassLibrary;
 using UACSParking;
-using IBM.Data.DB2;
 using UACSDAL;
-using System.Xml;
-using static UACSDAL.CraneOrderConfig;
-using System.Net.NetworkInformation;
 
 namespace UACSView.View_Parking
 {

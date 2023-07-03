@@ -262,15 +262,6 @@ namespace UACSView
 
         }
 
-        private void dataGridView2_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-
-        }
-
-        private void dataGridView3_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-
-        }
         #endregion
         #endregion
 
@@ -503,7 +494,37 @@ namespace UACSView
 
 
 
+        #region 分页
 
+        int totalPages = 0;
+
+        /// <summary>
+        /// 数据分页
+        /// </summary>
+        /// <param name="dtResult"></param>
+        /// <returns></returns>
+        private DataTable GetDataPage(DataTable dtResult, int currentPage)
+        {
+            totalPages = 0;
+            int totalRows = 0;
+            if (null == dtResult || dtResult.Rows.Count == 0)
+            {
+                this.ucPageDemo.PageInfo.Text = string.Format("第{0}/{1}页", "1", "1");
+                this.ucPageDemo.TotalRows.Text = @"0";
+                this.ucPageDemo.CurrentPage = 1;
+                this.ucPageDemo.TotalPages = 1;
+            }
+            else
+            {
+                totalRows = Convert.ToInt32(dtResult.Rows[0]["TotalRows"].ToString());
+                totalPages = totalRows % this.ucPageDemo.PageSize == 0 ? totalRows / this.ucPageDemo.PageSize : (totalRows / this.ucPageDemo.PageSize) + 1;
+                this.ucPageDemo.PageInfo.Text = string.Format("第{0}/{1}页", currentPage, totalPages);
+                this.ucPageDemo.TotalRows.Text = totalRows.ToString();
+                this.ucPageDemo.CurrentPage = currentPage;
+                this.ucPageDemo.TotalPages = totalPages;
+            }
+            return dtResult;
+        }
 
         /// <summary>
         /// 页数跳转
@@ -546,8 +567,13 @@ namespace UACSView
         /// <param name="current"></param>
         void ucPageDemo_ClickPageButtonEvent(int current)
         {
+            if (totalPages != 0 && current > totalPages)
+            {
+                current = 1;
+            }
             this.ShowDatas(current);
-        }
+        } 
+        #endregion
 
         /// <summary>
         /// 初始化DataGridView控件
@@ -628,31 +654,8 @@ namespace UACSView
                 using (IDataReader odrIn = DB2Connect.DBHelper.ExecuteReader(sqlText_ORDER))
                 {
                     dtResult.Load(odrIn);
-                    //dataGridView1.DataSource = dt;
-                    //odrIn.Close();
                 }
-
-
-                //DataTable dtResult = null; // DataBaseAccessOperate.GetDataTable(sql);
-                int totalPages = 0;
-                int totalRows = 0;
-                if (null == dtResult || dtResult.Rows.Count == 0)
-                {
-                    this.ucPageDemo.PageInfo.Text = string.Format("第{0}/{1}页", "1", "1");
-                    this.ucPageDemo.TotalRows.Text = @"0";
-                    this.ucPageDemo.CurrentPage = 1;
-                    this.ucPageDemo.TotalPages = 1;
-                }
-                else
-                {
-                    totalRows = Convert.ToInt32(dtResult.Rows[0]["TotalRows"].ToString());
-                    totalPages = totalRows % this.ucPageDemo.PageSize == 0 ? totalRows / this.ucPageDemo.PageSize : (totalRows / this.ucPageDemo.PageSize) + 1;
-                    this.ucPageDemo.PageInfo.Text = string.Format("第{0}/{1}页", currentPage, totalPages);
-                    this.ucPageDemo.TotalRows.Text = totalRows.ToString();
-                    this.ucPageDemo.CurrentPage = currentPage;
-                    this.ucPageDemo.TotalPages = totalPages;
-                }
-                this.dataGridView1.DataSource = dtResult;
+                this.dataGridView1.DataSource = GetDataPage(dtResult, currentPage);
             }
             catch (Exception ex)
             { }

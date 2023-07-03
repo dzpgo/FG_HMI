@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectCoilByL3FormNew));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -38,6 +39,7 @@
             this.label32 = new System.Windows.Forms.Label();
             this.cmb_PlanStatus = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.bt_Delete = new System.Windows.Forms.Button();
             this.btnQuery = new System.Windows.Forms.Button();
             this.tbPLAN_NO = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -129,7 +131,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.bt_Delete = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -246,6 +247,23 @@
             this.label4.TabIndex = 52;
             this.label4.Text = "计划状态:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // bt_Delete
+            // 
+            this.bt_Delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_Delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(137)))), ((int)(((byte)(241)))));
+            this.bt_Delete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bt_Delete.BackgroundImage")));
+            this.bt_Delete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bt_Delete.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_Delete.ForeColor = System.Drawing.Color.White;
+            this.bt_Delete.Location = new System.Drawing.Point(1108, 18);
+            this.bt_Delete.Name = "bt_Delete";
+            this.bt_Delete.Size = new System.Drawing.Size(100, 40);
+            this.bt_Delete.TabIndex = 5;
+            this.bt_Delete.Text = "删除";
+            this.bt_Delete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_Delete.UseVisualStyleBackColor = false;
+            this.bt_Delete.Click += new System.EventHandler(this.bt_Delete_Click);
             // 
             // btnQuery
             // 
@@ -871,6 +889,15 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cbChoice,
@@ -898,6 +925,7 @@
             this.GMatCode_10,
             this.GWeight_10});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
@@ -923,7 +951,7 @@
             this.cbChoice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.cbChoice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.cbChoice.TrueValue = "1";
-            this.cbChoice.Width = 54;
+            this.cbChoice.Width = 53;
             // 
             // GPlanNO
             // 
@@ -934,7 +962,7 @@
             this.GPlanNO.MinimumWidth = 8;
             this.GPlanNO.Name = "GPlanNO";
             this.GPlanNO.ReadOnly = true;
-            this.GPlanNO.Width = 66;
+            this.GPlanNO.Width = 65;
             // 
             // GCarNo
             // 
@@ -945,7 +973,7 @@
             this.GCarNo.MinimumWidth = 8;
             this.GCarNo.Name = "GCarNo";
             this.GCarNo.ReadOnly = true;
-            this.GCarNo.Width = 78;
+            this.GCarNo.Width = 77;
             // 
             // PLAN_STATUS
             // 
@@ -955,7 +983,7 @@
             this.PLAN_STATUS.HeaderText = "计划状态";
             this.PLAN_STATUS.MinimumWidth = 8;
             this.PLAN_STATUS.Name = "PLAN_STATUS";
-            this.PLAN_STATUS.Width = 78;
+            this.PLAN_STATUS.Width = 77;
             // 
             // GMatCode_1
             // 
@@ -965,7 +993,7 @@
             this.GMatCode_1.MinimumWidth = 8;
             this.GMatCode_1.Name = "GMatCode_1";
             this.GMatCode_1.ReadOnly = true;
-            this.GMatCode_1.Width = 60;
+            this.GMatCode_1.Width = 59;
             // 
             // GWeight_1
             // 
@@ -975,7 +1003,7 @@
             this.GWeight_1.MinimumWidth = 8;
             this.GWeight_1.Name = "GWeight_1";
             this.GWeight_1.ReadOnly = true;
-            this.GWeight_1.Width = 60;
+            this.GWeight_1.Width = 59;
             // 
             // GMatCode_2
             // 
@@ -985,7 +1013,7 @@
             this.GMatCode_2.MinimumWidth = 8;
             this.GMatCode_2.Name = "GMatCode_2";
             this.GMatCode_2.ReadOnly = true;
-            this.GMatCode_2.Width = 60;
+            this.GMatCode_2.Width = 59;
             // 
             // GWeight_2
             // 
@@ -995,7 +1023,7 @@
             this.GWeight_2.MinimumWidth = 8;
             this.GWeight_2.Name = "GWeight_2";
             this.GWeight_2.ReadOnly = true;
-            this.GWeight_2.Width = 60;
+            this.GWeight_2.Width = 59;
             // 
             // GMatCode_3
             // 
@@ -1005,7 +1033,7 @@
             this.GMatCode_3.MinimumWidth = 8;
             this.GMatCode_3.Name = "GMatCode_3";
             this.GMatCode_3.ReadOnly = true;
-            this.GMatCode_3.Width = 60;
+            this.GMatCode_3.Width = 59;
             // 
             // GWeight_3
             // 
@@ -1015,7 +1043,7 @@
             this.GWeight_3.MinimumWidth = 8;
             this.GWeight_3.Name = "GWeight_3";
             this.GWeight_3.ReadOnly = true;
-            this.GWeight_3.Width = 60;
+            this.GWeight_3.Width = 59;
             // 
             // GMatCode_4
             // 
@@ -1025,7 +1053,7 @@
             this.GMatCode_4.MinimumWidth = 8;
             this.GMatCode_4.Name = "GMatCode_4";
             this.GMatCode_4.ReadOnly = true;
-            this.GMatCode_4.Width = 60;
+            this.GMatCode_4.Width = 59;
             // 
             // GWeight_4
             // 
@@ -1035,7 +1063,7 @@
             this.GWeight_4.MinimumWidth = 8;
             this.GWeight_4.Name = "GWeight_4";
             this.GWeight_4.ReadOnly = true;
-            this.GWeight_4.Width = 60;
+            this.GWeight_4.Width = 59;
             // 
             // GMatCode_5
             // 
@@ -1045,7 +1073,7 @@
             this.GMatCode_5.MinimumWidth = 8;
             this.GMatCode_5.Name = "GMatCode_5";
             this.GMatCode_5.ReadOnly = true;
-            this.GMatCode_5.Width = 60;
+            this.GMatCode_5.Width = 59;
             // 
             // GWeight_5
             // 
@@ -1055,7 +1083,7 @@
             this.GWeight_5.MinimumWidth = 8;
             this.GWeight_5.Name = "GWeight_5";
             this.GWeight_5.ReadOnly = true;
-            this.GWeight_5.Width = 60;
+            this.GWeight_5.Width = 59;
             // 
             // GMatCode_6
             // 
@@ -1065,7 +1093,7 @@
             this.GMatCode_6.MinimumWidth = 8;
             this.GMatCode_6.Name = "GMatCode_6";
             this.GMatCode_6.ReadOnly = true;
-            this.GMatCode_6.Width = 60;
+            this.GMatCode_6.Width = 59;
             // 
             // GWeight_6
             // 
@@ -1075,7 +1103,7 @@
             this.GWeight_6.MinimumWidth = 8;
             this.GWeight_6.Name = "GWeight_6";
             this.GWeight_6.ReadOnly = true;
-            this.GWeight_6.Width = 60;
+            this.GWeight_6.Width = 59;
             // 
             // GMatCode_7
             // 
@@ -1085,7 +1113,7 @@
             this.GMatCode_7.MinimumWidth = 8;
             this.GMatCode_7.Name = "GMatCode_7";
             this.GMatCode_7.ReadOnly = true;
-            this.GMatCode_7.Width = 60;
+            this.GMatCode_7.Width = 59;
             // 
             // GWeight_7
             // 
@@ -1095,7 +1123,7 @@
             this.GWeight_7.MinimumWidth = 8;
             this.GWeight_7.Name = "GWeight_7";
             this.GWeight_7.ReadOnly = true;
-            this.GWeight_7.Width = 60;
+            this.GWeight_7.Width = 59;
             // 
             // GMatCode_8
             // 
@@ -1105,7 +1133,7 @@
             this.GMatCode_8.MinimumWidth = 8;
             this.GMatCode_8.Name = "GMatCode_8";
             this.GMatCode_8.ReadOnly = true;
-            this.GMatCode_8.Width = 60;
+            this.GMatCode_8.Width = 59;
             // 
             // GWeight_8
             // 
@@ -1115,7 +1143,7 @@
             this.GWeight_8.MinimumWidth = 8;
             this.GWeight_8.Name = "GWeight_8";
             this.GWeight_8.ReadOnly = true;
-            this.GWeight_8.Width = 60;
+            this.GWeight_8.Width = 59;
             // 
             // GMatCode_9
             // 
@@ -1125,7 +1153,7 @@
             this.GMatCode_9.MinimumWidth = 8;
             this.GMatCode_9.Name = "GMatCode_9";
             this.GMatCode_9.ReadOnly = true;
-            this.GMatCode_9.Width = 60;
+            this.GMatCode_9.Width = 59;
             // 
             // GWeight_9
             // 
@@ -1135,7 +1163,7 @@
             this.GWeight_9.MinimumWidth = 8;
             this.GWeight_9.Name = "GWeight_9";
             this.GWeight_9.ReadOnly = true;
-            this.GWeight_9.Width = 60;
+            this.GWeight_9.Width = 59;
             // 
             // GMatCode_10
             // 
@@ -1145,7 +1173,7 @@
             this.GMatCode_10.MinimumWidth = 8;
             this.GMatCode_10.Name = "GMatCode_10";
             this.GMatCode_10.ReadOnly = true;
-            this.GMatCode_10.Width = 66;
+            this.GMatCode_10.Width = 65;
             // 
             // GWeight_10
             // 
@@ -1155,7 +1183,7 @@
             this.GWeight_10.MinimumWidth = 8;
             this.GWeight_10.Name = "GWeight_10";
             this.GWeight_10.ReadOnly = true;
-            this.GWeight_10.Width = 66;
+            this.GWeight_10.Width = 65;
             // 
             // panel1
             // 
@@ -1335,23 +1363,6 @@
             this.label28.TabIndex = 52;
             this.label28.Text = "车辆类型:";
             this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // bt_Delete
-            // 
-            this.bt_Delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bt_Delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(137)))), ((int)(((byte)(241)))));
-            this.bt_Delete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bt_Delete.BackgroundImage")));
-            this.bt_Delete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bt_Delete.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_Delete.ForeColor = System.Drawing.Color.White;
-            this.bt_Delete.Location = new System.Drawing.Point(1108, 18);
-            this.bt_Delete.Name = "bt_Delete";
-            this.bt_Delete.Size = new System.Drawing.Size(100, 40);
-            this.bt_Delete.TabIndex = 5;
-            this.bt_Delete.Text = "删除";
-            this.bt_Delete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.bt_Delete.UseVisualStyleBackColor = false;
-            this.bt_Delete.Click += new System.EventHandler(this.bt_Delete_Click);
             // 
             // SelectCoilByL3FormNew
             // 

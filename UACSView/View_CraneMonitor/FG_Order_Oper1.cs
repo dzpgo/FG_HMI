@@ -86,7 +86,7 @@ namespace UACSView.View_CraneMonitor
         /// <summary>
         /// 查询数据
         /// </summary>
-        /// <param name="isLoad">是否是初始化 true=是初始化，false=不是初始化</param>
+        /// <param name="currentPage">当前页面</param>
         private void getCraneOrderData(int currentPage)
         {
             string bayNo = this.cbb_BAY_NO.SelectedValue.ToString();  //跨号
@@ -246,6 +246,10 @@ namespace UACSView.View_CraneMonitor
         }
 
 
+        #region 分页
+
+        int totalPages = 0;
+
         /// <summary>
         /// 数据分页
         /// </summary>
@@ -253,7 +257,7 @@ namespace UACSView.View_CraneMonitor
         /// <returns></returns>
         private DataTable GetDataPage(DataTable dtResult, int currentPage)
         {
-            int totalPages = 0;
+            totalPages = 0;
             int totalRows = 0;
             if (null == dtResult || dtResult.Rows.Count == 0)
             {
@@ -315,8 +319,13 @@ namespace UACSView.View_CraneMonitor
         /// <param name="current"></param>
         void ucPageDemo_ClickPageButtonEvent(int current)
         {
+            if (totalPages != 0 && current > totalPages)
+            {
+                current = 1;
+            }
             this.getCraneOrderData(current);
-        }
+        } 
+        #endregion
 
         /// <summary>
         /// 初始化DataGridView控件

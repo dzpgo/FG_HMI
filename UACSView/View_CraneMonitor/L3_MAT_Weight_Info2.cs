@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using UACS;
 using Baosight.iSuperframe.Forms;
-using UACSDAL;
 
-namespace UACSView.View_CraneMonitor
+namespace UACSView
 {
     /// <summary>
     /// L3送料计划
@@ -39,8 +32,6 @@ namespace UACSView.View_CraneMonitor
                 //设置背景色
                 //this.panel1.BackColor = UACSDAL.ColorSln.FormBgColor;
                 //this.panel2.BackColor = UACSDAL.ColorSln.FormBgColor;
-                //绑定下拉框
-                BindCombox();
                 //
                 this.dateTimePicker1_recTime.Value = DateTime.Now.AddDays(-1);
                 //
@@ -69,16 +60,9 @@ namespace UACSView.View_CraneMonitor
             }
         }
 
-    #endregion
+        #endregion
 
         #region 方法
-        /// <summary>
-        /// 绑定下拉框数据
-        /// </summary>
-        private void BindCombox()
-        {
-        }
-
         /// <summary>
         /// 查询数据
         /// </summary>
@@ -91,8 +75,8 @@ namespace UACSView.View_CraneMonitor
             string sqlText = @"SELECT A.WORK_SEQ_NO,A.TRUCK_NO,A.MAT_PROD_CODE, C.MAT_CNAME,A.MAT_WT,A.REC_TIME,A.UPD_TIME FROM UACSAPP.UACS_L3_MAT_WEIGHT_INFO A ";
             sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_PROD_CODE ";
             sqlText += "WHERE A.REC_TIME > '{0}' and A.REC_TIME < '{1}' ";
-            sqlText = string.Format(sqlText, recTime1, recTime2);            
-            if (!isLoad) 
+            sqlText = string.Format(sqlText, recTime1, recTime2);
+            if (!isLoad)
             {
                 if (!string.IsNullOrEmpty(work_seqNo))
                 {

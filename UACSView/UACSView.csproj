@@ -190,6 +190,12 @@
     <Compile Include="View_CraneMonitor\Frm_Yard2Yard_ByCar_Plan.designer.cs">
       <DependentUpon>Frm_Yard2Yard_ByCar_Plan.cs</DependentUpon>
     </Compile>
+    <Compile Include="View_CraneMonitor\L3_MAT_OutAndWeight_Info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CraneMonitor\L3_MAT_OutAndWeight_Info.Designer.cs">
+      <DependentUpon>L3_MAT_OutAndWeight_Info.cs</DependentUpon>
+    </Compile>
     <Compile Include="View_CraneMonitor\L3_MAT_Out_Info.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -721,6 +727,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View_CraneMonitor\HandAutoModeMessage.resx">
       <DependentUpon>HandAutoModeMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CraneMonitor\L3_MAT_OutAndWeight_Info.resx">
+      <DependentUpon>L3_MAT_OutAndWeight_Info.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View_CraneMonitor\L3_MAT_Out_Info.resx">
       <DependentUpon>L3_MAT_Out_Info.cs</DependentUpon>
