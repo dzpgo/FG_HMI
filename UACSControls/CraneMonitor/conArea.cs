@@ -315,7 +315,7 @@ namespace UACSControls
                         //this.lbl2.Location = new Point(0, Convert.ToInt32(dd));
                         this.lbl2.Height = (int)((Percentage2 * height2) / 100);
                         this.lbl2.Text = PercentageName2;
-                        this.lbl2.BackColor = Color.Transparent;
+                        this.lbl2.BackColor = Color.Transparent; 
 
                         if (areaBase.AreaNo == "Z23-A" || areaBase.AreaNo == "Z23-B" || areaBase.AreaNo == "Z23-C" || areaBase.AreaNo == "Z21-I" || areaBase.AreaNo == "Z21-J")
                         {
