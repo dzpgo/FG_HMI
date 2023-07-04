@@ -250,7 +250,7 @@ namespace UACSControls
                             {
                                 //GRID_NO, GRID_NAME, GRID_DIV, GRID_STATUS, MAT_WGT, MAT_WGTTOTAL
                                 var gridNo = dr["GRID_NO"].ToString();
-                                if (!string.IsNullOrEmpty(gridNo))
+                                if (!string.IsNullOrEmpty(gridNo) && gridNo.Length == 4)
                                 {
                                     var gridNoSplit = gridNo.Split('-');
                                     if (gridNoSplit != null && gridNoSplit.Length > 0)
