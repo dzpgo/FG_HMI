@@ -6,6 +6,9 @@ using Baosight.iSuperframe.Forms;
 
 namespace UACSView
 {
+    /// <summary>
+    /// L3配送料计划
+    /// </summary>
     public partial class L3_MAT_OutAndWeight_Info : FormBase
     {
         private static Baosight.iSuperframe.Common.IDBHelper DBHelper = null;

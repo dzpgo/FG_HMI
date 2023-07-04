@@ -5,16 +5,16 @@ using System.Windows.Forms;
 using UACSDAL;
 using UACSControls;
 using ParkClassLibrary;
+using System.Collections.Generic;
 
 namespace UACSView.View_CraneMonitor
 {
     /// <summary>
-    /// 装冷却剂
+    /// 修改料格物料布局
     /// </summary>
     public partial class FrmSaddleShowYardmapGrid : Form
     {
         #region 全局变量
-        public FrmSaddleShow frmSS;
         private string areaNo;
         /// <summary>
         /// 所在区域号
@@ -25,19 +25,15 @@ namespace UACSView.View_CraneMonitor
         /// </summary>
         private bool isPopupMessage = false;
         private DataTable dtSource = new DataTable();
+        public DataTable Initial_dgv = new DataTable();
+        private ComboBox comboBox1 = new ComboBox();
+        private ComboBox comboBox2 = new ComboBox();
+        private Dictionary<string, string> MatCodeList = new Dictionary<string, string>();
         #endregion
         #region 初始化
         public FrmSaddleShowYardmapGrid()
         {
             InitializeComponent();
-        }
-        /// <summary>
-        /// 添加一个构造函数
-        /// </summary>
-        /// <param name="form"></param>
-        public FrmSaddleShowYardmapGrid(FrmSaddleShow form) : this()
-        {
-            frmSS = form;
         }
         /// <summary>
         /// 初始化加载
@@ -49,7 +45,10 @@ namespace UACSView.View_CraneMonitor
             if (!string.IsNullOrEmpty(AreaNo))
             {
                 LoadDataRefresh();
+                GetDataInitial();
             }
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             this.Deactivate += new EventHandler(frmClose);
         }
         /// <summary>
@@ -59,160 +58,228 @@ namespace UACSView.View_CraneMonitor
         {
             //源数据
             GetYardmapGrid();
-            GetYardmapGridLoad();
+            Initial_dgv.Clear();
+            if (dataGridView1.DataSource != null && dataGridView1.Rows.Count > 0)
+            {
+                Initial_dgv = GetDataGridViewToTable(dataGridView1);
+            }
         }
         #endregion
-        #region 绑定下拉框
+
+        #region 数据
 
         /// <summary>
         /// 初始化数据
         /// </summary>
         private void GetYardmapGrid()
         {
-            string sqlText = @"SELECT GRID_NO,GRID_NAME,GRID_DIV,MAT_CODE,COMP_CODE,MAT_WGT,MAT_WGTTOTAL,AREA_NO,GRID_STATUS FROM UACS_YARDMAP_GRID_DEFINE WHERE AREA_NO = '" + AreaNo + "' ORDER BY GRID_NO ASC ";
+            if (dtSource != null && dtSource.Rows.Count > 0)
+            {
+                dtSource.Clear();
+            }
+            string sqlText = @"SELECT A.GRID_NO,A.GRID_NAME,B.MAT_CNAME,A.MAT_CODE,A.AREA_NO,CASE A.GRID_STATUS WHEN 0 THEN '未启用' WHEN 1 THEN '已启用' ELSE '' END AS GRID_STATUS FROM UACS_YARDMAP_GRID_DEFINE A LEFT JOIN UACS_L3_MAT_INFO B ON A.MAT_CODE = B.MAT_CODE WHERE AREA_NO = '" + AreaNo + "' ORDER BY GRID_NO ASC ";
             using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
             {
                 dtSource.Load(rdr);
             }
-        }
-        private void GetYardmapGridLoad()
-        {
-            if (dtSource != null && dtSource.Rows.Count > 0)
-            {
-                foreach (DataRow dr in dtSource.Rows)
-                {
-                    var gridNo = dr["GRID_NO"].ToString();
-                    var gridName = dr["GRID_NAME"].ToString();
-                    var gridDiv = dr["GRID_DIV"].ToString();
-                    var MatCode = dr["MAT_CODE"].ToString();
-                    var areano = dr["AREA_NO"].ToString();
-                    var gridStatus = dr["GRID_STATUS"].ToString();
-                    if (!string.IsNullOrEmpty(gridNo))
-                    {
-                        var grids = gridNo.Split('-');
-                        if (grids[1].Equals("0"))
-                        {
-                            txt_GridNo_0.Text = gridNo;
-                            txt_GridName_0.Text = gridName;
-                            txt_MatCode_0.Text = MatCode;
-                            BindMatCodeName(cmb_MatCodeName_0, MatCode);
-                            BindStatus(cmb_Status_0, gridStatus);
-                        }
-                        if (grids[1].Equals("1"))
-                        {
-                            txt_GridNo_1.Text = gridNo;
-                            txt_GridName_1.Text = gridName;
-                            txt_MatCode_1.Text = MatCode;
-                            BindMatCodeName(cmb_MatCodeName_1, MatCode);
-                            BindStatus(cmb_Status_1, gridStatus);
-                        }
-                        if (grids[1].Equals("2"))
-                        {
-                            txt_GridNo_2.Text = gridNo;
-                            txt_GridName_2.Text = gridName;
-                            txt_MatCode_2.Text = MatCode;
-                            BindMatCodeName(cmb_MatCodeName_2, MatCode);
-                            BindStatus(cmb_Status_2, gridStatus);
-                        }
-                        if (grids[1].Equals("3"))
-                        {
-                            txt_GridNo_3.Text = gridNo;
-                            txt_GridName_3.Text = gridName;
-                            txt_MatCode_3.Text = MatCode;
-                            BindMatCodeName(cmb_MatCodeName_3, MatCode);
-                            BindStatus(cmb_Status_3, gridStatus);
-                        }
-                        if (grids[1].Equals("4"))
-                        {
-                            txt_GridNo_4.Text = gridNo;
-                            txt_GridName_4.Text = gridName;
-                            txt_MatCode_4.Text = MatCode;
-                            BindMatCodeName(cmb_MatCodeName_4, MatCode);
-                            BindStatus(cmb_Status_4, gridStatus);
-                        }
-                        if (grids[1].Equals("5"))
-                        {
-                            txt_GridNo_5.Text = gridNo;
-                            txt_GridName_5.Text = gridName;
-                            txt_MatCode_5.Text = MatCode;
-                            BindMatCodeName(cmb_MatCodeName_5, MatCode);
-                            BindStatus(cmb_Status_5, gridStatus);
-                        }
-                        if (grids[1].Equals("6"))
-                        {
-                            txt_GridNo_6.Text = gridNo;
-                            txt_GridName_6.Text = gridName;
-                            txt_MatCode_6.Text = MatCode;
-                            BindMatCodeName(cmb_MatCodeName_6, MatCode);
-                            BindStatus(cmb_Status_6, gridStatus);
-                        }
-                    }
-                }
-            }
+            dataGridView1.DataSource = dtSource;
         }
 
-        /// <summary>
-        /// 绑定行车
-        /// </summary>
-        /// <param name="cmbBox"></param>
-        private void BindStatus(ComboBox cmbBox, string status)
+        private void GetDataInitial()
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("TypeValue");
-            dt.Columns.Add("TypeName");
-            DataRow dr;
-            dr = dt.NewRow();
-            dr["TypeValue"] = "0";
-            dr["TypeName"] = "未启用";
-            dt.Rows.Add(dr);
-            dr = dt.NewRow();
-            dr["TypeValue"] = "1";
-            dr["TypeName"] = "已启用";
-            dt.Rows.Add(dr);
-            //var index = Convert.ToInt32(CraneNo) -1;
-            cmbBox.DataSource = dt;
-            cmbBox.DisplayMember = "TypeName";
-            cmbBox.ValueMember = "TypeValue";
-            cmbBox.SelectedIndex = status.Equals("0") ? 0 : 1;
-            if (status.Equals("1"))
+            try
             {
-                cmbBox.BackColor = Color.LightGreen;
+                MatCodeList.Clear();
+                string sqlText = @"SELECT MAT_CODE, MAT_CNAME  FROM UACS_L3_MAT_INFO";
+                using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
+                {
+                    while (rdr.Read())
+                    {
+                        comboBox1.Items.Add(rdr["MAT_CNAME"].ToString());
+                        MatCodeList.Add(rdr["MAT_CNAME"].ToString(), rdr["MAT_CODE"].ToString());
+                    }
+                }
+                comboBox1.Visible = false;
+                dataGridView1.Controls.Add(comboBox1);
+                this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
+
+                comboBox2.Visible = false;
+                comboBox2.Items.Add("未启用");
+                comboBox2.Items.Add("已启用");
+                dataGridView1.Controls.Add(comboBox2);
+                this.comboBox2.SelectedValueChanged += new System.EventHandler(this.comboBox2_SelectedValueChanged);
+            }
+            catch (Exception)
+            {
             }
 
         }
         /// <summary>
-        /// 绑定放料位置
+        /// 下拉框值发生更改时
         /// </summary>
-        /// <param name="cmbBox"></param>
-        private void BindMatCodeName(ComboBox cmbBox, string code)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("TypeValue");
-            dt.Columns.Add("TypeName");
-            DataRow dr;
-            var index = 0;
-            string sqlText = @"SELECT MAT_CODE, MAT_CNAME  FROM UACS_L3_MAT_INFO";
-            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
+            if (dataGridView1.CurrentCell != null)
+                dataGridView1.CurrentCell.Value = comboBox1.SelectedItem.ToString();
+        }
+        /// <summary>
+        /// 下拉框值发生更改时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void comboBox2_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentCell != null)
+                dataGridView1.CurrentCell.Value = comboBox2.SelectedItem.ToString();
+        }
+        /// <summary>
+        /// dataGridView增加下拉框
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_CurrentCellChanged(object sender, EventArgs e)
+        {
+            try
             {
-                var coun = 0;
-                while (rdr.Read())
+                if (this.dataGridView1.CurrentCell.ColumnIndex == 2)
                 {
-                    dr = dt.NewRow();
-                    dr["TypeValue"] = rdr["MAT_CODE"].ToString();
-                    dr["TypeName"] = rdr["MAT_CNAME"].ToString();
-                    dt.Rows.Add(dr);
-                    coun++;
-                    if (rdr["MAT_CODE"].ToString().Equals(code))
-                    {
-                        index = coun - 1;
-                    }
+                    Rectangle rect = dataGridView1.GetCellDisplayRectangle(dataGridView1.CurrentCell.ColumnIndex, dataGridView1.CurrentCell.RowIndex, false);
+                    string sexValue = dataGridView1.CurrentCell.Value.ToString();
+                    comboBox1.Left = rect.Left;
+                    comboBox1.Top = rect.Top;
+                    comboBox1.Width = rect.Width;
+                    comboBox1.Height = rect.Height;
+                    comboBox1.SelectedItem = dataGridView1.CurrentCell.Value;
+                    comboBox1.Font = new Font("微软雅黑", 10F);
+                    comboBox1.Visible = true;
+                }
+                else
+                    comboBox1.Visible = false;
+                if (this.dataGridView1.CurrentCell.ColumnIndex == 5)
+                {
+                    Rectangle rect = dataGridView1.GetCellDisplayRectangle(dataGridView1.CurrentCell.ColumnIndex, dataGridView1.CurrentCell.RowIndex, false);
+                    string sexValue = dataGridView1.CurrentCell.Value.ToString();
+                    comboBox2.Left = rect.Left;
+                    comboBox2.Top = rect.Top;
+                    comboBox2.Width = rect.Width;
+                    comboBox2.Height = rect.Height;
+                    comboBox2.SelectedItem = dataGridView1.CurrentCell.Value;
+                    comboBox2.Font = new Font("微软雅黑", 10F);
+                    comboBox2.Visible = true;
+                }
+                else
+                    comboBox2.Visible = false;
+            }
+            catch
+            {
+            }
+        }
+
+        /// <summary>
+        /// 更改物料
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //得到选中行的索引
+            int intRow = dataGridView1.SelectedCells[0].RowIndex;
+            //得到列的索引
+            int intColumn = dataGridView1.SelectedCells[0].ColumnIndex;
+            var sss = dataGridView1.Rows[intRow].Cells["MAT_CNAME"].Value.ToString();
+            //dataGridView1.Rows[intRow].Cells["MAT_CNAME"].Value = 1;
+            var dddd = dataGridView1.Rows[intRow].Cells["MAT_CODE"].Value.ToString();
+            //得到选中行某列的值
+            string str = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            var data1 = dataGridView1.Rows[intRow].Cells[intColumn].Value.ToString();
+            var data2 = Initial_dgv.Rows[intRow].ItemArray[intColumn];
+            if (data2.Equals(data1))
+            {
+                dataGridView1.Rows[intRow].Cells[intColumn].Style.BackColor = System.Drawing.SystemColors.Window;
+            }
+            else
+            {
+                dataGridView1.Rows[intRow].Cells[intColumn].Style.BackColor = Color.LightGreen;
+            }
+            if (MatCodeList.ContainsKey(data1))
+            {
+                dataGridView1.Rows[intRow].Cells["MAT_CODE"].Value = MatCodeList[data1];
+                var data3 = dataGridView1.Rows[intRow].Cells["MAT_CODE"].Value.ToString();
+                var data4 = Initial_dgv.Rows[intRow].ItemArray[intColumn + 1];
+                if (data4.Equals(data3))
+                {
+                    dataGridView1.Rows[intRow].Cells["MAT_CODE"].Style.BackColor = System.Drawing.SystemColors.Window;
+                }
+                else
+                {
+                    dataGridView1.Rows[intRow].Cells["MAT_CODE"].Style.BackColor = Color.LightGreen;
                 }
             }
-            cmbBox.DataSource = dt;
-            cmbBox.DisplayMember = "TypeName";
-            cmbBox.ValueMember = "TypeValue";
-            cmbBox.SelectedIndex = index;
+            //GetMatInfo(cmb_GridNo.SelectedValue.ToString());
         }
+        /// <summary>
+        /// 更改物料
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //得到选中行的索引
+            int intRow = dataGridView1.SelectedCells[0].RowIndex;
+            //得到列的索引
+            int intColumn = dataGridView1.SelectedCells[0].ColumnIndex;
+            //var sss = dgvStowageMessage.Rows[intRow].Cells["MAT_CNAME"].Value.ToString();
+            //dgvStowageMessage.Rows[intRow].Cells["MAT_CNAME"].Value = 1;
+            //var dddd = dgvStowageMessage.Rows[intRow].Cells["MAT_CODE"].Value.ToString();
+            //得到选中行某列的值
+            string str = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            var data1 = dataGridView1.Rows[intRow].Cells[intColumn].Value.ToString();
+            var data2 = Initial_dgv.Rows[intRow].ItemArray[intColumn];
+            if (data2.Equals(data1))
+            {
+                dataGridView1.Rows[intRow].Cells[intColumn].Style.BackColor = System.Drawing.SystemColors.Window;
+            }
+            else
+            {
+                dataGridView1.Rows[intRow].Cells[intColumn].Style.BackColor = Color.LightGreen;
+            }
+            if (MatCodeList.ContainsKey("外购中混废"))
+            {
+                Console.WriteLine("Key:{0},Value:{1}", "1", MatCodeList["外购中混废"]);
+            }
+            //GetMatInfo(cmb_GridNo.SelectedValue.ToString());
+        }
+        /// <summary>
+        /// DataGridView 转 DataTable
+        /// </summary>
+        /// <param name="dgv">DataGridView</param>
+        /// <returns></returns>
+        public DataTable GetDataGridViewToTable(DataGridView dgv)
+        {
+            DataTable dt = new DataTable();
+
+            // 列强制转换
+            for (int count = 0; count < dgv.Columns.Count; count++)
+            {
+                DataColumn dc = new DataColumn(dgv.Columns[count].Name.ToString());
+                dt.Columns.Add(dc);
+            }
+
+            // 循环行
+            for (int count = 0; count < dgv.Rows.Count; count++)
+            {
+                DataRow dr = dt.NewRow();
+                for (int countsub = 0; countsub < dgv.Columns.Count; countsub++)
+                {
+                    dr[countsub] = Convert.ToString(dgv.Rows[count].Cells[countsub].Value);
+                }
+                dt.Rows.Add(dr);
+            }
+            return dt;
+        }
+
         #endregion
         #region 按钮点击
         /// <summary>
@@ -223,250 +290,59 @@ namespace UACSView.View_CraneMonitor
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             isPopupMessage = true;
-            try
+            if (dataGridView1.DataSource != null && dtSource != null && dataGridView1.Rows.Count > 0 && dtSource.Rows.Count > 0)
             {
-                var data = GetdataTable();
-                foreach (DataRow dr in data.Rows)
+                try
                 {
-                    UpdateStatus(dr["GRID_NO"].ToString(), dr["MAT_CODE"].ToString(), dr["GRID_STATUS"].ToString());
+                    //确认提示
+                    MessageBoxButtons btn = MessageBoxButtons.OKCancel;
+                    DialogResult drmsg = MessageBox.Show("确认是否修改数据？", "提示", btn, MessageBoxIcon.Asterisk);
+                    if (drmsg == DialogResult.OK)
+                    {
+                        var isUpdate = false;
+                        foreach (DataGridViewRow dgr in dataGridView1.Rows)
+                        {
+                            foreach (DataRow Initdgr in Initial_dgv.Rows)
+                            {
+                                if (!string.IsNullOrEmpty(dgr.Cells["GRID_NO"].Value.ToString()) && !string.IsNullOrEmpty(Initdgr["GRID_NO"].ToString()) && dgr.Cells["GRID_NO"].Value.ToString().Equals(Initdgr["GRID_NO"].ToString()))
+                                {
+                                    if (!dgr.Cells["MAT_CODE"].Value.ToString().Equals(Initdgr["MAT_CODE"].ToString()))
+                                    {
+                                        isUpdate = true;
+                                        break;
+                                    }
+                                    if (!dgr.Cells["GRID_STATUS"].Value.ToString().Equals(Initdgr["GRID_STATUS"].ToString()))
+                                    {
+                                        isUpdate = true;
+                                        break;
+                                    }
+                                }
+                            }
+                            if (isUpdate)
+                            {
+                                string ExeSql = @" UPDATE UACS_YARDMAP_GRID_DEFINE SET ";
+                                ExeSql += "MAT_CODE = '" + dgr.Cells["MAT_CODE"].Value.ToString().Trim() + "' ";
+                                ExeSql += ",GRID_STATUS = '" + (dgr.Cells["GRID_STATUS"].Value.ToString().Trim().Equals("未启用") ? 0 : 1) + "' ";
+                                ExeSql += " WHERE 1=1 ";
+                                ExeSql += " AND AREA_NO = '" + AreaNo + "'";
+                                ExeSql += " AND GRID_NO = '" + dgr.Cells["GRID_NO"].Value.ToString().Trim() + "' ";
+                                DB2Connect.DBHelper.ExecuteNonQuery(ExeSql);
+                                HMILogger.WriteLog("修改料格物料布局", "料格号：" + dgr.Cells["GRID_NO"].Value.ToString().Trim() + ", 料格名：" + dgr.Cells["GRID_NAME"].Value.ToString().Trim() + ", 物料名：" + dgr.Cells["MAT_CNAME"].Value.ToString().Trim() + ", 物料代码：" + dgr.Cells["MAT_CODE"].Value.ToString().Trim() + ", 料格状态：" + dgr.Cells["GRID_STATUS"].Value.ToString().Trim(), LogLevel.Info, this.Text);
+                                isUpdate = false;
+                            }
+                        }
+                        LoadDataRefresh(); //刷新页面
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBoxButtons btn = MessageBoxButtons.OK;
+                    DialogResult drmsg = MessageBox.Show("保存失败，无数据更改！", "提示", btn, MessageBoxIcon.Warning);
                 }
             }
-            catch (Exception)
-            {
-            }
-            //frmSS.RefreshData();
-            this.Close();
             isPopupMessage = false;
         }
-        /// <summary>
-        /// 获取修改的数据
-        /// </summary>
-        /// <returns></returns>
-        private DataTable GetdataTable()
-        {
-            DataTable dt = dtSource.Clone();
-            foreach (DataRow dr in dtSource.Rows)
-            {
-                if (dr["GRID_NO"].ToString().Equals(txt_GridNo_0.Text.Trim()))
-                {
-                    DataRow drs;
-                    var isFalse = false;
-                    var matCode = string.Empty;
-                    var gridStatus = string.Empty;
-                    if (!dr["MAT_CODE"].ToString().Equals(txt_MatCode_0.Text.Trim()))
-                    {
-                        matCode = txt_MatCode_0.Text.Trim();
-                        isFalse = true;
-                    }
-                    if (!dr["GRID_STATUS"].ToString().Equals(cmb_Status_0.SelectedValue.ToString().Trim()))
-                    {
-                        gridStatus = cmb_Status_0.SelectedValue.ToString();
-                        isFalse = true;
-                    }
-                    if (isFalse)
-                    {
-                        drs = dt.NewRow();
-                        drs["GRID_NO"] = dr["GRID_NO"];
-                        drs["GRID_NAME"] = dr["GRID_NAME"];
-                        drs["GRID_DIV"] = dr["GRID_DIV"];
-                        drs["COMP_CODE"] = dr["COMP_CODE"];
-                        drs["MAT_WGT"] = dr["MAT_WGT"];
-                        drs["MAT_WGTTOTAL"] = dr["MAT_WGTTOTAL"];
-                        drs["AREA_NO"] = dr["AREA_NO"];
-                        drs["MAT_CODE"] = string.IsNullOrEmpty(matCode) ? dr["MAT_CODE"] : matCode;
-                        drs["GRID_STATUS"] = string.IsNullOrEmpty(gridStatus) ? dr["GRID_STATUS"] : gridStatus;
-                        dt.Rows.Add(drs);
-                    }
-                }
-                if (dr["GRID_NO"].ToString().Equals(txt_GridNo_1.Text.Trim()))
-                {
-                    DataRow drs;
-                    var isFalse = false;
-                    var matCode = "";
-                    var gridStatus = "";
-                    if (!dr["MAT_CODE"].ToString().Equals(txt_MatCode_1.Text.Trim()))
-                    {
-                        matCode = txt_MatCode_1.Text.Trim();
-                        isFalse = true;
-                    }
-                    if (!dr["GRID_STATUS"].ToString().Equals(cmb_Status_1.SelectedValue.ToString().Trim()))
-                    {
-                        gridStatus = cmb_Status_1.SelectedValue.ToString();
-                        isFalse = true;
-                    }
-                    if (isFalse)
-                    {
-                        drs = dt.NewRow();
-                        drs["GRID_NO"] = dr["GRID_NO"];
-                        drs["GRID_NAME"] = dr["GRID_NAME"];
-                        drs["GRID_DIV"] = dr["GRID_DIV"];
-                        drs["COMP_CODE"] = dr["COMP_CODE"];
-                        drs["MAT_WGT"] = dr["MAT_WGT"];
-                        drs["MAT_WGTTOTAL"] = dr["MAT_WGTTOTAL"];
-                        drs["AREA_NO"] = dr["AREA_NO"];
-                        drs["MAT_CODE"] = string.IsNullOrEmpty(matCode) ? dr["MAT_CODE"] : matCode;
-                        drs["GRID_STATUS"] = string.IsNullOrEmpty(gridStatus) ? dr["GRID_STATUS"] : gridStatus;
-                        dt.Rows.Add(drs);
-                    }
-                }
-                if (dr["GRID_NO"].ToString().Equals(txt_GridNo_2.Text.Trim()))
-                {
-                    DataRow drs;
-                    var isFalse = false;
-                    var matCode = "";
-                    var gridStatus = "";
-                    if (!dr["MAT_CODE"].ToString().Equals(txt_MatCode_2.Text.Trim()))
-                    {
-                        matCode = txt_MatCode_2.Text.Trim();
-                        isFalse = true;
-                    }
-                    if (!dr["GRID_STATUS"].ToString().Equals(cmb_Status_2.SelectedValue.ToString().Trim()))
-                    {
-                        gridStatus = cmb_Status_2.SelectedValue.ToString();
-                        isFalse = true;
-                    }
-                    if (isFalse)
-                    {
-                        drs = dt.NewRow();
-                        drs["GRID_NO"] = dr["GRID_NO"];
-                        drs["GRID_NAME"] = dr["GRID_NAME"];
-                        drs["GRID_DIV"] = dr["GRID_DIV"];
-                        drs["COMP_CODE"] = dr["COMP_CODE"];
-                        drs["MAT_WGT"] = dr["MAT_WGT"];
-                        drs["MAT_WGTTOTAL"] = dr["MAT_WGTTOTAL"];
-                        drs["AREA_NO"] = dr["AREA_NO"];
-                        drs["MAT_CODE"] = string.IsNullOrEmpty(matCode) ? dr["MAT_CODE"] : matCode;
-                        drs["GRID_STATUS"] = string.IsNullOrEmpty(gridStatus) ? dr["GRID_STATUS"] : gridStatus;
-                        dt.Rows.Add(drs);
-                    }
-                }
-                if (dr["GRID_NO"].ToString().Equals(txt_GridNo_3.Text.Trim()))
-                {
-                    DataRow drs;
-                    var isFalse = false;
-                    var matCode = "";
-                    var gridStatus = "";
-                    if (!dr["MAT_CODE"].ToString().Equals(txt_MatCode_3.Text.Trim()))
-                    {
-                        matCode = txt_MatCode_3.Text.Trim();
-                        isFalse = true;
-                    }
-                    if (!dr["GRID_STATUS"].ToString().Equals(cmb_Status_3.SelectedValue.ToString().Trim()))
-                    {
-                        gridStatus = cmb_Status_3.SelectedValue.ToString();
-                        isFalse = true;
-                    }
-                    if (isFalse)
-                    {
-                        drs = dt.NewRow();
-                        drs["GRID_NO"] = dr["GRID_NO"];
-                        drs["GRID_NAME"] = dr["GRID_NAME"];
-                        drs["GRID_DIV"] = dr["GRID_DIV"];
-                        drs["COMP_CODE"] = dr["COMP_CODE"];
-                        drs["MAT_WGT"] = dr["MAT_WGT"];
-                        drs["MAT_WGTTOTAL"] = dr["MAT_WGTTOTAL"];
-                        drs["AREA_NO"] = dr["AREA_NO"];
-                        drs["MAT_CODE"] = string.IsNullOrEmpty(matCode) ? dr["MAT_CODE"] : matCode;
-                        drs["GRID_STATUS"] = string.IsNullOrEmpty(gridStatus) ? dr["GRID_STATUS"] : gridStatus;
-                        dt.Rows.Add(drs);
-                    }
-                }
-                if (dr["GRID_NO"].ToString().Equals(txt_GridNo_4.Text.Trim()))
-                {
-                    DataRow drs;
-                    var isFalse = false;
-                    var matCode = "";
-                    var gridStatus = "";
-                    if (!dr["MAT_CODE"].ToString().Equals(txt_MatCode_4.Text.Trim()))
-                    {
-                        matCode = txt_MatCode_4.Text.Trim();
-                        isFalse = true;
-                    }
-                    if (!dr["GRID_STATUS"].ToString().Equals(cmb_Status_4.SelectedValue.ToString().Trim()))
-                    {
-                        gridStatus = cmb_Status_4.SelectedValue.ToString();
-                        isFalse = true;
-                    }
-                    if (isFalse)
-                    {
-                        drs = dt.NewRow();
-                        drs["GRID_NO"] = dr["GRID_NO"];
-                        drs["GRID_NAME"] = dr["GRID_NAME"];
-                        drs["GRID_DIV"] = dr["GRID_DIV"];
-                        drs["COMP_CODE"] = dr["COMP_CODE"];
-                        drs["MAT_WGT"] = dr["MAT_WGT"];
-                        drs["MAT_WGTTOTAL"] = dr["MAT_WGTTOTAL"];
-                        drs["AREA_NO"] = dr["AREA_NO"];
-                        drs["MAT_CODE"] = string.IsNullOrEmpty(matCode) ? dr["MAT_CODE"] : matCode;
-                        drs["GRID_STATUS"] = string.IsNullOrEmpty(gridStatus) ? dr["GRID_STATUS"] : gridStatus;
-                        dt.Rows.Add(drs);
-                    }
-                }
-                if (dr["GRID_NO"].ToString().Equals(txt_GridNo_5.Text.Trim()))
-                {
-                    DataRow drs;
-                    var isFalse = false;
-                    var matCode = "";
-                    var gridStatus = "";
-                    if (!dr["MAT_CODE"].ToString().Equals(txt_MatCode_5.Text.Trim()))
-                    {
-                        matCode = txt_MatCode_5.Text.Trim();
-                        isFalse = true;
-                    }
-                    if (!dr["GRID_STATUS"].ToString().Equals(cmb_Status_5.SelectedValue.ToString().Trim()))
-                    {
-                        gridStatus = cmb_Status_5.SelectedValue.ToString();
-                        isFalse = true;
-                    }
-                    if (isFalse)
-                    {
-                        drs = dt.NewRow();
-                        drs["GRID_NO"] = dr["GRID_NO"];
-                        drs["GRID_NAME"] = dr["GRID_NAME"];
-                        drs["GRID_DIV"] = dr["GRID_DIV"];
-                        drs["COMP_CODE"] = dr["COMP_CODE"];
-                        drs["MAT_WGT"] = dr["MAT_WGT"];
-                        drs["MAT_WGTTOTAL"] = dr["MAT_WGTTOTAL"];
-                        drs["AREA_NO"] = dr["AREA_NO"];
-                        drs["MAT_CODE"] = string.IsNullOrEmpty(matCode) ? dr["MAT_CODE"] : matCode;
-                        drs["GRID_STATUS"] = string.IsNullOrEmpty(gridStatus) ? dr["GRID_STATUS"] : gridStatus;
-                        dt.Rows.Add(drs);
-                    }
-                }
-                if (dr["GRID_NO"].ToString().Equals(txt_GridNo_6.Text.Trim()))
-                {
-                    DataRow drs;
-                    var isFalse = false;
-                    var matCode = "";
-                    var gridStatus = "";
-                    if (!dr["MAT_CODE"].ToString().Equals(txt_MatCode_6.Text.Trim()))
-                    {
-                        matCode = txt_MatCode_6.Text.Trim();
-                        isFalse = true;
-                    }
-                    if (!dr["GRID_STATUS"].ToString().Equals(cmb_Status_6.SelectedValue.ToString().Trim()))
-                    {
-                        gridStatus = cmb_Status_6.SelectedValue.ToString();
-                        isFalse = true;
-                    }
-                    if (isFalse)
-                    {
-                        drs = dt.NewRow();
-                        drs["GRID_NO"] = dr["GRID_NO"];
-                        drs["GRID_NAME"] = dr["GRID_NAME"];
-                        drs["GRID_DIV"] = dr["GRID_DIV"];
-                        drs["COMP_CODE"] = dr["COMP_CODE"];
-                        drs["MAT_WGT"] = dr["MAT_WGT"];
-                        drs["MAT_WGTTOTAL"] = dr["MAT_WGTTOTAL"];
-                        drs["AREA_NO"] = dr["AREA_NO"];
-                        drs["MAT_CODE"] = string.IsNullOrEmpty(matCode) ? dr["MAT_CODE"] : matCode;
-                        drs["GRID_STATUS"] = string.IsNullOrEmpty(gridStatus) ? dr["GRID_STATUS"] : gridStatus;
-                        dt.Rows.Add(drs);
-                    }
-                }
-            }
-            return dt;
-        }
+
         /// <summary>
         /// 刷新
         /// </summary>
@@ -484,7 +360,7 @@ namespace UACSView.View_CraneMonitor
         /// <param name="gridNo">料格号</param>
         /// <param name="matCode">物料代码</param>
         /// <param name="gridStatus">料格状态</param>
-        private void UpdateStatus(string gridNo, string matCode,string gridStatus)
+        private void UpdateStatus(string gridNo, string matCode, string gridStatus)
         {
             try
             {
@@ -523,94 +399,8 @@ namespace UACSView.View_CraneMonitor
             {
             }
         }
-        #endregion
-        #region 值更改触发
-        private void cmb_MatCodeName_0_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //GetMatInfo(cmb_MatCodeName_0.SelectedValue.ToString());
-            txt_MatCode_0.Text = cmb_MatCodeName_0.SelectedValue.ToString();
-            //cmb_MatCodeName_0.BackColor = Color.LightYellow;
-            //txt_MatCode_0.BackColor = Color.LightYellow;
-        }
 
-        private void cmb_MatCodeName_1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txt_MatCode_1.Text = cmb_MatCodeName_1.SelectedValue.ToString();
-            //cmb_MatCodeName_1.BackColor = Color.LightYellow;
-            //txt_MatCode_1.BackColor = Color.LightYellow;
-        }
-
-        private void cmb_MatCodeName_2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txt_MatCode_2.Text = cmb_MatCodeName_2.SelectedValue.ToString();
-            //cmb_MatCodeName_2.BackColor = Color.LightYellow;
-            //txt_MatCode_2.BackColor = Color.LightYellow;
-        }
-
-        private void cmb_MatCodeName_3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txt_MatCode_3.Text = cmb_MatCodeName_3.SelectedValue.ToString();
-            //cmb_MatCodeName_3.BackColor = Color.LightYellow;
-            //txt_MatCode_3.BackColor = Color.LightYellow;
-        }
-
-        private void cmb_MatCodeName_4_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txt_MatCode_4.Text = cmb_MatCodeName_4.SelectedValue.ToString();
-            //cmb_MatCodeName_4.BackColor = Color.LightYellow;
-            //txt_MatCode_4.BackColor = Color.LightYellow;
-        }
-
-        private void cmb_MatCodeName_5_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txt_MatCode_5.Text = cmb_MatCodeName_5.SelectedValue.ToString();
-            //cmb_MatCodeName_5.BackColor = Color.LightYellow;
-            //txt_MatCode_5.BackColor = Color.LightYellow;
-        }
-
-        private void cmb_MatCodeName_6_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txt_MatCode_6.Text = cmb_MatCodeName_6.SelectedValue.ToString();
-            //cmb_MatCodeName_6.BackColor = Color.LightYellow;
-            //txt_MatCode_6.BackColor = Color.LightYellow;
-        }
-
-        private void cmb_Status_0_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //cmb_Status_0.BackColor = Color.LightYellow;
-        }
-
-        private void cmb_Status_1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //cmb_Status_1.BackColor = Color.LightYellow;
-        }
-
-        private void cmb_Status_2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //cmb_Status_2.BackColor = Color.LightYellow;
-        }
-
-        private void cmb_Status_3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //cmb_Status_3.BackColor = Color.LightYellow;
-        }
-
-        private void cmb_Status_4_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //cmb_Status_4.BackColor = Color.LightYellow;
-        }
-
-        private void cmb_Status_5_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //cmb_Status_5.BackColor = Color.LightYellow;
-        }
-
-        private void cmb_Status_6_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //cmb_Status_6.BackColor = Color.LightYellow;
-        }
         #endregion
 
-        
     }
 }

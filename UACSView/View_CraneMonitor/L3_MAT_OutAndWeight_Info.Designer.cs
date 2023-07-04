@@ -30,6 +30,10 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textPLAN_NO = new System.Windows.Forms.TextBox();
@@ -43,21 +47,9 @@
             this.btnQuery = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.ucPage1 = new UACSControls.Page.ucPage();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.ucPage2 = new UACSControls.Page.ucPage();
-            this.PLAN_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ROWNUM2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalRows2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CAR_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAT_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAT_CNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WEIGHT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.REC_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.WORK_SEQ_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalRows = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ROWNUM = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,15 +61,27 @@
             this.REC_TIME2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GRID_NAME2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UPD_TIME2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.ucPage2 = new UACSControls.Page.ucPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.PLAN_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ROWNUM2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalRows2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CAR_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_CNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WEIGHT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.REC_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -234,103 +238,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "L3送料计划";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.WORK_SEQ_NO,
-            this.TotalRows,
-            this.ROWNUM,
-            this.TRUCK_NO2,
-            this.CAR_TYPE2,
-            this.MAT_PROD_CODE2,
-            this.MAT_CNAME2,
-            this.MAT_WT2,
-            this.REC_TIME2,
-            this.GRID_NAME2,
-            this.UPD_TIME2});
-            this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 17);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(740, 637);
-            this.dataGridView1.TabIndex = 3;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.groupBox5);
-            this.groupBox3.Controls.Add(this.dataGridView2);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(755, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(747, 703);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "L3配料计划";
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AllowUserToResizeRows = false;
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.PLAN_NO,
-            this.ROWNUM2,
-            this.TotalRows2,
-            this.CAR_NO,
-            this.MAT_CODE,
-            this.MAT_CNAME,
-            this.WEIGHT,
-            this.REC_TIME});
-            this.dataGridView2.EnableHeadersVisualStyles = false;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 17);
-            this.dataGridView2.MultiSelect = false;
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.RowHeadersWidth = 62;
-            this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(739, 637);
-            this.dataGridView2.TabIndex = 4;
-            // 
             // groupBox4
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -354,6 +261,183 @@
             this.ucPage1.TabIndex = 0;
             this.ucPage1.TotalPages = 0;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.WORK_SEQ_NO,
+            this.TotalRows,
+            this.ROWNUM,
+            this.TRUCK_NO2,
+            this.CAR_TYPE2,
+            this.MAT_PROD_CODE2,
+            this.MAT_CNAME2,
+            this.MAT_WT2,
+            this.REC_TIME2,
+            this.GRID_NAME2,
+            this.UPD_TIME2});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 17);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(740, 637);
+            this.dataGridView1.TabIndex = 3;
+            // 
+            // WORK_SEQ_NO
+            // 
+            this.WORK_SEQ_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.WORK_SEQ_NO.DataPropertyName = "WORK_SEQ_NO";
+            this.WORK_SEQ_NO.Frozen = true;
+            this.WORK_SEQ_NO.HeaderText = "流水号";
+            this.WORK_SEQ_NO.MinimumWidth = 8;
+            this.WORK_SEQ_NO.Name = "WORK_SEQ_NO";
+            this.WORK_SEQ_NO.ReadOnly = true;
+            this.WORK_SEQ_NO.Width = 82;
+            // 
+            // TotalRows
+            // 
+            this.TotalRows.DataPropertyName = "TotalRows";
+            this.TotalRows.HeaderText = "总数";
+            this.TotalRows.Name = "TotalRows";
+            this.TotalRows.ReadOnly = true;
+            this.TotalRows.Visible = false;
+            this.TotalRows.Width = 66;
+            // 
+            // ROWNUM
+            // 
+            this.ROWNUM.DataPropertyName = "ROWNUM";
+            this.ROWNUM.HeaderText = "ID";
+            this.ROWNUM.Name = "ROWNUM";
+            this.ROWNUM.ReadOnly = true;
+            this.ROWNUM.Visible = false;
+            this.ROWNUM.Width = 51;
+            // 
+            // TRUCK_NO2
+            // 
+            this.TRUCK_NO2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TRUCK_NO2.DataPropertyName = "TRUCK_NO2";
+            this.TRUCK_NO2.HeaderText = "车辆牌号";
+            this.TRUCK_NO2.MinimumWidth = 8;
+            this.TRUCK_NO2.Name = "TRUCK_NO2";
+            this.TRUCK_NO2.ReadOnly = true;
+            this.TRUCK_NO2.Width = 98;
+            // 
+            // CAR_TYPE2
+            // 
+            this.CAR_TYPE2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CAR_TYPE2.DataPropertyName = "CAR_TYPE2";
+            this.CAR_TYPE2.HeaderText = "车辆类型";
+            this.CAR_TYPE2.MinimumWidth = 8;
+            this.CAR_TYPE2.Name = "CAR_TYPE2";
+            this.CAR_TYPE2.ReadOnly = true;
+            this.CAR_TYPE2.Visible = false;
+            // 
+            // MAT_PROD_CODE2
+            // 
+            this.MAT_PROD_CODE2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MAT_PROD_CODE2.DataPropertyName = "MAT_PROD_CODE2";
+            this.MAT_PROD_CODE2.HeaderText = "物料编号";
+            this.MAT_PROD_CODE2.MinimumWidth = 8;
+            this.MAT_PROD_CODE2.Name = "MAT_PROD_CODE2";
+            this.MAT_PROD_CODE2.ReadOnly = true;
+            this.MAT_PROD_CODE2.Width = 98;
+            // 
+            // MAT_CNAME2
+            // 
+            this.MAT_CNAME2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MAT_CNAME2.DataPropertyName = "MAT_CNAME2";
+            this.MAT_CNAME2.HeaderText = "物料名";
+            this.MAT_CNAME2.MinimumWidth = 8;
+            this.MAT_CNAME2.Name = "MAT_CNAME2";
+            this.MAT_CNAME2.ReadOnly = true;
+            this.MAT_CNAME2.Width = 82;
+            // 
+            // MAT_WT2
+            // 
+            this.MAT_WT2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MAT_WT2.DataPropertyName = "MAT_WT2";
+            this.MAT_WT2.HeaderText = "物料重量";
+            this.MAT_WT2.MinimumWidth = 8;
+            this.MAT_WT2.Name = "MAT_WT2";
+            this.MAT_WT2.ReadOnly = true;
+            this.MAT_WT2.Width = 98;
+            // 
+            // REC_TIME2
+            // 
+            this.REC_TIME2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.REC_TIME2.DataPropertyName = "REC_TIME2";
+            this.REC_TIME2.HeaderText = "下发时间";
+            this.REC_TIME2.MinimumWidth = 8;
+            this.REC_TIME2.Name = "REC_TIME2";
+            this.REC_TIME2.ReadOnly = true;
+            this.REC_TIME2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.REC_TIME2.Width = 79;
+            // 
+            // GRID_NAME2
+            // 
+            this.GRID_NAME2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GRID_NAME2.DataPropertyName = "GRID_NAME2";
+            this.GRID_NAME2.HeaderText = "入料料格";
+            this.GRID_NAME2.MinimumWidth = 8;
+            this.GRID_NAME2.Name = "GRID_NAME2";
+            this.GRID_NAME2.ReadOnly = true;
+            this.GRID_NAME2.Visible = false;
+            // 
+            // UPD_TIME2
+            // 
+            this.UPD_TIME2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.UPD_TIME2.DataPropertyName = "UPD_TIME2";
+            this.UPD_TIME2.HeaderText = "更新时间";
+            this.UPD_TIME2.MinimumWidth = 8;
+            this.UPD_TIME2.Name = "UPD_TIME2";
+            this.UPD_TIME2.ReadOnly = true;
+            this.UPD_TIME2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.UPD_TIME2.Visible = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.groupBox5);
+            this.groupBox3.Controls.Add(this.dataGridView2);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(755, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(747, 703);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "L3配料计划";
+            // 
             // groupBox5
             // 
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -376,6 +460,57 @@
             this.ucPage2.Size = new System.Drawing.Size(730, 31);
             this.ucPage2.TabIndex = 0;
             this.ucPage2.TotalPages = 0;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightGray;
+            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PLAN_NO,
+            this.ROWNUM2,
+            this.TotalRows2,
+            this.CAR_NO,
+            this.MAT_CODE,
+            this.MAT_CNAME,
+            this.WEIGHT,
+            this.REC_TIME});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridView2.EnableHeadersVisualStyles = false;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 17);
+            this.dataGridView2.MultiSelect = false;
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.RowHeadersWidth = 62;
+            this.dataGridView2.RowTemplate.Height = 23;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(739, 637);
+            this.dataGridView2.TabIndex = 4;
             // 
             // PLAN_NO
             // 
@@ -457,120 +592,6 @@
             this.REC_TIME.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.REC_TIME.Width = 79;
             // 
-            // WORK_SEQ_NO
-            // 
-            this.WORK_SEQ_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.WORK_SEQ_NO.DataPropertyName = "WORK_SEQ_NO";
-            this.WORK_SEQ_NO.Frozen = true;
-            this.WORK_SEQ_NO.HeaderText = "流水号";
-            this.WORK_SEQ_NO.MinimumWidth = 8;
-            this.WORK_SEQ_NO.Name = "WORK_SEQ_NO";
-            this.WORK_SEQ_NO.ReadOnly = true;
-            this.WORK_SEQ_NO.Width = 82;
-            // 
-            // TotalRows
-            // 
-            this.TotalRows.DataPropertyName = "TotalRows";
-            this.TotalRows.HeaderText = "总数";
-            this.TotalRows.Name = "TotalRows";
-            this.TotalRows.ReadOnly = true;
-            this.TotalRows.Visible = false;
-            this.TotalRows.Width = 66;
-            // 
-            // ROWNUM
-            // 
-            this.ROWNUM.DataPropertyName = "ROWNUM";
-            this.ROWNUM.HeaderText = "ID";
-            this.ROWNUM.Name = "ROWNUM";
-            this.ROWNUM.ReadOnly = true;
-            this.ROWNUM.Visible = false;
-            this.ROWNUM.Width = 51;
-            // 
-            // TRUCK_NO2
-            // 
-            this.TRUCK_NO2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TRUCK_NO2.DataPropertyName = "TRUCK_NO2";
-            this.TRUCK_NO2.HeaderText = "车辆牌号";
-            this.TRUCK_NO2.MinimumWidth = 8;
-            this.TRUCK_NO2.Name = "TRUCK_NO2";
-            this.TRUCK_NO2.ReadOnly = true;
-            this.TRUCK_NO2.Width = 98;
-            // 
-            // CAR_TYPE2
-            // 
-            this.CAR_TYPE2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CAR_TYPE2.DataPropertyName = "CAR_TYPE2";
-            this.CAR_TYPE2.HeaderText = "车辆类型";
-            this.CAR_TYPE2.MinimumWidth = 8;
-            this.CAR_TYPE2.Name = "CAR_TYPE2";
-            this.CAR_TYPE2.ReadOnly = true;
-            this.CAR_TYPE2.Visible = false;
-            this.CAR_TYPE2.Width = 98;
-            // 
-            // MAT_PROD_CODE2
-            // 
-            this.MAT_PROD_CODE2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MAT_PROD_CODE2.DataPropertyName = "MAT_PROD_CODE2";
-            this.MAT_PROD_CODE2.HeaderText = "物料编号";
-            this.MAT_PROD_CODE2.MinimumWidth = 8;
-            this.MAT_PROD_CODE2.Name = "MAT_PROD_CODE2";
-            this.MAT_PROD_CODE2.ReadOnly = true;
-            this.MAT_PROD_CODE2.Width = 98;
-            // 
-            // MAT_CNAME2
-            // 
-            this.MAT_CNAME2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MAT_CNAME2.DataPropertyName = "MAT_CNAME2";
-            this.MAT_CNAME2.HeaderText = "物料名";
-            this.MAT_CNAME2.MinimumWidth = 8;
-            this.MAT_CNAME2.Name = "MAT_CNAME2";
-            this.MAT_CNAME2.ReadOnly = true;
-            this.MAT_CNAME2.Width = 82;
-            // 
-            // MAT_WT2
-            // 
-            this.MAT_WT2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MAT_WT2.DataPropertyName = "MAT_WT2";
-            this.MAT_WT2.HeaderText = "物料重量";
-            this.MAT_WT2.MinimumWidth = 8;
-            this.MAT_WT2.Name = "MAT_WT2";
-            this.MAT_WT2.ReadOnly = true;
-            this.MAT_WT2.Width = 98;
-            // 
-            // REC_TIME2
-            // 
-            this.REC_TIME2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.REC_TIME2.DataPropertyName = "REC_TIME2";
-            this.REC_TIME2.HeaderText = "下发时间";
-            this.REC_TIME2.MinimumWidth = 8;
-            this.REC_TIME2.Name = "REC_TIME2";
-            this.REC_TIME2.ReadOnly = true;
-            this.REC_TIME2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.REC_TIME2.Width = 79;
-            // 
-            // GRID_NAME2
-            // 
-            this.GRID_NAME2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GRID_NAME2.DataPropertyName = "GRID_NAME2";
-            this.GRID_NAME2.HeaderText = "入料料格";
-            this.GRID_NAME2.MinimumWidth = 8;
-            this.GRID_NAME2.Name = "GRID_NAME2";
-            this.GRID_NAME2.ReadOnly = true;
-            this.GRID_NAME2.Visible = false;
-            this.GRID_NAME2.Width = 98;
-            // 
-            // UPD_TIME2
-            // 
-            this.UPD_TIME2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.UPD_TIME2.DataPropertyName = "UPD_TIME2";
-            this.UPD_TIME2.HeaderText = "更新时间";
-            this.UPD_TIME2.MinimumWidth = 8;
-            this.UPD_TIME2.Name = "UPD_TIME2";
-            this.UPD_TIME2.ReadOnly = true;
-            this.UPD_TIME2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.UPD_TIME2.Visible = false;
-            this.UPD_TIME2.Width = 79;
-            // 
             // L3_MAT_OutAndWeight_Info
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -587,11 +608,11 @@
             this.panel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -84,30 +84,6 @@ namespace UACSView
         {
             try
             {
-                //this.tabControl1.SelectedTab = this.tabPage1;
-                //getCraneOrderData();
-                //dataGridView1.DataSource = dt;
-
-                ////当前选中页
-                //int index = this.tabControl1.SelectedIndex;
-                //if (index == 0)
-                //{
-                //    this.tabControl1.SelectedTab = this.tabPage1;
-                //}
-                //else if (index == 1)
-                //{
-                //    //this.tabControl1.SelectedTab = this.tabPage2;
-                //}
-                //else
-                //{
-                //    this.tabControl1.SelectedTab = this.tabPage1;
-                //}
-                ////行车指令
-                //getCraneOrderData2(false);
-                //dataGridView1.DataSource = dt;
-                //当前行车指令              
-                //dataGridView2.DataSource = getCraneOrderData3(false);
-                //GetOrderData();
                 InitDataGridViewCtrl();
             }
             catch (Exception er)
@@ -648,7 +624,7 @@ namespace UACSView
                 {
                     sqlText_ORDER = string.Format("{0} AND A.PLAN_NO LIKE '%{1}%'", sqlText_ORDER, planNo);
                 }
-                sqlText_ORDER += " ORDER BY A.ORDER_NO DESC,A.REC_TIME DESC ";
+                sqlText_ORDER += " ORDER BY A.PLAN_NO DESC,A.ORDER_PRIORITY ASC,A.REC_TIME DESC ";
                 sqlText_ORDER += " ) tab ) WHERE ROWNUM BETWEEN ((" + currentPage + " - 1) * " + this.ucPageDemo.PageSize + ") + 1 AND " + currentPage + " *  " + this.ucPageDemo.PageSize;
                 DataTable dtResult = new DataTable();
                 using (IDataReader odrIn = DB2Connect.DBHelper.ExecuteReader(sqlText_ORDER))

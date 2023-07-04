@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmb_PlanStatus = new System.Windows.Forms.ComboBox();
@@ -1081,17 +1082,20 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.ColumnHeadersHeight = 20;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cbChoice,
             this.GPlanNO,
@@ -1129,14 +1133,14 @@
             this.GWeight_10,
             this.Act_Weight_10,
             this.TO_STOCK_NO});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -1165,7 +1169,7 @@
             this.cbChoice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.cbChoice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.cbChoice.TrueValue = "1";
-            this.cbChoice.Width = 54;
+            this.cbChoice.Width = 63;
             // 
             // GPlanNO
             // 
@@ -1176,7 +1180,7 @@
             this.GPlanNO.MinimumWidth = 8;
             this.GPlanNO.Name = "GPlanNO";
             this.GPlanNO.ReadOnly = true;
-            this.GPlanNO.Width = 66;
+            this.GPlanNO.Width = 79;
             // 
             // BOF_NO
             // 
@@ -1187,7 +1191,7 @@
             this.BOF_NO.MinimumWidth = 8;
             this.BOF_NO.Name = "BOF_NO";
             this.BOF_NO.ReadOnly = true;
-            this.BOF_NO.Width = 54;
+            this.BOF_NO.Width = 63;
             // 
             // GCarNo
             // 
@@ -1198,7 +1202,7 @@
             this.GCarNo.MinimumWidth = 8;
             this.GCarNo.Name = "GCarNo";
             this.GCarNo.ReadOnly = true;
-            this.GCarNo.Width = 78;
+            this.GCarNo.Width = 95;
             // 
             // PLAN_STATUS
             // 
@@ -1209,7 +1213,7 @@
             this.PLAN_STATUS.MinimumWidth = 8;
             this.PLAN_STATUS.Name = "PLAN_STATUS";
             this.PLAN_STATUS.ReadOnly = true;
-            this.PLAN_STATUS.Width = 54;
+            this.PLAN_STATUS.Width = 63;
             // 
             // GMatCode_1
             // 
@@ -1219,7 +1223,7 @@
             this.GMatCode_1.MinimumWidth = 8;
             this.GMatCode_1.Name = "GMatCode_1";
             this.GMatCode_1.ReadOnly = true;
-            this.GMatCode_1.Width = 60;
+            this.GMatCode_1.Width = 71;
             // 
             // GWeight_1
             // 
@@ -1229,7 +1233,7 @@
             this.GWeight_1.MinimumWidth = 8;
             this.GWeight_1.Name = "GWeight_1";
             this.GWeight_1.ReadOnly = true;
-            this.GWeight_1.Width = 60;
+            this.GWeight_1.Width = 71;
             // 
             // Act_Weight_1
             // 
@@ -1239,7 +1243,7 @@
             this.Act_Weight_1.MinimumWidth = 8;
             this.Act_Weight_1.Name = "Act_Weight_1";
             this.Act_Weight_1.ReadOnly = true;
-            this.Act_Weight_1.Width = 84;
+            this.Act_Weight_1.Width = 103;
             // 
             // GMatCode_2
             // 
@@ -1249,7 +1253,7 @@
             this.GMatCode_2.MinimumWidth = 8;
             this.GMatCode_2.Name = "GMatCode_2";
             this.GMatCode_2.ReadOnly = true;
-            this.GMatCode_2.Width = 60;
+            this.GMatCode_2.Width = 71;
             // 
             // GWeight_2
             // 
@@ -1259,7 +1263,7 @@
             this.GWeight_2.MinimumWidth = 8;
             this.GWeight_2.Name = "GWeight_2";
             this.GWeight_2.ReadOnly = true;
-            this.GWeight_2.Width = 60;
+            this.GWeight_2.Width = 71;
             // 
             // Act_Weight_2
             // 
@@ -1269,7 +1273,7 @@
             this.Act_Weight_2.MinimumWidth = 8;
             this.Act_Weight_2.Name = "Act_Weight_2";
             this.Act_Weight_2.ReadOnly = true;
-            this.Act_Weight_2.Width = 84;
+            this.Act_Weight_2.Width = 103;
             // 
             // GMatCode_3
             // 
@@ -1279,7 +1283,7 @@
             this.GMatCode_3.MinimumWidth = 8;
             this.GMatCode_3.Name = "GMatCode_3";
             this.GMatCode_3.ReadOnly = true;
-            this.GMatCode_3.Width = 60;
+            this.GMatCode_3.Width = 71;
             // 
             // GWeight_3
             // 
@@ -1289,7 +1293,7 @@
             this.GWeight_3.MinimumWidth = 8;
             this.GWeight_3.Name = "GWeight_3";
             this.GWeight_3.ReadOnly = true;
-            this.GWeight_3.Width = 60;
+            this.GWeight_3.Width = 71;
             // 
             // Act_Weight_3
             // 
@@ -1299,7 +1303,7 @@
             this.Act_Weight_3.MinimumWidth = 8;
             this.Act_Weight_3.Name = "Act_Weight_3";
             this.Act_Weight_3.ReadOnly = true;
-            this.Act_Weight_3.Width = 84;
+            this.Act_Weight_3.Width = 103;
             // 
             // GMatCode_4
             // 
@@ -1309,7 +1313,7 @@
             this.GMatCode_4.MinimumWidth = 8;
             this.GMatCode_4.Name = "GMatCode_4";
             this.GMatCode_4.ReadOnly = true;
-            this.GMatCode_4.Width = 60;
+            this.GMatCode_4.Width = 71;
             // 
             // GWeight_4
             // 
@@ -1319,7 +1323,7 @@
             this.GWeight_4.MinimumWidth = 8;
             this.GWeight_4.Name = "GWeight_4";
             this.GWeight_4.ReadOnly = true;
-            this.GWeight_4.Width = 60;
+            this.GWeight_4.Width = 71;
             // 
             // Act_Weight_4
             // 
@@ -1329,7 +1333,7 @@
             this.Act_Weight_4.MinimumWidth = 8;
             this.Act_Weight_4.Name = "Act_Weight_4";
             this.Act_Weight_4.ReadOnly = true;
-            this.Act_Weight_4.Width = 84;
+            this.Act_Weight_4.Width = 103;
             // 
             // GMatCode_5
             // 
@@ -1339,7 +1343,7 @@
             this.GMatCode_5.MinimumWidth = 8;
             this.GMatCode_5.Name = "GMatCode_5";
             this.GMatCode_5.ReadOnly = true;
-            this.GMatCode_5.Width = 60;
+            this.GMatCode_5.Width = 71;
             // 
             // GWeight_5
             // 
@@ -1349,7 +1353,7 @@
             this.GWeight_5.MinimumWidth = 8;
             this.GWeight_5.Name = "GWeight_5";
             this.GWeight_5.ReadOnly = true;
-            this.GWeight_5.Width = 60;
+            this.GWeight_5.Width = 71;
             // 
             // Act_Weight_5
             // 
@@ -1359,7 +1363,7 @@
             this.Act_Weight_5.MinimumWidth = 8;
             this.Act_Weight_5.Name = "Act_Weight_5";
             this.Act_Weight_5.ReadOnly = true;
-            this.Act_Weight_5.Width = 84;
+            this.Act_Weight_5.Width = 103;
             // 
             // GMatCode_6
             // 
@@ -1369,7 +1373,7 @@
             this.GMatCode_6.MinimumWidth = 8;
             this.GMatCode_6.Name = "GMatCode_6";
             this.GMatCode_6.ReadOnly = true;
-            this.GMatCode_6.Width = 60;
+            this.GMatCode_6.Width = 71;
             // 
             // GWeight_6
             // 
@@ -1379,7 +1383,7 @@
             this.GWeight_6.MinimumWidth = 8;
             this.GWeight_6.Name = "GWeight_6";
             this.GWeight_6.ReadOnly = true;
-            this.GWeight_6.Width = 60;
+            this.GWeight_6.Width = 71;
             // 
             // Act_Weight_6
             // 
@@ -1389,7 +1393,7 @@
             this.Act_Weight_6.MinimumWidth = 8;
             this.Act_Weight_6.Name = "Act_Weight_6";
             this.Act_Weight_6.ReadOnly = true;
-            this.Act_Weight_6.Width = 84;
+            this.Act_Weight_6.Width = 103;
             // 
             // GMatCode_7
             // 
@@ -1399,7 +1403,7 @@
             this.GMatCode_7.MinimumWidth = 8;
             this.GMatCode_7.Name = "GMatCode_7";
             this.GMatCode_7.ReadOnly = true;
-            this.GMatCode_7.Width = 60;
+            this.GMatCode_7.Width = 71;
             // 
             // GWeight_7
             // 
@@ -1409,7 +1413,7 @@
             this.GWeight_7.MinimumWidth = 8;
             this.GWeight_7.Name = "GWeight_7";
             this.GWeight_7.ReadOnly = true;
-            this.GWeight_7.Width = 60;
+            this.GWeight_7.Width = 71;
             // 
             // Act_Weight_7
             // 
@@ -1419,7 +1423,7 @@
             this.Act_Weight_7.MinimumWidth = 8;
             this.Act_Weight_7.Name = "Act_Weight_7";
             this.Act_Weight_7.ReadOnly = true;
-            this.Act_Weight_7.Width = 84;
+            this.Act_Weight_7.Width = 103;
             // 
             // GMatCode_8
             // 
@@ -1429,7 +1433,7 @@
             this.GMatCode_8.MinimumWidth = 8;
             this.GMatCode_8.Name = "GMatCode_8";
             this.GMatCode_8.ReadOnly = true;
-            this.GMatCode_8.Width = 60;
+            this.GMatCode_8.Width = 71;
             // 
             // GWeight_8
             // 
@@ -1439,7 +1443,7 @@
             this.GWeight_8.MinimumWidth = 8;
             this.GWeight_8.Name = "GWeight_8";
             this.GWeight_8.ReadOnly = true;
-            this.GWeight_8.Width = 60;
+            this.GWeight_8.Width = 71;
             // 
             // Act_Weight_8
             // 
@@ -1449,7 +1453,7 @@
             this.Act_Weight_8.MinimumWidth = 8;
             this.Act_Weight_8.Name = "Act_Weight_8";
             this.Act_Weight_8.ReadOnly = true;
-            this.Act_Weight_8.Width = 84;
+            this.Act_Weight_8.Width = 103;
             // 
             // GMatCode_9
             // 
@@ -1459,7 +1463,7 @@
             this.GMatCode_9.MinimumWidth = 8;
             this.GMatCode_9.Name = "GMatCode_9";
             this.GMatCode_9.ReadOnly = true;
-            this.GMatCode_9.Width = 60;
+            this.GMatCode_9.Width = 71;
             // 
             // GWeight_9
             // 
@@ -1469,7 +1473,7 @@
             this.GWeight_9.MinimumWidth = 8;
             this.GWeight_9.Name = "GWeight_9";
             this.GWeight_9.ReadOnly = true;
-            this.GWeight_9.Width = 60;
+            this.GWeight_9.Width = 71;
             // 
             // Act_Weight_9
             // 
@@ -1479,7 +1483,7 @@
             this.Act_Weight_9.MinimumWidth = 8;
             this.Act_Weight_9.Name = "Act_Weight_9";
             this.Act_Weight_9.ReadOnly = true;
-            this.Act_Weight_9.Width = 84;
+            this.Act_Weight_9.Width = 103;
             // 
             // GMatCode_10
             // 
@@ -1489,7 +1493,7 @@
             this.GMatCode_10.MinimumWidth = 8;
             this.GMatCode_10.Name = "GMatCode_10";
             this.GMatCode_10.ReadOnly = true;
-            this.GMatCode_10.Width = 66;
+            this.GMatCode_10.Width = 79;
             // 
             // GWeight_10
             // 
@@ -1499,7 +1503,7 @@
             this.GWeight_10.MinimumWidth = 8;
             this.GWeight_10.Name = "GWeight_10";
             this.GWeight_10.ReadOnly = true;
-            this.GWeight_10.Width = 66;
+            this.GWeight_10.Width = 79;
             // 
             // Act_Weight_10
             // 
@@ -1509,7 +1513,7 @@
             this.Act_Weight_10.MinimumWidth = 8;
             this.Act_Weight_10.Name = "Act_Weight_10";
             this.Act_Weight_10.ReadOnly = true;
-            this.Act_Weight_10.Width = 90;
+            this.Act_Weight_10.Width = 111;
             // 
             // TO_STOCK_NO
             // 

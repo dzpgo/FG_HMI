@@ -159,6 +159,7 @@
             // 
             // txtJumpPage
             // 
+            this.txtJumpPage.BackColor = System.Drawing.SystemColors.Control;
             this.txtJumpPage.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtJumpPage.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.txtJumpPage.Location = new System.Drawing.Point(257, 5);
@@ -184,6 +185,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.Controls.Add(this.txtJumpPage);
             this.Controls.Add(this.lblTotalRows);
             this.Controls.Add(this.label4);

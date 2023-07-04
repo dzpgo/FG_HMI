@@ -42,7 +42,7 @@ namespace UACSPopupForm
             //InitializeTimer();
         }
         //private DataTable initial_dgv;
-        public DataTable Initial_dgv = new DataTable();
+        private DataTable Initial_dgv = new DataTable();
         private ParkingBase packingInfo;
         public ParkingBase PackingInfo
         {
@@ -209,7 +209,7 @@ namespace UACSPopupForm
             {
                 //DataTable dt = (dgvStowageMessage.DataSource as DataTable);
                 //Initial_dgv = dt;
-                Initial_dgv = GetDgvToTable(dgvStowageMessage);
+                Initial_dgv = GetDataGridViewToTable(dgvStowageMessage);
             }
 
             var REQWeight = 0;
@@ -409,9 +409,7 @@ namespace UACSPopupForm
                         DataTable dt = TotalDT.Clone();
                         var count = 0;
                         var isTrue = false;
-                        var planNo = "";
                         var orderNo = "";
-                        var ExecuteNonQueryCount = 0;
                         foreach (DataGridViewRow dgr in dgvStowageMessage.Rows)
                         {
                             isTrue = false;
@@ -617,9 +615,13 @@ namespace UACSPopupForm
             catch (Exception ex)
             { }
         }
-               
 
-        public DataTable GetDgvToTable(DataGridView dgv)
+        /// <summary>
+        /// DataGridView 转 DataTable
+        /// </summary>
+        /// <param name="dgv">DataGridView</param>
+        /// <returns></returns>
+        public DataTable GetDataGridViewToTable(DataGridView dgv)
         {
             DataTable dt = new DataTable();
 
@@ -662,20 +664,12 @@ namespace UACSPopupForm
             var data2 = Initial_dgv.Rows[intRow].ItemArray[intColumn];
             if (data2.Equals(data1))
             {
-                //dgvStowageMessage.Rows[intRow].Cells[intColumn].Style.ForeColor = Color.Red;
                 dgvStowageMessage.Rows[intRow].Cells[intColumn].Style.BackColor = System.Drawing.SystemColors.Window;
             }
             else
             {
-                //DataGridViewCell aa = dgvStowageMessage.Rows[intRow].Cells[intColumn];
-                //aa.Style.ForeColor = Color.Red;
-                //aa.Style.BackColor = Color.LightGreen;
-                //dgvStowageMessage.Rows[intRow].Cells[intColumn].Style.ForeColor = Color.Red;
                 dgvStowageMessage.Rows[intRow].Cells[intColumn].Style.BackColor = Color.LightGreen;
-                
-
             }
-
         }
 
         /// <summary>
