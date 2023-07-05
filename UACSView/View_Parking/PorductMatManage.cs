@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Baosight.iSuperframe.Forms;
 using Baosight.iSuperframe.TagService;
 using Baosight.iSuperframe.Authorization.Interface;
-using Baosight.iSuperframe.Common;
 using ParkingControlLibrary;
 using ParkClassLibrary;
 using UACSDAL;
 using UACSView.View_Parking;
-using Baosight.iSuperframe.Authorization;
 
 namespace UACSParking
 {
