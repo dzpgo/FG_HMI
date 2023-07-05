@@ -806,6 +806,7 @@ namespace UACSPopupForm
         /// </summary>
         private void bt_Send_Click(object sender, EventArgs e)
         {
+            isPopupMessage = true;
             Send_Tag();
         }
 
@@ -813,49 +814,57 @@ namespace UACSPopupForm
         /// 发送实绩
         /// </summary>
         private void Send_Tag()
-        {            
-            //确认提示
-            MessageBoxButtons btn = MessageBoxButtons.OKCancel;
-            DialogResult drmsg = MessageBox.Show("确认是否发送实绩？", "提示", btn, MessageBoxIcon.Asterisk);
-            if (drmsg == DialogResult.OK)
-            {
-                if (dgvStowageMessage.Rows.Count > 0)
+        {
+            try
+            {                
+                //确认提示
+                MessageBoxButtons btn = MessageBoxButtons.OKCancel;
+                DialogResult drmsg = MessageBox.Show("确认是否发送实绩？", "提示", btn, MessageBoxIcon.Asterisk);
+                if (drmsg == DialogResult.OK)
                 {
-                    //计划号，料槽号，工位号，废钢种类数量，废钢代码1#重量，废钢代码2#重量，废钢代码3#重量，废钢代码4#重量，废钢代码5#重量......
-                    //Tag发送的数据
-                    var Data = "";
-                    //计划号
-                    string sPlanNO = dgvStowageMessage.CurrentRow.Cells["PLAN_NO"].Value.ToString();
-                    //料槽车号
-                    string sCarNo = !string.IsNullOrEmpty(lblCarNo.Text.ToString().Trim()) ? lblCarNo.Text.ToString().Trim() : "";
-                    //停车位号（落料位）
-                    string sToStockNo = dgvStowageMessage.CurrentRow.Cells["TO_STOCK_NO"].Value.ToString();
-                    //废钢种类数量
-                    var count = dgvStowageMessage.Rows.Count;
-                    Data += sPlanNO + "," + sCarNo + "," + sToStockNo + "," + count;
-
-
-                    foreach (DataGridViewRow dgr in dgvStowageMessage.Rows)
+                    if (dgvStowageMessage.Rows.Count > 0)
                     {
-                        var sMatCode = "";
-                        var sActWeight = "";
-                        if (!string.IsNullOrEmpty(dgr.Cells["MAT_CODE"].Value.ToString()))
-                        {
-                            //要求重量
-                            sMatCode =  dgr.Cells["MAT_CODE"].Value.ToString();
-                        }
-                        if (!string.IsNullOrEmpty(dgr.Cells["ACT_WEIGHT"].Value.ToString()))
-                        {
-                            //累计重量
-                            sActWeight = dgr.Cells["ACT_WEIGHT"].Value.ToString();
-                        }
-                        Data += "," + sMatCode + "#" + sActWeight;
-                    }
+                        //计划号，料槽号，工位号，废钢种类数量，废钢代码1#重量，废钢代码2#重量，废钢代码3#重量，废钢代码4#重量，废钢代码5#重量......
+                        //Tag发送的数据
+                        var Data = "";
+                        //计划号
+                        string sPlanNO = dgvStowageMessage.CurrentRow.Cells["PLAN_NO"].Value.ToString();
+                        //料槽车号
+                        string sCarNo = !string.IsNullOrEmpty(lblCarNo.Text.ToString().Trim()) ? lblCarNo.Text.ToString().Trim() : "";
+                        //停车位号（落料位）
+                        string sToStockNo = dgvStowageMessage.CurrentRow.Cells["TO_STOCK_NO"].Value.ToString();
+                        //废钢种类数量
+                        var count = dgvStowageMessage.Rows.Count;
+                        Data += sPlanNO + "," + sCarNo + "," + sToStockNo + "," + count;
 
-                    tagDP.SetData("EV_L3MSG_SND_BHKI02", Data);
-                    DialogResult dr = MessageBox.Show("停车位详细实绩发送成功！", "提示", MessageBoxButtons.OK);
-                    ParkClassLibrary.HMILogger.WriteLog("停车位详细实绩发送", "实绩发送：" + Data, ParkClassLibrary.LogLevel.Info, this.Text);
-                }                
+
+                        foreach (DataGridViewRow dgr in dgvStowageMessage.Rows)
+                        {
+                            var sMatCode = "";
+                            var sActWeight = "";
+                            if (!string.IsNullOrEmpty(dgr.Cells["MAT_CODE"].Value.ToString()))
+                            {
+                                //要求重量
+                                sMatCode = dgr.Cells["MAT_CODE"].Value.ToString();
+                            }
+                            if (!string.IsNullOrEmpty(dgr.Cells["ACT_WEIGHT"].Value.ToString()))
+                            {
+                                //累计重量
+                                sActWeight = dgr.Cells["ACT_WEIGHT"].Value.ToString();
+                            }
+                            Data += "," + sMatCode + "#" + sActWeight;
+                        }
+
+                        tagDP.SetData("EV_L3MSG_SND_BHKI02", Data);
+                        DialogResult dr = MessageBox.Show("停车位详细实绩发送成功！", "提示", MessageBoxButtons.OK);
+                        HMILogger.WriteLog("停车位详细实绩发送", "实绩发送：" + Data, ParkClassLibrary.LogLevel.Info, this.Text);
+                    }
+                }
+                isPopupMessage = false;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("实绩发送失败！");
             }
         }
     }
