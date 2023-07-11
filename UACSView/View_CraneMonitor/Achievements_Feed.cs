@@ -1353,7 +1353,7 @@ namespace UACSView.View_CraneMonitor
             this.cmb_PlanStatus.DataSource = dt;
             this.cmb_PlanStatus.DisplayMember = "TypeName";
             this.cmb_PlanStatus.ValueMember = "TypeValue";
-            this.cmb_PlanStatus.SelectedIndex = 1;
+            this.cmb_PlanStatus.SelectedIndex = 2;
         }
 
 

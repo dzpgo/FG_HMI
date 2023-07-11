@@ -46,9 +46,8 @@
       <HintPath>..\lib\Baosight.iSuperframe.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Baosight.iSuperframe.Forms, Version=1.0.5634.30831, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\iPlature\SF_HOME\Baosight.iSuperframe.Forms.dll</HintPath>
+    <Reference Include="Baosight.iSuperframe.Forms">
+      <HintPath>..\lib\Baosight.iSuperframe.Forms.dll</HintPath>
     </Reference>
     <Reference Include="Baosight.iSuperframe.TagService.Controls">
       <HintPath>D:\vsts\ZJ1550\Source\UACS_HMI\HMI_OF_REPOSITORIES\MODEL_OF_REPOSITORIES\bin\Debug\Baosight.iSuperframe.TagService.Controls.dll</HintPath>
