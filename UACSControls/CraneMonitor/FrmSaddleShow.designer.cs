@@ -37,6 +37,8 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnTianZi = new System.Windows.Forms.Button();
+            this.bt_Seal = new System.Windows.Forms.Button();
+            this.bt_Unblocking = new System.Windows.Forms.Button();
             this.bt_YardmapGrid = new System.Windows.Forms.Button();
             this.btnAll = new System.Windows.Forms.Button();
             this.btnNS = new System.Windows.Forms.Button();
@@ -53,8 +55,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.coilPicture1 = new UACS.CoilPicture();
-            this.bt_Unblocking = new System.Windows.Forms.Button();
-            this.bt_Seal = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelSaddle.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -156,6 +156,34 @@
             this.btnTianZi.Text = "田字展示";
             this.btnTianZi.UseVisualStyleBackColor = false;
             this.btnTianZi.Click += new System.EventHandler(this.btnTianZi_Click);
+            // 
+            // bt_Seal
+            // 
+            this.bt_Seal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_Seal.BackColor = System.Drawing.Color.AliceBlue;
+            this.bt_Seal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bt_Seal.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_Seal.Location = new System.Drawing.Point(258, 12);
+            this.bt_Seal.Name = "bt_Seal";
+            this.bt_Seal.Size = new System.Drawing.Size(116, 36);
+            this.bt_Seal.TabIndex = 22;
+            this.bt_Seal.Text = "料格封红";
+            this.bt_Seal.UseVisualStyleBackColor = false;
+            this.bt_Seal.Click += new System.EventHandler(this.bt_Seal_Click);
+            // 
+            // bt_Unblocking
+            // 
+            this.bt_Unblocking.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_Unblocking.BackColor = System.Drawing.Color.AliceBlue;
+            this.bt_Unblocking.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bt_Unblocking.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_Unblocking.Location = new System.Drawing.Point(380, 12);
+            this.bt_Unblocking.Name = "bt_Unblocking";
+            this.bt_Unblocking.Size = new System.Drawing.Size(116, 36);
+            this.bt_Unblocking.TabIndex = 22;
+            this.bt_Unblocking.Text = "料格解封";
+            this.bt_Unblocking.UseVisualStyleBackColor = false;
+            this.bt_Unblocking.Click += new System.EventHandler(this.bt_Unblocking_Click);
             // 
             // bt_YardmapGrid
             // 
@@ -338,34 +366,6 @@
             this.coilPicture1.Unit_no = null;
             this.coilPicture1.UpEnable = true;
             this.coilPicture1.UpVisiable = true;
-            // 
-            // bt_Unblocking
-            // 
-            this.bt_Unblocking.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bt_Unblocking.BackColor = System.Drawing.Color.AliceBlue;
-            this.bt_Unblocking.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bt_Unblocking.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bt_Unblocking.Location = new System.Drawing.Point(380, 12);
-            this.bt_Unblocking.Name = "bt_Unblocking";
-            this.bt_Unblocking.Size = new System.Drawing.Size(116, 36);
-            this.bt_Unblocking.TabIndex = 22;
-            this.bt_Unblocking.Text = "料格解封";
-            this.bt_Unblocking.UseVisualStyleBackColor = false;
-            this.bt_Unblocking.Click += new System.EventHandler(this.bt_Unblocking_Click);
-            // 
-            // bt_Seal
-            // 
-            this.bt_Seal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bt_Seal.BackColor = System.Drawing.Color.AliceBlue;
-            this.bt_Seal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bt_Seal.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bt_Seal.Location = new System.Drawing.Point(258, 12);
-            this.bt_Seal.Name = "bt_Seal";
-            this.bt_Seal.Size = new System.Drawing.Size(116, 36);
-            this.bt_Seal.TabIndex = 22;
-            this.bt_Seal.Text = "料格封红";
-            this.bt_Seal.UseVisualStyleBackColor = false;
-            this.bt_Seal.Click += new System.EventHandler(this.bt_Seal_Click);
             // 
             // FrmSaddleShow
             // 

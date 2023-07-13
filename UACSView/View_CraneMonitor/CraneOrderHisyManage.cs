@@ -25,8 +25,8 @@ namespace UACSView
         Dictionary<string, string> dicFlagDispat = new Dictionary<string, string>();
         Dictionary<string, string> dicDelFlag = new Dictionary<string, string>();
         Dictionary<string, string> dicOrderType = new Dictionary<string, string>();
-        string[] dgvColumnsName = { "PLAN_NO", "ORDER_NO", "ORDER_GROUP_NO", "EXE_SEQ", "ORDER_TYPE", "BOF_NO", "BAY_NO", "CRANE_NO", "CAR_NO", "CAR_TYPE", "PLAN_SRC", "ORDER_PRIORITY", "CMD_SEQ", "CMD_STATUS", "SCRAP_CODE", "MAT_CODE", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "REQ_WEIGHT", "ACT_WEIGHT", "START_TIME", "UPD_TIME", "REC_TIME" };
-        string[] dgvHeaderText = { "计划号", "指令号", "指令组号", "指令顺序", "指令类型", "炉号", "跨别", "行车", "料槽号", "料槽类型", "计划来源", "优先级", "吊运次数", "吊运状态", "原物料代码", "物料代码", "物料名称", "取料位置", "落料位", "要求重量", "实绩重量", "开始时间", "更新时间", "创建时间" };
+        string[] dgvColumnsName = { "PLAN_NO", "ORDER_NO", "ORDER_GROUP_NO", "EXE_SEQ", "ORDER_TYPE", "BOF_NO", "BAY_NO", "CRANE_NO", "CAR_NO", "CAR_TYPE", "PLAN_SRC", "ORDER_PRIORITY", "CMD_SEQ", "CMD_STATUS", "SCRAP_CODE", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "REQ_WEIGHT", "ACT_WEIGHT", "START_TIME", "UPD_TIME", "REC_TIME" };
+        string[] dgvHeaderText = { "计划号", "指令号", "指令组号", "指令顺序", "指令类型", "炉号", "跨别", "行车", "料槽号", "料槽类型", "计划来源", "优先级", "吊运次数", "吊运状态", "物料代码", "物料名称", "取料位置", "落料位", "要求重量", "实绩重量", "开始时间", "更新时间", "创建时间" };
         public CraneOrderHisyManage()
         {
             InitializeComponent();
@@ -307,9 +307,9 @@ namespace UACSView
                                             WHEN A.CMD_STATUS = 10 THEN '空载上升到位' 
                                             ELSE '其他' 
                                             END AS CMD_STATUS
-                                            ,C.BOF_NO,A.PLAN_NO,A.MAT_CODE,B.MAT_CNAME ,A.FROM_STOCK_NO,A.TO_STOCK_NO,A.REQ_WEIGHT,A.ACT_WEIGHT,A.START_TIME,A.UPD_TIME,A.REC_TIME ";
+                                            ,C.BOF_NO,A.PLAN_NO,A.SCRAP_CODE,,B.MAT_CNAME ,A.FROM_STOCK_NO,A.TO_STOCK_NO,A.REQ_WEIGHT,A.ACT_WEIGHT,A.START_TIME,A.UPD_TIME,A.REC_TIME ";
                 sqlText_ORDER += " FROM UACS_ORDER_QUEUE AS A ";
-                sqlText_ORDER += " LEFT JOIN UACS_L3_MAT_INFO AS B ON A.MAT_CODE = B.MAT_CODE ";
+                sqlText_ORDER += " LEFT JOIN UACS_L3_MAT_INFO AS B ON A.SCRAP_CODE = B.MAT_CODE ";
                 sqlText_ORDER += " LEFT JOIN UACS_L3_MAT_OUT_INFO AS C ON C.PLAN_NO = A.PLAN_NO ";
                 sqlText_ORDER += "WHERE 1=1 ";
                 sqlText_ORDER += "AND A.REC_TIME > '{0}' AND A.REC_TIME < '{1}' ";
@@ -602,9 +602,9 @@ namespace UACSView
                                             WHEN A.CMD_STATUS = 10 THEN '空载上升到位' 
                                             ELSE '其他' 
                                             END AS CMD_STATUS
-                                            ,C.BOF_NO,A.PLAN_NO,A.SCRAP_CODE,A.MAT_CODE,B.MAT_CNAME ,A.FROM_STOCK_NO,A.TO_STOCK_NO,A.REQ_WEIGHT,A.ACT_WEIGHT,A.START_TIME,A.UPD_TIME,A.REC_TIME ";
+                                            ,C.BOF_NO,A.PLAN_NO,A.SCRAP_CODE,B.MAT_CNAME ,A.FROM_STOCK_NO,A.TO_STOCK_NO,A.REQ_WEIGHT,A.ACT_WEIGHT,A.START_TIME,A.UPD_TIME,A.REC_TIME ";
                 sqlText_ORDER += " FROM UACS_ORDER_QUEUE AS A ";
-                sqlText_ORDER += " LEFT JOIN UACS_L3_MAT_INFO AS B ON A.MAT_CODE = B.MAT_CODE ";
+                sqlText_ORDER += " LEFT JOIN UACS_L3_MAT_INFO AS B ON A.SCRAP_CODE = B.MAT_CODE ";
                 sqlText_ORDER += " LEFT JOIN UACS_L3_MAT_OUT_INFO AS C ON C.PLAN_NO = A.PLAN_NO ";
                 sqlText_ORDER += "WHERE 1=1 ";
                 sqlText_ORDER += "AND A.REC_TIME > '{0}' AND A.REC_TIME < '{1}' ";

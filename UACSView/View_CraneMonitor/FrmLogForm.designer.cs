@@ -494,6 +494,7 @@
             // 
             this.ucPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucPage1.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ucPage1.CurrentPage = 0;
             this.ucPage1.Location = new System.Drawing.Point(3, 12);
             this.ucPage1.Name = "ucPage1";
