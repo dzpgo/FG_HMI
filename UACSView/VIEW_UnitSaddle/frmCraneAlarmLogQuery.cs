@@ -81,8 +81,8 @@ namespace UACSView
             {
                 string strSql = "";
                 string tableName = "UACS_CRANE_ALARM_" + craneNO;
-                if (!isLoad)
-                {
+                //if (!isLoad)
+                //{
                     strSql = "select ";
                     strSql += " a.CRANE_NO   CRANE_NO, ";
                     strSql += " a.ALARM_CODE   ALARM_CODE, ";
@@ -106,22 +106,22 @@ namespace UACSView
                     strSql += " and a.ALARM_TIME>= " + DateNormal_ToString(timeStart);
                     strSql += " and a.ALARM_TIME<= " + DateNormal_ToString(timeEnd);
                     strSql += " Order By a.ALARM_TIME ";
-                }
-                else
-                {
-                    //初次加载时默认查询倒序30条数据（仅初始化时用）
-                    strSql += "SELECT CRANE_NO,ALARM_CODE,ALARM_TIME,X_ACT,Y_ACT,Z_ACT,HAS_COIL,CLAMP_WIDTH_ACT,CONTROL_MODE,CRANE_STATUS,ORDER_ID,ALARM_INFO,ALARM_CLASS ";
-                    strSql += "FROM ( ";
-                    strSql += "SELECT ROW_NUMBER() OVER(ORDER BY A.ALARM_TIME) AS ROWNUM, ";
-                    strSql += "a.CRANE_NO, a.ALARM_CODE, a.ALARM_TIME, a.X_ACT, a.Y_ACT, a.Z_ACT, a.HAS_COIL, a.CLAMP_WIDTH_ACT, a.CONTROL_MODE, a.CRANE_STATUS, a.ORDER_ID, b.ALARM_INFO, b.ALARM_CLASS  ";
-                    strSql += "FROM ";
-                    strSql += tableName + " a " + ",";
-                    strSql += "UACS_CRANE_ALARM_CODE_DEFINE b  ";
-                    strSql += "where a.ALARM_CODE=b.ALARM_CODE ";
-                    strSql += " AND a.CRANE_NO=" + "'" + craneNO + "'";
-                    strSql += ") a  ";
-                    strSql += "WHERE ROWNUM > 0 and ROWNUM <=30 ";
-                }
+                //}
+                //else
+                //{
+                //    //初次加载时默认查询倒序30条数据（仅初始化时用）
+                //    strSql += "SELECT CRANE_NO,ALARM_CODE,ALARM_TIME,X_ACT,Y_ACT,Z_ACT,HAS_COIL,CLAMP_WIDTH_ACT,CONTROL_MODE,CRANE_STATUS,ORDER_ID,ALARM_INFO,ALARM_CLASS ";
+                //    strSql += "FROM ( ";
+                //    strSql += "SELECT ROW_NUMBER() OVER(ORDER BY A.ALARM_TIME) AS ROWNUM, ";
+                //    strSql += "a.CRANE_NO, a.ALARM_CODE, a.ALARM_TIME, a.X_ACT, a.Y_ACT, a.Z_ACT, a.HAS_COIL, a.CLAMP_WIDTH_ACT, a.CONTROL_MODE, a.CRANE_STATUS, a.ORDER_ID, b.ALARM_INFO, b.ALARM_CLASS  ";
+                //    strSql += "FROM ";
+                //    strSql += tableName + " a " + ",";
+                //    strSql += "UACS_CRANE_ALARM_CODE_DEFINE b  ";
+                //    strSql += "where a.ALARM_CODE=b.ALARM_CODE ";
+                //    strSql += " AND a.CRANE_NO=" + "'" + craneNO + "'";
+                //    strSql += ") a  ";
+                //    strSql += "WHERE ROWNUM > 0 and ROWNUM <=30 ";
+                //}
 
                 using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(strSql))
                 {

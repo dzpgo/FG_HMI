@@ -251,7 +251,7 @@ namespace UACSView.View_CraneMonitor
                 //清扫按钮闪烁
                 //ALM.UpdaeCubicleClean(cmb_CraneNO.SelectedValue.ToString().Trim());
                 HMILogger.WriteLog("清扫", cmb_CraneNO.Text + "清扫，工位：" + cmb_Cubicle.Text, LogLevel.Info, this.Text);
-                UpdateStatus(cmb_CraneNO.SelectedValue.ToString().Trim(), "41");
+                //UpdateStatus(cmb_CraneNO.SelectedValue.ToString().Trim(), "41");
                 MessageBox.Show("已选择清扫，请切换自动模式！");
                 this.Close();
             }

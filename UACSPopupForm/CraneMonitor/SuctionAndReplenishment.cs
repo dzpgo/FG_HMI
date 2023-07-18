@@ -234,7 +234,7 @@ namespace UACSPopupForm
                 }                
                 UpdateStatusInit(craneNo, fromStock, toStock, txt_MatWeight.Text.ToString().Trim(), "INIT", cbb_MatCode.SelectedValue.ToString().Trim());//INIT
                 ParkClassLibrary.HMILogger.WriteLog("吸料补料", craneNo + "开始吸料补料：" + txt_MatWeight.Text, LogLevel.Info, this.Text);
-                UpdateStatus(craneNo, "43");
+                //UpdateStatus(craneNo, "43");
                 this.Close();
             }
             else

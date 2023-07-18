@@ -219,7 +219,7 @@ namespace UACSView.View_CraneMonitor
             {
                 UpdateStatusInit(cmCraneNO.SelectedValue.ToString().Trim(), txt_MatWeight.Text.ToString().Trim(), cmb_FromStock.SelectedValue.ToString().Trim(), cmb_ToStock.SelectedValue.ToString().Trim(), "INIT");
                 HMILogger.WriteLog("装冷却剂", cmCraneNO.Text + "开始装冷却剂：" + txt_MatWeight.Text, LogLevel.Info, this.Text);
-                UpdateStatus(cmCraneNO.SelectedValue.ToString().Trim(), "42");
+                //UpdateStatus(cmCraneNO.SelectedValue.ToString().Trim(), "42");
                 this.Close();
             }
             else
