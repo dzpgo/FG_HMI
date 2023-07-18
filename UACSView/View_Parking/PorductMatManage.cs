@@ -837,7 +837,7 @@ namespace UACSParking
                     string strStowageID = GetStowageID(cbbPacking.Text.Trim(), carNo); //"1451";// 
                     if (strStowageID != "")
                     {
-                        string sql = @"select C.GROOVEID,C.MAT_NO as COIL_NO2,A.LOT_NO as LOT_NO,C.X_CENTER as GROOVE_ACT_X ,C.Y_CENTER AS GROOVE_ACT_Y,C.Z_CENTER AS GROOVE_ACT_Z, B.ACT_WEIGHT, B.OUTDIA ,D.STOCK_NO, D.LOCK_FLAG,B.PACK_FLAG  from UACS_TRUCK_STOWAGE_DETAIL C ";
+                        string sql = @"select C.GROOVEID,C.MAT_NO as COIL_NO2,A.LOT_NO as LOT_NO,C.X_CENTER as GROOVE_ACT_X ,C.Y_CENTER AS GROOVE_ACT_Y,C.Z_CENTER AS GROOVE_ACT_Z, B.ACT_WEIGHT, B.OUTDIA ,D.STOCK_NO, D.LOCK_FLAG,B.PACK_FLAG from UACS_TRUCK_STOWAGE_DETAIL C ";
                         sql += " LEFT JOIN  UACS_PLAN_L3PICK A ON C.MAT_NO = A.COIL_NO ";
                         sql += " LEFT JOIN  UACS_YARDMAP_COIL B ON C.MAT_NO = B.COIL_NO ";
                         sql += " LEFT JOIN UACS_YARDMAP_STOCK_DEFINE D ON C.MAT_NO = D.MAT_NO ";

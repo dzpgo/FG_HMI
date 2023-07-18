@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Baosight.iSuperframe.TagService;
 using UACSParking;
 using UACSDAL;
+using System.Net.NetworkInformation;
 
 namespace UACSView.View_Parking
 {
@@ -1093,7 +1094,7 @@ namespace UACSView.View_Parking
                     }
                 }
                 //查车辆号
-                string sqlText = @"SELECT FRAME_TYPE_NO FROM UACS_TRUCK_FRAME_DEFINE ";
+                string sqlText = @"SELECT FRAME_TYPE_NO FROM UACS_TRUCK_FRAME_DEFINE WHERE FRAME_TYPE_NO LIKE'S%';";
                 using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
                 {
                     while (rdr.Read())
@@ -1420,6 +1421,17 @@ namespace UACSView.View_Parking
                 if (string.IsNullOrEmpty(cbChoiceData))
                 {
                     MessageBox.Show("请先选择计划！！", "提示");
+                    return;
+                }
+            }
+
+            var sqlOrderQueue = @"SELECT PLAN_NO,ORDER_NO,ORDER_GROUP_NO,CRANE_NO,MAT_CODE,CMD_STATUS FROM UACS_ORDER_QUEUE WHERE PLAN_NO = '{0}' AND CMD_STATUS IN ('0', '3');";
+            sqlOrderQueue = string.Format(sqlOrderQueue, cbChoiceData.ToString());
+            using (IDataReader rdr = DBHelper.ExecuteReader(sqlOrderQueue))
+            {
+                if (rdr.Read())
+                {
+                    MessageBox.Show("提交失败，该计划正在执行！", "提示");
                     return;
                 }
             }
