@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data;
-using System.Windows.Forms;
 using System.Drawing;
-using UACSDAL.CraneMonitor;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace UACSDAL
 {
@@ -215,7 +213,7 @@ namespace UACSDAL
                         CraneStatusBase cranePLCStatusBase = getCranePLCStatusFromTags(theCraneNO);
                         dicCranePLCStatusBase[theCraneNO] = cranePLCStatusBase;
                     }
-                  
+
                 }
 
             }
@@ -286,7 +284,7 @@ namespace UACSDAL
             {
             }
         }
-        
+
 
         private CraneStatusBase getCranePLCStatusFromTags(string theCraneNO)
         {
@@ -304,13 +302,13 @@ namespace UACSDAL
                 // 当前指令
                 craneBase.OrderID = get_value_x(tag_Head + CraneStatusBase.ADRESS_ORDER_ID);
                 // 大车位置  铁路库Double  成品库库int 
-                craneBase.XAct = get_value_real(tag_Head + CraneStatusBase.ADRESS_XACT);  
+                craneBase.XAct = get_value_real(tag_Head + CraneStatusBase.ADRESS_XACT);
                 // 小车位置
                 craneBase.YAct = get_value_real(tag_Head + CraneStatusBase.ADRESS_YACT);
                 // 夹钳高度
                 craneBase.ZAct = get_value_real(tag_Head + CraneStatusBase.ADRESS_ZACT);
                 // 有卷标志
-                craneBase.HasCoil = get_value_x(tag_Head + CraneStatusBase.ADRESS_HAS_COIL);              
+                craneBase.HasCoil = get_value_x(tag_Head + CraneStatusBase.ADRESS_HAS_COIL);
                 // 行车状态
                 craneBase.CraneStatus = get_value_x(tag_Head + CraneStatusBase.ADRESS_CRANE_STATUS);
                 // 心跳
@@ -342,7 +340,7 @@ namespace UACSDAL
                 // 夹钳温度
                 craneBase.COIL_TEMPERATURE = get_value_x(tag_Head + CraneStatusBase.ADRESS_CRANE_COIL_TEMPERATURE);
 
-                string tag_HeadA =  "_A" + craneBase.CraneNO;
+                string tag_HeadA = "_A" + craneBase.CraneNO;
                 //工位装料计划完成（1:完成 0：未完成）
                 craneBase.EV_PLAN_FINISH = get_value_x(CraneStatusBase.ADRESS_PLAN_FINISH + tag_HeadA);
 
@@ -381,7 +379,7 @@ namespace UACSDAL
             {
                 if (!string.IsNullOrEmpty(theTraffic.AreaNo))
                 {
-                    string tag_Head =  "1_";
+                    string tag_Head = "1_";
                     // 准备好
                     var Ready = get_value_x(tag_Head + CraneStatusBase.ADRESS_READY);
                     var A2 = get_value_x("AreaReserve2");
@@ -569,7 +567,7 @@ namespace UACSDAL
             {
                 valueObject = null;
             }
-            return theValue; 
+            return theValue;
         }
 
         private long get_value_real(string tagName)
@@ -585,7 +583,7 @@ namespace UACSDAL
             {
                 valueObject = null;
             }
-            return theValue; 
+            return theValue;
         }
 
         private string get_value_string(string tagName)
@@ -601,7 +599,7 @@ namespace UACSDAL
             {
                 valueObject = null;
             }
-            return theValue; 
+            return theValue;
         }
 
         private double get_value_Double(string tagName)
@@ -617,7 +615,7 @@ namespace UACSDAL
             {
                 valueObject = null;
             }
-            return theValue; 
+            return theValue;
         }
 
 
@@ -669,7 +667,7 @@ namespace UACSDAL
         /// <param name="tb_MAT_CUR_WGT">当次作业重量(当吊起时记录,当放下时清空)</param>
         /// <param name="tb_ACT_WEIGHT">总累计作业重量 单位-KG</param>
         /// <param name="tb_CurrentStatus">行车当前状态</param>
-        public void craneOrderInfo(string craneNo, TextBox txt_CraneOrder, TextBox txt_CoilNo, TextBox txt_FromStock, TextBox txt_ToStock, TextBox tb_MAT_REQ_WGT, TextBox tb_MAT_ACT_WGT, TextBox tb_MAT_CUR_WGT, TextBox tb_ACT_WEIGHT,TextBox tb_CurrentStatus)
+        public void craneOrderInfo(string craneNo, TextBox txt_CraneOrder, TextBox txt_CoilNo, TextBox txt_FromStock, TextBox txt_ToStock, TextBox tb_MAT_REQ_WGT, TextBox tb_MAT_ACT_WGT, TextBox tb_MAT_CUR_WGT, TextBox tb_ACT_WEIGHT, TextBox tb_CurrentStatus)
         {
             bool isValue = false;
             try
