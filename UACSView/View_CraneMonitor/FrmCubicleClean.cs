@@ -242,10 +242,20 @@ namespace UACSView.View_CraneMonitor
                 MessageBox.Show("重量信息不正确!");
                 return;
             }
+            var sqlOrderQueue = @"SELECT PLAN_NO,ORDER_NO,ORDER_GROUP_NO,CRANE_NO,MAT_CODE,CMD_STATUS,REC_TIME FROM UACS_ORDER_QUEUE WHERE TO_STOCK_NO = '{0}' AND CMD_STATUS IN ('0', '3');";
+            sqlOrderQueue = string.Format(sqlOrderQueue, cmb_Cubicle.SelectedValue.ToString().Trim());
+            using (IDataReader rdr = DBHelper.ExecuteReader(sqlOrderQueue))
+            {
+                if (rdr.Read())
+                {
+                    MessageBox.Show("提交失败，该工位有计划正在执行！", "提示");
+                    return;
+                }
+            }
             DialogResult dr = MessageBox.Show("请确认料槽车已经离开工位,是否开始清扫？", "操作提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
             if (dr == DialogResult.OK)
             {
-                string sql = @"UPDATE UACS_CRANE_MANU_ORDER_CLEAN SET MAT_NO = '" + cmb_MatCode.SelectedValue.ToString().Trim() + "', FROM_STOCK = '" + cmb_Cubicle.SelectedValue.ToString().Trim() + "', TO_STOCK = '" + cmb_Cubicle.SelectedValue.ToString().Trim() + "',PLAN_UP_Z = '"+ txt_Height.Text.Trim()+"', STATUS = 'INIT' ";
+                string sql = @"UPDATE UACS_CRANE_MANU_ORDER_CLEAN SET MAT_NO = '" + cmb_MatCode.SelectedValue.ToString().Trim() + "', FROM_STOCK = '" + cmb_Cubicle.SelectedValue.ToString().Trim() + "', TO_STOCK = '" + cmb_Cubicle.SelectedValue.ToString().Trim() + "',PLAN_UP_Z = '" + txt_Height.Text.Trim() + "', STATUS = 'INIT' ";
                 sql += " WHERE BAY_NO = 'A' AND CRANE_NO = '" + cmb_CraneNO.SelectedValue.ToString().Trim() + "' ";
                 DBHelper.ExecuteNonQuery(sql);
                 //清扫按钮闪烁

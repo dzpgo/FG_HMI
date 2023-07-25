@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Markup;
 using UACSDAL;
 using UACSPopupForm;
 
@@ -28,12 +28,6 @@ namespace UACSControls
         public string CarNo;
         public string ToStockNo;
         private string EV_PLAN_FINISH = "EV_PLAN_FINISH";
-        private string EV_PLAN_FINISH_A1 = "EV_PLAN_FINISH_A1";
-        private string EV_PLAN_FINISH_A2 = "EV_PLAN_FINISH_A2";
-        private string EV_PLAN_FINISH_A3 = "EV_PLAN_FINISH_A3";
-        private string EV_PLAN_FINISH_A4 = "EV_PLAN_FINISH_A4";
-        private string EV_PLAN_FINISH_A5 = "EV_PLAN_FINISH_A5";
-        private string EV_PLAN_FINISH_A6 = "EV_PLAN_FINISH_A6";
         public conCraneStatus ALM;
         private Timer timer;
         public FrmPlanCompletionBox()
@@ -135,7 +129,6 @@ namespace UACSControls
         /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
             this.Close();
         }
         /// <summary>
@@ -143,12 +136,13 @@ namespace UACSControls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void FrmPlanCompletionBox_Deactivate(object sender, EventArgs e)
+        private async void FrmPlanCompletionBox_Deactivate(object sender, EventArgs e)
         {
             try
             {
                 if (!isPopupMessage)
                 {
+                    await Task.Delay(5000);
                     this.Close();
                 }
             }

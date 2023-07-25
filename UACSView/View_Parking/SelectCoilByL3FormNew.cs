@@ -7,7 +7,6 @@ using System.Windows.Forms;
 using Baosight.iSuperframe.TagService;
 using UACSParking;
 using UACSDAL;
-using System.Net.NetworkInformation;
 
 namespace UACSView.View_Parking
 {
@@ -1508,6 +1507,43 @@ namespace UACSView.View_Parking
                         tagDP.SetData("EV_PARKING_CARARRIVE", sb.ToString());
                         DialogResult dr = MessageBox.Show("车到位成功!", "提示", MessageBoxButtons.OK);
                         ParkClassLibrary.HMILogger.WriteLog("车到位", "车到位：" + sb.ToString(), ParkClassLibrary.LogLevel.Info, this.Text);
+
+                        #region 判断是否需要清空归堆指令、清扫工位指令、装冷却剂指令、吸料补料
+                        var craneNO = cmbScanCar.SelectedValue.ToString().Trim();
+                        if (CreateManuOrder.isDelCraneManuOrder(craneNO))
+                        {
+                            string error = null;
+                            if (CreateManuOrder.DelCraneManuOrder(craneNO, out error))
+                            {
+                                ParkClassLibrary.HMILogger.WriteLog("车到位-自动清空归堆指令", craneNO + "行车-自动清空归堆指令", ParkClassLibrary.LogLevel.Info, this.Text);
+                            }
+                        }
+                        if (CreateManuOrder.isDelCraneManuOrderClean(craneNO))
+                        {
+                            string error = null;
+                            if (CreateManuOrder.DelCraneManuOrderClean(craneNO, out error))
+                            {
+                                ParkClassLibrary.HMILogger.WriteLog("车到位-自动清空清扫工位指令", craneNO + "行车-自动清空清扫工位指令", ParkClassLibrary.LogLevel.Info, this.Text);
+                            }
+                        }
+                        if (CreateManuOrder.isDelCraneManuOrderCoolant(craneNO))
+                        {
+                            string error = null;
+                            if (CreateManuOrder.DelCraneManuOrderCoolant(craneNO, out error))
+                            {
+                                ParkClassLibrary.HMILogger.WriteLog("车到位-自动清空装冷却剂指令", craneNO + "行车-自动清空装冷却剂指令", ParkClassLibrary.LogLevel.Info, this.Text);
+                            }
+                        }
+                        if (CreateManuOrder.isDelCraneManuOrderInout(craneNO))
+                        {
+                            string error = null;
+                            if (CreateManuOrder.DelCraneManuOrderInout(craneNO, out error))
+                            {
+                                ParkClassLibrary.HMILogger.WriteLog("车到位-自动清空吸料补料指令", craneNO + "行车-自动清空吸料补料指令", ParkClassLibrary.LogLevel.Info, this.Text);
+                            }
+                        }
+                        #endregion
+
                         if (dr == DialogResult.OK)
                         {
                             this.Close();
