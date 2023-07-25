@@ -704,6 +704,10 @@ namespace UACSDAL
                             {
                                 tb_CurrentStatus.Text = "装车中";
                             }
+                            else if (status.Equals("25"))
+                            {
+                                tb_CurrentStatus.Text = "装冷却剂";
+                            }
                             else if (status.Equals("41"))
                             {
                                 tb_CurrentStatus.Text = "工位清扫";
