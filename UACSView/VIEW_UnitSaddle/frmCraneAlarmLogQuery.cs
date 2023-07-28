@@ -11,6 +11,7 @@ using Baosight.iSuperframe.Common;
 using System.Runtime.InteropServices;
 using System.Reflection;
 using UACSDAL;
+using static UACSControls.Page.ucPage;
 
 namespace UACSView 
 {
@@ -34,10 +35,18 @@ namespace UACSView
             dateTimePicker_End.Value = dt.Add(tp);
             BindComboBox(comboBox_ShipLotNo);
 
+
             DateTime timeStart = dateTimePicker_Start.Value;
             DateTime timeEnd = dateTimePicker_End.Value;
             string craneNO = comboBox_ShipLotNo.Text;
-            readAlarmLog(true, craneNO, timeStart, timeEnd);
+
+            this.ucPageDemo.CurrentPage = 1;
+            this.ucPageDemo.PageSize = Convert.ToInt32(this.ucPageDemo.CboPageSize.Text);
+            this.ucPageDemo.TotalPages = 1;
+            this.ucPageDemo.ClickPageButtonEvent += ucPageDemo_ClickPageButtonEvent;
+            this.ucPageDemo.ChangedPageSizeEvent += ucPageDemo_ChangedPageSizeEvent;
+            this.ucPageDemo.JumpPageEvent += ucPageDemo_JumpPageEvent;
+            readAlarmLog(1, craneNO, timeStart, timeEnd);
         }
 
 
@@ -75,15 +84,13 @@ namespace UACSView
         /// <param name="craneNO">行车</param>
         /// <param name="timeStart">开始时间</param>
         /// <param name="timeEnd">结束时间</param>
-        private void readAlarmLog(bool isLoad,string craneNO, DateTime timeStart, DateTime timeEnd)
+        private void readAlarmLog(int currentPage, string craneNO, DateTime timeStart, DateTime timeEnd)
         {
             try
             {
-                string strSql = "";
+                string strSql = "SELECT * FROM (SELECT COUNT(1) OVER () AS TotalRows,ROW_NUMBER() OVER () AS ROWNUM,tab.* FROM ( ";
                 string tableName = "UACS_CRANE_ALARM_" + craneNO;
-                //if (!isLoad)
-                //{
-                    strSql = "select ";
+                    strSql += "select ";
                     strSql += " a.CRANE_NO   CRANE_NO, ";
                     strSql += " a.ALARM_CODE   ALARM_CODE, ";
                     strSql += " a.ALARM_TIME   ALARM_TIME, ";
@@ -106,112 +113,100 @@ namespace UACSView
                     strSql += " and a.ALARM_TIME>= " + DateNormal_ToString(timeStart);
                     strSql += " and a.ALARM_TIME<= " + DateNormal_ToString(timeEnd);
                     strSql += " Order By a.ALARM_TIME ";
-                //}
-                //else
-                //{
-                //    //初次加载时默认查询倒序30条数据（仅初始化时用）
-                //    strSql += "SELECT CRANE_NO,ALARM_CODE,ALARM_TIME,X_ACT,Y_ACT,Z_ACT,HAS_COIL,CLAMP_WIDTH_ACT,CONTROL_MODE,CRANE_STATUS,ORDER_ID,ALARM_INFO,ALARM_CLASS ";
-                //    strSql += "FROM ( ";
-                //    strSql += "SELECT ROW_NUMBER() OVER(ORDER BY A.ALARM_TIME) AS ROWNUM, ";
-                //    strSql += "a.CRANE_NO, a.ALARM_CODE, a.ALARM_TIME, a.X_ACT, a.Y_ACT, a.Z_ACT, a.HAS_COIL, a.CLAMP_WIDTH_ACT, a.CONTROL_MODE, a.CRANE_STATUS, a.ORDER_ID, b.ALARM_INFO, b.ALARM_CLASS  ";
-                //    strSql += "FROM ";
-                //    strSql += tableName + " a " + ",";
-                //    strSql += "UACS_CRANE_ALARM_CODE_DEFINE b  ";
-                //    strSql += "where a.ALARM_CODE=b.ALARM_CODE ";
-                //    strSql += " AND a.CRANE_NO=" + "'" + craneNO + "'";
-                //    strSql += ") a  ";
-                //    strSql += "WHERE ROWNUM > 0 and ROWNUM <=30 ";
-                //}
+                strSql += " ) tab ) WHERE ROWNUM BETWEEN ((" + currentPage + " - 1) * " + this.ucPageDemo.PageSize + ") + 1 AND " + currentPage + " *  " + this.ucPageDemo.PageSize;
 
+                DataTable dtResult = new DataTable();
                 using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(strSql))
                 {
-                    GridAlarmLog.Rows.Clear();
-                     while (rdr.Read())
-                     {
-                         GridAlarmLog.Rows.Add();
-                         DataGridViewRow theRow = GridAlarmLog.Rows[GridAlarmLog.Rows.Count - 1];
-                         if (rdr["CRANE_NO"] != System.DBNull.Value) 
-                         {
-                             theRow.Cells["CRANE_NO"].Value = Convert.ToString(rdr["CRANE_NO"]); 
-                         }
-                         if (rdr["ALARM_CODE"] != System.DBNull.Value)
-                         {
-                             araneCode = Convert.ToInt32(rdr["ALARM_CODE"]);
-                             theRow.Cells["ALARM_CODE"].Value = Convert.ToString(rdr["ALARM_CODE"]);
-                         }
-                         if (rdr["ALARM_TIME"] != System.DBNull.Value)
-                         {
-                             alarmTime_Current = Convert.ToString(rdr["ALARM_TIME"]);
-                             theRow.Cells["ALARM_TIME"].Value = Convert.ToString(rdr["ALARM_TIME"]);
-                         }
-                         if (rdr["X_ACT"] != System.DBNull.Value)
-                         {
-                             theRow.Cells["X_ACT"].Value = Convert.ToString(rdr["X_ACT"]);
-                         }
-                         if (rdr["Y_ACT"] != System.DBNull.Value)
-                         {
-                             theRow.Cells["Y_ACT"].Value = Convert.ToString(rdr["Y_ACT"]);
-                         }
-                         if (rdr["Z_ACT"] != System.DBNull.Value)
-                         {
-                             theRow.Cells["Z_ACT"].Value = Convert.ToString(rdr["Z_ACT"]);
-                         }
-                         if (rdr["HAS_COIL"] != System.DBNull.Value)
-                         {
-                             theRow.Cells["HAS_COIL"].Value = Convert.ToString(rdr["HAS_COIL"]);
-                         }
-                         //if (rdr["CLAMP_WIDTH_ACT"] != System.DBNull.Value)
-                         //{
-                         //    theRow.Cells["HAS_COIL"].Value = Convert.ToString(rdr["CLAMP_WIDTH_ACT"]);
-                         //}
-                         if (rdr["CONTROL_MODE"] != System.DBNull.Value)
-                         {
-                             theRow.Cells["CONTROL_MODE"].Value = Convert.ToString(rdr["CONTROL_MODE"]);
-                         }
-                         if (rdr["CRANE_STATUS"] != System.DBNull.Value)
-                         {
-                             theRow.Cells["CRANE_STATUS"].Value = Convert.ToString(rdr["CRANE_STATUS"]);
-                         }
-                         if (rdr["ORDER_ID"] != System.DBNull.Value)
-                         {
-                             theRow.Cells["ORDER_ID"].Value = Convert.ToString(rdr["ORDER_ID"]);
-                         }
-                         if (rdr["ALARM_CODE"] != System.DBNull.Value)
-                         {
-                             theRow.Cells["ALARM_CODE"].Value = Convert.ToString(rdr["ALARM_CODE"]);
-                         }
-                         if (rdr["ALARM_INFO"] != System.DBNull.Value)
-                         {
-                             theRow.Cells["ALARM_INFO"].Value = Convert.ToString(rdr["ALARM_INFO"]);
-                         }
-                         if (rdr["ALARM_CLASS"] != System.DBNull.Value)
-                         {
-                             theRow.Cells["ALARM_CLASS"].Value = Convert.ToString(rdr["ALARM_CLASS"]);
-                         }
+                    dtResult.Load(rdr);
+                    //GridAlarmLog.Rows.Clear();
+                    //while (rdr.Read())
+                    //{
+                    //    GridAlarmLog.Rows.Add();
+                    //    DataGridViewRow theRow = GridAlarmLog.Rows[GridAlarmLog.Rows.Count - 1];
+                    //    if (rdr["CRANE_NO"] != System.DBNull.Value)
+                    //    {
+                    //        theRow.Cells["CRANE_NO"].Value = Convert.ToString(rdr["CRANE_NO"]);
+                    //    }
+                    //    if (rdr["ALARM_CODE"] != System.DBNull.Value)
+                    //    {
+                    //        araneCode = Convert.ToInt32(rdr["ALARM_CODE"]);
+                    //        theRow.Cells["ALARM_CODE"].Value = Convert.ToString(rdr["ALARM_CODE"]);
+                    //    }
+                    //    if (rdr["ALARM_TIME"] != System.DBNull.Value)
+                    //    {
+                    //        alarmTime_Current = Convert.ToString(rdr["ALARM_TIME"]);
+                    //        theRow.Cells["ALARM_TIME"].Value = Convert.ToString(rdr["ALARM_TIME"]);
+                    //    }
+                    //    if (rdr["X_ACT"] != System.DBNull.Value)
+                    //    {
+                    //        theRow.Cells["X_ACT"].Value = Convert.ToString(rdr["X_ACT"]);
+                    //    }
+                    //    if (rdr["Y_ACT"] != System.DBNull.Value)
+                    //    {
+                    //        theRow.Cells["Y_ACT"].Value = Convert.ToString(rdr["Y_ACT"]);
+                    //    }
+                    //    if (rdr["Z_ACT"] != System.DBNull.Value)
+                    //    {
+                    //        theRow.Cells["Z_ACT"].Value = Convert.ToString(rdr["Z_ACT"]);
+                    //    }
+                    //    if (rdr["HAS_COIL"] != System.DBNull.Value)
+                    //    {
+                    //        theRow.Cells["HAS_COIL"].Value = Convert.ToString(rdr["HAS_COIL"]);
+                    //    }
+                    //    //if (rdr["CLAMP_WIDTH_ACT"] != System.DBNull.Value)
+                    //    //{
+                    //    //    theRow.Cells["HAS_COIL"].Value = Convert.ToString(rdr["CLAMP_WIDTH_ACT"]);
+                    //    //}
+                    //    if (rdr["CONTROL_MODE"] != System.DBNull.Value)
+                    //    {
+                    //        theRow.Cells["CONTROL_MODE"].Value = Convert.ToString(rdr["CONTROL_MODE"]);
+                    //    }
+                    //    if (rdr["CRANE_STATUS"] != System.DBNull.Value)
+                    //    {
+                    //        theRow.Cells["CRANE_STATUS"].Value = Convert.ToString(rdr["CRANE_STATUS"]);
+                    //    }
+                    //    if (rdr["ORDER_ID"] != System.DBNull.Value)
+                    //    {
+                    //        theRow.Cells["ORDER_ID"].Value = Convert.ToString(rdr["ORDER_ID"]);
+                    //    }
+                    //    if (rdr["ALARM_CODE"] != System.DBNull.Value)
+                    //    {
+                    //        theRow.Cells["ALARM_CODE"].Value = Convert.ToString(rdr["ALARM_CODE"]);
+                    //    }
+                    //    if (rdr["ALARM_INFO"] != System.DBNull.Value)
+                    //    {
+                    //        theRow.Cells["ALARM_INFO"].Value = Convert.ToString(rdr["ALARM_INFO"]);
+                    //    }
+                    //    if (rdr["ALARM_CLASS"] != System.DBNull.Value)
+                    //    {
+                    //        theRow.Cells["ALARM_CLASS"].Value = Convert.ToString(rdr["ALARM_CLASS"]);
+                    //    }
 
-                         if (alarmTime_Old != alarmTime_Current)
-                         {
-                             flagColor = !flagColor;
-                         }
+                    //    if (alarmTime_Old != alarmTime_Current)
+                    //    {
+                    //        flagColor = !flagColor;
+                    //    }
 
 
-                         if (flagColor)
-                         {
-                             theRow.DefaultCellStyle.BackColor = Color.Silver;
-                         }
-                         else
-                         {
-                             theRow.DefaultCellStyle.BackColor = Color.DarkGray;
-                         }
-                         alarmTime_Old = alarmTime_Current;
+                    //    if (flagColor)
+                    //    {
+                    //        theRow.DefaultCellStyle.BackColor = Color.Silver;
+                    //    }
+                    //    else
+                    //    {
+                    //        theRow.DefaultCellStyle.BackColor = Color.DarkGray;
+                    //    }
+                    //    alarmTime_Old = alarmTime_Current;
 
-                         //手自动切换
-                         if (araneCode >= 1021 && araneCode <= 1033)
-                         {
-                             theRow.DefaultCellStyle.BackColor = Color.GhostWhite;
-                         }
-                     }
+                    //    //手自动切换
+                    //    if (araneCode >= 1021 && araneCode <= 1033)
+                    //    {
+                    //        theRow.DefaultCellStyle.BackColor = Color.GhostWhite;
+                    //    }
+                    //}
                 }
+                this.GridAlarmLog.DataSource = GetDataPage(dtResult, currentPage);
             }
             catch (Exception ex)
             {
@@ -240,7 +235,7 @@ namespace UACSView
                 DateTime timeStart = dateTimePicker_Start.Value;
                 DateTime timeEnd = dateTimePicker_End.Value;
                 string craneNO = comboBox_ShipLotNo.Text ;
-                readAlarmLog(false ,craneNO, timeStart, timeEnd);
+                readAlarmLog(1 ,craneNO, timeStart, timeEnd);
 
                 //光标显示到最后一行
                 GridAlarmLog.FirstDisplayedScrollingRowIndex = GridAlarmLog.RowCount - 1;
@@ -262,7 +257,7 @@ namespace UACSView
             //索引不能为负数
             if (index < 0)
                 return;
-           // MessageBox.Show(index.ToString());
+            // MessageBox.Show(index.ToString());
             //找到的报警号
             string currentCode = string.Empty;
             //查询的报警号
@@ -270,7 +265,7 @@ namespace UACSView
             //查询的报警号不能为""
             if (selectCode == "")
                 return;
-            for (int i = index -1; i < index; i--)
+            for (int i = index - 1; i < index; i--)
             {
                 if (i >= 0)
                 {
@@ -291,7 +286,7 @@ namespace UACSView
                 }
                 else
                     return;
-                
+
             }
 
         }
@@ -323,7 +318,7 @@ namespace UACSView
                     GridAlarmLog.FirstDisplayedScrollingRowIndex = i;
                     GridAlarmLog.Rows[i].Cells["ALARM_CODE"].Selected = true;
                     GridAlarmLog.Rows[index].Cells["ALARM_CODE"].Selected = false;
-                    GridAlarmLog.CurrentCell = GridAlarmLog.Rows[i].Cells["ALARM_CODE"]; 
+                    GridAlarmLog.CurrentCell = GridAlarmLog.Rows[i].Cells["ALARM_CODE"];
                     return;
                 }
             }
@@ -463,5 +458,183 @@ namespace UACSView
         }
 
         #endregion
+
+        #region 日期查询        
+        /// <summary>
+        /// 当天
+        /// </summary>
+        private void GetToDayTime()
+        {
+            this.dateTimePicker_Start.Value = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd 00:00:00"));
+            this.dateTimePicker_End.Value = Convert.ToDateTime(DateTime.Now.Date.AddDays(1).ToString());
+            //查询
+            DateTime timeStart = dateTimePicker_Start.Value;
+            DateTime timeEnd = dateTimePicker_End.Value;
+            string craneNO = comboBox_ShipLotNo.Text;
+            readAlarmLog(1, craneNO, timeStart, timeEnd);
+        }
+        /// <summary>
+        /// 月度
+        /// </summary>
+        private void GetMonthlyTime()
+        {
+            var day1 = DateTime.Now.ToString("yyyy-MM-01 00:00:00");
+            //控件设置值
+            this.dateTimePicker_Start.Value = Convert.ToDateTime(day1);
+            //查询
+            DateTime timeStart = dateTimePicker_Start.Value;
+            DateTime timeEnd = dateTimePicker_End.Value;
+            string craneNO = comboBox_ShipLotNo.Text;
+            readAlarmLog(1, craneNO, timeStart, timeEnd);
+        }
+        /// <summary>
+        /// 当前季度
+        /// </summary>
+        private void GetQuarterlyTime()
+        {
+            //季度第一天
+            var day1 = DateTime.Now.AddMonths(0 - (DateTime.Now.Month - 1) % 3).ToString("yyyy-MM-01");
+            //季度最后一天
+            var lastday = DateTime.Parse(DateTime.Now.AddMonths(3 - (DateTime.Now.Month - 1) % 3).ToString("yyyy-MM-01")).AddDays(-1).ToShortDateString();
+            //控件设置值
+            this.dateTimePicker_Start.Value = Convert.ToDateTime(day1);
+            //查询
+            DateTime timeStart = dateTimePicker_Start.Value;
+            DateTime timeEnd = dateTimePicker_End.Value;
+            string craneNO = comboBox_ShipLotNo.Text;
+            readAlarmLog(1, craneNO, timeStart, timeEnd);
+        }
+        /// <summary>
+        /// 年度
+        /// </summary>
+        private void GetAnnualTime()
+        {
+            var day1 = DateTime.Now.ToString("yyyy-01-01");
+            //控件设置值
+            this.dateTimePicker_Start.Value = Convert.ToDateTime(day1);
+            //查询
+            DateTime timeStart = dateTimePicker_Start.Value;
+            DateTime timeEnd = dateTimePicker_End.Value;
+            string craneNO = comboBox_ShipLotNo.Text;
+            readAlarmLog(1, craneNO, timeStart, timeEnd);
+        }
+        #endregion
+
+        
+
+        #region 分页
+
+        int totalPages = 0;
+
+        /// <summary>
+        /// 数据分页
+        /// </summary>
+        /// <param name="dtResult"></param>
+        /// <returns></returns>
+        private DataTable GetDataPage(DataTable dtResult, int currentPage)
+        {
+            totalPages = 0;
+            int totalRows = 0;
+            if (null == dtResult || dtResult.Rows.Count == 0)
+            {
+                this.ucPageDemo.PageInfo.Text = string.Format("第{0}/{1}页", "1", "1");
+                this.ucPageDemo.TotalRows.Text = @"0";
+                this.ucPageDemo.CurrentPage = 1;
+                this.ucPageDemo.TotalPages = 1;
+            }
+            else
+            {
+                totalRows = Convert.ToInt32(dtResult.Rows[0]["TotalRows"].ToString());
+                totalPages = totalRows % this.ucPageDemo.PageSize == 0 ? totalRows / this.ucPageDemo.PageSize : (totalRows / this.ucPageDemo.PageSize) + 1;
+                this.ucPageDemo.PageInfo.Text = string.Format("第{0}/{1}页", currentPage, totalPages);
+                this.ucPageDemo.TotalRows.Text = totalRows.ToString();
+                this.ucPageDemo.CurrentPage = currentPage;
+                this.ucPageDemo.TotalPages = totalPages;
+            }
+            return dtResult;
+        }
+
+        /// <summary>
+        /// 页数跳转
+        /// </summary>
+        /// <param name="jumpPage">跳转页</param>
+        void ucPageDemo_JumpPageEvent(int jumpPage)
+        {
+            if (jumpPage <= this.ucPageDemo.TotalPages)
+            {
+                if (jumpPage > 0)
+                {
+                    this.ucPageDemo.JumpPageCtrl.Text = string.Empty;
+                    this.ucPageDemo.JumpPageCtrl.Text = jumpPage.ToString();
+
+                    DateTime timeStart = dateTimePicker_Start.Value;
+                    DateTime timeEnd = dateTimePicker_End.Value;
+                    string craneNO = comboBox_ShipLotNo.Text;
+                    this.readAlarmLog(jumpPage, craneNO, timeStart, timeEnd);
+                }
+                else
+                {
+                    jumpPage = 1;
+                    this.ucPageDemo.JumpPageCtrl.Text = string.Empty;
+                    this.ucPageDemo.JumpPageCtrl.Text = jumpPage.ToString();
+                    DateTime timeStart = dateTimePicker_Start.Value;
+                    DateTime timeEnd = dateTimePicker_End.Value;
+                    string craneNO = comboBox_ShipLotNo.Text;
+                    this.readAlarmLog(jumpPage, craneNO, timeStart, timeEnd);
+                }
+            }
+            else
+            {
+                this.ucPageDemo.JumpPageCtrl.Text = string.Empty;
+                MessageBox.Show(@"超出当前最大页数", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        /// <summary>
+        /// 改变每页展示数据长度
+        /// </summary>
+        void ucPageDemo_ChangedPageSizeEvent()
+        {
+            DateTime timeStart = dateTimePicker_Start.Value;
+            DateTime timeEnd = dateTimePicker_End.Value;
+            string craneNO = comboBox_ShipLotNo.Text;
+            this.readAlarmLog(1, craneNO, timeStart, timeEnd);
+        }
+        /// <summary>
+        /// 页数改变按钮(最前页,最后页,上一页,下一页)
+        /// </summary>
+        /// <param name="current"></param>
+        void ucPageDemo_ClickPageButtonEvent(int current)
+        {
+            if (totalPages != 0 && current > totalPages)
+            {
+                current = 1;
+            }
+            DateTime timeStart = dateTimePicker_Start.Value;
+            DateTime timeEnd = dateTimePicker_End.Value;
+            string craneNO = comboBox_ShipLotNo.Text;
+            this.readAlarmLog(current, craneNO, timeStart, timeEnd);
+        }
+        #endregion
+
+        private void bt_TodayTime_Click(object sender, EventArgs e)
+        {
+            GetToDayTime();
+        }
+
+        private void bt_MonthlyTime_Click(object sender, EventArgs e)
+        {
+            GetMonthlyTime();
+        }
+
+        private void bt_QuarterlyTime_Click(object sender, EventArgs e)
+        {
+            GetQuarterlyTime();
+        }
+
+        private void bt_AnnualTime_Click(object sender, EventArgs e)
+        {
+            GetAnnualTime();
+        }
+
     }
 }

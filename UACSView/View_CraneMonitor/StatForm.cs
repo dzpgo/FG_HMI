@@ -56,8 +56,14 @@ namespace UACSView
             m_dbHelper.OpenDB(DBHelper.ConnectionString);
             //绑定下拉框
             BindCombox();
+            //this.ucPageDemo.CurrentPage = 1;
+            //this.ucPageDemo.PageSize = Convert.ToInt32(this.ucPageDemo.CboPageSize.Text);
+            //this.ucPageDemo.TotalPages = 1;
+            //this.ucPageDemo.ClickPageButtonEvent += ucPageDemo_ClickPageButtonEvent;
+            //this.ucPageDemo.ChangedPageSizeEvent += ucPageDemo_ChangedPageSizeEvent;
+            //this.ucPageDemo.JumpPageEvent += ucPageDemo_JumpPageEvent;
             //初始化查询
-            GetUACS_ORDER_OPER(true);
+            GetUACS_ORDER_OPER(true, 1);
         }
         /// <summary>
         /// 绑定下拉框数据
@@ -81,13 +87,13 @@ namespace UACSView
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            GetUACS_ORDER_OPER(false);
+            GetUACS_ORDER_OPER(false, 1);
         }
         /// <summary>
         /// 查询指令数据
         /// </summary>
         /// <param name="isLoad">是否是初始化 true=是初始化，false=不是初始化</param>
-        private void GetUACS_ORDER_OPER(bool isLoad)
+        private void GetUACS_ORDER_OPER(bool isLoad, int currentPage)
         {
             if (m_dbHelper == null)
                 return;
@@ -96,7 +102,8 @@ namespace UACSView
             string craneMode = this.cbb_CRANE_MODE.SelectedValue.ToString();  //行车模式
             string recTime1 = this.dateTimePicker1.Value.ToString("yyyyMMdd000000");  //开始时间
             string recTime2 = this.dateTimePicker2.Value.ToString("yyyyMMdd235959");  //结束时间
-            string sqlText = @"SELECT CRANE_NO, '' AS CRANE_MODENAME, 1 AS COUNT, '' AS PERCENTAGE, OPER_ID,ORDER_NO, CRANE_MODE FROM UACSAPP.UACS_ORDER_OPER ";
+            //var sqlText = "SELECT * FROM (SELECT COUNT(1) OVER () AS TotalRows,ROW_NUMBER() OVER () AS ROWNUM,tab.* FROM ( ";
+            var sqlText = @"SELECT CRANE_NO, '' AS CRANE_MODENAME, 1 AS COUNT, '' AS PERCENTAGE, OPER_ID,ORDER_NO, CRANE_MODE FROM UACSAPP.UACS_ORDER_OPER ";
             sqlText += "WHERE REC_TIME >= '{0}' and REC_TIME <= '{1}' ";
             sqlText = string.Format(sqlText, recTime1, recTime2);
             if (!isLoad)
@@ -114,6 +121,7 @@ namespace UACSView
             }
             else
             {
+                //sqlText = "SELECT * FROM (SELECT COUNT(1) OVER () AS TotalRows,ROW_NUMBER() OVER () AS ROWNUM,tab.* FROM ( ";
                 //初次加载时默认查询倒序30条数据（仅初始化时用）
                 sqlText = @"SELECT CRANE_NO, '' AS CRANE_MODENAME, 1 AS COUNT, '' AS PERCENTAGE, OPER_ID, CRANE_MODE 
                             FROM (
@@ -124,7 +132,7 @@ namespace UACSView
                             ) a 
                             WHERE ROWNUM > 0 and ROWNUM <=50";
             }
-
+            //sqlText += " ) tab ) WHERE ROWNUM BETWEEN ((" + currentPage + " - 1) * " + this.ucPageDemo.PageSize + ") + 1 AND " + currentPage + " *  " + this.ucPageDemo.PageSize;
             DataTable dataTable = new DataTable();
             bool hasSetColumn = false;
             using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
@@ -159,7 +167,7 @@ namespace UACSView
             }
             //dataGridView1.Rows.Clear();
             dataGridView1.DataSource = dts1;
-
+            //this.dataGridView1.DataSource = GetDataPage(dts1, currentPage,1);
             //dataGridView2
             DataTable dts2 = InitDataTable(dataGridView2);
             int OPER_ID2 = 0;
@@ -170,6 +178,7 @@ namespace UACSView
             }
             //dataGridView2.Rows.Clear();
             dataGridView2.DataSource = dts2;
+            //this.dataGridView2.DataSource = GetDataPage(dts2, currentPage, 2);
         }
 
         #region 业务数据处理
@@ -1066,5 +1075,175 @@ namespace UACSView
         #endregion
 
 
+        #region 分页
+
+        //int totalPages = 0;
+
+        ///// <summary>
+        ///// 数据分页
+        ///// </summary>
+        ///// <param name="dtResult"></param>
+        ///// <returns></returns>
+        //private DataTable GetDataPage(DataTable dtResult, int currentPage, int gvd)
+        //{
+        //    totalPages = 0;
+        //    int totalRows = 0;
+        //    if (gvd == 1)
+        //    {
+        //        if (null == dtResult || dtResult.Rows.Count == 0)
+        //        {
+        //            this.ucPageDemo.PageInfo.Text = string.Format("第{0}/{1}页", "1", "1");
+        //            this.ucPageDemo.TotalRows.Text = @"0";
+        //            this.ucPageDemo.CurrentPage = 1;
+        //            this.ucPageDemo.TotalPages = 1;
+        //        }
+        //        else
+        //        {
+        //            totalRows = Convert.ToInt32(dtResult.Rows[0]["TotalRows"].ToString());
+        //            totalPages = totalRows % this.ucPageDemo.PageSize == 0 ? totalRows / this.ucPageDemo.PageSize : (totalRows / this.ucPageDemo.PageSize) + 1;
+        //            this.ucPageDemo.PageInfo.Text = string.Format("第{0}/{1}页", currentPage, totalPages);
+        //            this.ucPageDemo.TotalRows.Text = totalRows.ToString();
+        //            this.ucPageDemo.CurrentPage = currentPage;
+        //            this.ucPageDemo.TotalPages = totalPages;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (null == dtResult || dtResult.Rows.Count == 0)
+        //        {
+        //            this.ucPageDemo.PageInfo.Text = string.Format("第{0}/{1}页", "1", "1");
+        //            this.ucPageDemo.TotalRows.Text = @"0";
+        //            this.ucPageDemo.CurrentPage = 1;
+        //            this.ucPageDemo.TotalPages = 1;
+        //        }
+        //        else
+        //        {
+        //            totalRows = Convert.ToInt32(dtResult.Rows[0]["TotalRows2"].ToString());
+        //            totalPages = totalRows % this.ucPageDemo.PageSize == 0 ? totalRows / this.ucPageDemo.PageSize : (totalRows / this.ucPageDemo.PageSize) + 1;
+        //            this.ucPageDemo.PageInfo.Text = string.Format("第{0}/{1}页", currentPage, totalPages);
+        //            this.ucPageDemo.TotalRows.Text = totalRows.ToString();
+        //            this.ucPageDemo.CurrentPage = currentPage;
+        //            this.ucPageDemo.TotalPages = totalPages;
+        //        }
+        //    }
+        //    return dtResult;
+        //}
+
+        ///// <summary>
+        ///// 页数跳转
+        ///// </summary>
+        ///// <param name="jumpPage">跳转页</param>
+        //void ucPageDemo_JumpPageEvent(int jumpPage)
+        //{
+        //    if (jumpPage <= this.ucPageDemo.TotalPages)
+        //    {
+        //        if (jumpPage > 0)
+        //        {
+        //            this.ucPageDemo.JumpPageCtrl.Text = string.Empty;
+        //            this.ucPageDemo.JumpPageCtrl.Text = jumpPage.ToString();
+        //            this.GetUACS_ORDER_OPER(false, jumpPage);
+        //        }
+        //        else
+        //        {
+        //            jumpPage = 1;
+        //            this.ucPageDemo.JumpPageCtrl.Text = string.Empty;
+        //            this.ucPageDemo.JumpPageCtrl.Text = jumpPage.ToString();
+        //            this.GetUACS_ORDER_OPER(false, jumpPage);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        this.ucPageDemo.JumpPageCtrl.Text = string.Empty;
+        //        MessageBox.Show(@"超出当前最大页数", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
+        ///// <summary>
+        ///// 改变每页展示数据长度
+        ///// </summary>
+        //void ucPageDemo_ChangedPageSizeEvent()
+        //{
+        //    this.GetUACS_ORDER_OPER(false, 1);
+        //}
+        ///// <summary>
+        ///// 页数改变按钮(最前页,最后页,上一页,下一页)
+        ///// </summary>
+        ///// <param name="current"></param>
+        //void ucPageDemo_ClickPageButtonEvent(int current)
+        //{
+        //    if (totalPages != 0 && current > totalPages)
+        //    {
+        //        current = 1;
+        //    }
+        //    this.GetUACS_ORDER_OPER(false, current);
+        //}
+        #endregion
+
+        #region 日期查询        
+        /// <summary>
+        /// 当天
+        /// </summary>
+        private void GetToDayTime()
+        {
+            this.dateTimePicker1.Value = DateTime.Now;
+            this.dateTimePicker2.Value = Convert.ToDateTime(DateTime.Now.Date.AddDays(1).ToString());
+            //查询
+            GetUACS_ORDER_OPER(false, 1);
+        }
+        /// <summary>
+        /// 月度
+        /// </summary>
+        private void GetMonthlyTime()
+        {
+            var day1 = DateTime.Now.ToString("yyyy-MM-01");
+            //控件设置值
+            this.dateTimePicker1.Value = Convert.ToDateTime(day1);
+            //查询
+            GetUACS_ORDER_OPER(false, 1);
+        }
+        /// <summary>
+        /// 当前季度
+        /// </summary>
+        private void GetQuarterlyTime()
+        {
+            //季度第一天
+            var day1 = DateTime.Now.AddMonths(0 - (DateTime.Now.Month - 1) % 3).ToString("yyyy-MM-01");
+            //季度最后一天
+            var lastday = DateTime.Parse(DateTime.Now.AddMonths(3 - (DateTime.Now.Month - 1) % 3).ToString("yyyy-MM-01")).AddDays(-1).ToShortDateString();
+            //控件设置值
+            this.dateTimePicker1.Value = Convert.ToDateTime(day1);
+            //查询
+            GetUACS_ORDER_OPER(false, 1);
+        }
+        /// <summary>
+        /// 年度
+        /// </summary>
+        private void GetAnnualTime()
+        {
+            var day1 = DateTime.Now.ToString("yyyy-01-01");
+            //控件设置值
+            this.dateTimePicker1.Value = Convert.ToDateTime(day1);
+            //查询
+            GetUACS_ORDER_OPER(false, 1);
+        }
+        private void bt_TodayTime_Click(object sender, EventArgs e)
+        {
+            GetToDayTime();
+        }
+
+        private void bt_MonthlyTime_Click(object sender, EventArgs e)
+        {
+            GetMonthlyTime();
+        }
+
+        private void bt_QuarterlyTime_Click(object sender, EventArgs e)
+        {
+            GetQuarterlyTime();
+        }
+
+        private void bt_AnnualTime_Click(object sender, EventArgs e)
+        {
+            GetAnnualTime();
+        }
+        #endregion
     }
 }

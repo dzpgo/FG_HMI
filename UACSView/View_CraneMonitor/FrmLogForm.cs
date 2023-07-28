@@ -182,5 +182,75 @@ namespace UACSView
             this.GetoLogsData(current, dateTimeStart.Value, dateTimeEnd.Value, txtKey1.Text.Trim(), txtInfo.Text.Trim());
         }
         #endregion
+
+        #region 日期查询        
+        /// <summary>
+        /// 当天
+        /// </summary>
+        private void GetToDayTime()
+        {
+            //this.dateTimeStart.Value = DateTime.Now;
+            this.dateTimeStart.Value = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd 00:00:00"));
+            this.dateTimeEnd.Value = Convert.ToDateTime(DateTime.Now.Date.AddDays(1).ToString()); 
+            //查询
+            GetoLogsData(1, dateTimeStart.Value, dateTimeEnd.Value, txtKey1.Text.Trim(), txtInfo.Text.Trim());
+        }
+        /// <summary>
+        /// 月度
+        /// </summary>
+        private void GetMonthlyTime()
+        {
+            var day1 = DateTime.Now.ToString("yyyy-MM-01 00:00:00");
+            //控件设置值
+            this.dateTimeStart.Value = Convert.ToDateTime(day1);
+            //查询
+            GetoLogsData(1, dateTimeStart.Value, dateTimeEnd.Value, txtKey1.Text.Trim(), txtInfo.Text.Trim());
+        }
+        /// <summary>
+        /// 当前季度
+        /// </summary>
+        private void GetQuarterlyTime()
+        {
+            //季度第一天
+            var day1 = DateTime.Now.AddMonths(0 - (DateTime.Now.Month - 1) % 3).ToString("yyyy-MM-01");
+            //季度最后一天
+            var lastday = DateTime.Parse(DateTime.Now.AddMonths(3 - (DateTime.Now.Month - 1) % 3).ToString("yyyy-MM-01")).AddDays(-1).ToShortDateString();
+            //控件设置值
+            this.dateTimeStart.Value = Convert.ToDateTime(day1);
+            //查询
+            GetoLogsData(1, dateTimeStart.Value, dateTimeEnd.Value, txtKey1.Text.Trim(), txtInfo.Text.Trim());
+        }
+        /// <summary>
+        /// 年度
+        /// </summary>
+        private void GetAnnualTime()
+        {
+            var day1 = DateTime.Now.ToString("yyyy-01-01");
+            //控件设置值
+            this.dateTimeStart.Value = Convert.ToDateTime(day1);
+            //查询
+            GetoLogsData(1, dateTimeStart.Value, dateTimeEnd.Value, txtKey1.Text.Trim(), txtInfo.Text.Trim());
+        }
+        #endregion
+
+        private void bt_TodayTime_Click(object sender, EventArgs e)
+        {
+            GetToDayTime();
+        }
+
+        private void bt_MonthlyTime_Click(object sender, EventArgs e)
+        {
+            GetMonthlyTime();
+        }
+
+        private void bt_QuarterlyTime_Click(object sender, EventArgs e)
+        {
+            GetQuarterlyTime();
+        }
+
+        private void bt_AnnualTime_Click(object sender, EventArgs e)
+        {
+            GetAnnualTime();
+        }
     }
 }

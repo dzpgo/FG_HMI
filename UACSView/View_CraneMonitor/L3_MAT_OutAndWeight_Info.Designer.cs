@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textPLAN_NO = new System.Windows.Forms.TextBox();
@@ -73,6 +73,10 @@
             this.MAT_CNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WEIGHT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.REC_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bt_TodayTime = new System.Windows.Forms.Button();
+            this.bt_MonthlyTime = new System.Windows.Forms.Button();
+            this.bt_QuarterlyTime = new System.Windows.Forms.Button();
+            this.bt_AnnualTime = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -98,6 +102,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel1.Controls.Add(this.bt_TodayTime);
+            this.panel1.Controls.Add(this.bt_MonthlyTime);
+            this.panel1.Controls.Add(this.bt_QuarterlyTime);
+            this.panel1.Controls.Add(this.bt_AnnualTime);
             this.panel1.Controls.Add(this.textPLAN_NO);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.dateTimePicker2_recTime);
@@ -202,7 +210,7 @@
             this.btnQuery.ForeColor = System.Drawing.Color.White;
             this.btnQuery.Location = new System.Drawing.Point(1375, 14);
             this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(103, 38);
+            this.btnQuery.Size = new System.Drawing.Size(100, 45);
             this.btnQuery.TabIndex = 13;
             this.btnQuery.Text = "查询";
             this.btnQuery.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -267,22 +275,22 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.LightGray;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.WORK_SEQ_NO,
@@ -296,14 +304,14 @@
             this.REC_TIME2,
             this.GRID_NAME2,
             this.UPD_TIME2});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle27;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(3, 17);
             this.dataGridView1.MultiSelect = false;
@@ -468,22 +476,22 @@
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightGray;
-            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.LightGray;
+            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle28;
             this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PLAN_NO,
@@ -494,14 +502,14 @@
             this.MAT_CNAME,
             this.WEIGHT,
             this.REC_TIME});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle30;
             this.dataGridView2.EnableHeadersVisualStyles = false;
             this.dataGridView2.Location = new System.Drawing.Point(3, 17);
             this.dataGridView2.MultiSelect = false;
@@ -594,6 +602,66 @@
             this.REC_TIME.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.REC_TIME.Width = 79;
             // 
+            // bt_TodayTime
+            // 
+            this.bt_TodayTime.BackColor = System.Drawing.Color.White;
+            this.bt_TodayTime.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.bt_TodayTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_TodayTime.ForeColor = System.Drawing.Color.White;
+            this.bt_TodayTime.Location = new System.Drawing.Point(768, 14);
+            this.bt_TodayTime.Name = "bt_TodayTime";
+            this.bt_TodayTime.Size = new System.Drawing.Size(100, 45);
+            this.bt_TodayTime.TabIndex = 16;
+            this.bt_TodayTime.Text = "当日";
+            this.bt_TodayTime.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_TodayTime.UseVisualStyleBackColor = false;
+            this.bt_TodayTime.Click += new System.EventHandler(this.bt_TodayTime_Click);
+            // 
+            // bt_MonthlyTime
+            // 
+            this.bt_MonthlyTime.BackColor = System.Drawing.Color.White;
+            this.bt_MonthlyTime.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.bt_MonthlyTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_MonthlyTime.ForeColor = System.Drawing.Color.White;
+            this.bt_MonthlyTime.Location = new System.Drawing.Point(874, 14);
+            this.bt_MonthlyTime.Name = "bt_MonthlyTime";
+            this.bt_MonthlyTime.Size = new System.Drawing.Size(100, 45);
+            this.bt_MonthlyTime.TabIndex = 17;
+            this.bt_MonthlyTime.Text = "月度";
+            this.bt_MonthlyTime.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_MonthlyTime.UseVisualStyleBackColor = false;
+            this.bt_MonthlyTime.Click += new System.EventHandler(this.bt_MonthlyTime_Click);
+            // 
+            // bt_QuarterlyTime
+            // 
+            this.bt_QuarterlyTime.BackColor = System.Drawing.Color.White;
+            this.bt_QuarterlyTime.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.bt_QuarterlyTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_QuarterlyTime.ForeColor = System.Drawing.Color.White;
+            this.bt_QuarterlyTime.Location = new System.Drawing.Point(980, 14);
+            this.bt_QuarterlyTime.Name = "bt_QuarterlyTime";
+            this.bt_QuarterlyTime.Size = new System.Drawing.Size(100, 45);
+            this.bt_QuarterlyTime.TabIndex = 18;
+            this.bt_QuarterlyTime.Text = "季度";
+            this.bt_QuarterlyTime.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_QuarterlyTime.UseVisualStyleBackColor = false;
+            this.bt_QuarterlyTime.Click += new System.EventHandler(this.bt_QuarterlyTime_Click);
+            // 
+            // bt_AnnualTime
+            // 
+            this.bt_AnnualTime.BackColor = System.Drawing.Color.White;
+            this.bt_AnnualTime.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.bt_AnnualTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_AnnualTime.ForeColor = System.Drawing.Color.White;
+            this.bt_AnnualTime.Location = new System.Drawing.Point(1086, 14);
+            this.bt_AnnualTime.Name = "bt_AnnualTime";
+            this.bt_AnnualTime.Size = new System.Drawing.Size(100, 45);
+            this.bt_AnnualTime.TabIndex = 19;
+            this.bt_AnnualTime.Text = "年度";
+            this.bt_AnnualTime.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_AnnualTime.UseVisualStyleBackColor = false;
+            this.bt_AnnualTime.Click += new System.EventHandler(this.bt_AnnualTime_Click);
+            // 
             // L3_MAT_OutAndWeight_Info
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -660,5 +728,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn REC_TIME2;
         private System.Windows.Forms.DataGridViewTextBoxColumn GRID_NAME2;
         private System.Windows.Forms.DataGridViewTextBoxColumn UPD_TIME2;
+        private System.Windows.Forms.Button bt_TodayTime;
+        private System.Windows.Forms.Button bt_MonthlyTime;
+        private System.Windows.Forms.Button bt_QuarterlyTime;
+        private System.Windows.Forms.Button bt_AnnualTime;
     }
 }

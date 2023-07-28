@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -68,6 +68,10 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ucPage1 = new UACSControls.Page.ucPage();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.bt_TodayTime = new System.Windows.Forms.Button();
+            this.bt_MonthlyTime = new System.Windows.Forms.Button();
+            this.bt_QuarterlyTime = new System.Windows.Forms.Button();
+            this.bt_AnnualTime = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -108,6 +112,10 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel4.Controls.Add(this.bt_TodayTime);
+            this.panel4.Controls.Add(this.bt_MonthlyTime);
+            this.panel4.Controls.Add(this.bt_QuarterlyTime);
+            this.panel4.Controls.Add(this.bt_AnnualTime);
             this.panel4.Controls.Add(this.txtKey1);
             this.panel4.Controls.Add(this.txtInfo);
             this.panel4.Controls.Add(this.label5);
@@ -161,7 +169,7 @@
             this.btnSearch.ForeColor = System.Drawing.SystemColors.Control;
             this.btnSearch.Location = new System.Drawing.Point(1254, 28);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(100, 40);
+            this.btnSearch.Size = new System.Drawing.Size(100, 45);
             this.btnSearch.TabIndex = 525;
             this.btnSearch.Text = "查询";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -329,18 +337,18 @@
             // 
             this.cbxKey1.AllowUserToAddRows = false;
             this.cbxKey1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
-            this.cbxKey1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.LightGray;
+            this.cbxKey1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.cbxKey1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.cbxKey1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cbxKey1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cbxKey1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.cbxKey1.ColumnHeadersHeight = 35;
             this.cbxKey1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.cbxKey1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -356,14 +364,14 @@
             this.Column4,
             this.Column6,
             this.Column8});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.cbxKey1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.cbxKey1.DefaultCellStyle = dataGridViewCellStyle15;
             this.cbxKey1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxKey1.EnableHeadersVisualStyles = false;
             this.cbxKey1.Location = new System.Drawing.Point(3, 17);
@@ -508,6 +516,66 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             // 
+            // bt_TodayTime
+            // 
+            this.bt_TodayTime.BackColor = System.Drawing.Color.White;
+            this.bt_TodayTime.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.bt_TodayTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_TodayTime.ForeColor = System.Drawing.Color.White;
+            this.bt_TodayTime.Location = new System.Drawing.Point(773, 28);
+            this.bt_TodayTime.Name = "bt_TodayTime";
+            this.bt_TodayTime.Size = new System.Drawing.Size(100, 45);
+            this.bt_TodayTime.TabIndex = 527;
+            this.bt_TodayTime.Text = "当日";
+            this.bt_TodayTime.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_TodayTime.UseVisualStyleBackColor = false;
+            this.bt_TodayTime.Click += new System.EventHandler(this.bt_TodayTime_Click);
+            // 
+            // bt_MonthlyTime
+            // 
+            this.bt_MonthlyTime.BackColor = System.Drawing.Color.White;
+            this.bt_MonthlyTime.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.bt_MonthlyTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_MonthlyTime.ForeColor = System.Drawing.Color.White;
+            this.bt_MonthlyTime.Location = new System.Drawing.Point(879, 28);
+            this.bt_MonthlyTime.Name = "bt_MonthlyTime";
+            this.bt_MonthlyTime.Size = new System.Drawing.Size(100, 45);
+            this.bt_MonthlyTime.TabIndex = 528;
+            this.bt_MonthlyTime.Text = "月度";
+            this.bt_MonthlyTime.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_MonthlyTime.UseVisualStyleBackColor = false;
+            this.bt_MonthlyTime.Click += new System.EventHandler(this.bt_MonthlyTime_Click);
+            // 
+            // bt_QuarterlyTime
+            // 
+            this.bt_QuarterlyTime.BackColor = System.Drawing.Color.White;
+            this.bt_QuarterlyTime.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.bt_QuarterlyTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_QuarterlyTime.ForeColor = System.Drawing.Color.White;
+            this.bt_QuarterlyTime.Location = new System.Drawing.Point(986, 28);
+            this.bt_QuarterlyTime.Name = "bt_QuarterlyTime";
+            this.bt_QuarterlyTime.Size = new System.Drawing.Size(100, 45);
+            this.bt_QuarterlyTime.TabIndex = 529;
+            this.bt_QuarterlyTime.Text = "季度";
+            this.bt_QuarterlyTime.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_QuarterlyTime.UseVisualStyleBackColor = false;
+            this.bt_QuarterlyTime.Click += new System.EventHandler(this.bt_QuarterlyTime_Click);
+            // 
+            // bt_AnnualTime
+            // 
+            this.bt_AnnualTime.BackColor = System.Drawing.Color.White;
+            this.bt_AnnualTime.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.bt_AnnualTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_AnnualTime.ForeColor = System.Drawing.Color.White;
+            this.bt_AnnualTime.Location = new System.Drawing.Point(1092, 28);
+            this.bt_AnnualTime.Name = "bt_AnnualTime";
+            this.bt_AnnualTime.Size = new System.Drawing.Size(100, 45);
+            this.bt_AnnualTime.TabIndex = 530;
+            this.bt_AnnualTime.Text = "年度";
+            this.bt_AnnualTime.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_AnnualTime.UseVisualStyleBackColor = false;
+            this.bt_AnnualTime.Click += new System.EventHandler(this.bt_AnnualTime_Click);
+            // 
             // FrmLogForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -567,5 +635,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.Button bt_TodayTime;
+        private System.Windows.Forms.Button bt_MonthlyTime;
+        private System.Windows.Forms.Button bt_QuarterlyTime;
+        private System.Windows.Forms.Button bt_AnnualTime;
     }
 }

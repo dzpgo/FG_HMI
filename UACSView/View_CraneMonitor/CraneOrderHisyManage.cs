@@ -644,7 +644,7 @@ namespace UACSView
         private void GetToDayTime()
         {
             this.dtp_StartTime.Value = DateTime.Now;
-            this.dtp_EndTime.Value = DateTime.Now;
+            this.dtp_EndTime.Value = Convert.ToDateTime(DateTime.Now.Date.AddDays(1).ToString());
             //查询
             InitDataGridViewCtrl();
         }

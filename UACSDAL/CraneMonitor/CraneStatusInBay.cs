@@ -702,9 +702,25 @@ namespace UACSDAL
                             {
                                 tb_CurrentStatus.Text = "装车中";
                             }
+                            else if (status.Equals("22"))
+                            {
+                                tb_CurrentStatus.Text = "装车中";
+                            }
+                            else if (status.Equals("23"))
+                            {
+                                tb_CurrentStatus.Text = "装车中";
+                            }
+                            else if (status.Equals("24"))
+                            {
+                                tb_CurrentStatus.Text = "装车中";
+                            }
                             else if (status.Equals("25"))
                             {
                                 tb_CurrentStatus.Text = "装冷却剂";
+                            }
+                            else if (status.Equals("31"))
+                            {
+                                tb_CurrentStatus.Text = "吸料中";
                             }
                             else if (status.Equals("41"))
                             {
