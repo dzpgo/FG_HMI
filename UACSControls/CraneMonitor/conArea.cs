@@ -166,7 +166,8 @@ namespace UACSControls
                             {
                                 if (theSaddle.AreaSafe == 1)
                                 {
-                                    this.BackColor = System.Drawing.Color.Tomato;
+                                    //this.BackColor = System.Drawing.Color.Tomato;
+                                    this.BackColor = Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(130)))), ((int)(((byte)(68)))));
                                 }
                             }
                         }

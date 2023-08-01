@@ -1,24 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Baosight.iSuperframe.Forms;
-using Baosight.iSuperframe.Common;
 using System.Runtime.InteropServices;
-using System.Reflection;
 using UACSDAL;
-using static UACSControls.Page.ucPage;
 
-namespace UACSView 
+namespace UACSView
 {
     /// <summary>
     /// 报警信息管理
     /// </summary>
-    public partial class frmCraneAlarmLogQuery  : FormBase
+    public partial class frmCraneAlarmLogQuery : FormBase
     {
         public frmCraneAlarmLogQuery()
         {
@@ -90,29 +82,36 @@ namespace UACSView
             {
                 string strSql = "SELECT * FROM (SELECT COUNT(1) OVER () AS TotalRows,ROW_NUMBER() OVER () AS ROWNUM,tab.* FROM ( ";
                 string tableName = "UACS_CRANE_ALARM_" + craneNO;
-                    strSql += "select ";
-                    strSql += " a.CRANE_NO   CRANE_NO, ";
-                    strSql += " a.ALARM_CODE   ALARM_CODE, ";
-                    strSql += " a.ALARM_TIME   ALARM_TIME, ";
-                    strSql += " a.X_ACT   X_ACT, ";
-                    strSql += " a.Y_ACT   Y_ACT, ";
-                    strSql += " a.Z_ACT   Z_ACT, ";
-                    strSql += " a.HAS_COIL   HAS_COIL, ";
-                    strSql += " a.CLAMP_WIDTH_ACT   CLAMP_WIDTH_ACT, ";
-                    strSql += " a.CONTROL_MODE   CONTROL_MODE, ";
-                    strSql += " a.CRANE_STATUS   CRANE_STATUS, ";
-                    strSql += " a.ORDER_ID   ORDER_ID, ";
-                    strSql += " b.ALARM_INFO   ALARM_INFO, ";
-                    strSql += " b.ALARM_CLASS   ALARM_CLASS ";
-                    strSql += " from ";
-                    strSql += tableName + " a " + ",";
-                    strSql += "  UACS_CRANE_ALARM_CODE_DEFINE b  ";
-                    strSql += " where ";
-                    strSql += "       a.ALARM_CODE=b.ALARM_CODE ";
+                strSql += "select ";
+                strSql += " a.CRANE_NO   CRANE_NO, ";
+                strSql += " a.ALARM_CODE   ALARM_CODE, ";
+                strSql += " a.ALARM_TIME   ALARM_TIME, ";
+                strSql += " a.X_ACT   X_ACT, ";
+                strSql += " a.Y_ACT   Y_ACT, ";
+                strSql += " a.Z_ACT   Z_ACT, ";
+                strSql += " a.HAS_COIL   HAS_COIL, ";
+                strSql += " a.CLAMP_WIDTH_ACT   CLAMP_WIDTH_ACT, ";
+                strSql += " a.CONTROL_MODE   CONTROL_MODE, ";
+                strSql += " a.CRANE_STATUS   CRANE_STATUS, ";
+                strSql += " a.ORDER_ID   ORDER_ID, ";
+                strSql += " b.ALARM_INFO   ALARM_INFO, ";
+                strSql += " b.ALARM_CLASS   ALARM_CLASS ";
+                strSql += " from ";
+                strSql += tableName + " a " + ",";
+                strSql += "  UACS_CRANE_ALARM_CODE_DEFINE b  ";
+                strSql += " where ";
+                strSql += "       a.ALARM_CODE=b.ALARM_CODE ";
+                //if (!comboBox_ShipLotNo.SelectedText.Equals("全部"))
+                //{
                     strSql += " and a.CRANE_NO=" + "'" + craneNO + "'";
-                    strSql += " and a.ALARM_TIME>= " + DateNormal_ToString(timeStart);
-                    strSql += " and a.ALARM_TIME<= " + DateNormal_ToString(timeEnd);
-                    strSql += " Order By a.ALARM_TIME ";
+                //}
+                if (!string.IsNullOrEmpty(txtAlarmCode.Text.Trim()))
+                {
+                    strSql += " and a.ALARM_CODE LIKE '%" + txtAlarmCode.Text.Trim() + "%' ";
+                }
+                strSql += " and a.ALARM_TIME>= " + DateNormal_ToString(timeStart);
+                strSql += " and a.ALARM_TIME<= " + DateNormal_ToString(timeEnd);
+                strSql += " Order By a.ALARM_TIME ";
                 strSql += " ) tab ) WHERE ROWNUM BETWEEN ((" + currentPage + " - 1) * " + this.ucPageDemo.PageSize + ") + 1 AND " + currentPage + " *  " + this.ucPageDemo.PageSize;
 
                 DataTable dtResult = new DataTable();
@@ -234,8 +233,8 @@ namespace UACSView
             {
                 DateTime timeStart = dateTimePicker_Start.Value;
                 DateTime timeEnd = dateTimePicker_End.Value;
-                string craneNO = comboBox_ShipLotNo.Text ;
-                readAlarmLog(1 ,craneNO, timeStart, timeEnd);
+                string craneNO = comboBox_ShipLotNo.Text;
+                readAlarmLog(1, craneNO, timeStart, timeEnd);
 
                 //光标显示到最后一行
                 GridAlarmLog.FirstDisplayedScrollingRowIndex = GridAlarmLog.RowCount - 1;
@@ -328,14 +327,14 @@ namespace UACSView
         {
             try
             {
-                
+
                 DialogResult result = saveFileDialog1.ShowDialog();
-                if(result != DialogResult.OK)
+                if (result != DialogResult.OK)
                 {
                     return;
                 }
 
-                this.Invoke(new MethodInvoker(delegate()
+                this.Invoke(new MethodInvoker(delegate ()
                 {
 
                     Export2Excel(GridAlarmLog, saveFileDialog1.FileName);
@@ -356,6 +355,11 @@ namespace UACSView
             dt.Columns.Add("TypeName");
             try
             {
+                //DataRow dr2 = dt.NewRow();
+                //dr2["TypeValue"] = "全部";
+                //dr2["TypeName"] = "全部";
+                //dt.Rows.Add(dr2);
+
                 string strSql = @"SELECT ID as TypeValue,NAME as TypeName FROM UACS_YARDMAP_CRANE ORDER BY ID ASC ";
                 using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(strSql))
                 {
@@ -520,7 +524,7 @@ namespace UACSView
         }
         #endregion
 
-        
+
 
         #region 分页
 
