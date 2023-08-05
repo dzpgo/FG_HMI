@@ -74,9 +74,9 @@ namespace UACSControls
         }
 
         //step3
-        public delegate void RefreshControlInvoke(CraneStatusBase _cranePLCStatusBase, long baySpaceX, long baySpaceY, int panelWidth, int panelHeight, bool xAxisRight, bool yAxisDown, long craneWith, Panel panel);
+        public delegate void RefreshControlInvoke(CraneStatusBase _cranePLCStatusBase, long baySpaceX, long baySpaceY, int panelWidth, int panelHeight, bool xAxisRight, bool yAxisDown, long craneWith, Panel panel, bool IsPlanout);
 
-        public void RefreshControl(CraneStatusBase _cranePLCStatusBase, long baySpaceX, long baySpaceY, int panelWidth, int panelHeight, bool xAxisRight, bool yAxisDown,long craneWith,Panel panel)
+        public void RefreshControl(CraneStatusBase _cranePLCStatusBase, long baySpaceX, long baySpaceY, int panelWidth, int panelHeight, bool xAxisRight, bool yAxisDown, long craneWith, Panel panel, bool IsPlanout)
         {
             try
             {
@@ -135,13 +135,13 @@ namespace UACSControls
                 {
                     Y = Convert.ToDouble(_cranePLCStatusBase.YAct) * yScale;
                     location_Crane_Y = 0;
-                    location_Crab_Y = Y - panelCrab.Height / 2;
+                    location_Crab_Y = Y - lab.Height / 2;
                 }
                 else
                 {
                     Y = (Convert.ToDouble(baySpaceY) - Convert.ToDouble(_cranePLCStatusBase.YAct)) * yScale;
                     location_Crane_Y = 0;
-                    location_Crab_Y = Y - panelCrab.Height / 2;
+                    location_Crab_Y = Y - lab.Height / 2;
                 }
                
 
@@ -154,25 +154,27 @@ namespace UACSControls
 
 
                 //修改小车的宽度
-                panelCrab.Width = this.Width;
+                lab.Width = this.Width;
 
                 //定位小车的坐标
-                panelCrab.Location = new Point(Convert.ToInt32(location_Crab_X), Convert.ToInt32(location_Crab_Y));
-                panelCrab.BringToFront();
+                lab.Location = new Point(Convert.ToInt32(location_Crab_X), Convert.ToInt32(location_Crab_Y));
+                lab.BringToFront();
 
                 //无卷显示无卷标记
                 if (_cranePLCStatusBase.HasCoil == 0)
                 {
-                    this.panelCrab.BackgroundImage = global::UACSControls.Resource1.imgCarNoCoil;
+                    this.lab.BackgroundImage = global::UACSControls.Resource1.imgCarNoCoil;
                 }
                 //有卷显示有卷标记
                 else if (_cranePLCStatusBase.HasCoil == 1)
                 {
                     //this.panelCrab.BackgroundImage = global::UACSControls.Resource1.imgCarCoil;
-                    this.panelCrab.BackgroundImage = null; //背景图片
+                    this.lab.BackgroundImage = null; //背景图片
                     //this.panelCrab.BackColor = Color.SaddleBrown; //棕色
-                    this.panelCrab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(175)))), ((int)(((byte)(66)))));  //虎皮黄
+                    this.lab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(175)))), ((int)(((byte)(66)))));  //虎皮黄
                 }
+                label.Text = "该计划装料时间已超过50分钟";
+                label.Visible = IsPlanout;
                 this.BringToFront();
 
                 //if (CraneNO.ToString().Trim() == "1_4" || CraneNO.ToString().Trim() == "1_5" || CraneNO.ToString().Trim() == "1_6")

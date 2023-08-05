@@ -1,21 +1,21 @@
-﻿using System;
+﻿using Baosight.iSuperframe.Authorization.Interface;
+using Baosight.iSuperframe.Common;
+using Baosight.iSuperframe.Forms;
+using Baosight.iSuperframe.TagService;
+using Baosight.iSuperframe.TagService.Controls;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
-using Baosight.iSuperframe.Forms;
-using Baosight.iSuperframe.Common;
-using Baosight.iSuperframe.Authorization.Interface;
-using Baosight.iSuperframe.TagService.Controls;
-using Baosight.iSuperframe.TagService;
-using UACSControls;
-using UACSDAL;
-using System.Threading;
-using System.Runtime.InteropServices;
 using System.Drawing.Drawing2D;
-using UACSControls.CraneMonitorModel;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Windows.Forms;
+using UACSControls;
 using UACSControls.CraneMonitor;
+using UACSControls.CraneMonitorModel;
+using UACSDAL;
 
 namespace UACSView.View_CraneMonitor
 {
@@ -73,7 +73,23 @@ namespace UACSView.View_CraneMonitor
         /// 4号行车X坐标
         /// </summary>
         private string CraneA4_X { get; set; }
-        private List<string> listReCoilUnit = new List<string>(); 
+        private List<string> listReCoilUnit = new List<string>();
+        /// <summary>
+        /// A1工位计划是否超时
+        /// </summary>
+        private bool IsPlanout_1 = false;
+        /// <summary>
+        /// A2工位计划是否超时
+        /// </summary>
+        private bool IsPlanout_2 = false;
+        /// <summary>
+        /// A3工位计划是否超时
+        /// </summary>
+        private bool IsPlanout_3 = false;
+        /// <summary>
+        /// A4工位计划是否超时
+        /// </summary>
+        private bool IsPlanout_4 = false;
         #endregion
 
         #region TAG配置
@@ -120,7 +136,7 @@ namespace UACSView.View_CraneMonitor
             //btnCrane_1_WaterStatus.Name = craneNo_4_1;
             //btnCrane_2_WaterStatus.Name = craneNo_4_2;
             //btnCrane_3_WaterStatus.Name = craneNo_1_3;
-            
+
         }
         void btnCrane_1_WaterStatus_Click(object sender, EventArgs e)
         {
@@ -153,7 +169,7 @@ namespace UACSView.View_CraneMonitor
         void A_library_Monitor_Load(object sender, EventArgs e)
         {
             tagDataProvider.ServiceName = "iplature";
-            auth = FrameContext.Instance.GetPlugin<IAuthorization>() as IAuthorization;          
+            auth = FrameContext.Instance.GetPlugin<IAuthorization>() as IAuthorization;
             areaModel = new conAreaModel();
             unitSaddleModel = new conUnitSaddleModel();
             parkingCarModel = new conParkingCarModel();
@@ -162,13 +178,13 @@ namespace UACSView.View_CraneMonitor
 
             AreaInStockZ12 = new conAreaModel();
             saddleInStock_Z21 = new conOffinePackingSaddleModel();
-            
+
             //btnCrane_1_WaterStatus.Click += btnCrane_1_WaterStatus_Click;
             //btnCrane_2_WaterStatus.Click += btnCrane_1_WaterStatus_Click;
             //btnCrane_3_WaterStatus.Click += btnCrane_1_WaterStatus_Click;
-            CraneA1_X = ""; 
-            CraneA2_X = ""; 
-            CraneA3_X = ""; 
+            CraneA1_X = "";
+            CraneA2_X = "";
+            CraneA3_X = "";
             CraneA4_X = "";
 
             //行车显示控件配置
@@ -196,7 +212,7 @@ namespace UACSView.View_CraneMonitor
             {
                 LoadTrafficLight(item);
             }
-            
+
 
             //---------------------行车状态控件配置-------------------------------
             conCraneStatus2_1.InitTagDataProvide(constData.tagServiceName);
@@ -232,7 +248,7 @@ namespace UACSView.View_CraneMonitor
             timer_InitializeLoad.Interval = 100;
 
             //检修状态
-            GetOrederTypeStatus();
+            GetOrederTypeStatus(false, false, false, false);
         }
 
         #region 加载红绿灯
@@ -572,7 +588,7 @@ namespace UACSView.View_CraneMonitor
                 conTrafficLight2_Cubicle_4.craneTrafficLightBase = item;
                 listconTrafficLightDisplay.Add(conTrafficLight2_Cubicle_4);
             }
-        } 
+        }
         #endregion
 
         private void LoadAreaInfo()
@@ -619,7 +635,7 @@ namespace UACSView.View_CraneMonitor
                 "Z01-6-15",
                 constData.tagServiceName,
                 constData.Z01BaySpaceX,
-                constData.Z01BaySpaceY,              
+                constData.Z01BaySpaceY,
                 constData.xBxisleft,
                 constData.yAxisDown);
 
@@ -634,8 +650,8 @@ namespace UACSView.View_CraneMonitor
 
         private void LoadParkingCarInfo()
         {
-            parkingCarModel.conInit(panelZ61Bay, 
-                constData.bayNo_Z01, 
+            parkingCarModel.conInit(panelZ61Bay,
+                constData.bayNo_Z01,
                 constData.tagServiceName,
                 constData.Z01BaySpaceX,
                 constData.Z01BaySpaceY,
@@ -655,13 +671,13 @@ namespace UACSView.View_CraneMonitor
                 constData.yBxisDown);
 
 
-            
+
         }
 
         private void timer_InitializeLoad_Tick(object sender, EventArgs e)
         {
             //LoadUnitInfo();
-            LoadParkingCarInfo();            
+            LoadParkingCarInfo();
             LoadAreaInfo();
 
             //GetStatus();
@@ -669,10 +685,12 @@ namespace UACSView.View_CraneMonitor
             timerCrane.Enabled = true;
             timerArea.Enabled = true;
             timerUnit.Enabled = true;
+            timerPlanout.Enabled = true;
 
             timerCrane.Interval = 1000;
             timerArea.Interval = 10000;
             timerUnit.Interval = 10000;
+            timerPlanout.Interval = 60000;
 
             timer_InitializeLoad.Enabled = false;
 
@@ -715,9 +733,41 @@ namespace UACSView.View_CraneMonitor
                 //    conCrane2_4.BackColor = Color.Tomato;
                 //    //conCrane2_4.BackgroundImage = UACSControls.Resource1.行车_Stop;
                 //}
+                if (IsPlanout_1)
+                {                    
+                    conCrane2_1.BackColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(139)))), ((int)(((byte)(112))))); //宝钢米红301
+                }
+                else
+                {
+                    conCrane2_1.BackColor = SystemColors.Control;
+                }
+                if (IsPlanout_2)
+                {
+                    conCrane2_2.BackColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(139)))), ((int)(((byte)(112))))); //宝钢米红301
+                }
+                else
+                {
+                    conCrane2_2.BackColor = SystemColors.Control;
+                }
+                if (IsPlanout_3)
+                {
+                    conCrane2_3.BackColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(139)))), ((int)(((byte)(112))))); //宝钢米红301
+                }
+                else
+                {
+                    conCrane2_3.BackColor = SystemColors.Control;
+                }
+                if (IsPlanout_4)
+                {
+                    conCrane2_4.BackColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(139)))), ((int)(((byte)(112))))); //宝钢米红301
+                }
+                else
+                {
+                    conCrane2_4.BackColor = SystemColors.Control;
+                }
 
                 //检修状态
-                GetOrederTypeStatus();               
+                GetOrederTypeStatus(IsPlanout_1, IsPlanout_2, IsPlanout_3, IsPlanout_4);
                 //检修中按钮变红，清扫中按钮变红
                 if (Crane_1.Equals(1) || Crane_2.Equals(1) || Crane_3.Equals(1) || Crane_4.Equals(1))
                 {
@@ -781,12 +831,12 @@ namespace UACSView.View_CraneMonitor
                 foreach (conCraneStatus conCraneStatusPanel in lstConCraneStatusPanel)
                 {
                     conCraneStatus.RefreshControlInvoke ConCraneStatusPanel_Invoke = new conCraneStatus.RefreshControlInvoke(conCraneStatusPanel.RefreshControl);
-                    conCraneStatusPanel.BeginInvoke(ConCraneStatusPanel_Invoke, new Object[] 
-                    { 
+                    conCraneStatusPanel.BeginInvoke(ConCraneStatusPanel_Invoke, new Object[]
+                    {
                         craneStatusInBay.DicCranePLCStatusBase[conCraneStatusPanel.CraneNO].Clone(),
-                        Crane_1, 
-                        Crane_2, 
-                        Crane_3, 
+                        Crane_1,
+                        Crane_2,
+                        Crane_3,
                         Crane_4
                     });
                     if (conCraneStatusPanel.CraneNO.Equals("1"))
@@ -809,17 +859,39 @@ namespace UACSView.View_CraneMonitor
                 //--------------------------行车状态控件刷新-------------------------------------------
                 foreach (conCrane conCraneVisual in listConCraneDisplay)
                 {
+                    var IsPlanout = false;
+                    if (conCraneVisual.CraneNO.Equals("1"))
+                    {
+                        IsPlanout = IsPlanout_1;
+                    }
+                    else if (conCraneVisual.CraneNO.Equals("2"))
+                    {
+                        IsPlanout = IsPlanout_2;
+                    }
+                    else if (conCraneVisual.CraneNO.Equals("3"))
+                    {
+                        IsPlanout = IsPlanout_3;
+                    }
+                    else if (conCraneVisual.CraneNO.Equals("4"))
+                    {
+                        IsPlanout = IsPlanout_4;
+                    }
+                    else
+                    {
+                        IsPlanout = false;
+                    }
                     conCrane.RefreshControlInvoke ConCraneVisual_Invoke = new conCrane.RefreshControlInvoke(conCraneVisual.RefreshControl);
-                    conCraneVisual.BeginInvoke(ConCraneVisual_Invoke, new Object[] 
-                    { craneStatusInBay.DicCranePLCStatusBase[conCraneVisual.CraneNO].Clone(), 
+                    conCraneVisual.BeginInvoke(ConCraneVisual_Invoke, new Object[]
+                    { craneStatusInBay.DicCranePLCStatusBase[conCraneVisual.CraneNO].Clone(),
                          constData.Z01BaySpaceX,
                          constData.Z01BaySpaceY,
                          panelZ61Bay.Width,
                          panelZ61Bay.Height,
                          constData.xBxisleft,
                          constData.yBxisDown,
-                         6160,         
-                         panelZ61Bay 
+                         6160,
+                         panelZ61Bay,
+                         IsPlanout
                     });
                 }
                 bool trss = true;
@@ -866,7 +938,7 @@ namespace UACSView.View_CraneMonitor
                 timerCrane.Enabled = false;
             }
 
-        }        
+        }
 
         private void timerArea_Tick(object sender, EventArgs e)
         {
@@ -971,9 +1043,9 @@ namespace UACSView.View_CraneMonitor
             //gr.FillRectangle(mybrush1, Convert.ToInt32(Convert.ToDouble(265450) * xScale), 0, 
             //    Convert.ToInt32(Convert.ToDouble(268500-265450) * xScale), this.panelZ11_Z12Bay.Height);
             //gr.DrawString("9999", new Font("微软雅黑", 10, FontStyle.Bold), Brushes.White, new Point(Convert.ToInt32(Convert.ToDouble(265450) * xScale), 10));
-        } 
+        }
 
-      
+
 
         #region -----------------------------画面切换--------------------------------
         void MyTabActivated(object sender, EventArgs e)
@@ -1486,13 +1558,13 @@ namespace UACSView.View_CraneMonitor
             catch (Exception er)
             {
             }
-        } 
+        }
         #endregion
 
         /// <summary>
         /// 行车检修状态   ORDER_TYPE = 指令类型 11:归堆  21：装车  41：清扫  X1：登车  51：检修  99：空闲
         /// </summary>
-        private void GetOrederTypeStatus()
+        private void GetOrederTypeStatus(bool IsPlanout_1, bool IsPlanout_2, bool IsPlanout_3, bool IsPlanout_4)
         {
             try
             {
@@ -1508,22 +1580,22 @@ namespace UACSView.View_CraneMonitor
                             {
                                 if (rdr["CRANE_NO"].ToString().Equals("1"))
                                 {
-                                    this.conCrane2_1.BackColor = System.Drawing.Color.Tomato;
+                                    this.conCrane2_1.BackColor = Color.Tomato;
                                     Crane_1 = 1;
                                 }
                                 else if (rdr["CRANE_NO"].ToString().Equals("2"))
                                 {
-                                    this.conCrane2_2.BackColor = System.Drawing.Color.Tomato;
+                                    this.conCrane2_2.BackColor = Color.Tomato;
                                     Crane_2 = 1;
                                 }
                                 else if (rdr["CRANE_NO"].ToString().Equals("3"))
                                 {
-                                    this.conCrane2_3.BackColor = System.Drawing.Color.Tomato;
+                                    this.conCrane2_3.BackColor = Color.Tomato;
                                     Crane_3 = 1;
                                 }
                                 else if (rdr["CRANE_NO"].ToString().Equals("4"))
                                 {
-                                    this.conCrane2_4.BackColor = System.Drawing.Color.Tomato;
+                                    this.conCrane2_4.BackColor = Color.Tomato;
                                     Crane_4 = 1;
                                 }
                             }
@@ -1531,22 +1603,34 @@ namespace UACSView.View_CraneMonitor
                             {
                                 if (rdr["CRANE_NO"].ToString().Equals("1"))
                                 {
-                                    this.conCrane2_1.BackColor = System.Drawing.SystemColors.Control;
+                                    if (!IsPlanout_1)
+                                    {
+                                        this.conCrane2_1.BackColor = SystemColors.Control;
+                                    }
                                     Crane_1 = 0;
                                 }
                                 else if (rdr["CRANE_NO"].ToString().Equals("2"))
                                 {
-                                    this.conCrane2_2.BackColor = System.Drawing.SystemColors.Control;
+                                    if (!IsPlanout_2)
+                                    {
+                                        this.conCrane2_2.BackColor = SystemColors.Control;
+                                    }
                                     Crane_2 = 0;
                                 }
                                 else if (rdr["CRANE_NO"].ToString().Trim().Equals("3"))
                                 {
-                                    this.conCrane2_3.BackColor = System.Drawing.SystemColors.Control;
+                                    if (!IsPlanout_3)
+                                    {
+                                        this.conCrane2_3.BackColor = SystemColors.Control;
+                                    }
                                     Crane_3 = 0;
                                 }
                                 else if (rdr["CRANE_NO"].ToString().Equals("4"))
                                 {
-                                    this.conCrane2_4.BackColor = System.Drawing.SystemColors.Control;
+                                    if (!IsPlanout_4)
+                                    {
+                                        this.conCrane2_4.BackColor = SystemColors.Control;
+                                    }
                                     Crane_4 = 0;
                                 }
                             }
@@ -1574,7 +1658,7 @@ namespace UACSView.View_CraneMonitor
             lstAdress.Add("TWO_CRANE_GO_D102");
             lstAdress.Add("TWO_CRANE_GO_YARD");
             lstAdress.Add("TWO_CRANE_GO_WATER_TANK");
-            lstAdress.Add("TWO_CRANE_GO_COLDCOIL"); 
+            lstAdress.Add("TWO_CRANE_GO_COLDCOIL");
             lstAdress.Add("AREA_SAFE_JQ");
             arrTagAdress = lstAdress.ToArray<string>();
             readTags();
@@ -1676,7 +1760,7 @@ namespace UACSView.View_CraneMonitor
             //    }
             //}
 
-        } 
+        }
         #endregion
 
         #region 检修时更改行车背景颜色
@@ -2177,7 +2261,7 @@ namespace UACSView.View_CraneMonitor
         /// <summary>
         /// 库存百分比
         /// </summary>
-        private bool StockPercentage =false;
+        private bool StockPercentage = false;
         /// <summary>
         /// 显示库存百分比
         /// </summary>
@@ -2193,7 +2277,7 @@ namespace UACSView.View_CraneMonitor
             else
             {
                 StockPercentage = true;
-                bt_StockPercentage.Text = "隐藏库存比";                
+                bt_StockPercentage.Text = "隐藏库存比";
             }
             //刷新
             LoadAreaInfo();
@@ -2328,7 +2412,207 @@ namespace UACSView.View_CraneMonitor
             {
                 ParkClassLibrary.HMILogger.WriteLog("主监控画面", " 光栅失败 ， 光栅模式：" + (Ischecked ? "投用" : "取消") + " ，跨区：A" + areaNO, ParkClassLibrary.LogLevel.Info, this.Text);
             }
-        } 
+        }
         #endregion
+
+        /// <summary>
+        /// 当计划时间超过50分钟后行车变颜色
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timerPlanout_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                double Minutes = 50;  //相差分钟
+                var IsPlandata_1 = false;
+                var IsPlandata_2 = false;
+                var IsPlandata_3 = false;
+                var IsPlandata_4 = false;
+                DateTime? PlanoutStart_1 = null;
+                DateTime? PlanoutStart_2 = null;
+                DateTime? PlanoutStart_3 = null;
+                DateTime? PlanoutStart_4 = null;
+                DateTime? PlanoutEnd_1 = null;
+                DateTime? PlanoutEnd_2 = null;
+                DateTime? PlanoutEnd_3 = null;
+                DateTime? PlanoutEnd_4 = null;
+                var sqlText = @"SELECT A.PLAN_NO,A.ORDER_NO,A.ORDER_PRIORITY ,A.TO_STOCK_NO,A.REQ_WEIGHT,A.ACT_WEIGHT,A.START_TIME,A.UPD_TIME,A.REC_TIME ";
+                sqlText += "FROM UACS_ORDER_QUEUE AS A ";
+                sqlText += "WHERE A.CMD_STATUS = '0' AND A.TO_STOCK_NO in ('A1','A2','A3','A4')  ORDER BY TO_STOCK_NO,A.ORDER_PRIORITY,A.ORDER_NO ";
+                using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
+                {
+                    while (rdr.Read())
+                    {
+                        #region 获取计划时间
+                        if (rdr["TO_STOCK_NO"] != System.DBNull.Value && rdr["TO_STOCK_NO"].Equals("A1"))
+                        {
+                            IsPlandata_1 = true;
+                            if (rdr["START_TIME"] != System.DBNull.Value && PlanoutStart_1 == null)
+                            {
+                                PlanoutStart_1 = Convert.ToDateTime(rdr["START_TIME"]);
+                            }
+                            if (rdr["START_TIME"] != System.DBNull.Value && PlanoutStart_1 != null && Convert.ToDateTime(rdr["START_TIME"]) < PlanoutStart_1)
+                            {
+                                PlanoutStart_1 = Convert.ToDateTime(rdr["START_TIME"]);
+                            }
+                            if (rdr["UPD_TIME"] != System.DBNull.Value && PlanoutEnd_1 == null)
+                            {
+                                PlanoutEnd_1 = Convert.ToDateTime(rdr["UPD_TIME"]);
+                            }
+                            if (rdr["UPD_TIME"] != System.DBNull.Value && PlanoutEnd_1 != null && Convert.ToDateTime(rdr["UPD_TIME"]) > PlanoutEnd_1)
+                            {
+                                PlanoutEnd_1 = Convert.ToDateTime(rdr["UPD_TIME"]);
+                            }
+                        }
+                        else if (rdr["TO_STOCK_NO"] != System.DBNull.Value && rdr["TO_STOCK_NO"].Equals("A2"))
+                        {
+                            IsPlandata_2 = true;
+                            if (rdr["START_TIME"] != System.DBNull.Value && PlanoutStart_2 == null)
+                            {
+                                PlanoutStart_2 = Convert.ToDateTime(rdr["START_TIME"]);
+                            }
+                            if (rdr["START_TIME"] != System.DBNull.Value && PlanoutStart_2 != null && Convert.ToDateTime(rdr["START_TIME"]) < PlanoutStart_2)
+                            {
+                                PlanoutStart_2 = Convert.ToDateTime(rdr["START_TIME"]);
+                            }
+                            if (rdr["UPD_TIME"] != System.DBNull.Value && PlanoutEnd_2 == null)
+                            {
+                                PlanoutEnd_2 = Convert.ToDateTime(rdr["UPD_TIME"]);
+                            }
+                            if (rdr["UPD_TIME"] != System.DBNull.Value && PlanoutEnd_2 != null && Convert.ToDateTime(rdr["UPD_TIME"]) > PlanoutEnd_2)
+                            {
+                                PlanoutEnd_2 = Convert.ToDateTime(rdr["UPD_TIME"]);
+                            }
+                        }
+                        else if (rdr["TO_STOCK_NO"] != System.DBNull.Value && rdr["TO_STOCK_NO"].Equals("A3"))
+                        {
+                            IsPlandata_3 = true;
+                            if (rdr["START_TIME"] != System.DBNull.Value && PlanoutStart_3 == null)
+                            {
+                                PlanoutStart_3 = Convert.ToDateTime(rdr["START_TIME"]);
+                            }
+                            if (rdr["START_TIME"] != System.DBNull.Value && PlanoutStart_3 != null && Convert.ToDateTime(rdr["START_TIME"]) < PlanoutStart_3)
+                            {
+                                PlanoutStart_3 = Convert.ToDateTime(rdr["START_TIME"]);
+                            }
+                            if (rdr["UPD_TIME"] != System.DBNull.Value && PlanoutEnd_3 == null)
+                            {
+                                PlanoutEnd_3 = Convert.ToDateTime(rdr["UPD_TIME"]);
+                            }
+                            if (rdr["UPD_TIME"] != System.DBNull.Value && PlanoutEnd_3 != null && Convert.ToDateTime(rdr["UPD_TIME"]) > PlanoutEnd_3)
+                            {
+                                PlanoutEnd_3 = Convert.ToDateTime(rdr["UPD_TIME"]);
+                            }
+                        }
+                        else if (rdr["TO_STOCK_NO"] != System.DBNull.Value && rdr["TO_STOCK_NO"].Equals("A4"))
+                        {
+                            IsPlandata_4 = true;
+                            if (rdr["START_TIME"] != System.DBNull.Value && PlanoutStart_4 == null)
+                            {
+                                PlanoutStart_4 = Convert.ToDateTime(rdr["START_TIME"]);
+                            }
+                            if (rdr["START_TIME"] != System.DBNull.Value && PlanoutStart_4 != null && Convert.ToDateTime(rdr["START_TIME"]) < PlanoutStart_4)
+                            {
+                                PlanoutStart_4 = Convert.ToDateTime(rdr["START_TIME"]);
+                            }
+                            if (rdr["UPD_TIME"] != System.DBNull.Value && PlanoutEnd_4 == null)
+                            {
+                                PlanoutEnd_4 = Convert.ToDateTime(rdr["UPD_TIME"]);
+                            }
+                            if (rdr["UPD_TIME"] != System.DBNull.Value && PlanoutEnd_4 != null && Convert.ToDateTime(rdr["UPD_TIME"]) > PlanoutEnd_4)
+                            {
+                                PlanoutEnd_4 = Convert.ToDateTime(rdr["UPD_TIME"]);
+                            }
+                        }
+                        #endregion
+
+                    }
+                }
+                #region 判断时间相差是否大于50分钟，是：更改行车背景颜色  否：取消行车背景颜色
+                if (PlanoutStart_1.HasValue && PlanoutEnd_1.HasValue)
+                {
+                    // 计算两个日期之间的时间差
+                    TimeSpan timeDifference = PlanoutEnd_1.Value - PlanoutStart_1.Value;
+
+                    // 检查时间差是否为50分钟
+                    if (timeDifference.TotalMinutes >= Minutes)
+                    {
+                        IsPlanout_1 = true;
+                    }
+                    else
+                    {
+                        IsPlanout_1 = false;
+                    }
+                }
+                if (PlanoutStart_2.HasValue && PlanoutEnd_2.HasValue)
+                {
+                    // 计算两个日期之间的时间差
+                    TimeSpan timeDifference = PlanoutEnd_2.Value - PlanoutStart_2.Value;
+
+                    // 检查时间差是否为50分钟
+                    if (timeDifference.TotalMinutes >= Minutes)
+                    {
+                        IsPlanout_2 = true;
+                    }
+                    else
+                    {
+                        IsPlanout_2 = false;
+                    }
+                }
+                if (PlanoutStart_3.HasValue && PlanoutEnd_3.HasValue)
+                {
+                    // 计算两个日期之间的时间差
+                    TimeSpan timeDifference = PlanoutEnd_3.Value - PlanoutStart_3.Value;
+
+                    // 检查时间差是否为50分钟
+                    if (timeDifference.TotalMinutes >= Minutes)
+                    {
+                        IsPlanout_3 = true;
+                    }
+                    else
+                    {
+                        IsPlanout_3 = false;
+                    }
+                }
+                if (PlanoutStart_4.HasValue && PlanoutEnd_4.HasValue)
+                {
+                    // 计算两个日期之间的时间差
+                    TimeSpan timeDifference = PlanoutEnd_4.Value - PlanoutStart_4.Value;
+
+                    // 检查时间差是否为50分钟
+                    if (timeDifference.TotalMinutes >= Minutes)
+                    {
+                        IsPlanout_4 = true;
+                    }
+                    else
+                    {
+                        IsPlanout_4 = false;
+                    }
+                }
+                #endregion
+                #region 判断当前是否有计划，否：恢复行车背景颜色
+                if (!IsPlandata_1)
+                {
+                    IsPlanout_1 = false;
+                }
+                if (!IsPlandata_2)
+                {
+                    IsPlanout_2 = false;
+                }
+                if (!IsPlandata_3)
+                {
+                    IsPlanout_3 = false;
+                }
+                if (!IsPlandata_4)
+                {
+                    IsPlanout_4 = false;
+                }
+                #endregion
+            }
+            catch (Exception ex)
+            {
+            }
+        }
     }
 }

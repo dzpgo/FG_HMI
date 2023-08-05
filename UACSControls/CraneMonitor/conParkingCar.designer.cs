@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.toolTip1 = new System.Windows.Forms.ToolTip();
-            this.timer1 = new System.Windows.Forms.Timer();
+            this.components = new System.ComponentModel.Container();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lb_ShowCarNo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 

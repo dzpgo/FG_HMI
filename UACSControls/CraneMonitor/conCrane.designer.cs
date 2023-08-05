@@ -30,7 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panelCrane = new System.Windows.Forms.Panel();
-            this.panelCrab = new System.Windows.Forms.Panel();
+            this.label = new System.Windows.Forms.Label();
+            this.lab = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStrip_YardToTard = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStrip_DelCraneOrder = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,9 +47,9 @@
             this.矫正高度ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ReturnToBoarding = new System.Windows.Forms.ToolStripMenuItem();
             this.修改卸下位置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.修改取料位置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.开启ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关闭ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.修改取料位置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelCrane.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -58,7 +59,8 @@
             this.panelCrane.BackColor = System.Drawing.Color.Transparent;
             this.panelCrane.BackgroundImage = global::UACSControls.Resource1.行车_Run;
             this.panelCrane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelCrane.Controls.Add(this.panelCrab);
+            this.panelCrane.Controls.Add(this.label);
+            this.panelCrane.Controls.Add(this.lab);
             this.panelCrane.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCrane.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.panelCrane.Location = new System.Drawing.Point(0, 0);
@@ -68,16 +70,27 @@
             this.panelCrane.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCrane_Paint);
             this.panelCrane.DoubleClick += new System.EventHandler(this.panelCrane_DoubleClick);
             // 
-            // panelCrab
+            // label
             // 
-            this.panelCrab.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelCrab.BackColor = System.Drawing.SystemColors.Control;
-            this.panelCrab.BackgroundImage = global::UACSControls.Resource1.imgCarCoil;
-            this.panelCrab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelCrab.Location = new System.Drawing.Point(0, 194);
-            this.panelCrab.Name = "panelCrab";
-            this.panelCrab.Size = new System.Drawing.Size(47, 27);
-            this.panelCrab.TabIndex = 3;
+            this.label.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Bold);
+            this.label.Location = new System.Drawing.Point(0, 0);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(47, 408);
+            this.label.TabIndex = 4;
+            this.label.Text = "文字";
+            this.label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lab
+            // 
+            this.lab.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lab.BackColor = System.Drawing.SystemColors.Control;
+            this.lab.BackgroundImage = global::UACSControls.Resource1.imgCarCoil;
+            this.lab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.lab.Location = new System.Drawing.Point(0, 194);
+            this.lab.Name = "lab";
+            this.lab.Size = new System.Drawing.Size(47, 27);
+            this.lab.TabIndex = 3;
             // 
             // contextMenuStrip1
             // 
@@ -94,7 +107,7 @@
             this.修改卸下位置ToolStripMenuItem,
             this.修改取料位置ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 286);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(175, 264);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             this.contextMenuStrip1.Opened += new System.EventHandler(this.contextMenuStrip1_Opened);
             // 
@@ -102,7 +115,7 @@
             // 
             this.ToolStrip_YardToTard.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.ToolStrip_YardToTard.Name = "ToolStrip_YardToTard";
-            this.ToolStrip_YardToTard.Size = new System.Drawing.Size(180, 26);
+            this.ToolStrip_YardToTard.Size = new System.Drawing.Size(174, 26);
             this.ToolStrip_YardToTard.Text = "归堆指令";
             this.ToolStrip_YardToTard.Click += new System.EventHandler(this.ToolStrip_YardToTard_Click);
             // 
@@ -110,7 +123,7 @@
             // 
             this.ToolStrip_DelCraneOrder.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.ToolStrip_DelCraneOrder.Name = "ToolStrip_DelCraneOrder";
-            this.ToolStrip_DelCraneOrder.Size = new System.Drawing.Size(180, 26);
+            this.ToolStrip_DelCraneOrder.Size = new System.Drawing.Size(174, 26);
             this.ToolStrip_DelCraneOrder.Text = "清空指令";
             this.ToolStrip_DelCraneOrder.Click += new System.EventHandler(this.ToolStrip_DelCraneOrder_Click);
             // 
@@ -121,7 +134,7 @@
             this.取消ToolStripMenuItem});
             this.设置避让ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.设置避让ToolStripMenuItem.Name = "设置避让ToolStripMenuItem";
-            this.设置避让ToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.设置避让ToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
             this.设置避让ToolStripMenuItem.Text = "设置避让";
             this.设置避让ToolStripMenuItem.Visible = false;
             // 
@@ -141,7 +154,7 @@
             // 
             this.登车ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.登车ToolStripMenuItem.Name = "登车ToolStripMenuItem";
-            this.登车ToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.登车ToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
             this.登车ToolStripMenuItem.Text = "登车";
             this.登车ToolStripMenuItem.Visible = false;
             // 
@@ -153,7 +166,7 @@
             this.关闭ToolStripMenuItem1});
             this.登机请求ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.登机请求ToolStripMenuItem.Name = "登机请求ToolStripMenuItem";
-            this.登机请求ToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.登机请求ToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
             this.登机请求ToolStripMenuItem.Text = "登机请求";
             this.登机请求ToolStripMenuItem.Visible = false;
             // 
@@ -183,7 +196,7 @@
             // 
             this.SuctionAndReplenishment.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.SuctionAndReplenishment.Name = "SuctionAndReplenishment";
-            this.SuctionAndReplenishment.Size = new System.Drawing.Size(180, 26);
+            this.SuctionAndReplenishment.Size = new System.Drawing.Size(174, 26);
             this.SuctionAndReplenishment.Text = "吸料补料";
             this.SuctionAndReplenishment.Click += new System.EventHandler(this.SuctionAndReplenishment_Click);
             // 
@@ -191,7 +204,7 @@
             // 
             this.矫正高度ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.矫正高度ToolStripMenuItem.Name = "矫正高度ToolStripMenuItem";
-            this.矫正高度ToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.矫正高度ToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
             this.矫正高度ToolStripMenuItem.Text = "矫正高度";
             this.矫正高度ToolStripMenuItem.Click += new System.EventHandler(this.矫正高度ToolStripMenuItem_Click);
             // 
@@ -199,7 +212,7 @@
             // 
             this.ReturnToBoarding.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.ReturnToBoarding.Name = "ReturnToBoarding";
-            this.ReturnToBoarding.Size = new System.Drawing.Size(180, 26);
+            this.ReturnToBoarding.Size = new System.Drawing.Size(174, 26);
             this.ReturnToBoarding.Text = "回登车位";
             this.ReturnToBoarding.Click += new System.EventHandler(this.ReturnToBoarding_Click);
             // 
@@ -207,9 +220,17 @@
             // 
             this.修改卸下位置ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.修改卸下位置ToolStripMenuItem.Name = "修改卸下位置ToolStripMenuItem";
-            this.修改卸下位置ToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.修改卸下位置ToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
             this.修改卸下位置ToolStripMenuItem.Text = "修改卸下位置";
             this.修改卸下位置ToolStripMenuItem.Visible = false;
+            // 
+            // 修改取料位置ToolStripMenuItem
+            // 
+            this.修改取料位置ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
+            this.修改取料位置ToolStripMenuItem.Name = "修改取料位置ToolStripMenuItem";
+            this.修改取料位置ToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.修改取料位置ToolStripMenuItem.Text = "修改取料位置";
+            this.修改取料位置ToolStripMenuItem.Click += new System.EventHandler(this.修改取料位置ToolStripMenuItem_Click);
             // 
             // 开启ToolStripMenuItem
             // 
@@ -224,14 +245,6 @@
             this.关闭ToolStripMenuItem.Size = new System.Drawing.Size(112, 26);
             this.关闭ToolStripMenuItem.Text = "关闭";
             this.关闭ToolStripMenuItem.Click += new System.EventHandler(this.关闭ToolStripMenuItem_Click);
-            // 
-            // 修改取料位置ToolStripMenuItem
-            // 
-            this.修改取料位置ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.修改取料位置ToolStripMenuItem.Name = "修改取料位置ToolStripMenuItem";
-            this.修改取料位置ToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
-            this.修改取料位置ToolStripMenuItem.Text = "修改取料位置";
-            this.修改取料位置ToolStripMenuItem.Click += new System.EventHandler(this.修改取料位置ToolStripMenuItem_Click);
             // 
             // conCrane
             // 
@@ -250,7 +263,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panelCrane;
-        private System.Windows.Forms.Panel panelCrab;
+        private System.Windows.Forms.Panel lab;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ToolStrip_YardToTard;
         private System.Windows.Forms.ToolStripMenuItem ToolStrip_DelCraneOrder;
@@ -272,5 +285,6 @@
         private System.Windows.Forms.ToolStripMenuItem 关闭ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 修改卸下位置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 修改取料位置ToolStripMenuItem;
+        private System.Windows.Forms.Label label;
     }
 }

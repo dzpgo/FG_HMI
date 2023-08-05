@@ -413,7 +413,8 @@ namespace UACSView.View_CraneMonitor
                          constData.xBxisleft,
                          constData.yBxisDown,
                          6160,         
-                         panelZ73Bay 
+                         panelZ73Bay,
+                         false
                     });
                 }
             }

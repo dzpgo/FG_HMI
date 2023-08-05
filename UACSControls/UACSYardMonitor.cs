@@ -447,7 +447,8 @@ namespace UACSControls
                          xAxisRight,
                          yAxisDown,
                          4560,         
-                         pnlYard 
+                         pnlYard,
+                         false
                     });
                 }
                 //MessageBox.Show("获取行车数据成功");

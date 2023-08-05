@@ -175,6 +175,11 @@ namespace UACSView.View_CraneMonitor
                 //    }
                 //}
 
+                dr["TypeValue"] = "LWGSI";
+                dr["TypeName"] = "矽钢片";
+                dt.Rows.Add(dr);
+
+                dr = dt.NewRow();
                 dr["TypeValue"] = "LCNZH";
                 dr["TypeName"] = "厂内中混废";
                 dt.Rows.Add(dr);
@@ -192,7 +197,7 @@ namespace UACSView.View_CraneMonitor
                 this.cmb_MatCode.DisplayMember = "TypeName";
                 this.cmb_MatCode.DataSource = dt;
                 //根据text值选中项
-                this.cmb_MatCode.SelectedIndex = 0;
+                this.cmb_MatCode.SelectedIndex = 1;
             }
             catch (Exception)
             {
@@ -351,10 +356,14 @@ namespace UACSView.View_CraneMonitor
         private void cmb_MatCode_SelectedIndexChanged(object sender, EventArgs e)
         {
             var matCode = cmb_MatCode.SelectedValue.ToString().Trim();
-            if (matCode.Equals("LCNZH"))
+            if (matCode.Equals("LWGSI"))
             {
                 txt_Height.Text = "400";
-            } 
+            }
+            else if (matCode.Equals("LCNZH"))
+            {
+                txt_Height.Text = "600";
+            }
             else if (matCode.Equals("LWGZH")) 
             {
                 txt_Height.Text = "800";
