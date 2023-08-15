@@ -311,13 +311,18 @@ namespace UACSPopupForm
                         column.DataPropertyName = columnsName[i];
                         column.Name = columnsName[i];
                         column.HeaderText = headerText[i];
+                        if (i > 0)
+                        {
+                            column.Width = 80;
+                            column.ReadOnly = true;
+                        }
                         if (columnsName[i].Equals("FROM_STOCK_NO"))
                         {
                             column.ReadOnly = false;
                         }
                         else if (columnsName[i].Equals("TO_STOCK_NO")) 
                         {
-                            column.ReadOnly = false;
+                            column.ReadOnly = true;
                         }
                         //else if (columnsName[i].Equals("REQ_WEIGHT"))
                         //{
@@ -331,21 +336,20 @@ namespace UACSPopupForm
                         //{
                         //    column.ReadOnly = true;
                         //}                        
-                        if (i > 0)
-                        {
-                            column.Width = 80;
-                        }
                         if (columnsName[i].Equals("START_TIME"))
                         {
                             column.Width = 125;
+                            column.ReadOnly = true;
                         }
                         if (columnsName[i].Equals("UPD_TIME"))
                         {
                             column.Width = 125;
+                            column.ReadOnly = true;
                         }
                         if (columnsName[i].Equals("REC_TIME"))
                         {
                             column.Width = 125;
+                            column.ReadOnly = true;
                         }
                         if (columnsName[i].Equals("MAT_CODE"))
                         {
@@ -413,7 +417,9 @@ namespace UACSPopupForm
                         DataTable dt = TotalDT.Clone();
                         var count = 0;
                         var isTrue = false;
-                        var orderNo = "";
+                        var orderNo = ""; 
+                        var planNo = string.Empty;
+                        var msg = string.Empty;
                         foreach (DataGridViewRow dgr in dgvStowageMessage.Rows)
                         {
                             isTrue = false;
@@ -433,18 +439,21 @@ namespace UACSPopupForm
                                         var dd = dgr.Cells["MAT_CNAME"].Value.ToString();
                                         count++;
                                         isTrue = true;
+                                        msg += "  物料：" + dgr.Cells["MAT_CNAME"].Value.ToString() + " 旧物料：" + Initdgr["MAT_CNAME"].ToString();
                                     }
                                     if (!dgr.Cells["REQ_WEIGHT"].Value.ToString().Equals(Initdgr["REQ_WEIGHT"].ToString()))
                                     {
                                         //要求重量
                                         count++;
                                         isTrue = true;
+                                        msg += "  要求重量：" + dgr.Cells["REQ_WEIGHT"].Value.ToString() + " 旧要求重量：" + Initdgr["REQ_WEIGHT"].ToString();
                                     }
                                     if (!dgr.Cells["ACT_WEIGHT"].Value.ToString().Equals(Initdgr["ACT_WEIGHT"].ToString()))
                                     {
                                         //实绩重量
                                         count++;
                                         isTrue = true;
+                                        msg += "  实绩重量：" + dgr.Cells["ACT_WEIGHT"].Value.ToString() + " 旧实绩重量：" + Initdgr["ACT_WEIGHT"].ToString();
                                     }
                                     if (!dgr.Cells["FROM_STOCK_NO"].Value.ToString().Equals(Initdgr["FROM_STOCK_NO"].ToString()))
                                     {
@@ -457,6 +466,7 @@ namespace UACSPopupForm
                                         //落料位
                                         count++;
                                         isTrue = true;
+                                        msg += "  落料位：" + dgr.Cells["TO_STOCK_NO"].Value.ToString() + " 旧落料位：" + Initdgr["TO_STOCK_NO"].ToString();
                                     }
                                 }
                             }
@@ -490,8 +500,8 @@ namespace UACSPopupForm
                             MessageBoxButtons btn2 = MessageBoxButtons.OK;
                             DialogResult drmsg2 = MessageBox.Show("保存失败，无数据更改！", "提示", btn, MessageBoxIcon.Warning);
                             return;
-                        }
-                        
+                        }                        
+
                         foreach (DataRow dr in dt.Rows)
                         {
                             string ExeSql = @" UPDATE UACS_ORDER_QUEUE SET  ";
@@ -520,11 +530,12 @@ namespace UACSPopupForm
                             //ExeSql += " AND ORDER_GROUP_NO = " + Convert.ToInt32(dr["ORDER_GROUP_NO"]) + " ; ";
                             //planNo = planNo + dr["PLAN_NO"] + ",";
                             orderNo = orderNo + dr["ORDER_NO"] + ",";
+                            planNo = dr["PLAN_NO"].ToString();
                             DB2Connect.DBHelper.ExecuteNonQuery(ExeSql);
                         }
 
                         //DB2Connect.DBHelper.ExecuteNonQuery(sql);
-                        ParkClassLibrary.HMILogger.WriteLog("停车位详细", "指令号：" + orderNo, ParkClassLibrary.LogLevel.Info, this.Text);
+                        ParkClassLibrary.HMILogger.WriteLog("停车位详细", "更改数据：计划号：" + planNo + " 信息：" + msg, ParkClassLibrary.LogLevel.Info, this.Text);
                         Refurbish(); //刷新页面
                     }
                 }
@@ -866,7 +877,7 @@ namespace UACSPopupForm
 
                         tagDP.SetData("EV_L3MSG_SND_BHKI02", Data);
                         DialogResult dr = MessageBox.Show("停车位详细实绩发送成功！", "提示", MessageBoxButtons.OK);
-                        HMILogger.WriteLog("停车位详细实绩发送", "实绩发送：" + Data, ParkClassLibrary.LogLevel.Info, this.Text);
+                        HMILogger.WriteLog("停车位详细", "实绩发送：" + Data, ParkClassLibrary.LogLevel.Info, this.Text);
                     }
                 }
                 isPopupMessage = false;

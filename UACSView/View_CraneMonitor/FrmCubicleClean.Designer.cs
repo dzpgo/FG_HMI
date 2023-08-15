@@ -167,9 +167,9 @@
             this.txt_Height.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold);
             this.txt_Height.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txt_Height.Location = new System.Drawing.Point(195, 386);
+            this.txt_Height.MaxLength = 4;
             this.txt_Height.Multiline = true;
             this.txt_Height.Name = "txt_Height";
-            this.txt_Height.ReadOnly = true;
             this.txt_Height.Size = new System.Drawing.Size(184, 32);
             this.txt_Height.TabIndex = 4;
             this.txt_Height.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Height_KeyPress);

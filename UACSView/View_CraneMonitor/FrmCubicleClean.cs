@@ -244,7 +244,17 @@ namespace UACSView.View_CraneMonitor
             }
             if (string.IsNullOrEmpty(txt_Height.Text.Trim()))
             {
-                MessageBox.Show("重量信息不正确!");
+                MessageBox.Show("失败，重量信息不正确!");
+                return;
+            }
+            if (Convert.ToInt32(txt_Height.Text.Trim()) >= 1500)
+            {
+                MessageBox.Show("失败，重量不能大于等于1500毫米!");
+                return;
+            }
+            if (Convert.ToInt32(txt_Height.Text.Trim()) <= 100)
+            {
+                MessageBox.Show("失败，重量不能少于等于100毫米!");
                 return;
             }
             var sqlOrderQueue = @"SELECT PLAN_NO,ORDER_NO,ORDER_GROUP_NO,CRANE_NO,MAT_CODE,CMD_STATUS,REC_TIME FROM UACS_ORDER_QUEUE WHERE TO_STOCK_NO = '{0}' AND CMD_STATUS IN ('0', '3');";

@@ -111,7 +111,7 @@ namespace UACSView
                 }
                 strSql += " and a.ALARM_TIME>= " + DateNormal_ToString(timeStart);
                 strSql += " and a.ALARM_TIME<= " + DateNormal_ToString(timeEnd);
-                strSql += " Order By a.ALARM_TIME ";
+                strSql += " Order By a.ALARM_TIME DESC";
                 strSql += " ) tab ) WHERE ROWNUM BETWEEN ((" + currentPage + " - 1) * " + this.ucPageDemo.PageSize + ") + 1 AND " + currentPage + " *  " + this.ucPageDemo.PageSize;
 
                 DataTable dtResult = new DataTable();
@@ -323,30 +323,6 @@ namespace UACSView
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
-                DialogResult result = saveFileDialog1.ShowDialog();
-                if (result != DialogResult.OK)
-                {
-                    return;
-                }
-
-                this.Invoke(new MethodInvoker(delegate ()
-                {
-
-                    Export2Excel(GridAlarmLog, saveFileDialog1.FileName);
-
-                }));
-                ParkClassLibrary.HMILogger.WriteLog("报警信息管理", "导出", ParkClassLibrary.LogLevel.Info, this.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
 
         private void BindComboBox(ComboBox comBox)
         {
@@ -640,5 +616,29 @@ namespace UACSView
             GetAnnualTime();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                DialogResult result = saveFileDialog1.ShowDialog();
+                if (result != DialogResult.OK)
+                {
+                    return;
+                }
+
+                this.Invoke(new MethodInvoker(delegate ()
+                {
+
+                    Export2Excel(GridAlarmLog, saveFileDialog1.FileName);
+
+                }));
+                ParkClassLibrary.HMILogger.WriteLog("报警信息管理", "导出", ParkClassLibrary.LogLevel.Info, this.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
