@@ -70,7 +70,7 @@
             this.plParking.Dock = System.Windows.Forms.DockStyle.Top;
             this.plParking.Location = new System.Drawing.Point(0, 0);
             this.plParking.Name = "plParking";
-            this.plParking.Size = new System.Drawing.Size(1269, 563);
+            this.plParking.Size = new System.Drawing.Size(1302, 637);
             this.plParking.TabIndex = 0;
             // 
             // dgvCraneOder
@@ -99,12 +99,12 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvCraneOder.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCraneOder.EnableHeadersVisualStyles = false;
-            this.dgvCraneOder.Location = new System.Drawing.Point(12, 322);
+            this.dgvCraneOder.Location = new System.Drawing.Point(12, 382);
             this.dgvCraneOder.Name = "dgvCraneOder";
             this.dgvCraneOder.RowHeadersVisible = false;
             this.dgvCraneOder.RowHeadersWidth = 62;
             this.dgvCraneOder.RowTemplate.Height = 23;
-            this.dgvCraneOder.Size = new System.Drawing.Size(1245, 229);
+            this.dgvCraneOder.Size = new System.Drawing.Size(1278, 252);
             this.dgvCraneOder.TabIndex = 10;
             // 
             // label2
@@ -113,7 +113,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(16, 299);
+            this.label2.Location = new System.Drawing.Point(16, 359);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(329, 20);
             this.label2.TabIndex = 9;
@@ -150,7 +150,7 @@
             this.dgvStowageMessage.RowHeadersVisible = false;
             this.dgvStowageMessage.RowHeadersWidth = 62;
             this.dgvStowageMessage.RowTemplate.Height = 23;
-            this.dgvStowageMessage.Size = new System.Drawing.Size(1245, 258);
+            this.dgvStowageMessage.Size = new System.Drawing.Size(1278, 328);
             this.dgvStowageMessage.TabIndex = 8;
             this.dgvStowageMessage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStowageMessage_CellContentClick);
             this.dgvStowageMessage.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvStowageMessage_CellPainting);
@@ -163,7 +163,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(16, 26);
+            this.label1.Location = new System.Drawing.Point(16, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(343, 20);
             this.label1.TabIndex = 0;
@@ -174,7 +174,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(16, 579);
+            this.label3.Location = new System.Drawing.Point(12, 653);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 22);
             this.label3.TabIndex = 1;
@@ -185,7 +185,7 @@
             this.lblPacking.AutoSize = true;
             this.lblPacking.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblPacking.ForeColor = System.Drawing.Color.Black;
-            this.lblPacking.Location = new System.Drawing.Point(87, 579);
+            this.lblPacking.Location = new System.Drawing.Point(83, 653);
             this.lblPacking.Name = "lblPacking";
             this.lblPacking.Size = new System.Drawing.Size(70, 22);
             this.lblPacking.TabIndex = 2;
@@ -196,7 +196,7 @@
             this.lblCarNo.AutoSize = true;
             this.lblCarNo.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblCarNo.ForeColor = System.Drawing.Color.Black;
-            this.lblCarNo.Location = new System.Drawing.Point(212, 579);
+            this.lblCarNo.Location = new System.Drawing.Point(208, 653);
             this.lblCarNo.Name = "lblCarNo";
             this.lblCarNo.Size = new System.Drawing.Size(70, 22);
             this.lblCarNo.TabIndex = 4;
@@ -207,7 +207,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(157, 579);
+            this.label6.Location = new System.Drawing.Point(153, 653);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 22);
             this.label6.TabIndex = 3;
@@ -218,7 +218,7 @@
             this.lblCarStatus.AutoSize = true;
             this.lblCarStatus.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblCarStatus.ForeColor = System.Drawing.Color.Black;
-            this.lblCarStatus.Location = new System.Drawing.Point(506, 579);
+            this.lblCarStatus.Location = new System.Drawing.Point(502, 653);
             this.lblCarStatus.Name = "lblCarStatus";
             this.lblCarStatus.Size = new System.Drawing.Size(70, 22);
             this.lblCarStatus.TabIndex = 6;
@@ -229,7 +229,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(449, 579);
+            this.label8.Location = new System.Drawing.Point(445, 653);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 22);
             this.label8.TabIndex = 5;
@@ -240,7 +240,7 @@
             this.lblCarType.AutoSize = true;
             this.lblCarType.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblCarType.ForeColor = System.Drawing.Color.Black;
-            this.lblCarType.Location = new System.Drawing.Point(376, 579);
+            this.lblCarType.Location = new System.Drawing.Point(372, 653);
             this.lblCarType.Name = "lblCarType";
             this.lblCarType.Size = new System.Drawing.Size(70, 22);
             this.lblCarType.TabIndex = 8;
@@ -251,7 +251,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(287, 579);
+            this.label5.Location = new System.Drawing.Point(283, 653);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 22);
             this.label5.TabIndex = 7;
@@ -262,7 +262,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(577, 579);
+            this.label4.Location = new System.Drawing.Point(573, 653);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(90, 22);
             this.label4.TabIndex = 5;
@@ -273,7 +273,7 @@
             this.lb_REQ_WEIGHT.AutoSize = true;
             this.lb_REQ_WEIGHT.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lb_REQ_WEIGHT.ForeColor = System.Drawing.Color.Black;
-            this.lb_REQ_WEIGHT.Location = new System.Drawing.Point(659, 579);
+            this.lb_REQ_WEIGHT.Location = new System.Drawing.Point(655, 653);
             this.lb_REQ_WEIGHT.Name = "lb_REQ_WEIGHT";
             this.lb_REQ_WEIGHT.Size = new System.Drawing.Size(70, 22);
             this.lb_REQ_WEIGHT.TabIndex = 6;
@@ -284,7 +284,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(730, 579);
+            this.label9.Location = new System.Drawing.Point(726, 653);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 22);
             this.label9.TabIndex = 5;
@@ -295,7 +295,7 @@
             this.lb_ACT_WEIGHT.AutoSize = true;
             this.lb_ACT_WEIGHT.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lb_ACT_WEIGHT.ForeColor = System.Drawing.Color.Black;
-            this.lb_ACT_WEIGHT.Location = new System.Drawing.Point(815, 579);
+            this.lb_ACT_WEIGHT.Location = new System.Drawing.Point(811, 653);
             this.lb_ACT_WEIGHT.Name = "lb_ACT_WEIGHT";
             this.lb_ACT_WEIGHT.Size = new System.Drawing.Size(70, 22);
             this.lb_ACT_WEIGHT.TabIndex = 6;
@@ -306,7 +306,7 @@
             this.bt_Refurbish.BackgroundImage = global::UACSPopupForm.Properties.Resources.bg_btn;
             this.bt_Refurbish.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.bt_Refurbish.ForeColor = System.Drawing.Color.White;
-            this.bt_Refurbish.Location = new System.Drawing.Point(1081, 569);
+            this.bt_Refurbish.Location = new System.Drawing.Point(1077, 643);
             this.bt_Refurbish.Name = "bt_Refurbish";
             this.bt_Refurbish.Size = new System.Drawing.Size(85, 40);
             this.bt_Refurbish.TabIndex = 9;
@@ -319,7 +319,7 @@
             this.bt_Save.BackgroundImage = global::UACSPopupForm.Properties.Resources.bg_btn;
             this.bt_Save.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.bt_Save.ForeColor = System.Drawing.Color.White;
-            this.bt_Save.Location = new System.Drawing.Point(1172, 569);
+            this.bt_Save.Location = new System.Drawing.Point(1168, 643);
             this.bt_Save.Name = "bt_Save";
             this.bt_Save.Size = new System.Drawing.Size(85, 40);
             this.bt_Save.TabIndex = 9;
@@ -332,7 +332,7 @@
             this.button1.BackgroundImage = global::UACSPopupForm.Properties.Resources.bg_btn;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(851, 569);
+            this.button1.Location = new System.Drawing.Point(847, 643);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 40);
             this.button1.TabIndex = 9;
@@ -346,7 +346,7 @@
             this.bt_Send.BackgroundImage = global::UACSPopupForm.Properties.Resources.bg_btn;
             this.bt_Send.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.bt_Send.ForeColor = System.Drawing.Color.White;
-            this.bt_Send.Location = new System.Drawing.Point(942, 569);
+            this.bt_Send.Location = new System.Drawing.Point(938, 643);
             this.bt_Send.Name = "bt_Send";
             this.bt_Send.Size = new System.Drawing.Size(85, 40);
             this.bt_Send.TabIndex = 9;
@@ -359,7 +359,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1269, 619);
+            this.ClientSize = new System.Drawing.Size(1302, 693);
             this.Controls.Add(this.bt_Refurbish);
             this.Controls.Add(this.bt_Save);
             this.Controls.Add(this.bt_Send);

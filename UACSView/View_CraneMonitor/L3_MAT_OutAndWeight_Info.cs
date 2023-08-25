@@ -3,11 +3,17 @@ using System.Data;
 using UACSDAL;
 using System.Windows.Forms;
 using Baosight.iSuperframe.Forms;
+using System.Drawing;
+using System.Windows.Forms.DataVisualization.Charting;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System.Security.Cryptography;
 
 namespace UACSView
 {
     /// <summary>
-    /// L3配送料计划
+    /// L3送料与配料计划
     /// </summary>
     public partial class L3_MAT_OutAndWeight_Info : FormBase
     {
@@ -32,16 +38,13 @@ namespace UACSView
             this.ucPage1.ChangedPageSizeEvent += ucPage1_ChangedPageSizeEvent;
             this.ucPage1.JumpPageEvent += ucPage1_JumpPageEvent;
 
-            this.ucPage2.CurrentPage = 1;
-            this.ucPage2.PageSize = Convert.ToInt32(this.ucPage2.CboPageSize.Text);
-            this.ucPage2.TotalPages = 1;
-            this.ucPage2.ClickPageButtonEvent += ucPage2_ClickPageButtonEvent;
-            this.ucPage2.ChangedPageSizeEvent += ucPage2_ChangedPageSizeEvent;
-            this.ucPage2.JumpPageEvent += ucPage2_JumpPageEvent;
             //L3送料计划
             getL3MatWeightInfo(1);
-            //L3配料计划
-            getL3MatOutInfo(1);
+            MatPie();
+            MatPieData();
+            MatColumn();
+            MatColumnData();
+            MatSpline();
         }
 
         /// <summary>
@@ -53,8 +56,11 @@ namespace UACSView
         {
             //L3送料计划
             getL3MatWeightInfo(1);
-            //L3配料计划
-            getL3MatOutInfo(1);
+            //MatPie();
+            MatPieData();
+            //MatColumn();
+            MatColumnData();
+            MatSpline();
         }
 
         #region L3送料计划
@@ -63,7 +69,7 @@ namespace UACSView
         /// </summary>
         /// <param name="currentPage">当前页面</param>
         private void getL3MatWeightInfo(int currentPage)
-        {
+        {           
             string work_seqNo = this.textWORK_SEQ_NO.Text.Trim();  //计划号
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");  //开始时间
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");  //结束时间
@@ -104,232 +110,508 @@ namespace UACSView
         }
         #endregion
 
-        #region L3配料计划
-        /// <summary>
-        /// L3配料计划查询数据
+        #region 统计图形
+
+        // <summary>
+        /// 初始化图表
         /// </summary>
-        /// <param name="currentPage">当前页面</param>
-        private void getL3MatOutInfo(int currentPage)
+        private void InitChart()
         {
-            DataTable dtResult = InitDataTable(dataGridView2);
-            string planNo = this.textPLAN_NO.Text.Trim();  //计划号
+
+        }
+        /// <summary>
+        /// 饼状图 物料进料次数分析
+        /// </summary>
+        private void MatPie()
+        {
+            #region 饼状图
+            string[] x = new string[] { "成都大队", "广东大队", "广西大队", "云南大队", "上海大队", "苏州大队", "深圳大队", "北京大队", "湖北大队", "湖南大队", "重庆大队", "辽宁大队" };
+            double[] y = new double[] { 589, 598, 445, 654, 884, 457, 941, 574, 745, 854, 684, 257 };
+            string[] z = new string[] { "", "", "", "", "", "", "", "", "", "", "", "" };
+            //标题
+            //this.chart1.ChartAreas.Clear();
+            chart1.Titles.Add("进料次数分析");
+            chart1.Titles[0].ForeColor = Color.Blue;
+            chart1.Titles[0].Font = new Font("微软雅黑", 12f, FontStyle.Regular);
+            chart1.Titles[0].Alignment = ContentAlignment.TopCenter;
+            //chart1.Titles[0].Visible = false;
+            chart1.Titles.Add("合计： 次");
+            chart1.Titles[1].ForeColor = Color.Blue;
+            chart1.Titles[1].Font = new Font("微软雅黑", 8f, FontStyle.Regular);
+            chart1.Titles[1].Alignment = ContentAlignment.TopRight;
+            //chart1.Titles[1].Visible = false;
+
+            //控件背景
+            chart1.BackColor = Color.Transparent;
+            //图表区背景
+            chart1.ChartAreas[0].BackColor = Color.Transparent;
+            chart1.ChartAreas[0].BorderColor = Color.Transparent;
+            //X轴标签间距
+            chart1.ChartAreas[0].AxisX.Interval = 1;
+            chart1.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
+            chart1.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
+            chart1.ChartAreas[0].AxisX.TitleFont = new Font("微软雅黑", 14f, FontStyle.Regular);
+            chart1.ChartAreas[0].AxisX.TitleForeColor = Color.Blue;
+
+            //X坐标轴颜色
+            chart1.ChartAreas[0].AxisX.LineColor = ColorTranslator.FromHtml("#38587a");
+            chart1.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Blue;
+            chart1.ChartAreas[0].AxisX.LabelStyle.Font = new Font("微软雅黑", 10f, FontStyle.Regular);
+            //X坐标轴标题
+            chart1.ChartAreas[0].AxisX.Title = "数量 (次)";
+            chart1.ChartAreas[0].AxisX.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
+            chart1.ChartAreas[0].AxisX.TitleForeColor = Color.Blue;
+            chart1.ChartAreas[0].AxisX.TextOrientation = TextOrientation.Horizontal;
+            chart1.ChartAreas[0].AxisX.ToolTip = "数量 (次)";
+            //X轴网络线条
+            chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
+            chart1.ChartAreas[0].AxisX.MajorGrid.LineColor = ColorTranslator.FromHtml("#2c4c6d");
+
+            //Y坐标轴颜色
+            chart1.ChartAreas[0].AxisY.LineColor = ColorTranslator.FromHtml("#38587a");
+            chart1.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Blue;
+            chart1.ChartAreas[0].AxisY.LabelStyle.Font = new Font("微软雅黑", 10f, FontStyle.Regular);
+            //Y坐标轴标题
+            chart1.ChartAreas[0].AxisY.Title = "数量 (次)";
+            chart1.ChartAreas[0].AxisY.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
+            chart1.ChartAreas[0].AxisY.TitleForeColor = Color.Blue;
+            chart1.ChartAreas[0].AxisY.TextOrientation = TextOrientation.Rotated270;
+            chart1.ChartAreas[0].AxisY.ToolTip = "数量 (次)";
+            //Y轴网格线条
+            chart1.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
+            chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = ColorTranslator.FromHtml("#2c4c6d");
+
+            chart1.ChartAreas[0].AxisY2.LineColor = Color.Transparent;
+
+            //背景渐变
+            chart1.ChartAreas[0].BackGradientStyle = GradientStyle.None;
+
+            //chart1.Legends.Clear();
+            //图例样式
+            Legend legend2 = new Legend("#VALX");
+            legend2.Title = "图例";
+            legend2.TitleBackColor = Color.Transparent;
+            legend2.BackColor = Color.Transparent;
+            legend2.TitleForeColor = Color.Blue;
+            legend2.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
+            legend2.Font = new Font("微软雅黑", 8f, FontStyle.Regular);
+            legend2.ForeColor = Color.Blue;
+
+            chart1.Series[0].XValueType = ChartValueType.String;  //设置X轴上的值类型
+            //chart1.Series[0].Label = "#VAL";                //设置显示X Y的值
+            chart1.Series[0].Label = "#PERCENT{P2}";
+            chart1.Series[0].LabelForeColor = Color.Blue;
+            chart1.Series[0].ToolTip = "#VALX：#VAL (次)";     //鼠标移动到对应点显示数值
+            chart1.Series[0].ChartType = SeriesChartType.Pie;    //图类型(折线)
+
+            chart1.Series[0].Color = Color.Lime;
+            chart1.Series[0].LegendText = legend2.Name;
+            chart1.Series[0].IsValueShownAsLabel = true;
+            chart1.Series[0].LabelForeColor = Color.Blue;
+            chart1.Series[0].CustomProperties = "DrawingStyle = Cylinder";
+            chart1.Series[0].CustomProperties = "PieLabelStyle = Outside";
+            chart1.Legends.Add(legend2);
+            chart1.Legends[0].Position.Auto = true;
+            chart1.Series[0].IsValueShownAsLabel = true;
+            //是否显示图例
+            chart1.Series[0].IsVisibleInLegend = true;
+            chart1.Series[0].ShadowOffset = 0;
+
+            //饼图折线
+            chart1.Series[0]["PieLineColor"] = "Blue";
+            //绑定数据
+            //chart1.Series[0].Points.DataBindXY(CodeNameList, NumberList);
+            chart1.Series[0].Points[0].Color = Color.Blue;
+            //绑定颜色
+            chart1.Series[0].Palette = ChartColorPalette.BrightPastel;
+
+            #endregion
+        }
+        /// <summary>
+        /// 饼状图数据
+        /// </summary>
+        private void MatPieData()
+        {
+            #region 访问数据库库
+            string[] CodeNameList = new string[] { };
+            double[] NumberList = new double[] { };
+            List<string> codeNames = CodeNameList.ToList();
+            List<double> numbers = NumberList.ToList();
+            string work_seqNo = this.textWORK_SEQ_NO.Text.Trim();  //计划号
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");  //开始时间
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");  //结束时间
-            string sqlText = @"SELECT * FROM (SELECT COUNT(1) OVER () AS TotalRows2,ROW_NUMBER() OVER () AS ROWNUM2,tab.* FROM ( ";
-            sqlText += @"SELECT WORK_SEQ_NO, OPER_FLAG, PLAN_NO, BOF_NO, CAR_NO, MAT_CODE_1, '' AS MAT_CNAME_1, WEIGHT_1, MAT_CODE_2,  '' AS MAT_CNAME_2, WEIGHT_2, MAT_CODE_3, '' AS MAT_CNAME_3, WEIGHT_3, MAT_CODE_4,  '' AS MAT_CNAME_4, WEIGHT_4, MAT_CODE_5,  '' AS MAT_CNAME_5, WEIGHT_5, MAT_CODE_6,  '' AS MAT_CNAME_6, WEIGHT_6, MAT_CODE_7,  '' AS MAT_CNAME_7, WEIGHT_7, MAT_CODE_8,  '' AS MAT_CNAME_8, WEIGHT_8, MAT_CODE_9,  '' AS MAT_CNAME_9, WEIGHT_9, MAT_CODE_10,  '' AS MAT_CNAME_10, WEIGHT_10, PLAN_STATUS, REC_TIME, UPD_TIME, CYCLE_COUNT, MAT_NET_WT, WT_TIME FROM UACSAPP.UACS_L3_MAT_OUT_INFO ";
-            sqlText += "WHERE REC_TIME > '{0}' and REC_TIME < '{1}' ";
+            var sqlText = @"SELECT C.MAT_CNAME AS CodeName,COUNT(0) AS Number ";
+            sqlText += "FROM UACSAPP.UACS_L3_MAT_WEIGHT_INFO A ";
+            sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_PROD_CODE ";
+            sqlText += "WHERE A.REC_TIME > '{0}' and A.REC_TIME < '{1}' ";
             sqlText = string.Format(sqlText, recTime1, recTime2);
-
-            if (!string.IsNullOrEmpty(planNo))
+            if (!string.IsNullOrEmpty(work_seqNo))
             {
-                sqlText = string.Format("{0} and PLAN_NO LIKE '%{1}%' ", sqlText, planNo);
+                sqlText = string.Format("{0} and A.WORK_SEQ_NO LIKE '%{1}%' ", sqlText, work_seqNo);
             }
-            //按 NO>流水号>记录时间>更新时间 降序
-            sqlText += " ORDER BY WORK_SEQ_NO DESC,PLAN_NO DESC,REC_TIME DESC,UPD_TIME DESC ";
-            sqlText += " ) tab ) WHERE ROWNUM BETWEEN ((" + currentPage + " - 1) * " + this.ucPage2.PageSize + ") + 1 AND " + currentPage + " *  " + this.ucPage2.PageSize;
-            DataTable tbL3_MAT_OUT_INFO = new DataTable();
-            // 执行
+            sqlText += "AND A.MAT_PROD_CODE IN ( SELECT MAT_CODE FROM UACS_L3_MAT_INFO) ";
+            //按 NO>>记录时间>更新时间 降序
+            sqlText += "GROUP BY C.MAT_CNAME HAVING COUNT(C.MAT_CNAME) > 1 ";
             using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
             {
-                DataColumn col;
-                DataRow row;
-                for (int i = 0; i < rdr.FieldCount; i++)
-                {
-                    col = new DataColumn();
-                    col.ColumnName = rdr.GetName(i);
-                    col.DataType = rdr.GetFieldType(i);
-                    tbL3_MAT_OUT_INFO.Columns.Add(col);
-                }
-
                 while (rdr.Read())
                 {
-
-                    row = tbL3_MAT_OUT_INFO.NewRow();
-                    for (int i = 0; i < rdr.FieldCount; i++)
+                    if (rdr["CodeName"] != System.DBNull.Value)
                     {
-                        row[i] = rdr[i];
+                        codeNames.Add(rdr["CodeName"].ToString());
                     }
-                    tbL3_MAT_OUT_INFO.Rows.Add(row);
-                    //tbL3_MAT_OUT_INFO.Load(rdr);
+                    if (rdr["Number"] != System.DBNull.Value)
+                    {
+                        numbers.Add(Convert.ToDouble(rdr["Number"]));
+                    }
                 }
             }
-            DataTable dtMAT_INFO = GetMAT_INFO();
-            foreach (DataRow dataRow in tbL3_MAT_OUT_INFO.Rows)
+            if (codeNames.Count > 0)
             {
-
-                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_1"].ToString()))
+                CodeNameList = codeNames.ToArray();
+            }
+            double numberTotal = 0;
+            if (numbers.Count > 0)
+            {
+                NumberList = numbers.ToArray();
+                foreach (var number in NumberList)
                 {
-                    var MAT_CNAME = dataRow["MAT_CNAME_1"].ToString();
-                    foreach (DataRow matRow in dtMAT_INFO.Rows)
-                    {
-                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_1"].ToString()) && dataRow["MAT_CODE_1"].ToString().Equals(matRow["MAT_CODE"].ToString()))
-                        {
-                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
-                        }
-                    }
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["ROWNUM2"].ToString(), dataRow["TotalRows2"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_1"].ToString(), MAT_CNAME, dataRow["WEIGHT_1"].ToString(), dataRow["REC_TIME"].ToString());
-                }
-                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_2"].ToString()))
-                {
-                    var MAT_CNAME = dataRow["MAT_CNAME_2"].ToString();
-                    foreach (DataRow matRow in dtMAT_INFO.Rows)
-                    {
-                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_2"].ToString()) && dataRow["MAT_CODE_2"].ToString().Equals(matRow["MAT_CODE"].ToString()))
-                        {
-                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
-                        }
-                    }
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["ROWNUM2"].ToString(), dataRow["TotalRows2"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_2"].ToString(), MAT_CNAME, dataRow["WEIGHT_2"].ToString(), dataRow["REC_TIME"].ToString());
-                }
-                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_3"].ToString()))
-                {
-                    var MAT_CNAME = dataRow["MAT_CNAME_3"].ToString();
-                    foreach (DataRow matRow in dtMAT_INFO.Rows)
-                    {
-                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_3"].ToString()) && dataRow["MAT_CODE_3"].ToString().Equals(matRow["MAT_CODE"].ToString()))
-                        {
-                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
-                        }
-                    }
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["ROWNUM2"].ToString(), dataRow["TotalRows2"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_3"].ToString(), MAT_CNAME, dataRow["WEIGHT_3"].ToString(), dataRow["REC_TIME"].ToString());
-                }
-                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_4"].ToString()))
-                {
-                    var MAT_CNAME = dataRow["MAT_CNAME_4"].ToString();
-                    foreach (DataRow matRow in dtMAT_INFO.Rows)
-                    {
-                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_4"].ToString()) && dataRow["MAT_CODE_4"].ToString().Equals(matRow["MAT_CODE"].ToString()))
-                        {
-                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
-                        }
-                    }
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["ROWNUM2"].ToString(), dataRow["TotalRows2"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_4"].ToString(), MAT_CNAME, dataRow["WEIGHT_4"].ToString(), dataRow["REC_TIME"].ToString());
-                }
-                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_5"].ToString()))
-                {
-                    var MAT_CNAME = dataRow["MAT_CNAME_5"].ToString();
-                    foreach (DataRow matRow in dtMAT_INFO.Rows)
-                    {
-                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_5"].ToString()) && dataRow["MAT_CODE_5"].ToString().Equals(matRow["MAT_CODE"].ToString()))
-                        {
-                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
-                        }
-                    }
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["ROWNUM2"].ToString(), dataRow["TotalRows2"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_5"].ToString(), MAT_CNAME, dataRow["WEIGHT_5"].ToString(), dataRow["REC_TIME"].ToString());
-                }
-                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_6"].ToString()))
-                {
-                    var MAT_CNAME = dataRow["MAT_CNAME_6"].ToString();
-                    foreach (DataRow matRow in dtMAT_INFO.Rows)
-                    {
-                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_6"].ToString()) && dataRow["MAT_CODE_6"].ToString().Equals(matRow["MAT_CODE"].ToString()))
-                        {
-                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
-                        }
-                    }
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["ROWNUM2"].ToString(), dataRow["TotalRows2"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_6"].ToString(), MAT_CNAME, dataRow["WEIGHT_6"].ToString(), dataRow["REC_TIME"].ToString());
-                }
-                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_7"].ToString()))
-                {
-                    var MAT_CNAME = dataRow["MAT_CNAME_7"].ToString();
-                    foreach (DataRow matRow in dtMAT_INFO.Rows)
-                    {
-                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_7"].ToString()) && dataRow["MAT_CODE_7"].ToString().Equals(matRow["MAT_CODE"].ToString()))
-                        {
-                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
-                        }
-                    }
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["ROWNUM2"].ToString(), dataRow["TotalRows2"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_7"].ToString(), MAT_CNAME, dataRow["WEIGHT_7"].ToString(), dataRow["REC_TIME"].ToString());
-                }
-                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_8"].ToString()))
-                {
-                    var MAT_CNAME = dataRow["MAT_CNAME_8"].ToString();
-                    foreach (DataRow matRow in dtMAT_INFO.Rows)
-                    {
-                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_8"].ToString()) && dataRow["MAT_CODE_8"].ToString().Equals(matRow["MAT_CODE"].ToString()))
-                        {
-                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
-                        }
-                    }
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["ROWNUM2"].ToString(), dataRow["TotalRows2"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_8"].ToString(), MAT_CNAME, dataRow["WEIGHT_8"].ToString(), dataRow["REC_TIME"].ToString());
-                }
-                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_9"].ToString()))
-                {
-                    var MAT_CNAME = dataRow["MAT_CNAME_9"].ToString();
-                    foreach (DataRow matRow in dtMAT_INFO.Rows)
-                    {
-                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_9"].ToString()) && dataRow["MAT_CODE_9"].ToString().Equals(matRow["MAT_CODE"].ToString()))
-                        {
-                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
-                        }
-                    }
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["ROWNUM2"].ToString(), dataRow["TotalRows2"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_9"].ToString(), MAT_CNAME, dataRow["WEIGHT_9"].ToString(), dataRow["REC_TIME"].ToString());
-                }
-                if (!string.IsNullOrEmpty(dataRow["MAT_CODE_10"].ToString()))
-                {
-                    var MAT_CNAME = dataRow["MAT_CNAME_10"].ToString();
-                    foreach (DataRow matRow in dtMAT_INFO.Rows)
-                    {
-                        if (!string.IsNullOrEmpty(dataRow["MAT_CODE_10"].ToString()) && dataRow["MAT_CODE_10"].ToString().Equals(matRow["MAT_CODE"].ToString()))
-                        {
-                            MAT_CNAME = matRow["MAT_CNAME"].ToString();
-                        }
-                    }
-                    dtResult.Rows.Add(dataRow["PLAN_NO"].ToString(), dataRow["ROWNUM2"].ToString(), dataRow["TotalRows2"].ToString(), dataRow["CAR_NO"].ToString(), dataRow["MAT_CODE_10"].ToString(), MAT_CNAME, dataRow["WEIGHT_10"].ToString(), dataRow["REC_TIME"].ToString());
+                    numberTotal += number;
                 }
             }
-
-            dataGridView2.DataSource = GetDataPage2(dtResult, currentPage);
+            #endregion
+            foreach (Series series in this.chart1.Series)
+            {
+                series.Points.Clear();
+            }
+            chart1.Titles[1].Text = "合计：" + numberTotal + " 次";
+            chart1.Series[0].Points.DataBindXY(CodeNameList, NumberList);
         }
 
         /// <summary>
-        /// 获取废钢物料名
+        /// 柱状图 物料进料重量分析
         /// </summary>
-        /// <param name="showAll"></param>
-        /// <returns></returns>
-        public DataTable GetMAT_INFO()
+        private void MatColumn()
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("MAT_CODE");
-            dt.Columns.Add("MAT_CNAME");
-            //准备数据
-            string sqlText = @"SELECT MAT_CODE,MAT_CNAME FROM UACSAPP.UACS_L3_MAT_INFO ";
-            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
+            #region 柱状图
+            string[] a = new string[] { "南山大队", "福田大队", "罗湖大队", "宝安大队", "指挥处", };
+            double[] b = new double[] { 541, 574, 345, 854, 257 };
+            //this.chart2.ChartAreas.Clear();
+            //标题
+            chart2.Titles.Add("进料重量分析");
+            chart2.Titles[0].ForeColor = Color.Blue;
+            chart2.Titles[0].Font = new Font("微软雅黑", 12f, FontStyle.Regular);
+            chart2.Titles[0].Alignment = ContentAlignment.TopCenter;
+            chart2.Titles.Add("合计：公斤");
+            chart2.Titles[1].ForeColor = Color.Blue;
+            chart2.Titles[1].Font = new Font("微软雅黑", 8f, FontStyle.Regular);
+            chart2.Titles[1].Alignment = ContentAlignment.TopRight;
+
+            //控件背景
+            chart2.BackColor = Color.Transparent;
+            //图表区背景
+            chart2.ChartAreas[0].BackColor = Color.Transparent;
+            chart2.ChartAreas[0].BorderColor = Color.Transparent;
+            //X轴标签间距
+            chart2.ChartAreas[0].AxisX.Interval = 1;
+            chart2.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
+            chart2.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
+            chart2.ChartAreas[0].AxisX.TitleFont = new Font("微软雅黑", 14f, FontStyle.Regular);
+            chart2.ChartAreas[0].AxisX.TitleForeColor = Color.Blue;
+
+            //X坐标轴颜色
+            chart2.ChartAreas[0].AxisX.LineColor = ColorTranslator.FromHtml("#38587a"); ;
+            chart2.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Blue;
+            chart2.ChartAreas[0].AxisX.LabelStyle.Font = new Font("微软雅黑", 10f, FontStyle.Regular);
+            //X坐标轴标题
+            //chart2.ChartAreas[0].AxisX.Title = "重量(宗)";
+            //chart2.ChartAreas[0].AxisX.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
+            //chart2.ChartAreas[0].AxisX.TitleForeColor = Color.Blue;
+            //chart2.ChartAreas[0].AxisX.TextOrientation = TextOrientation.Horizontal;
+            //chart2.ChartAreas[0].AxisX.ToolTip = "重量(宗)";
+            //X轴网络线条
+            chart2.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
+            chart2.ChartAreas[0].AxisX.MajorGrid.LineColor = ColorTranslator.FromHtml("#2c4c6d");
+
+            //Y坐标轴颜色
+            chart2.ChartAreas[0].AxisY.LineColor = ColorTranslator.FromHtml("#38587a");
+            chart2.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Blue;
+            chart2.ChartAreas[0].AxisY.LabelStyle.Font = new Font("微软雅黑", 10f, FontStyle.Regular);
+            //Y坐标轴标题
+            chart2.ChartAreas[0].AxisY.Title = "重量 (公斤)";
+            chart2.ChartAreas[0].AxisY.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
+            chart2.ChartAreas[0].AxisY.TitleForeColor = Color.Blue;
+            chart2.ChartAreas[0].AxisY.TextOrientation = TextOrientation.Rotated270;
+            chart2.ChartAreas[0].AxisY.ToolTip = "重量 (公斤)";
+            //Y轴网格线条
+            chart2.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
+            chart2.ChartAreas[0].AxisY.MajorGrid.LineColor = ColorTranslator.FromHtml("#2c4c6d");
+
+            chart2.ChartAreas[0].AxisY2.LineColor = Color.Transparent;
+            chart2.ChartAreas[0].BackGradientStyle = GradientStyle.TopBottom;
+            Legend legend = new Legend("legend");
+            legend.Title = "legendTitle";
+
+            chart2.Series[0].XValueType = ChartValueType.String;  //设置X轴上的值类型
+            chart2.Series[0].Label = "#VAL";                //设置显示X Y的值    
+            chart2.Series[0].LabelForeColor = Color.Blue;
+            chart2.Series[0].ToolTip = "#VALX：#VAL (公斤)";     //鼠标移动到对应点显示数值
+            chart2.Series[0].ChartType = SeriesChartType.Column;    //图类型(折线)
+
+
+            chart2.Series[0].Color = Color.Lime;
+            chart2.Series[0].LegendText = legend.Name;
+            chart2.Series[0].IsValueShownAsLabel = true;
+            chart2.Series[0].LabelForeColor = Color.Blue;
+            chart2.Series[0].CustomProperties = "DrawingStyle = Cylinder";
+            //chart2.Series[0].CustomProperties = "PieLabelStyle = Outside";
+            chart2.Legends.Add(legend);
+            chart2.Legends[0].Position.Auto = false;
+
+            //绑定数据
+            //chart2.Series[0].Points.DataBindXY(CodeNameList, MatWTList);
+            //chart2.Series[0].Points[0].Color = Color.Blue;
+            chart2.Series[0].Palette = ChartColorPalette.BrightPastel;
+
+            #endregion
+        }
+
+        /// <summary>
+        /// 柱状图数据
+        /// </summary>
+        private void MatColumnData()
+        {
+            #region 访问数据库库
+            string[] CodeNameList = new string[] { };
+            double[] MatWTList = new double[] { };
+            List<string> codeNames = CodeNameList.ToList();
+            List<double> MatWT = MatWTList.ToList();
+            string work_seqNo = this.textWORK_SEQ_NO.Text.Trim();  //计划号
+            string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");  //开始时间
+            string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");  //结束时间
+            var sqlText = @"SELECT C.MAT_CNAME AS CodeName,SUM(A.MAT_WT) AS MatWT ";
+            sqlText += "FROM UACSAPP.UACS_L3_MAT_WEIGHT_INFO A ";
+            sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_PROD_CODE ";
+            sqlText += "WHERE A.REC_TIME > '{0}' and A.REC_TIME < '{1}' ";
+            sqlText = string.Format(sqlText, recTime1, recTime2);
+            if (!string.IsNullOrEmpty(work_seqNo))
+            {
+                sqlText = string.Format("{0} and A.WORK_SEQ_NO LIKE '%{1}%' ", sqlText, work_seqNo);
+            }
+            sqlText += "AND A.MAT_PROD_CODE IN ( SELECT MAT_CODE FROM UACS_L3_MAT_INFO) ";
+            //按 NO>>记录时间>更新时间 降序
+            sqlText += "GROUP BY C.MAT_CNAME HAVING COUNT(C.MAT_CNAME) > 1 ";
+            using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
             {
                 while (rdr.Read())
                 {
-                    DataRow dr = dt.NewRow();
-                    dr["MAT_CODE"] = rdr["MAT_CODE"];
-                    dr["MAT_CNAME"] = rdr["MAT_CNAME"];
-                    dt.Rows.Add(dr);
+                    if (rdr["CodeName"] != System.DBNull.Value)
+                    {
+                        codeNames.Add(rdr["CodeName"].ToString());
+                    }
+                    if (rdr["MatWT"] != System.DBNull.Value)
+                    {
+                        MatWT.Add(Convert.ToDouble(rdr["MatWT"]));
+                    }
                 }
             }
-
-            return dt;
-        }
-
-        private DataTable InitDataTable(DataGridView datagridView)
-        {
-            DataTable dataTable = new DataTable();
-            foreach (DataGridViewColumn dgvColumn in datagridView.Columns)
+            if (codeNames.Count > 0)
             {
-                DataColumn dtColumn = new DataColumn();
-                if (!dgvColumn.GetType().Equals(typeof(DataGridViewCheckBoxColumn)))
+                CodeNameList = codeNames.ToArray();
+            }
+            double MatWTTotal = 0;
+            if (MatWT.Count > 0)
+            {
+                MatWTList = MatWT.ToArray();
+                foreach (var number in MatWTList)
                 {
-                    dtColumn.ColumnName = dgvColumn.Name.ToUpper();
-                    dtColumn.DataType = typeof(String);
-                    dataTable.Columns.Add(dtColumn);
+                    MatWTTotal += number;
                 }
-                else
+            }
+            #endregion
+            foreach (Series series in this.chart2.Series)
+            {
+                series.Points.Clear();
+            }
+            chart2.Titles[1].Text = "合计：" + MatWTTotal + " 公斤";
+            //chart2.Titles.Add("合计：" + MatWTTotal + " 公斤");
+            chart2.Series[0].Points.DataBindXY(CodeNameList, MatWTList);
+        }
+
+        /// <summary>
+        /// 折线图 物料进料重量分析
+        /// </summary>
+        private void MatSpline()
+        {
+            Dictionary<string, string> ChartCodeNameDictionary = new Dictionary<string, string>();
+            Dictionary<DateTime, DateTime> ChartTimeDictionary = new Dictionary<DateTime, DateTime>();
+            List<string> ChartCodeNameList = new List<string>();
+            List<DateTime> ChartTimeList = new List<DateTime>();
+            List<ChartDate> ChartDateList = new List<ChartDate>();
+
+            #region 访问数据库库
+            string work_seqNo = this.textWORK_SEQ_NO.Text.Trim();  //计划号
+            string recTime1 = dateTimePicker1_recTime.Value.Day.Equals(DateTime.Now.Day) ? this.dateTimePicker1_recTime.Value.AddDays(-5).ToString("yyyyMMdd000000") : this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");  //开始时间
+            string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");  //结束时间
+            var sqlText = @"SELECT DATE(A.REC_TIME) AS DaY, C.MAT_CNAME AS CodeName,SUM(A.MAT_WT) AS MatWT ";
+            sqlText += "FROM UACSAPP.UACS_L3_MAT_WEIGHT_INFO A ";
+            sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_PROD_CODE ";
+            sqlText += "WHERE A.REC_TIME BETWEEN '{0}' AND '{1}' ";
+            sqlText = string.Format(sqlText, recTime1, recTime2);
+            if (!string.IsNullOrEmpty(work_seqNo))
+            {
+                sqlText = string.Format("{0} AND A.WORK_SEQ_NO LIKE '%{1}%' ", sqlText, work_seqNo);
+            }
+            sqlText += "AND A.MAT_PROD_CODE IN (SELECT MAT_CODE FROM UACS_L3_MAT_INFO) ";
+            //按 NO>>记录时间>更新时间 降序
+            sqlText += "GROUP BY DATE(A.REC_TIME), C.MAT_CNAME ";
+            sqlText += "ORDER BY DaY, C.MAT_CNAME ";
+            using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
+            {
+                while (rdr.Read())
                 {
-                    dtColumn.ColumnName = dgvColumn.Name.ToUpper();
-                    //dtColumn.DataType = typeof(bool);
-                    dataTable.Columns.Add(dtColumn);
+                    ChartDate cd = new ChartDate();
+                    if (rdr["DaY"] != System.DBNull.Value)
+                    {
+                        cd.DaY = Convert.ToDateTime(rdr["DaY"]);
+                    }
+                    if (rdr["CodeName"] != System.DBNull.Value)
+                    {
+                        cd.CodeName = rdr["CodeName"].ToString();
+                    }
+                    if (rdr["MatWT"] != System.DBNull.Value)
+                    {
+                        cd.MatWT = Convert.ToDouble(rdr["MatWT"]);
+                    }
+
+                    ChartDateList.Add(cd);
+                    if (rdr["CodeName"] != System.DBNull.Value && !ChartCodeNameDictionary.ContainsKey(rdr["CodeName"].ToString()))
+                    {
+                        ChartCodeNameDictionary.Add(rdr["CodeName"].ToString(), rdr["CodeName"].ToString());
+                        ChartCodeNameList.Add(rdr["CodeName"].ToString());
+                    }
+                    if (rdr["DaY"] != System.DBNull.Value && !ChartTimeDictionary.ContainsKey(Convert.ToDateTime(rdr["DaY"])))
+                    {
+                        ChartTimeDictionary.Add(Convert.ToDateTime(rdr["DaY"]), Convert.ToDateTime(rdr["DaY"]));
+                        ChartTimeList.Add(Convert.ToDateTime(rdr["DaY"]));
+                    }
                 }
             }
 
-            return dataTable;
+            #endregion
+
+            try
+            {
+                //定义图表区域
+                this.chart3.ChartAreas.Clear();
+                ChartArea chartArea1 = new ChartArea("C3");
+                this.chart3.ChartAreas.Add(chartArea1);
+                //定义存储和显示点的容器
+                this.chart3.Series.Clear();
+                //Series series1 = new Series("S1");
+                //series1.ChartArea = "C1";
+                //this.chart3.Series.Add(series1);
+                //设置图表显示样式
+                this.chart3.ChartAreas[0].AxisY.Minimum = 0;
+                //this.chart3.ChartAreas[0].AxisY.Maximum = 1000;
+                this.chart3.ChartAreas[0].AxisX.Interval = 5;
+                this.chart3.ChartAreas[0].AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
+                this.chart3.ChartAreas[0].AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
+                //设置标题
+                this.chart3.Titles.Clear();
+                this.chart3.Titles.Add("S01");
+                this.chart3.Titles[0].Text = "XXX显示";
+                this.chart3.Titles[0].ForeColor = Color.Blue;
+                this.chart3.Titles[0].Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+                //设置图表显示样式
+                //this.chart3.Series[0].Color = Color.Red;
+
+                //控件背景
+                this.chart3.BackColor = Color.Transparent;
+                //图表区背景
+                this.chart3.ChartAreas[0].BackColor = Color.Transparent;
+                this.chart3.ChartAreas[0].BorderColor = Color.Transparent;
+                //X轴标签间距
+                this.chart3.ChartAreas[0].AxisX.Interval = 1;
+                this.chart3.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
+                this.chart3.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
+                this.chart3.ChartAreas[0].AxisX.TitleFont = new Font("微软雅黑", 14f, FontStyle.Regular);
+                this.chart3.ChartAreas[0].AxisX.TitleForeColor = Color.Blue;
+
+                //X坐标轴颜色
+                this.chart3.ChartAreas[0].AxisX.LineColor = ColorTranslator.FromHtml("#38587a");
+                this.chart3.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Blue;
+                this.chart3.ChartAreas[0].AxisX.LabelStyle.Font = new Font("微软雅黑", 10f, FontStyle.Regular);
+                //X坐标轴标题
+                this.chart3.ChartAreas[0].AxisX.Title = "日期 (天)";
+                this.chart3.ChartAreas[0].AxisX.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
+                this.chart3.ChartAreas[0].AxisX.TitleForeColor = Color.Blue;
+                this.chart3.ChartAreas[0].AxisX.TextOrientation = TextOrientation.Horizontal;
+                this.chart3.ChartAreas[0].AxisX.ToolTip = "日期 (天)";
+                //X轴网络线条
+                this.chart3.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
+                this.chart3.ChartAreas[0].AxisX.MajorGrid.LineColor = ColorTranslator.FromHtml("#2c4c6d");
+
+                //Y坐标轴颜色
+                this.chart3.ChartAreas[0].AxisY.LineColor = ColorTranslator.FromHtml("#38587a");
+                this.chart3.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Blue;
+                this.chart3.ChartAreas[0].AxisY.LabelStyle.Font = new Font("微软雅黑", 10f, FontStyle.Regular);
+                //Y坐标轴标题
+                this.chart3.ChartAreas[0].AxisY.Title = "重量 (公斤)";
+                this.chart3.ChartAreas[0].AxisY.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
+                this.chart3.ChartAreas[0].AxisY.TitleForeColor = Color.Blue;
+                this.chart3.ChartAreas[0].AxisY.TextOrientation = TextOrientation.Rotated270;
+                this.chart3.ChartAreas[0].AxisY.ToolTip = "重量 (公斤)";
+                //Y轴网格线条
+                this.chart3.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
+                this.chart3.ChartAreas[0].AxisY.MajorGrid.LineColor = ColorTranslator.FromHtml("#2c4c6d");
+                this.chart3.ChartAreas[0].AxisY2.LineColor = Color.Transparent;
+
+                foreach (string name in ChartCodeNameList)
+                {
+                    Series series = new Series(name.ToString());
+                    series.ChartType = SeriesChartType.Line;
+                    this.chart3.Series.Add(series);
+                }
+
+                this.chart3.Titles[0].Text = string.Format(" {0}（天）", "进料重量折线图分析");
+
+                foreach (DateTime day in ChartTimeList)
+                {
+                    for (int i = 0; i < ChartDateList.Count; i++)
+                    {
+                        for (int j = 0; j < ChartCodeNameList.Count; j++)
+                        {
+                            if (day.Day == ChartDateList[i].DaY.Day && ChartDateList[i].CodeName.Equals(ChartCodeNameList[j]))
+                            {
+                                this.chart3.Series[j].Points.AddXY(day.Day, ChartDateList[i].MatWT);
+                                var val = 0;
+                                if (this.chart3.Series[j].Points.Count > 0)
+                                {
+                                    // 值标签
+                                    val = this.chart3.Series[j].Points.Count - 1;
+                                    this.chart3.Series[j].Points[val].MarkerStyle = MarkerStyle.Diamond;
+                                    this.chart3.Series[j].Points[val].MarkerColor = Color.Red;
+                                    this.chart3.Series[j].Points[val].MarkerBorderWidth = 3;
+                                    this.chart3.Series[j].Points[val].MarkerSize = 10;
+                                    this.chart3.Series[j].Points[val].Label = "#VAL";
+                                    this.chart3.Series[j].Points[val].IsValueShownAsLabel = true;
+                                    // 宽度
+                                    this.chart3.Series[j].BorderWidth = 5;
+                                    this.chart3.Series[j].CustomProperties = "PieLabelStyle = Outside";
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
         }
+
         #endregion
 
         #region 分页 - 送料计划
@@ -417,91 +699,6 @@ namespace UACSView
         }
         #endregion
 
-        #region 分页 - 配料计划
-
-        int totalPages2 = 0;
-
-        /// <summary>
-        /// 数据分页
-        /// </summary>
-        /// <param name="dtResult"></param>
-        /// <returns></returns>
-        private DataTable GetDataPage2(DataTable dtResult, int currentPage)
-        {
-            totalPages2 = 0;
-            int totalRows = 0;
-            if (null == dtResult || dtResult.Rows.Count == 0)
-            {
-                this.ucPage2.PageInfo.Text = string.Format("第{0}/{1}页", "1", "1");
-                this.ucPage2.TotalRows.Text = @"0";
-                this.ucPage2.CurrentPage = 1;
-                this.ucPage2.TotalPages = 1;
-            }
-            else
-            {
-                totalRows = Convert.ToInt32(dtResult.Rows[dtResult.Rows.Count - 1]["TotalRows2"].ToString());
-                totalPages2 = totalRows % this.ucPage2.PageSize == 0 ? totalRows / this.ucPage2.PageSize : (totalRows / this.ucPage2.PageSize) + 1;
-                this.ucPage2.PageInfo.Text = string.Format("第{0}/{1}页", currentPage, totalPages2);
-                this.ucPage2.TotalRows.Text = totalRows.ToString();
-                this.ucPage2.CurrentPage = currentPage;
-                this.ucPage2.TotalPages = totalPages2;
-            }
-            return dtResult;
-        }
-
-        /// <summary>
-        /// 页数跳转
-        /// </summary>
-        /// <param name="jumpPage">跳转页</param>
-        void ucPage2_JumpPageEvent(int jumpPage)
-        {
-            if (jumpPage <= this.ucPage2.TotalPages)
-            {
-                if (jumpPage > 0)
-                {
-                    this.ucPage2.JumpPageCtrl.Text = string.Empty;
-                    this.ucPage2.JumpPageCtrl.Text = jumpPage.ToString();
-                    //L3配料计划
-                    this.getL3MatOutInfo(jumpPage);
-                }
-                else
-                {
-                    jumpPage = 1;
-                    this.ucPage2.JumpPageCtrl.Text = string.Empty;
-                    this.ucPage2.JumpPageCtrl.Text = jumpPage.ToString();
-                    //L3配料计划
-                    this.getL3MatOutInfo(jumpPage);
-                }
-            }
-            else
-            {
-                this.ucPage2.JumpPageCtrl.Text = string.Empty;
-                MessageBox.Show(@"超出当前最大页数", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        /// <summary>
-        /// 改变每页展示数据长度
-        /// </summary>
-        void ucPage2_ChangedPageSizeEvent()
-        {
-            //L3配料计划
-            this.getL3MatOutInfo(1);
-        }
-        /// <summary>
-        /// 页数改变按钮(最前页,最后页,上一页,下一页)
-        /// </summary>
-        /// <param name="current"></param>
-        void ucPage2_ClickPageButtonEvent(int current)
-        {
-            if (totalPages2 != 0 && current > totalPages2)
-            {
-                current = 1;
-            }
-            //L3配料计划
-            this.getL3MatOutInfo(current);
-        }
-        #endregion
-
         #region 日期查询        
         /// <summary>
         /// 当天
@@ -513,8 +710,6 @@ namespace UACSView
             //查询
             //L3送料计划
             getL3MatWeightInfo(1);
-            //L3配料计划
-            getL3MatOutInfo(1);
         }
         /// <summary>
         /// 月度
@@ -527,8 +722,6 @@ namespace UACSView
             //查询
             //L3送料计划
             getL3MatWeightInfo(1);
-            //L3配料计划
-            getL3MatOutInfo(1);
         }
         /// <summary>
         /// 当前季度
@@ -544,8 +737,6 @@ namespace UACSView
             //查询
             //L3送料计划
             getL3MatWeightInfo(1);
-            //L3配料计划
-            getL3MatOutInfo(1);
         }
         /// <summary>
         /// 年度
@@ -558,8 +749,6 @@ namespace UACSView
             //查询
             //L3送料计划
             getL3MatWeightInfo(1);
-            //L3配料计划
-            getL3MatOutInfo(1);
         }
         #endregion
 
@@ -582,5 +771,21 @@ namespace UACSView
         {
             GetAnnualTime();
         }
+    }
+
+    public class ChartDate
+    {
+        /// <summary>
+        /// 物料
+        /// </summary>
+        public string CodeName { get; set; }
+        /// <summary>
+        /// 日期
+        /// </summary>
+        public DateTime DaY { get; set; }
+        /// <summary>
+        /// 重量
+        /// </summary>
+        public double MatWT { get; set; }
     }
 }

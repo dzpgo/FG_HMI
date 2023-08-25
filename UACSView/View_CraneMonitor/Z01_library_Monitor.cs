@@ -688,7 +688,7 @@ namespace UACSView.View_CraneMonitor
             timerPlanout.Enabled = true;
 
             timerCrane.Interval = 1000;
-            timerArea.Interval = 10000;
+            timerArea.Interval = 5000;
             timerUnit.Interval = 10000;
             timerPlanout.Interval = 60000;
 
