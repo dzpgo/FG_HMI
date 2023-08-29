@@ -210,6 +210,7 @@ namespace UACSView.View_Parking
         /// </summary>
         private void GetQuery()
         {
+            tbBOF_NO.Text = "";
             UpdateDgvRow(false);
             this.dataGridView1.DataSource = BindMatStockByL3Stowage2(false, cmb_PlanStatus.SelectedValue.ToString(), tbPLAN_NO.Text);
         }
@@ -409,7 +410,7 @@ namespace UACSView.View_Parking
                 ////得到选中行某列的值
                 //string str = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 //MessageBox.Show(str);
-
+                tbBOF_NO.Text = "";
                 // 选中行
                 foreach (DataGridViewRow dgvRow in dataGridView1.Rows)
                 {
@@ -421,7 +422,7 @@ namespace UACSView.View_Parking
                             if (isChoice.Equals("0"))
                             {
                                 dgvRow.Cells["cbChoice"].Value = 1; //选中
-
+                                tbBOF_NO.Text = dgvRow.Cells["BOF_NO"].Value.ToString(); //炉号
                                 UpdateDgvRow(
                                     true,
                                     dgvRow.Cells["GMatCode_1"].Value.ToString(),
@@ -594,6 +595,7 @@ namespace UACSView.View_Parking
                 dtResult.Rows.Add(
                     0, /*cbChoice*/
                     dataRow["PLAN_NO"].ToString(),
+                    dataRow["BOF_NO"].ToString(),
                     dataRow["CAR_NO"].ToString(),
                     dataRow["PLAN_STATUS"].ToString(),
                     dataRow["MAT_CODE_1"].ToString(),

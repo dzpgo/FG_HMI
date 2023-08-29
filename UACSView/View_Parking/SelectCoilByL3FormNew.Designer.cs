@@ -93,8 +93,27 @@
             this.tbWeight_1 = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtFlag = new System.Windows.Forms.ComboBox();
+            this.cmbScanCar = new System.Windows.Forms.ComboBox();
+            this.cmbWordMode = new System.Windows.Forms.ComboBox();
+            this.txtDirection = new System.Windows.Forms.ComboBox();
+            this.cmb_CarNo = new System.Windows.Forms.ComboBox();
+            this.cmb_ParKingNO = new System.Windows.Forms.ComboBox();
+            this.cmbCarType = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbBOF_NO = new System.Windows.Forms.TextBox();
             this.cbChoice = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.GPlanNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BOF_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GCarNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PLAN_STATUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GMatCode_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -117,22 +136,6 @@
             this.GWeight_9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GMatCode_10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GWeight_10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtFlag = new System.Windows.Forms.ComboBox();
-            this.cmbScanCar = new System.Windows.Forms.ComboBox();
-            this.cmbWordMode = new System.Windows.Forms.ComboBox();
-            this.txtDirection = new System.Windows.Forms.ComboBox();
-            this.cmb_CarNo = new System.Windows.Forms.ComboBox();
-            this.cmb_ParKingNO = new System.Windows.Forms.ComboBox();
-            this.cmbCarType = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -906,6 +909,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cbChoice,
             this.GPlanNO,
+            this.BOF_NO,
             this.GCarNo,
             this.PLAN_STATUS,
             this.GMatCode_1,
@@ -950,6 +954,207 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 75);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1418, 94);
+            this.panel1.TabIndex = 3;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtFlag);
+            this.groupBox1.Controls.Add(this.cmbScanCar);
+            this.groupBox1.Controls.Add(this.cmbWordMode);
+            this.groupBox1.Controls.Add(this.txtDirection);
+            this.groupBox1.Controls.Add(this.cmb_CarNo);
+            this.groupBox1.Controls.Add(this.cmb_ParKingNO);
+            this.groupBox1.Controls.Add(this.cmbCarType);
+            this.groupBox1.Controls.Add(this.tbBOF_NO);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.label31);
+            this.groupBox1.Controls.Add(this.label26);
+            this.groupBox1.Controls.Add(this.label30);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label27);
+            this.groupBox1.Controls.Add(this.label29);
+            this.groupBox1.Controls.Add(this.label28);
+            this.groupBox1.Location = new System.Drawing.Point(3, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1410, 86);
+            this.groupBox1.TabIndex = 53;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "车到位";
+            // 
+            // txtFlag
+            // 
+            this.txtFlag.Enabled = false;
+            this.txtFlag.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.txtFlag.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.txtFlag.FormattingEnabled = true;
+            this.txtFlag.Location = new System.Drawing.Point(652, 13);
+            this.txtFlag.Name = "txtFlag";
+            this.txtFlag.Size = new System.Drawing.Size(154, 29);
+            this.txtFlag.TabIndex = 53;
+            this.txtFlag.Text = "空";
+            // 
+            // cmbScanCar
+            // 
+            this.cmbScanCar.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.cmbScanCar.FormattingEnabled = true;
+            this.cmbScanCar.Location = new System.Drawing.Point(920, 50);
+            this.cmbScanCar.Name = "cmbScanCar";
+            this.cmbScanCar.Size = new System.Drawing.Size(154, 29);
+            this.cmbScanCar.TabIndex = 53;
+            // 
+            // cmbWordMode
+            // 
+            this.cmbWordMode.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.cmbWordMode.FormattingEnabled = true;
+            this.cmbWordMode.Location = new System.Drawing.Point(652, 50);
+            this.cmbWordMode.Name = "cmbWordMode";
+            this.cmbWordMode.Size = new System.Drawing.Size(154, 29);
+            this.cmbWordMode.TabIndex = 53;
+            // 
+            // txtDirection
+            // 
+            this.txtDirection.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.txtDirection.FormattingEnabled = true;
+            this.txtDirection.Location = new System.Drawing.Point(371, 50);
+            this.txtDirection.Name = "txtDirection";
+            this.txtDirection.Size = new System.Drawing.Size(154, 29);
+            this.txtDirection.TabIndex = 53;
+            // 
+            // cmb_CarNo
+            // 
+            this.cmb_CarNo.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.cmb_CarNo.FormattingEnabled = true;
+            this.cmb_CarNo.Location = new System.Drawing.Point(371, 13);
+            this.cmb_CarNo.Name = "cmb_CarNo";
+            this.cmb_CarNo.Size = new System.Drawing.Size(154, 29);
+            this.cmb_CarNo.TabIndex = 53;
+            this.cmb_CarNo.SelectedIndexChanged += new System.EventHandler(this.cmb_CarNo_SelectedIndexChanged);
+            // 
+            // cmb_ParKingNO
+            // 
+            this.cmb_ParKingNO.Enabled = false;
+            this.cmb_ParKingNO.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmb_ParKingNO.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.cmb_ParKingNO.FormattingEnabled = true;
+            this.cmb_ParKingNO.Location = new System.Drawing.Point(98, 13);
+            this.cmb_ParKingNO.Name = "cmb_ParKingNO";
+            this.cmb_ParKingNO.Size = new System.Drawing.Size(154, 29);
+            this.cmb_ParKingNO.TabIndex = 53;
+            // 
+            // cmbCarType
+            // 
+            this.cmbCarType.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.cmbCarType.FormattingEnabled = true;
+            this.cmbCarType.Location = new System.Drawing.Point(98, 52);
+            this.cmbCarType.Name = "cmbCarType";
+            this.cmbCarType.Size = new System.Drawing.Size(154, 29);
+            this.cmbCarType.TabIndex = 53;
+            this.cmbCarType.SelectedIndexChanged += new System.EventHandler(this.cmbCarType_SelectedIndexChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label14.Location = new System.Drawing.Point(27, 18);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(62, 21);
+            this.label14.TabIndex = 52;
+            this.label14.Text = "停车位:";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label31.Location = new System.Drawing.Point(836, 51);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(78, 21);
+            this.label31.TabIndex = 52;
+            this.label31.Text = "扫描行车:";
+            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label26.Location = new System.Drawing.Point(287, 16);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(78, 21);
+            this.label26.TabIndex = 52;
+            this.label26.Text = "料槽车号:";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label30.Location = new System.Drawing.Point(568, 52);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(78, 21);
+            this.label30.TabIndex = 52;
+            this.label30.Text = "装料模式:";
+            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label27.Location = new System.Drawing.Point(568, 16);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(78, 21);
+            this.label27.TabIndex = 52;
+            this.label27.Text = "空满标记:";
+            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label29.Location = new System.Drawing.Point(287, 51);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(78, 21);
+            this.label29.TabIndex = 52;
+            this.label29.Text = "车头方向:";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label28.Location = new System.Drawing.Point(11, 51);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(78, 21);
+            this.label28.TabIndex = 52;
+            this.label28.Text = "车辆类型:";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label7.Location = new System.Drawing.Point(868, 18);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(46, 21);
+            this.label7.TabIndex = 52;
+            this.label7.Text = "炉号:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tbBOF_NO
+            // 
+            this.tbBOF_NO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbBOF_NO.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbBOF_NO.Location = new System.Drawing.Point(920, 14);
+            this.tbBOF_NO.Name = "tbBOF_NO";
+            this.tbBOF_NO.Size = new System.Drawing.Size(154, 29);
+            this.tbBOF_NO.TabIndex = 3;
+            // 
             // cbChoice
             // 
             this.cbChoice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -976,6 +1181,16 @@
             this.GPlanNO.ReadOnly = true;
             this.GPlanNO.Width = 65;
             // 
+            // BOF_NO
+            // 
+            this.BOF_NO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BOF_NO.DataPropertyName = "BOF_NO";
+            this.BOF_NO.Frozen = true;
+            this.BOF_NO.HeaderText = "炉号";
+            this.BOF_NO.Name = "BOF_NO";
+            this.BOF_NO.ReadOnly = true;
+            this.BOF_NO.Width = 53;
+            // 
             // GCarNo
             // 
             this.GCarNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -995,6 +1210,7 @@
             this.PLAN_STATUS.HeaderText = "计划状态";
             this.PLAN_STATUS.MinimumWidth = 8;
             this.PLAN_STATUS.Name = "PLAN_STATUS";
+            this.PLAN_STATUS.ReadOnly = true;
             this.PLAN_STATUS.Width = 77;
             // 
             // GMatCode_1
@@ -1197,185 +1413,6 @@
             this.GWeight_10.ReadOnly = true;
             this.GWeight_10.Width = 65;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 75);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1418, 94);
-            this.panel1.TabIndex = 3;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtFlag);
-            this.groupBox1.Controls.Add(this.cmbScanCar);
-            this.groupBox1.Controls.Add(this.cmbWordMode);
-            this.groupBox1.Controls.Add(this.txtDirection);
-            this.groupBox1.Controls.Add(this.cmb_CarNo);
-            this.groupBox1.Controls.Add(this.cmb_ParKingNO);
-            this.groupBox1.Controls.Add(this.cmbCarType);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.label31);
-            this.groupBox1.Controls.Add(this.label26);
-            this.groupBox1.Controls.Add(this.label30);
-            this.groupBox1.Controls.Add(this.label27);
-            this.groupBox1.Controls.Add(this.label29);
-            this.groupBox1.Controls.Add(this.label28);
-            this.groupBox1.Location = new System.Drawing.Point(3, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1410, 86);
-            this.groupBox1.TabIndex = 53;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "车到位";
-            // 
-            // txtFlag
-            // 
-            this.txtFlag.Enabled = false;
-            this.txtFlag.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.txtFlag.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.txtFlag.FormattingEnabled = true;
-            this.txtFlag.Location = new System.Drawing.Point(652, 13);
-            this.txtFlag.Name = "txtFlag";
-            this.txtFlag.Size = new System.Drawing.Size(154, 29);
-            this.txtFlag.TabIndex = 53;
-            this.txtFlag.Text = "空";
-            // 
-            // cmbScanCar
-            // 
-            this.cmbScanCar.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.cmbScanCar.FormattingEnabled = true;
-            this.cmbScanCar.Location = new System.Drawing.Point(920, 50);
-            this.cmbScanCar.Name = "cmbScanCar";
-            this.cmbScanCar.Size = new System.Drawing.Size(154, 29);
-            this.cmbScanCar.TabIndex = 53;
-            // 
-            // cmbWordMode
-            // 
-            this.cmbWordMode.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.cmbWordMode.FormattingEnabled = true;
-            this.cmbWordMode.Location = new System.Drawing.Point(652, 50);
-            this.cmbWordMode.Name = "cmbWordMode";
-            this.cmbWordMode.Size = new System.Drawing.Size(154, 29);
-            this.cmbWordMode.TabIndex = 53;
-            // 
-            // txtDirection
-            // 
-            this.txtDirection.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.txtDirection.FormattingEnabled = true;
-            this.txtDirection.Location = new System.Drawing.Point(371, 50);
-            this.txtDirection.Name = "txtDirection";
-            this.txtDirection.Size = new System.Drawing.Size(154, 29);
-            this.txtDirection.TabIndex = 53;
-            // 
-            // cmb_CarNo
-            // 
-            this.cmb_CarNo.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.cmb_CarNo.FormattingEnabled = true;
-            this.cmb_CarNo.Location = new System.Drawing.Point(371, 13);
-            this.cmb_CarNo.Name = "cmb_CarNo";
-            this.cmb_CarNo.Size = new System.Drawing.Size(154, 29);
-            this.cmb_CarNo.TabIndex = 53;
-            this.cmb_CarNo.SelectedIndexChanged += new System.EventHandler(this.cmb_CarNo_SelectedIndexChanged);
-            // 
-            // cmb_ParKingNO
-            // 
-            this.cmb_ParKingNO.Enabled = false;
-            this.cmb_ParKingNO.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cmb_ParKingNO.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.cmb_ParKingNO.FormattingEnabled = true;
-            this.cmb_ParKingNO.Location = new System.Drawing.Point(98, 13);
-            this.cmb_ParKingNO.Name = "cmb_ParKingNO";
-            this.cmb_ParKingNO.Size = new System.Drawing.Size(154, 29);
-            this.cmb_ParKingNO.TabIndex = 53;
-            // 
-            // cmbCarType
-            // 
-            this.cmbCarType.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.cmbCarType.FormattingEnabled = true;
-            this.cmbCarType.Location = new System.Drawing.Point(98, 52);
-            this.cmbCarType.Name = "cmbCarType";
-            this.cmbCarType.Size = new System.Drawing.Size(154, 29);
-            this.cmbCarType.TabIndex = 53;
-            this.cmbCarType.SelectedIndexChanged += new System.EventHandler(this.cmbCarType_SelectedIndexChanged);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label14.Location = new System.Drawing.Point(27, 18);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(62, 21);
-            this.label14.TabIndex = 52;
-            this.label14.Text = "停车位:";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label31.Location = new System.Drawing.Point(836, 51);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(78, 21);
-            this.label31.TabIndex = 52;
-            this.label31.Text = "扫描行车:";
-            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label26.Location = new System.Drawing.Point(287, 16);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(78, 21);
-            this.label26.TabIndex = 52;
-            this.label26.Text = "料槽车号:";
-            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label30.Location = new System.Drawing.Point(568, 52);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(78, 21);
-            this.label30.TabIndex = 52;
-            this.label30.Text = "装料模式:";
-            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label27.Location = new System.Drawing.Point(568, 16);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(78, 21);
-            this.label27.TabIndex = 52;
-            this.label27.Text = "空满标记:";
-            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label29.Location = new System.Drawing.Point(287, 51);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(78, 21);
-            this.label29.TabIndex = 52;
-            this.label29.Text = "车头方向:";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label28.Location = new System.Drawing.Point(11, 51);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(78, 21);
-            this.label28.TabIndex = 52;
-            this.label28.Text = "车辆类型:";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // SelectCoilByL3FormNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1480,8 +1517,13 @@
         private System.Windows.Forms.DateTimePicker dtp_StartTime;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.DateTimePicker dtp_EndTime;
+        private System.Windows.Forms.ComboBox cmb_PlanStatus;
+        private System.Windows.Forms.Button bt_Delete;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbBOF_NO;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cbChoice;
         private System.Windows.Forms.DataGridViewTextBoxColumn GPlanNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BOF_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn GCarNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn PLAN_STATUS;
         private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_1;
@@ -1504,7 +1546,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_9;
         private System.Windows.Forms.DataGridViewTextBoxColumn GMatCode_10;
         private System.Windows.Forms.DataGridViewTextBoxColumn GWeight_10;
-        private System.Windows.Forms.ComboBox cmb_PlanStatus;
-        private System.Windows.Forms.Button bt_Delete;
     }
 }
