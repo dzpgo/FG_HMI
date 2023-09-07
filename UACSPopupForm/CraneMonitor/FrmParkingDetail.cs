@@ -446,14 +446,14 @@ namespace UACSPopupForm
                                         //要求重量
                                         count++;
                                         isTrue = true;
-                                        msg += "  要求重量：" + dgr.Cells["REQ_WEIGHT"].Value.ToString() + " 旧要求重量：" + Initdgr["REQ_WEIGHT"].ToString();
+                                        msg += "（物料：" + dgr.Cells["MAT_CNAME"].Value.ToString() + " 要求重量：" + dgr.Cells["REQ_WEIGHT"].Value.ToString() + " 旧要求重量：" + Initdgr["REQ_WEIGHT"].ToString() + "）";
                                     }
                                     if (!dgr.Cells["ACT_WEIGHT"].Value.ToString().Equals(Initdgr["ACT_WEIGHT"].ToString()))
                                     {
                                         //实绩重量
                                         count++;
                                         isTrue = true;
-                                        msg += "  实绩重量：" + dgr.Cells["ACT_WEIGHT"].Value.ToString() + " 旧实绩重量：" + Initdgr["ACT_WEIGHT"].ToString();
+                                        msg += "（物料：" + dgr.Cells["MAT_CNAME"].Value.ToString() + " 实绩重量：" + dgr.Cells["ACT_WEIGHT"].Value.ToString() + " 旧实绩重量：" + Initdgr["ACT_WEIGHT"].ToString() + "）";
                                     }
                                     if (!dgr.Cells["FROM_STOCK_NO"].Value.ToString().Equals(Initdgr["FROM_STOCK_NO"].ToString()))
                                     {
@@ -466,7 +466,7 @@ namespace UACSPopupForm
                                         //落料位
                                         count++;
                                         isTrue = true;
-                                        msg += "  落料位：" + dgr.Cells["TO_STOCK_NO"].Value.ToString() + " 旧落料位：" + Initdgr["TO_STOCK_NO"].ToString();
+                                        msg += "（物料：" + dgr.Cells["MAT_CNAME"].Value.ToString() + " 落料位：" + dgr.Cells["TO_STOCK_NO"].Value.ToString() + " 旧落料位：" + Initdgr["TO_STOCK_NO"].ToString() + "）";
                                     }
                                 }
                             }
@@ -535,7 +535,7 @@ namespace UACSPopupForm
                         }
 
                         //DB2Connect.DBHelper.ExecuteNonQuery(sql);
-                        ParkClassLibrary.HMILogger.WriteLog("停车位详细", "更改数据：计划号：" + planNo + " 信息：" + msg, ParkClassLibrary.LogLevel.Info, this.Text);
+                        ParkClassLibrary.HMILogger.WriteLog("停车位详细", "更改数据：计划号：" + planNo + " " + msg, ParkClassLibrary.LogLevel.Info, this.Text);
                         Refurbish(); //刷新页面
                     }
                 }
