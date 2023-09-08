@@ -27,8 +27,8 @@ namespace UACSPopupForm
         private Dictionary<string, string> MatCode = new Dictionary<string, string>();
         string[] dgvColumnsName = { "BTN_UP", "ORDER_NO", "PLAN_NO", "ORDER_PRIORITY", "CMD_SEQ" , "CMD_STATUS", "SCRAP_CODE", "MAT_CODE", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "REQ_WEIGHT", "ACT_WEIGHT", "START_TIME", "UPD_TIME", "REC_TIME" };
         string[] dgvHeaderText = { "按钮", "指令号", "计划号", "优先级",  "吊运次数","吊运状态", "原物料代码", "物料代码", "物料名称", "取料位置", "落料位", "要求重量", "实绩重量","开始时间", "更新时间", "创建时间" };
-        string[] dgvOderColumnsName = { "ORDER_NO", "ORDER_GROUP_NO", "EXE_SEQ", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "BAY_NO" };
-        string[] dgvOderHeaderText = { "指令号", "指令组号", "指令顺序", "物料名称", "取料位", "落料位", "跨别" };
+        string[] dgvOderColumnsName = { "ORDERNO", "BOF_NO", "ORDER_GROUP_NO", "EXE_SEQ", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "BAY_NO" };
+        string[] dgvOderHeaderText = { "指令号", "炉号", "指令组号", "指令顺序", "物料名称", "取料位", "落料位", "跨别" };
         /// <summary>
         /// L3废钢品名信息
         /// </summary>
@@ -579,7 +579,7 @@ namespace UACSPopupForm
                 if (!string.IsNullOrEmpty(carNo) && packingNo.Contains('A') && packingNo != "请选择")
                 {
                     //对应指令车辆配载明细
-                    string sqlText_ORDER = @"SELECT A.ORDER_NO,A.ORDER_GROUP_NO,A.ORDER_PRIORITY,CMD_SEQ,
+                    string sqlText_ORDER = @"SELECT A.ORDER_NO,A.ORDER_GROUP_NO,A.ORDER_PRIORITY,CMD_SEQ,C.BOF_NO,
                                                     CASE 
                                                     WHEN A.CMD_STATUS = 0 THEN '初始化' 
                                                     WHEN A.CMD_STATUS = 1 THEN '获取指令' 
@@ -597,6 +597,7 @@ namespace UACSPopupForm
                                                     ,A.PLAN_NO,A.SCRAP_CODE,A.MAT_CODE,B.MAT_CNAME ,A.FROM_STOCK_NO,A.TO_STOCK_NO,A.REQ_WEIGHT,A.ACT_WEIGHT,A.START_TIME,A.UPD_TIME,A.REC_TIME 
                                                     FROM UACS_ORDER_QUEUE AS A ";
                     sqlText_ORDER += " LEFT JOIN UACS_L3_MAT_INFO AS B ON A.MAT_CODE = B.MAT_CODE ";
+                    sqlText_ORDER += " LEFT JOIN UACS_L3_MAT_OUT_INFO AS C on A.PLAN_NO = C.PLAN_NO ";
                     sqlText_ORDER += " WHERE A.CMD_STATUS = '0' AND A.CAR_NO = '{0}' AND A.TO_STOCK_NO = '{1}' ";
                     sqlText_ORDER += " ORDER BY A.ORDER_PRIORITY,A.ORDER_NO ";
                     sqlText_ORDER = string.Format(sqlText_ORDER, carNo, packingNo);

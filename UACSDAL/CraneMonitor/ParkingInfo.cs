@@ -170,8 +170,9 @@ namespace UACSDAL
                 if (!string.IsNullOrEmpty(theParkNO) && !string.IsNullOrEmpty(theCarNo))
                 {
                     //对应指令车辆配载明细
-                    string SQLOder = @"SELECT A.ORDER_NO,A.ORDER_GROUP_NO,A.EXE_SEQ,B.MAT_CNAME,A.FROM_STOCK_NO,A.TO_STOCK_NO,A.BAY_NO FROM UACS_ORDER_QUEUE AS A ";
+                    string SQLOder = @"SELECT A.ORDER_NO AS ORDERNO,C.BOF_NO,A.ORDER_GROUP_NO,A.EXE_SEQ,B.MAT_CNAME,A.FROM_STOCK_NO,A.TO_STOCK_NO,A.BAY_NO FROM UACS_ORDER_QUEUE AS A ";
                     SQLOder += " LEFT JOIN UACS_L3_MAT_INFO AS B ON A.MAT_CODE = B.MAT_CODE ";
+                    SQLOder += " LEFT JOIN UACS_L3_MAT_OUT_INFO AS C on A.PLAN_NO = C.PLAN_NO ";
                     SQLOder += " WHERE A.CMD_STATUS = '0' AND A.CAR_NO = '{0}' AND A.TO_STOCK_NO = '{1}' ORDER BY A.ORDER_PRIORITY,A.ORDER_NO ";
                     SQLOder = string.Format(SQLOder, theCarNo, theParkNO);
                     using (IDataReader odrIn = DB2Connect.DBHelper.ExecuteReader(SQLOder))
