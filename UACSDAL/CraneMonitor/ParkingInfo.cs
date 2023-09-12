@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Data;
-using System.Collections;
 using System.Windows.Forms;
-using Baosight.iSuperframe.Common;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace UACSDAL
 {
