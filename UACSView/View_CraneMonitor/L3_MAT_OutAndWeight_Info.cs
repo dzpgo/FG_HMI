@@ -112,6 +112,13 @@ namespace UACSView
 
         #region 统计图形
 
+        // <summary>
+        /// 初始化图表
+        /// </summary>
+        private void InitChart()
+        {
+
+        }
         /// <summary>
         /// 饼状图 物料进料次数分析
         /// </summary>
@@ -192,7 +199,7 @@ namespace UACSView
 
             chart1.Series[0].XValueType = ChartValueType.String;  //设置X轴上的值类型
             //chart1.Series[0].Label = "#VAL";                //设置显示X Y的值
-            chart1.Series[0].Label = "#PERCENT{P2}";
+            chart1.Series[0].Label = "#VALX #PERCENT{P2}";
             chart1.Series[0].LabelForeColor = Color.Blue;
             chart1.Series[0].ToolTip = "#VALX：#VAL (次)";     //鼠标移动到对应点显示数值
             chart1.Series[0].ChartType = SeriesChartType.Pie;    //图类型(折线)
@@ -295,7 +302,7 @@ namespace UACSView
             chart2.Titles[0].ForeColor = Color.Blue;
             chart2.Titles[0].Font = new Font("微软雅黑", 12f, FontStyle.Regular);
             chart2.Titles[0].Alignment = ContentAlignment.TopCenter;
-            chart2.Titles.Add("合计：公斤");
+            chart2.Titles.Add("合计：吨");
             chart2.Titles[1].ForeColor = Color.Blue;
             chart2.Titles[1].Font = new Font("微软雅黑", 8f, FontStyle.Regular);
             chart2.Titles[1].Alignment = ContentAlignment.TopRight;
@@ -331,11 +338,11 @@ namespace UACSView
             chart2.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Blue;
             chart2.ChartAreas[0].AxisY.LabelStyle.Font = new Font("微软雅黑", 10f, FontStyle.Regular);
             //Y坐标轴标题
-            chart2.ChartAreas[0].AxisY.Title = "重量 (公斤)";
+            chart2.ChartAreas[0].AxisY.Title = "重量 (吨)";
             chart2.ChartAreas[0].AxisY.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
             chart2.ChartAreas[0].AxisY.TitleForeColor = Color.Blue;
             chart2.ChartAreas[0].AxisY.TextOrientation = TextOrientation.Rotated270;
-            chart2.ChartAreas[0].AxisY.ToolTip = "重量 (公斤)";
+            chart2.ChartAreas[0].AxisY.ToolTip = "重量 (吨)";
             //Y轴网格线条
             chart2.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
             chart2.ChartAreas[0].AxisY.MajorGrid.LineColor = ColorTranslator.FromHtml("#2c4c6d");
@@ -348,7 +355,7 @@ namespace UACSView
             chart2.Series[0].XValueType = ChartValueType.String;  //设置X轴上的值类型
             chart2.Series[0].Label = "#VAL";                //设置显示X Y的值    
             chart2.Series[0].LabelForeColor = Color.Blue;
-            chart2.Series[0].ToolTip = "#VALX：#VAL (公斤)";     //鼠标移动到对应点显示数值
+            chart2.Series[0].ToolTip = "#VALX：#VAL (吨)";     //鼠标移动到对应点显示数值
             chart2.Series[0].ChartType = SeriesChartType.Column;    //图类型(折线)
 
 
@@ -404,7 +411,7 @@ namespace UACSView
                     }
                     if (rdr["MatWT"] != System.DBNull.Value)
                     {
-                        MatWT.Add(Convert.ToDouble(rdr["MatWT"]));
+                        MatWT.Add(Convert.ToDouble(rdr["MatWT"]) / 1000);
                     }
                 }
             }
@@ -426,7 +433,7 @@ namespace UACSView
             {
                 series.Points.Clear();
             }
-            chart2.Titles[1].Text = "合计：" + MatWTTotal + " 公斤";
+            chart2.Titles[1].Text = "合计：" + MatWTTotal + " 吨";
             //chart2.Titles.Add("合计：" + MatWTTotal + " 公斤");
             chart2.Series[0].Points.DataBindXY(CodeNameList, MatWTList);
         }
@@ -474,7 +481,7 @@ namespace UACSView
                     }
                     if (rdr["MatWT"] != System.DBNull.Value)
                     {
-                        cd.MatWT = Convert.ToDouble(rdr["MatWT"]);
+                        cd.MatWT = Convert.ToDouble(rdr["MatWT"]) / 1000;
                     }
 
                     ChartDateList.Add(cd);
@@ -550,11 +557,11 @@ namespace UACSView
                 this.chart3.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Blue;
                 this.chart3.ChartAreas[0].AxisY.LabelStyle.Font = new Font("微软雅黑", 10f, FontStyle.Regular);
                 //Y坐标轴标题
-                this.chart3.ChartAreas[0].AxisY.Title = "重量 (公斤)";
+                this.chart3.ChartAreas[0].AxisY.Title = "重量 (吨)";
                 this.chart3.ChartAreas[0].AxisY.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
                 this.chart3.ChartAreas[0].AxisY.TitleForeColor = Color.Blue;
                 this.chart3.ChartAreas[0].AxisY.TextOrientation = TextOrientation.Rotated270;
-                this.chart3.ChartAreas[0].AxisY.ToolTip = "重量 (公斤)";
+                this.chart3.ChartAreas[0].AxisY.ToolTip = "重量 (吨)";
                 //Y轴网格线条
                 this.chart3.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
                 this.chart3.ChartAreas[0].AxisY.MajorGrid.LineColor = ColorTranslator.FromHtml("#2c4c6d");
