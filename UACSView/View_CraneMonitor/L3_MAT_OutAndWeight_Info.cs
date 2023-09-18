@@ -112,13 +112,6 @@ namespace UACSView
 
         #region 统计图形
 
-        // <summary>
-        /// 初始化图表
-        /// </summary>
-        private void InitChart()
-        {
-
-        }
         /// <summary>
         /// 饼状图 物料进料次数分析
         /// </summary>
