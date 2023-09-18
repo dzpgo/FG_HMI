@@ -78,6 +78,7 @@ namespace UACSView
             bindCombox(this.cbb_CRANE_MODE, dtCRANE_MODE, true);
             
         }
+
         private Dictionary<string, DataTable> datalist = new Dictionary<string, DataTable>();
 
         /// <summary>
