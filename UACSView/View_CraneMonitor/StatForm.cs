@@ -10,6 +10,7 @@ using Baosight.iSuperframe.Forms;
 using UACS;
 using System.Runtime.InteropServices;
 using UACSDAL;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace UACSView
 {
@@ -62,8 +63,11 @@ namespace UACSView
             //this.ucPageDemo.ClickPageButtonEvent += ucPageDemo_ClickPageButtonEvent;
             //this.ucPageDemo.ChangedPageSizeEvent += ucPageDemo_ChangedPageSizeEvent;
             //this.ucPageDemo.JumpPageEvent += ucPageDemo_JumpPageEvent;
+            MatPie();
+            //MatPieData();
             //初始化查询
             GetUACS_ORDER_OPER(true, 1);
+           
         }
         /// <summary>
         /// 绑定下拉框数据
@@ -76,7 +80,7 @@ namespace UACSView
             //绑定行车模式
             DataTable dtCRANE_MODE = GetCRANE_MODE(true);
             bindCombox(this.cbb_CRANE_MODE, dtCRANE_MODE, true);
-            
+
         }
 
         private Dictionary<string, DataTable> datalist = new Dictionary<string, DataTable>();
@@ -104,83 +108,187 @@ namespace UACSView
             string recTime1 = this.dateTimePicker1.Value.ToString("yyyyMMdd000000");  //开始时间
             string recTime2 = this.dateTimePicker2.Value.ToString("yyyyMMdd235959");  //结束时间
             //var sqlText = "SELECT * FROM (SELECT COUNT(1) OVER () AS TotalRows,ROW_NUMBER() OVER () AS ROWNUM,tab.* FROM ( ";
-            var sqlText = @"SELECT CRANE_NO, '' AS CRANE_MODENAME, 1 AS COUNT, '' AS PERCENTAGE, OPER_ID,ORDER_NO, CRANE_MODE FROM UACSAPP.UACS_ORDER_OPER ";
-            sqlText += "WHERE REC_TIME >= '{0}' and REC_TIME <= '{1}' ";
-            sqlText = string.Format(sqlText, recTime1, recTime2);
-            if (!isLoad)
-            {
-                if (craneNo != "全部")
-                {
-                    sqlText = string.Format("{0} and CRANE_NO = '{1}' ", sqlText, craneNo);     //行车号
-                }
-                if (craneMode != "全部")
-                {
-                    sqlText = string.Format("{0} and CRANE_MODE = '{1}' ", sqlText, craneMode); //操作模式
-                }
-                //按 NO>流水号>记录时间>更新时间 降序
-                sqlText += " ORDER BY OPER_ID DESC,ORDER_NO DESC,REC_TIME DESC ";
-            }
-            else
-            {
-                //sqlText = "SELECT * FROM (SELECT COUNT(1) OVER () AS TotalRows,ROW_NUMBER() OVER () AS ROWNUM,tab.* FROM ( ";
-                //初次加载时默认查询倒序30条数据（仅初始化时用）
-                sqlText = @"SELECT CRANE_NO, '' AS CRANE_MODENAME, 1 AS COUNT, '' AS PERCENTAGE, OPER_ID, CRANE_MODE 
-                            FROM (
-                            SELECT ROW_NUMBER() OVER(ORDER BY OPER_ID DESC,ORDER_NO DESC,REC_TIME DESC) AS ROWNUM,
-                            CRANE_NO, '' AS CRANE_MODENAME, 1 AS COUNT, '' AS PERCENTAGE, OPER_ID, CRANE_MODE 
-                            FROM UACSAPP.UACS_ORDER_OPER 
-                            WHERE CRANE_NO IS NOT NULL 
-                            ) a 
-                            WHERE ROWNUM > 0 and ROWNUM <=50";
-            }
-            //sqlText += " ) tab ) WHERE ROWNUM BETWEEN ((" + currentPage + " - 1) * " + this.ucPageDemo.PageSize + ") + 1 AND " + currentPage + " *  " + this.ucPageDemo.PageSize;
+            var sqlText = @"SELECT 
+                                ROW_NUMBER() OVER (ORDER BY AUTO_FLAG) AS RowNumber,
+                                CASE
+                                    WHEN AUTO_FLAG = 0 THEN '未开始'
+                                    WHEN AUTO_FLAG = 1 THEN '全自动'
+                                    WHEN AUTO_FLAG = 2 THEN '半自动'
+                                    ELSE '其他'
+                                END AS AutoFlag,
+                                COUNT(*) AS OrderCount,
+                                CAST(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM UACS_L3_MAT_OUT_INFO WHERE AUTO_FLAG IS NOT NULL AND REC_TIME >= '{0}' AND REC_TIME <= '{1}') AS DECIMAL(10, 2)) AS PERCENTAGE
+                            FROM UACS_L3_MAT_OUT_INFO
+                            WHERE AUTO_FLAG IS NOT NULL AND REC_TIME >= '{2}' AND REC_TIME <= '{3}' 
+                            GROUP BY AUTO_FLAG
+                            ORDER BY AUTO_FLAG;";
+            //sqlText += "WHERE REC_TIME >= '{2}' and REC_TIME <= '{3}' ";
+            sqlText = string.Format(sqlText, recTime1, recTime2, recTime1, recTime2);
+            //if (!isLoad)
+            //{
+            //    if (craneNo != "全部")
+            //    {
+            //        sqlText = string.Format("{0} and CRANE_NO = '{1}' ", sqlText, craneNo);     //行车号
+            //    }
+            //    if (craneMode != "全部")
+            //    {
+            //        sqlText = string.Format("{0} and CRANE_MODE = '{1}' ", sqlText, craneMode); //操作模式
+            //    }
+            //    //按 NO>流水号>记录时间>更新时间 降序
+            //    sqlText += " ORDER BY OPER_ID DESC,ORDER_NO DESC,REC_TIME DESC ";
+            //}
+          
             DataTable dataTable = new DataTable();
-            bool hasSetColumn = false;
             using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
             {
-                while (rdr.Read())
-                {
-                    DataRow dr = dataTable.NewRow();
-                    for (int i = 0; i < rdr.FieldCount; i++)
-                    {
-                        if (!hasSetColumn)
-                        {
-                            DataColumn dc = new DataColumn();
-                            dc.ColumnName = rdr.GetName(i);
-                            dataTable.Columns.Add(dc);
-                        }
-                        dr[i] = rdr[i];
-                    }
-                    hasSetColumn = true;
-                    dataTable.Rows.Add(dr);
-                }
+                dataTable.Load(rdr);
+            }
+            string[] CodeNameList = new string[] { };
+            double[] NumberList = new double[] { };
+            List<string> codeNames = CodeNameList.ToList();
+            List<double> numbers = NumberList.ToList();
+            DataTable dtSource = InitDataTable(dataGridView1);
+            var numberTotal = 0.0;
+            foreach (DataRow item in dataTable.Rows)
+            {
+                dtSource.Rows.Add(item["RowNumber"].ToString(), item["AutoFlag"].ToString(), item["OrderCount"].ToString(), item["PERCENTAGE"].ToString() + "%");
+                codeNames.Add(item["AutoFlag"].ToString());
+                numbers.Add(Convert.ToDouble(item["OrderCount"]));
+                numberTotal = numberTotal + Convert.ToDouble(item["OrderCount"].ToString());
             }
 
-            DataTable dts = GetCrane(dataTable);
+            dataGridView1.DataSource = dtSource;
 
-            //dataGridView1
-            DataTable dts1 = InitDataTable(dataGridView1);
-            int OPER_ID1 = 0;
-            foreach (DataRow item in dts.Rows)
+            foreach (Series series in this.chart1.Series)
             {
-                OPER_ID1++;
-                dts1.Rows.Add(Convert.ToString(OPER_ID1), item["CRANE_NO"].ToString(), item["CRANE_MODENAME"].ToString(), item["COUNT"].ToString(), item["PERCENTAGE"].ToString());
+                series.Points.Clear();
             }
-            //dataGridView1.Rows.Clear();
-            dataGridView1.DataSource = dts1;
-            //this.dataGridView1.DataSource = GetDataPage(dts1, currentPage,1);
-            //dataGridView2
-            DataTable dts2 = InitDataTable(dataGridView2);
-            int OPER_ID2 = 0;
-            foreach (DataRow item in dts.Rows)
+            if (codeNames.Count > 0)
             {
-                OPER_ID2++;
-                dts2.Rows.Add(Convert.ToString(OPER_ID2), item["CRANE_NO"].ToString(), item["CRANE_MODENAME"].ToString(), item["COUNT"].ToString());
+                CodeNameList = codeNames.ToArray();
             }
-            //dataGridView2.Rows.Clear();
-            dataGridView2.DataSource = dts2;
+            if (numbers.Count > 0)
+            {
+                NumberList = numbers.ToArray();
+            }
+            chart1.Titles[1].Text = "合计：" + numberTotal + " 槽";
+            chart1.Series[0].Points.DataBindXY(CodeNameList, NumberList);
+            //dataGridView2.DataSource = dts2;
             //this.dataGridView2.DataSource = GetDataPage(dts2, currentPage, 2);
         }
+
+        #region 图形
+
+        /// <summary>
+        /// 饼状图 物料进料次数分析
+        /// </summary>
+        private void MatPie()
+        {
+            #region 饼状图
+            string[] x = new string[] { "成都大队", "广东大队", "广西大队", "云南大队", "上海大队", "苏州大队", "深圳大队", "北京大队", "湖北大队", "湖南大队", "重庆大队", "辽宁大队" };
+            double[] y = new double[] { 589, 598, 445, 654, 884, 457, 941, 574, 745, 854, 684, 257 };
+            string[] z = new string[] { "", "", "", "", "", "", "", "", "", "", "", "" };
+            //标题
+            //this.chart1.ChartAreas.Clear();
+            chart1.Titles.Add("自动化率");
+            chart1.Titles[0].ForeColor = Color.Blue;
+            chart1.Titles[0].Font = new Font("微软雅黑", 12f, FontStyle.Regular);
+            chart1.Titles[0].Alignment = ContentAlignment.TopCenter;
+            //chart1.Titles[0].Visible = false;
+            chart1.Titles.Add("合计： 槽");
+            chart1.Titles[1].ForeColor = Color.Blue;
+            chart1.Titles[1].Font = new Font("微软雅黑", 8f, FontStyle.Regular);
+            chart1.Titles[1].Alignment = ContentAlignment.TopRight;
+            //chart1.Titles[1].Visible = false;
+
+            //控件背景
+            chart1.BackColor = Color.Transparent;
+            //图表区背景
+            chart1.ChartAreas[0].BackColor = Color.Transparent;
+            chart1.ChartAreas[0].BorderColor = Color.Transparent;
+            //X轴标签间距
+            chart1.ChartAreas[0].AxisX.Interval = 1;
+            chart1.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
+            chart1.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
+            chart1.ChartAreas[0].AxisX.TitleFont = new Font("微软雅黑", 14f, FontStyle.Regular);
+            chart1.ChartAreas[0].AxisX.TitleForeColor = Color.Blue;
+
+            //X坐标轴颜色
+            chart1.ChartAreas[0].AxisX.LineColor = ColorTranslator.FromHtml("#38587a");
+            chart1.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Blue;
+            chart1.ChartAreas[0].AxisX.LabelStyle.Font = new Font("微软雅黑", 10f, FontStyle.Regular);
+            //X坐标轴标题
+            chart1.ChartAreas[0].AxisX.Title = "数量 (槽)";
+            chart1.ChartAreas[0].AxisX.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
+            chart1.ChartAreas[0].AxisX.TitleForeColor = Color.Blue;
+            chart1.ChartAreas[0].AxisX.TextOrientation = TextOrientation.Horizontal;
+            chart1.ChartAreas[0].AxisX.ToolTip = "数量 (槽)";
+            //X轴网络线条
+            chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
+            chart1.ChartAreas[0].AxisX.MajorGrid.LineColor = ColorTranslator.FromHtml("#2c4c6d");
+
+            //Y坐标轴颜色
+            chart1.ChartAreas[0].AxisY.LineColor = ColorTranslator.FromHtml("#38587a");
+            chart1.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Blue;
+            chart1.ChartAreas[0].AxisY.LabelStyle.Font = new Font("微软雅黑", 10f, FontStyle.Regular);
+            //Y坐标轴标题
+            chart1.ChartAreas[0].AxisY.Title = "数量 (槽)";
+            chart1.ChartAreas[0].AxisY.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
+            chart1.ChartAreas[0].AxisY.TitleForeColor = Color.Blue;
+            chart1.ChartAreas[0].AxisY.TextOrientation = TextOrientation.Rotated270;
+            chart1.ChartAreas[0].AxisY.ToolTip = "数量 (槽)";
+            //Y轴网格线条
+            chart1.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
+            chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = ColorTranslator.FromHtml("#2c4c6d");
+
+            chart1.ChartAreas[0].AxisY2.LineColor = Color.Transparent;
+
+            //背景渐变
+            chart1.ChartAreas[0].BackGradientStyle = GradientStyle.None;
+
+            //chart1.Legends.Clear();
+            //图例样式
+            Legend legend2 = new Legend("#VALX");
+            legend2.Title = "图例";
+            legend2.TitleBackColor = Color.Transparent;
+            legend2.BackColor = Color.Transparent;
+            legend2.TitleForeColor = Color.Blue;
+            legend2.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
+            legend2.Font = new Font("微软雅黑", 8f, FontStyle.Regular);
+            legend2.ForeColor = Color.Blue;
+
+            chart1.Series[0].XValueType = ChartValueType.String;  //设置X轴上的值类型
+            //chart1.Series[0].Label = "#VAL";                //设置显示X Y的值
+            chart1.Series[0].Label = "#VALX #PERCENT{P2}";
+            chart1.Series[0].LabelForeColor = Color.Blue;
+            chart1.Series[0].ToolTip = "#VALX：#VAL (槽)";     //鼠标移动到对应点显示数值
+            chart1.Series[0].ChartType = SeriesChartType.Pie;    //图类型(折线)
+
+            chart1.Series[0].Color = Color.Lime;
+            chart1.Series[0].LegendText = legend2.Name;
+            chart1.Series[0].IsValueShownAsLabel = true;
+            chart1.Series[0].LabelForeColor = Color.Blue;
+            chart1.Series[0].CustomProperties = "DrawingStyle = Cylinder";
+            chart1.Series[0].CustomProperties = "PieLabelStyle = Outside";
+            chart1.Legends.Add(legend2);
+            chart1.Legends[0].Position.Auto = true;
+            chart1.Series[0].IsValueShownAsLabel = true;
+            //是否显示图例
+            chart1.Series[0].IsVisibleInLegend = true;
+            chart1.Series[0].ShadowOffset = 0;
+
+            //饼图折线
+            chart1.Series[0]["PieLineColor"] = "Blue";
+            //绑定数据
+            chart1.Series[0].Points.DataBindXY(x, y);
+            chart1.Series[0].Points[0].Color = Color.Blue;
+            //绑定颜色
+            chart1.Series[0].Palette = ChartColorPalette.BrightPastel;
+
+            #endregion
+        } 
+        #endregion
+
 
         #region 业务数据处理
         /// <summary>
@@ -345,10 +453,10 @@ namespace UACSView
             DataTable dt = new DataTable();
             dt.Columns.Add("TypeValue");
             dt.Columns.Add("TypeName");
-            dt.Rows.Add("1", "远程操控");
-            dt.Rows.Add("2", "人工");
-            dt.Rows.Add("4", "自动");
-            dt.Rows.Add("5", "等待");
+            //dt.Rows.Add("0", "未开始");
+            dt.Rows.Add("1", "自动");
+            dt.Rows.Add("2", "半自动");
+            //dt.Rows.Add("5", "等待");
             if (showAll)
             {
                 dt.Rows.Add("全部", "全部");
@@ -415,7 +523,7 @@ namespace UACSView
             {
                 control.SelectedIndex = dt.Rows.Count - 1;
             }
-        } 
+        }
         #endregion
 
         #endregion
