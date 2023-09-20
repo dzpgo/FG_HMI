@@ -65,9 +65,11 @@ namespace UACSView
             //this.ucPageDemo.JumpPageEvent += ucPageDemo_JumpPageEvent;
             MatPie();
             //MatPieData();
-            //初始化查询
+            //自动化率
             GetUACS_ORDER_OPER(true, 1);
-           
+            //计划用时统计
+            //GetUACS_L3_MAT_OUT_INFO(1);
+
         }
         /// <summary>
         /// 绑定下拉框数据
@@ -93,6 +95,7 @@ namespace UACSView
         private void button1_Click(object sender, EventArgs e)
         {
             GetUACS_ORDER_OPER(false, 1);
+            GetUACS_L3_MAT_OUT_INFO(1);
         }
         /// <summary>
         /// 查询指令数据
@@ -175,6 +178,49 @@ namespace UACSView
             chart1.Series[0].Points.DataBindXY(CodeNameList, NumberList);
             //dataGridView2.DataSource = dts2;
             //this.dataGridView2.DataSource = GetDataPage(dts2, currentPage, 2);
+        }
+
+        private void GetUACS_L3_MAT_OUT_INFO(int currentPage)
+        {
+            string recTime1 = this.dateTimePicker1.Value.ToString("yyyyMMdd000000");  //开始时间
+            string recTime2 = this.dateTimePicker2.Value.ToString("yyyyMMdd235959");  //结束时间
+            //var sqlText = "SELECT * FROM (SELECT COUNT(1) OVER () AS TotalRows,ROW_NUMBER() OVER () AS ROWNUM,tab.* FROM ( ";
+            var sqlText = @"SELECT 
+                                ROW_NUMBER() OVER (ORDER BY AUTO_FLAG) AS RowNumber,
+                                CASE
+                                    WHEN AUTO_FLAG = 0 THEN '未开始'
+                                    WHEN AUTO_FLAG = 1 THEN '全自动'
+                                    WHEN AUTO_FLAG = 2 THEN '半自动'
+                                    ELSE '其他'
+                                END AS AutoFlag,
+                                COUNT(*) AS OrderCount,
+                                CAST(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM UACS_L3_MAT_OUT_INFO WHERE AUTO_FLAG IS NOT NULL AND REC_TIME >= '{0}' AND REC_TIME <= '{1}') AS DECIMAL(10, 2)) AS PERCENTAGE
+                            FROM UACS_L3_MAT_OUT_INFO
+                            WHERE AUTO_FLAG IS NOT NULL AND REC_TIME >= '{2}' AND REC_TIME <= '{3}' 
+                            GROUP BY AUTO_FLAG
+                            ORDER BY AUTO_FLAG;";
+            //sqlText += "WHERE REC_TIME >= '{2}' and REC_TIME <= '{3}' ";
+            sqlText = string.Format(sqlText, recTime1, recTime2, recTime1, recTime2);
+            DataTable dataTable = new DataTable();
+            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
+            {
+                dataTable.Load(rdr);
+            }
+            string[] CodeNameList = new string[] { };
+            double[] NumberList = new double[] { };
+            List<string> codeNames = CodeNameList.ToList();
+            List<double> numbers = NumberList.ToList();
+            DataTable dtSource = InitDataTable(dataGridView2);
+            var numberTotal = 0.0;
+            foreach (DataRow item in dataTable.Rows)
+            {
+                dtSource.Rows.Add(item["RowNumber"].ToString(), item["AutoFlag"].ToString(), item["OrderCount"].ToString(), item["PERCENTAGE"].ToString() + "%");
+                codeNames.Add(item["AutoFlag"].ToString());
+                numbers.Add(Convert.ToDouble(item["OrderCount"]));
+                numberTotal = numberTotal + Convert.ToDouble(item["OrderCount"].ToString());
+            }
+
+            dataGridView1.DataSource = dtSource;
         }
 
         #region 图形

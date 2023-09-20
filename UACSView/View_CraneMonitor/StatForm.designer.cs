@@ -28,19 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
@@ -59,26 +62,44 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.OPER_ID2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CRANE_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CRANE_MODE2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CMD_SEQ2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.RowNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AutoFlag = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PERCENTAGE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.OPER_ID2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CRANE_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PLAN_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BOF_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CMD_SEQ2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WEIGHT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoadingTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FiftyFiveTonTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SeventyTwoTonTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
+            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // saveFileDialog1
@@ -274,14 +295,12 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.BackColor = System.Drawing.Color.LightSteelBlue;
             this.groupBox2.Controls.Add(this.tableLayoutPanel1);
-            this.groupBox2.Location = new System.Drawing.Point(0, 87);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 81);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1572, 726);
+            this.groupBox2.Size = new System.Drawing.Size(1572, 733);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             // 
@@ -290,18 +309,122 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 17);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1566, 706);
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1566, 713);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.tableLayoutPanel3);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(786, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(777, 707);
+            this.panel3.TabIndex = 19;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.panel6, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.panel5, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(777, 707);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.chart3);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(3, 356);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(771, 348);
+            this.panel6.TabIndex = 1;
+            // 
+            // chart3
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea1);
+            this.chart3.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.Name = "Legend1";
+            this.chart3.Legends.Add(legend1);
+            this.chart3.Location = new System.Drawing.Point(0, 0);
+            this.chart3.Name = "chart3";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart3.Series.Add(series1);
+            this.chart3.Size = new System.Drawing.Size(771, 348);
+            this.chart3.TabIndex = 4;
+            this.chart3.Text = "chart3";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.chart1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(3, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(771, 347);
+            this.panel5.TabIndex = 0;
+            // 
+            // chart1
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(0, 0);
+            this.chart1.Name = "chart1";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.LegendText = "#SERIESNAME";
+            series2.Name = "Series1";
+            series2.Points.Add(dataPoint1);
+            series2.Points.Add(dataPoint2);
+            series2.Points.Add(dataPoint3);
+            series2.Points.Add(dataPoint4);
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(771, 347);
+            this.chart1.TabIndex = 2;
+            this.chart1.Text = "chart1";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.panel4, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(777, 707);
+            this.tableLayoutPanel2.TabIndex = 20;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dataGridView2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 144);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(771, 560);
+            this.panel1.TabIndex = 17;
             // 
             // dataGridView2
             // 
@@ -323,8 +446,13 @@
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OPER_ID2,
             this.CRANE_NO2,
-            this.CRANE_MODE2,
-            this.CMD_SEQ2});
+            this.PLAN_NO2,
+            this.BOF_NO,
+            this.CMD_SEQ2,
+            this.WEIGHT,
+            this.LoadingTime,
+            this.FiftyFiveTonTime,
+            this.SeventyTwoTonTime});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -335,44 +463,22 @@
             this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.EnableHeadersVisualStyles = false;
-            this.dataGridView2.Location = new System.Drawing.Point(786, 3);
+            this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowTemplate.Height = 23;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(777, 276);
+            this.dataGridView2.Size = new System.Drawing.Size(771, 560);
             this.dataGridView2.TabIndex = 11;
             // 
-            // OPER_ID2
+            // panel4
             // 
-            this.OPER_ID2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.OPER_ID2.DataPropertyName = "OPER_ID2";
-            this.OPER_ID2.Frozen = true;
-            this.OPER_ID2.HeaderText = "序号";
-            this.OPER_ID2.Name = "OPER_ID2";
-            this.OPER_ID2.ReadOnly = true;
-            this.OPER_ID2.Width = 127;
-            // 
-            // CRANE_NO2
-            // 
-            this.CRANE_NO2.DataPropertyName = "CRANE_NO2";
-            this.CRANE_NO2.HeaderText = "行车";
-            this.CRANE_NO2.Name = "CRANE_NO2";
-            this.CRANE_NO2.ReadOnly = true;
-            // 
-            // CRANE_MODE2
-            // 
-            this.CRANE_MODE2.DataPropertyName = "CRANE_MODE2";
-            this.CRANE_MODE2.HeaderText = "吊运模式";
-            this.CRANE_MODE2.Name = "CRANE_MODE2";
-            this.CRANE_MODE2.ReadOnly = true;
-            // 
-            // CMD_SEQ2
-            // 
-            this.CMD_SEQ2.DataPropertyName = "CMD_SEQ2";
-            this.CMD_SEQ2.HeaderText = "吊运总数";
-            this.CMD_SEQ2.Name = "CMD_SEQ2";
-            this.CMD_SEQ2.ReadOnly = true;
+            this.panel4.Controls.Add(this.dataGridView1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(771, 135);
+            this.panel4.TabIndex = 18;
             // 
             // dataGridView1
             // 
@@ -406,12 +512,12 @@
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(777, 276);
+            this.dataGridView1.Size = new System.Drawing.Size(771, 135);
             this.dataGridView1.TabIndex = 16;
             // 
             // RowNumber
@@ -445,45 +551,77 @@
             this.PERCENTAGE.Name = "PERCENTAGE";
             this.PERCENTAGE.ReadOnly = true;
             // 
-            // panel1
+            // OPER_ID2
             // 
-            this.panel1.Controls.Add(this.chart1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 285);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(777, 418);
-            this.panel1.TabIndex = 17;
+            this.OPER_ID2.DataPropertyName = "OPER_ID2";
+            this.OPER_ID2.FillWeight = 65F;
+            this.OPER_ID2.HeaderText = "序号";
+            this.OPER_ID2.Name = "OPER_ID2";
+            this.OPER_ID2.ReadOnly = true;
             // 
-            // panel2
+            // CRANE_NO2
             // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(786, 285);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(777, 418);
-            this.panel2.TabIndex = 18;
+            this.CRANE_NO2.DataPropertyName = "CRANE_NO2";
+            this.CRANE_NO2.FillWeight = 65F;
+            this.CRANE_NO2.HeaderText = "行车";
+            this.CRANE_NO2.Name = "CRANE_NO2";
+            this.CRANE_NO2.ReadOnly = true;
             // 
-            // chart1
+            // PLAN_NO2
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(0, 0);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.LegendText = "#SERIESNAME";
-            series1.Name = "Series1";
-            series1.Points.Add(dataPoint1);
-            series1.Points.Add(dataPoint2);
-            series1.Points.Add(dataPoint3);
-            series1.Points.Add(dataPoint4);
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(777, 418);
-            this.chart1.TabIndex = 2;
-            this.chart1.Text = "chart1";
+            this.PLAN_NO2.DataPropertyName = "PLAN_NO2";
+            this.PLAN_NO2.FillWeight = 75F;
+            this.PLAN_NO2.HeaderText = "计划号";
+            this.PLAN_NO2.Name = "PLAN_NO2";
+            this.PLAN_NO2.ReadOnly = true;
+            // 
+            // BOF_NO
+            // 
+            this.BOF_NO.DataPropertyName = "BOF_NO";
+            this.BOF_NO.FillWeight = 65F;
+            this.BOF_NO.HeaderText = "炉号";
+            this.BOF_NO.Name = "BOF_NO";
+            this.BOF_NO.ReadOnly = true;
+            // 
+            // CMD_SEQ2
+            // 
+            this.CMD_SEQ2.DataPropertyName = "CMD_SEQ2";
+            this.CMD_SEQ2.FillWeight = 78.23604F;
+            this.CMD_SEQ2.HeaderText = "吊运总数";
+            this.CMD_SEQ2.Name = "CMD_SEQ2";
+            this.CMD_SEQ2.ReadOnly = true;
+            // 
+            // WEIGHT
+            // 
+            this.WEIGHT.DataPropertyName = "WEIGHT";
+            this.WEIGHT.FillWeight = 78.23604F;
+            this.WEIGHT.HeaderText = "重量";
+            this.WEIGHT.Name = "WEIGHT";
+            this.WEIGHT.ReadOnly = true;
+            // 
+            // LoadingTime
+            // 
+            this.LoadingTime.DataPropertyName = "LoadingTime";
+            this.LoadingTime.FillWeight = 78.23604F;
+            this.LoadingTime.HeaderText = "装车用时";
+            this.LoadingTime.Name = "LoadingTime";
+            this.LoadingTime.ReadOnly = true;
+            // 
+            // FiftyFiveTonTime
+            // 
+            this.FiftyFiveTonTime.DataPropertyName = "FiftyFiveTonTime";
+            this.FiftyFiveTonTime.FillWeight = 78.23604F;
+            this.FiftyFiveTonTime.HeaderText = "55T用时";
+            this.FiftyFiveTonTime.Name = "FiftyFiveTonTime";
+            this.FiftyFiveTonTime.ReadOnly = true;
+            // 
+            // SeventyTwoTonTime
+            // 
+            this.SeventyTwoTonTime.DataPropertyName = "SeventyTwoTonTime";
+            this.SeventyTwoTonTime.FillWeight = 78.23604F;
+            this.SeventyTwoTonTime.HeaderText = "72T用时";
+            this.SeventyTwoTonTime.Name = "SeventyTwoTonTime";
+            this.SeventyTwoTonTime.ReadOnly = true;
             // 
             // StatForm
             // 
@@ -501,10 +639,17 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
+            this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -530,16 +675,27 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OPER_ID2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CRANE_NO2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CRANE_MODE2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CMD_SEQ2;
         private System.Windows.Forms.DataGridViewTextBoxColumn RowNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn AutoFlag;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn PERCENTAGE;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OPER_ID2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CRANE_NO2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PLAN_NO2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BOF_NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CMD_SEQ2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WEIGHT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LoadingTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FiftyFiveTonTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SeventyTwoTonTime;
     }
 }
