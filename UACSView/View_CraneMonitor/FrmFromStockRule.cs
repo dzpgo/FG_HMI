@@ -49,35 +49,35 @@ namespace UACSView.View_CraneMonitor
             comboBox2.Items.Add("跨口取料");
             //comboBox2.Items.Add("大车方向优先");
             //comboBox2.Items.Add("未知");
-            comboBox2.Items.Add("空");
+            comboBox2.Items.Add("默认");
             dataGridView1.Controls.Add(comboBox2);
             this.comboBox2.SelectedValueChanged += new System.EventHandler(this.comboBox2_SelectedValueChanged);
 
             comboBox3.Visible = false;
             comboBox3.Items.Add("小地址往大地址");
             comboBox3.Items.Add("大地址往小地址");
-            comboBox3.Items.Add("空");
+            comboBox3.Items.Add("默认");
             dataGridView1.Controls.Add(comboBox3);
             this.comboBox3.SelectedValueChanged += new System.EventHandler(this.comboBox3_SelectedValueChanged);
 
             comboBox4.Visible = false;
             comboBox4.Items.Add("小地址往大地址");
             comboBox4.Items.Add("大地址往小地址");
-            comboBox4.Items.Add("空");
+            comboBox4.Items.Add("默认");
             dataGridView1.Controls.Add(comboBox4);
             this.comboBox4.SelectedValueChanged += new System.EventHandler(this.comboBox4_SelectedValueChanged);
 
             comboBox5.Visible = false;
             comboBox5.Items.Add("小地址往大地址");
             comboBox5.Items.Add("大地址往小地址");
-            comboBox5.Items.Add("空");
+            comboBox5.Items.Add("默认");
             dataGridView1.Controls.Add(comboBox5);
             this.comboBox5.SelectedValueChanged += new System.EventHandler(this.comboBox5_SelectedValueChanged);
 
             comboBox6.Visible = false;
             comboBox6.Items.Add("小地址往大地址");
             comboBox6.Items.Add("大地址往小地址");
-            comboBox6.Items.Add("空");
+            comboBox6.Items.Add("默认");
             dataGridView1.Controls.Add(comboBox6);
             this.comboBox6.SelectedValueChanged += new System.EventHandler(this.comboBox6_SelectedValueChanged);
         }
@@ -94,22 +94,22 @@ namespace UACSView.View_CraneMonitor
                             CASE UP_MAT_DIR_1
                             WHEN 0 THEN '小地址往大地址' 
                             WHEN 1 THEN '大地址往小地址' 
-                            ELSE '空' 
+                            ELSE '默认' 
                             END AS UP_MAT_DIR_1 , 
                             CASE DOWN_MAT_DIR_1 
                             WHEN 0 THEN '小地址往大地址' 
                             WHEN 1 THEN '大地址往小地址' 
-                            ELSE '空' 
+                            ELSE '默认' 
                             END AS DOWN_MAT_DIR_1 , 
                             CASE UP_MAT_DIR_2 
                             WHEN 0 THEN '小地址往大地址' 
                             WHEN 1 THEN '大地址往小地址' 
-                            ELSE '空' 
+                            ELSE '默认' 
                             END AS UP_MAT_DIR_2 , 
                             CASE DOWN_MAT_DIR_2 
                             WHEN 0 THEN '小地址往大地址' 
                             WHEN 1 THEN '大地址往小地址' 
-                            ELSE '空' 
+                            ELSE '默认' 
                             END AS DOWN_MAT_DIR_2 , 
                             UP_MAT_LIMIT_1, DOWN_MAT_LIMIT_1, UP_MAT_LIMIT_2, 
                             DOWN_MAT_LIMIT_2, UP_MAT_LIMIT_3, DOWN_MAT_LIMIT_3, UP_MAT_LIMIT_4, DOWN_MAT_LIMIT_4, 
@@ -117,8 +117,8 @@ namespace UACSView.View_CraneMonitor
                             WHEN 0 THEN '跨后取料' 
                             WHEN 1 THEN '跨口取料' 
                             WHEN 2 THEN '大车方向优先' 
-                            WHEN 3 THEN '空' 
-                            ELSE '空' 
+                            WHEN 3 THEN '默认' 
+                            ELSE '默认' 
                             END AS STARTEGY_TYPE 
                             FROM UACSAPP.UACS_CRANE_DEFINE ORDER BY CRANE_NO ASC ";
             using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))

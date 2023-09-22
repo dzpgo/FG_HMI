@@ -78,7 +78,7 @@
             this.OrderCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PERCENTAGE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OPER_ID2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CRANE_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CRANE_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PLAN_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BOF_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CMD_SEQ2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -86,6 +86,7 @@
             this.LoadingTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FiftyFiveTonTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SeventyTwoTonTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.REC_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -445,14 +446,15 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OPER_ID2,
-            this.CRANE_NO2,
+            this.CRANE_NO,
             this.PLAN_NO2,
             this.BOF_NO,
             this.CMD_SEQ2,
             this.WEIGHT,
             this.LoadingTime,
             this.FiftyFiveTonTime,
-            this.SeventyTwoTonTime});
+            this.SeventyTwoTonTime,
+            this.REC_TIME});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -559,13 +561,13 @@
             this.OPER_ID2.Name = "OPER_ID2";
             this.OPER_ID2.ReadOnly = true;
             // 
-            // CRANE_NO2
+            // CRANE_NO
             // 
-            this.CRANE_NO2.DataPropertyName = "CRANE_NO2";
-            this.CRANE_NO2.FillWeight = 65F;
-            this.CRANE_NO2.HeaderText = "行车";
-            this.CRANE_NO2.Name = "CRANE_NO2";
-            this.CRANE_NO2.ReadOnly = true;
+            this.CRANE_NO.DataPropertyName = "CRANE_NO";
+            this.CRANE_NO.FillWeight = 65F;
+            this.CRANE_NO.HeaderText = "行车";
+            this.CRANE_NO.Name = "CRANE_NO";
+            this.CRANE_NO.ReadOnly = true;
             // 
             // PLAN_NO2
             // 
@@ -622,6 +624,14 @@
             this.SeventyTwoTonTime.HeaderText = "72T用时";
             this.SeventyTwoTonTime.Name = "SeventyTwoTonTime";
             this.SeventyTwoTonTime.ReadOnly = true;
+            // 
+            // REC_TIME
+            // 
+            this.REC_TIME.DataPropertyName = "REC_TIME";
+            this.REC_TIME.HeaderText = "创建时间";
+            this.REC_TIME.Name = "REC_TIME";
+            this.REC_TIME.ReadOnly = true;
+            this.REC_TIME.Visible = false;
             // 
             // StatForm
             // 
@@ -689,7 +699,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
         private System.Windows.Forms.DataGridViewTextBoxColumn OPER_ID2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CRANE_NO2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CRANE_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn PLAN_NO2;
         private System.Windows.Forms.DataGridViewTextBoxColumn BOF_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn CMD_SEQ2;
@@ -697,5 +707,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LoadingTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn FiftyFiveTonTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn SeventyTwoTonTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn REC_TIME;
     }
 }

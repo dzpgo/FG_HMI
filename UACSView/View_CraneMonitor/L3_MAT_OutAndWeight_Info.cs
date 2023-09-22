@@ -451,7 +451,7 @@ namespace UACSView
 
             #region 访问数据库库
             string work_seqNo = this.textWORK_SEQ_NO.Text.Trim();  //计划号
-            string recTime1 = dateTimePicker1_recTime.Value.Day.Equals(DateTime.Now.Day) ? this.dateTimePicker1_recTime.Value.AddDays(-5).ToString("yyyyMMdd000000") : this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");  //开始时间
+            string recTime1 = dateTimePicker1_recTime.Value.Day.Equals(DateTime.Now.Day) ? this.dateTimePicker1_recTime.Value.AddDays(-7).ToString("yyyyMMdd000000") : this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");  //开始时间
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");  //结束时间
             var sqlText = @"SELECT DATE(A.REC_TIME) AS DaY, C.MAT_CNAME AS CodeName,SUM(A.MAT_WT) AS MatWT ";
             sqlText += "FROM UACSAPP.UACS_L3_MAT_WEIGHT_INFO A ";

@@ -68,7 +68,9 @@ namespace UACSView
             //自动化率
             GetUACS_ORDER_OPER(true, 1);
             //计划用时统计
-            //GetUACS_L3_MAT_OUT_INFO(1);
+            GetUACS_L3_MAT_OUT_INFO(1);
+            //折线图
+            MatSpline();
 
         }
         /// <summary>
@@ -96,6 +98,8 @@ namespace UACSView
         {
             GetUACS_ORDER_OPER(false, 1);
             GetUACS_L3_MAT_OUT_INFO(1);
+            //折线图
+            MatSpline();
         }
         /// <summary>
         /// 查询指令数据
@@ -105,12 +109,10 @@ namespace UACSView
         {
             if (m_dbHelper == null)
                 return;
-
             string craneNo = this.cbb_CRANE_NO.SelectedValue.ToString();  //跨号
             string craneMode = this.cbb_CRANE_MODE.SelectedValue.ToString();  //行车模式
             string recTime1 = this.dateTimePicker1.Value.ToString("yyyyMMdd000000");  //开始时间
             string recTime2 = this.dateTimePicker2.Value.ToString("yyyyMMdd235959");  //结束时间
-            //var sqlText = "SELECT * FROM (SELECT COUNT(1) OVER () AS TotalRows,ROW_NUMBER() OVER () AS ROWNUM,tab.* FROM ( ";
             var sqlText = @"SELECT 
                                 ROW_NUMBER() OVER (ORDER BY AUTO_FLAG) AS RowNumber,
                                 CASE
@@ -127,20 +129,6 @@ namespace UACSView
                             ORDER BY AUTO_FLAG;";
             //sqlText += "WHERE REC_TIME >= '{2}' and REC_TIME <= '{3}' ";
             sqlText = string.Format(sqlText, recTime1, recTime2, recTime1, recTime2);
-            //if (!isLoad)
-            //{
-            //    if (craneNo != "全部")
-            //    {
-            //        sqlText = string.Format("{0} and CRANE_NO = '{1}' ", sqlText, craneNo);     //行车号
-            //    }
-            //    if (craneMode != "全部")
-            //    {
-            //        sqlText = string.Format("{0} and CRANE_MODE = '{1}' ", sqlText, craneMode); //操作模式
-            //    }
-            //    //按 NO>流水号>记录时间>更新时间 降序
-            //    sqlText += " ORDER BY OPER_ID DESC,ORDER_NO DESC,REC_TIME DESC ";
-            //}
-          
             DataTable dataTable = new DataTable();
             using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
             {
@@ -176,51 +164,101 @@ namespace UACSView
             }
             chart1.Titles[1].Text = "合计：" + numberTotal + " 槽";
             chart1.Series[0].Points.DataBindXY(CodeNameList, NumberList);
-            //dataGridView2.DataSource = dts2;
-            //this.dataGridView2.DataSource = GetDataPage(dts2, currentPage, 2);
         }
-
+        /// <summary>
+        /// 获取计划数据
+        /// </summary>
+        /// <param name="currentPage"></param>
         private void GetUACS_L3_MAT_OUT_INFO(int currentPage)
         {
             string recTime1 = this.dateTimePicker1.Value.ToString("yyyyMMdd000000");  //开始时间
             string recTime2 = this.dateTimePicker2.Value.ToString("yyyyMMdd235959");  //结束时间
-            //var sqlText = "SELECT * FROM (SELECT COUNT(1) OVER () AS TotalRows,ROW_NUMBER() OVER () AS ROWNUM,tab.* FROM ( ";
-            var sqlText = @"SELECT 
-                                ROW_NUMBER() OVER (ORDER BY AUTO_FLAG) AS RowNumber,
-                                CASE
-                                    WHEN AUTO_FLAG = 0 THEN '未开始'
-                                    WHEN AUTO_FLAG = 1 THEN '全自动'
-                                    WHEN AUTO_FLAG = 2 THEN '半自动'
-                                    ELSE '其他'
-                                END AS AutoFlag,
-                                COUNT(*) AS OrderCount,
-                                CAST(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM UACS_L3_MAT_OUT_INFO WHERE AUTO_FLAG IS NOT NULL AND REC_TIME >= '{0}' AND REC_TIME <= '{1}') AS DECIMAL(10, 2)) AS PERCENTAGE
-                            FROM UACS_L3_MAT_OUT_INFO
-                            WHERE AUTO_FLAG IS NOT NULL AND REC_TIME >= '{2}' AND REC_TIME <= '{3}' 
-                            GROUP BY AUTO_FLAG
-                            ORDER BY AUTO_FLAG;";
-            //sqlText += "WHERE REC_TIME >= '{2}' and REC_TIME <= '{3}' ";
-            sqlText = string.Format(sqlText, recTime1, recTime2, recTime1, recTime2);
-            DataTable dataTable = new DataTable();
+            var sqlText = @"SELECT ROW_NUMBER() OVER (ORDER BY PLAN_NO DESC) AS RowNumber,
+                            PLAN_NO, BOF_NO, REC_TIME FROM UACS_L3_MAT_OUT_INFO 
+                            WHERE AUTO_FLAG IS NOT NULL ";
+            sqlText += "AND REC_TIME >= '{0}' AND REC_TIME <= '{1}' ";
+            sqlText = string.Format(sqlText, recTime1, recTime2);
+            sqlText += "ORDER BY PLAN_NO DESC ;";
+            DataTable dtUacsL3MatOutInfo = new DataTable();
             using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
             {
-                dataTable.Load(rdr);
+                dtUacsL3MatOutInfo.Load(rdr);
             }
             string[] CodeNameList = new string[] { };
             double[] NumberList = new double[] { };
             List<string> codeNames = CodeNameList.ToList();
             List<double> numbers = NumberList.ToList();
+            var planNo = string.Empty;
             DataTable dtSource = InitDataTable(dataGridView2);
-            var numberTotal = 0.0;
-            foreach (DataRow item in dataTable.Rows)
+            foreach (DataRow item in dtUacsL3MatOutInfo.Rows)
             {
-                dtSource.Rows.Add(item["RowNumber"].ToString(), item["AutoFlag"].ToString(), item["OrderCount"].ToString(), item["PERCENTAGE"].ToString() + "%");
-                codeNames.Add(item["AutoFlag"].ToString());
-                numbers.Add(Convert.ToDouble(item["OrderCount"]));
-                numberTotal = numberTotal + Convert.ToDouble(item["OrderCount"].ToString());
+                planNo = planNo + "'" + item["PLAN_NO"].ToString() + "',";
             }
+            if (!string.IsNullOrEmpty(planNo) && planNo.EndsWith(","))
+            {
+                planNo = planNo.Remove(planNo.Length - 1);   //使用 Remove 方法删除最后一个字符
 
-            dataGridView1.DataSource = dtSource;
+                var sqlText2 = @"SELECT CRANE_NO,PLAN_NO,CMD_SEQ,REQ_WEIGHT,START_TIME,UPD_TIME 
+                                 FROM UACS_ORDER_QUEUE ";
+                sqlText2 += "WHERE PLAN_NO IN ({0}) ;";
+                sqlText2 = string.Format(sqlText2, planNo);
+                DataTable dtUacsOrderQueue = new DataTable();
+                using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText2))
+                {
+                    dtUacsOrderQueue.Load(rdr);
+                }
+                foreach (DataRow drMatOut in dtUacsL3MatOutInfo.Rows)
+                {
+                    var RaneNo = string.Empty;
+                    var CmdSeq = 0;
+                    var Weight = 0.0;
+                    var LoadingTime = 0.0;
+                    var FiftyFiveTonTime = 0.0;
+                    var SeventyTwoTonTime = 0.0;
+
+                    DateTime? PlanoutStart = null;
+                    DateTime? PlanoutEnd = null;
+                    foreach (DataRow drOrder in dtUacsOrderQueue.Rows)
+                    {                        
+                        if (drMatOut["PLAN_NO"].ToString().Equals(drOrder["PLAN_NO"].ToString()))
+                        {
+                            RaneNo = drOrder["CRANE_NO"].ToString();
+                            CmdSeq += Convert.ToInt32(drOrder["CMD_SEQ"]);
+                            Weight += Convert.ToDouble(drOrder["REQ_WEIGHT"]);
+                            if (drOrder["START_TIME"] != System.DBNull.Value && PlanoutStart == null)
+                            {
+                                PlanoutStart = Convert.ToDateTime(drOrder["START_TIME"]);
+                            }
+                            if (drOrder["START_TIME"] != System.DBNull.Value && PlanoutStart != null && Convert.ToDateTime(drOrder["START_TIME"]) < PlanoutStart)
+                            {
+                                PlanoutStart = Convert.ToDateTime(drOrder["START_TIME"]);
+                            }
+                            if (drOrder["UPD_TIME"] != System.DBNull.Value && PlanoutEnd == null)
+                            {
+                                PlanoutEnd = Convert.ToDateTime(drOrder["UPD_TIME"]);
+                            }
+                            if (drOrder["UPD_TIME"] != System.DBNull.Value && PlanoutEnd != null && Convert.ToDateTime(drOrder["UPD_TIME"]) > PlanoutEnd)
+                            {
+                                PlanoutEnd = Convert.ToDateTime(drOrder["UPD_TIME"]);
+                            }
+                        }
+                    }
+                    var T55 = 55000;
+                    var T72 = 72000;
+                    if (PlanoutStart.HasValue && PlanoutEnd.HasValue)
+                    {
+                        // 计算两个日期之间的时间差
+                        TimeSpan timeDifference = PlanoutEnd.Value - PlanoutStart.Value;
+                        LoadingTime = timeDifference.TotalMinutes;
+                        // 要根据60吨和40分钟的数据来计算每55吨的用时，您可以使用以下公式：
+                        // 用时 = (给定重量 / 60吨) *给定时间
+                        FiftyFiveTonTime = (T55 / Weight) * LoadingTime;
+                        SeventyTwoTonTime = (T72 / Weight) * LoadingTime;
+                    }
+                    dtSource.Rows.Add(drMatOut["RowNumber"].ToString(), RaneNo, drMatOut["PLAN_NO"].ToString(), drMatOut["BOF_NO"].ToString(), CmdSeq, Weight, Math.Round(LoadingTime, 0) + " 分钟", Math.Round(FiftyFiveTonTime, 0) + " 分钟", Math.Round(SeventyTwoTonTime, 0) + " 分钟", drMatOut["REC_TIME"].ToString());
+                }
+            }
+            dataGridView2.DataSource = dtSource;
         }
 
         #region 图形
@@ -332,7 +370,311 @@ namespace UACSView
             chart1.Series[0].Palette = ChartColorPalette.BrightPastel;
 
             #endregion
-        } 
+        }
+
+        /// <summary>
+        /// 折线图
+        /// </summary>
+        private void MatSpline()
+        {
+            Dictionary<string, string> ChartCodeNameDictionary = new Dictionary<string, string>();
+            Dictionary<DateTime, DateTime> ChartTimeDictionary = new Dictionary<DateTime, DateTime>();
+            //显示名称
+            List<string> ChartCodeNameList = new List<string>();
+            //显示时间
+            List<DateTime> ChartTimeList = new List<DateTime>();
+            //显示数据
+            List<OrderDate> ChartDateList = new List<OrderDate>();
+            //显示数据
+            List<OrderDate> ChartDateLists = new List<OrderDate>();
+
+            #region 访问数据库库            
+
+            string recTime1 = this.dateTimePicker1.Value.Day.Equals(DateTime.Now.Day) ? this.dateTimePicker1.Value.AddDays(-7).ToString("yyyyMMdd000000") : this.dateTimePicker1.Value.ToString("yyyyMMdd000000");  //开始时间
+            string recTime2 = this.dateTimePicker2.Value.ToString("yyyyMMdd235959");  //结束时间
+            var sqlText = @"SELECT ROW_NUMBER() OVER (ORDER BY PLAN_NO DESC) AS RowNumber,
+                            PLAN_NO, BOF_NO, REC_TIME FROM UACS_L3_MAT_OUT_INFO 
+                            WHERE AUTO_FLAG IS NOT NULL ";
+            sqlText += "AND REC_TIME >= '{0}' AND REC_TIME <= '{1}' ";
+            sqlText = string.Format(sqlText, recTime1, recTime2);
+            sqlText += "ORDER BY PLAN_NO DESC ;";
+            DataTable dtUacsL3MatOutInfo = new DataTable();
+            using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
+            {
+                dtUacsL3MatOutInfo.Load(rdr);
+            }
+            string[] CodeNameList = new string[] { };
+            double[] NumberList = new double[] { };
+            List<string> codeNames = CodeNameList.ToList();
+            List<double> numbers = NumberList.ToList();
+            var planNo = string.Empty;
+            DataTable dtSource = InitDataTable(dataGridView2);
+            foreach (DataRow item in dtUacsL3MatOutInfo.Rows)
+            {
+                planNo = planNo + "'" + item["PLAN_NO"].ToString() + "',";
+            }
+            if (!string.IsNullOrEmpty(planNo) && planNo.EndsWith(","))
+            {
+                planNo = planNo.Remove(planNo.Length - 1);   //使用 Remove 方法删除最后一个字符
+
+                var sqlText2 = @"SELECT CRANE_NO,PLAN_NO,CMD_SEQ,REQ_WEIGHT,START_TIME,UPD_TIME 
+                                 FROM UACS_ORDER_QUEUE ";
+                sqlText2 += "WHERE PLAN_NO IN ({0}) ;";
+                sqlText2 = string.Format(sqlText2, planNo);
+                DataTable dtUacsOrderQueue = new DataTable();
+                using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText2))
+                {
+                    dtUacsOrderQueue.Load(rdr);
+                }
+                foreach (DataRow drMatOut in dtUacsL3MatOutInfo.Rows)
+                {
+                    var RaneNo = string.Empty;
+                    var CmdSeq = 0;
+                    var Weight = 0.0;
+                    var LoadingTime = 0.0;
+                    var FiftyFiveTonTime = 0.0;
+                    var SeventyTwoTonTime = 0.0;
+
+                    DateTime? PlanoutStart = null;
+                    DateTime? PlanoutEnd = null;
+                    foreach (DataRow drOrder in dtUacsOrderQueue.Rows)
+                    {
+                        if (drMatOut["PLAN_NO"].ToString().Equals(drOrder["PLAN_NO"].ToString()))
+                        {
+                            RaneNo = drOrder["CRANE_NO"].ToString();
+                            CmdSeq += Convert.ToInt32(drOrder["CMD_SEQ"]);
+                            Weight += Convert.ToDouble(drOrder["REQ_WEIGHT"]);
+                            if (drOrder["START_TIME"] != System.DBNull.Value && PlanoutStart == null)
+                            {
+                                PlanoutStart = Convert.ToDateTime(drOrder["START_TIME"]);
+                            }
+                            if (drOrder["START_TIME"] != System.DBNull.Value && PlanoutStart != null && Convert.ToDateTime(drOrder["START_TIME"]) < PlanoutStart)
+                            {
+                                PlanoutStart = Convert.ToDateTime(drOrder["START_TIME"]);
+                            }
+                            if (drOrder["UPD_TIME"] != System.DBNull.Value && PlanoutEnd == null)
+                            {
+                                PlanoutEnd = Convert.ToDateTime(drOrder["UPD_TIME"]);
+                            }
+                            if (drOrder["UPD_TIME"] != System.DBNull.Value && PlanoutEnd != null && Convert.ToDateTime(drOrder["UPD_TIME"]) > PlanoutEnd)
+                            {
+                                PlanoutEnd = Convert.ToDateTime(drOrder["UPD_TIME"]);
+                            }
+                        }
+                    }
+                    var T55 = 55000;
+                    var T72 = 72000;
+                    if (PlanoutStart.HasValue && PlanoutEnd.HasValue)
+                    {
+                        // 计算两个日期之间的时间差
+                        TimeSpan timeDifference = PlanoutEnd.Value - PlanoutStart.Value;
+                        LoadingTime = timeDifference.TotalMinutes;
+                        // 要根据60吨和40分钟的数据来计算每55吨的用时，您可以使用以下公式：
+                        // 用时 = (给定重量 / 60吨) *给定时间
+                        FiftyFiveTonTime = (T55 / Weight) * LoadingTime;
+                        SeventyTwoTonTime = (T72 / Weight) * LoadingTime;
+                    }
+                    dtSource.Rows.Add(drMatOut["RowNumber"].ToString(), RaneNo, drMatOut["PLAN_NO"].ToString(), drMatOut["BOF_NO"].ToString(), CmdSeq, Weight, Math.Round(LoadingTime, 0), Math.Round(FiftyFiveTonTime, 0), Math.Round(SeventyTwoTonTime, 0) , drMatOut["REC_TIME"].ToString());
+                }
+            }
+            foreach (DataRow item in dtSource.Rows)
+            {
+                OrderDate od = new OrderDate();
+                if (item["REC_TIME"] != System.DBNull.Value)
+                {
+                    od.DaY = Convert.ToDateTime(item["REC_TIME"]);
+                }
+                if (item["CRANE_NO"] != System.DBNull.Value)
+                {
+                    od.CRANE_NO = item["CRANE_NO"].ToString();
+                }
+                if (item["LoadingTime"] != System.DBNull.Value)
+                {
+                    od.AverageTime = Convert.ToDouble(item["LoadingTime"]);
+                }
+
+                ChartDateList.Add(od);
+                if (item["CRANE_NO"] != System.DBNull.Value && !string.IsNullOrEmpty(item["CRANE_NO"].ToString()) && !ChartCodeNameDictionary.ContainsKey(item["CRANE_NO"].ToString()))
+                {
+                    ChartCodeNameDictionary.Add(item["CRANE_NO"].ToString(), item["CRANE_NO"].ToString());
+                    ChartCodeNameList.Add(item["CRANE_NO"].ToString());
+                }
+                if (item["REC_TIME"] != System.DBNull.Value && !ChartTimeDictionary.ContainsKey(Convert.ToDateTime(Convert.ToDateTime(item["REC_TIME"]).ToString("yyyy-MM-dd"))))
+                {
+                    ChartTimeDictionary.Add(Convert.ToDateTime(Convert.ToDateTime(item["REC_TIME"]).ToString("yyyy-MM-dd")), Convert.ToDateTime(Convert.ToDateTime(item["REC_TIME"]).ToString("yyyy-MM-dd")));
+                    ChartTimeList.Add(Convert.ToDateTime(Convert.ToDateTime(item["REC_TIME"]).ToString("yyyy-MM-dd")));
+                }
+            }
+            foreach (string name in ChartCodeNameList)
+            {            
+                foreach (DateTime day in ChartTimeList)
+                {
+                    DataTable dataTable = new DataTable();
+                    dataTable.Columns.Add("CRANE_NO", typeof(string));
+                    dataTable.Columns.Add("LoadingTime", typeof(double));
+                    dataTable.Columns.Add("REC_TIME", typeof(DateTime));
+                    OrderDate od = new OrderDate();
+                    od.DaY = day;
+                    od.CRANE_NO = name.ToString();
+                    foreach (DataRow item in dtSource.Rows)
+                    {
+                        if (name.ToString().Equals(item["CRANE_NO"].ToString()) && day.Day == Convert.ToDateTime(Convert.ToDateTime(item["REC_TIME"]).ToString("yyyy-MM-dd")).Day)
+                        {
+                            DataRow row = dataTable.NewRow();
+                            row["CRANE_NO"] = item["CRANE_NO"].ToString();
+                            row["LoadingTime"] = Convert.ToDouble(item["LoadingTime"]);
+                            row["REC_TIME"] = Convert.ToDateTime(item["REC_TIME"]);
+                            dataTable.Rows.Add(row);
+                        }
+                    }
+                    double average = CalculateColumnAverage(dataTable, "LoadingTime");
+                    od.AverageTime = Math.Round(average, 0);
+                    ChartDateLists.Add(od);
+                }                
+            }
+            #endregion
+
+            try
+            {
+                //定义图表区域
+                this.chart3.ChartAreas.Clear();
+                ChartArea chartArea1 = new ChartArea("C3");
+                this.chart3.ChartAreas.Add(chartArea1);
+                //定义存储和显示点的容器
+                this.chart3.Series.Clear();
+                //Series series1 = new Series("S1");
+                //series1.ChartArea = "C1";
+                //this.chart3.Series.Add(series1);
+                //设置图表显示样式
+                this.chart3.ChartAreas[0].AxisY.Minimum = 0;
+                //this.chart3.ChartAreas[0].AxisY.Maximum = 1000;
+                this.chart3.ChartAreas[0].AxisX.Interval = 5;
+                this.chart3.ChartAreas[0].AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
+                this.chart3.ChartAreas[0].AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
+                //设置标题
+                this.chart3.Titles.Clear();
+                this.chart3.Titles.Add("S01");
+                this.chart3.Titles[0].Text = "XXX显示";
+                this.chart3.Titles[0].ForeColor = Color.Blue;
+                this.chart3.Titles[0].Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+                //设置图表显示样式
+                //this.chart3.Series[0].Color = Color.Red;
+
+                //控件背景
+                this.chart3.BackColor = Color.Transparent;
+                //图表区背景
+                this.chart3.ChartAreas[0].BackColor = Color.Transparent;
+                this.chart3.ChartAreas[0].BorderColor = Color.Transparent;
+                //X轴标签间距
+                this.chart3.ChartAreas[0].AxisX.Interval = 1;
+                this.chart3.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
+                this.chart3.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
+                this.chart3.ChartAreas[0].AxisX.TitleFont = new Font("微软雅黑", 14f, FontStyle.Regular);
+                this.chart3.ChartAreas[0].AxisX.TitleForeColor = Color.Blue;
+
+                //X坐标轴颜色
+                this.chart3.ChartAreas[0].AxisX.LineColor = ColorTranslator.FromHtml("#38587a");
+                this.chart3.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Blue;
+                this.chart3.ChartAreas[0].AxisX.LabelStyle.Font = new Font("微软雅黑", 10f, FontStyle.Regular);
+                //X坐标轴标题
+                this.chart3.ChartAreas[0].AxisX.Title = "日期 (天)";
+                this.chart3.ChartAreas[0].AxisX.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
+                this.chart3.ChartAreas[0].AxisX.TitleForeColor = Color.Blue;
+                this.chart3.ChartAreas[0].AxisX.TextOrientation = TextOrientation.Horizontal;
+                this.chart3.ChartAreas[0].AxisX.ToolTip = "日期 (天)";
+                //X轴网络线条
+                this.chart3.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
+                this.chart3.ChartAreas[0].AxisX.MajorGrid.LineColor = ColorTranslator.FromHtml("#2c4c6d");
+
+                //Y坐标轴颜色
+                this.chart3.ChartAreas[0].AxisY.LineColor = ColorTranslator.FromHtml("#38587a");
+                this.chart3.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Blue;
+                this.chart3.ChartAreas[0].AxisY.LabelStyle.Font = new Font("微软雅黑", 10f, FontStyle.Regular);
+                //Y坐标轴标题
+                this.chart3.ChartAreas[0].AxisY.Title = "用时 (分)";
+                this.chart3.ChartAreas[0].AxisY.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
+                this.chart3.ChartAreas[0].AxisY.TitleForeColor = Color.Blue;
+                this.chart3.ChartAreas[0].AxisY.TextOrientation = TextOrientation.Rotated270;
+                this.chart3.ChartAreas[0].AxisY.ToolTip = "用时 (分)";
+                //Y轴网格线条
+                this.chart3.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
+                this.chart3.ChartAreas[0].AxisY.MajorGrid.LineColor = ColorTranslator.FromHtml("#2c4c6d");
+                this.chart3.ChartAreas[0].AxisY2.LineColor = Color.Transparent;
+
+                foreach (string name in ChartCodeNameList)
+                {
+                    Series series = new Series(name.ToString());
+                    series.ChartType = SeriesChartType.Line;
+                    this.chart3.Series.Add(series);
+                }
+
+                this.chart3.Titles[0].Text = string.Format(" {0}（天）", "装料平均时间");
+
+                foreach (DateTime day in ChartTimeList)
+                {
+                    for (int i = 0; i < ChartDateLists.Count; i++)
+                    {
+                        for (int j = 0; j < ChartCodeNameList.Count; j++)
+                        {
+                            if (day.Day == ChartDateLists[i].DaY.Day && ChartDateLists[i].CRANE_NO.Equals(ChartCodeNameList[j]))
+                            {
+                                this.chart3.Series[j].Points.AddXY(day.Day, ChartDateLists[i].AverageTime);
+                                var val = 0;
+                                if (this.chart3.Series[j].Points.Count > 0)
+                                {
+                                    // 值标签
+                                    val = this.chart3.Series[j].Points.Count - 1;
+                                    this.chart3.Series[j].Points[val].MarkerStyle = MarkerStyle.Diamond;
+                                    this.chart3.Series[j].Points[val].MarkerColor = Color.Red;
+                                    this.chart3.Series[j].Points[val].MarkerBorderWidth = 3;
+                                    this.chart3.Series[j].Points[val].MarkerSize = 10;
+                                    this.chart3.Series[j].Points[val].Label = "#VAL";
+                                    this.chart3.Series[j].Points[val].IsValueShownAsLabel = true;
+                                    // 宽度
+                                    this.chart3.Series[j].BorderWidth = 5;
+                                    this.chart3.Series[j].CustomProperties = "PieLabelStyle = Outside";
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
+        }
+
+        /// <summary>
+        /// 计算时间平均值
+        /// </summary>
+        /// <param name="timeValues"></param>
+        /// <returns></returns>
+        private double CalculateColumnAverage(DataTable table, string columnName)
+        {
+            double sum = 0;
+            int count = 0;
+
+            foreach (DataRow row in table.Rows)
+            {
+                if (!row.IsNull(columnName))
+                {
+                    sum += Convert.ToDouble(row[columnName]);
+                    count++;
+                }
+            }
+
+            if (count > 0)
+            {
+                return sum / count;
+            }
+            else
+            {
+                // 如果没有有效数据，则返回0或其他你认为合适的默认值
+                return 0;
+            }
+        }
         #endregion
 
 
@@ -1400,5 +1742,21 @@ namespace UACSView
             GetAnnualTime();
         }
         #endregion
+    }
+
+    public class OrderDate
+    {
+        /// <summary>
+        /// 行车
+        /// </summary>
+        public string CRANE_NO { get; set; }
+        /// <summary>
+        /// 日期
+        /// </summary>
+        public DateTime DaY { get; set; }
+        /// <summary>
+        /// 平均装车时间
+        /// </summary>
+        public double AverageTime { get; set; }
     }
 }
