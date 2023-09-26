@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCraneAlarmLogQuery));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bt_TodayTime = new System.Windows.Forms.Button();
@@ -72,6 +72,7 @@
             this.ORDER_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ucPageDemo = new UACSControls.Page.ucPage();
+            this.bt_WeekTime = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridAlarmLog)).BeginInit();
@@ -85,6 +86,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.bt_WeekTime);
             this.groupBox1.Controls.Add(this.bt_TodayTime);
             this.groupBox1.Controls.Add(this.bt_MonthlyTime);
             this.groupBox1.Controls.Add(this.bt_QuarterlyTime);
@@ -129,7 +131,7 @@
             this.bt_MonthlyTime.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.bt_MonthlyTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_MonthlyTime.ForeColor = System.Drawing.Color.White;
-            this.bt_MonthlyTime.Location = new System.Drawing.Point(1173, 32);
+            this.bt_MonthlyTime.Location = new System.Drawing.Point(1279, 33);
             this.bt_MonthlyTime.Name = "bt_MonthlyTime";
             this.bt_MonthlyTime.Size = new System.Drawing.Size(100, 45);
             this.bt_MonthlyTime.TabIndex = 45;
@@ -144,7 +146,7 @@
             this.bt_QuarterlyTime.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.bt_QuarterlyTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_QuarterlyTime.ForeColor = System.Drawing.Color.White;
-            this.bt_QuarterlyTime.Location = new System.Drawing.Point(1279, 32);
+            this.bt_QuarterlyTime.Location = new System.Drawing.Point(1385, 33);
             this.bt_QuarterlyTime.Name = "bt_QuarterlyTime";
             this.bt_QuarterlyTime.Size = new System.Drawing.Size(100, 45);
             this.bt_QuarterlyTime.TabIndex = 46;
@@ -159,13 +161,14 @@
             this.bt_AnnualTime.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
             this.bt_AnnualTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_AnnualTime.ForeColor = System.Drawing.Color.White;
-            this.bt_AnnualTime.Location = new System.Drawing.Point(1385, 32);
+            this.bt_AnnualTime.Location = new System.Drawing.Point(1491, 33);
             this.bt_AnnualTime.Name = "bt_AnnualTime";
             this.bt_AnnualTime.Size = new System.Drawing.Size(100, 45);
             this.bt_AnnualTime.TabIndex = 47;
             this.bt_AnnualTime.Text = "年度";
             this.bt_AnnualTime.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.bt_AnnualTime.UseVisualStyleBackColor = false;
+            this.bt_AnnualTime.Visible = false;
             this.bt_AnnualTime.Click += new System.EventHandler(this.bt_AnnualTime_Click);
             // 
             // button1
@@ -344,18 +347,18 @@
             // 
             this.GridAlarmLog.AllowUserToAddRows = false;
             this.GridAlarmLog.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
-            this.GridAlarmLog.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.LightGray;
+            this.GridAlarmLog.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.GridAlarmLog.BackgroundColor = System.Drawing.SystemColors.Control;
             this.GridAlarmLog.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridAlarmLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridAlarmLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.GridAlarmLog.ColumnHeadersHeight = 29;
             this.GridAlarmLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.GridAlarmLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -374,31 +377,31 @@
             this.CONTROL_MODE,
             this.CRANE_STATUS,
             this.ORDER_ID});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridAlarmLog.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridAlarmLog.DefaultCellStyle = dataGridViewCellStyle16;
             this.GridAlarmLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridAlarmLog.EnableHeadersVisualStyles = false;
             this.GridAlarmLog.Location = new System.Drawing.Point(3, 17);
             this.GridAlarmLog.Margin = new System.Windows.Forms.Padding(2);
             this.GridAlarmLog.Name = "GridAlarmLog";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridAlarmLog.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridAlarmLog.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.GridAlarmLog.RowHeadersVisible = false;
             this.GridAlarmLog.RowHeadersWidth = 62;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.GridAlarmLog.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.GridAlarmLog.RowsDefaultCellStyle = dataGridViewCellStyle18;
             this.GridAlarmLog.RowTemplate.Height = 45;
             this.GridAlarmLog.RowTemplate.ReadOnly = true;
             this.GridAlarmLog.Size = new System.Drawing.Size(1707, 630);
@@ -446,8 +449,8 @@
             // 
             this.ALARM_INFO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.ALARM_INFO.DataPropertyName = "ALARM_INFO";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ALARM_INFO.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ALARM_INFO.DefaultCellStyle = dataGridViewCellStyle15;
             this.ALARM_INFO.FillWeight = 15F;
             this.ALARM_INFO.HeaderText = "描述";
             this.ALARM_INFO.MinimumWidth = 8;
@@ -591,6 +594,21 @@
             this.ucPageDemo.TabIndex = 2;
             this.ucPageDemo.TotalPages = 0;
             // 
+            // bt_WeekTime
+            // 
+            this.bt_WeekTime.BackColor = System.Drawing.Color.White;
+            this.bt_WeekTime.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.bt_WeekTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_WeekTime.ForeColor = System.Drawing.Color.White;
+            this.bt_WeekTime.Location = new System.Drawing.Point(1173, 33);
+            this.bt_WeekTime.Name = "bt_WeekTime";
+            this.bt_WeekTime.Size = new System.Drawing.Size(100, 45);
+            this.bt_WeekTime.TabIndex = 532;
+            this.bt_WeekTime.Text = "本周";
+            this.bt_WeekTime.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_WeekTime.UseVisualStyleBackColor = false;
+            this.bt_WeekTime.Click += new System.EventHandler(this.bt_WeekTime_Click);
+            // 
             // frmCraneAlarmLogQuery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -650,6 +668,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CONTROL_MODE;
         private System.Windows.Forms.DataGridViewTextBoxColumn CRANE_STATUS;
         private System.Windows.Forms.DataGridViewTextBoxColumn ORDER_ID;
+        private System.Windows.Forms.Button bt_WeekTime;
     }
 }
 

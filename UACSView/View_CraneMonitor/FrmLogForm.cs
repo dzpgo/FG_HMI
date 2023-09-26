@@ -196,6 +196,16 @@ namespace UACSView
             GetoLogsData(1, dateTimeStart.Value, dateTimeEnd.Value, txtKey1.Text.Trim(), txtInfo.Text.Trim());
         }
         /// <summary>
+        /// 本周
+        /// </summary>
+        private void GetWeekTime()
+        {
+            this.dateTimeStart.Value = DateTime.Parse(DateTime.Now.AddDays(1 - Convert.ToInt32(DateTime.Now.DayOfWeek.ToString("d"))).ToString("yyyy-MM-dd 00:00:00"));  	//本周周一  
+            this.dateTimeEnd.Value = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd 23:59:59"));
+            //查询
+            GetoLogsData(1, dateTimeStart.Value, dateTimeEnd.Value, txtKey1.Text.Trim(), txtInfo.Text.Trim());
+        }
+        /// <summary>
         /// 月度
         /// </summary>
         private void GetMonthlyTime()
@@ -205,7 +215,7 @@ namespace UACSView
             this.dateTimeStart.Value = Convert.ToDateTime(day1);
             //查询
             GetoLogsData(1, dateTimeStart.Value, dateTimeEnd.Value, txtKey1.Text.Trim(), txtInfo.Text.Trim());
-        }
+        }        
         /// <summary>
         /// 当前季度
         /// </summary>
@@ -237,7 +247,10 @@ namespace UACSView
         {
             GetToDayTime();
         }
-
+        private void bt_WeekTime_Click(object sender, EventArgs e)
+        {
+            GetWeekTime();
+        }
         private void bt_MonthlyTime_Click(object sender, EventArgs e)
         {
             GetMonthlyTime();
@@ -252,5 +265,7 @@ namespace UACSView
         {
             GetAnnualTime();
         }
+
+        
     }
 }

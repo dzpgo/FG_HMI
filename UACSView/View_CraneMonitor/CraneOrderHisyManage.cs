@@ -96,6 +96,10 @@ namespace UACSView
         {
             GetToDayTime();
         }
+        private void bt_WeekTime_Click(object sender, EventArgs e)
+        {
+            GetWeekTime();
+        }
 
         private void bt_MonthlyTime_Click(object sender, EventArgs e)
         {
@@ -649,6 +653,16 @@ namespace UACSView
             InitDataGridViewCtrl();
         }
         /// <summary>
+        /// 本周
+        /// </summary>
+        private void GetWeekTime()
+        {
+            this.dtp_StartTime.Value = DateTime.Parse(DateTime.Now.AddDays(1 - Convert.ToInt32(DateTime.Now.DayOfWeek.ToString("d"))).ToString("yyyy-MM-dd 00:00:00"));  	//本周周一  
+            this.dtp_EndTime.Value = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd 23:59:59"));
+            //查询
+            InitDataGridViewCtrl();
+        }
+        /// <summary>
         /// 月度
         /// </summary>
         private void GetMonthlyTime()
@@ -684,6 +698,7 @@ namespace UACSView
             //查询
             InitDataGridViewCtrl();
         }
+
         #endregion
 
 

@@ -266,7 +266,7 @@ namespace UACSView
                         FiftyFiveTonTime = (T55 / Weight) * LoadingTime;
                         SeventyTwoTonTime = (T72 / Weight) * LoadingTime;
                     }
-                    dtSource.Rows.Add(drMatOut["ROWNUM"].ToString(), RaneNo, drMatOut["PLAN_NO"].ToString(), drMatOut["BOF_NO"].ToString(), CmdSeq, Weight, Math.Round(LoadingTime, 0) + " 分钟", Math.Round(FiftyFiveTonTime, 0) + " 分钟", Math.Round(SeventyTwoTonTime, 0) + " 分钟", drMatOut["REC_TIME"].ToString(), drMatOut["TotalRows"].ToString());
+                    dtSource.Rows.Add(drMatOut["ROWNUM"].ToString(), RaneNo, drMatOut["PLAN_NO"].ToString(), drMatOut["BOF_NO"].ToString(), CmdSeq, Weight, Math.Round(LoadingTime, 2) + " 分钟", Math.Round(FiftyFiveTonTime, 2) + " 分钟", Math.Round(SeventyTwoTonTime, 2) + " 分钟", drMatOut["REC_TIME"].ToString(), drMatOut["TotalRows"].ToString());
                 }
             }
             //dataGridView2.DataSource = dtSource;
@@ -299,10 +299,10 @@ namespace UACSView
             //chart1.Titles[1].Visible = false;
 
             //控件背景
-            chart1.BackColor = Color.Transparent;
+            chart1.BackColor = SystemColors.Control;
             //图表区背景
-            chart1.ChartAreas[0].BackColor = Color.Transparent;
-            chart1.ChartAreas[0].BorderColor = Color.Transparent;
+            chart1.ChartAreas[0].BackColor = SystemColors.Control;
+            chart1.ChartAreas[0].BorderColor = SystemColors.Control;
             //X轴标签间距
             chart1.ChartAreas[0].AxisX.Interval = 1;
             chart1.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
@@ -338,7 +338,7 @@ namespace UACSView
             chart1.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
             chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = ColorTranslator.FromHtml("#2c4c6d");
 
-            chart1.ChartAreas[0].AxisY2.LineColor = Color.Transparent;
+            chart1.ChartAreas[0].AxisY2.LineColor = SystemColors.Control;
 
             //背景渐变
             chart1.ChartAreas[0].BackGradientStyle = GradientStyle.None;
@@ -347,8 +347,8 @@ namespace UACSView
             //图例样式
             Legend legend2 = new Legend("#VALX");
             legend2.Title = "图例";
-            legend2.TitleBackColor = Color.Transparent;
-            legend2.BackColor = Color.Transparent;
+            legend2.TitleBackColor = SystemColors.Control;
+            legend2.BackColor = SystemColors.Control;
             legend2.TitleForeColor = Color.Blue;
             legend2.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
             legend2.Font = new Font("微软雅黑", 8f, FontStyle.Regular);
@@ -488,7 +488,7 @@ namespace UACSView
                         FiftyFiveTonTime = (T55 / Weight) * LoadingTime;
                         SeventyTwoTonTime = (T72 / Weight) * LoadingTime;
                     }
-                    dtSource.Rows.Add(drMatOut["RowNumber"].ToString(), RaneNo, drMatOut["PLAN_NO"].ToString(), drMatOut["BOF_NO"].ToString(), CmdSeq, Weight, Math.Round(LoadingTime, 0), Math.Round(FiftyFiveTonTime, 0), Math.Round(SeventyTwoTonTime, 0), drMatOut["REC_TIME"].ToString());
+                    dtSource.Rows.Add(drMatOut["RowNumber"].ToString(), RaneNo, drMatOut["PLAN_NO"].ToString(), drMatOut["BOF_NO"].ToString(), CmdSeq, Weight, Math.Round(LoadingTime, 2), Math.Round(FiftyFiveTonTime, 2), Math.Round(SeventyTwoTonTime, 2), drMatOut["REC_TIME"].ToString());
                 }
             }
             foreach (DataRow item in dtSource.Rows)
@@ -542,7 +542,7 @@ namespace UACSView
                         }
                     }
                     double average = CalculateColumnAverage(dataTable, "LoadingTime");
-                    od.AverageTime = Math.Round(average, 0);
+                    od.AverageTime = Math.Round(average, 2);
                     ChartDateLists.Add(od);
                 }
             }
@@ -575,10 +575,10 @@ namespace UACSView
                 //this.chart3.Series[0].Color = Color.Red;
 
                 //控件背景
-                this.chart3.BackColor = Color.Transparent;
+                this.chart3.BackColor = SystemColors.Control;
                 //图表区背景
-                this.chart3.ChartAreas[0].BackColor = Color.Transparent;
-                this.chart3.ChartAreas[0].BorderColor = Color.Transparent;
+                this.chart3.ChartAreas[0].BackColor = SystemColors.Control;
+                this.chart3.ChartAreas[0].BorderColor = SystemColors.Control;
                 //X轴标签间距
                 this.chart3.ChartAreas[0].AxisX.Interval = 1;
                 this.chart3.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
@@ -613,7 +613,7 @@ namespace UACSView
                 //Y轴网格线条
                 this.chart3.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
                 this.chart3.ChartAreas[0].AxisY.MajorGrid.LineColor = ColorTranslator.FromHtml("#2c4c6d");
-                this.chart3.ChartAreas[0].AxisY2.LineColor = Color.Transparent;
+                this.chart3.ChartAreas[0].AxisY2.LineColor = SystemColors.Control;
 
                 foreach (string name in ChartCodeNameList)
                 {
@@ -806,7 +806,7 @@ namespace UACSView
                     if (dr1["CRANE_NO"].Equals(dr0["CRANE_NO"]))
                     {
                         double PassCount = Convert.ToDouble(dr1["COUNT"]);
-                        var res = ChinaRound((double)Math.Round(PassCount / allCount * 100, 1), 0).ToString() + "%";
+                        var res = ChinaRound((double)Math.Round(PassCount / allCount * 100, 1), 2).ToString() + "%";
                         dr1["PERCENTAGE"] = res;
                     }
                 }
@@ -1703,6 +1703,18 @@ namespace UACSView
             GetUACS_ORDER_OPER(false, 1);
         }
         /// <summary>
+        /// 本周
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bt_WeekTime_Click(object sender, EventArgs e)
+        {            
+            this.dateTimePicker1.Value = DateTime.Parse(DateTime.Now.AddDays(1 - Convert.ToInt32(DateTime.Now.DayOfWeek.ToString("d"))).ToString("yyyy-MM-dd 00:00:00"));  	//本周周一  
+            this.dateTimePicker2.Value = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd 23:59:59"));
+            //查询
+            GetUACS_ORDER_OPER(false, 1);
+        }
+        /// <summary>
         /// 月度
         /// </summary>
         private void GetMonthlyTime()
@@ -1843,6 +1855,7 @@ namespace UACSView
             this.GetUACS_L3_MAT_OUT_INFO(current);
         }
         #endregion
+
     }
 
     public class OrderDate

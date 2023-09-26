@@ -142,10 +142,10 @@ namespace UACSView
             //chart1.Titles[1].Visible = false;
 
             //控件背景
-            chart1.BackColor = Color.Transparent;
+            chart1.BackColor = SystemColors.Control;
             //图表区背景
-            chart1.ChartAreas[0].BackColor = Color.Transparent;
-            chart1.ChartAreas[0].BorderColor = Color.Transparent;
+            chart1.ChartAreas[0].BackColor = SystemColors.Control;
+            chart1.ChartAreas[0].BorderColor = SystemColors.Control;
             //X轴标签间距
             chart1.ChartAreas[0].AxisX.Interval = 1;
             chart1.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
@@ -181,7 +181,7 @@ namespace UACSView
             chart1.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
             chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = ColorTranslator.FromHtml("#2c4c6d");
 
-            chart1.ChartAreas[0].AxisY2.LineColor = Color.Transparent;
+            chart1.ChartAreas[0].AxisY2.LineColor = SystemColors.Control;
 
             //背景渐变
             chart1.ChartAreas[0].BackGradientStyle = GradientStyle.None;
@@ -190,8 +190,8 @@ namespace UACSView
             //图例样式
             Legend legend2 = new Legend("#VALX");
             legend2.Title = "图例";
-            legend2.TitleBackColor = Color.Transparent;
-            legend2.BackColor = Color.Transparent;
+            legend2.TitleBackColor = SystemColors.Control;
+            legend2.BackColor = SystemColors.Control;
             legend2.TitleForeColor = Color.Blue;
             legend2.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
             legend2.Font = new Font("微软雅黑", 8f, FontStyle.Regular);
@@ -308,10 +308,10 @@ namespace UACSView
             chart2.Titles[1].Alignment = ContentAlignment.TopRight;
 
             //控件背景
-            chart2.BackColor = Color.Transparent;
+            chart2.BackColor = SystemColors.Control;
             //图表区背景
-            chart2.ChartAreas[0].BackColor = Color.Transparent;
-            chart2.ChartAreas[0].BorderColor = Color.Transparent;
+            chart2.ChartAreas[0].BackColor = SystemColors.Control;
+            chart2.ChartAreas[0].BorderColor = SystemColors.Control;
             //X轴标签间距
             chart2.ChartAreas[0].AxisX.Interval = 1;
             chart2.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
@@ -347,7 +347,7 @@ namespace UACSView
             chart2.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
             chart2.ChartAreas[0].AxisY.MajorGrid.LineColor = ColorTranslator.FromHtml("#2c4c6d");
 
-            chart2.ChartAreas[0].AxisY2.LineColor = Color.Transparent;
+            chart2.ChartAreas[0].AxisY2.LineColor = SystemColors.Control;
             chart2.ChartAreas[0].BackGradientStyle = GradientStyle.TopBottom;
             Legend legend = new Legend("legend");
             legend.Title = "legendTitle";
@@ -527,10 +527,10 @@ namespace UACSView
                 //this.chart3.Series[0].Color = Color.Red;
 
                 //控件背景
-                this.chart3.BackColor = Color.Transparent;
+                this.chart3.BackColor = SystemColors.Control;
                 //图表区背景
-                this.chart3.ChartAreas[0].BackColor = Color.Transparent;
-                this.chart3.ChartAreas[0].BorderColor = Color.Transparent;
+                this.chart3.ChartAreas[0].BackColor = SystemColors.Control;
+                this.chart3.ChartAreas[0].BorderColor = SystemColors.Control;
                 //X轴标签间距
                 this.chart3.ChartAreas[0].AxisX.Interval = 1;
                 this.chart3.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
@@ -565,7 +565,7 @@ namespace UACSView
                 //Y轴网格线条
                 this.chart3.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
                 this.chart3.ChartAreas[0].AxisY.MajorGrid.LineColor = ColorTranslator.FromHtml("#2c4c6d");
-                this.chart3.ChartAreas[0].AxisY2.LineColor = Color.Transparent;
+                this.chart3.ChartAreas[0].AxisY2.LineColor = SystemColors.Control;
 
                 foreach (string name in ChartCodeNameList)
                 {
@@ -712,6 +712,17 @@ namespace UACSView
             getL3MatWeightInfo(1);
         }
         /// <summary>
+        /// 本周
+        /// </summary>
+        private void GetWeekTime()
+        {
+            this.dateTimePicker1_recTime.Value = DateTime.Parse(DateTime.Now.AddDays(1 - Convert.ToInt32(DateTime.Now.DayOfWeek.ToString("d"))).ToString("yyyy-MM-dd 00:00:00"));  	//本周周一  
+            this.dateTimePicker2_recTime.Value = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd 23:59:59"));
+            //查询
+            //L3送料计划
+            getL3MatWeightInfo(1);
+        }
+        /// <summary>
         /// 月度
         /// </summary>
         private void GetMonthlyTime()
@@ -770,6 +781,10 @@ namespace UACSView
         private void bt_AnnualTime_Click(object sender, EventArgs e)
         {
             GetAnnualTime();
+        }
+        private void bt_WeekTime_Click(object sender, EventArgs e)
+        {
+            GetWeekTime();
         }
     }
 

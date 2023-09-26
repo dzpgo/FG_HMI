@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Baosight.iSuperframe.Forms;
 using System.Runtime.InteropServices;
 using UACSDAL;
+using System.Globalization;
 
 namespace UACSView
 {
@@ -454,6 +455,19 @@ namespace UACSView
             readAlarmLog(1, craneNO, timeStart, timeEnd);
         }
         /// <summary>
+        /// 本周
+        /// </summary>
+        private void GetWeekTime()
+        {
+            this.dateTimePicker_Start.Value = DateTime.Parse(DateTime.Now.AddDays(1 - Convert.ToInt32(DateTime.Now.DayOfWeek.ToString("d"))).ToString("yyyy-MM-dd 00:00:00"));  	//本周周一  
+            this.dateTimePicker_End.Value = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd 23:59:59"));
+            //查询
+            DateTime timeStart = dateTimePicker_Start.Value;
+            DateTime timeEnd = dateTimePicker_End.Value;
+            string craneNO = comboBox_ShipLotNo.Text;
+            readAlarmLog(1, craneNO, timeStart, timeEnd);
+        }
+        /// <summary>
         /// 月度
         /// </summary>
         private void GetMonthlyTime()
@@ -600,17 +614,18 @@ namespace UACSView
         {
             GetToDayTime();
         }
-
+        private void bt_WeekTime_Click(object sender, EventArgs e)
+        {
+            GetWeekTime();
+        }
         private void bt_MonthlyTime_Click(object sender, EventArgs e)
         {
             GetMonthlyTime();
         }
-
         private void bt_QuarterlyTime_Click(object sender, EventArgs e)
         {
             GetQuarterlyTime();
         }
-
         private void bt_AnnualTime_Click(object sender, EventArgs e)
         {
             GetAnnualTime();
