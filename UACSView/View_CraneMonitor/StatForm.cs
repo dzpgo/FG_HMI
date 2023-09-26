@@ -55,6 +55,16 @@ namespace UACSView
         {
             m_dbHelper = new DataBaseHelper();
             m_dbHelper.OpenDB(DBHelper.ConnectionString);
+
+
+            this.ucPage1.CurrentPage = 1;
+            this.ucPage1.PageSize = Convert.ToInt32(this.ucPage1.CboPageSize.Text);
+            this.ucPage1.TotalPages = 1;
+            this.ucPage1.ClickPageButtonEvent += ucPage1_ClickPageButtonEvent;
+            this.ucPage1.ChangedPageSizeEvent += ucPage1_ChangedPageSizeEvent;
+            this.ucPage1.JumpPageEvent += ucPage1_JumpPageEvent;
+
+
             //绑定下拉框
             BindCombox();
             //this.ucPageDemo.CurrentPage = 1;
@@ -173,12 +183,13 @@ namespace UACSView
         {
             string recTime1 = this.dateTimePicker1.Value.ToString("yyyyMMdd000000");  //开始时间
             string recTime2 = this.dateTimePicker2.Value.ToString("yyyyMMdd235959");  //结束时间
-            var sqlText = @"SELECT ROW_NUMBER() OVER (ORDER BY PLAN_NO DESC) AS RowNumber,
-                            PLAN_NO, BOF_NO, REC_TIME FROM UACS_L3_MAT_OUT_INFO 
+            string sqlText = @"SELECT * FROM (SELECT COUNT(1) OVER () AS TotalRows,ROW_NUMBER() OVER (ORDER BY PLAN_NO DESC) AS ROWNUM,tab.* FROM ( ";
+            sqlText += @"SELECT PLAN_NO, BOF_NO, REC_TIME FROM UACS_L3_MAT_OUT_INFO 
                             WHERE AUTO_FLAG IS NOT NULL ";
             sqlText += "AND REC_TIME >= '{0}' AND REC_TIME <= '{1}' ";
             sqlText = string.Format(sqlText, recTime1, recTime2);
-            sqlText += "ORDER BY PLAN_NO DESC ;";
+            sqlText += "ORDER BY PLAN_NO DESC ";
+            sqlText += " ) tab ) WHERE ROWNUM BETWEEN ((" + currentPage + " - 1) * " + this.ucPage1.PageSize + ") + 1 AND " + currentPage + " *  " + this.ucPage1.PageSize;
             DataTable dtUacsL3MatOutInfo = new DataTable();
             using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
             {
@@ -219,7 +230,7 @@ namespace UACSView
                     DateTime? PlanoutStart = null;
                     DateTime? PlanoutEnd = null;
                     foreach (DataRow drOrder in dtUacsOrderQueue.Rows)
-                    {                        
+                    {
                         if (drMatOut["PLAN_NO"].ToString().Equals(drOrder["PLAN_NO"].ToString()))
                         {
                             RaneNo = drOrder["CRANE_NO"].ToString();
@@ -255,10 +266,12 @@ namespace UACSView
                         FiftyFiveTonTime = (T55 / Weight) * LoadingTime;
                         SeventyTwoTonTime = (T72 / Weight) * LoadingTime;
                     }
-                    dtSource.Rows.Add(drMatOut["RowNumber"].ToString(), RaneNo, drMatOut["PLAN_NO"].ToString(), drMatOut["BOF_NO"].ToString(), CmdSeq, Weight, Math.Round(LoadingTime, 0) + " 分钟", Math.Round(FiftyFiveTonTime, 0) + " 分钟", Math.Round(SeventyTwoTonTime, 0) + " 分钟", drMatOut["REC_TIME"].ToString());
+                    dtSource.Rows.Add(drMatOut["ROWNUM"].ToString(), RaneNo, drMatOut["PLAN_NO"].ToString(), drMatOut["BOF_NO"].ToString(), CmdSeq, Weight, Math.Round(LoadingTime, 0) + " 分钟", Math.Round(FiftyFiveTonTime, 0) + " 分钟", Math.Round(SeventyTwoTonTime, 0) + " 分钟", drMatOut["REC_TIME"].ToString(), drMatOut["TotalRows"].ToString());
                 }
             }
-            dataGridView2.DataSource = dtSource;
+            //dataGridView2.DataSource = dtSource;
+
+            dataGridView2.DataSource = GetDataPage(dtSource, currentPage);
         }
 
         #region 图形
@@ -372,6 +385,7 @@ namespace UACSView
             #endregion
         }
 
+        #region 折线图
         /// <summary>
         /// 折线图
         /// </summary>
@@ -474,7 +488,7 @@ namespace UACSView
                         FiftyFiveTonTime = (T55 / Weight) * LoadingTime;
                         SeventyTwoTonTime = (T72 / Weight) * LoadingTime;
                     }
-                    dtSource.Rows.Add(drMatOut["RowNumber"].ToString(), RaneNo, drMatOut["PLAN_NO"].ToString(), drMatOut["BOF_NO"].ToString(), CmdSeq, Weight, Math.Round(LoadingTime, 0), Math.Round(FiftyFiveTonTime, 0), Math.Round(SeventyTwoTonTime, 0) , drMatOut["REC_TIME"].ToString());
+                    dtSource.Rows.Add(drMatOut["RowNumber"].ToString(), RaneNo, drMatOut["PLAN_NO"].ToString(), drMatOut["BOF_NO"].ToString(), CmdSeq, Weight, Math.Round(LoadingTime, 0), Math.Round(FiftyFiveTonTime, 0), Math.Round(SeventyTwoTonTime, 0), drMatOut["REC_TIME"].ToString());
                 }
             }
             foreach (DataRow item in dtSource.Rows)
@@ -506,7 +520,7 @@ namespace UACSView
                 }
             }
             foreach (string name in ChartCodeNameList)
-            {            
+            {
                 foreach (DateTime day in ChartTimeList)
                 {
                     DataTable dataTable = new DataTable();
@@ -530,7 +544,7 @@ namespace UACSView
                     double average = CalculateColumnAverage(dataTable, "LoadingTime");
                     od.AverageTime = Math.Round(average, 0);
                     ChartDateLists.Add(od);
-                }                
+                }
             }
             #endregion
 
@@ -645,6 +659,8 @@ namespace UACSView
                 var msg = ex.Message;
             }
         }
+
+        #endregion
 
         /// <summary>
         /// 计算时间平均值
@@ -1740,6 +1756,91 @@ namespace UACSView
         private void bt_AnnualTime_Click(object sender, EventArgs e)
         {
             GetAnnualTime();
+        }
+        #endregion
+
+        #region 分页 - 送料计划
+
+        int totalPages = 0;
+
+        /// <summary>
+        /// 数据分页
+        /// </summary>
+        /// <param name="dtResult"></param>
+        /// <returns></returns>
+        private DataTable GetDataPage(DataTable dtResult, int currentPage)
+        {
+            totalPages = 0;
+            int totalRows = 0;
+            if (null == dtResult || dtResult.Rows.Count == 0)
+            {
+                this.ucPage1.PageInfo.Text = string.Format("第{0}/{1}页", "1", "1");
+                this.ucPage1.TotalRows.Text = @"0";
+                this.ucPage1.CurrentPage = 1;
+                this.ucPage1.TotalPages = 1;
+            }
+            else
+            {
+                totalRows = Convert.ToInt32(dtResult.Rows[0]["TotalRows"].ToString());
+                totalPages = totalRows % this.ucPage1.PageSize == 0 ? totalRows / this.ucPage1.PageSize : (totalRows / this.ucPage1.PageSize) + 1;
+                this.ucPage1.PageInfo.Text = string.Format("第{0}/{1}页", currentPage, totalPages);
+                this.ucPage1.TotalRows.Text = totalRows.ToString();
+                this.ucPage1.CurrentPage = currentPage;
+                this.ucPage1.TotalPages = totalPages;
+            }
+            return dtResult;
+        }
+
+        /// <summary>
+        /// 页数跳转
+        /// </summary>
+        /// <param name="jumpPage">跳转页</param>
+        void ucPage1_JumpPageEvent(int jumpPage)
+        {
+            if (jumpPage <= this.ucPage1.TotalPages)
+            {
+                if (jumpPage > 0)
+                {
+                    this.ucPage1.JumpPageCtrl.Text = string.Empty;
+                    this.ucPage1.JumpPageCtrl.Text = jumpPage.ToString();
+                    //L3送料计划
+                    this.GetUACS_L3_MAT_OUT_INFO(jumpPage);
+                }
+                else
+                {
+                    jumpPage = 1;
+                    this.ucPage1.JumpPageCtrl.Text = string.Empty;
+                    this.ucPage1.JumpPageCtrl.Text = jumpPage.ToString();
+                    //L3送料计划
+                    this.GetUACS_L3_MAT_OUT_INFO(jumpPage);
+                }
+            }
+            else
+            {
+                this.ucPage1.JumpPageCtrl.Text = string.Empty;
+                MessageBox.Show(@"超出当前最大页数", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        /// <summary>
+        /// 改变每页展示数据长度
+        /// </summary>
+        void ucPage1_ChangedPageSizeEvent()
+        {
+            //L3送料计划
+            this.GetUACS_L3_MAT_OUT_INFO(1);
+        }
+        /// <summary>
+        /// 页数改变按钮(最前页,最后页,上一页,下一页)
+        /// </summary>
+        /// <param name="current"></param>
+        void ucPage1_ClickPageButtonEvent(int current)
+        {
+            if (totalPages != 0 && current > totalPages)
+            {
+                current = 1;
+            }
+            //L3送料计划
+            this.GetUACS_L3_MAT_OUT_INFO(current);
         }
         #endregion
     }

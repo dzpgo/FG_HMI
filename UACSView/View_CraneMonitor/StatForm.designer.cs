@@ -77,6 +77,8 @@
             this.AutoFlag = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PERCENTAGE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.ucPage1 = new UACSControls.Page.ucPage();
             this.OPER_ID2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CRANE_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PLAN_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,6 +89,7 @@
             this.FiftyFiveTonTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SeventyTwoTonTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.REC_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalRows = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -101,6 +104,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // saveFileDialog1
@@ -409,12 +413,14 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.panel4, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.groupBox4, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(777, 707);
             this.tableLayoutPanel2.TabIndex = 20;
             // 
@@ -422,9 +428,9 @@
             // 
             this.panel1.Controls.Add(this.dataGridView2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 144);
+            this.panel1.Location = new System.Drawing.Point(3, 134);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(771, 560);
+            this.panel1.Size = new System.Drawing.Size(771, 519);
             this.panel1.TabIndex = 17;
             // 
             // dataGridView2
@@ -454,7 +460,8 @@
             this.LoadingTime,
             this.FiftyFiveTonTime,
             this.SeventyTwoTonTime,
-            this.REC_TIME});
+            this.REC_TIME,
+            this.TotalRows});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -470,7 +477,7 @@
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowTemplate.Height = 23;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(771, 560);
+            this.dataGridView2.Size = new System.Drawing.Size(771, 519);
             this.dataGridView2.TabIndex = 11;
             // 
             // panel4
@@ -479,7 +486,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(771, 135);
+            this.panel4.Size = new System.Drawing.Size(771, 125);
             this.panel4.TabIndex = 18;
             // 
             // dataGridView1
@@ -519,7 +526,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(771, 135);
+            this.dataGridView1.Size = new System.Drawing.Size(771, 125);
             this.dataGridView1.TabIndex = 16;
             // 
             // RowNumber
@@ -552,6 +559,30 @@
             this.PERCENTAGE.HeaderText = "百分比(%)";
             this.PERCENTAGE.Name = "PERCENTAGE";
             this.PERCENTAGE.ReadOnly = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.ucPage1);
+            this.groupBox4.Location = new System.Drawing.Point(3, 659);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(771, 45);
+            this.groupBox4.TabIndex = 19;
+            this.groupBox4.TabStop = false;
+            // 
+            // ucPage1
+            // 
+            this.ucPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucPage1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.ucPage1.CurrentPage = 0;
+            this.ucPage1.Location = new System.Drawing.Point(3, 12);
+            this.ucPage1.Name = "ucPage1";
+            this.ucPage1.PageSize = 0;
+            this.ucPage1.Size = new System.Drawing.Size(762, 31);
+            this.ucPage1.TabIndex = 0;
+            this.ucPage1.TotalPages = 0;
             // 
             // OPER_ID2
             // 
@@ -633,6 +664,14 @@
             this.REC_TIME.ReadOnly = true;
             this.REC_TIME.Visible = false;
             // 
+            // TotalRows
+            // 
+            this.TotalRows.DataPropertyName = "TotalRows";
+            this.TotalRows.HeaderText = "总数";
+            this.TotalRows.Name = "TotalRows";
+            this.TotalRows.ReadOnly = true;
+            this.TotalRows.Visible = false;
+            // 
             // StatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -660,6 +699,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -698,6 +738,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private UACSControls.Page.ucPage ucPage1;
         private System.Windows.Forms.DataGridViewTextBoxColumn OPER_ID2;
         private System.Windows.Forms.DataGridViewTextBoxColumn CRANE_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn PLAN_NO2;
@@ -708,5 +750,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FiftyFiveTonTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn SeventyTwoTonTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn REC_TIME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalRows;
     }
 }
