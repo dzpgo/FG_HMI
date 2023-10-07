@@ -446,7 +446,7 @@ namespace UACSPopupForm
                                         //要求重量
                                         count++;
                                         isTrue = true;
-                                        msg += "（物料：" + dgr.Cells["MAT_CNAME"].Value.ToString() + " 要求重量：" + dgr.Cells["REQ_WEIGHT"].Value.ToString() + " 旧要求重量：" + Initdgr["REQ_WEIGHT"].ToString() + "）";
+                                        msg += "（物料：" + dgr.Cells["MAT_CNAME"].Value.ToString() + " 要求重量：" + dgr.Cells["REQ_WEIGHT"].Value.ToString() + " 旧要求重量：" + Initdgr["REQ_WEIGHT"].ToString() + " 实绩重量：" + dgr.Cells["ACT_WEIGHT"].Value.ToString() + "）";
                                     }
                                     if (!dgr.Cells["ACT_WEIGHT"].Value.ToString().Equals(Initdgr["ACT_WEIGHT"].ToString()))
                                     {

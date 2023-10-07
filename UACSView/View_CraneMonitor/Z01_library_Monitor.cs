@@ -52,6 +52,7 @@ namespace UACSView.View_CraneMonitor
         private const string D102ENTRY = "D102-WR";
         private const string YSLEXIT = "YSL-WC";
         private bool IsRecondition = false;
+        private bool IsOrederYardToCar = false;
         /// <summary>
         /// //清扫按钮背景闪烁
         /// </summary>
@@ -713,28 +714,7 @@ namespace UACSView.View_CraneMonitor
             try
             {
                 #region 行车、检修、清扫闪烁
-                //if (Crane_1.Equals(1))
-                //{
-                //    conCrane2_1.BackColor = Color.Tomato;
-                //    //conCrane2_1.BackgroundImage = UACSControls.Resource1.行车_Stop;
-                //}
-                //if (Crane_2.Equals(1))
-                //{
-                //    conCrane2_2.BackColor = Color.Tomato;
-                //    //conCrane2_2.BackgroundImage = UACSControls.Resource1.行车_Stop;
-                //}
-                //if (Crane_3.Equals(1))
-                //{
-                //    conCrane2_3.BackColor = Color.Tomato;
-                //    //conCrane2_3.BackgroundImage = UACSControls.Resource1.行车_Stop;
-                //}
-                //if (Crane_4.Equals(1))
-                //{
-                //    conCrane2_4.BackColor = Color.Tomato;
-                //    //conCrane2_4.BackgroundImage = UACSControls.Resource1.行车_Stop;
-                //}
-                if (IsPlanout_1)
-                {                    
+                if (IsPlanout_1) {                    
                     conCrane2_1.BackColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(139)))), ((int)(((byte)(112))))); //宝钢米红301
                 }
                 else
@@ -771,21 +751,17 @@ namespace UACSView.View_CraneMonitor
                 //检修中按钮变红，清扫中按钮变红
                 if (Crane_1.Equals(1) || Crane_2.Equals(1) || Crane_3.Equals(1) || Crane_4.Equals(1))
                 {
-                    if (IsRecondition)
-                    {
-                        bt_Recondition.BackColor = Color.Red;
-                        IsRecondition = false;
-                    }
-                    else
-                    {
-                        bt_Recondition.BackColor = Color.LightSteelBlue;
-                        IsRecondition = true;
-                    }
+                    if (IsRecondition) { bt_Recondition.BackColor = Color.Red; IsRecondition = false; }
+                    else { bt_Recondition.BackColor = Color.LightSteelBlue; IsRecondition = true; }
                 }
-                else
-                {
-                    bt_Recondition.BackColor = Color.LightSteelBlue;
+                else { bt_Recondition.BackColor = Color.LightSteelBlue; }
+               //多车协同状态
+               var IsOrederYardToCarStrategy = GetOrederYardToCarStrategy();
+                if (IsOrederYardToCarStrategy) {
+                    if (IsOrederYardToCar) { bt_YardToCarStrategy.BackColor = Color.Red; IsOrederYardToCar = false; }
+                    else { bt_YardToCarStrategy.BackColor = Color.LightSteelBlue; IsOrederYardToCar = true; }
                 }
+                else { bt_YardToCarStrategy.BackColor = Color.LightSteelBlue; }
 
                 //清扫按钮变红，闪烁
                 //if (isCubicleClean)
@@ -803,7 +779,6 @@ namespace UACSView.View_CraneMonitor
                 //}
                 //else
                 //    bt_CraneClean.BackColor = Color.LightSteelBlue;
-
 
                 #endregion
 
@@ -1648,6 +1623,129 @@ namespace UACSView.View_CraneMonitor
             catch (Exception)
             {
             }
+        }
+
+        /// <summary>
+        /// 多车协同按钮状态
+        /// </summary>
+        private bool GetOrederYardToCarStrategy()
+        {
+            var IsOrederYardToCarStrategy = false;
+            try
+            {                
+                int FlagEnabled_1_1, FlagEnabled_1_2, FlagEnabled_1_3, FlagEnabled_1_4;
+                int FlagEnabled_2_1, FlagEnabled_2_2, FlagEnabled_2_3, FlagEnabled_2_4;
+                int FlagEnabled_3_1, FlagEnabled_3_2, FlagEnabled_3_3, FlagEnabled_3_4;
+                int FlagEnabled_4_1, FlagEnabled_4_2, FlagEnabled_4_3, FlagEnabled_4_4;
+
+                FlagEnabled_1_1 = FlagEnabled_1_2 = FlagEnabled_1_3 = FlagEnabled_1_4 = 0;
+                FlagEnabled_2_1 = FlagEnabled_2_2 = FlagEnabled_2_3 = FlagEnabled_2_4 = 0;
+                FlagEnabled_3_1 = FlagEnabled_3_2 = FlagEnabled_3_3 = FlagEnabled_3_4 = 0;
+                FlagEnabled_4_1 = FlagEnabled_4_2 = FlagEnabled_4_3 = FlagEnabled_4_4 = 0;
+
+                string sqlText = @"SELECT ID, CRANE_NO, PARKING_NO, GRID_START, GRID_END, FLAG_MY_DYUTY, FLAG_ENABLED, SEQ, X_DIR, Y_DIR, FLAG_DIFFENT FROM UACSAPP.UACS_ORDER_YARD_TO_CAR_STRATEGY ORDER BY ID ASC ";
+                using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
+                {
+                    while (rdr.Read())
+                    {
+                        if (rdr["CRANE_NO"] != System.DBNull.Value && rdr["CRANE_NO"].ToString().Equals("1"))
+                        {
+                            if (rdr["PARKING_NO"] != System.DBNull.Value && rdr["PARKING_NO"].ToString().Equals("A1"))
+                            {
+                                FlagEnabled_1_1 = Convert.ToInt32(rdr["FLAG_ENABLED"]);
+                            }
+                            if (rdr["PARKING_NO"] != System.DBNull.Value && rdr["PARKING_NO"].ToString().Equals("A2"))
+                            {
+                                FlagEnabled_1_2 = Convert.ToInt32(rdr["FLAG_ENABLED"]);
+                            }
+                            if (rdr["PARKING_NO"] != System.DBNull.Value && rdr["PARKING_NO"].ToString().Equals("A3"))
+                            {
+                                FlagEnabled_1_3 = Convert.ToInt32(rdr["FLAG_ENABLED"]);
+                            }
+                            if (rdr["PARKING_NO"] != System.DBNull.Value && rdr["PARKING_NO"].ToString().Equals("A4"))
+                            {
+                                FlagEnabled_1_4 = Convert.ToInt32(rdr["FLAG_ENABLED"]);
+                            }
+                        }
+                        if (rdr["CRANE_NO"] != System.DBNull.Value && rdr["CRANE_NO"].ToString().Equals("2"))
+                        {
+                            if (rdr["PARKING_NO"] != System.DBNull.Value && rdr["PARKING_NO"].ToString().Equals("A1"))
+                            {
+                                FlagEnabled_2_1 = Convert.ToInt32(rdr["FLAG_ENABLED"]);
+                            }
+                            if (rdr["PARKING_NO"] != System.DBNull.Value && rdr["PARKING_NO"].ToString().Equals("A2"))
+                            {
+                                FlagEnabled_2_2 = Convert.ToInt32(rdr["FLAG_ENABLED"]);
+                            }
+                            if (rdr["PARKING_NO"] != System.DBNull.Value && rdr["PARKING_NO"].ToString().Equals("A3"))
+                            {
+                                FlagEnabled_2_3 = Convert.ToInt32(rdr["FLAG_ENABLED"]);
+                            }
+                            if (rdr["PARKING_NO"] != System.DBNull.Value && rdr["PARKING_NO"].ToString().Equals("A4"))
+                            {
+                                FlagEnabled_2_4 = Convert.ToInt32(rdr["FLAG_ENABLED"]);
+                            }
+                        }
+                        if (rdr["CRANE_NO"] != System.DBNull.Value && rdr["CRANE_NO"].ToString().Equals("3"))
+                        {
+                            if (rdr["PARKING_NO"] != System.DBNull.Value && rdr["PARKING_NO"].ToString().Equals("A1"))
+                            {
+                                FlagEnabled_3_1 = Convert.ToInt32(rdr["FLAG_ENABLED"]);
+                            }
+                            if (rdr["PARKING_NO"] != System.DBNull.Value && rdr["PARKING_NO"].ToString().Equals("A2"))
+                            {
+                                FlagEnabled_3_2 = Convert.ToInt32(rdr["FLAG_ENABLED"]);
+                            }
+                            if (rdr["PARKING_NO"] != System.DBNull.Value && rdr["PARKING_NO"].ToString().Equals("A3"))
+                            {
+                                FlagEnabled_3_3 = Convert.ToInt32(rdr["FLAG_ENABLED"]);
+                            }
+                            if (rdr["PARKING_NO"] != System.DBNull.Value && rdr["PARKING_NO"].ToString().Equals("A4"))
+                            {
+                                FlagEnabled_3_4 = Convert.ToInt32(rdr["FLAG_ENABLED"]);
+                            }
+                        }
+                        if (rdr["CRANE_NO"] != System.DBNull.Value && rdr["CRANE_NO"].ToString().Equals("4"))
+                        {
+                            if (rdr["PARKING_NO"] != System.DBNull.Value && rdr["PARKING_NO"].ToString().Equals("A1"))
+                            {
+                                FlagEnabled_4_1 = Convert.ToInt32(rdr["FLAG_ENABLED"]);
+                            }
+                            if (rdr["PARKING_NO"] != System.DBNull.Value && rdr["PARKING_NO"].ToString().Equals("A2"))
+                            {
+                                FlagEnabled_4_2 = Convert.ToInt32(rdr["FLAG_ENABLED"]);
+                            }
+                            if (rdr["PARKING_NO"] != System.DBNull.Value && rdr["PARKING_NO"].ToString().Equals("A3"))
+                            {
+                                FlagEnabled_4_3 = Convert.ToInt32(rdr["FLAG_ENABLED"]);
+                            }
+                            if (rdr["PARKING_NO"] != System.DBNull.Value && rdr["PARKING_NO"].ToString().Equals("A4"))
+                            {
+                                FlagEnabled_4_4 = Convert.ToInt32(rdr["FLAG_ENABLED"]);
+                            }
+                        }
+
+                    }
+                }
+                if(FlagEnabled_1_1 == FlagEnabled_2_1)
+                    IsOrederYardToCarStrategy = true;
+                if (FlagEnabled_1_2 == FlagEnabled_2_2)
+                    IsOrederYardToCarStrategy = true;
+
+                if (FlagEnabled_2_2 == FlagEnabled_3_2)
+                    IsOrederYardToCarStrategy = true;
+                if (FlagEnabled_2_3 == FlagEnabled_3_3)
+                    IsOrederYardToCarStrategy = true;
+
+                if (FlagEnabled_3_3 == FlagEnabled_4_3)
+                    IsOrederYardToCarStrategy = true;
+                if (FlagEnabled_3_4 == FlagEnabled_4_4)
+                    IsOrederYardToCarStrategy = true;
+            }
+            catch (Exception)
+            {
+            }
+            return IsOrederYardToCarStrategy;
         }
 
         private void GetStatus()

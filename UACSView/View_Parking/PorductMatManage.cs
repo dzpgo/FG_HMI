@@ -1587,6 +1587,14 @@ namespace UACSParking
                         {
                             parkZ21B3.SetPark(JudgeStrNull(rdr["PARKING_NO"]), JudgeStrNull(rdr["ISLOADED"]), JudgeStrNull(rdr["WORK_STATUS"]), JudgeStrNull(rdr["CAR_NO"]), JudgeStrNull(rdr["CAR_TYPE"]), "");
                         }
+                        else if (rdr["PARKING_NO"].ToString().Trim() == "A422")
+                        {
+                            parkZ21B2.SetPark(JudgeStrNull(rdr["PARKING_NO"]), JudgeStrNull(rdr["ISLOADED"]), JudgeStrNull(rdr["WORK_STATUS"]), JudgeStrNull(rdr["CAR_NO"]), JudgeStrNull(rdr["CAR_TYPE"]), "");
+                        }
+                        else if (rdr["PARKING_NO"].ToString().Trim() == "A423")
+                        {
+                            parkZ21B1.SetPark(JudgeStrNull(rdr["PARKING_NO"]), JudgeStrNull(rdr["ISLOADED"]), JudgeStrNull(rdr["WORK_STATUS"]), JudgeStrNull(rdr["CAR_NO"]), JudgeStrNull(rdr["CAR_TYPE"]), "");
+                        }
                         //}
                     }
                 }

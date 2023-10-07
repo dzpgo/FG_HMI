@@ -1040,6 +1040,14 @@ namespace UACSView.View_Parking
             dr["ID"] = "4";
             dr["NAME"] = "A4";
             dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["ID"] = "5";
+            dr["NAME"] = "A422";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["ID"] = "6";
+            dr["NAME"] = "A423";
+            dt.Rows.Add(dr);
             //绑定数据
             cmb_ParKingNO.ValueMember = "ID";
             cmb_ParKingNO.DisplayMember = "NAME";
@@ -1055,6 +1063,10 @@ namespace UACSView.View_Parking
                 selectedIndex = 2;
             if (ParkNO.Equals("A4"))
                 selectedIndex = 3;
+            if (ParkNO.Equals("A422"))
+                selectedIndex = 4;
+            if (ParkNO.Equals("A423"))
+                selectedIndex = 5;
 
             this.cmb_ParKingNO.SelectedIndex = selectedIndex;
         }
