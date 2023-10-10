@@ -267,7 +267,18 @@ namespace UACSView.View_CraneMonitor
                     return;
                 }
             }
-            DialogResult dr = MessageBox.Show("请确认料槽车已经离开工位,是否开始清扫？", "操作提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+            //工位有车时不允许执行清扫工位
+            var sqlParkingWorkStatus = @"SELECT PARKING_NO, WORK_STATUS FROM UACSAPP.UACS_PARKING_WORK_STATUS WHERE PARKING_NO = '{0}' AND WORK_STATUS != '5';";
+            sqlParkingWorkStatus = string.Format(sqlParkingWorkStatus, cmb_Cubicle.SelectedValue.ToString().Trim());
+            using (IDataReader rdr = DBHelper.ExecuteReader(sqlParkingWorkStatus))
+            {
+                if (rdr.Read())
+                {
+                    DialogResult Hand = System.Windows.Forms.MessageBox.Show("提交失败，该工位有料槽车不允许清扫工位！","提示", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    return;
+                }
+            }
+            DialogResult dr = MessageBox.Show("请确认料槽车已经离开工位,是否开始清扫？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
             if (dr == DialogResult.OK)
             {
                 string sql = @"UPDATE UACS_CRANE_MANU_ORDER_CLEAN SET MAT_NO = '" + cmb_MatCode.SelectedValue.ToString().Trim() + "', FROM_STOCK = '" + cmb_Cubicle.SelectedValue.ToString().Trim() + "', TO_STOCK = '" + cmb_Cubicle.SelectedValue.ToString().Trim() + "',PLAN_UP_Z = '" + txt_Height.Text.Trim() + "', STATUS = 'INIT' ";

@@ -255,7 +255,7 @@ namespace UACSView.View_CraneMonitor
             if (!string.IsNullOrEmpty(sqlText))
             {
                 DB2Connect.DBHelper.ExecuteNonQuery(sqlText);
-                HMILogger.WriteLog("多车协同", "多车协同, 1号行车, A1:" + (A1 ? "开启" : "关闭") + " A2:" + (A2 ? "开启" : "关闭") + " A3:" + (A3 ? "开启" : "关闭") + " A4:" + (A4 ? "开启" : "关闭") + " ", LogLevel.Info, this.Text);
+                HMILogger.WriteLog("多车协同", "多车协同, "+ craneNo + "#行车, A1:" + (A1 ? "开启" : "关闭") + " A2:" + (A2 ? "开启" : "关闭") + " A3:" + (A3 ? "开启" : "关闭") + " A4:" + (A4 ? "开启" : "关闭") + " ", LogLevel.Info, this.Text);
                 //刷新
                 GetToCarStrategy();
             }

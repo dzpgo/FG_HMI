@@ -11,6 +11,7 @@ using ParkingControlLibrary;
 using ParkClassLibrary;
 using UACSDAL;
 using UACSView.View_Parking;
+using System.Windows.Forms.VisualStyles;
 
 namespace UACSParking
 {
@@ -1466,58 +1467,67 @@ namespace UACSParking
         /// <param name="e"></param>
         private void btnCarFrom_Click(object sender, EventArgs e)
         {
-            if (!cbbPacking.Text.Contains('A'))
+            try
             {
-                MessageBox.Show("请选择停车位。");
-                return;
-            }
-            if (GetParkStatus(cbbPacking.Text.Trim()) == "5")
-            {
-                MessageBox.Show("车位无车，不需要车离。");
-                btnRefresh_Click(null, null);
-                return;
-            }
-            if (!JudgeCraneOrder(cbbPacking.Text))
-            {
-                MessageBox.Show("行车已生成指令，不能车离！");
-                return;
-            }
-            int coilsNotComplete = 0;
-            if (!string.IsNullOrEmpty(txtStowageID.Text.ToString()))
-            {
-                coilsNotComplete = checkParkingIsWorking(int.Parse(txtStowageID.Text));
-            }
-
-            if (txtStowageID.Text != "" && coilsNotComplete > 0)
-            {
-                MessageBox.Show("车位还有（" + coilsNotComplete + " )个物料没有完成!", "提示");
-            }
-            if (cbbPacking.Text.Contains('A'))
-            {
-                MessageBoxButtons btn = MessageBoxButtons.OKCancel;
-                DialogResult dr = MessageBox.Show("确定要对" + cbbPacking.Text.Trim() + "进行车离位吗？", "操作提示", btn, MessageBoxIcon.Asterisk);
-                if (dr == DialogResult.OK)
+                if (!cbbPacking.Text.Contains('A'))
                 {
-                    TagDP.SetData("EV_PARKING_CARLEAVE", cbbPacking.Text.Trim());
-                    //画面清空
-                    dt_selected.Clear();
-                    dataGridView2.DataSource = dt_selected;
-                    DataTable dtOrder = new DataTable();
-                    dtOrder.Clear();
-                    dgvOrder.DataSource = dtOrder;
-                    //重量清空
-                    coilsWeight = 0;
-                    txtCoilsWeight.Text = string.Format("{0}/吨", coilsWeight);
-                    txtCoilsWeight.BackColor = Color.White;
-                    //txtSelectGoove.Text = "";
-                    //panel_Tip.Visible = false;
-                    btnOperateStrat.Enabled = true;
-                    ParkClassLibrary.HMILogger.WriteLog(btnCarFrom.Text, "车离：" + cbbPacking.Text, ParkClassLibrary.LogLevel.Info, this.Text);
+                    MessageBox.Show("请选择停车位。");
+                    return;
                 }
-                isStowage = false;
-                hasParkSize = false;
-            }
+                if (GetParkStatus(cbbPacking.Text.Trim()) == "5")
+                {
+                    MessageBox.Show("车位无车，不需要车离。");
+                    btnRefresh_Click(null, null);
+                    return;
+                }
+                if (!JudgeCraneOrder(cbbPacking.Text))
+                {
+                    MessageBox.Show("行车已生成指令，不能车离！");
+                    return;
+                }
+                int coilsNotComplete = 0;
+                if (!string.IsNullOrEmpty(txtStowageID.Text.ToString()))
+                {
+                    coilsNotComplete = checkParkingIsWorking(int.Parse(txtStowageID.Text));
+                }
 
+                if (txtStowageID.Text != "" && coilsNotComplete > 0)
+                {
+                    MessageBox.Show("车位还有（" + coilsNotComplete + " )个物料没有完成!", "提示");
+                }
+                if (cbbPacking.Text.Contains('A'))
+                {
+                    MessageBoxButtons btn = MessageBoxButtons.OKCancel;
+                    DialogResult dr = MessageBox.Show("确定要对" + cbbPacking.Text.Trim() + "进行车离位吗？", "操作提示", btn, MessageBoxIcon.Asterisk);
+                    if (dr == DialogResult.OK)
+                    {
+                        TagDP.SetData("EV_PARKING_CARLEAVE", cbbPacking.Text.Trim());
+                        //画面清空
+                        dt_selected.Clear();
+                        dataGridView2.DataSource = dt_selected;
+                        DataTable dtOrder = new DataTable();
+                        dtOrder.Clear();
+                        dgvOrder.DataSource = dtOrder;
+                        //重量清空
+                        coilsWeight = 0;
+                        txtCoilsWeight.Text = string.Format("{0}/吨", coilsWeight);
+                        txtCoilsWeight.BackColor = Color.White;
+                        //txtSelectGoove.Text = "";
+                        //panel_Tip.Visible = false;
+                        btnOperateStrat.Enabled = true;
+                        ParkClassLibrary.HMILogger.WriteLog(btnCarFrom.Text, "车离：" + cbbPacking.Text, ParkClassLibrary.LogLevel.Info, this.Text);
+
+                        //车离位时车位状态修改为无车状态
+                        string ExeSql = @" UPDATE UACS_PARKING_WORK_STATUS SET WORK_STATUS = '5' WHERE PARKING_NO = '" + cbbPacking.Text + "' ";
+                        DB2Connect.DBHelper.ExecuteNonQuery(ExeSql);
+                    }
+                    isStowage = false;
+                    hasParkSize = false;
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
         private string GetParkStatus(string parkingNO)
         {
