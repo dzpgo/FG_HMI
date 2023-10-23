@@ -354,13 +354,13 @@ namespace UACSView.View_CraneMonitor
                     //Tag发送的数据
                     var Data = "";
                     //计划号
-                    string gPlanNO = dataGridView1.CurrentRow.Cells["GPlanNO"].Value.ToString();
+                    var gPlanNO = dataGridView1.CurrentRow.Cells["GPlanNO"].Value.ToString();
                     //料槽车号
-                    string gCarNo = dataGridView1.CurrentRow.Cells["GCarNo"].Value.ToString();
+                    var gCarNo = dataGridView1.CurrentRow.Cells["GCarNo"].Value.ToString();
                     //停车位号（落料位）
-                    string gTO_STOCK_NO = dataGridView1.CurrentRow.Cells["TO_STOCK_NO"].Value.ToString();
+                    var gTO_STOCK_NO = dataGridView1.CurrentRow.Cells["TO_STOCK_NO"].Value.ToString();
                     //选择的行
-                    string cbChoice = dataGridView1.CurrentRow.Cells["cbChoice"].Value.ToString();
+                    var cbChoice = dataGridView1.CurrentRow.Cells["cbChoice"].Value.ToString();
                     if (string.IsNullOrEmpty(gPlanNO) || !tb_PlanNo.Text.ToString().Trim().Equals(gPlanNO))
                     {
                         MessageBox.Show("请选择计划！");
@@ -371,18 +371,36 @@ namespace UACSView.View_CraneMonitor
                         MessageBox.Show("请选择计划！");
                         return;
                     }
+
+                    var Act_Weight_1 = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Act_Weight_1"].Value.ToString());
+                    var Act_Weight_2 = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Act_Weight_2"].Value.ToString());
+                    var Act_Weight_3 = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Act_Weight_3"].Value.ToString());
+                    var Act_Weight_4 = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Act_Weight_4"].Value.ToString());
+                    var Act_Weight_5 = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Act_Weight_5"].Value.ToString());
+                    var Act_Weight_6 = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Act_Weight_6"].Value.ToString());
+                    var Act_Weight_7 = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Act_Weight_7"].Value.ToString());
+                    var Act_Weight_8 = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Act_Weight_8"].Value.ToString());
+                    var Act_Weight_9 = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Act_Weight_9"].Value.ToString());
+                    var Act_Weight_10 = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Act_Weight_10"].Value.ToString());
+                    var Act_weight = Act_Weight_1 + Act_Weight_2 + Act_Weight_3 + Act_Weight_4 + Act_Weight_5 + Act_Weight_6 + Act_Weight_7 + Act_Weight_8 + Act_Weight_9 + Act_Weight_10;
+                    if (Act_weight > 99999)
+                    {
+                        MessageBox.Show("发送失败，实绩重量大于五位数！");
+                        return;
+                    }
+
                     //计划号，料槽号，工位号，废钢种类数量，废钢代码1#重量，废钢代码2#重量，废钢代码3#重量，废钢代码4#重量，废钢代码5#重量......
                     Data += gPlanNO + "," + gCarNo + "," + gTO_STOCK_NO;
-                    string gMatCode_1 = dataGridView1.CurrentRow.Cells["GMatCode_1"].Value.ToString();
-                    string gMatCode_2 = dataGridView1.CurrentRow.Cells["GMatCode_2"].Value.ToString();
-                    string gMatCode_3 = dataGridView1.CurrentRow.Cells["GMatCode_3"].Value.ToString();
-                    string gMatCode_4 = dataGridView1.CurrentRow.Cells["GMatCode_4"].Value.ToString();
-                    string gMatCode_5 = dataGridView1.CurrentRow.Cells["GMatCode_5"].Value.ToString();
-                    string gMatCode_6 = dataGridView1.CurrentRow.Cells["GMatCode_6"].Value.ToString();
-                    string gMatCode_7 = dataGridView1.CurrentRow.Cells["GMatCode_7"].Value.ToString();
-                    string gMatCode_8 = dataGridView1.CurrentRow.Cells["GMatCode_8"].Value.ToString();
-                    string gMatCode_9 = dataGridView1.CurrentRow.Cells["GMatCode_9"].Value.ToString();
-                    string gMatCode_10 = dataGridView1.CurrentRow.Cells["GMatCode_10"].Value.ToString();
+                    var gMatCode_1 = dataGridView1.CurrentRow.Cells["GMatCode_1"].Value.ToString();
+                    var gMatCode_2 = dataGridView1.CurrentRow.Cells["GMatCode_2"].Value.ToString();
+                    var gMatCode_3 = dataGridView1.CurrentRow.Cells["GMatCode_3"].Value.ToString();
+                    var gMatCode_4 = dataGridView1.CurrentRow.Cells["GMatCode_4"].Value.ToString();
+                    var gMatCode_5 = dataGridView1.CurrentRow.Cells["GMatCode_5"].Value.ToString();
+                    var gMatCode_6 = dataGridView1.CurrentRow.Cells["GMatCode_6"].Value.ToString();
+                    var gMatCode_7 = dataGridView1.CurrentRow.Cells["GMatCode_7"].Value.ToString();
+                    var gMatCode_8 = dataGridView1.CurrentRow.Cells["GMatCode_8"].Value.ToString();
+                    var gMatCode_9 = dataGridView1.CurrentRow.Cells["GMatCode_9"].Value.ToString();
+                    var gMatCode_10 = dataGridView1.CurrentRow.Cells["GMatCode_10"].Value.ToString();
                     int coun = 0;
                     Data += ",{0}";
                     if (!string.IsNullOrEmpty(gMatCode_1))

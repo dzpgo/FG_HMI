@@ -1,13 +1,13 @@
-﻿using System;
-using System.Data;
-using System.Linq;
-using System.Drawing;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using UACSDAL;
-using ParkClassLibrary;
+﻿using Baosight.iSuperframe.Authorization.Interface;
 using Baosight.iSuperframe.Common;
-using Baosight.iSuperframe.Authorization.Interface;
+using ParkClassLibrary;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
+using UACSDAL;
 
 namespace UACSPopupForm
 {
@@ -25,8 +25,8 @@ namespace UACSPopupForm
         bool isPopupMessage = false;
         private Timer timer;
         private Dictionary<string, string> MatCode = new Dictionary<string, string>();
-        string[] dgvColumnsName = { "BTN_UP", "ORDER_NO", "PLAN_NO", "ORDER_PRIORITY", "CMD_SEQ" , "CMD_STATUS", "SCRAP_CODE", "MAT_CODE", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "REQ_WEIGHT", "ACT_WEIGHT", "START_TIME", "UPD_TIME", "REC_TIME" };
-        string[] dgvHeaderText = { "按钮", "指令号", "计划号", "优先级",  "吊运次数","吊运状态", "原物料代码", "物料代码", "物料名称", "取料位置", "落料位", "要求重量", "实绩重量","开始时间", "更新时间", "创建时间" };
+        string[] dgvColumnsName = { "BTN_UP", "ORDER_NO", "PLAN_NO", "ORDER_PRIORITY", "CMD_SEQ", "CMD_STATUS", "SCRAP_CODE", "MAT_CODE", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "REQ_WEIGHT", "ACT_WEIGHT", "START_TIME", "UPD_TIME", "REC_TIME" };
+        string[] dgvHeaderText = { "按钮", "指令号", "计划号", "优先级", "吊运次数", "吊运状态", "原物料代码", "物料代码", "物料名称", "取料位置", "落料位", "要求重量", "实绩重量", "开始时间", "更新时间", "创建时间" };
         string[] dgvOderColumnsName = { "ORDERNO", "BOF_NO", "ORDER_GROUP_NO", "EXE_SEQ", "MAT_CNAME", "FROM_STOCK_NO", "TO_STOCK_NO", "BAY_NO" };
         string[] dgvOderHeaderText = { "指令号", "炉号", "指令组号", "指令顺序", "物料名称", "取料位", "落料位", "跨别" };
         /// <summary>
@@ -193,7 +193,7 @@ namespace UACSPopupForm
             lblCarStatus.Text = packingInfo.PackingStatusDesc();
             lblPacking.Text = packingInfo.ParkingName;
             carIsLoad = packingInfo.IsLoaded;
-            
+
             DataTable dtNull = new DataTable();
             //if (dgvStowageMessage.DataSource != null)
             //    dgvStowageMessage.DataSource = dtNull;
@@ -263,13 +263,13 @@ namespace UACSPopupForm
                         if (i > 0)
                         {
                             column1.Width = 130;
-                        }                       
+                        }
                         column1.DataSource = L3MatInfoLists;
                         index = dataGridView.Columns.Add(column1);
                     }
                     else if (columnsName[i].Equals("REQ_WEIGHT") || columnsName[i].Equals("ACT_WEIGHT"))
                     {
-                        DataGridViewTextBoxColumn targetColumn = new DataGridViewTextBoxColumn();                        
+                        DataGridViewTextBoxColumn targetColumn = new DataGridViewTextBoxColumn();
                         targetColumn.DataPropertyName = columnsName[i];
                         targetColumn.Name = columnsName[i];
                         targetColumn.HeaderText = headerText[i];
@@ -320,7 +320,7 @@ namespace UACSPopupForm
                         {
                             column.ReadOnly = false;
                         }
-                        else if (columnsName[i].Equals("TO_STOCK_NO")) 
+                        else if (columnsName[i].Equals("TO_STOCK_NO"))
                         {
                             column.ReadOnly = true;
                         }
@@ -364,7 +364,7 @@ namespace UACSPopupForm
                             column.Visible = false;
                         }
                         index = dataGridView.Columns.Add(column);
-                        
+
                     }
                     dataGridView.Columns[index].SortMode = DataGridViewColumnSortMode.NotSortable;
                 }
@@ -417,7 +417,7 @@ namespace UACSPopupForm
                         DataTable dt = TotalDT.Clone();
                         var count = 0;
                         var isTrue = false;
-                        var orderNo = ""; 
+                        var orderNo = "";
                         var planNo = string.Empty;
                         var msg = string.Empty;
                         foreach (DataGridViewRow dgr in dgvStowageMessage.Rows)
@@ -500,7 +500,7 @@ namespace UACSPopupForm
                             MessageBoxButtons btn2 = MessageBoxButtons.OK;
                             DialogResult drmsg2 = MessageBox.Show("保存失败，无数据更改！", "提示", btn, MessageBoxIcon.Warning);
                             return;
-                        }                        
+                        }
 
                         foreach (DataRow dr in dt.Rows)
                         {
@@ -812,7 +812,7 @@ namespace UACSPopupForm
                 }
                 catch (Exception ex)
                 {
-                    ParkClassLibrary.HMILogger.WriteLog("停车位详细", "更改优先级错误："+ ex.Message.ToString().Trim(), ParkClassLibrary.LogLevel.Info, this.Text);
+                    ParkClassLibrary.HMILogger.WriteLog("停车位详细", "更改优先级错误：" + ex.Message.ToString().Trim(), ParkClassLibrary.LogLevel.Info, this.Text);
                 }
             }
         }
@@ -832,12 +832,18 @@ namespace UACSPopupForm
         private void Send_Tag()
         {
             try
-            {                
+            {
                 //确认提示
                 MessageBoxButtons btn = MessageBoxButtons.OKCancel;
                 DialogResult drmsg = MessageBox.Show("确认是否发送实绩？", "提示", btn, MessageBoxIcon.Asterisk);
                 if (drmsg == DialogResult.OK)
                 {
+                    if (!string.IsNullOrEmpty(lb_ACT_WEIGHT.Text) && Convert.ToInt32(lb_ACT_WEIGHT.Text.Trim()) > 99999)
+                    {
+                        MessageBox.Show("发送失败，实绩重量大于五位数！");
+                        return;
+                    }
+
                     if (dgvStowageMessage.Rows.Count > 0)
                     {
                         //计划号，料槽号，工位号，废钢种类数量，废钢代码1#重量，废钢代码2#重量，废钢代码3#重量，废钢代码4#重量，废钢代码5#重量......

@@ -358,19 +358,31 @@ namespace UACSPopupForm
                 }
                 try
                 {
-                    //var gridNo = cmb_GridNo.SelectedValue.ToString().Remove(0, 3).PadLeft(2, '0');
+
+                    var sqlText = @"SELECT ORDER_NO, BAY_NO, FROM_STOCK_NO, TO_STOCK_NO,ORDER_TYPE, OEDER_TYPE_KEEP FROM UACS_CRANE_ORDER_CURRENT WHERE ORDER_TYPE = '11';";
+                    using (IDataReader rdr = DB2Connect.DBHelper.ExecuteReader(sqlText))
+                    {
+                        while (rdr.Read())
+                        {
+                            if (!string.IsNullOrEmpty(rdr["FROM_STOCK_NO"].ToString()))
+                            {
+                                var FromStockNo = rdr["FROM_STOCK_NO"].ToString().Split('-');
+                                if (FromStockNo.Length > 0 && FromStockNo[0].Equals(cmb_AeraNo.Text.Trim()))
+                                {
+                                    MessageBox.Show("该跨区正在归堆，不允许重复归堆！");
+                                    return;
+                                }
+                            }                            
+                        }
+                    }
+
                     string sql = @"UPDATE UACS_CRANE_MANU_ORDER SET GRID_NO = '" + cmb_AeraNo.SelectedValue.ToString().Trim() + "',MAT_NO = '" + MatCode + "',FROM_STOCK = '" + cmb_AeraNo.Text.Trim() + "-" + cmb_LMR.SelectedValue.ToString() + "',TO_STOCK = '" + cmb_GridNo.SelectedValue.ToString() + "',STATUS = 'INIT' ";
                     sql += " WHERE BAY_NO = 'A' AND CRANE_NO = '" + CraneNo + "'";
-                    DBHelper.ExecuteNonQuery(sql);                    
+                    DBHelper.ExecuteNonQuery(sql);
                     DialogResult dr = MessageBox.Show("确认执行归堆，请切换自动模式！", "提示", MessageBoxButtons.OK);
-                    if (dr == DialogResult.OK)
-                    {
-                        this.Close();
-                        //return;
-                    }
+                    if (dr == DialogResult.OK) { this.Close(); }
                     else
-                    {
-                        //this.Close();
+                    { //this.Close();
                     }
                     ParkClassLibrary.HMILogger.WriteLog("人工指令", "归堆作业指令编辑 - 执行归堆：行车" + CraneNo, ParkClassLibrary.LogLevel.Info, this.Text);
                 }
