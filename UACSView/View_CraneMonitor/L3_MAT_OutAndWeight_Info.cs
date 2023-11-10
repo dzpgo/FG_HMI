@@ -69,7 +69,7 @@ namespace UACSView
         /// </summary>
         /// <param name="currentPage">当前页面</param>
         private void getL3MatWeightInfo(int currentPage)
-        {           
+        {
             string work_seqNo = this.textWORK_SEQ_NO.Text.Trim();  //计划号
             string recTime1 = this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");  //开始时间
             string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");  //结束时间
@@ -443,173 +443,157 @@ namespace UACSView
         /// </summary>
         private void MatSpline()
         {
-            Dictionary<string, string> ChartCodeNameDictionary = new Dictionary<string, string>();
-            Dictionary<DateTime, DateTime> ChartTimeDictionary = new Dictionary<DateTime, DateTime>();
-            List<string> ChartCodeNameList = new List<string>();
-            List<DateTime> ChartTimeList = new List<DateTime>();
-            List<ChartDate> ChartDateList = new List<ChartDate>();
-
-            #region 访问数据库库
-            string work_seqNo = this.textWORK_SEQ_NO.Text.Trim();  //计划号
-            string recTime1 = dateTimePicker1_recTime.Value.Day.Equals(DateTime.Now.Day) ? this.dateTimePicker1_recTime.Value.AddDays(-7).ToString("yyyyMMdd000000") : this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");  //开始时间
-            string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");  //结束时间
-            var sqlText = @"SELECT DATE(A.REC_TIME) AS DaY, C.MAT_CNAME AS CodeName,SUM(A.MAT_WT) AS MatWT ";
-            sqlText += "FROM UACSAPP.UACS_L3_MAT_WEIGHT_INFO A ";
-            sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_PROD_CODE ";
-            sqlText += "WHERE A.REC_TIME BETWEEN '{0}' AND '{1}' ";
-            sqlText = string.Format(sqlText, recTime1, recTime2);
-            if (!string.IsNullOrEmpty(work_seqNo))
-            {
-                sqlText = string.Format("{0} AND A.WORK_SEQ_NO LIKE '%{1}%' ", sqlText, work_seqNo);
-            }
-            sqlText += "AND A.MAT_PROD_CODE IN (SELECT MAT_CODE FROM UACS_L3_MAT_INFO) ";
-            //按 NO>>记录时间>更新时间 降序
-            sqlText += "GROUP BY DATE(A.REC_TIME), C.MAT_CNAME ";
-            sqlText += "ORDER BY DaY, C.MAT_CNAME ";
-            using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
-            {
-                while (rdr.Read())
-                {
-                    ChartDate cd = new ChartDate();
-                    if (rdr["DaY"] != System.DBNull.Value)
-                    {
-                        cd.DaY = Convert.ToDateTime(rdr["DaY"]);
-                    }
-                    if (rdr["CodeName"] != System.DBNull.Value)
-                    {
-                        cd.CodeName = rdr["CodeName"].ToString();
-                    }
-                    if (rdr["MatWT"] != System.DBNull.Value)
-                    {
-                        cd.MatWT = Convert.ToDouble(rdr["MatWT"]) / 1000;
-                    }
-
-                    ChartDateList.Add(cd);
-                    if (rdr["CodeName"] != System.DBNull.Value && !ChartCodeNameDictionary.ContainsKey(rdr["CodeName"].ToString()))
-                    {
-                        ChartCodeNameDictionary.Add(rdr["CodeName"].ToString(), rdr["CodeName"].ToString());
-                        ChartCodeNameList.Add(rdr["CodeName"].ToString());
-                    }
-                    if (rdr["DaY"] != System.DBNull.Value && !ChartTimeDictionary.ContainsKey(Convert.ToDateTime(rdr["DaY"])))
-                    {
-                        ChartTimeDictionary.Add(Convert.ToDateTime(rdr["DaY"]), Convert.ToDateTime(rdr["DaY"]));
-                        ChartTimeList.Add(Convert.ToDateTime(rdr["DaY"]));
-                    }
-                }
-            }
-
-            #endregion
-
             try
             {
-                //定义图表区域
-                this.chart3.ChartAreas.Clear();
-                ChartArea chartArea1 = new ChartArea("C3");
-                this.chart3.ChartAreas.Add(chartArea1);
-                //定义存储和显示点的容器
-                this.chart3.Series.Clear();
-                //Series series1 = new Series("S1");
-                //series1.ChartArea = "C1";
-                //this.chart3.Series.Add(series1);
-                //设置图表显示样式
-                this.chart3.ChartAreas[0].AxisY.Minimum = 0;
-                //this.chart3.ChartAreas[0].AxisY.Maximum = 1000;
-                this.chart3.ChartAreas[0].AxisX.Interval = 5;
-                this.chart3.ChartAreas[0].AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
-                this.chart3.ChartAreas[0].AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
-                //设置标题
-                this.chart3.Titles.Clear();
-                this.chart3.Titles.Add("S01");
-                this.chart3.Titles[0].Text = "XXX显示";
-                this.chart3.Titles[0].ForeColor = Color.Blue;
-                this.chart3.Titles[0].Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-                //设置图表显示样式
-                //this.chart3.Series[0].Color = Color.Red;
-
-                //控件背景
-                this.chart3.BackColor = SystemColors.Control;
-                //图表区背景
-                this.chart3.ChartAreas[0].BackColor = SystemColors.Control;
-                this.chart3.ChartAreas[0].BorderColor = SystemColors.Control;
-                //X轴标签间距
-                this.chart3.ChartAreas[0].AxisX.Interval = 1;
-                this.chart3.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
-                this.chart3.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
-                this.chart3.ChartAreas[0].AxisX.TitleFont = new Font("微软雅黑", 14f, FontStyle.Regular);
-                this.chart3.ChartAreas[0].AxisX.TitleForeColor = Color.Blue;
-
-                //X坐标轴颜色
-                this.chart3.ChartAreas[0].AxisX.LineColor = ColorTranslator.FromHtml("#38587a");
-                this.chart3.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Blue;
-                this.chart3.ChartAreas[0].AxisX.LabelStyle.Font = new Font("微软雅黑", 10f, FontStyle.Regular);
-                //X坐标轴标题
-                this.chart3.ChartAreas[0].AxisX.Title = "日期 (天)";
-                this.chart3.ChartAreas[0].AxisX.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
-                this.chart3.ChartAreas[0].AxisX.TitleForeColor = Color.Blue;
-                this.chart3.ChartAreas[0].AxisX.TextOrientation = TextOrientation.Horizontal;
-                this.chart3.ChartAreas[0].AxisX.ToolTip = "日期 (天)";
-                //X轴网络线条
-                this.chart3.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
-                this.chart3.ChartAreas[0].AxisX.MajorGrid.LineColor = ColorTranslator.FromHtml("#2c4c6d");
-
-                //Y坐标轴颜色
-                this.chart3.ChartAreas[0].AxisY.LineColor = ColorTranslator.FromHtml("#38587a");
-                this.chart3.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Blue;
-                this.chart3.ChartAreas[0].AxisY.LabelStyle.Font = new Font("微软雅黑", 10f, FontStyle.Regular);
-                //Y坐标轴标题
-                this.chart3.ChartAreas[0].AxisY.Title = "重量 (吨)";
-                this.chart3.ChartAreas[0].AxisY.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
-                this.chart3.ChartAreas[0].AxisY.TitleForeColor = Color.Blue;
-                this.chart3.ChartAreas[0].AxisY.TextOrientation = TextOrientation.Rotated270;
-                this.chart3.ChartAreas[0].AxisY.ToolTip = "重量 (吨)";
-                //Y轴网格线条
-                this.chart3.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
-                this.chart3.ChartAreas[0].AxisY.MajorGrid.LineColor = ColorTranslator.FromHtml("#2c4c6d");
-                this.chart3.ChartAreas[0].AxisY2.LineColor = SystemColors.Control;
-
-                foreach (string name in ChartCodeNameList)
+                Dictionary<string, Dictionary<DateTime, double>> DataDictionary = new Dictionary<string, Dictionary<DateTime, double>>();
+                List<ChartDate> ChartDateList = new List<ChartDate>();
+                HashSet<string> ChartCodeNameSet = new HashSet<string>();
+                HashSet<DateTime> ChartTimeSet = new HashSet<DateTime>();
+                // 访问数据库部分
+                string work_seqNo = this.textWORK_SEQ_NO.Text.Trim();
+                string recTime1 = dateTimePicker1_recTime.Value.Day.Equals(DateTime.Now.Day) ? this.dateTimePicker1_recTime.Value.AddDays(-7).ToString("yyyyMMdd000000") : this.dateTimePicker1_recTime.Value.ToString("yyyyMMdd000000");
+                string recTime2 = this.dateTimePicker2_recTime.Value.ToString("yyyyMMdd235959");
+                var sqlText = @"SELECT DATE(A.REC_TIME) AS DaY, C.MAT_CNAME AS CodeName,SUM(A.MAT_WT) AS MatWT ";
+                sqlText += "FROM UACSAPP.UACS_L3_MAT_WEIGHT_INFO A ";
+                sqlText += "LEFT JOIN UACS_L3_MAT_INFO C ON C.MAT_CODE = A.MAT_PROD_CODE ";
+                sqlText += "WHERE A.REC_TIME BETWEEN '{0}' AND '{1}' ";
+                sqlText = string.Format(sqlText, recTime1, recTime2);
+                if (!string.IsNullOrEmpty(work_seqNo))
                 {
-                    Series series = new Series(name.ToString());
-                    series.ChartType = SeriesChartType.Line;
-                    this.chart3.Series.Add(series);
+                    sqlText = string.Format("{0} AND A.WORK_SEQ_NO LIKE '%{1}%' ", sqlText, work_seqNo);
                 }
+                sqlText += "AND A.MAT_PROD_CODE IN (SELECT MAT_CODE FROM UACS_L3_MAT_INFO) ";
+                sqlText += "GROUP BY DATE(A.REC_TIME), C.MAT_CNAME ";
+                sqlText += "ORDER BY DaY, C.MAT_CNAME ";
 
-                this.chart3.Titles[0].Text = string.Format(" {0}（天）", "进料重量折线图分析");
-
-                foreach (DateTime day in ChartTimeList)
+                using (IDataReader rdr = DBHelper.ExecuteReader(sqlText))
                 {
-                    for (int i = 0; i < ChartDateList.Count; i++)
+                    while (rdr.Read())
                     {
-                        for (int j = 0; j < ChartCodeNameList.Count; j++)
+                        ChartDate cd = new ChartDate();
+                        if (rdr["DaY"] != DBNull.Value)
                         {
-                            if (day.Day == ChartDateList[i].DaY.Day && ChartDateList[i].CodeName.Equals(ChartCodeNameList[j]))
-                            {
-                                this.chart3.Series[j].Points.AddXY(day.Day, ChartDateList[i].MatWT);
-                                var val = 0;
-                                if (this.chart3.Series[j].Points.Count > 0)
-                                {
-                                    // 值标签
-                                    val = this.chart3.Series[j].Points.Count - 1;
-                                    this.chart3.Series[j].Points[val].MarkerStyle = MarkerStyle.Diamond;
-                                    this.chart3.Series[j].Points[val].MarkerColor = Color.Red;
-                                    this.chart3.Series[j].Points[val].MarkerBorderWidth = 3;
-                                    this.chart3.Series[j].Points[val].MarkerSize = 10;
-                                    this.chart3.Series[j].Points[val].Label = "#VAL";
-                                    this.chart3.Series[j].Points[val].IsValueShownAsLabel = true;
-                                    // 宽度
-                                    this.chart3.Series[j].BorderWidth = 5;
-                                    this.chart3.Series[j].CustomProperties = "PieLabelStyle = Outside";
-                                }
-                            }
+                            cd.DaY = Convert.ToDateTime(rdr["DaY"]);
                         }
+                        if (rdr["CodeName"] != DBNull.Value)
+                        {
+                            cd.CodeName = rdr["CodeName"].ToString();
+                            ChartCodeNameSet.Add(cd.CodeName);
+                        }
+                        if (rdr["MatWT"] != DBNull.Value)
+                        {
+                            cd.MatWT = Convert.ToDouble(rdr["MatWT"]) / 1000;
+                        }
+
+                        ChartDateList.Add(cd);
+                        ChartTimeSet.Add(cd.DaY.Date);
                     }
                 }
 
+                // 使用 Lambda 表达式进行正序排序
+                List<string> ChartCodeNameList = ChartCodeNameSet.ToList();
+                ChartCodeNameList.Sort((s1, s2) => string.Compare(s1, s2));
+
+                List<DateTime> ChartTimeList = ChartTimeSet.ToList();
+                ChartTimeList.Sort();
+
+                DataDictionary.Clear();
+                foreach (string name in ChartCodeNameList)
+                {
+                    var filteredData = ChartDateList
+                        .Where(item => name.Equals(item.CodeName))
+                        .ToDictionary(item => item.DaY.Date, item => Math.Round(item.MatWT, 2));
+
+                    DataDictionary.Add(name, filteredData);
+                }
+
+                GetChart(DataDictionary);
             }
             catch (Exception ex)
             {
                 var msg = ex.Message;
             }
+        }
+
+        /// <summary>
+        /// 折线图
+        /// </summary>
+        /// <param name="data"></param>
+        private void GetChart(Dictionary<string, Dictionary<DateTime, double>> data)
+        {
+            // 获取chart控件
+            Chart chart3 = this.chart3;
+            chart3.Dock = DockStyle.Fill;
+            chart3.ChartAreas[0].AxisY.Minimum = -200; // 最小值
+            //chart3.ChartAreas[0].AxisY.Maximum = 100; // 最大值
+            // 控件背景
+            this.chart3.BackColor = SystemColors.Control;
+            // 图表区背景
+            chart3.ChartAreas[0].BackColor = SystemColors.Control;
+            chart3.ChartAreas[0].BorderColor = SystemColors.Control;
+            // 设置标题
+            chart3.Titles.Clear();
+            chart3.Titles.Add("S01");
+            chart3.Titles[0].Text = "装料平均时间（天）";
+            chart3.Titles[0].ForeColor = Color.Blue;
+            chart3.Titles[0].Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            //X坐标轴标题
+            chart3.ChartAreas[0].AxisX.Title = "日期 (天)";
+            chart3.ChartAreas[0].AxisX.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
+            chart3.ChartAreas[0].AxisX.TitleForeColor = Color.Blue;
+            chart3.ChartAreas[0].AxisX.TextOrientation = TextOrientation.Horizontal;
+            chart3.ChartAreas[0].AxisX.ToolTip = "日期 (天)";
+            //Y坐标轴标题
+            chart3.ChartAreas[0].AxisY.Title = "用时 (分)";
+            chart3.ChartAreas[0].AxisY.TitleFont = new Font("微软雅黑", 10f, FontStyle.Regular);
+            chart3.ChartAreas[0].AxisY.TitleForeColor = Color.Blue;
+            chart3.ChartAreas[0].AxisY.TextOrientation = TextOrientation.Rotated270;
+            chart3.ChartAreas[0].AxisY.ToolTip = "用时 (分)";
+
+            // 设置X轴的数据类型为日期
+            chart3.ChartAreas[0].AxisX.LabelStyle.Format = "yyyy-MM-dd";
+            chart3.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Days;
+            chart3.ChartAreas[0].AxisX.Interval = 1;
+
+            // 设置X轴和Y轴的网格线颜色为半透明
+            chart3.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.FromArgb(16, Color.Black);
+            chart3.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.FromArgb(16, Color.Black);
+
+            chart3.Series.Clear();
+            // 使用循环来添加多条折线
+            foreach (var kvp in data)
+            {
+                // 创建一个新的Series（系列）用于存放数据
+                Series series = new Series(kvp.Key);
+
+                // 设置Series的类型为Line（折线图）
+                series.ChartType = SeriesChartType.Line;
+
+                // 设置Series的IsValueShownAsLabel属性为true，这将在每个数据点上显示其值
+                series.IsValueShownAsLabel = true;
+
+                // 设置数据点的标记样式
+                series.MarkerStyle = MarkerStyle.Circle;
+
+                // 设置数据点的标记大小
+                series.MarkerSize = 4;
+
+                // 设置数据点上的文本颜色为红色
+                //series.LabelForeColor = Color.Red;
+
+                // 添加数据到Series中
+                foreach (var point in kvp.Value)
+                {
+                    // 注意这里我们使用了DateTime类型的数据点
+                    series.Points.AddXY(point.Key, point.Value);
+                }
+
+                // 将Series添加到chart的Series集合中
+                chart3.Series.Add(series);
+            }
+            this.chart3.DataBind();
+            // 刷新图表
+            this.chart3.Update();
         }
 
         #endregion
@@ -755,10 +739,10 @@ namespace UACSView
         private void GetAnnualTime()
         {
             var day1 = DateTime.Now.ToString("yyyy-01-01");
-            //控件设置值
+            // 控件设置值
             this.dateTimePicker1_recTime.Value = Convert.ToDateTime(day1);
-            //查询
-            //L3送料计划
+            // 查询
+            // L3送料计划
             getL3MatWeightInfo(1);
         }
         #endregion
@@ -766,25 +750,55 @@ namespace UACSView
         private void bt_TodayTime_Click(object sender, EventArgs e)
         {
             GetToDayTime();
+            // 饼状图()
+            MatPieData();
+            // 柱状图
+            MatColumnData();
+            // 折线图
+            MatSpline();
         }
 
         private void bt_MonthlyTime_Click(object sender, EventArgs e)
         {
             GetMonthlyTime();
+            // 饼状图()
+            MatPieData();
+            // 柱状图
+            MatColumnData();
+            // 折线图
+            MatSpline();
         }
 
         private void bt_QuarterlyTime_Click(object sender, EventArgs e)
         {
             GetQuarterlyTime();
+            // 饼状图()
+            MatPieData();
+            // 柱状图
+            MatColumnData();
+            // 折线图
+            MatSpline();
         }
 
         private void bt_AnnualTime_Click(object sender, EventArgs e)
         {
             GetAnnualTime();
+            // 饼状图()
+            MatPieData();
+            // 柱状图
+            MatColumnData();
+            // 折线图
+            MatSpline();
         }
         private void bt_WeekTime_Click(object sender, EventArgs e)
         {
             GetWeekTime();
+            // 饼状图()
+            MatPieData();
+            // 柱状图
+            MatColumnData();
+            // 折线图
+            MatSpline();
         }
     }
 

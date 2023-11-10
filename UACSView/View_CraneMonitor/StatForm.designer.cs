@@ -36,10 +36,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
@@ -60,12 +59,14 @@
             this.bt_MonthlyTime = new System.Windows.Forms.Button();
             this.bt_TodayTime = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bt_WeekTime = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.OPER_ID2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AutoFlag2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CRANE_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PLAN_NO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BOF_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,14 +84,13 @@
             this.OrderCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PERCENTAGE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.ucPage1 = new UACSControls.Page.ucPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel5 = new System.Windows.Forms.Panel();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.bt_WeekTime = new System.Windows.Forms.Button();
-            this.ucPage1 = new UACSControls.Page.ucPage();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -193,7 +193,6 @@
             this.btnExport.Text = "统计导出";
             this.btnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExport.UseVisualStyleBackColor = false;
-            this.btnExport.Visible = false;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // cbb_CRANE_NO
@@ -243,6 +242,7 @@
             this.bt_QuarterlyTime.Text = "本季";
             this.bt_QuarterlyTime.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.bt_QuarterlyTime.UseVisualStyleBackColor = false;
+            this.bt_QuarterlyTime.Visible = false;
             this.bt_QuarterlyTime.Click += new System.EventHandler(this.bt_QuarterlyTime_Click);
             // 
             // bt_MonthlyTime
@@ -301,6 +301,21 @@
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "查询条件";
+            // 
+            // bt_WeekTime
+            // 
+            this.bt_WeekTime.BackColor = System.Drawing.Color.White;
+            this.bt_WeekTime.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
+            this.bt_WeekTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_WeekTime.ForeColor = System.Drawing.Color.White;
+            this.bt_WeekTime.Location = new System.Drawing.Point(969, 23);
+            this.bt_WeekTime.Name = "bt_WeekTime";
+            this.bt_WeekTime.Size = new System.Drawing.Size(100, 45);
+            this.bt_WeekTime.TabIndex = 40;
+            this.bt_WeekTime.Text = "本周";
+            this.bt_WeekTime.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_WeekTime.UseVisualStyleBackColor = false;
+            this.bt_WeekTime.Click += new System.EventHandler(this.bt_WeekTime_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -373,6 +388,7 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OPER_ID2,
+            this.AutoFlag2,
             this.CRANE_NO,
             this.PLAN_NO2,
             this.BOF_NO,
@@ -404,15 +420,23 @@
             // OPER_ID2
             // 
             this.OPER_ID2.DataPropertyName = "OPER_ID2";
-            this.OPER_ID2.FillWeight = 65F;
+            this.OPER_ID2.FillWeight = 36F;
             this.OPER_ID2.HeaderText = "序号";
             this.OPER_ID2.Name = "OPER_ID2";
             this.OPER_ID2.ReadOnly = true;
             // 
+            // AutoFlag2
+            // 
+            this.AutoFlag2.DataPropertyName = "AutoFlag2";
+            this.AutoFlag2.FillWeight = 36F;
+            this.AutoFlag2.HeaderText = "模式";
+            this.AutoFlag2.Name = "AutoFlag2";
+            this.AutoFlag2.ReadOnly = true;
+            // 
             // CRANE_NO
             // 
             this.CRANE_NO.DataPropertyName = "CRANE_NO";
-            this.CRANE_NO.FillWeight = 65F;
+            this.CRANE_NO.FillWeight = 36F;
             this.CRANE_NO.HeaderText = "行车";
             this.CRANE_NO.Name = "CRANE_NO";
             this.CRANE_NO.ReadOnly = true;
@@ -420,7 +444,7 @@
             // PLAN_NO2
             // 
             this.PLAN_NO2.DataPropertyName = "PLAN_NO2";
-            this.PLAN_NO2.FillWeight = 75F;
+            this.PLAN_NO2.FillWeight = 52.26724F;
             this.PLAN_NO2.HeaderText = "计划号";
             this.PLAN_NO2.Name = "PLAN_NO2";
             this.PLAN_NO2.ReadOnly = true;
@@ -428,7 +452,7 @@
             // BOF_NO
             // 
             this.BOF_NO.DataPropertyName = "BOF_NO";
-            this.BOF_NO.FillWeight = 65F;
+            this.BOF_NO.FillWeight = 36F;
             this.BOF_NO.HeaderText = "炉号";
             this.BOF_NO.Name = "BOF_NO";
             this.BOF_NO.ReadOnly = true;
@@ -436,7 +460,7 @@
             // CMD_SEQ2
             // 
             this.CMD_SEQ2.DataPropertyName = "CMD_SEQ2";
-            this.CMD_SEQ2.FillWeight = 78.23604F;
+            this.CMD_SEQ2.FillWeight = 54.52243F;
             this.CMD_SEQ2.HeaderText = "吊运总数";
             this.CMD_SEQ2.Name = "CMD_SEQ2";
             this.CMD_SEQ2.ReadOnly = true;
@@ -444,7 +468,7 @@
             // WEIGHT
             // 
             this.WEIGHT.DataPropertyName = "WEIGHT";
-            this.WEIGHT.FillWeight = 78.23604F;
+            this.WEIGHT.FillWeight = 50F;
             this.WEIGHT.HeaderText = "重量";
             this.WEIGHT.Name = "WEIGHT";
             this.WEIGHT.ReadOnly = true;
@@ -452,7 +476,7 @@
             // LoadingTime
             // 
             this.LoadingTime.DataPropertyName = "LoadingTime";
-            this.LoadingTime.FillWeight = 78.23604F;
+            this.LoadingTime.FillWeight = 54.52243F;
             this.LoadingTime.HeaderText = "装车用时";
             this.LoadingTime.Name = "LoadingTime";
             this.LoadingTime.ReadOnly = true;
@@ -460,7 +484,7 @@
             // FiftyFiveTonTime
             // 
             this.FiftyFiveTonTime.DataPropertyName = "FiftyFiveTonTime";
-            this.FiftyFiveTonTime.FillWeight = 78.23604F;
+            this.FiftyFiveTonTime.FillWeight = 54.52243F;
             this.FiftyFiveTonTime.HeaderText = "55T用时";
             this.FiftyFiveTonTime.Name = "FiftyFiveTonTime";
             this.FiftyFiveTonTime.ReadOnly = true;
@@ -468,7 +492,7 @@
             // SeventyTwoTonTime
             // 
             this.SeventyTwoTonTime.DataPropertyName = "SeventyTwoTonTime";
-            this.SeventyTwoTonTime.FillWeight = 78.23604F;
+            this.SeventyTwoTonTime.FillWeight = 54.52243F;
             this.SeventyTwoTonTime.HeaderText = "72T用时";
             this.SeventyTwoTonTime.Name = "SeventyTwoTonTime";
             this.SeventyTwoTonTime.ReadOnly = true;
@@ -580,6 +604,19 @@
             this.groupBox4.TabIndex = 19;
             this.groupBox4.TabStop = false;
             // 
+            // ucPage1
+            // 
+            this.ucPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucPage1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.ucPage1.CurrentPage = 0;
+            this.ucPage1.Location = new System.Drawing.Point(3, 12);
+            this.ucPage1.Name = "ucPage1";
+            this.ucPage1.PageSize = 0;
+            this.ucPage1.Size = new System.Drawing.Size(759, 31);
+            this.ucPage1.TabIndex = 0;
+            this.ucPage1.TotalPages = 0;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.tableLayoutPanel3);
@@ -624,11 +661,6 @@
             this.chart3.Legends.Add(legend1);
             this.chart3.Location = new System.Drawing.Point(0, 0);
             this.chart3.Name = "chart3";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart3.Series.Add(series1);
             this.chart3.Size = new System.Drawing.Size(768, 348);
             this.chart3.TabIndex = 4;
             this.chart3.Text = "chart3";
@@ -651,47 +683,19 @@
             this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(0, 0);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.LegendText = "#SERIESNAME";
-            series2.Name = "Series1";
-            series2.Points.Add(dataPoint1);
-            series2.Points.Add(dataPoint2);
-            series2.Points.Add(dataPoint3);
-            series2.Points.Add(dataPoint4);
-            this.chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.LegendText = "#SERIESNAME";
+            series1.Name = "Series1";
+            series1.Points.Add(dataPoint1);
+            series1.Points.Add(dataPoint2);
+            series1.Points.Add(dataPoint3);
+            series1.Points.Add(dataPoint4);
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(768, 347);
             this.chart1.TabIndex = 2;
             this.chart1.Text = "chart1";
-            // 
-            // bt_WeekTime
-            // 
-            this.bt_WeekTime.BackColor = System.Drawing.Color.White;
-            this.bt_WeekTime.BackgroundImage = global::UACSView.Properties.Resources.bg_btn;
-            this.bt_WeekTime.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_WeekTime.ForeColor = System.Drawing.Color.White;
-            this.bt_WeekTime.Location = new System.Drawing.Point(969, 23);
-            this.bt_WeekTime.Name = "bt_WeekTime";
-            this.bt_WeekTime.Size = new System.Drawing.Size(100, 45);
-            this.bt_WeekTime.TabIndex = 40;
-            this.bt_WeekTime.Text = "本周";
-            this.bt_WeekTime.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.bt_WeekTime.UseVisualStyleBackColor = false;
-            this.bt_WeekTime.Click += new System.EventHandler(this.bt_WeekTime_Click);
-            // 
-            // ucPage1
-            // 
-            this.ucPage1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucPage1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ucPage1.CurrentPage = 0;
-            this.ucPage1.Location = new System.Drawing.Point(3, 12);
-            this.ucPage1.Name = "ucPage1";
-            this.ucPage1.PageSize = 0;
-            this.ucPage1.Size = new System.Drawing.Size(759, 31);
-            this.ucPage1.TabIndex = 0;
-            this.ucPage1.TotalPages = 0;
             // 
             // StatForm
             // 
@@ -747,17 +751,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OPER_ID2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CRANE_NO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PLAN_NO2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BOF_NO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CMD_SEQ2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn WEIGHT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LoadingTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FiftyFiveTonTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SeventyTwoTonTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn REC_TIME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TotalRows;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn RowNumber;
@@ -773,5 +766,17 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Button bt_WeekTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OPER_ID2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AutoFlag2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CRANE_NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PLAN_NO2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BOF_NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CMD_SEQ2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WEIGHT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LoadingTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FiftyFiveTonTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SeventyTwoTonTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn REC_TIME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalRows;
     }
 }
